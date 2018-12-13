@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .HolyGrail {
+            display: flex;
+            min-height: 100vh;/*相对于视口的高度。视口被均分为100单位的vh*/
+            flex-direction: column;
+        }
+
+        header, footer {
+            flex: auto;
+            background-color: #666666;
+            color :red;
+        }
+
+        .HolyGrail-body {
+            display: flex;
+            height: 80vh;
+        }
+        /*flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。*/
+        .HolyGrail-content {
+            flex: auto;
+            background-color: #D6D6D6;
+        }
+
+        .HolyGrail-nav, .HolyGrail-ads {
+            /* 两个边栏的宽度设为12em */
+            flex: 0 0 12em;
+        }
+
+        .HolyGrail-nav {
+            background-color: #77BBDD;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="HolyGrail">
+    <header>header</header>
+        <div class="HolyGrail-body">
+            <nav class="HolyGrail-nav">left</nav>
+            <main class="HolyGrail-content">center</main>
+            <aside class="HolyGrail-ads">right</aside>
+        </div>
+    <footer>footer</footer>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue.js4</title>
+    <![endif]-->
+</head>
+<body>
+<div id="app">
+    <input v-model="searchText">
+    <br>
+    <input  v-bind:value="searchText" v-on:input="searchText = $event.target.value">
+    <br>
+    {{searchText}}
+    <br>
+
+    <!--<custom-input v-bind:value="searchText" v-on:input="searchText = $event" ></custom-input>-->
+    <custom-input v-model="searchText"></custom-input>
+</div>
+<!--<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>-->
+<script src="js/vue.js"></script>
+<script>
+    Vue.component('custom-input', {
+        props: ['value'],
+        template: `
+                    <input
+                      v-bind:value="value"
+                      v-on:input="$emit('input', $event.target.value)"
+                    >
+                  `
+    })
+
+   var vm= new Vue({
+        el: '#app',
+        data: {
+            searchText:""
+       }
+    })
+</script>
+</body>
+</html>

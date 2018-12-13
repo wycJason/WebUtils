@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.css"/>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script src="jqm/jquery.mobile-1.4.5.js"></script>
+  <title></title>
+</head>
+<body>
+<div data-role="page">
+  <div data-role="header">
+    <h1>header</h1>
+  </div>
+
+  <div class="ui-content">
+    <form>
+      <div data-role="fieldcontain">
+        <label for="name">姓名</label>
+        <input type="text" id="name" placeholder="请输入你的姓名"/>
+
+        <label for="sousuo">搜索</label>
+        <input type="search" id="sousuo" placeholder="请输入要搜索的内容"/>
+
+        <label for="riqi">日期</label>
+        <input type="date" id="riqi"/>
+
+        <label for="color">选择喜欢的颜色</label>
+        <select id="color">
+          <option value="red">红色</option>
+          <option value="green">绿色</option>
+          <option value="blue">蓝色</option>
+        </select>
+
+        <label for="switch">开关</label>
+        <input data-on-text='开' data-off-text='关' data-role='flipswitch' type="checkbox" id="switch"/>
+
+
+        <fieldset data-role="controlgroup">
+          <legend>选择喜欢的电影</legend>
+          <label for="movie1">电影1</label>
+          <input type="checkbox" name="movie" id="movie1"/>
+          <label for="movie2">电影2</label>
+          <input type="checkbox" name="movie" id="movie2"/>
+          <label for="movie3">电影3</label>
+          <input type="checkbox" name="movie" id="movie3"/>
+        </fieldset>
+
+        <fieldset data-role="controlgroup">
+          <legend>安排会议：</legend>
+          <label for="day">选择日期：</label>
+          <select name="day" id="day">
+            <option value="mon">Monday</option>
+            <option value="tue">Tuesday</option>
+            <option value="wed">Wednesday</option>
+            <option value="thu">Thursday</option>
+            <option value="fri">Friday</option>
+            <option value="sat">Saturday</option>
+            <option value="sun">Sunday</option>
+          </select>
+
+          <label for="time">选择时间：</label>
+          <select name="time" id="time">
+            <option value="08">08:00</option>
+            <option value="09">09:00</option>
+            <option value="10">10:00</option>
+            <option value="11">11:00</option>
+            <option value="12">12:00</option>
+            <option value="13">13:00</option>
+            <option value="14">14:00</option>
+            <option value="15">15:00</option>
+            <option value="16">16:00</option>
+          </select>
+        </fieldset>
+      </div>
+    </form>
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h1>footer</h1>
+  </div>
+
+</div>
+</body>
+</html>

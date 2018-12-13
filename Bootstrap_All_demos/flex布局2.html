@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .Site {
+            display: flex;
+            min-height: 100vh;/*相对于视口的高度。视口被均分为100单位的vh*/
+            flex-direction: column;
+        }
+        /*flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。*/
+        .Site-content {
+            flex: auto;
+            background-color: green;
+        }
+        header{
+            height: 100px;
+            background-color: red;
+        }
+        footer{
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="Site">
+    <header></header>
+    <main class="Site-content"></main>
+    <footer></footer>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

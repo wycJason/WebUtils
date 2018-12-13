@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Table</title>
+    <style>
+        /*删除bootstrap-table表格边框线*/
+        .table > tbody > tr > td, .table > thead > tr > th{
+            border-top: none !important;
+        }
+        .fixed-table-container tbody td,.fixed-table-container thead th {
+            border-left:none !important;
+        }
+        .fixed-table-container{
+            border:none !important;
+        }
+        .bootstrap-table .table > thead > tr > th,.bootstrap-table .table{
+            border-bottom: none!important;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-table/bootstrap-table.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <a href="http://bootstrap-table.wenzhixin.net.cn/zh-cn/getting-started/bootstrap-table1.html" target="_blank">bootstrap-table中文文档</a><br>
+    <a href="http://www.cnblogs.com/MirageFox/p/5981867.html" target="_blank">bootstrap-table实例1</a><br>
+    <a href="http://www.jq22.com/yanshi10489" target="_blank">bootstrap-table实例2</a>
+<!--第一种方法:原始方法-->
+<!--<table data-toggle="table">
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>商品名称</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>九洲奇味饼干</td>
+            <td>2016/10/9 10:15:00</td>
+            <td>2016/12/25 11:30:00<td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>好多鱼</td>
+            <td>2016/10/9 10:15:00</td>
+            <td>2016/12/25 11:30:00<td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>旺旺雪饼</td>
+            <td>2016/10/9 10:15:00</td>
+            <td>2016/12/25 11:30:00<td>
+        </tr>
+    </tbody>
+</table>-->
+
+<!--第二种方法:通过 data 属性的方式-->
+<!--<table data-toggle="table" data-url="bootstrap-table/data-json">
+    <thead>
+        <tr>
+            <th data-field="Code">序号</th>
+            <th data-field="TuanGouName">商品名称</th>
+            <th data-field="StartDate">开始时间</th>
+            <th data-field="EndTime">结束时间</th>
+        </tr>
+    </thead>
+</table>-->
+
+<!--第三种方法，通过 JavaScript 的方式-->
+<div id="toolbar">
+    <button id="get" class="btn btn-default">获取商品名称</button>
+    <button id="insert" class="btn btn-info">插入商品</button>
+</div>
+<table id="goods"
+       data-toolbar="#toolbar"
+       data-toolbar-align="left"
+       data-pagination="true"
+       data-page-list="[1,3,5,10,20,50,100,'ALL']"
+       data-page-size="20"
+       data-striped="true"
+       data-single-select="false"
+       data-pagination-pre-text="上一页"
+       data-pagination-next-text="下一页"
+       data-undefined-text="无"
+        >
+    <thead>
+        <tr>
+            <th data-checkbox="true" data-formatter="stateFormatter"></th>
+            <th data-field="Code" data-sortable="true"  data-visible="true" data-switchable="false" data-formatter="setCode">序号</th>
+            <th data-field="TuanGouName" data-sortable="true"  data-formatter="setName">商品名称</th>
+            <th data-field="StartDate" data-cell-style="cellStyleFormatter">开始时间</th>
+            <th data-field="EndTime">结束时间</th>
+            <th data-formatter="createBtn" data-events="operateEvents">操作</th>
+        </tr>
+    </thead>
+</table>
+</div>
+<img class="center-block" src="img/bootstrap-table删除事件.png" alt=""/>
+<img class="center-block" src="img/bstable.png" alt=""/>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="bootstrap-table/bootstrap-table.js"></script>
+<script src="bootstrapAll/js/bootstrap-table-export.js"></script>
+<script src="bootstrapAll/js/tableExport.js"></script>
+<script src="bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<script>
+    //事件对象
+    window.operateEvents = {
+        'click .edit': function (e, value, row, index) {
+            console.log("event:",e);//event: jQuery.Event {originalEvent: MouseEvent, type: "click", timeStamp: 1383705.2600000002, jQuery1113010179471385779704: true, isDefaultPrevented: function…}
+            console.log("val:",value);//value:undefined
+            console.log("row:",row);  //row: Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
+            console.log("index:",index);//index: 0
+            alert("编辑\n"+"行索引："+index);
+        },
+        'click .remove': function (e, value, row, index) {
+            //console.log("event:",e);
+            //console.log("val:",value);//value:undefined
+            //console.log("row:",row);  //row: Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
+            //console.log("index:",index);
+            //alert("删除");
+            $('#goods').bootstrapTable('remove', {field: 'Code', values: [row.Code]});//Code类型是字符串   或者 {field: 'TuanGouName', values: [row.TuanGouName]}    从表格中删除数据，包括两个参数： field: 需要删除的行的 field 名称。values: 需要删除的行的值，类型为数组。
+        }
+    };
+    function createBtn(val, row, index) {
+        return '<a class="edit" href="javascript:void(0)" title="编辑"><i class="glyphicon glyphicon-edit"></i></a> ' + '&nbsp;&nbsp;' + '<a class="remove" href="javascript:void(0)" title="删除"><i class="glyphicon glyphicon-remove"></i></a> ';
+    }
+
+
+    //对列进行格式化设置  初始化的时候就加载
+    //data-formatter属性可以格式化该列单元格，
+    // data-formatter接收js函数(必须有返回值)该函数可以获取当前行的下标(注意：获取下标参数必须有row，否则index值为undefined)，函数还可以改变单元格元素显示方式
+    function setCode(val,row,index){
+        //console.log("val:",val);
+        //console.log("row:",row);
+        //console.log("index:",index);
+        return "<a href='javascript:void(0)'>" + val + "</a>";
+    }
+    function setName(val,row,index){
+        //console.log("val:",val);
+        //console.log("row:",row);
+        //console.log("index:",index);
+        return "<span style='color:red;font-weight:bold;'>" + val + "</span>";
+    }
+
+
+    //列样式
+    function cellStyleFormatter(value,row,index,field){
+       return{
+           css:{
+               'color':'#F68929',
+               'font-weight':'bold',
+               'background':"#C9D1D8",
+           }
+       }
+    }
+
+    function stateFormatter(value, row, index) {
+        if (index === 0) {
+            return {
+                disabled: true,
+                checked: true
+            }
+        }
+
+        if (index === 1) {
+            return {
+                disabled: true
+            };
+        }
+    }
+
+    //给table绑定click-row.bs.table函数(行点击事件)，
+    // callback(回调)函数列表：
+    // e(Event：事件对象)，
+    // row(Rows：table行对象，是一个对象)，
+    // ele(Element：被选中行的对象)。给选中行添加颜色样式，移除上一个被选行样式。
+    $(function(){
+        $("#goods").on("click-row.bs.table",function(e,row,tr,fld){ //当用户点击某一行的时候触发，参数包括：row：点击行的数据，tr：表格的tr 元素，field：点击列的 field 名称。
+            debugger;
+            $(".danger").removeClass("danger");
+            $(tr).addClass("danger");
+            //console.log("e:",e);
+            //console.log("row:",row);//row: Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
+            //console.log("ele:",ele,$(ele));//ele: [tr.selected.danger, prevObject: jQuery.fn.init(1), context: td]0: tr.selected.dangercontext: tdlength: 1prevObject: jQuery.fn.init(1)__proto__: Object(0) [tr.selected.danger, selector: "", context: td]
+        });
+        //点击查询按钮click事件：既然getContent()已获取被选中行对象，需要获取哪个单元格，就调哪个单元格的field值。
+        $("#get").click(function(){
+            if($("#goods").find("tr.danger").data("index")==undefined){
+                alert("请先选中一行！")
+            }else{
+                alert("序号：" +getContent().Code+"；\n商品名称：" + getContent().TuanGouName+ "；\n开始时间：" +getContent().StartDate+"；\n结束时间：" + getContent().EndTime);
+            }
+        })
+    });
+    /* getContent()函数分析：
+     var index 获取被选中行下标，find搜索被选中行(即带样式的行)，data被选中行在数据集中的下标。
+     return 返回table中被选中行对象。*/
+    function getContent(){/*获取选中行对象*/
+        //在HTML5规范中div中读取预存的data-[key] = [value]
+        // <div data-test="this is test" ></div>
+        // $("div").data("test"); //this is test!;
+        var index = $("#goods").find("tr.danger").data("index");//<tr data-index="0" class="selected danger"></tr>
+        //console.log($("#goods").bootstrapTable('getData')[index]);//Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
+        return $("#goods").bootstrapTable('getData')[index];
+        //$table.bootstrapTable('getData'); 获取全部表格数据：数据是格式：[{行对象1},{行对象2},{行对象3},……]
+    }
+
+
+    //插入数据  使用方法的语法：$('#table').bootstrapTable('method', parameter);。  parameter是一个对象{ }
+    $("#insert").click(function(){
+        var newData={
+            index: 0,
+            row:{"Code":"100","TuanGouName":"新数据","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"}
+        };
+        $("#goods").bootstrapTable('insertRow',newData);
+        //$("#goods").bootstrapTable('prepend',{"Code":"100","TuanGouName":"新数据","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"});
+    })
+    /*数据json*/
+    var json =  [
+        {"Code":"1","TuanGouName":"好多鱼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"2","TuanGouName":"旺旺雪饼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"3","TuanGouName":"旺旺仙贝","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"4","TuanGouName":"雪花清爽","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"5","TuanGouName":"勇闯天涯","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"6","TuanGouName":"九洲奇味饼干","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"7","TuanGouName":"好多鱼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"8","TuanGouName":"旺旺雪饼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"9","TuanGouName":"旺旺仙贝","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"10","TuanGouName":"雪花清爽","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"11","TuanGouName":"勇闯天涯","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"12","TuanGouName":"九洲奇味饼干","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"13","TuanGouName":"好多鱼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"14","TuanGouName":"旺旺雪饼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"15","TuanGouName":"旺旺仙贝","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"16","TuanGouName":"雪花清爽","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"17","TuanGouName":"勇闯天涯","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"18","TuanGouName":"九洲奇味饼干","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"19","TuanGouName":"好多鱼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"20","TuanGouName":"旺旺雪饼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"21","TuanGouName":"旺旺仙贝","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"22","TuanGouName":"雪花清爽","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"23","TuanGouName":"勇闯天涯","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
+        {"Code":"24","TuanGouName":"九洲奇味饼干","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"}
+    ];
+    /*初始化table数据*/
+    $(function(){
+        $("#goods").bootstrapTable({
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            pageSize: 20,//一页显示20条数据
+            clickToSelect: true,                //是否启用点击选中行
+            onCheck: function (row) {
+                //单击最前面的checkbox被选中
+                console.log(row);
+            },
+            search:true,//是否启用搜索框
+            showRefresh:true,//是否显示 刷新按钮
+            showToggle: true,//是否显示 切换视图（table/card）按钮
+            showColumns: true,//是否显示 内容列下拉框
+            showExport : true, //是否显示导出按钮
+            exportDataType : "basic", //basic'导出当前页, 'all'导出全部, 'selected'导出选中项
+            data:json,
+            //url:"bootstrap-table/data-json"
+             rowStyle: function (row, index) {//行样式
+                //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
+                //var strclass = "";
+                if (index%2== 0) {
+                   // strclass = 'success';//还有一个active
+                    return{
+                        css:{
+                            'background-color':'#05C8FD',
+                        }
+                    }
+                } else {
+                   // strclass = 'warning';//还有一个active
+                    return{
+                        css:{
+                            'background-color':'yellow',
+                        }
+                    }
+                }
+                //return { classes: strclass }
+            }
+        });
+    });
+</script>
+
+<script>
+    /*--------------------------------------------------------------实际使用场景---------------------------------------------------------------------------------------*/
+    var enquiryArr = new Array();
+    function stateFormatters(value, row, index) {
+        var isTrue=new Object()
+        if (enquiryArr.length != 0) {
+            $.each(enquiryArr, function (k, v) {
+                if (row.A == v.A) {
+                    isTrue = {
+                        checked: true
+                    };
+                    return false;
+                }
+            })
+        }
+        return isTrue;
+    }
+
+
+
+
+    var curPage = 1;
+    //请求服务数据时所传参数
+    function queryParams(params) {
+        curPage = params.pageNumber;//点哪页，页数就是几。
+        debugger;
+        return {
+            //pageSize: params.pageSize, //每一页的数据行数，默认是下面设置的20(pageSize)
+            //pageNumber: params.pageNumber, //当前页面,默认是上面设置的1(pageNumber),根据页号获取相应页面的数据，实时从后台获取；
+            //param: "Your Param" //这里是其他的参数，根据自己的需求定义，可以是多个  37k9
+            cid: JSON.parse(localStorage.getItem('company')).CompanyID,
+            postJson: JSON.stringify({ SearchText: "100", CurrentPage: params.pageNumber, IsMyCompany: 0, IsByHand: 0, Model: '', DocEntry: 0 })
+        }
+    }
+
+    //请求成功方法
+    function responseHandler(result) {//参数：result为从服务器请求到的数据。
+        debugger;
+        //在此做了错误代码的判断
+        if (result.Code != 0) {
+            alert("服务器返回，错误代码：" + result.Code);
+            return;
+        }
+
+        var searchData = result.Result;
+        $.each(searchData, function (i, v) {
+            v.contact = v.J[0].B;
+            v.mobile = v.J[0].C;
+        })
+
+        //如果没有错误则返回数据，渲染表格
+        return {
+            CurrentPage: curPage,//当前页，与“显示第 1 到第 20 条记录”有关，
+            PageSize: result.PageSize,//每页显示记录数，与“分页按钮”有关,
+            TotalRow: result.TotalRow, //总记录数，与“总共 60 条记录”有关, 当是v1.11.1则total:result.TotalRow,当时v1.9.0，则TotalRow: result.TotalRow
+            data: searchData //行数据，前面的key要与之前设置的dataField的值一致. dataField: "data",与渲染表格数据有关，
+            /*
+            v1.9.0
+             success: function (a) {
+             //拓展BOGER
+             if (a.Code == 0) {
+             a.Result = JSON.parse(a.Result);
+             a = h(e.options, e.options.responseHandler, [a], a),
+             e.load(a),
+             e.trigger("load-success", a)
+             }
+             },
+
+             v1.11.1
+             success: function (res) {
+             res.Result = JSON.parse(res.Result);
+             res = calculateObjectValue(that.options, that.options.responseHandler, [res], res);
+
+             that.load(res);
+             that.trigger('load-success', res);
+             if (!silent) that.$tableLoading.hide();
+             },
+            * */
+        };
+    }
+
+    //刷新表格数据,点击你的按钮调用这个方法就可以刷新
+    function refresh() {
+        debugger;
+        $('#ICProducts').bootstrapTable('refresh', {
+            url: "/Home/PostSearchIC",//要请求数据的文件路径
+            silent: true,//静默刷新
+            query: {//请求的参数
+                cid: JSON.parse(localStorage.getItem('company')).CompanyID,
+                postJson: JSON.stringify({ SearchText: $("#searchInfo").val(), CurrentPage: 1, IsMyCompany: 0, IsByHand: 0, Model: '', DocEntry: 0 })
+            }
+
+        });
+    }
+
+    function initTopSearchTable() {
+        $("#ICProducts").bootstrapTable({
+            url: "/Home/PostSearchIC",//要请求数据的文件路径
+            method: "post",
+            queryParamsType: "",//如果想获取当前页数pageNumber和页面大小pageSize，请配置为：""
+            queryParams: queryParams,//请求服务器时所传的参数
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded",
+            responseHandler: responseHandler,//请求数据成功后，渲染表格前的方法
+            dataField: "data",//这是返回的json数组的key.在这里指searchData数组的key，data: searchData
+
+            uniqueId: "A",//每一行的唯一标识，一般为主键列
+            idField: "A",//指定主键列
+            toolbar: "#toolbar",
+            toolbarAlign: "right",
+            pagination: true,
+            cache: false,  //是否使用缓存
+            sidePagination: "server", //服务端处理分页 client 'server'
+            pageList: [1, 3, 5, 10, 20, 50, 100],
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            pageSize: 20,//一页显示20条数据
+            showToggle: false,//是否显示 切换试图（table/card）按钮
+            showColumns: false,//是否显示 内容列下拉框
+            showExport: false, //是否显示导出按钮
+            exportDataType: "basic", //basic'导出当前页, 'all'导出全部, 'selected'导出选中项
+            striped: true,
+            singleSelect: false,
+            paginationPreText: "上一页",
+            paginationNextText: "下一页",
+            undefinedText: "无",
+            showFooter: false,
+            height: "600",
+            columns: [
+                {
+                    checkbox: true,
+                    formatter: stateFormatters,
+                },
+                {
+                    field: 'B',
+                    title: '型号',
+                },
+                {
+                    field: 'C',
+                    title: '品牌',
+                },
+                {
+                    field: 'E',
+                    title: '年份',
+                },
+                {
+                    field: 'D',
+                    title: '封装',
+                },
+                {
+                    field: 'F',
+                    title: '数量',
+                },
+                {
+                    field: 'I',
+                    title: '供应商',
+                },
+                {
+                    field: 'contact',
+                    title: '联系人',
+                },
+                {
+                    field: 'mobile',
+                    title: '联系方式',
+                }
+            ],
+            onCheck: function (row) {
+                //单行最前面的checkbox被选中
+                //console.log(row);
+                enquiryArr.push(row);
+            },
+            onUncheck: function (row) {
+                //单行最前面的checkbox被取消
+                //console.log(row)
+                if (enquiryArr.length != 0) {
+                    $.each(enquiryArr, function (k, v) {
+                        if (v.A==row.A) {
+                            enquiryArr.splice(k, 1);
+                            return false;
+                        }
+                    })
+                }
+
+            },
+            onCheckAll: function (rows) {
+                //最顶上的checkbox被选中
+                enquiryArr = enquiryArr.concat(rows);
+
+            },
+            onUncheckAll: function (rows) {
+                //最顶上的checkbox被取消
+                enquiryArr = [];
+            }
+        });
+    }
+    //initTopSearchTable();
+
+    //给当前搜索框添加键盘事件
+    $("#searchInfo").keydown(function (event) {//搜索
+        switch (event.keyCode) {
+            case 13: //enter
+                $(this).blur();
+                refresh();
+                break;
+            default:
+                break;
+        }
+    });
+    /*--------------------------------------------------------------实际使用场景---------------------------------------------------------------------------------------*/
+</script>
+</body>
+</html>

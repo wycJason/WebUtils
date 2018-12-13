@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>组件——下拉菜单</h1>
+
+  <h3>下拉菜单必需的三级结构</h3>
+  <div class="dropdown">
+    <a data-toggle="dropdown" href="javascript:void(0)">产品大全</a>
+    <ul class="dropdown-menu">
+      <li><a href="javascript:void(0)">冰箱</a></li>
+      <li><a href="javascript:void(0)">洗衣机</a></li>
+      <li><a href="javascript:void(0)">电视</a></li>
+      <li><a href="javascript:void(0)">奶粉</a></li>
+      <li><a href="javascript:void(0)">尿不湿</a></li>
+    </ul>
+  </div>
+
+  <h3>稍微复杂些的下拉菜单</h3>
+  <div class="dropdown">
+    <a data-toggle="dropdown" class="btn btn-default" href="javascript:void(0)">
+      <span>产品大全</span>
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="javascript:void(0)">冰箱</a></li>
+      <li><a href="javascript:void(0)">洗衣机</a></li>
+      <li><a href="javascript:void(0)">电视</a></li>
+      <li><a href="javascript:void(0)">奶粉</a></li>
+      <li><a href="javascript:void(0)">尿不湿</a></li>
+    </ul>
+  </div>
+
+  <h3>内容分组的下拉菜单</h3>
+  <div class="dropdown">
+      <a data-toggle="dropdown" class="btn btn-default" href="javascript:void(0)">
+        <span>产品大全</span>
+        <span class="caret"></span>
+      </a>
+    <ul class="dropdown-menu">
+      <li class="dropdown-header">家电</li>
+      <li><a href="javascript:void(0)">冰箱</a></li>
+      <li><a href="javascript:void(0)">洗衣机</a></li>
+      <li><a href="javascript:void(0)">电视</a></li>
+      <li class="dropdown-header">童婴用品</li>
+      <li><a href="javascript:void(0)">奶粉</a></li>
+      <li><a href="javascript:void(0)">尿不湿</a></li>
+    </ul>
+  </div>
+
+  <div class="dropdown">
+    <a data-toggle="dropdown" class="btn btn-default" href="javascript:void(0)">
+      <span>产品大全</span>
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="javascript:void(0)">冰箱</a></li>
+      <li><a href="javascript:void(0)">洗衣机</a></li>
+      <li><a href="javascript:void(0)">电视</a></li>
+      <li class="divider"></li>
+      <li><a href="javascript:void(0)">奶粉</a></li>
+      <li><a href="javascript:void(0)">尿不湿</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+ /* (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s)
+  })();*/
+</script>
+</body>
+</html>

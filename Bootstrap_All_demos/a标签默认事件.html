@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--当点击a标签时，JavaScript代码返回值为false，故此链接默认行为未被触发。-->
+<a href="http://www.baidu.com" onclick=" return false; ">  Click Me  </a><br>
+<a href="javascript:void(0);" >  Click Me  </a><br>
+<a href="javascript:;" >  Click Me  </a><br>
+<a href="javascript:;" >  Click Me  </a><br>
+<!--preventDefault()阻止事件的默认行为但不支持IE，所以在IE中使用returnValue阻止事件默认行为-->
+<a href="http://www.baidu.com" id="test">  Click Me  </a><br>
+
+<a href="http://www.baidu.com" onclick="f1()">百度 </a><br><!--我们发现会弹出一个对话框，但是页面还是跳到了百度知道，如果我们不希望浏览器自动跳到百度知道该怎么做呢？-->
+<a href="http://www.baidu.com" onclick="return f1()">百度 </a><br>
+<a href="http://www.baidu.com" onclick="f2();return false">百度 </a><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    function f1(){
+        alert("你点了我");
+        return false;
+    }
+    function f2(){
+        alert("你点了我");
+    }
+
+    var test = document.getElementById('test');
+    function stopDefault( e )
+    {
+        debugger;
+        if ( e && e.preventDefault )
+            e.preventDefault();
+        else
+            window.event.returnValue = false;
+    }
+    test.onclick = function(e)
+    {
+        stopDefault(e);
+    }
+</script>
+</body>
+</html>

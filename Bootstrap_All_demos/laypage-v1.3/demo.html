@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>layPage demo</title>
+<meta name="keywords" content="分页插件,ajax分页,异步分页">
+<meta name="description" content="laypage是一款多功能的js分页组件，主要应用于前端页面Ajax普通分页以及信息流加载，并且可无缝迁移至Node.js平台。laypage不依赖于任何第三方库，直接拿来用即可，它的接口继承了layui系列组件的一贯简洁，极易上手。那么，从现在开始，将分页的任务交给laypage吧！">
+</head>
+<body>
+
+<ul id="cityList"></ul>
+
+<div id="pager"></div>
+
+<div style="width:800px; margin:100px 0 0; font-size:14px;">
+    <p>====================================================================</p>
+    <p>把laypage整个目录放入你的项目，只需引入laypage.js即可，其它一律无视。</p>
+    <p>详细文档打开demo，或者直接进入官网：<a href="http://www.layui.com/doc/modules/laypage.html" target="_blank">http://laypage.layui.com</a></p>
+    <p>使用时请保留来源，感谢支持。</p>
+    <p>MIT 最终解释权：贤心 - layui.com</p>
+</div>
+
+<script src="laypage/laypage.js"></script>
+<script>
+
+//测试数据
+var data = [
+    '北京',
+    '上海',
+    '广州',
+    '深圳',
+    '杭州',
+    '长沙',
+    '合肥',
+    '宁夏',
+    '成都',
+    '西安',
+    '南昌',
+    '上饶',
+    '沈阳',
+    '济南',
+    '厦门',
+    '福州',
+    '九江',
+    '宜春',
+    '赣州',
+    '宁波',
+    '绍兴',
+    '无锡',
+    '苏州',
+    '徐州',
+    '东莞',
+    '佛山',
+    '中山',
+    '成都',
+    '武汉',
+    '青岛',
+    '天津',
+    '重庆',
+    '南京',
+    '九江',
+    '香港',
+    '澳门',
+    '台北',
+    '北京',
+    '上海',
+    '广州',
+    '深圳',
+    '杭州',
+    '长沙',
+    '合肥',
+    '宁夏',
+    '成都',
+    '西安',
+    '南昌',
+    '上饶',
+    '沈阳',
+    '济南',
+    '厦门',
+    '福州',
+    '九江',
+    '宜春',
+    '赣州',
+    '宁波',
+    '绍兴',
+    '无锡',
+    '苏州',
+    '徐州',
+    '东莞',
+    '佛山',
+    '中山',
+    '成都',
+    '武汉',
+    '青岛',
+    '天津',
+    '重庆',
+    '南京',
+    '九江',
+    '香港',
+    '澳门',
+    '台北'
+];
+
+var nums = 5; //每页出现的数量
+var pages = Math.ceil(data.length/nums); //得到总页数
+var thisCurr = function(curr){//当前页数据
+    //此处只是演示，实际场景通常是返回当前页已经分组好的数据
+    var str = '', last = curr*nums - 1;//4
+    last = last >= data.length ? (data.length-1) : last;
+    for(var i = (curr*nums - nums); i <= last; i++){
+        str += '<li>'+i+ data[i] +'</li>';
+    }
+    return str;
+};
+
+//调用分页
+laypage({
+    cont: 'pager',//页码容器
+    pages: pages,//得到总页数
+    //skip: true,//是否显示跳转
+    //groups: 0,
+    //first: false,
+    //last: false,
+    //prev: false,
+    //next: false,
+    skip:false,//是否显示跳转
+    jump: function(obj,first){
+        debugger;
+        console.log(obj.curr);
+        console.log(obj);
+        document.getElementById('cityList').innerHTML = thisCurr(obj.curr);
+        debugger;
+        //第一次不执行,其余每次都执行
+        if(!first){
+            //do something
+            console.log(obj.curr)
+        }
+    }
+})
+
+
+//如果只返回一页的数据：每次点哪页返回哪页数据,需这样写分页
+var postParam = {
+    "CurrentPage": 1,
+    "SearchText": "搜索文本"
+};
+function loadCustomerData(curr, search) {
+    postParam.CurrentPage = curr;
+    postParam.SearchText = search;
+
+    $.ajax({
+        url: "/OrderHtml/CustomerData/",
+        type: "POST",
+        data: { "PostJson": JSON.stringify(postParam) },
+        dataType: "JSON",
+        success: function (response) {
+            var flag = response.ContentType;
+            if (flag == "True") {
+                if (JSON.parse(response.Data).Code == 0) {
+                    var data = JSON.parse(response.Data);
+                    $("#userMenu").empty();
+                    var htm = ""
+                    $.each(data.Result, function (k, v) {
+                        htm += '<li><a href="javascript:void(0)" class="user-item" data-cardcode="' + v.CardCode + '">' + v.CardName + '</a></li>';
+                    })
+
+                    //var pageSize = data.PageSize;//当前页大小
+                    var totalPage = data.TotalPage//总页数
+
+                    //调用分页
+                    if (postParam.CurrentPage == 1) {//负责渲染数据
+                        var isfirst = true;
+                        laypage({
+                            cont: 'pager',//页码容器
+                            pages: totalPage,//得到总页数
+                            //groups: 0,
+                            //first: false,
+                            //last: false,
+                            //prev: false,
+                            //next: false,
+                            skip: false,//是否显示跳转
+                            jump: function (obj) {
+                                if (isfirst) {//初次调用时阻止进入递归，直接跳出渲染初始数据
+                                    isfirst = false;
+                                    return false;
+                                }
+                                console.log(obj.curr);
+                                loadCustomerData(obj.curr, "");
+                            }
+                        })
+                    }
+
+                    $("#userMenu").html(htm);
+                } else {
+                    showModal(JSON.parse(response.Data).Msg);
+                }
+            } else {
+                showModal("服务器请求失败!");
+            }
+        },
+        error: function (request) { showModal("服务器请求失败!"); }
+    })
+}
+
+  /*
+  根据页码求出每页每一条数据的序号(first)，所有数据巡自然数排序1 2 3 4 5 6 7 8……,每页的记录数为20条
+   curr:当前页
+   k:索引下标从0开始  0 1 2 3 ……
+   first=(curr-1)*20+1+k
+   $.each(data.Result, function (k, v) {
+   htm += '<tr><td>' + ((curr-1)*20+1+k) + '</td><td style="white-space:normal">' + v.UserName + '</td><td> <a href="javascript:void(0)" onclick="setUser(' + v.UserSign + ',1)"><img data-UserSign="' + v.UserSign + '" width="15" src="../Images/i-del.png" /></a></td></tr>';
+   })
+  *
+  * */
+
+</script>
+
+
+</body>
+</html>

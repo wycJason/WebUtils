@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="myDiagramDiv"
+     style="width:800px; height:800px; background-color: #DAE4E4;">
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.6.7/go-debug.js"></script>-->
+<script src="js/go-debug.js"></script>
+<script>
+    var $ = go.GraphObject.make;//使用go.GraphObject.make不仅可以构建可视对象，还可以方便的实例化gojs中的装饰对象
+    var diagram =//初始化图表并配置相应参数信息
+            $(go.Diagram, "myDiagramDiv",  // must name or refer to the DIV HTML element
+                    {
+                        // any initial diagram is centered in the viewport
+                        initialContentAlignment: go.Spot.Center,
+
+                        // don't initialize some properties until after a new model has been loaded
+                        "InitialLayoutCompleted": loadDiagramProperties,  // this DiagramEvent listener is defined below
+
+                        // have mouse wheel events zoom in and out instead of scroll up and down
+                        "toolManager.mouseWheelBehavior": go.ToolManager.WheelZoom,
+
+                        // specify a data object to copy for each new Node that is created by clicking
+                        "clickCreatingTool.archetypeNodeData": { text: "new node" }
+                    });
+
+    function loadDiagramProperties(e) {  };//可以删掉；
+
+    var violetbrush = $(go.Brush, go.Brush.Linear, { 0.0: "Violet", 1.0: "Lavender" });
+
+    diagram.add(
+            $(go.Node, "Auto",
+                    $(go.Shape, "RoundedRectangle", { fill: violetbrush }),
+                    $(go.TextBlock, "Hello!", { margin: 5 })
+            ));
+
+    diagram.add(
+            $(go.Node, "Auto",
+                    $(go.Shape, "Ellipse", { fill: violetbrush }),
+                    $(go.TextBlock, "Goodbye!", { margin: 5 })
+            ));
+
+    diagram.add(
+                    $(go.Part,
+                            $(go.TextBlock,
+                                    { text: "this one allows embedded newlines",
+                                        background: "lightblue",
+                                        editable: true,
+                                        isMultiline: true,
+                                        width: 80,
+                                        wrap: go.TextBlock.WrapFit,
+                                    }
+                            )
+                    )
+    );
+
+</script>
+</body>
+</html>

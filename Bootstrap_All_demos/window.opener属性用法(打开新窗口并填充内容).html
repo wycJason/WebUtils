@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<button onclick="fun()">创建新窗口并写入内容</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //https://blog.csdn.net/sdfdyubo/article/details/59482655
+    //http://www.w3school.com.cn/jsref/met_win_open.asp
+    //opener	返回对创建此窗口的窗口的引用。
+    //opener 属性非常有用，创建的窗口可以引用创建它的窗口所定义的属性和函数。   语法：childWindow（子窗口）  childWindow.opener（父窗口）
+    function fun(){
+       /* myWindow=window.open('','MyName','width=200,height=100')
+        myWindow.document.write("<h1>子窗口</h1>")
+        myWindow.focus()
+        myWindow.opener.document.write("<h1>父窗口</h1>")*/
+
+        myWindow=window.open('','_blank')
+        myWindow.document.write("<h1>新窗口</h1>")
+    }
+</script>
+</body>
+</html>

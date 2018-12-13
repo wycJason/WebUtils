@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="http://www.jb51.net/article/61585.htm" target="_blank">千分符参考文献</a></h1>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    //制保留2位小数，如：2，会在2后面补上00.即2.00
+    function toDecimal2(x) {
+        if (x=="") {
+            return "0.00";
+        } else {
+            x = String(x);
+            x=x.replace(/,/ig, "");
+            var f = parseFloat(x);
+            if (isNaN(f)) {
+                return false;
+            }
+            var f = Math.round(x * 100) / 100;
+            var s = f.toString();
+            var rs = s.indexOf('.');
+            if (rs < 0) {
+                rs = s.length;
+                s += '.';
+            }
+            while (s.length <= rs + 2) {
+                s += '0';
+            }
+            return s;
+        }
+    }
+    // 方法四-纯千分符，不对小数做处理，原样输出
+    function toThousands(num) {
+        var decimal="";
+        if(num.toString().indexOf(".")>0){
+            decimal=num.toString().slice(num.toString().indexOf("."));
+            var num = parseInt((num || 0)).toString(), result = '';
+            while (num.length > 3) {
+                result = ',' + num.slice(-3) + result;
+                num = num.slice(0, num.length - 3);
+            }
+            if (num) { result = num + result; }
+            return result+decimal;
+        }else{
+            var num = parseInt((num || 0)).toString(), result = '';
+            while (num.length > 3) {
+                result = ',' + num.slice(-3) + result;
+                num = num.slice(0, num.length - 3);
+            }
+            if (num) { result = num + result; }
+            return result;
+        }
+    }
+    console.log(toThousands("123456789.2587923"))
+    console.log(toThousands(123456789.2587923))
+    console.log(toThousands("123456789"))
+    console.log(toThousands(123456789))
+
+    //正则：数字转换成千分符，默认并保留两个小数点
+    function toThousandsExp(num,n){//num数字，n小数位数，默认保留2位,四舍五入
+        return parseFloat(num).toFixed(n||2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');//使用正则替换，每隔三个数加一个','
+    }
+
+    //正则：数字转换成千分符，只能是整数
+    function toQfw(n){
+        var str_n=n.toString();
+        var result="";
+        var re=/\d{3}$/;
+        while(re.test(str_n)){
+            result=RegExp.lastMatch+result;
+            if(str_n!=RegExp.lastMatch){
+                result=","+result;
+                str_n=RegExp.leftContext; //匹配成功，返回匹配内容左侧的字符信息
+            }
+            else{
+                num="";
+            }
+        }
+        if(str_n){
+           return str_n+result;
+        }
+    }
+console.log(toQfw(1233456));
+</script>
+</body>
+</html>

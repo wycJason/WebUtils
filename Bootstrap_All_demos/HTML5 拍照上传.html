@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .parentFile{
+            position: relative;
+        }
+        .fileUploadMobileSel{
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            width: 100%;
+            opacity: 0;
+            cursor: pointer;
+            height: 34px;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="https://www.cnblogs.com/apanly/p/5731086.html" target="_blank">参考文档：【Demo】HTML5 拍照上传</a></h1>
+<div class="parentFile">
+    <button type="button" class="btn btn-danger">
+        <i class="glyphicon glyphicon-upload"></i>
+        <span>选择要上传的文件</span>
+    </button>
+    <input id="upload" type="file" accept="image/*;" capture="camera" class="fileUploadMobileSel">
+</div>
+
+<div class="text-center">
+    <img class="img_wrap" style="display: none;">
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    /*
+     在webapp上使用input:file, 指定capture属性调用默许相机，摄像，录音功能
+     ## 在webapp上使用input:file, 指定capture属性调用默认相机，摄像，录音功能
+     在iOS6下开发webapp，使用inputz之file，很有用
+     <input type="file" accept="image/*" capture="camera">
+     <input type="file" accept="video/*" capture="camcorder">
+     <input type="file" accept="audio/*" capture="microphone">
+     capture表示，可以捕获到系统默认的设备，比如：camera--照相机；camcorder--摄像机；microphone--录音。
+     accept表示，直接打开系统文件目录。
+     其实html5的input:file标签还支持一个multiple属性，表示可以支持多选，如：
+     <input type="file" accept="image/*" multiple>
+     加上这个multiple后，capture就没啥用了，因为multiple是专门yong用来支持多选的。
+    */
+
+    var demo_h5_upload_ops = {
+        init:function(){
+            this.eventBind();
+        },
+        eventBind:function(){
+            var that = this;
+            $("#upload").change(function(){
+                debugger;
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    that.compress(this.result);//"data:image/png;base64"
+                };
+                reader.readAsDataURL(this.files[0]);
+            });
+        },
+        compress : function (res) {
+            var that = this;
+            var img = new Image(),
+                    maxH = 300;
+
+            img.onload = function () {
+                var cvs = document.createElement('canvas'),
+                        ctx = cvs.getContext('2d');
+
+                if(img.height > maxH) {
+                    img.width *= maxH / img.height;
+                    img.height = maxH;
+                }
+                cvs.width = img.width;
+                cvs.height = img.height;
+
+                ctx.clearRect(0, 0, cvs.width, cvs.height);
+                ctx.drawImage(img, 0, 0, img.width, img.height);
+                var dataUrl = cvs.toDataURL('image/jpeg', 1);
+                $(".img_wrap").attr("src",dataUrl);
+                $(".img_wrap").show();
+                // 上传略
+                //that.upload( dataUrl );
+            };
+            img.src = res;
+        },
+        upload:function( imageData ){
+            debugger;
+            /*这里写上传方法,图片流是base64_encode的*/
+            $.ajax({
+                url: "/Webuploader/Pt_FileUploadWX",
+                type: "post",
+                data: { postJson: imageData },
+                dataType: 'json',
+                success: function (result) {
+                    layer.close(MobileUploadFileLayer);
+                    console.log("成功返回", result);
+                    MobileUploadFile = JSON.parse(result.Result);
+                },
+                error: function (result) {
+                    layer.close(MobileUploadFileLayer);
+                    console.log("错误返回", result);
+                }
+            });
+        }
+    };
+
+    $(document).ready( function(){
+        demo_h5_upload_ops.init();
+    } );
+</script>
+</body>
+</html>

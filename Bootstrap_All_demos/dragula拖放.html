@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="dragula-master/dist/dragula.min.css" rel="stylesheet">
+    <style>
+        .left-defaults{
+            padding: 8px;
+            width: 40%;
+            border: 1px solid black;
+        }
+        .right-defaults{
+            padding: 8px;
+            width: 40%;
+            border: 1px solid black;
+        }
+         .left-defaults div,.right-defaults div,.left-defaults ul,.right-defaults ul{
+             margin-bottom: 5px;
+             border: 1px solid gray;
+         }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="http://www.jqueryui.org.cn/" target="_blank">jQuery UI</a> <a href="https://github.com/bevacqua/dragula#drakecanmoveitem" target="_blank">Dragula</a></h1>
+<div class='clearfix container'>
+    <div id='left-defaults' class='pull-left left-defaults'>
+        <div>一</div>
+        <div>二</div>
+        <ul>
+            <li>列表1</li>
+            <li>列表2</li>
+            <li>列表3</li>
+        </ul>
+    </div>
+    <div id='right-defaults' class= 'pull-right right-defaults'>
+        <div>三</div>
+        <div>四</div>
+        <div>五</div>
+        <div>六</div>
+        <div>七</div>
+        <div class="invalidEle">
+            <input type="text" value="八" placeholder="八"/>
+        </div>
+    </div>
+</div>
+<!--<script src="js/jquery-1.11.3.js"></script>-->
+<!--<script src="js/bootstrap.min.js"></script>-->
+<script src="dragula-master/dist/dragula.min.js"></script>
+<script>
+   // dragula([document.getElementById("left-defaults"), document.getElementById("right-defaults")]);
+
+   var drake=dragula({
+       containers:[document.getElementById("left-defaults"), document.getElementById("right-defaults")],
+       isContainer: function (el) {//哪些元素能被设置为拖拽的容器
+           return false; // only elements in drake.containers will be taken into account
+           // return el.classList.contains('dragula-container');//The example below dynamically treats all DOM elements with a CSS class of dragula-container as dragula containers for this drake.
+       },
+      /* copy: function (el, source) {//哪些元素允许被复制拖拽
+           return el.className === 'you-may-copy-us';
+       },*/
+       moves: function (el, source, handle, sibling) {
+           return true; // elements are always draggable by default
+       },
+       accepts: function (el, target, source, sibling) {
+           return true; // elements can be dropped in any of the `containers` by default
+       },
+       invalid: function (el, handle) {
+           return false; // don't prevent any drags from initiating by default
+           //return el.className === 'invalidEle';//第八个元素不能被拖拽
+       },
+       direction: 'vertical',             // Y axis is considered when determining where an element would be dropped
+       copy: false,                       // elements are moved by default, not copied
+       copySortSource: false,             // elements in copy-source containers can be reordered
+       revertOnSpill: false,              // spilling will put the element back where it was dragged from, if this is true  对应取消事件cancel
+       mirrorContainer: document.body,    // set the element that gets mirror elements appended
+       ignoreInputTextSelection: true     // allows users to select input text, see details below
+   });
+
+  /* drake.containers.push(document.getElementById("left-defaults"));
+   drake.containers.push(document.getElementById("right-defaults"));
+*/
+    // 事件
+    drake .on('drag', function (el) {
+        el.className = el.className.replace('ex-moved', '');
+        console.log("drag事件触发")
+    }).on('drop', function (el) {
+        el.className += ' ex-moved';
+        console.log("drop事件触发")
+    }).on('over', function (el, container, source) {
+        container.className += ' ex-over';
+        console.log("over事件触发")
+    }).on('out', function (el, container, source) {
+        container.className = container.className.replace('ex-over', '');
+        console.log("out事件触发")
+    }).on('remove', function (el, container, source) {
+       console.log("remove事件触发")
+    }).on('cancel', function (el, container, source) {
+        console.log("cancel事件触发")
+    });
+
+   //销毁拖放容器
+   //drake.destroy()
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //在str中依次找到每个和正则匹配的关键词，传给函数的kword参数。函数内根据本次找到的关键词，计算出不同的替换值，replace会将函数返回的替换值，替换到字符串中。
+    // 如果正则中包含分组，还会将每个分组匹配的子内容，分别放在数组的后续元素中。
+    var str="那天，我去了她家，我说：我草，你家真大。她想和我去草地野餐。我草草的收拾了草地。她说: 我去去就来";
+    //我去 我草 我去去 我草草 我草去 我去草
+    str=str.replace(/(我)([去草]{1,2})/ig,   //正则必须是一段连续的特殊字符串
+            //  1      2
+            function(kw,$1,$2){
+                //kw 本次找到的完整关键词
+                //$1 获得第1个分组()匹配的子内容
+                //$2 获得第2个分组()匹配的子内容
+                return $1+($2.length==1?"*":"**");
+            }
+    );
+    console.log(str);
+
+    var str1="你说，你爱他，他爱你，其它你们谁都很爱谁？";
+    str1=str1.replace(/爱/g,
+            function(kwords){
+                return "*"
+            }
+
+    )
+    console.log(str1);
+
+
+    var birth="19870906";
+    birth=birth.replace(/(\d{4})(\d{2})(\d{2})/,"$1年$2月$3日");
+    console.log(birth);
+</script>
+</body>
+</html>

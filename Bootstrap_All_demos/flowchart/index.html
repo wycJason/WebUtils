@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="../js/html5shiv.min.js"></script>
+        <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="myDiagramDiv" style="width:800px; height:800px; background-color: #DAE4E4;margin: 50px auto;border: 1px solid black"></div>
+
+<script src="../js/jquery-1.11.3.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="release/go-debug.js"></script>
+<script>
+    /*
+    GoJS是一个用于实现交互式图表的JavaScript库。本页将向您展示使用GoJS的基本要点。
+    由于GoJS是依赖于HTML5功能的JavaScript库，因此您需要确保页面声明它是HTML5文档。
+    */
+    var $ = go.GraphObject.make;
+
+    var myDiagram = $(go.Diagram, "myDiagramDiv",
+                    {
+                        initialContentAlignment: go.Spot.Center, // center Diagram contents
+                        "undoManager.isEnabled": true, // enable Ctrl-Z to undo and Ctrl-Y to redo
+                        layout: $(go.TreeLayout, { angle: 0, layerSpacing: 35 }) // specify a Diagram.layout that arranges trees
+                    });
+
+    // the template we defined earlier
+    myDiagram.nodeTemplate = $(go.Node, "Horizontal", { background: "red" },
+                    $(go.Picture, { margin: 10, width: 50, height: 50, background: "yellow" },new go.Binding("source")),
+                    $(go.TextBlock, "Default Text",{ margin: 12, stroke: "white", font: "bold 16px sans-serif" },new go.Binding("text", "name"))
+                    );
+
+    // define a Link template that routes orthogonally, with no arrowhead
+    myDiagram.linkTemplate =$(go.Link,{ routing: go.Link.Orthogonal, corner: 5 },$(go.Shape, { strokeWidth: 3, stroke: "blue" })); // the link shape
+
+    var model = $(go.TreeModel);
+    model.nodeDataArray =
+            [
+                { key: "1",               name: "模特1",   source: "Images/1.jpg" },
+                { key: "2", parent: "1", name: "模特2",    source: "Images/2.jpg" },
+                { key: "3", parent: "1", name: "模特3",   source: "Images/3.jpg" },
+                { key: "4", parent: "3", name: "模特4", source: "Images/4.jpg" },
+                { key: "5", parent: "3", name: "模特5",     source: "Images/5.jpg" },
+                { key: "6", parent: "2", name: "模特6", source: "Images/6.jpg" },
+                { key: "7", parent: "2"}// 没有图片，默认为yellow背景色，没有文字默认为Default Text
+            ];
+    myDiagram.model = model;
+</script>
+</body>
+</html>

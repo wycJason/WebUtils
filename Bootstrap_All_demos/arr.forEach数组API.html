@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    var arr1 =[1,2,3,4,5];
+    var arr2 =//返回新数组
+            arr1.map(function(val,idx,arr){
+                return val*2;
+            });
+    document.write(String(arr1)+"<br>");//1,2,3,4,5
+    document.write(String(arr2)+"<br>");//2,4,6,8,10
+
+    arr1.map(function(val,idx,arr){
+        arr[idx]*=3;//修改原数组
+    });
+    document.write(String(arr1)+"<br>");
+    document.write("<hr>");
+
+
+    //forEach:用来遍历数组中的每一项；这个方法执行是没有返回值的。
+    var myarr1 =[1,2,3,4,5];
+    myarr1.forEach(function(val,idx,arr){
+            arr[idx]*=2;//修改原数组
+     });
+     document.write(String(myarr1)+"<br>");//2,4,6,8,10
+</script>
+</body>
+</html>

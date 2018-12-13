@@ -1,0 +1,593 @@
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+    /*width:0.4em;*/ /*垂直宽度*/
+}
+
+::-webkit-scrollbar:horizontal {
+    /*height: 0.4em;*/ /*水平宽度*/
+}
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: 0 0 6px 0 rgba(0,0,0,0.3) inset;
+    /*border-radius: 10px;*/
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    /*border-radius: 10px;*/
+    background: rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 0 6px 0 rgba(0,0,0,0.3) inset;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    background: #fff;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+}
+
+img {
+    border-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li, ol, li, dl, dt, dd {
+    list-style: none;
+    border: none;
+}
+/*登录及注册页*/
+.logo {
+    width: 1030px;
+    height: 100px;
+    margin: 0 auto;
+    background: #ffffff;
+}
+.logo:before,.logoContent:before{
+    content:"";
+    display:table;
+}
+.logoContent{
+    margin-top:25px;
+}
+.logoRegister{
+    width:124px;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+    border-radius:30px;
+    color:#ffffff;
+    background:#41A0FF;
+    font-size: 18px;
+    margin-top:7px;
+}
+.logoRegister:hover,.logoRegister:focus{
+    color:#fff;
+    text-decoration:none;
+}
+.icFriends{
+    position:absolute;
+    top: 43px;
+    left: 110px;
+}
+.registerInfo{
+    color:#000000;
+    font-size:24px;
+    margin-bottom:70px;
+    font-weight:normal;
+}
+.loginInfo{
+    color:#666666;
+    font-size:36px;
+    margin-bottom:50px;
+    font-weight:normal;
+}
+ul.downloadApp{
+    width:600px;
+    margin:0 auto;
+    padding-left:0;
+}
+ul.downloadApp li{
+    float:left;
+    width:200px;
+    list-style:none;
+    text-align:center
+}
+ul.downloadApp li dl dt{
+    margin-bottom:20px;
+}
+.ICRegister{
+    min-height:520px;
+    padding: 50px 20px 30px;
+    margin:0 auto;
+}
+ul.register{
+    padding-left:0;
+    border-bottom: 1px solid #ddd;
+}
+ul.register li{
+    list-style:none;
+    float:left;
+    width:33.33%
+}
+ul.register li a{
+    display:inline-block;
+    text-decoration:none;
+    color:#999999;
+    width:100%;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+}
+ul.register li.active a{
+    text-decoration:none;
+    color:#41A0ff;
+    border-bottom:1px solid #41A0FF;
+}
+.validateCode{
+    margin-bottom:20px;
+}
+.validateCode_login{
+    margin-bottom:8px;
+}
+.reloadCode{
+    color:#41A0FF;
+    background: none;
+    border: none;
+}
+.reloadCode:hover,.getVerificationCode:hover,.forgetUserPwd:hover,.companyUploadLogoImg:hover{
+    cursor:pointer;
+}
+.nextStep{
+    height:42px;
+    color:#ffffff;
+    background:#41A0FF;
+    font-size:18px;
+    line-height:42px;
+    text-align:center;
+    border-radius:8px;
+    padding:0;
+    margin:0 auto;
+}
+.nextStep:hover,.nextStep:focus{
+    color:#ffffff;
+    background:#41A0FF;
+    outline:none !important;
+}
+.required{
+    color:red;
+    vertical-align:middle;
+}
+.getVerificationCode{
+    position:absolute;
+    top:0px;
+    right:0px;
+    line-height:34px;
+    height:34px;
+    color:#41A0FF;
+    padding-right: 8px;
+
+    background: none;
+    border: none;
+}
+.getVerificationCode:focus,.reloadCode:focus{
+    outline:none;
+}
+.serviceAgreement{
+    width: 1030px;
+    min-height: 100px;
+    margin: 0 auto;
+    background:#ffffff;
+    color:#000000;
+    padding:30px 60px;
+    margin-bottom:150px;
+}
+.serviceAgreementTitle {
+    font-size: 30px;
+    color: #333333;
+    text-align: center;
+    margin-bottom:30px;
+}
+.serviceAgreementSecondTitle{
+    font-size: 18px;
+    color: #000000;
+    font-weight:bold;
+    text-align:justify;
+    margin-bottom:15px;
+}
+.serviceAgreementContent{
+    font-size: 16px;
+    color: #333333;
+    text-align:justify;
+    margin-bottom:15px;
+}
+.serviceAgreementSecondContent{
+    font-size: 16px;
+    color: #333333;
+    text-align:justify;
+    margin:3px 0;
+}
+.companyUploadLogo{
+    text-align:center;
+    margin-bottom: 20px;
+}
+.companyUploadLogoImg{
+    max-width:100%;
+}
+.createComTitle {
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+    margin-right:3px;
+    margin-top: 6px;
+}
+.createComTitleContent{
+    width:100%!important;
+}
+.newMember {
+    display: inline-block;
+    min-width: 60px;
+    text-align: right;
+    margin-right: 155px;
+}
+.newMember_login {
+    display: inline-block;
+    min-width: 60px;
+    text-align: right;
+    margin-right: 115px;
+}
+.newMemberJoin{
+    color:#B6B6B6;
+    font-size:12px;
+    margin-bottom:40px;
+}
+.newMemberJoin_login{
+    color:#B6B6B6;
+    font-size:12px;
+    margin-bottom:12px;
+}
+.reinstallPwdBox{
+    padding:0 25px;
+}
+.reinstallPwdBox:before{
+    content:"";
+    display:table;
+}
+.reinstallPwd{
+    color: white !important;
+    border: 0px !important;
+    margin-top: 15px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    height: 36px !important;
+    border-radius: 5px !important;
+    background-color: #41A0FF !important;
+    cursor: pointer !important;
+}
+.createComTitleContentLogin{
+    width:232px !important;
+}
+
+.loginSection{
+    /*width: 100%;
+    height:972px;
+    background:url(/images/bg-title.png) no-repeat;*/
+    position:relative;
+    overflow-y:hidden;
+
+}
+.loginSection:before{
+    content:"";
+    display:table;
+}
+.loginContent{
+    width:400px;
+    height:446px;
+    border-radius:5px;
+    background-color:#ffffff;
+    padding:30px 40px 40px;
+    position:absolute;
+    top:14%;
+    right:12%;
+    /*top:140px;
+    margin-right:260px;
+    margin-top:140px;*/
+    /*margin-top:140px;
+    margin-left:1200px;*/
+
+}
+/*@media screen and (max-width: 1200px){
+       .LoginBoxRight{
+           right:100px;
+       }
+}
+@media screen and (min-width: 1201px) and (max-width: 1367px) {
+       .LoginBoxRight{
+           right:130px;
+       }
+}
+@media screen and (min-width: 1368px){
+       .LoginBoxRight{
+           right:15%;
+       }
+}*/
+
+.loginBtn{
+    height:42px;
+    color:#ffffff;
+    background:#41A0FF;
+    font-size:16px;
+    line-height:42px;
+    text-align:center;
+    border-radius:30px;
+    padding:0;
+}
+.loginBtn:hover,.loginBtn:focus{
+    color:#ffffff;
+    background:#41A0FF;
+    outline:none !important;
+}
+.forgetPassWord{
+    color:#000000;
+    font-size:24px;
+    font-weight:normal;
+}
+.forgetPassWordTitle {
+    display: inline-block;
+    min-width: 56px;
+    text-align: right;
+    margin-right: 3px;
+}
+.forgetPassWordBox {
+    width: 568px;
+    min-height: 410px;
+    padding: 40px;
+    background: #ffffff;
+    margin: 0 auto;
+}
+.wxProgressQry{
+    padding: 10px 20px 0;
+    margin: 0 auto;
+    background-color: white;
+}
+.wxProgressQrySearch {
+    background-color: #41A0FF;
+    color: #ffffff !important;
+    width:60px;
+}
+.wxProgressQrySearch:hover,.wxProgressQrySearch:focus{
+    background-color: #41A0FF;
+    color: #ffffff !important;
+}
+.wxProgressQryView {
+    background-color: #41A0FF;
+    color: #ffffff !important;
+    width: 60px;
+}
+.wxProgressQryView:hover, .wxProgressQryView:focus {
+    background-color: #41A0FF;
+    color: #ffffff !important;
+}
+
+.wxProgressQry>.table-responsive{
+    border:none !important;
+}
+.wxProgressQry>.table-responsive>table.table>tbody>tr>td,.wxProgressQry>.table-responsive>table.table>thead>tr>th{
+    text-align:center;
+}
+.wxProgressQry>.table-responsive>table.table>thead>tr>th{
+    border-bottom:none;
+}
+.wxProgressQry>.table-responsive>table.table>tbody>tr>td{
+    height:32px;
+    line-height:32px;
+}
+.wxQueryResult{
+    border-top:1px solid #C8C7CC;
+    border-bottom:1px solid #C8C7CC;
+    padding:0 20px;
+    background-color:white;
+    margin-bottom:15px;
+}
+.wxQueryResultBox{
+    border-bottom:1px solid #C8C7CC;
+}
+.wxQueryResultBoxTitle{
+    width:72px;
+    height:38px;
+    line-height:38px;
+    text-align:left;
+}
+.wxQueryResultBoxContent{
+    margin-left:100px;
+    height:38px;
+    line-height:38px;
+    text-align:right;
+}
+.clearInput{
+    border:none !important;
+    outline:none !important;
+    box-shadow:0 0 0 0 !important;
+    border-radius: 0 !important;
+    background-color:transparent !important;
+}
+
+.nextStepBox{
+    padding:0 20px;
+    margin:50px 0;
+}
+.financingInfo {
+    margin: 15px 0;
+    padding: 0 20px;
+    line-height: 22px;
+    text-align: left;
+}
+
+.financingInfoTitle {
+    color: #FF0000;
+}
+
+.financingInfoContent {
+    color: #6E6E70;
+}
+.mobileDate{
+    background-color:white !important;
+}
+
+.WXlogin{
+    padding: 10px 20px 0;
+    margin: 0 auto;
+}
+.WXloginBtn{
+    margin:50px 0;
+}
+
+/*大中华-融资申请*/
+.toolbar-inner>h1{
+    margin:0 !important;
+}
+.weui-cells_radio label{
+    margin:0 !important;
+    font-weight:normal !important;
+
+}
+.DZHwxQueryResultBoxTitle{
+    width:115px;
+    height:38px;
+    line-height:38px;
+    text-align:left;
+}
+.DZHwxQueryResultBoxContent{
+    margin-left:115px;
+    height:38px;
+    line-height:38px;
+    text-align:left;
+}
+.parentFile {
+    position: relative;
+    padding-left: 12px;
+}
+
+.fileUploadMobileSel {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    z-index: 1;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+    height: 30px;
+}
+/*项目信息*/
+.ItemDelImg{
+    display:block;
+    width:100%;
+    height:30px;
+    line-height:30px;
+    background:#ddd;
+    color:#000;
+    text-align:center
+}
+
+#ItemInfo #loadMore table tbody tr td:first-child{
+    vertical-align:middle;
+}
+#ItemInfo #loadMore table tbody tr td:last-child {
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: bold;
+    color: #C8C7CC;
+    text-align:right;
+    max-width:15px;
+    min-width:15px;
+}
+#ItemInfo #loadMore table tbody tr td{
+    line-height:21px;
+}
+.wxTr:hover {
+    cursor: pointer
+}
+.multiplePhoto {
+    padding: 0 20px;
+    background-color: white;
+    margin-bottom: 15px;
+}
+.multiplePhotoWrap{
+    border:1px solid #ddd;
+    padding:5px;
+    border-radius:5px;
+    display:none;
+}
+.everyOneImg{
+    float:left;
+    margin-right:5px;
+    margin-bottom:5px;
+}
+/*授信管理*/
+.givingCreditManager{
+    padding-left:0;
+    margin-top:20px;
+}
+ul.givingCreditManager li{
+    float:left;
+    width:33.33%;
+    text-align:center;
+}
+ul.givingCreditManager li dl dt{
+    height:25px;
+    line-height:25px;
+}
+ul.givingCreditManager li dl dd {
+    height: 25px;
+    line-height: 25px;
+}
+.givingCredit1 {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.givingCredit2 {
+    display: inline-block;
+}
+.givingCreditColor1 {
+    background: #0000FF;
+}
+
+.givingCreditColor2 {
+    background: #FF9C00;
+}
+
+.givingCreditColor3 {
+    background: #FF4E00;
+}
+.tableLaout table tbody tr td, .tableLaout {
+    border: none !important;
+}
+.tableLaout table tbody tr td dl dd {
+    height: 25px !important;
+    line-height: 25px !important;
+}
+.tableLaout table tbody tr td dl dt {
+    height: 25px !important;
+    line-height: 25px !important;
+}
+
+/*微信融资申请上传附件*/
+.financingApplyName{
+    font-weight:bold;
+    color:#000000;
+}
+.financingApplyMoney {
+    color: #FD7100;
+}
+.financingApply_color_1 {
+    color: #000000;
+}
+.financingApply_color_2 {
+    color: #67A4F5;
+}
+.financingApply_color_3 {
+    color: #FF3838;
+}
+.financingApply_color_4 {
+    color: #17893C;
+}

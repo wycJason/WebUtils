@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+  <style>
+    .carousel > .carousel-inner > .item > img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>jQuery插件——轮播广告</h1>
+
+  <h3>最最简单的轮播广告</h3>
+  <div class="carousel" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/1.jpg"/>
+      </div>
+      <div class="item">
+        <img src="img/2.jpg"/>
+      </div>
+      <div class="item">
+        <img src="img/3.jpg"/>
+      </div>
+      <div class="item">
+        <img src="img/4.jpg"/>
+      </div>
+    </div>
+  </div>
+
+  <h3>稍复杂的轮播广告</h3>
+  <div class="carousel slide" data-ride="carousel" data-interval="3000">
+    <!--轮播广告的内部：广告本身+每个广告上的文字-->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/11.jpg">
+      </div>
+      <div class="item">
+        <img src="img/22.jpg">
+      </div>
+      <div class="item">
+        <img src="img/33.jpg">
+      </div>
+      <div class="item">
+        <img src="img/44.jpg">
+      </div>
+    </div>
+    <!--轮播广告外部：上/下一张按钮、序号标志-->
+
+  </div>
+
+  <h3>带说明文字的轮播广告</h3>
+  <div class="carousel slide" data-ride="carousel" data-interval="3000">
+    <!--轮播广告的内部：广告本身+每个广告上的文字-->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/11.jpg">
+        <div class="carousel-caption">
+          <h4>第一幅作品</h4>
+          <span>关于第一幅作品的说明文字</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/22.jpg">
+        <div class="carousel-caption">
+          <h4>第二幅作品</h4>
+          <span>关于第二幅作品的说明文字</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/33.jpg">
+        <div class="carousel-caption">
+          <h4>第三幅作品</h4>
+          <span>关于第三幅作品的说明文字</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/44.jpg">
+        <div class="carousel-caption">
+          <h4>第四幅作品</h4>
+          <span>关于第四幅作品的说明文字</span>
+        </div>
+      </div>
+    </div>
+
+    <!--轮播广告外部：上/下一张按钮、序号标志-->
+  </div>
+
+  <h3>带前进/后退按钮的轮播广告</h3>
+  <div id="ad1" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <!--轮播广告的内部：广告本身+每个广告上的文字-->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/11.jpg">
+        <div class="carousel-caption">
+          <h4>第一幅作品</h4>
+          <span>关于第一幅作品的说明文字</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/22.jpg">
+        <div class="carousel-caption">
+          <h4>第二幅作品</h4>
+          <span>关于第二幅作品的说明文字</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/33.jpg">
+        <div class="carousel-caption">
+          <h4>第三幅作品</h4>
+          <span>关于第三幅作品的说明文字</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/44.jpg">
+        <div class="carousel-caption">
+          <h4>第四幅作品</h4>
+          <span>关于第四幅作品的说明文字</span>
+        </div>
+      </div>
+    </div>
+
+    <!--轮播广告外部：上/下一张按钮、序号标志-->
+    <a data-slide="prev" class="carousel-control left" href="#ad1">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a data-slide="next" class="carousel-control right" href="#ad1">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+
+  <h3>带序号(指示器)的轮播广告</h3>
+  <div id="ad2" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <!--轮播广告的内部：广告本身+每个广告上的文字-->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/11.jpg">
+        <div class="carousel-caption">
+          <h4>第一幅作品</h4>
+          <span>关于第一幅作品的说明文字</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/22.jpg">
+        <div class="carousel-caption">
+          <h4>第二幅作品</h4>
+          <span>关于第二幅作品的说明文字</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/33.jpg">
+        <div class="carousel-caption">
+          <h4>第三幅作品</h4>
+          <span>关于第三幅作品的说明文字</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/44.jpg">
+        <div class="carousel-caption">
+          <h4>第四幅作品</h4>
+          <span>关于第四幅作品的说明文字</span>
+        </div>
+      </div>
+    </div>
+
+    <!--轮播广告外部：上/下一张按钮、序号标志-->
+    <!--上一张/下一张控制按钮-->
+    <a data-slide="prev" class="carousel-control left" href="#ad2">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a data-slide="next" class="carousel-control right" href="#ad2">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+
+    <!--广告序号指示器-->
+    <ul class="carousel-indicators">
+      <li data-slide-to="0" data-target="#ad2" class="active"></li>
+      <li data-slide-to="1" data-target="#ad2"></li>
+      <li data-slide-to="2" data-target="#ad2"></li>
+      <li data-slide-to="3" data-target="#ad2"></li>
+    </ul>
+  </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+ /* (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s)
+  })();*/
+</script>
+</body>
+</html>

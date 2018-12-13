@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="myDiagramDiv"
+     style="width:800px; height:800px; background-color: #DAE4E4;">
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.6.7/go-debug.js"></script>-->
+<script src="js/go-debug.js"></script>
+<script>
+    var $ = go.GraphObject.make;
+    var myDiagram =
+            $(go.Diagram, "myDiagramDiv", {
+                initialContentAlignment: go.Spot.Center, // center Diagram contents
+                "undoManager.isEnabled": true // enable Ctrl-Z to undo and Ctrl-Y to redo
+            });
+
+    var myModel = $(go.Model);
+    // in the model data, each node is represented by a JavaScript object:
+    myModel.nodeDataArray = [
+        { key: "Alpha" },
+        { key: "Beta" },
+        { key: "Gamma" }
+    ];
+    myDiagram.model = myModel;
+</script>
+</body>
+</html>

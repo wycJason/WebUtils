@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <template v-if="ok">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+    </template>
+
+    <hr>
+    <div v-if="Math.random() > 0.5">
+        Now you see me
+    </div>
+    <div v-else>
+        Now you don't
+    </div>
+
+    <hr>
+    <div v-if="type === 'A'">
+        A
+    </div>
+    <div v-else-if="type === 'B'">
+        B
+    </div>
+    <div v-else-if="type === 'C'">
+        C
+    </div>
+    <div v-else>
+        Not A/B/C
+    </div>
+
+    <hr>
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="Username">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="Email">
+    </template>
+    <button @click="toggle">切换登录方式</button>
+
+    <hr>
+    <div>
+        <span v-for="n in 10">{{ n }} </span>
+    </div>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+<script>
+    /*
+     因为 v-if 是一个指令，所以必须将它添加到一个元素上。
+     但是如果想切换多个元素呢？此时可以把一个 <template> 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 <template> 元素。
+    * */
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            ok:true,
+            type:"A",
+            loginType:"username"
+        },
+        methods: {
+            toggle:function(){
+                if(this.loginType=="username"){
+                    this.loginType=""
+                }else{
+                    this.loginType="username"
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

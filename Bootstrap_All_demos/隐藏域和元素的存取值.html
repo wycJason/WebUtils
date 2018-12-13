@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        div {
+            color:blue;
+        }
+        span {
+            color:red;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<input type="hidden" id="hd"/>
+<a></a>
+<div>
+    存储的值为
+    <span></span>
+    和
+    <span></span>
+</div>
+<button id="btn1">$(selector).data(name,value)或$(selector).data(object)存储数据</button><br />
+<button id="btn2">$(selector).data(name,value)或$(selector).data(object)获取数据</button><br /><br />
+<button id="btn3">$.data( element, key, value )存储和获取数据</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    /*隐藏域存取值*/
+    var a=8;
+    console.log("存值之前："+$("#hd").val());
+    $("#hd").val(a);
+    console.log("存值之后："+$("#hd").val());
+
+    //通过 data() 函数存取的数据都是临时数据，一旦页面刷新，之前存放的数据都将被移除。
+    /*$(selector).data(name,value)或$(selector).data(object) 元素存取值 http://www.w3school.com.cn/jquery/data_data.asp*/
+    $("#btn1").click(function(){
+       // $("div").data("greeting", "Hello World");
+        $("a").data({"greeting": "Hello World"});
+    });
+    $("#btn2").click(function(){
+        alert($("a").data("greeting"));
+    });
+
+
+    /*$.data( element, key, value ) http://www.runoob.com/jquery/misc_data.html*/
+
+    //Element类型 要存储数据的DOM对象,不能是jQuery对象
+    // key可选。String类型 指定的键名字符串。
+    // value可选。 Object类型 需要存储的任意类型的数据。
+    $("#btn3").click(function(){
+        var div = $( "div" )[ 0 ];
+        $.data( div, "test", {
+            first: 16,
+            last: "pizza!"
+        });
+        $( "span:first" ).text( $.data( div, "test" ).first );
+        $( "span:last" ).text( $.data( div, "test" ).last );
+    });
+
+
+    //$.data( element, key, value )   我们可以在一个元素上设置不同的值：
+    $.data(document.body, 'key', 100);
+
+    //$.data( element, key )  我们可以在一个元素上获取这些值：
+      alert($.data( document.body, 'key' ));
+</script>
+</body>
+</html>

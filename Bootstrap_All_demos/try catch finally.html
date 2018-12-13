@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //http://www.cnblogs.com/aqiongbei/p/7410497.html
+    //https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/throw
+    var n=123.456;
+    var d=prompt("输入小数位数");
+
+    try{//可能出错的代码
+        document.write(n.toFixed(parseInt(d)));
+    }catch(err){//一旦出错才执行的错误处理代码  err:{message:"",stack:""}
+        debugger;
+        alert("无效小数位数");//提示用户
+        console.log(String(err));//记录日志
+        //throw new Error("参数必须是数字");
+        throw new Error(String(err));
+    }finally{//无论是否出错，都执行
+        console.log("释放内存");
+        n=null; //释放内存
+    }
+
+
+    /*
+    //定义者
+    function round(num,d){
+        if(isNaN(num)||isNaN(d)){
+            throw new Error("参数必须是数字");
+        }
+        return Math.round(num*Math.pow(10,d))/Math.pow(10,d);
+    }
+
+    //调用者
+    var num=prompt("请输入一个数字");
+    var d=prompt("输入小数位数");
+    try{
+        alert(round(num,d));
+    }catch(err){
+        alert(String(err));
+    }
+    */
+</script>
+</body>
+</html>

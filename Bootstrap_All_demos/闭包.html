@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="http://www.w3school.com.cn/js/pro_js_functions_closures.asp" target="_blank">ECMAScript 闭包（closure）点击跳转</a></h1>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    /*
+     定义：当一个内部函数被其外部函数之外的变量引用时，就形成了一个闭包。
+     何时使用: 如果希望重用一个变量，且不希望该变量被随意篡改时。
+     如何实现:3步:
+     1. 用外层函数将受保护的变量和操作变量的函数封装在内部
+     2. 外层函数将内层函数对象返回（返回的是函数对象地址：0x9091……）
+     3. 调用外层函数，获得返回的内层函数对象。
+
+     笔试中:
+     1. 先找到受保护的变量，确定其值（特殊: 变量的值很可能不是声明时的初始值——看外层函数调用结束时，n的值）
+     2. 找到操作变量的函数，确定外层函数向外部返回了几个内层函数对象，所有内层函数对象，公用同一个变量。
+     3. 两次外层函数调用，返回的不同内层函数对象，所操作的变量，没有任何关系。
+    * */
+
+    //Step1: 外层函数包裹受保护的变量和操作变量的内层函数
+    function outer(){
+        var n=1;//重用，被保护
+        //Step2: 外层函数将内层函数返回
+        return function(){ return n++; }
+    }
+    //Step3: 调用外层函数，获得内层函数对象
+    //就得到了闭包结构。
+    var getNum=outer();
+    var getDecimal=outer();
+    //getNum: function(){ return n++; }
+    //getDecimal: function(){ return n++; }
+
+    console.log(getNum());//1
+    console.log(getNum());//2
+    n=1;
+    console.log(getNum());//3
+    console.log(getNum());//4
+
+console.info("----------------------")
+
+    console.log(getDecimal());//1
+    console.log(getDecimal());//2
+    n=1;
+    console.log(getDecimal());//3
+    console.log(getDecimal());//4
+
+
+console.info("----------------------")
+
+    var iBaseNum = 10;
+    function addNum(iNum1, iNum2) {
+        function doAdd() {
+            return iNum1 + iNum2 + iBaseNum;
+        }
+        return doAdd();
+    }
+    console.log(addNum(1,1));//12
+</script>
+</body>
+</html>

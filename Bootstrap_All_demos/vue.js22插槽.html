@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <baselayout>
+        <template slot="header">
+            <h1>header</h1>
+        </template>
+
+        <h3>A paragraph for the main content.</h3>
+
+        <template slot="footer">
+            <h1>footer</h1>
+        </template>
+    </baselayout>
+
+    <hr>
+    <baselayout>
+        <h1 slot="header">header</h1>
+
+        <h3>A paragraph for the main content.</h3>
+
+        <h1 slot="footer">footer</h1>
+    </baselayout>
+
+    <!--如果没有内容取模板里的slot默认值，有则覆盖默认插槽值-->
+    <hr>
+    <baselayout></baselayout>
+
+    <hr>
+    <baselayout>{{name}}</baselayout>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+<script>
+    var ComponentA = {
+        template: `<div class="container">
+                          <header>
+                            <slot name="header">头</slot>
+                          </header>
+                          <main>
+                            <slot>身体</slot>
+                          </main>
+                          <footer>
+                            <slot name="footer">脚</slot>
+                          </footer>
+                    </div>`
+    }
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            name:"jason"
+        },
+        methods: {},
+        components:{
+            baselayout:ComponentA // 即  组件名称：组件配置项
+        }
+    })
+</script>
+</body>
+</html>

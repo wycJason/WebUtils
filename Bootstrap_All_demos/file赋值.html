@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<input type="file" value="C:\abc.txt"/><br><br>
+<button onclick="clearMethod1();">清除大法1：李代桃僵</button><br>
+<button onclick="clearMethod2();">清除大法2：暗渡陈仓</button>
+<br><br><br><br><br><br><br>
+<input type="text" value=""/><input type="file" value="C:\abc.txt" onchange="this.previousSibling.value=this.value;" /><br><br>
+<button onclick="clearMethod3();">清除大法3：声东击西</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    function clearMethod1()
+    {
+        var objFile=document.getElementsByTagName('input')[0];
+        alert("\""+objFile.value+"\"已清除");
+        objFile.outerHTML=objFile.outerHTML.replace(/(value=\").+\"/i,"$1\"");
+    }
+    function clearMethod2()
+    {
+        var objFile=document.getElementsByTagName('input')[0];
+        alert("\""+objFile.value+"\"已清除");
+        var WshShell=new ActiveXObject("WScript.Shell");
+        objFile.focus();
+        objFile.createTextRange().select();
+        WshShell.SendKeys("{del}");
+    }
+    function clearMethod3()
+    {
+        var objFile=document.getElementsByTagName('input')[1];
+        alert("\""+objFile.value+"\"已清除");
+        objFile.value="";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .swicthBar{
+            width: 300px;
+            height: 28px;
+            border-radius: 15px;
+            background-color: #F3F3F3;
+            position: relative;
+            color: #000000;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .publicIntegral{
+            z-index: 100;
+            position: absolute;
+            width: 150px;
+            height: 28px;
+            line-height: 28px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .cashIntegral{
+            left: 0px;
+        }
+        .honorIntegral{
+            right: 0px;
+        }
+        .activeIntegral{
+            color: #ffffff;
+        }
+        .switchShade{
+            left: 0;
+            z-index: 50;
+            position: absolute;
+            width: 150px;
+            height: 28px;
+            border-radius: 15px;
+            background-image: linear-gradient(to right,#54ADEE 0%,#606CB2 100%);
+            background-image: -webkit-linear-gradient(to right,#54ADEE 0%,#606CB2 100%);
+            background-image:-o-linear-gradient(to right,#54ADEE 0%,#606CB2 100%);
+            background-image: -ms-linear-gradient(to right,#54ADEE 0%,#606CB2 100%);
+            background-image:-moz-linear-gradient(to right,#54ADEE 0%,#606CB2 100%);
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="padding: 100px">
+<div class="swicthBar">
+    <div class="switchShade"></div>
+    <span class="publicIntegral cashIntegral activeIntegral">现金分</span>
+    <span class="publicIntegral honorIntegral">荣誉分</span>
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $('.swicthBar').click(function(){
+       if($(".cashIntegral").hasClass("activeIntegral")){
+           $(".cashIntegral").removeClass("activeIntegral");
+           $('.switchShade').animate({
+              "left":"150px"
+           }, 50,'linear',function(){
+                $(".honorIntegral").addClass("activeIntegral");
+           });
+       }else{
+           $(".honorIntegral").removeClass("activeIntegral");
+           $('.switchShade').animate({
+               "left":"0px"
+           }, 50,'linear',function(){
+               $(".cashIntegral").addClass("activeIntegral");
+           });
+       }
+
+
+    });
+
+</script>
+</body>
+</html>

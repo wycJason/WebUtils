@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <div class="row" style="margin-top:20%">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <input type="text" value="请选择文件" size="20" name="upfile" id="upfile" style="border:1px dotted #ccc">
+            <input type="button" value="浏览" onclick="path.click()" style="border:1px solid #ccc;background:#fff">
+            <input type="file" id="path" style="display:none" multiple="multiple" onchange="upfile.value=this.value">
+            <br />
+            <span id="output">0%</span>
+            <button type="button" id="file" onclick="UploadStart()" style="border:1px solid #ccc;background:#fff">开始上传</button>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //参考文档：https://www.cnblogs.com/bestckk/p/6103065.html
+    //开始上传
+    function UploadStart() {
+        var file = $("#path")[0].files[0];
+        debugger;
+        AjaxFile(file, 0);
+    }
+    function AjaxFile(file, i) {
+            var name = file.name, //文件名
+                size = file.size, //总大小shardSize = 2 * 1024 * 1024,
+                shardSize = 2 * 1024 * 1024,//以2MB为一个分片
+                shardCount = Math.ceil(size / shardSize); //总片数
+        if (i >= shardCount) {
+            return;
+        }
+        //计算每一片的起始与结束位置
+        var start = i * shardSize,
+             end = Math.min(size, start + shardSize);
+        //构造一个表单，FormData是HTML5新增的
+        var form = new FormData();
+        form.append("data", file.slice(start, end)); //slice方法用于切出文件的一部分
+        form.append("lastModified", file.lastModified);
+        form.append("fileName", name);
+        form.append("total", shardCount); //总片数
+        form.append("index", i + 1); //当前是第几片
+        //Ajax提交文件
+        $.ajax({
+            url: "/Upload/UploadFile",
+            type: "POST",
+            data: form,
+            async: true, //异步
+            processData: false, //很重要，告诉jquery不要对form进行处理
+            contentType: false, //很重要，指定为false才能形成正确的Content-Type
+            success: function (result) {
+                if (result != null) {
+                    i = result.number++;
+                    var num = Math.ceil(i * 100 / shardCount);
+                    $("#output").text(num + '%');
+                    AjaxFile(file, i);
+                    if (result.mergeOk) {
+                        var filepath = $("#path");
+                        filepath.after(filepath.clone().val(""));
+                        filepath.remove();//清空input file
+                        $('#upfile').val('请选择文件');
+                        alert("success!!!");
+                    }
+                }
+            },
+            error: function (result) {
+               alert("上传失败！！！")
+            }
+        });
+    }
+</script>
+</body>
+</html>

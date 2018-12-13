@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <style>
+    /*    .table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+            border-bottom:none!important;
+        }*/
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <h1>全局CSS样式——表格</h1>
+
+    <h3>默认的表格样式</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>住址</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1001</td>
+            <td>唐牧</td>
+            <td>海淀区万寿路123号</td>
+            <td>
+                <a class="btn btn-danger btn-xs" href="#">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>马丽</td>
+            <td>海淀区万寿路124号</td>
+            <td>
+                <a class="btn btn-success btn-xs" href="#">修改</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>岳寒</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-info btn-xs" href="#">详情</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1004</td>
+            <td>金士顿</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-warning btn-xs" href="#">更新</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3>带.table的表格</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>住址</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1001</td>
+            <td>唐牧</td>
+            <td>海淀区万寿路123号</td>
+            <td>
+                <a class="btn btn-danger btn-xs" href="#">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>马丽</td>
+            <td>海淀区万寿路124号</td>
+            <td>
+                <a class="btn btn-success btn-xs" href="#">修改</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>岳寒</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-info btn-xs" href="#">详情</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1004</td>
+            <td>金士顿</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-warning btn-xs" href="#">更新</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3>带边框的表格</h3>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>住址</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1001</td>
+            <td>唐牧</td>
+            <td>海淀区万寿路123号</td>
+            <td>
+                <a class="btn btn-danger btn-xs" href="#">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>马丽</td>
+            <td>海淀区万寿路124号</td>
+            <td>
+                <a class="btn btn-success btn-xs" href="#">修改</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>岳寒</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-info btn-xs" href="#">详情</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1004</td>
+            <td>金士顿</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-warning btn-xs" href="#">更新</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3>隔行变色的表格</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>住址</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1001</td>
+            <td>唐牧</td>
+            <td>海淀区万寿路123号</td>
+            <td>
+                <a class="btn btn-danger btn-xs" href="#">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>马丽</td>
+            <td>海淀区万寿路124号</td>
+            <td>
+                <a class="btn btn-success btn-xs" href="#">修改</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>岳寒</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-info btn-xs" href="#">详情</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1004</td>
+            <td>金士顿</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-warning btn-xs" href="#">更新</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3>带鼠标悬停效果的表格</h3>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>住址</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1001</td>
+            <td>唐牧</td>
+            <td>海淀区万寿路123号</td>
+            <td>
+                <a class="btn btn-danger btn-xs" href="#">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>马丽</td>
+            <td>海淀区万寿路124号</td>
+            <td>
+                <a class="btn btn-success btn-xs" href="#">修改</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>岳寒</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-info btn-xs" href="#">详情</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1004</td>
+            <td>金士顿</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-warning btn-xs" href="#">更新</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3>响应式表格</h3>
+    <div class="table-responsive">
+        <table class="table">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>住址</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1001</td>
+            <td>唐牧</td>
+            <td>海淀区万寿路123号</td>
+            <td>
+                <a class="btn btn-danger btn-xs" href="#">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>马丽</td>
+            <td>海淀区万寿路124号</td>
+            <td>
+                <a class="btn btn-success btn-xs" href="#">修改</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>岳寒</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-info btn-xs" href="#">详情</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1004</td>
+            <td>金士顿</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-warning btn-xs" href="#">更新</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    /*Bootlint用于检测文档中的HTML和Class错误*/
+   /* (function () {
+        var s = document.createElement("script");
+        s.onload = function () {
+            bootlint.showLintReportForCurrentDocument([]);
+        };
+        s.src = "js/bootlint.js";
+        document.body.appendChild(s)
+    })();*/
+</script>
+</body>
+</html>

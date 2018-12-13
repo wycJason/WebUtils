@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>jq三级联动(2017-11-15最新全国行政三级联动)</title>
+    <meta charset="utf-8">
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="js/jsAddress.js"></script>
+    <style type="text/css">
+body {
+	margin: 0 auto;
+	text-align: center
+}
+</style>
+    </head>
+    
+    <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>2017-11-15最新全国行政三级联动</h1>
+      </div>
+      <div class="row">
+        <select class="province" name="province"  >
+        </select>
+        <select class="city" name="city">
+        </select>
+        <select class="district" name="district" >
+        </select>
+      </div>
+      <div class="row" style="color: #ccc">
+        <p>province 省select下拉框的class ；city市class；district区县class</p>
+        <p>安徽、合肥市、蜀山区  默认；可为空</p>
+      </div>
+    </div>
+    
+</body>
+</html>
+
+<script type="text/javascript">
+    //province 省select下拉框的class ；city市class；district区县class
+    //安徽、合肥市、蜀山区  默认；可为空
+	addressInit('province', 'city', 'district', '广东', '深圳市', '南山区');
+</script>

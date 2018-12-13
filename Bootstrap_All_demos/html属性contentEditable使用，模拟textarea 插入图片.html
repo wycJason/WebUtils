@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id=idEdit contentEditable=true style="width:100%;height:200px;border:1px solid #666666"></div>
+<input type="button"  value="插入图片" onclick="img()">
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    function img(){
+        function selImg(s){
+            if(!s){return false;}
+            var h=s.substr(s.lastIndexOf(".")+1,3);
+            if(h=="gif"||h=="jpg" || h=="GIF" || h=="JPG"){
+                Edit=document.getElementById("idEdit")
+                Edit.innerHTML+='<img width="50" src='+s+'>'
+            }
+        }
+
+        var location1 = prompt("请输入图片的地址：","http://");
+        if(location1){
+            selImg(location1);
+        }
+    }
+
+
+
+    //文本转化为图片  IE8及其以下浏览器不支持canvas
+     function textToImage(txt,$ele){
+         //将画布转化为图片地址
+         function convertCanvasToImage(canvas) {
+             var image = new Image();
+             image.src = canvas.toDataURL("image/png", 0.85);
+             return image;
+         }
+
+         var cvs = document.createElement('canvas');
+         var ctx = cvs.getContext('2d');
+
+         var txt = '@'+txt;
+         //绘制文本
+         ctx.font = '14px SimHei';
+         ctx.textBaseline = 'bottom';
+
+         var w = ctx.measureText(txt).width;
+
+         cvs.width = w;
+         cvs.height=20;
+         ctx.fillStyle = '#006EFE';//设置文本填充颜色
+         ctx.fillText(txt,0,15);
+
+         var img = convertCanvasToImage(cvs);
+         $ele.append(img);
+     }
+
+    textToImage("王愿超",$('#idEdit'))
+</script>
+</body>
+</html>

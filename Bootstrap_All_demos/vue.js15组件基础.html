@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <div :style="{ fontSize: postFontSize + 'px' }">
+        <blog-post v-on:enlarge-text="postFontSize +=$event"
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"
+                ></blog-post>
+    </div>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+<script>
+    Vue.component('blog-post', {
+        props: ['post'],
+        template: `
+                    <div>
+                      <h3>{{ post.id }}</h3>
+                      <button v-on:click="$emit('enlarge-text',1)">变大</button>
+                      <div v-text="post.title"></div>
+                    </div>
+                  `
+    })
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            postFontSize:12,
+            posts: [
+                { id: 1, title: 'My journey with Vue' },
+                { id: 2, title: 'Blogging with Vue' },
+                { id: 3, title: 'Why Vue is so fun' }
+            ]
+        }
+    })
+</script>
+</body>
+</html>

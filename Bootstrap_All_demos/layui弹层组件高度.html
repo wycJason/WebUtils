@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap Template</title>
+    <style>
+        .mylayer{
+            height: 800px;
+            background-color: red;
+            color: #ffffff;
+            display: none;
+        }
+    </style>
+    <link href="layui/css/layui.css" rel="stylesheet">
+</head>
+<body>
+<button id="btn">弹层高度设置</button>
+<div id="layer" class="mylayer">我是弹层组件我是弹层组件</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="layui/layui.js"></script>
+<script>
+    layui.use('layer', function(){
+       var  layer = layui.layer;
+    });
+
+$("#btn").click(function(){
+    layer.open({
+        type:1,
+        title :'我是标题',
+        content:$("#layer"),
+        area:"500px",
+        maxmin:true,
+    })
+})
+</script>
+</body>
+</html>

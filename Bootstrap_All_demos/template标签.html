@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="https://blog.csdn.net/u011326979/article/details/53509442">template标签</a></h1>
+<template id="tpl">
+    <div class="linear-layout">
+        <span>静音</span>
+        <i class="iconfont icon-duigou linear-icon"></i>
+    </div>
+    <div class="linear-interval"></div>
+</template>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    var template = document.getElementById('tpl');
+    console.log(template);
+    debugger;
+    var template = document.getElementById('tpl');
+    var layout = template.content.querySelector('div');
+    var text = template.content.querySelector('span');
+</script>
+</body>
+</html>

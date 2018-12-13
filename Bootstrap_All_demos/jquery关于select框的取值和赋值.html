@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<select name="" id="sel">
+    <option value="0">我是0</option>
+    <option value="1">我是1</option>
+    <option value="2">我是2</option>
+</select>
+
+<select name="" id="selSet">
+    <option value="0">我是0</option>
+    <option value="1">我是1</option>
+    <option value="2" selected>我是2</option>
+</select>
+ <button id="btn">点击</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    $("#btn").click(function(){
+        var orginVal=$("#sel").val();//取出选中项的value
+        var orginTxt=$("#sel option:selected").text();//取出选中项的文本内容txt
+        //console.log($("#sel").val(),$("#sel option:selected").text());
+
+
+        $("#selSet").val(orginVal);//设置选中项的value
+        $("#selSet option:selected").text(orginTxt);//设置选中项的文本内容txt
+        console.log($("#selSet").val(),$("#selSet option:selected").text());
+
+      /*  $("#sel").append('<option value="4">我是4</option>');
+        $(document.body).append($("#sel").clone(true));*/
+
+        console.log($("#sel").clone(true)[0].outerHTML);
+    })
+</script>
+</body>
+</html>

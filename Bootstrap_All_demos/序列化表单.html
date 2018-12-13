@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<form id="myform">
+    <div>
+        <span>需求数量<b style="color:red">*</b></span>
+        <input type="text" class="form-control addTypeInfo" name="A" value="" />
+        <span>年份</span>
+        <input type="text" class="form-control addTypeInfo" name="B" value="" />
+        <span>交期要求<b style="color:red">*</b></span>
+        <input type="text" class="form-control" name="C" value="" style="width:160px;margin-left:5px;margin-right: 16px;" />
+        <span>封装</span>
+        <input type="text" class="form-control addTypeInfo" name="D" value="" />
+        <span>期望价格</span>
+        <input type="text" class="form-control addTypeInfo" name="E" value="" />
+        <span>货币</span>
+        <select class="form-control addTypeInfo" name="F">
+            <option  value="1" selected>美元</option>
+            <option  value="2">人民币</option>
+        </select>
+    </div>
+    <div style="margin-top:14px">
+        <span>有&nbsp;&nbsp;效&nbsp;&nbsp;期&nbsp;</span>
+        <select class="form-control addTypeInfo" name="G">
+            <option value="1" selected>3天</option>
+            <option value="2">2天</option>
+        </select>
+        <span>含税</span>
+        <select class="form-control addTypeInfo" name="H">
+            <option value="1" selected>是</option>
+            <option value="0">否</option>
+        </select>
+        <span>询价说明&nbsp;</span>
+        <input type="text" class="form-control" name="I" value="" style="width:160px;margin-left:5px;margin-right: 16px;" />
+    </div>
+    <div>
+        <input type="checkbox" name="check" value="check1"/> check1
+        <input type="checkbox" name="check" value="check2" checked="checked"/> check2
+        <br>
+        <input type="radio" name="radio" value="radio1" checked="checked"/> radio1
+        <input type="radio" name="radio" value="radio2"/> radio2
+    </div>
+    <div class="deliveryTime">
+        询价单超过有期天数后将自动关闭
+    </div>
+    <div style="margin-top:15px">
+        <button id="newEnquiryBtn_send" class="btn btn-default" style="width:94px;height:28px;background-color:#41A0FF;color:white;padding:0;">发送</button>
+    </div>
+</form>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    function parseStrObjByRegExpKV(strDes){
+        var obj = {};
+        strDes.replace(/(\w+)(?:=([^&]*))?/g,function(str, key, value){
+            obj[key] = value;
+        });
+        return obj;
+    }
+    var objKV = parseStrObjByRegExpKV("name=jack&age=20&love=lily");
+    console.log(objKV);
+
+    $("#newEnquiryBtn_send").click(function(){
+        debugger;
+        var data=$("#myform").serialize();
+        var dataObj=$("#myform").serializeArray();
+    })
+
+
+    //比如将一个普通的对象序列化：
+    var obj = {a:1,b:2,c:3};
+    var k = $.param(obj);
+    alert(k); //输出a=1&b=2&c=3
+
+/*
+    serializeArray()方法
+    格式：var jsonData = $("form").serializeArray();
+    功能：将页面表单序列化成一个JSON结构的对象。注意不是JSON字符串。
+    比如，[{"name":"lihui", "age":"20"},{...}] 获取数据为 jsonData[0].name*/
+</script>
+</body>
+</html>

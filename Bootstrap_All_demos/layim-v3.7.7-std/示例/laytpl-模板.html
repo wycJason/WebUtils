@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../dist/css/layui.css">
+    <title></title>
+</head>
+<body>
+<div id="view"></div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="../dist/layui.js"></script>
+<script id="demo" type="text/html">
+    <h3>{{ d.title }}</h3>
+    <ul>
+        {{#  layui.each(d.list, function(index, item){ }}
+        <li>
+            <span>{{ item.modname }}</span>
+            <span>{{ item.alias }}：</span>
+            <span>{{ item.site  }}</span>
+        </li>
+        {{#  }); }}
+        {{#  if(d.list.length === 0){ }}
+        无数据
+        {{#  } }}
+    </ul>
+</script>
+<script>
+    //上述模版采用了 laytpl 语法，不了解的同学可以去看下文档：http://www.layui.com/doc/modules/laytpl.html
+    layui.use('laytpl', function(){
+        var laytpl = layui.laytpl;
+
+        //直接解析字符
+        laytpl("{{ d.name }}是一位公猿").render({
+            name: '<h1>贤心</h1>'
+        }, function(string){
+            console.log(string); //贤心是一位公猿
+            $('body').append(string);
+        });
+
+        //你也可以采用下述同步写法，将 render 方法的回调函数剔除，可直接返回渲染好的字符
+        var string =  laytpl('{{ d.name }}是一位公猿').render({name: '贤心' });
+        console.log(string);  //贤心是一位公猿
+
+        //如果模板较大，你也可以采用数组的写法，这样会比较直观一些
+     var str=laytpl(['{{ d.name }}是一位公猿','，这是{{ d.content }}字符'].join('')).render({
+         name: '贤心',
+         content:"自定义"
+     });
+        console.log(str);  //贤心是一位公猿
+
+        /*-----------------------------------------------------------------------------------------------------*/
+        var data = { //数据
+            "title":"Layui常用模块"
+            ,"list":[
+                {"modname":"弹层","alias":"layer","site":"layer.layui.com"},
+                {"modname":"即时通讯","alias":"layim","site":"layim.layui.com"}
+            ]
+        }
+        var getTpl = demo.innerHTML ,view = document.getElementById('view');
+        laytpl(getTpl).render(data, function(html){
+            view.innerHTML = html;
+        });
+    });
+</script>
+</body>
+</html>

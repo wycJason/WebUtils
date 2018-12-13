@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>仿表单大师样式</title>
+    <style>
+        .container {
+            width: 800px;
+            border: 1px solid #dddddd;
+        }
+
+        header {
+            padding: 15px;
+            font-size: 18px;
+            border-bottom: 1px solid #dddddd;
+            background-color: #F9F9F9;
+        }
+
+        section {
+            padding: 15px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        footer {
+            padding: 15px;
+            text-align: center;
+            background-color: #F1F1F1;
+        }
+
+        .wrap {
+            width: 550px;
+            padding: 10px;
+            border: 1px solid transparent;
+            margin-bottom: 3px;
+            box-sizing: border-box;
+        }
+
+        .wrap:hover {
+            border: 1px dashed #dddddd;
+        }
+
+        .title {
+            font-weight: bold;
+            display: block;
+            padding-bottom: 5px;
+            font-size: 12px;
+        }
+
+        input, textarea {
+            border: 1px solid #ddd;
+            box-shadow: 0 0 0 0;
+            height: 30px;
+        }
+
+        .align {
+            vertical-align: middle;
+        }
+
+        .active {
+            border: 1px solid #ddd;
+            background-color: #FFFBEF;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+        }
+
+        .btn-default {
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+        }
+
+        .btn-info {
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
+        }
+    </style>
+</head>
+<body>
+<div class="container" style="width: 800px;border: 1px solid #dddddd;">
+    <header>表单设计器</header>
+    <section>
+        <div class="wrap">
+            <span class="title">姓名</span>
+            <input type="text"/>
+        </div>
+        <div class="wrap">
+            <span class="title">手机</span>
+            <input type="text"/>
+        </div>
+        <div class="wrap">
+            <span class="title">Email</span>
+            <input type="text" style="width: 300px"/>
+        </div>
+        <div class="wrap">
+            <span class="title">多行文本</span>
+            <textarea rows="5" cols="20" style="width: 450px;height: 150px"></textarea>
+        </div>
+        <div class="wrap">
+            <span class="title">单选框</span>
+            <div><input id="radio1" class="align" type="radio" name="radio"/><label for="radio1">选项1</label></div>
+            <div><input id="radio2" class="align" type="radio" name="radio"/><label for="radio2">选项1</label></div>
+            <div><input id="radio3" class="align" type="radio" name="radio"/><label for="radio3">选项1</label></div>
+        </div>
+        <div class="wrap">
+            <span class="title">复选框</span>
+            <div><input id="checkbox1" class="align" type="checkbox" name="checkbox"/><label for="checkbox1">选项1</label></div>
+            <div><input id="checkbox2" class="align" type="checkbox" name="checkbox"/><label for="checkbox2">选项1</label></div>
+            <div><input id="checkbox3" class="align" type="checkbox" name="checkbox"/><label for="checkbox3">选项1</label></div>
+        </div>
+    </section>
+    <footer>
+        <button class="btn btn-default">预览</button>
+        <button class="btn btn-info">保存</button>
+    </footer>
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script>
+$(".wrap").click(function(){
+    $(this).removeClass("active").addClass("active").siblings().removeClass("active");
+})
+</script>
+</body>
+</html>

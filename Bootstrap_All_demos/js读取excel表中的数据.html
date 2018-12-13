@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<input type="file" id="excel-file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="https://cdn.bootcss.com/xlsx/0.12.7/xlsx.core.min.js"></script>
+<script>
+//http://www.bootcdn.cn/xlsx/
+//https://blog.csdn.net/zxf1242652895/article/details/73930088
+$("#excel-file").change(function(e) {
+    var getPigmentCodeData = new Array();
+    var persons = []; // 存储获取到的数据
+    var files = e.target.files;
+    var fileReader = new FileReader();
+    fileReader.onload = function(ev) {
+        try {
+            var data = ev.target.result,
+                    workbook = XLSX.read(data, {
+                        type: 'binary'
+                    }),
+            // 以二进制流方式读取得到整份excel表格对象
+             persons = []; // 存储获取到的数据
+        } catch(e) {
+            console.log('文件类型不正确');
+            return;
+        }
+
+        // 表格的表格范围，可用于判断表头是否数量是否正确
+        var fromTo = '';
+        // 遍历每张表读取
+        for (var sheet in workbook.Sheets) {
+            if (workbook.Sheets.hasOwnProperty(sheet)) {
+                fromTo = workbook.Sheets[sheet]['!ref'];
+                //console.log(fromTo + "fromTo"); //表有几行数据
+                persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                break; // 如果取所有表，就去掉break，如果只取第一张表就加上break
+            }
+        }
+        if (persons.length == 0) {
+            alert("文件为空");
+        }
+        console.log(persons);
+    };
+    // 以二进制方式打开文件
+    fileReader.readAsBinaryString(files[0]);
+});
+</script>
+</body>
+</html>

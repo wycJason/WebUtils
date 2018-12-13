@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>公共类验证规则</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <style>
+        .layui-layer-content {
+            background-color: red !important;
+            color: white !important;
+        }
+
+        i.layui-layer-TipsR {
+            border-bottom-color: red !important;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="padding: 15px">
+数字：<input type="text" class="vld_number"/><br/><br/>
+整数：零不能为首位<input type="text" class="vld_int"/><br/><br/>
+整数：零可以为首位<input type="text" class="vld_int_FisrtZero"/><br/><br/>
+整数范围验证(10-100含10和100)：<input type="text" class="vld_int vld_range_int"/><br/><br/>
+自定义小数位数：<input type="text" class="vld_decimal" data-decimalCount="6"/><br/><br/>
+小数：<input type="text" class="vld_decimal" data-decimalCount="2"/><br/><br/>
+只能是字母和数字：<input type="text" class="vld_decimalDigit"/><br/><br/>
+只能是英文：<input type="text" class="vld_English"/><br/><br/>
+只能是中文：<input type="text" class="vld_chinese"/><br/><br/>
+邮政编码 <input type="text" class="vld_postalcode"/><br/><br/>
+日历：小时-分钟 <input type="text" class="vld_hh-ii"/><br/><br/>
+日历：年 <input type="text" class="vld_yyyy"/><br/><br/>
+日历：年-月 <input type="text" class="vld_yyyy-mm"/><br/><br/>
+日历：年-月-日 <input type="text" class="vld_yyyy-mm-dd"/><br/><br/>
+日历：年-月-日 小时：分钟 <input type="text" class="vld_yyyy-mm-dd-hh-ii"/><br/><br/>
+手机号码 <input type="text" class="vld_mobile"/><br/><br/>
+固定号码1 <input type="text" class="vld_telephone"/><br/><br/>
+固定号码2 <input type="text" class="vld_fixed-lineTelephone"/><br/><br/>
+传真 <input type="text" class="vld_fax"/><br/><br/>
+手机号码和座机 <input type="text" class="vld_telephoneAndMobilePhone"/><br/><br/>
+邮箱验证1 <input type="text" class="vld_email"/><br/><br/>
+邮箱验证2 <input type="text" class="vld_emailSecond" maxlength="6"/><br/><br/>
+必填项 <input type="text" class="vld_required"/><br/><br/>
+整数取值范围最大值、最小值 <input type="text" class="vld_int vld_minMax" data-min="0" data-max="100"/><br/><br/>
+密码： <input type="text" class="vld_pwdFirst"/><br/><br/>
+验证密码： <input type="text" class="vld_pwdSecond"/><br/><br/>
+身份证： <input type="text" class="IDNumber"/><br/><br/>
+身份证含掩码： <input type="text" class="IDNumberMask"/><br/><br/>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-datetimepicker.js"></script>
+<script src="js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="layer/pc/layer.js"></script>
+<script src="js/publicClass.js"></script>
+</body>
+</html>

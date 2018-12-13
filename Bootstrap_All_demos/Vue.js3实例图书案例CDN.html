@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue.js图书</title>
+    <style>
+
+    </style>
+ <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <h1>书籍</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th @click="sortBy('id')">序号</th>
+                    <th @click="sortBy('name')">书名</th>
+                    <th @click="sortBy('author')">作者</th>
+                    <th @click="sortBy('price')">价格</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="book in books | orderBy sortparam">
+                    <td>{{book.id}}</td>
+                    <td>{{book.name}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.price}}</td>
+                    <!--<td><button type="button" class="btn btn-danger" @click="delBook(book)">删除</button></td>-->
+                    <template v-if="book.id%2==0">
+                        <td>
+                            <button type="button" class="btn btn-success" @click="delBook(book)">删除</button>
+                        </td>
+                    </template>
+                    <template v-else>
+                        <td>
+                            <button type="button" class="btn btn-danger" @click="delBook(book)">删除</button>
+                        </td>
+                    </template>
+            </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5"><h3>书籍的总价格为：{{sum}}</h3></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div id="add-book">
+            <h1>添加书籍</h1>
+
+            <div class="form-group">
+                <label for="name">书名:</label>
+                <input type="text" class="form-control" v-model="book.name" id="name">
+            </div>
+            <div class="form-group">
+                <label for="author">作者:</label>
+                <input type="text" class="form-control" v-model="book.author" id="author">
+            </div>
+            <div class="form-group">
+                <label for="price">价格:</label>
+                <input type="text" class="form-control" v-model="book.price" id="price">
+            </div>
+
+            <button class="btn btn-primary btn-block" @click="addBook()">添加</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/vue/1.0.26/vue.js"></script>
+<script>
+    /*在官方的注释中说this指向它new出来的实例VM
+     每个 Vue.js 应用都是通过构造函数 Vue 创建一个 Vue 的根实例 启动的：
+     var vm = new Vue({
+     // 选项
+     })
+     虽然没有完全遵循 MVVM 模式， Vue 的设计无疑受到了它的启发。因此在文档中经常会使用 vm (ViewModel 的简称) 这个变量名表示 Vue 实例。
+     我觉得应该这么理解：
+     el、data、methods、computed都应该理解为Vue声明对象内容的关键字，而不是它的直接属性。
+     那么在data声明的就是它（vm本身）的数据属性，在computed中声明的就是它的计算属性，在methods中声明的就是它的方法。*/
+    var vm = new Vue({   //"var vm= "可以删掉
+        el: '#app',
+        data: {
+            sortparam: '',
+            book: {
+                id: 0,
+                author: '',
+                name: '',
+                price: ''
+            },
+            books: [{
+                id: 1,
+                author: '曹雪芹',
+                name: '红楼梦',
+                price: 32.0
+            }, {
+                id: 2,
+                author: '施耐庵',
+                name: '水浒传',
+                price: 30.0
+            }, {
+                id: 3,
+                author: '罗贯中',
+                name: '三国演义',
+                price: 24.0
+            }, {
+                id: 4,
+                author: '吴承恩',
+                name: '西游记',
+                price: 20.0
+            }]
+        },
+        methods: {
+            addBook: function () {
+                //计算书的id
+                this.book.id = this.books.length + 1;
+                this.books.push(this.book);
+                //将input中的数据重置
+                this.book = '';
+            },
+            delBook: function (book) {
+                this.books.$remove(book);
+            },
+            sortBy: function (sortparam) {
+                this.sortparam = sortparam;
+            }
+        },
+        computed: {
+            sum: function () {
+                var result = 0;
+                for (var i = 0; i < this.books.length; i++) {
+                    //result = Number(this.books[i].price) + result;
+                    result += Number(this.books[i].price);
+                }
+                ;
+                return result;
+            }
+        }
+    });
+</script>
+</body>
+</html>

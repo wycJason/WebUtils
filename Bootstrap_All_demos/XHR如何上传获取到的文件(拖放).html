@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        #dropzone {
+            width: 300px;
+            height: 300px;
+            border: 2px dashed gray;
+        }
+
+        #dropzone.over {
+            width: 300px;
+            height: 300px;
+            border: 2px dashed red;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h3><a href="https://developer.mozilla.org/zh-CN/docs/Web/Events/dragstart" target="_blank">当用户开始拖动一个元素或者一个选择文本的时候 dragstart 事件就会触发。</a></h3>
+<textarea id="dropzone"></textarea>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    function uploadFile(formData) {
+       /* var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:8080/Server/uploadfile', true);
+        xhr.send(formData);*/
+
+        $.ajax({
+            url: "http://localhost:8080/Server/uploadfile",
+            type: "POST",
+            data: formData,
+            processData: false,  // 告诉jQuery不要去处理发送的数据
+            contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
+            success: function(response,status,xhr){
+                console.log(response);
+            },
+            error: function (response) {
+                console.log(response)
+            }
+        });
+
+    }
+
+
+    var dz = document.getElementById('dropzone');
+    dz.ondragover = function(ev) {
+        //阻止浏览器默认打开文件的操作
+        ev.preventDefault();
+        this.className = 'over';
+    }
+
+    dz.ondragleave = function() {
+        this.className = '';
+    }
+
+    dz.ondrop = function(ev) {
+        this.className = '';
+        //阻止浏览器默认打开文件的操作
+        ev.preventDefault();
+        //表单上传文件
+        var formData = new FormData();
+        formData.append('file', ev.dataTransfer.files[0]);
+        uploadFile(formData);
+    }
+</script>
+</body>
+</html>

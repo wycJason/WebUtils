@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.css"/>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script src="jqm/jquery.mobile-1.4.5.js"></script>
+  <title></title>
+</head>
+<body>
+<div data-role="page">
+  <div data-role="header">
+    <h1>header</h1>
+  </div>
+
+  <div class="ui-content">
+    <a href="demo03_多页面跳转.html" data-transition="slide">跳转</a>
+    <!-- 10种过场动画- fade pop ..-->
+    <br/>
+    <a href="demo03_多页面跳转.html" data-transition="slideup">slideUp</a>
+    <br/>
+    <a href="demo03_多页面跳转.html" data-transition="slidedown">slidedown</a>
+    <br/>
+    <a href="demo03_多页面跳转.html" data-transition="pop">pop</a>
+    <br/>
+    <a href="demo03_多页面跳转.html" data-transition="flow">flow</a>
+    <br/>
+    <a href="demo03_多页面跳转.html" data-transition="flip">flip</a>
+    <br/>
+    <a href="demo03_多页面跳转.html" data-transition="none">none</a>
+    <br/>
+    <a href="demo03_多页面跳转.html" data-transition="slide" data-direction="reverse">与slide相反的过场动画</a>
+    <br/>
+    <button  onclick="$.mobile.changePage('demo03_多页面跳转.html',{'transition':'slide'})">A标签点击跳转$.mobile.changePage</button>
+    <button  id="btn">JS点击跳转$.mobile.changePage</button>
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h1>footer</h1>
+  </div>
+
+</div>
+<script>
+$("#btn").click(function(){
+  $.mobile.changePage('demo03_多页面跳转.html',{'transition':'slide'});
+  //$.mobile.changePage('demo03_多页面跳转.html','slide');
+})
+</script>
+</body>
+</html>

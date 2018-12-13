@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<textarea></textarea>
+<div contenteditable style="width: 300px;height: 100px; border:1px solid">
+    <img src="" id="imgNode">
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+//https://www.cnblogs.com/heihei-haha/p/7879611.html
+document.addEventListener('paste', function (event) {
+    console.log(event);
+    var isChrome = false;
+    if (event.clipboardData || event.originalEvent) {
+        //某些chrome版本使用的是event.originalEvent
+        var clipboardData = (event.clipboardData || event.originalEvent.clipboardData);
+        if(clipboardData.items){
+            // for chrome
+            var  items = clipboardData.items,
+                    len = items.length,
+                    blob = null;
+            isChrome = true;
+            for (var i = 0; i < len; i++) {
+                console.log(items[i]);
+                if (items[i].type.indexOf("image") !== -1) {
+                    //getAsFile() 此方法只是living standard firefox ie11 并不支持
+                    blob = items[i].getAsFile();
+                }
+            }
+            if(blob!==null){
+                var blobUrl=URL.createObjectURL(blob);
+                //blob对象显示
+                document.getElementById("imgNode").src=blobUrl;
+                var reader = new FileReader();
+                //base64码显示
+                /* reader.onload = function (event) {
+                 // event.target.result 即为图片的Base64编码字符串
+                 var base64_str = event.target.result;
+
+                 document.getElementById("imgNode").src=base64_str;
+                 }
+                 reader.readAsDataURL(blob);*/var fd = new FormData(document.forms[0]);
+                fd.append("the_file", blob, 'image.png');
+                //创建XMLHttpRequest对象
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST','/image' );
+                xhr.onload = function () {
+                    if ( xhr.readyState === 4 ) {
+                        if ( xhr.status === 200 ) {
+                            var data = JSON.parse( xhr.responseText );
+                            console.log(data);
+                        } else {
+                            console.log( xhr.statusText );
+                        }
+                    };
+                };
+                xhr.onerror = function (e) {
+                    console.log( xhr.statusText );
+                }
+                xhr.send(fd);
+            }
+        }
+    }
+})
+</script>
+</body>
+</html>

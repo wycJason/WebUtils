@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    var member={
+        name:"jason",
+        age:20,
+        action:method
+    }
+    function method(x,y){//this 指menber对象
+        console.log(this.name,this.age,x,y);
+    }
+    member.action(1,2)//jason 20 1 2
+
+
+
+
+    function fun(x,y){//this 指menber对象
+        console.log(this.name,this.age,x,y);
+    }
+    fun.call(member,1,2);//jason 20 1 2
+
+
+
+//this关键词: 专门用在对象的方法中，用来指代当前对象本身。
+    //定义
+    function funCallObj(obj){
+        debugger;
+       var name=obj.name;
+        var age=obj.age;
+        var names=obj.names();
+        var ages=obj.ages();
+        console.log(name,age,names,ages)//jason 20 jason 20
+    }
+    //方法
+    function namesFun(){
+        return this.name
+    }
+    function agesFun(){
+        return this.ages
+    }
+    //调用
+    funCallObj({
+        name:"jason",
+        age:20,
+        /*names:function(){
+            return this.name
+        },
+        ages:function(){
+            return this.age
+        }*/
+        names:namesFun,
+        ages:agesFun
+    })
+</script>
+</body>
+</html>

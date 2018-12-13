@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .jason-div-wrap{
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .jason-select-wrap{
+            overflow: hidden;
+            margin-left: 100px;
+            width: 18px;
+        }
+        .jason-select{
+            margin-left: -100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px !important;  /*118*/
+            height: 32px !important;
+        }
+        .jason-input{
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            border: none;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            padding: 0 5px;
+            width: 172px;/*90*/
+            height: 30px;
+            color: #212121;
+            /*text-align: center;*/
+            font-size: 16px;
+        }
+        .jason-input:focus,.jason-select:focus{
+            outline:none
+        }
+    </style>
+</head>
+<body>
+<div class='jason-div-wrap'>
+    <span class='jason-select-wrap'>
+        <select class='jason-select' onchange='debugger;this.parentNode.nextElementSibling.value=this.value'>
+            <option>111</option>
+            <option>222</option>
+            <option>333</option>
+        </select>
+    </span>
+    <input class='jason-input' value=''>
+</div>
+</body>
+</html>

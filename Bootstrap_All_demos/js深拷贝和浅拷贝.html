@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    //复制一个数组
+    var arr = ["One","Two","Three"];
+    //方法一
+    var arrtoo = arr.slice(0);
+    arrtoo[1] = "set Map";
+    document.writeln("数组的原始值：" + arr + "<br />");//Export:数组的原始值：One,Two,Three
+    document.writeln("数组的新值：" + arrtoo + "<br />");//Export:数组的新值：One,set Map,Three
+    //方法二
+    var arrtooo = arr.concat();//var arrtooo=[].concat(arr);
+    arrtooo[1] = "set Map To";
+    document.writeln("数组的原始值：" + arr + "<br />");//Export:数组的原始值：One,Two,Three
+    document.writeln("数组的新值：" + arrtooo + "<br />");//Export:数组的新值：One,set Map To,Three
+
+
+    //复制一个对象
+    //方法一
+    //对象中如果有函数function则不能正确复制
+    var obj = {a:1,b:2}
+    var newObj = JSON.parse(JSON.stringify(obj));
+    newObj.a=3;
+    console.log(obj);//{a: 1, b: 2}
+    console.log(newObj);//{a: 3, b: 2}
+
+    //方法二
+    var cloneObj = function (obj) {
+        var newObj = {};
+        if (obj instanceof Array) {
+            newObj = [];
+        }
+        for (var key in obj) {
+            var val = obj[key];
+            //newObj[key] = typeof val === 'object' ? arguments.callee(val) : val; //arguments.callee 在哪一个函数中运行，它就代表哪个函数, 一般用在匿名函数中。
+            newObj[key] = typeof val === 'object' ? cloneObj(val): val;
+        }
+        return newObj;
+    };
+    //测试
+    var obj = {
+                a:function(){
+                    console.log(this.b.c)
+                },
+                b:{c:1}
+            },//设置一个对象
+         newObj = cloneObj(obj);//复制对象
+
+    newObj.b.c=2;//给新对象赋新值
+    obj.a();//1，不受影响
+    newObj.a();//2
+</script>
+</html>

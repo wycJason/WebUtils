@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1>我是标题1</h1>
+<h1>我是标题2</h1>
+<h1>我是标题3</h1>
+<h1>我是标题4</h1>
+<h1>我是标题5</h1>
+<p contenteditable="true">这是一段可编辑的段落。请试着编辑该文本。</p>
+<button type="button" id="btn">由标题改为正文</button>
+<hr>
+<p>变换的文字</p>
+<button type="button" id="btn1" onclick="P2H()">由标题改为正文</button><button type="button" id="btn2" onclick="H2P()">由正文改为标题</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $("#btn").click(function(){
+        $("H1").each(function(i,d){
+            $(this).replaceWith("<p>"+$(this).text()+"</p>")
+        })
+    })
+
+    function H2P(){
+        var newNode=document.createElement("H2");
+        var oldNode=document.querySelector("p");
+        newNode.innerHTML=oldNode.innerText;
+        oldNode.parentNode.replaceChild(newNode,oldNode);
+    }
+    function P2H(){
+        var newNode=document.createElement("p");
+        var oldNode=document.querySelector("H2");
+        newNode.innerHTML=oldNode.innerText;
+        oldNode.parentNode.replaceChild(newNode,oldNode);
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Template</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="container" style="width: 400px; height: 400px; margin: 0 auto"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<script src="js/highcharts.js"></script>
+<script src="js/highcharts-more.js"></script>
+<script src="js/solid-gauge.js"></script>
+<script>
+    $(function () {
+        Highcharts.chart('container', {
+                    chart: {
+                        type: 'solidgauge',
+                        marginTop: 50,
+                    },
+
+                    title: {
+                        text: "80个", //null无内容
+                        //pointFormat:'{point.y}',
+                        //useHTML:true,
+                        //text:this.pointFormat,
+                        y: 220, //center设置标题的位置
+                        style: {
+                            fontSize: '24px',
+                            fontFamily: "Microsoft YaHei",
+                        },
+                    },
+                    subtitle: {
+                        text: '已购买账号',//副标题
+                        y: 240,//副标题位置
+                        style: {
+                            fontSize: '12px',
+                            fontFamily: "Microsoft YaHei",
+                        },
+                    },
+
+                    tooltip: {
+                        borderWidth: 0,//提示框宽度
+                        backgroundColor: 'none',//背景颜色
+                        shadow: false, //提示框是否应用阴影，没有看出明显效果
+                        enabled: false,//是否显示提示框
+                        style: { //提示框内容的样式
+                            fontSize: '16px'
+                        },
+                        pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}个</span>',
+                        positioner: function (labelWidth) {
+                            return {
+                                x: 200 - labelWidth / 2,  //250
+                                y: 180  //180
+                            };
+                        }
+                    },
+
+                    pane: {
+                        startAngle: 0,
+                        endAngle: 360,
+                        background: [{ // Track for Move
+                            outerRadius: '103%',  //112%    背景圆环大小
+                            innerRadius: '96%',  //88%     背景圆环半径大小
+                            backgroundColor: Highcharts.Color("#ddd"/*Highcharts.getOptions().colors[0]*/).setOpacity(0.3).get(),
+                            borderWidth: 0,
+                        }]
+                    },
+
+                    credits:{
+                        enabled:false // 禁用版权信息
+                    },
+
+                    yAxis: {
+                        min: 0,
+                        max: 100,
+                        lineWidth: 0,
+                        tickPositions: []
+                    },
+
+                    plotOptions: {
+                        solidgauge: {
+                            borderWidth: '34px',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            linecap: 'round',
+                            stickyTracking: false
+                        }
+                    },
+
+                    series: [{
+                        name: '账号购买',
+                        borderColor: "red"/*Highcharts.getOptions().colors[0]*/,
+                        borderRadius: 0,            //图框的圆角大小
+                        borderWidth: 8,             //图框的边框大小
+                        data: [{
+                            color: "blue",
+                            radius: '100%',
+                            innerRadius: '100%',
+                            y: 80,
+                        }]
+                    }]
+                }
+        );
+    });
+</script>
+</body>
+</html>

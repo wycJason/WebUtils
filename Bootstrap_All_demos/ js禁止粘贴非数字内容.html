@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<input type="text" class="number-input"/>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //判断正整数
+    /*
+     "^\\d+$"　　　　　　　　　　//非负整数（正整数 + 0）
+     　　"^[0-9]*[1-9][0-9]*$"　　　 //正整数
+     　　"^((-\\d+)|(0+))$"　　　　    //非正整数（负整数 + 0）
+     　　"^-[0-9]*[1-9][0-9]*$"　　  //负整数
+     　　"^-?\\d+$"　　　　　　　　   //整数
+     　　"^\\d+("　　　　　　　　　　 //非负浮点数（正浮点数 + 0）
+     　　"^(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*))$"　　　　//正浮点数
+     　　"^((-\\d+("　　　　　　　　   //非正浮点数（负浮点数 + 0）
+     　　"^(-(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*)))$"　　  //负浮点数
+     　　"^(-?\\d+)("　　　　　　　　 //浮点数
+    * */
+    //整数验证:零不能为首位
+    $(".number-input").keyup(function () {debugger
+        this.value = this.value.replace(/[^0-9]/g, '');  //只能输数字
+        if (this.value.indexOf(".") < 0 && this.value != "") {//以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额
+            this.value = parseFloat(this.value);
+        } else if (this.value.indexOf(".") == 0) {
+            this.value = this.value.replace(/[^0-9]/g, '')
+        }
+    })
+
+    document.querySelector(".number-input").addEventListener("paste",function(e){
+        var $this=$(this);
+        var clipboardData = e.clipboardData||window.clipboardData();
+        var pastedData = clipboardData.getData("text").toUpperCase();
+        var re = /^[1-9]+[0-9]*]*$/;
+        if (!re.test(pastedData))
+        {
+            alert("请输入数字且为正整数");
+            setTimeout(function(){//这个事件所有浏览器都支持，但是问题是当事件触发时，input事实上没有change，也就是无法即时获取输入框的内容。
+                $this.val("");
+            }, 200);
+        }
+    });
+
+/***************************************************************************************************************************************************************/
+    //粘贴事件
+    function checkNumPaste($this,e) {
+        var clipboardData = e.clipboardData || window.clipboardData();
+        var pastedData = clipboardData.getData("text").toUpperCase();
+        var re = /^[1-9]+[0-9]*]*$/;
+        if (!re.test(pastedData)) {
+            layer.msg('请输入数字且为正整数！', { icon: 0, offset: "100px" });
+            setTimeout(function () {//这个事件所有浏览器都支持，但是问题是当事件触发时，input事实上没有change，也就是无法即时获取输入框的内容。
+                $this.val("");
+            }, 200);
+        }
+    }
+    document.querySelector("#registeredAssets").addEventListener("paste", function (e) {
+        var $this = $(this);
+        checkNumPaste($this, e)
+    });
+    document.querySelector("#annualAales").addEventListener("paste", function (e) {
+        var $this = $(this);
+        checkNumPaste($this, e)
+    });
+
+</script>
+</body>
+</html>

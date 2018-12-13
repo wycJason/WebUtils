@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    /*
+     (1)jQuery全局插件函数：
+     JS中，全局函数会造成全局对象的污染！为了避免污染，可以把这些全局函数声明在jQuery名下——这些函数与jQuery并没有必然的联系。
+     声明方式： jQuery.fnName = function(arr/sts/num){}
+     调用方式： jQuery.fnName([]/''/0);
+    * */
+    if(!window.jQuery){
+        throw new Error('我的函数库依赖于jQuery');
+    }
+
+    jQuery.avg = function(arr){
+        var sum = 0;
+        for(var i=0; i<arr.length; i++){
+            sum += arr[i];
+        }
+        return sum/arr.length;
+    }
+
+    jQuery.max = function(arr){
+        var num = arr[0];
+        for(var i=1; i<arr.length; i++){
+            if(arr[i] > num){
+                num = arr[i]
+            }
+        }
+        return num;
+    }
+
+    jQuery.min = function(arr){
+        var num = arr[0];
+        for(var i=1; i<arr.length; i++){
+            if(arr[i] < num){
+                num = arr[i]
+            }
+        }
+        return num;
+    }
+    var list = [50, 80, 90, 70];
+    console.log( '平均值：'+ jQuery.avg(list)  );
+    console.log( '最大值：'+ jQuery.max(list)  );
+    console.log( '最小值：'+ jQuery.min(list)  );
+</script>
+<script>
+    /**
+     *我的jQuery全局函数库(Library)，基于jQuery而编写
+     * JS中，全局函数会造成全局对象的污染！为了避免污染，可以把这些全局函数声明在jQuery名下——这些函数与jQuery并没有必然的联系。
+     声明方式： jQuery.fnName = function(arr/sts/num){}
+     调用方式： jQuery.fnName([]/''/0);
+     */
+    if(!window.jQuery){
+        throw new Error('我的函数库依赖于jQuery');
+    }
+    jQuery.lwh = {};    //名称空间对象
+
+    jQuery.lwh.avg = function(arr){
+        var sum = 0;
+        for(var i=0; i<arr.length; i++){
+            sum += arr[i];
+        }
+        return sum/arr.length;
+    }
+
+    jQuery.lwh.max = function(arr){
+        var num = arr[0];
+        for(var i=1; i<arr.length; i++){
+            if(arr[i] > num){
+                num = arr[i]
+            }
+        }
+        return num;
+    }
+
+    jQuery.lwh.min = function(arr){
+        var num = arr[0];
+        for(var i=1; i<arr.length; i++){
+            if(arr[i] < num){
+                num = arr[i]
+            }
+        }
+        return num;
+    }
+    var list = [50, 80, 90, 70];
+    console.log( '平均值：'+ jQuery.lwh.avg(list)  );
+    console.log( '最大值：'+ jQuery.lwh.max(list)  );
+    console.log( '最小值：'+ jQuery.lwh.min(list)  );
+</script>
+<script>
+    /**
+     *我的函数库(Library)
+     */
+    var lwh = {};   //名称空间对象 namespace
+    lwh.avg = function(arr){
+        var sum = 0;
+        for(var i=0; i<arr.length; i++){
+            sum += arr[i];
+        }
+        return sum/arr.length;
+    }
+
+    lwh.max = function(arr){
+        var num = arr[0];
+        for(var i=1; i<arr.length; i++){
+            if(arr[i] > num){
+                num = arr[i]
+            }
+        }
+        return num;
+    }
+
+    lwh.min = function(arr){
+        var num = arr[0];
+        for(var i=1; i<arr.length; i++){
+            if(arr[i] < num){
+                num = arr[i]
+            }
+        }
+        return num;
+    }
+
+    var list = [50, 80, 90, 70];
+    console.log( '平均值：'+ lwh.avg(list)  );
+    console.log( '最大值：'+ lwh.max(list)  );
+    console.log( '最小值：'+ lwh.min(list)  );
+
+    //全局变量/函数，会自动成为“全局对象”的成员
+    //称为“全局对象的污染”——如何避免？
+    console.log(lwh.avg );
+    console.log( lwh.max );
+    console.log( lwh.min );
+</script>
+</body>
+</html>

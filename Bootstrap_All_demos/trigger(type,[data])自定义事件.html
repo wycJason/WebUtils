@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<p>点我</p><br>
+<button>点我</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //自定义事件
+    $("body").on("myEvent", function (event, message1, message2) {
+        alert(message1 + ' ' + message2);
+    });
+    $("body").trigger("myEvent", ["Hello","World!"]);
+
+
+    //传值
+    function myHandler(event) {
+        alert(event.data.foo);
+    }
+    $("p").on("click", {foo: "bar"}, myHandler)
+
+    //同时绑定多个事件类型/处理程序
+    $("button").on({
+        click:function(){$("p").slideToggle();},
+        mouseover:function(){$("body").css("background-color","red");},
+        mouseout:function(){$("body").css("background-color","#FFFFFF");}
+    });
+</script>
+</body>
+</html>

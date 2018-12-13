@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Light7日期时间选择器</title>
+    <meta name="description" content="light7: Build mobile apps with simple HTML, CSS, and JS components.">
+    <meta name="author" content="任行">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Google Web Fonts -->
+    <link rel="stylesheet" href="light7(SuiMobile)/_site/dist/css/light7.min.css">
+    <!--<link rel="stylesheet" href="light7(SuiMobile)/_site/dist/css/light7.css?r=201603281">-->
+    <!--<link rel="stylesheet" href="light7(SuiMobile)/_site/dist/css/light7-swiper.css">-->
+    <!--<link rel="stylesheet" href="light7(SuiMobile)/_site/dist/css/light7-swipeout.css">-->
+    <!--<link rel="stylesheet" href="light7(SuiMobile)/_site/assets/css/demos.css">-->
+    <!--<link rel="apple-touch-icon-precomposed" href="light7(SuiMobile)/_site/assets/img/apple-touch-icon-114x114.png">-->
+    <script src="light7(SuiMobile)/_site/assets/js/jquery-2.1.4.js"></script>
+    <script>
+        //ga
+    </script>
+</head>
+<body>
+<div id="page-layout" class="page">
+    <header class="bar bar-nav">
+        <a class="button button-link button-nav pull-left back" href="/demos/form">
+            <span class="icon icon-left"></span>
+            Back
+        </a>
+
+        <h1 class="title">Form</h1>
+    </header>
+    <div class="content">
+        <div class="list-block">
+            <ul>
+                <!-- Text inputs -->
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-name"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">Name</div>
+                            <div class="item-input">
+                                <input type="text" placeholder="Your name">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-email"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">E-mail</div>
+                            <div class="item-input">
+                                <input type="email" placeholder="E-mail">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-password"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">Password</div>
+                            <div class="item-input">
+                                <input type="password" placeholder="Password" class="">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-gender"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">Gender</div>
+                            <div class="item-input">
+                                <select>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- Date -->
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">Birth date</div>
+                            <div class="item-input">
+                                <input type="date" placeholder="Birth day" value="2018-04-30">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- MobilePhone -->
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">手机</div>
+                            <div class="item-input">
+                                <input type="text" id='picker'value="iPhone 5S"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- 日期时间 -->
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">日期时间</div>
+                            <div class="item-input">
+                                <input type="text" id='datetime-picker' value="2015-12-12 08:30"/>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- 日期 -->
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">日期</div>
+                            <div class="item-input">
+                                <input type="date" value="2018-04-30">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- 时间 -->
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">时间</div>
+                            <div class="item-input">
+                                <input type="time" value="10:40">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- 本地日期时间 -->
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">本地日期时间</div>
+                            <div class="item-input">
+                                <input type="datetime-local">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- Switch (Checkbox) -->
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-toggle"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">Switch</div>
+                            <div class="item-input">
+                                <label class="label-switch">
+                                    <input type="checkbox">
+
+                                    <div class="checkbox"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="align-top">
+                    <div class="item-content">
+                        <div class="item-media"><i class="icon icon-form-comment"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">Textarea</div>
+                            <div class="item-input">
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <div class="row">
+                <div class="col-50"><a href="#" class="button button-big button-fill button-danger">Cancel</a></div>
+                <div class="col-50"><a href="#" class="button button-big button-fill button-success">Submit</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="light7(SuiMobile)/_site/dist/js/light7.min.js"></script>
+<!--<script src="light7(SuiMobile)/_site/dist/js/light7-swiper.js"></script>-->
+<!--<script src="light7(SuiMobile)/_site/dist/js/light7-city-picker.js"></script>-->
+<!--<script src="light7(SuiMobile)/_site/dist/js/light7-swipeout.js"></script>-->
+<!--<script src="light7(SuiMobile)/_site/assets/js/demos.js?r=201603281"></script>-->
+<script>
+    $("#picker").picker({
+        toolbarTemplate: '<header class="bar bar-nav">\
+                      <button class="button button-link pull-left close-picker">取消</button>\
+                      <button class="button button-link pull-right close-picker">确定</button>\
+                      <h1 class="title">标题</h1>\
+                    </header>',
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2', 'iPad Retina', 'iPad Air', 'iPad mini', 'iPad mini 2', 'iPad mini 3']
+            }
+        ]
+    });
+
+    $("#datetime-picker").datetimePicker({
+        toolbarTemplate: '<header class="bar bar-nav">\
+            <button class="button button-link pull-right close-picker">确定</button>\
+            <h1 class="title">选择日期和时间</h1>\
+        </header>',
+    });
+</script>
+</body>
+</html>

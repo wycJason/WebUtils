@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>基于原生Bootstrap carousel扩展的实用jQuery旋转木马</title>
+	<link rel="stylesheet" href="http://libs.baidu.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+	<style>
+		.carousel .carousel-inner > .item.row>li{
+			text-align: center;
+		}
+		.avatarParent{
+			width: 93px;
+			height: 93px;
+			margin: 0 auto;
+		}
+		.avatar{
+			border-radius: 50%;
+		}
+		.avatarInfo{
+			text-align: left;
+		}
+	</style>
+	<!--[if IE]>
+		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<section class="jq22-container">
+	<div class="container">
+		<h2>Standard Rotation</h2>
+		<div id="full" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+
+				<ul class="row item active">
+					<li class="col-xs-4">
+						<div class="avatarParent">
+							<img width="93" class="avatar" src="../Images/girls.jpg" alt=""/>
+						</div>
+						<h3>张三丰</h3>
+						<p class="avatarInfo">这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍</p>
+					</li>
+					<li class="col-xs-4">
+						<div class="avatarParent">
+							<img width="93" class="avatar" src="../Images/girls.jpg" alt=""/>
+						</div>
+						<h3>张三丰</h3>
+						<p class="avatarInfo">这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍</p>
+					</li>
+					<li class="col-xs-4">
+						<div class="avatarParent">
+							<img width="93" class="avatar" src="../Images/girls.jpg" alt=""/>
+						</div>
+						<h3>张三丰</h3>
+						<p class="avatarInfo">这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍</p>
+					</li>
+				</ul>
+				<ul class="row item">
+					<li class="col-xs-4">
+						<div class="avatarParent">
+							<img width="93" class="avatar" src="../Images/girls.jpg" alt=""/>
+						</div>
+						<h3>张三丰1</h3>
+						<p class="avatarInfo">这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍</p>
+					</li>
+					<li class="col-xs-4">
+						<div class="avatarParent">
+							<img width="93" class="avatar" src="../Images/girls.jpg" alt=""/>
+						</div>
+						<h3>张三丰1</h3>
+						<p class="avatarInfo">这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍</p>
+					</li>
+					<li class="col-xs-4">
+						<div class="avatarParent">
+							<img width="93" class="avatar" src="../Images/girls.jpg" alt=""/>
+						</div>
+						<h3>张三丰1</h3>
+						<p class="avatarInfo">这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍这个是人物的介绍</p>
+					</li>
+				</ul>
+			</div>
+
+			<a class="carousel-control left" href="#full" data-slide="prev">Previous</a>
+			<a class="carousel-control right" href="#full" data-slide="next">Next</a>
+		</div>
+	</div>
+</section>
+	<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://libs.baidu.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

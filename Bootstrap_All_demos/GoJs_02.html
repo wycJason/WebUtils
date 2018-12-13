@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="myDiagramDiv"
+     style="width:800px; height:800px; background-color: #DAE4E4;">
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.6.7/go-debug.js"></script>-->
+<script src="js/go-debug.js"></script>
+<script>
+    var $ = go.GraphObject.make;
+    var diagram = new go.Diagram("myDiagramDiv");
+    diagram.add(
+            $(go.Node, go.Panel.Auto,
+                    $(go.Shape,
+                            { figure: "RoundedRectangle",
+                                fill: "lightblue" }),
+                    $(go.TextBlock,
+                            { text: "Hello!",
+                                margin: 5 })
+            ));
+</script>
+</body>
+</html>

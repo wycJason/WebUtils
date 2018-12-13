@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <style>
+    .tab-content-custom > .tab-pane {
+      display: none;
+    }
+    .tab-content-custom> .active {
+      display: block;
+    }
+  </style>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>组件——导航(标签页)<a href="http://www.runoob.com/bootstrap/bootstrap-tab-plugin.html">参考文献</a></h1>
+  <hr>
+  <p class="active-tab"><strong>激活的标签页</strong>：<span></span></p>
+  <p class="previous-tab"><strong>前一个激活的标签页</strong>：<span></span></p>
+  <hr>
+  <h3>标签页式导航</h3>
+  <ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#tc10">十元套餐</a></li>
+    <li><a data-toggle="tab" href="#tc20">二十元套餐</a></li>
+    <li><a data-toggle="tab" href="#tc30">三十元套餐</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="tc10">十元套餐详情...</div>
+    <div class="tab-pane" id="tc20">二十元套餐详情...</div>
+    <div class="tab-pane" id="tc30">三十元套餐详情...</div>
+  </div>
+
+
+
+
+  <h3>胶囊式导航</h3>
+  <ul class="nav nav-pills">
+    <li><a data-toggle="tab" href="#tc101">十元套餐</a></li>
+    <li class="active"><a data-toggle="tab" href="#tc201">二十元套餐</a></li>
+    <li><a data-toggle="tab" href="#tc301">三十元套餐</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane fade" id="tc101">十元套餐详情...</div>
+    <div class="tab-pane active fade in " id="tc201">二十元套餐详情...</div>
+    <div class="tab-pane fade" id="tc301">三十元套餐详情...</div>
+  </div>
+
+  <h3>胶囊式导航的一个特殊形式——栈式</h3>
+  <ul class="nav nav-pills nav-stacked">
+    <li><a data-toggle="tab" href="#11">十元套餐</a></li>
+    <li><a data-toggle="tab" href="#22">二十元套餐</a></li>
+    <li class="active"><a data-toggle="tab" href="#33">三十元套餐</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" id="11">十元套餐详情...</div>
+    <div class="tab-pane" id="22">二十元套餐详情...</div>
+    <div class="tab-pane active" id="33">三十元套餐详情...</div>
+  </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+  // 选取第三个标签页（从 0 开始索引）
+  //$('#myTab li:eq(2) a').tab('show')
+
+
+   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+   // 获取已激活的标签页的名称
+   var activeTab = $(e.target).text();
+   // 获取前一个激活的标签页的名称
+   var previousTab = $(e.relatedTarget).text();
+   $(".active-tab span").html(activeTab);
+   $(".previous-tab span").html(previousTab);
+   });
+
+
+
+ /* (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s)
+  })();*/
+</script>
+</body>
+</html>

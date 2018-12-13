@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        #dropzone {
+            min-height: 600px;
+            border: black 1px solid;
+            overflow:auto;
+        }
+
+        #dropzone.over {
+            border: 1px dashed red;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="dropzone" contenteditable="true"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    var dz = document.getElementById('dropzone');
+    //拖放  IE 10+ 支持
+    dz.ondragover = function(ev) {
+        //阻止浏览器默认打开文件的操作
+        ev.preventDefault();
+        this.className = 'over';
+    }
+
+    dz.ondragleave = function() {
+        this.className = '';
+    }
+
+    dz.ondrop = function(ev) {
+        debugger;
+        var file=ev.dataTransfer.files[0];
+        this.className = '';
+        console.log(ev.dataTransfer)
+       /* DataTransfer:解释  https://blog.csdn.net/qq_37111953/article/details/78278048
+            dropEffect: "none"
+            effectAllowed: "all"
+            files: FileList {length: 0}
+            items: DataTransferItemList {length: 0}
+            types: []*/
+        //阻止浏览器默认打开文件的操作
+        ev.preventDefault();
+        var reader = new FileReader();
+        // 图片文件转换为base64
+        reader.readAsDataURL(file);//readAsDataURL会将文件内容进行base64编码后输出
+        reader.onload = function(){
+            $("#dropzone").append('<img src="'+this.result+'" width="350">')
+        }
+    }
+
+    //去除复制样式的方法   https://blog.csdn.net/weixin_38500689/article/details/80456044
+    function textInit(e) {debugger;
+        e.preventDefault();//阻止默认事件
+        var text;
+        var clp = (e.originalEvent || e).clipboardData;
+        if (clp === undefined || clp === null) {
+            text = window.clipboardData.getData("text") || "";
+            if (text !== "") {
+                if (window.getSelection) {
+                    var newNode = document.createElement("span");
+                    newNode.innerHTML = text;
+                    window.getSelection().getRangeAt(0).insertNode(newNode);
+                } else {
+                    document.selection.createRange().pasteHTML(text);
+                }
+            }
+        } else {
+            text = clp.getData('text/plain') || "";
+            if (text !== "") {
+                document.execCommand('insertText', false, text);
+            }
+        }
+    }
+    function todoFilter(e) {//去除复制样式的方法  谷歌浏览器支持
+        e.preventDefault();
+        if (!e.target.getAttribute('contenteditable')) {
+            return;
+        }
+        const cpTxt = e
+                .clipboardData
+                .getData('text');
+
+        const selection = window.getSelection ? window.getSelection() : document.selection;
+        if (!selection.rangeCount) return;
+        const range = selection.createRange ? selection.createRange() : selection.getRangeAt(0);
+        window._range = range;
+        if (!window.getSelection) {
+            range.pasteHTML(cpTxt);
+            range.collapse(false);
+            range.select();
+        } else {
+            range.collapse(false);
+            const hasR = range.createContextualFragment(cpTxt);
+            let hasR_lastChild = hasR.lastChild;
+            while (hasR_lastChild && hasR_lastChild.nodeName.toLowerCase() == 'br' && hasR_lastChild.previousSibling && hasR_lastChild.previousSibling.nodeName.toLowerCase() == 'br') {
+                var e = hasR_lastChild;
+                hasR_lastChild = hasR_lastChild.previousSibling;
+                hasR.removeChild(e);
+            }
+            range.insertNode(hasR);
+            if (hasR_lastChild) {
+                range.setEndAfter(hasR_lastChild);
+                range.setStartAfter(hasR_lastChild);
+            }
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    }
+
+
+
+
+
+    //粘贴   Edge浏览器支持  IE不支持  参考文档 https://www.cnblogs.com/heihei-haha/p/7879611.html     https://segmentfault.com/a/1190000007434697?_ea=1531953
+    dz.onpaste = function(event) {
+        textInit(event);//去除复制样式
+        //todoFilter(event)
+
+        console.log(event);
+        var isChrome = false;
+        if (event.clipboardData || event.originalEvent) {
+            //某些chrome版本使用的是event.originalEvent
+            var clipboardData = (event.clipboardData || event.originalEvent.clipboardData);
+            if(clipboardData.items){
+                // for chrome
+                var  items = clipboardData.items,
+                        len = items.length,
+                        blob = null;
+                isChrome = true;
+                for (var i = 0; i < len; i++) {
+                    console.log(items[i]);
+                    debugger;
+                    if (items[i].type.indexOf("image") !== -1) {
+                        //getAsFile() 此方法只是living standard firefox ie11 并不支持
+                        blob = items[i].getAsFile();
+                    }
+                }
+                if(blob!==null){
+                    //blob对象显示
+                    /*var blobUrl=URL.createObjectURL(blob);
+                    document.getElementById("imgNode").src=blobUrl;*/
+
+                    // 图片文件转换为base64
+                    var reader = new FileReader();
+                    reader.readAsDataURL(blob);//readAsDataURL会将文件内容进行base64编码后输出
+                    reader.onload = function(){
+                        $("#dropzone").append('<img src="'+this.result+'" width="350">')
+                    }
+
+                    //创建XMLHttpRequest对象
+                   /* var fd = new FormData(document.forms[0]);
+                    fd.append("the_file", blob, 'image.png');
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST','/image' );
+                    xhr.onload = function () {
+                        if ( xhr.readyState === 4 ) {
+                            if ( xhr.status === 200 ) {
+                                var data = JSON.parse( xhr.responseText );
+                                console.log(data);
+                            } else {
+                                console.log( xhr.statusText );
+                            }
+                        };
+                    };
+                    xhr.onerror = function (e) {
+                        console.log( xhr.statusText );
+                    }
+                    xhr.send(fd);*/
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

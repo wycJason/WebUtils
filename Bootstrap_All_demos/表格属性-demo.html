@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!--
+表格
+      1.表格
+          1.表格结构
+            table>tr>td>内容
+            <table border="1">
+                <caption>表头</caption>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+	  2.table的属性  :都不带单位，默认为px
+		1.border="数值"; 没有单位，默认无边框
+		2.width
+		3.height 有行分组时，高度指tbody的高度，不含thead和tfoot，没有行分组时指整个表格的高度，每行高是均匀分配的
+		4.align= left center right  表格在页面里的水平位置
+		5.cellpadding="数值":内边距   td 中文字与边框的距离
+		6.cellspacing="数值":外边距   td边框与td边框的距离， td边框与table边框的距离
+		7.bgcolor="颜色单词":背景颜色
+	  3.tr的属性
+		1.align:水平对齐方式
+		2.valign:垂直对齐方式
+		  取值:top,middle,bottom
+		3.bgcolor:背景颜色
+	  4.td的属性
+		1.align
+		2.valign
+		3.width
+		4.height
+		5.跨列:colspan
+		6.跨行:rowspan
+7.bgcolor:背景颜色
+	2.不规则表格
+		通过设置td的属性来完成不规则表格的创建
+		1.colspan
+		  从指定单元格位置开始，横向向右，合并
+		  几个单元格，包括自己
+		2.rowspan
+		  从指定单元格位置开始，纵向向下，合并
+		  几个单元格，包括自己
+	3.表格的复杂应用
+		1.表格标题
+			标记:caption
+			语法：<caption>内容</caption>
+			位置:位于table内容中的第一行
+		2.表头行分组
+			<thead>
+				<tr>
+					<th></th>
+				</tr>
+			</thead>
+		3.表主体分组
+			<tbody>
+				<tr>
+					<td></td>
+				</tr>
+			</tbody>
+		4.表尾行分组
+			<tfoot>
+				<tr>
+					<td></td>
+				</tr>
+			</tfoot>
+-->
+<body>
+<table align="center" border="1" width="0" height="400" cellpadding="5" cellspacing="10">
+    <caption>表格</caption>
+    <thead>
+    <tr>
+        <th>标题</th>
+        <th>标题</th>
+        <th>标题</th>
+        <th>标题</th>
+        <th>标题</th>
+        <th>标题</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center">
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    <tr align="center">
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    <tr align="center">
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr align="center">
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    </tfoot>
+</table>
+</body>
+</html>

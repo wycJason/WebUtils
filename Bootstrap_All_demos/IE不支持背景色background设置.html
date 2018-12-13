@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<ul id="shift_BanciList">
+    <li data-val="4"><a style="background:#2DB7F5">正常班</a></li>
+    <li data-val="7"><a style="background:#FF5500">测试2</a></li>
+    <li data-val="-1"><a>休息</a></li>
+</ul>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.3.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script>
+    //IE11 不支持取背景色设置
+    debugger;
+    function GetColorFormBanciList(obj) {
+        var color = "";
+        $("#shift_BanciList li").each(function () {
+            if ($(this).attr("data-val") == obj) {
+                color = $(this).find("a").css("background");
+                return false;
+            }
+        });
+        return color;
+    }
+    var textColor="red";
+    $(document.body).append('<div style="width: 200px;height: 200px;background:'+ GetColorFormBanciList(4)+'; color:'+ textColor+'">思普达公司</div>');
+</script>
+</body>
+</html>

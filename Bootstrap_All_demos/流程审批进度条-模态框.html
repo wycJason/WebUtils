@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .ellipseWrap{
+            position: relative;
+            width: 1200px;
+        }
+        .ellipseRight{
+            position: absolute;
+            z-index: 100;
+            top:61px;
+            right: 0;
+        }
+        .ellipseLeft{
+            position: absolute;
+            z-index: 100;
+            top:191px;
+            left: 0;
+        }
+        table.flowTable{
+            width: 916px;
+            margin: 0 auto;
+        }
+        table.flowTable tbody tr td{
+            width: 250px;
+            height: 130px;
+            position: relative;
+        }
+        .flowTableLine{
+            width: 100%;
+            border: 3px solid #41A0FF;
+        }
+        .starNum{
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #41A0FF;
+            color: white;
+            border-radius: 50%;
+            margin: 5px auto;
+            font-size: 12px;
+            position: absolute;
+            top: 48px;
+            left: -5px;
+            z-index: 100;
+        }
+        .flowTableInfoToRight{
+            position: absolute;
+            width: 150px;
+            top:30px;
+            right:-70px;
+            z-index: 100;
+        }
+        .flowTableInfoToLeft{
+            position: absolute;
+            width: 150px;
+            top:33px;
+            left:-70px;
+            z-index: 100;
+        }
+        .flowTableState{
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 15px;
+            background-color: #41A0FF;
+            color: white;
+            font-size: 12px;
+        }
+        .flowTableNum{
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #41A0FF;
+            color: white;
+            border-radius: 50%;
+            margin: 5px auto;
+            font-size: 12px;
+        }
+        .flowTableYMD{
+            width: 100%;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="modal fade" id="atdMember" data-backdrop= "static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" style="width: 1330px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" data-dismiss="modal">&times;</span>
+                <span style="font-size:14px;font-weight:bold;">标题</span>
+            </div>
+            <div class="modal-body">
+                <div class="ellipseWrap">
+                    <img class="ellipseRight" src="Images/flowProgressRight.png" alt=""/>
+                    <img class="ellipseLeft hidden" src="Images/flowProgressLeft.png" alt=""/>
+                    <table id="flowTable" class="flowTable">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="starNum"></div>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToRight">
+                                    <div class="flowTableState">融资申请保理</div>
+                                    <div class="flowTableNum">1</div>
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToRight">
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                    <div class="flowTableNum">2</div>
+                                    <div class="flowTableState">融资申请保理</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToRight">
+                                    <div class="flowTableState">融资申请保理</div>
+                                    <div class="flowTableNum">3</div>
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToRight">
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                    <div class="flowTableNum">4</div>
+                                    <div class="flowTableState">融资申请保理</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="starNum"></div>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToLeft">
+                                    <div class="flowTableState">融资申请保理</div>
+                                    <div class="flowTableNum">8</div>
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToLeft">
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                    <div class="flowTableNum">7</div>
+                                    <div class="flowTableState">融资申请保理</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToLeft">
+                                    <div class="flowTableState">融资申请保理</div>
+                                    <div class="flowTableNum">6</div>
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToLeft">
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                    <div class="flowTableNum">5</div>
+                                    <div class="flowTableState">融资申请保理</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!--<tr>
+                            <td>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToRight">
+                                    <div class="flowTableState">融资申请保理</div>
+                                    <div class="flowTableNum">1</div>
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToRight">
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                    <div class="flowTableNum">2</div>
+                                    <div class="flowTableState">融资申请保理</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToRight">
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                    <div class="flowTableNum">3</div>
+                                    <div class="flowTableState">融资申请保理</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flowTableLine"></div>
+                                <div class="flowTableInfoToRight">
+                                    <div class="flowTableYMD">2017年10月28日</div>
+                                    <div class="flowTableNum">4</div>
+                                    <div class="flowTableState">融资申请保理</div>
+                                </div>
+                            </td>
+                        </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" class="btn btn-default" data-dismiss="modal">取消</a>
+                <a href="javascript:void(0)" class="btn btn-info">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button type="button" id="btn">流程审批模态框</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+$("#btn").click(function(){
+    $("#atdMember").modal("show");
+})
+</script>
+</body>
+</html>

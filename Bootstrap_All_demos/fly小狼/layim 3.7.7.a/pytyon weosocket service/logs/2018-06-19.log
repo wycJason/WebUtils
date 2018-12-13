@@ -1,0 +1,36 @@
+2018-06-19 22:27:02 INFO    新增群组101,成员:{'list': [{'id': '100001'}, {'id': '100002'}, {'id': '100003'}, {'id': '100004'}, {'id': '100005'}], 'id': '101'}
+2018-06-19 22:28:32 INFO     service thread start 
+2018-06-19 22:28:33 INFO    strat websocket 8000 ...
+2018-06-19 22:28:48 INFO    新连接  id是 1001  连接总数: 1
+2018-06-19 22:28:48 INFO    Client(1001) said: {"username":"纸飞机","id":"100002","sign":"在深邃的编码世界，做一枚轻盈的纸飞机","avatar":"img/1.jpg","status":"online","datatype":"login"}
+2018-06-19 22:28:48 INFO    用户登陆 100002
+2018-06-19 22:28:48 INFO    广播在线与未读  100002
+2018-06-19 22:28:48 INFO    100002的离线消息数量:0
+2018-06-19 22:29:05 INFO    Client(1001) said: {"mine":{"username":"纸飞机","avatar":"img/1.jpg","id":"100002","mine":true,"senddate":"2018-06-19T14:29:05.238Z","state":"sending","content":"en  ","cid":"100002-100001-friend-1529418545238-1634"},"to":{"username":"贤心","id":"100001","avatar":"img/2.jpg","sign":"我是妹子","status":"offline","name":"贤心","type":"friend"},"datatype":"chatmessage"}
+2018-06-19 22:29:18 INFO    新连接  id是 1002  连接总数: 2
+2018-06-19 22:29:18 INFO    Client(1002) said: {"username":"贤心","id":"100001","avatar":"img/2.jpg","sign":"我是妹子","status":"online","datatype":"login"}
+2018-06-19 22:29:18 INFO    用户登陆 100001
+2018-06-19 22:29:18 INFO    广播在线与未读  100001
+2018-06-19 22:29:18 INFO    100001的离线消息数量:1
+2018-06-19 22:29:21 INFO    Client(1002) said: {"username":"纸飞机","content":"en  ","sysdate":"2018-06-19 22:29:18","avatar":"img/1.jpg","timestamp":1529418545233,"cid":"100002-100001-friend-1529418545238-1634","datatype":"msgread","fromid":"100002","type":"friend","id":"100002"}
+2018-06-19 22:29:57 INFO    stop websocket  ...
+2018-06-19 22:32:02 INFO    新增群组101,成员:{'list': [{'id': '100001'}, {'id': '100002'}, {'id': '100003'}, {'id': '100004'}, {'id': '100005'}], 'id': '101'}
+2018-06-19 22:32:04 INFO     service thread start 
+2018-06-19 22:32:05 INFO    strat websocket 8000 ...
+2018-06-19 22:32:12 INFO    新连接  id是 1001  连接总数: 1
+2018-06-19 22:32:12 INFO    Client(1001) said: {"username":"纸飞机","id":"100002","sign":"在深邃的编码世界，做一枚轻盈的纸飞机","avatar":"img/1.jpg","status":"online","datatype":"login"}
+2018-06-19 22:32:12 INFO    用户登陆 100002
+2018-06-19 22:32:12 INFO    广播在线与未读  100002
+2018-06-19 22:32:12 INFO    100002的离线消息数量:0
+2018-06-19 22:32:20 INFO    新连接  id是 1002  连接总数: 2
+2018-06-19 22:32:20 INFO    Client(1002) said: {"username":"贤心","id":"100001","avatar":"img/2.jpg","sign":"我是妹子","status":"online","datatype":"login"}
+2018-06-19 22:32:20 INFO    用户登陆 100001
+2018-06-19 22:32:20 INFO    广播在线与未读  100001
+2018-06-19 22:32:21 INFO    100001的离线消息数量:0
+2018-06-19 22:32:37 INFO    Client(1002) said: {"mine":{"username":"贤心","avatar":"img/2.jpg","id":"100001","mine":true,"senddate":"2018-06-19T14:32:37.118Z","state":"sending","content":" 在吗？","cid":"100001-100002-friend-1529418757118-5720"},"to":{"username":"纸飞机","id":"100002","sign":"在深邃的编码世界，做一枚轻盈的纸飞机","avatar":"img/1.jpg","status":"offline","type":"friend","name":"纸飞机"},"datatype":"chatmessage"}
+2018-06-19 22:35:23 INFO    Client(1001) said: {"username":"贤心","content":" 在吗？","sysdate":"2018-06-19 22:32:37","avatar":"img/2.jpg","timestamp":1529418757120,"cid":"100001-100002-friend-1529418757118-5720","datatype":"msgread","fromid":"100001","type":"friend","id":"100001"}
+2018-06-19 22:35:43 INFO    Client(1001) said: {"mine":{"username":"纸飞机","avatar":"img/1.jpg","id":"100002","mine":true,"senddate":"2018-06-19T14:35:43.934Z","state":"sending","content":"不在","cid":"100002-100001-friend-1529418943934-3855"},"to":{"username":"贤心","id":"100001","avatar":"img/2.jpg","sign":"我是妹子","status":"offline","name":"贤心","type":"friend","historyTime":1529418543092},"datatype":"chatmessage"}
+2018-06-19 22:35:43 INFO    Client(1002) said: {"username":"纸飞机","content":"不在","sysdate":"2018-06-19 22:35:43","avatar":"img/1.jpg","timestamp":1529418943934,"cid":"100002-100001-friend-1529418943934-3855","datatype":"msgread","fromid":"100002","type":"friend","id":"100002"}
+2018-06-19 22:36:42 INFO    Client(1001) 断开
+2018-06-19 22:42:18 INFO    Client(1002) 断开
+2018-06-19 23:30:48 INFO    stop websocket  ...

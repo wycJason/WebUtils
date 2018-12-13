@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+   /* 15位身份证号码各位的含义:
+    1-2位省、自治区、直辖市代码；
+    3-4位地级市、盟、自治州代码；
+    5-6位县、县级市、区代码；
+    7-12位出生年月日,比如670401代表1967年4月1日,与18位的第一个区别；
+    13-15位为顺序号，其中15位男为单数，女为双数；与18位身份证号的第二个区别：
+    没有最后一位的验证码。
+    举例：
+    130503 670401 001的含义; 13为河北，05为邢台，03为桥西区，出
+    生日期为1967年4月1日，顺序号为001。*/
+
+  /* 验证身份证的正则*/
+   if (!(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(420621198909241018))) {
+       alert("身份证输入不合法，请重填！", "forbidden");
+   }
+
+
+
+    //str只能是字符串不能为数字
+    var strlong="42062119890924101X";
+    var strshort="130503670401001";
+    function IDNumber(str){
+        if(str.length==18){
+            formatStr=str.replace(/(\d{10})(\d+)(.{4})/,function(x,y,z,p){
+                var i="";
+                while(i.length<z.length){i+="*"}
+                return y+i+p
+            })
+            return formatStr
+        }else{
+            formatStr=str.replace(/(\d{8})(\d+)(\d{3})/,function(x,y,z,p){
+                var i="";
+                while(i.length<z.length){i+="*"}
+                return y+i+p
+            })
+            return formatStr
+        }
+    }
+    console.log(IDNumber(strlong),IDNumber(strshort))
+</script>
+</body>
+</html>

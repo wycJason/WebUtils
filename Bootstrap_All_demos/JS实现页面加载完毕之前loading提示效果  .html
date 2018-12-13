@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <script>
+        //获取浏览器页面可见高度和宽度
+        var _PageHeight = document.documentElement.clientHeight,
+                _PageWidth = document.documentElement.clientWidth;
+        //计算loading框距离顶部和左部的距离（loading框的宽度为215px，高度为61px）
+        var _LoadingTop = _PageHeight > 61 ? (_PageHeight - 61) / 2 : 0,
+                _LoadingLeft = _PageWidth > 215 ? (_PageWidth - 215) / 2 : 0;
+        //在页面未加载完毕之前显示的loading Html自定义内容
+        var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background: rgba(0,0,0,.6);;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: auto; height: 57px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: #fff url(img/loading.gif) no-repeat scroll -43px -37px;border-radius: 3px; background-size: 133px; color: #696969; font-family:\'Microsoft YaHei\';">页面加载中，请稍后...</div></div>';
+        //呈现loading效果
+        document.write(_LoadingHtml);
+
+        //window.onload = function () {
+        //    var loadingMask = document.getElementById('loadingDiv');
+        //    loadingMask.parentNode.removeChild(loadingMask);
+        //};
+
+
+        //监听加载状态改变时调用completeLoading方法
+        //document.onreadystatechange = completeLoading;
+
+        //加载状态为complete时移除loading效果
+        function completeLoading() {//readyState 属性返回当前文档的状态
+            if (document.readyState == "complete") {//uninitialized - 还未开始载入  loading - 载入中  interactive - 已加载，文档与用户可以开始交互  complete - 载入完成
+                var loadingMask = document.getElementById('loadingDiv');
+                loadingMask.parentNode.removeChild(loadingMask);
+            }
+        }
+    </script>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+/*
+ 定义和用法
+ readyState 属性返回当前文档的状态（载入中……）。
+ 该属性返回以下值:
+ uninitialized - 还未开始载入
+ loading - 载入中
+ interactive - 已加载，文档与用户可以开始交互
+ complete - 载入完成
+ 语法
+ document.readyState
+
+
+
+ 使用 document.onreadystatechange()来判断页面加载完
+ document.onreadystatechange = subSomething;//当页面加载状态改变的时候执行这个方法.
+ function subSomething()
+ {
+ if(document.readyState == "complete"){ //当页面加载状态为完全结束时进入
+ //你要做的操作。
+ }
+ }
+ 用这个可以做一下等待网站图片或者其他东西加载完以后的操作，比如加载时我们可以调用加载动画，当complete也就是加载完成时我们让加载动画隐藏，这样只是一个小例子。还是很完美的。
+* */
+</script>
+</body>
+</html>

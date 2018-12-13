@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .parent{
+            width: 255px;
+            height: 255px;
+            overflow: hidden;
+            border: 1px solid #000;
+        }
+        .child{
+            width: 256px;
+            height: 256px;
+            position: relative;
+            opacity: .8;
+            background: red;
+            top:-56px;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="parent">
+    <img src="img/star.jpg" />
+    <a href="#">
+        <div class="child"></div>
+    </a>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    $(".parent").hover(function(){
+        $(".child").animate({top:"-260"},3000)
+    },function(){
+        $(".child").animate({top:"-56"},3000)
+    })
+</script>
+</body>
+</html>

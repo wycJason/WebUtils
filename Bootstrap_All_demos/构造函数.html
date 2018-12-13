@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    //Step1: 定义构造函数
+    function Student(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    //向构造函数原型上添加属性和方法
+    Student.prototype = {
+        //this 指实例化的对象，谁调用这个info()方法，this就指.前的对象，即原对象
+        info: function () {
+           return this.name+":自我介绍！"
+        },
+        className: "一（5）班"
+    }
+    //Step2: 用new调用构造函数
+    var lilei = new Student("Li Lei", 24);
+    var hmm = new Student("Han Meimei", 22);
+    console.log(lilei);
+    console.log(hmm);
+    console.log(lilei.info());
+    console.log(lilei.className);
+    console.log(hmm.info());
+    console.log(hmm.className);
+
+
+
+    //平面坐标系里的点
+    function Point(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    Point.prototype.toString = function () {
+        return "P"+'(' + this.x + ', ' + this.y + ')';
+    };
+
+    var p = new Point(1, 2);
+    console.log(p.toString());
+</script>
+</body>
+</html>

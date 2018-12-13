@@ -1,0 +1,19 @@
+.weui-progress {
+  display: flex;
+  align-items: center;
+}
+.weui-progress__bar {
+  background-color: #EBEBEB;
+  height: 3px;
+  flex: 1;
+}
+.weui-progress__inner-bar {
+  width: 0;
+  height: 100%;
+  background-color: #09BB07;
+}
+.weui-progress__opr {
+  display: block;
+  margin-left: 15px;
+  font-size: 0;
+}

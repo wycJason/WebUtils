@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><script type="text/html"></script> js模版使用</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="http://www.cnblogs.com/MrZouJian/p/5614581.html" target="_blank">js模版使用</a></h1>
+<div></div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/html" id="javascript_template">
+    <div onclick="_dom()">
+        <ul id="wrap">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+</script>
+<script>
+    debugger;
+    var _html=document.getElementById('javascript_template').innerHTML;
+    document.getElementsByTagName('div')[0].innerHTML=_html;
+    function _dom() {
+        alert("templete")
+    }
+</script>
+</body>
+</html>

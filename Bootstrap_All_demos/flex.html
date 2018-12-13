@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .flexA{display:flex;width:800px;margin:0;padding:0;list-style:none;}
+        .flexA :nth-child(1){flex:1 1 300px;border: 1px solid #dddcdd}
+        .flexA :nth-child(2){flex:2 2 200px;border: 1px solid #dddcdd}
+        .flexA :nth-child(3){flex:3 3 400px;border: 1px solid #dddcdd}
+
+        .flexB{display:flex;width:1500px;margin:0;padding:0;list-style:none;}
+        .flexB :nth-child(1){flex:1 1 300px;border: 1px solid #dddcdd}
+        .flexB :nth-child(2){flex:2 2 200px;border: 1px solid #dddcdd}
+        .flexB :nth-child(3){flex:3 3 400px;border: 1px solid #dddcdd}
+
+        .flexC{display:flex;width:600px;margin:0;padding:0;list-style:none;}
+        .flexC :nth-child(1){flex:1 1 0;border: 1px solid #dddcdd}
+        .flexC :nth-child(2){flex:2 2 0;border: 1px solid #dddcdd}
+        .flexC :nth-child(3){flex:3 3 0;border: 1px solid #dddcdd}
+
+        .flexD {
+            display: flex;
+            flex-direction: row-reverse;
+            list-style: none;
+        }
+        .flexD li{
+            width: 100px;
+            border: 1px solid #dddcdd
+        }
+
+        .test {
+            display: flex;
+        }
+        .item2 {
+            order: -1;
+        }
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="http://css.cuishifeng.cn/flex.html" target="_blank">flex布局</a></h1>
+<ul class="flexA">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+</ul>
+<br><br><br>
+<ul class="flexB">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+</ul>
+<br><br><br>
+<ul class="flexC">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+</ul>
+<br><br><br>
+<ul class="flexD">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+</ul>
+
+<br><br><br>
+<div class="test">
+    <p class="item1">flex item1</p>
+    <p class="item2">flex item2</p>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

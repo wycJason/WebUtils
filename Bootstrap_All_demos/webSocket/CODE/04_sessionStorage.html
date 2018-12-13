@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>sessionStorage</title>
+</head>
+<body>
+<!--
+    TODO 通过研究 sessionStorage
+    TODO * 掌握相关方法及属性的用法
+    TODO * 掌握 sessionStorage 的特点
+-->
+<input type="text" id="data"/>
+<button id="save">保存</button>
+<button id="get">获取</button>
+<button id="remove">删除</button>
+<script>
+    var storage = window.sessionStorage;
+
+    //TODO 1.实现 sessionStorage 的保存功能
+    var save = document.getElementById("save");
+    save.onclick = function(){
+        //TODO 测试是否存在 sessionStorage
+        //console.log(window.sessionStorage);
+        //TODO 调用 sessionStorage 的 setItem(key,value) 方法
+        /*
+          TODO 作为存储数据的key - 唯一
+          TODO * Math.random() - 随机不是唯一的
+          TODO * 时间戳(TimeStamp)
+          TODO   new Date().getTime()
+         */
+        var key = new Date().getTime();
+        var value = document.getElementById("data").value;
+        storage.setItem(key,value);
+    }
+    var get = document.getElementById("get");
+    get.onclick = function(){
+        //TODO 从 sessionStorage 获取指定数据
+        for(var i=0;i<storage.length;i++){
+            //TODO key(index) -> 数据的key值
+            var key = storage.key(i);
+            //TODO getItem(key) -> 数据的value值
+            var value = storage.getItem(key);
+            //TODO 测试输出
+            console.log(key+": "+value);
+        }
+    }
+    var remove = document.getElementById("remove");
+    remove.onclick = function(){
+        //storage.removeItem('1474354397039');
+        storage.clear();
+    }
+</script>
+</body>
+</html>

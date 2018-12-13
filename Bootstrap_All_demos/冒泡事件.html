@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <style type="text/css">
+        .d1 .d2 .d3{cursor:pointer}
+        .d1 {
+            background-color: green;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .d2 {
+            background-color: blue;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .d3 {
+            background-color: red;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="d1">
+    <div class="d2">
+        <div class="d3">
+        </div>
+    </div>
+</div>
+<script>
+    /*this vs e.target（在不取消冒泡的前提下发生e.stopPropagation() ）
+    this会随冒泡而改变,只会表示当前触发事件的元素
+    e.target不随冒泡改变，始终表示最初触发事件的目标元素*/
+
+    function highLight(e){
+        //取消冒泡:
+        //e.stopPropagation()
+        //this->div,e->event
+        //设置当前div的背景色为yellow
+        this.style.backgroundColor="yellow";debugger;
+        //弹出提示:I'm +当前div的class
+        alert("I miss "+this.className);
+       // alert("I miss "+e.target.className);
+        //清除当前div的背景色
+        this.style.backgroundColor="";
+    }
+
+
+    //找到class为d1的元素，为其添加事件监听: click, highLight
+    document.querySelector(".d1").addEventListener("click",highLight,false);
+    //执行时:d1.onclick(event)
+    //highLight(  e  )
+    //找到class为d2的元素，为其添加事件监听: click, highLight
+    document.querySelector(".d2").addEventListener("click",highLight,false);
+    //找到class为d3的元素，为其添加事件监听: click, highLight
+    document.querySelector(".d3").addEventListener("click",highLight,false);
+</script>
+</body>
+</html>

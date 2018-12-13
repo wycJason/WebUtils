@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body onunload="window.opener.document.location.href='a.html?key=1';">
+<a onclick="window.close()">关闭窗口</a>
+3秒后跳转至a.html
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+//A页面跳到B页面，B页面关闭时A页面刷新
+setTimeout(function(){
+    window.close();
+    //WeixinJSBridge.call('closeWindow');
+},3000)
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Template</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="container" style="width: 1250px; height: 550px; margin: 0 auto"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/highcharts.js"></script>
+<script>
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'pie' //图表类型还是pie图
+            },
+            plotOptions: {
+                pie: {
+                    innerSize: '80%', //也可以配置为10%的百分比形式
+                    colors: [
+                        'red',
+                        '#0d233a',
+                    ]
+                }
+            },
+            series: [{
+                data: [
+                    ['Firefox',   100],
+                    ['IE7',       20],
+                ]
+            }]
+        });
+    });
+</script>
+</body>
+</html>

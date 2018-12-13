@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    var arr1=[123,2,23,3,12,1];
+    function bubbleSort(arr){
+        //var r=1;
+        /*第r轮排序的公式*/
+        //r从1开始，到<length结束
+        for(var r=1;r<arr.length;r++){
+            //第r轮排序的公式
+            //i=0开始,到<length-r结束
+            for(var i=0;i<arr.length-r;i++){
+                //如果arr中i位置的值>arr中i+1位置的值
+                if(arr[i]>arr[i+1]){
+                    //声明变量t初始化为arr中i位置的值
+                    var t=arr[i];
+                    //将arr中i+1位置的值给i位置
+                    arr[i]=arr[i+1];
+                    //将t中的值给arr中i+1的位置
+                    arr[i+1]=t;
+                }
+            }
+        }
+    }
+    bubbleSort(arr1);//自定义排序
+    console.log(arr1);
+
+
+
+    var arr=[123,2,23,3,12,1];
+    function sort(arr,compare){
+        //compare->function(a,b){return a-b;}
+        if(compare===undefined){
+            //function compare(a,b){//原装
+            compare=function(a,b){//不会声明提前
+                return String(a)>String(b)?1:
+                        String(a)<String(b)?-1:
+                                0;
+            }
+        }
+        for(var r=1;r<arr.length;r++)
+            for(var i=0;i<arr.length-r;i++)
+                if(compare(arr[i],arr[i+1])>0){  //实参（值）
+                    var t=arr[i];
+                    arr[i]=arr[i+1];
+                    arr[i+1]=t;
+                }
+    }
+    //自定义专门比较数字的比较器函数
+    function compare(a,b){return a-b}  //形参（变量）
+    //arr.sort(compare);
+    sort(arr,compare);
+    console.log(arr);
+</script>
+</body>
+</html>

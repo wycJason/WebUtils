@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>This example shows how to create a Grid from JSON data.</title>
+    <style>
+       /* ::selection
+        {
+            color:#ff0000;
+        }
+        ::-moz-selection
+        {
+            color:#ff0000;
+        }*/
+    </style>
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.web.css" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="../../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.selection.js"></script> 
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.columnsresize.js"></script> 
+    <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.columnsreorder.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxgrid.grouping.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="localization.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //var url = "../sampledata/beverages.txt";
+
+            // prepare the data
+            var source =
+            {
+                datatype: "json",
+                datafields: [
+                    { name: 'name', type: 'string' },
+                    { name: 'type', type: 'string' },
+                    { name: 'calories', type: 'int' },
+                    { name: 'totalfat', type: 'string' },
+                    { name: 'protein', type: 'string' }
+                ],
+                id: 'id',
+                url: "../sampledata/beverages.txt",
+                //点击表头时排序(必须)  
+				/*sort: function() {  
+			    	debugger
+			        $("#grid").jqxGrid('updatebounddata','sort');  
+			    },  */
+                sortcolumn: 'calories',
+                sortdirection: 'asc'
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source,{
+                autoBind:true,
+                downloadComplete: function (data, status, xhr) { 
+                },
+                loadComplete: function (data) {
+                    //数据被加载。
+                },
+                loadError: function (xhr, status, error) {
+                    //数据未加载。
+                },
+            });
+			//格式化单元格
+            function  cellsrenderer(row, columnfield, value, defaulthtml, columnproperties, rowdata) {
+                return '<a href="javascript:void(0)">'+value+'</a>';
+            }
+            //格式化列头
+            function columnrenderer(value) {
+                debugger;
+                return '<div style="text-align: center; margin-top: 5px;">' + value + '</div>';
+            }
+            $("#grid").on('bindingcomplete', function (event) {debugger;//绑定完成后触发此事件。注意：在网格初始化之前绑定到该事件，因为如果数据绑定到本地数据源并绑定到初始化后的“b​​indingcomplete”事件，则数据绑定已经完成。
+                $("#grid").jqxGrid('expandallgroups');
+            });
+            $("#grid").jqxGrid(
+            {
+                theme: 'web',
+                pageable: true,
+                autoheight: true,
+                columnsreorder: true,
+                editable: false,
+                editmode: 'dblclick',
+                width: getWidth('Grid'),
+                source: dataAdapter,
+                columnsresize: true,
+                enablebrowserselection: true,
+                sortable: true,
+                groupable: false,
+                showgroupsheader:true,//$("#grid").jqxGrid('showgroupsheader', false);
+                groups: ['type'],
+                localization: getLocalization('cn'),
+                columns: [
+                  { text: 'Name', datafield: 'name', width: 250,cellsrenderer: cellsrenderer, renderer: columnrenderer,},
+                  { text: 'Beverage Type', datafield: 'type', width: 220 },
+                  { text: 'Calories', datafield: 'calories', width: 120 },
+                  { text: 'Total Fat', datafield: 'totalfat', width: 120 },
+                  { text: 'Protein', datafield: 'protein', minwidth: 120 }
+              ],
+               ready: function () {//当网格被初始化并且绑定完成时，这个函数被调用。就绪函数！
+                   $("#grid").jqxGrid('expandallgroups');
+                  // $("#grid").jqxGrid('expandgroup', 0);
+                   //$("#grid").jqxGrid('closeablegroups', false);
+                   //$("#grid").jqxGrid('showgroupsheader', false);
+                    //$("#grid").jqxGrid('sortby', 'calories', 'asc');
+                   //$("#grid").jqxGrid('closeablegroups', true);
+                },
+            });
+
+               //trigger the column resized event.
+            $("#grid").on('columnresized', function (event) {
+                debugger;
+                var column = event.args.columntext;
+                var newwidth = event.args.newwidth
+                var oldwidth = event.args.oldwidth;
+            });
+            //排序
+            $("#grid").on("sort", function (event)
+            {
+
+                // event arguments.
+                var args = event.args;
+                // sorting information.
+                var sortInfo = event.args.sortinformation;
+                // sort direction.
+                var sortdirection = sortInfo.sortdirection.ascending ? "ascending" : "descending";
+                // column data field.
+                var sortColumnDataField = sortInfo.sortcolumn;
+                debugger;
+                
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+        <div id="grid"></div>
+</body>
+</html>

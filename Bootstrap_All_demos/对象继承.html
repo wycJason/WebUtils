@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    /*
+     Object.create(prototype, descriptors) ：创建一个具有指定原型且可选择性地包含指定属性的对象
+     参数:
+     prototype 必需。  要用作原型的对象。 可以为 null。
+     descriptors 可选。 包含一个或多个属性描述符的 JavaScript 对象。
+     “数据属性”是可获取且可设置值的属性。 数据属性描述符包含 value 特性，以及 writable、enumerable 和 configurable 特性。
+     如果未指定最后三个特性，则它们默认为 false。 只要检索或设置该值，“访问器属性”就会调用用户提供的函数。 访问器属性描述符包含 set 特性和/或 get 特性。*/
+    var father={   //原型对象(prototype)
+        car:"infiniti",
+        bal:1000000000
+    };
+    /*
+    * 数据属性
+     writable:是否可任意写
+     configurable：是否能够删除，是否能够被修改
+     enumerable：是否能用 for in 枚举
+     value：值
+
+     访问属性：
+     get(): 访问
+     set(): 设置
+     */
+    var child=Object.create(father,{
+        iphone:{
+            value:7,
+            writable:true,
+            enumerable:true,
+            configurable:true
+        },
+        bao:{
+            value:"LV",
+            writable:true,
+            enumerable:true,
+            configurable:true
+        }
+    });
+    console.dir(child);
+    console.log(Object.getPrototypeOf(child),child.__proto__);  //Object {car: "infiniti", bal: 1000000000}  //获得obj子对象的父级原型对象
+    console.log(child.iphone,child.bao,child.car,child.bal);
+
+
+
+
+    //创建一个任意对象来继承另一个对象
+    var parent={
+            gender:"男",
+            age:45
+            };
+    var son=new Object();
+    son.name="jason";
+    //jason.__proto__=parent;//方法一
+    Object.setPrototypeOf(son,parent);//方法二
+    console.dir(son);
+
+
+    /*
+     原型对象(prototype):集中保存所有子对象共有成员的父级对象
+     原型对象不用创建，每个构造函数都自带一个原型对象。
+     如何获得:
+     1. 构造函数.prototype
+     2. 子对象.__proto__
+     问题: __proto__是子对象的内部属性，(内部属性: 不允许打.直接访问的属性，JS自动添加的。不允许外部随便访问的属性,比如: class  __proto__)
+     解决: Object.getPrototypeOf(obj)    获得obj子对象的父级原型对象
+
+     判断继承关系:
+     1. 根据原型对象判断:
+     father.isPrototypeOf(child)   //Student.prototype.isPrototypeOf(lilei)
+     判断father是否是child的父级对象
+     判断child是否继承自father
+     强调: 不仅检查直接父对象，而且检查整个原型链。
+     2. 根据构造函数判断:
+     child instanceof 构造函数 //lilei instanceof  Student
+     判断child是否是构造函数创建出的实例
+     强调: 不仅检查直接父级，而且检查整个原型链。
+    * */
+
+    //Step1: 定义构造函数
+    function Student(name,age){
+        this.name=name;
+        this.age=age;
+    }
+
+    //方法一：添加共有成员
+    //Student.prototype.intr=function(){      //向原形对象中插入方法
+        //console.log( "我叫"+this.name+ ",我 "+this.age+ "岁, 我来自"+this.className)
+   // }
+    //Student.prototype.className="初二（2)班";   //向原形对象中插入属性
+
+    //方法二：添加共有成员
+    Student.prototype={
+        className:"初二（2）班",
+        intr:function(){
+            console.log( "我叫"+this.name+ ",我 "+this.age+ "岁, 我来自"+this.className)
+        }
+    }
+
+    //Step2: 用new调用构造函数 （构造函数的实例）
+    var lilei=new Student("Li Lei",11);
+    var hmm=new Student("Han Meimei",12);
+    lilei.intr();
+    hmm.intr();
+</script>
+</body>
+</html>

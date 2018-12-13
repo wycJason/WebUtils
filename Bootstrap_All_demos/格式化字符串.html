@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+     function formatToDate(t, s, o) {//日期格式化      用法 formatToDate("2018-05-01 13:59:59","y-m-d h:i:s")
+        if (t == "0001-01-01T00:00:00+08:00")
+            return "";
+        var $t, $s = 'ymdhis';
+        if (typeof o == "undefined") $o = true;//是否需要补0;[true需要,false不需要]
+        else $o = o;
+        if (!s) s = "y-m-d h:i:s"; //如果没规定格式默认格式
+        if (t) $t = new Date(t);
+        else $t = new Date();
+        var $y = [$t.getFullYear(), $t.getMonth() + 1, $t.getDate(), $t.getHours(), $t.getMinutes(), $t.getSeconds(), " 00:00:00"]
+        for (var i = 0; i < $y.length - 1; i++) {
+            if ($o)
+                s = s.toLowerCase().replace($s.charAt(i), ($y[i].toString().length == 1 ? "0" + $y[i].toString() : $y[i]));
+            else
+                s = s.toLowerCase().replace($s.charAt(i), $y[i]);
+        }
+        return s;
+    }
+     console.log(formatToDate("2018-05-01 13:59:59","y-m-d"))
+     console.log(formatToDate("2018-03-13T11:37:56.513+08:00","y-m-d"))
+
+
+      function formatToStr() {//格式化字符串
+         if (arguments.length == 0)
+             return null;
+         var result = arguments[0];
+         for (var i = 1; i < arguments.length; i++) {
+             var re = new RegExp('\\{' + (i - 1) + '\\}', 'gm');
+             result = result.replace(re, arguments[i]);
+         }
+         return result;
+     }
+     var name="jason",age=28;
+    console.log(formatToStr("我是{0},我今年{1}",name,age))
+
+
+     function formatToeEast8Date(date) { // 用法转化东八区时间 formatToeEast8Date("2018-05-01 13:59:59")
+         return formatToDate(date, "y-m-d") + "T00:00:00+08:00";  ////2018-05-01T00:00:00+08:00
+     }
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    // 在str中依次找到每个和正则匹配的关键词，传给函数的kword参数。函数内根据本次找到的关键词，计算出不同的替换值，
+    // replace会将函数返回的替换值，替换到字符串中和正则匹配的关键词的位置处，原关键词被替换掉。
+    // 如果正则中包含分组，还会将每个分组匹配的子内容，分别放在参数的后续元素中。
+    var str="那天，我去了她家，我说：我草，你家真大。她想和我去草地野餐。我草草的收拾了草地。她说: 我去去就来";
+    //我去 我草 我去去 我去草 我草草
+    str=str.replace(/(我)([去草]{1,2})/ig,   //正则必须是一段连续的特殊字符串
+            //  1      2
+            function(kw,$1,$2){
+                debugger;
+                //kw 本次找到的完整关键词
+                //$1 获得第1个分组()匹配的子内容
+                //$2 获得第2个分组()匹配的子内容
+                return $1+($2.length==1?"*":"**");
+            }
+    );
+    console.log(str);
+
+    var strLove="你说，你爱他，他爱你，其实你们谁都很爱谁？";
+    strLove=strLove.replace(/爱/g,
+            function(kwords){
+                debugger;
+                return "*"
+            })
+    console.log(strLove);
+
+   /* 格式化: 2步:
+     1.用正则将要格式化的字符串分组
+     2.在replace的第二个参数中，用$n代替第n个分组的子内容，拼接格式。 如第1个分组就是$1，第2个分组就是$2，第3个分组就是$3，……
+     如：*/
+    var birth="19831226";
+    birth=birth.replace(//正则
+            /(\d{4})(\d{2})(\d{2})/,
+            //  1      2      3
+            "$1年$2月$3日"
+            //1983  12  26
+    );
+    console.log(birth);
+
+
+
+    //layim 消息内容
+    var content = function(i) {
+        //支持的html标签
+        debugger
+        var a = function(i) {
+            return new RegExp("\\n*\\[" + (i || "") + "(code|pre|div|span|p|table|thead|th|tbody|tr|td|ul|li|ol|li|dl|dt|dd|h2|h3|h4|h5)([\\s\\S]*?)\\]\\n*", "g")
+        };
+        return i = (i || "")
+                .replace(/&(?!#?[a-zA-Z0-9]+;)/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;").replace(/"/g, "&quot;").replace(/@(\S+)(\s+?|$)/g, '@<a href="javascript:;">$1</a>$2').replace(/face\[([^\s\[\]]+?)\]/g,
+                function(i) {//转义表情
+                    var a = i.replace(/^face/g, "");
+                    return '<img alt="' + a + '" title="' + a + '" src="' + X[a] + '">'
+                })
+                .replace(/img\[([^\s]+?)\]/g, //转义图片
+                function(i) {
+                    return '<img class="layui-layim-photos" src="' + i.replace(/(^img\[)|(\]$)/g, "") + '">'
+                })
+                .replace(/file\([\s\S]+?\)\[[\s\S]*?\]/g,//转义文件
+                function(i) {
+                    var a = (i.match(/file\(([\s\S]+?)\)\[/) || [])[1],
+                            e = (i.match(/\)\[([\s\S]*?)\]/) || [])[1];
+                    return a ? '<a class="layui-layim-file" href="' + a + '" download target="_blank"><i class="layui-icon">&#xe61e;</i><cite>' + (e || a) + "</cite></a>": i
+                })
+                .replace(/audio\[([^\s]+?)\]/g,//转义音频
+                function(i) {
+                    return '<div class="layui-unselect layui-layim-audio" layim-event="playAudio" data-src="' + i.replace(/(^audio\[)|(\]$)/g, "") + '"><i class="layui-icon">&#xe652;</i><p>音频消息</p></div>'
+                })
+                .replace(/video\[([^\s]+?)\]/g,//转义视频
+                function(i) {
+                    return '<div class="layui-unselect layui-layim-video" layim-event="playVideo" data-src="' + i.replace(/(^video\[)|(\]$)/g, "") + '"><i class="layui-icon">&#xe652;</i></div>'
+                })
+                .replace(/a\([\s\S]+?\)\[[\s\S]*?\]/g,//转义链接
+                function(i) {
+                    var a = (i.match(/a\(([\s\S]+?)\)\[/) || [])[1],
+                            e = (i.match(/\)\[([\s\S]*?)\]/) || [])[1];
+                    return a ? '<a href="' + a + '" target="_blank">' + (e || a) + "</a>": i
+                })
+                .replace(a(), "<$1 $2>")
+                .replace(a("/"), "</$1>")
+                .replace(/\n/g, "<br>")
+    };
+</script>
+</body>
+</html>

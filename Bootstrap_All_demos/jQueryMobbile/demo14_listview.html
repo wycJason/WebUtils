@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.css"/>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script src="jqm/jquery.mobile-1.4.5.js"></script>
+  <title></title>
+  <style>
+
+  </style>
+</head>
+<body>
+<div data-role="page">
+  <div data-role="header">
+    <h1>header</h1>
+  </div>
+
+  <div class="ui-content">
+    <ul>
+      <li>test01</li>
+      <li>test02</li>
+      <li>test03</li>
+    </ul>
+
+    <ul data-role="listview">
+      <li>demo01</li>
+      <li>demo02</li>
+      <li>demo03</li>
+    </ul>
+
+    <br/><br/>
+    <ol data-role="listview" data-inset="false">
+      <li><a href="">test1</a></li>
+      <li><a href="">test2</a></li>
+      <li><a href="">test3</a></li>
+    </ol>
+
+    <br/><br/>
+    <ul data-role="listview" data-inset="false" data-filter="true" data-filter-placeholder="请输入名称开始搜索">
+      <li><a href="">apple</a></li>
+      <li><a href="">banana</a></li>
+      <li><a href="">grape</a></li>
+    </ul>
+
+    <br/><br/>
+    <ul data-role="listview" data-inset="false" data-filter="true" data-filter-placeholder="请输入名称开始搜索">
+      <li>apple</li>
+      <li>banana</li>
+      <li>grape</li>
+      <li>apple</li>
+      <li>banana</li>
+      <li>grape</li>
+      <li>apple</li>
+      <li>banana</li>
+      <li>grape</li>
+      <li>apple</li>
+      <li>banana</li>
+      <li>grape</li>
+    </ul>
+    <br/><br/>
+    <!-- 手工实现分割线-->
+    <ul data-role="listview" data-inset="true">
+      <li data-role="list-divider">mail</li>
+      <li><a href="">InputBox</a></li>
+      <li><a href="">SentBox</a></li>
+      <li><a href="">Rubbish</a></li>
+      <li data-role="list-divider">Contact</li>
+      <li><a href="">friend</a></li>
+      <li><a href="">classMate</a></li>
+    </ul>
+
+    <!-- 自动产生分隔线-->
+    <ol data-role="listview" data-inset="true" data-filter="true" data-autodividers="true">
+      <li><a href="">Lucy</a></li>
+      <li><a href="">Lily</a></li>
+      <li><a href="">Michael</a></li>
+      <li><a href="">Mishe</a></li>
+      <li><a href="">OReally</a></li>
+    </ol>
+
+    <!-- 使用listview来实现计数气泡-->
+    <ul data-role="listview" data-count-theme="b" data-inset="true">
+      <li>
+        <a href="">
+          收件箱
+          <span class="ui-li-count">1</span>
+        </a>
+      </li>
+      <li><a href="">发件箱</a></li>
+      <li><a href="">垃圾箱</a></li>
+    </ul>
+
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h1>footer</h1>
+  </div>
+
+</div>
+</body>
+</html>

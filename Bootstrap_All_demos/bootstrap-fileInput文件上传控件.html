@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-fileinput-master/css/fileinput.min.css" rel="stylesheet">
+    <script src="js/jquery-1.11.3.js"></script>
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <h1><a href="http://www.cnblogs.com/landeanfen/p/5007400.html">JS组件系列——Bootstrap文件上传组件：bootstrap fileinput</a></h1>
+    <h2><a href="https://github.com/kartik-v/bootstrap-fileinput">bootstrap-fileinput源码</a></h2>
+    <h2><a href="http://plugins.krajee.com/file-input">bootstrap-fileinput在线API</a></h2>
+    <h2><a href="http://plugins.krajee.com/file-basic-usage-demo">bootstrap-fileinput Demo展示</a></h2>
+    <label class="control-label">Select File</label>
+    <input id="input-1" type="file" class="file">
+
+    <br/>
+    <label class="control-label">Select File</label>
+    <input id="input-1a" type="file" class="file" data-show-preview="false">
+
+    <br/>
+    <label class="control-label">Select File</label>
+    <input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="false" data-show-caption="true">
+
+    <br/>
+    <label class="control-label">Readonly Input</label>
+    <input id="input-3a" type="file" class="file" readonly="true">
+    <label class="control-label">Disabled Input</label>
+    <input id="input-3b" type="file" class="file" disabled="true">
+
+    <br/>
+    <label class="control-label">Select File</label>
+    <input id="input-4" name="input4[]" type="file" multiple class="file-loading">
+    <script>
+        $(document).on('ready', function() {
+            $("#input-4").fileinput({showCaption: false});
+        });
+    </script>
+
+    <br/>
+    <label class="control-label">Select File</label>
+    <input id="input-6" name="input6[]" type="file" multiple class="file-loading">
+    <script>
+        $(document).on('ready', function() {
+            $("#input-6").fileinput({
+                showUpload: false,
+                maxFileCount: 10,
+                mainClass: "input-group-lg"
+            });
+        });
+    </script>
+
+    <br/>
+    <label class="control-label">Select File</label>
+    <input id="input-7" name="input7[]" multiple type="file" class="file file-loading" data-allowed-file-extensions='["csv", "txt"]'>
+
+    <br/>
+    <link href="bootstrap-fileinput-master/css/fileinput-rtl.min.css" rel="stylesheet">
+    <div dir=rtl>
+        <label class="control-label">Select File</label>
+    </div>
+    <!-- note that your input must just set the `rtl` data property of the plugin or in your javascript code -->
+    <input id="input-8" name="input8[]" multiple type="file" class="file-loading">
+    <script>
+        $(document).on('ready', function() {
+            $("#input-8").fileinput({
+                rtl: true,
+                allowedFileExtensions: ["jpg", "png", "gif"]
+            });
+        });
+    </script>
+</div>
+
+
+
+
+<script src="js/bootstrap.min.js"></script>
+<script src="bootstrap-fileinput-master/js/fileinput.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

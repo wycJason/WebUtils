@@ -1,0 +1,15 @@
+{
+  "currpage":"1",
+  "totalpages":"1",
+  "totalrecords":"13",
+  "result":[
+    {"id":"1","date":"2017-06-01","client":"王愿超","amount":"100","tax":"50","total":"150","note":"无"},
+    {"id":"1","date":"2017-06-01","client":"王愿超","amount":"100","tax":"50","total":"150","note":"无"},
+    {"id":"1","date":"2017-06-01","client":"王愿超","amount":"100","tax":"50","total":"150","note":"无"},
+    {"id":"1","date":"2017-06-01","client":"王愿超","amount":"100","tax":"50","total":"150","note":"无"},
+    {"id":"1","date":"2017-06-01","client":"王愿超","amount":"100","tax":"50","total":"150","note":"无"},
+    {"id":"1","date":"2017-06-01","client":"王愿超","amount":"100","tax":"50","total":"150","note":"无"},
+    {"id":"1","date":"2017-06-01","client":"王愿超","amount":"100","tax":"50","total":"150","note":"无"},
+    {"id":"1","date":"2017-06-01","client":"王愿超","amount":"100","tax":"50","total":"150","note":"无"}
+  ]
+}

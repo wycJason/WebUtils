@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title> 私有云搭建步骤</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <style>
+        h4 {
+            margin-left: 20px;
+        }
+
+        table {
+            border: 1px solid #ccc;
+        }
+        td {
+            border: 1px solid #ccc;
+            padding: 10px 40px;
+        }
+
+        .STYLE1 {color: #FF0000}
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=unicode"></head>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:auto">
+<div>
+    <div style="float:left;width:20%;height:100%;position:fixed;border-right:1px solid #ccc;overflow:auto">
+        <h3><a href="#v1">1 私有云安装准备工作</a></h3>
+        <h4><a href="#v11">1.1 安装前准备工作</a></h4>
+
+        <h3><a href="#v2">2	redis安装</a></h3>
+        <h4><a href="#v21">2.1 执行安装文件</a></h4>
+        <h4><a href="#v22">2.2 安装成功后查看服务进程是否启动</a></h4>
+
+        <h3><a href="#v3">3	创建公司生成代码</a></h3>
+        <h4><a href="#v31">3.1	新建一个spd_comm空库</a></h4>
+        <h4><a href="#v32">3.2	创建公司工具：</a></h4>
+        <h4><a href="#v33">3.3	Comm库连接配置：</a></h4>
+        <h4><a href="#v34">3.4	基础库链接配置：</a></h4>
+        <h4><a href="#v35">3.5	创建私有云公司：</a></h4>
+        <h4><a href="#v36">3.6	查看创建好后的公司信息：</a></h4>
+
+        <h3><a href="#v4">4	ERP服务安装</a></h3>
+        <h4><a href="#v41">4.1	100%目标ERP客户端安装</a></h4>
+        <h4><a href="#v42">4.2	100%目标ERP服务端安装</a></h4>
+        <h4><a href="#v43">4.3	100%目标ERP许可证安装</a></h4>
+        <h4><a href="#v44">4.4	100%目标ERP邮件服务安装</a></h4>
+        <h4><a href="#v45">4.5	100%目标ERP文档服务安装</a></h4>
+        <h4><a href="#v46">4.6	创建端口服务</a></h4>
+        <h4><a href="#v47">4.7	配置私有云公司信息</a></h4>
+
+        <h3><a href="#v5">5	IIS服务安装</a></h3>
+        <h4><a href="#v51">5.1 IIS功能安装</a></h4>
+
+
+        <h3><a href="#v6">6	添加API站点</a></h3>
+        <h4><a href="#v61">6.1 上传程序文件</a></h4>
+        <h4><a href="#v62">6.2 添加API站点 </a></h4>
+        <h4><a href="#v63">6.3 修改D:\sap360\web\api\bin配置文件</a></h4>
+
+
+
+        <h3><a href="#v7">7	PushServer消息推送安装</a></h3>
+        <h4><a href="#v71">7.1	上传推送服务安装包</a></h4>
+        <h4><a href="#v72">7.2	编辑PushServer配置文件</a></h4>
+        <h4><a href="#v73">7.3	双击安装程序</a></h4>
+        <h4><a href="#v74">7.4  查看服务是否正常运行</a></h4>
+
+
+        <h3><a href="#v8">8	报错处理</a></h3>
+        <h4><a href="#v81">8.1  API报错：</a></h4>
+        <h4><a href="#v82">8.2  报错：创建公司工具：</a></h4>
+        <h4><a href="#v83">8.3  报错：创建公司工具：</a></h4>
+        <p>&nbsp;</p>
+    </div>
+    <div style="float:right;width:69%;text-align:left">
+        <div id="v1">
+            <h3><a href="#v1">1 私有云安装准备工作</a></h3>
+        </div>
+        <div id="v11">
+            <h4><a href="#v11">1.1 安装前准备工作</a></h4>
+            <table border="1" cellspacing="0" cellpadding="0" width="1044">
+                <tbody><tr>
+                    <td width="217">服务器硬件需求</td>
+                    <td width="821"><p align="center">CPU /8 核/ 内存/16G(建议)</p></td>
+                </tr>
+                <tr>
+                    <td width="217"><p>&nbsp;</p></td>
+                    <td width="821"><p>&nbsp;</p></td>
+                </tr>
+                <tr>
+                    <td width="217"><p>服务器软件需求</p></td>
+                    <td width="821">操作系统： win2012r2dcx86_64 框架：.NET Framework 4.5（建议）</td>
+                </tr>
+                <tr>
+                    <td width="217"><p align="right">sqlserver数据库</p></td>
+                    <td width="821">端口：1433 版本：sql2008- - - sql2016 (建议）对外地址：数据库服务器外网地址。 对内地址：服务器内网IP</td>
+                </tr>
+                <tr>
+                    <td><div align="right">ERP端口服务</div></td>
+                    <td width="821"><p>端口：50001----50005（建议） 地外地址：ERP服务器外网地址。 对内地址：服务器内网IP</p></td>
+                </tr>
+                <tr>
+                    <td><div align="right">redis服务</div></td>
+                    <td>端口：16379 （建议） 外地址：redis服务器网地址。 对内地址：服务器内网IP</td>
+                </tr>
+                <tr>
+                    <td><div align="right">WEB服务器</div></td>
+                    <td>端口：8059 （建议） 外地址：WEB服务器外网地址。 对内地址：服务器内网IP</td>
+                </tr>
+                <tr>
+                    <td width="217"><p>&nbsp;</p></td>
+                    <td width="821"><p>&nbsp;</p></td>
+                </tr>
+                <tr>
+                    <td>服务器网络需求</td>
+                    <td>服务器绑定固定外网地址，或外网动态地址（动态地址需配合花生壳生成固定域名）</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                </tbody></table>
+        </div>
+
+        <p>&nbsp;</p>
+        <div id="v2">
+            <h3>2 redis安装（<span class="STYLE1">请确认上述服务器需求已完成</span>）</h3>
+        </div>
+        <div id="v21">
+            <h4><a href="#v21">2.1 执行安装文件</a></h4>
+            <p><img src="image007.png" width="835" height="444">
+            </p>
+                <pre>【说明】 <br>
+            安装包下载：ftp://in.sap360.com.cn/<br>
+
+            程序安装位置：D:\SAP360\  <br>
+
+            第一步先看安装说明，里面已写明只需运行 （InstallService.bat）文件就会自动安装，安装成功后会自动生成：  端口：16379    密码：sap360   <br>
+
+           【注】：此处生成的端口与密码在创建公司的时候需要填写  </pre>
+
+            <div id="v22">
+                <h4><a href="#v22">2.2 安装成功后查看服务进程是否启动</a></h4>
+                <p><img src="image009.png" width="635" height="444">
+                </p><p><img src="image011.png" width="635" height="444">
+            </p>
+                <pre>【说明】 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 【注】：确认服务如上图显示正在运行则安装完成
+
+<p>&nbsp;</p>
+            <div id="v3"><h3>3 创建公司生成代码</h3></div>
+<div id="v31">
+    <h4><a href="#v31">3.1	新建一个spd_comm空库</a></h4>
+    <p><img src="image013.jpg" width="835" height="444">
+    </p>
+                <pre>【说明】 <br>
+            spd_comm库的用途:<br>
+                             在用工具创建公司的时候配置信息就存放在spd_comm中  </pre>
+    <div id="v32">
+        <h4><a href="#v32">3.2 创建公司工具：</a></h4>
+        <p><img src="image014.png" width="635" height="444">
+        </p><p><img src="image016.png" width="635" height="444">
+    </p><p><img src="image017.png" width="635" height="444">
+    </p>
+                <pre>【说明】 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     安装包下载：ftp://in.sap360.com.cn/<br>
+           工具存放目录：D:\SAP360\</pre>
+        <div id="v33">
+            <h4><a href="#v33">3.3 Comm库连接配置：</a></h4>
+            <p><img src="image018.png" width="635" height="444">
+            </p>
+                <pre>【说明】 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  数据库设置：<br>
+                          数据库服务器名：指的是数据库所在服务器的名称可用（127.0.0.1）代替<br>
+
+                          数据库用户：sa<br>
+
+                          数据库密码：填写自己设置的<br>
+
+                          数据库名  ：此处所需选择的数据库是存放公司创建时的配置信息数据库，意思就是选择一个数据库，然后后续创建公司填写的信息存在这</pre>
+            <div id="v34">
+                <h4><a href="#v34">3.4	基础库链接配置：</a></h4>
+                <p><img src="image020.png" width="635" height="444">
+                </p>
+                <pre>【说明】 <br>
+		私有云服务器（url）请填写：服务器远程域名或IP加API统一端口：8059<br>
+                如是通过花生壳转换域名的填写：http://localhost:8059/<br>
+                不然会导致PC端操作反应很慢<pre>
+<div id="v35">
+    <h4><a href="#v35">3.5	创建私有云公司：</a></h4>
+    <p><img src="image022.png" width="635" height="444">
+    </p>
+                <pre>【说明】 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      私有云服务器（url）请填写：服务器远程域名或IP加API统一端口：8059</pre>
+
+    <div id="v36">
+        <h4><a href="#v36">3.6	查看创建好后的公司信息：</a></h4>
+        <p><img src="image024.png" width="635" height="444">
+        </p>
+                <pre>【说明】 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      因在创建ERP端口服务的时候需要填写公司代码，所以需记下公司代码在ERP端口创建的时候填入</pre>
+
+        <p>&nbsp;</p>
+        <div id="v4"><h3>4	ERP服务安装</h3></div>
+        <div id="v41">
+            <h4><a href="#v41">4.1	100%目标ERP客户端安装</a></h4>
+            <p><img src="image026.png" width="635" height="444">
+            </p><p><img src="image028.png" width="635" height="444">
+        </p><p><img src="image030.png" width="635" height="444">
+        </p><p><img src="image032.png" width="635" height="444">
+        </p>
+            <div id="v42">
+                <h4><a href="#v42">4.2	100%目标ERP服务端安装</a></h4>
+                <p><img src="image034.jpg" width="635" height="444">
+                </p><p><img src="image035.jpg" width="635" height="444">
+            </p><p><img src="image036.png" width="635" height="444">
+            </p><p><img src="image038.png" width="635" height="444">
+            </p>
+                <div id="v43">
+                    <h4><a href="#v43">4.3	100%目标ERP许可证安装</a></h4>
+                    <p><img src="image040.png" width="635" height="444">
+                    </p><p><img src="image042.png" width="635" height="444">
+
+                </p>
+                    <div id="v44">
+                        <h4><a href="#v44">4.4	100%目标ERP邮件服务安装</a></h4>
+                        <p><img src="image044.png" width="635" height="444">
+                        </p><p><img src="image046.png" width="635" height="444">
+                    </p>
+                        <div id="v45">
+                            <h4><a href="#v45">4.5	100%目标ERP文档服务安装</a></h4>
+                            <p><img src="image048.png" width="635" height="444">
+                            </p><p><img src="image050.png" width="635" height="444">
+                        </p><p><img src="image052.png" width="635" height="444">
+                        </p>
+                            <div id="v46">
+                                <h4><a href="#v46">4.6	创建端口服务</a></h4>
+                                <p><img src="image054.png" width="635" height="444">
+                                </p><p><img src="image056.png" width="635" height="444">
+                            </p><p><img src="image058.png" width="635" height="444">
+                            </p><p><img src="image060.png" width="635" height="444">
+                            </p><p><img src="image062.png" width="635" height="444">
+                            </p><p><img src="image064.png" width="635" height="444">
+                            </p><p><img src="image065.png" width="635" height="444">
+                            </p>
+                <pre>【说明】 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        指定：基础版本路径与服务安装路径，目录需要自己创建<br>
+        指定：ERP服务连接的是测试还是正式环境并填写COMMON库的连接信息</pre>
+                                <p><img src="image068.png" width="835" height="444">
+                                </p>
+                <pre>【说明】 <br>
+                 COMMON库配置：
+				 填写在此截图时的信息
+				 【注】：配置完后此时不要启动ERP服务
+<div id="v47">
+    <h4><a href="#v47">4.7	配置私有云公司信息</a></h4>
+    <p><img src="image070.png" width="735" height="444">
+    </p><p><img src="image072.png" width="735" height="444">
+</p><p><img src="image074.png" width="735" height="444">
+</p><p><img src="image076.png" width="735" height="444">
+</p>
+    <p>&nbsp;</p>
+    <div id="v5"><h3>5 ERP服务安装</h3></div>
+    <div id="v51">
+        <h4><a href="#v51">5 IIS服务安装</a></h4>
+        <p><img src="image078.png" width="735" height="444">
+        </p><p><img src="image080.png" width="735" height="444">
+    </p><p><img src="image082.png" width="735" height="444">
+    </p><p><img src="image084.png" width="735" height="444">
+    </p><p><img src="image086.png" width="735" height="444">
+    </p>
+				<pre>【说明】 <br>
+             WEB    消息队列         .NET Framework 3.5      .NET Framework<br>
+             这四个功能都需要全部安装<br>
+            【注！】：<br>
+                     每个功能的左边有个小三角箭头点开所有箭头，选择四个功能中的所有项<pre>
+<p>&nbsp;</p>
+            <div id="v6"><h3>6 添加API站点</h3></div>
+<div id="v61">
+    <h4><a href="#v61">6.1 上传程序文件</a></h4>
+    <p><img src="image088.png" width="735" height="444">
+    </p>
+				<pre>【说明】 <br>
+            程序包下载：ftp://in.sap360.com.cn/<br>
+<div id="v62">
+    <h4><a href="#v62">6.2 添加API站点</a></h4>
+    <p><img src="image090.png" width="735" height="444">
+    </p><p><img src="image092.png" width="735" height="444">
+</p><p><img src="image094.png" width="735" height="444">
+</p>
+				<pre>【说明】 <br>
+	    API安装包位置：ERP环境搭建压缩包 <br>
+            API程序存放位置：D:\SAP360\WEB\    （建议位置）<pre>
+
+<div id="v63">
+    <h4><a href="#v63">6.3 修改D:\sap360\web\api\bin\CommDBConfig</a></h4>
+    <p><img src="image096.png" width="735" height="444">
+    </p><p><img src="image098.png" width="735" height="444">
+</p><pre>【说明】 <br>
+		配置文件添加内容：<br>
+                 127.0.0.1               #数据库地址<br>
+                 spd_comm                #库名<br>
+                 sa                      #用户<br>
+                 sap360E206              #密码<pre>
+
+                保存退出后，测试API外网访问是否正常
+                注：此时服务器的API站点的外网访问地址为：
+                                          本机服务器外网IP或域名加上端口号8059
+                                          如：http://cloud7.sap360.com.cn:8059/
+                <p><img src="image100.jpg" width="735" height="444">
+                </p><pre>【说明】 <br>
+				                   能访问到这个页面说明api已成功<pre>
+<p>&nbsp;</p>
+            <div id="v7"><h3>7 PushServer消息推送安装</h3></div>
+<div id="v71">
+    <h4><a href="#v71">7.1 上传推送服务安装包</a></h4>
+    <p><img src="image888.png" width="735" height="444">
+    </p>
+				<pre>【说明】 <br>
+            程序包下载：ftp://in.sap360.com.cn/<br>
+<div id="v72">
+    <h4><a href="#v72">7.2	编辑PushServer配置文件 </a></h4>
+    <p><img src="image889.png" width="735" height="444">
+    </p><p><img src="image890.png" width="735" height="444">
+</p>
+				<pre>【说明】 <br>
+	    这个文件需要到D:\sap360\web\api\bin 下考过来粘贴进去 <br>
+        配置文件添加内容：
+              <!--?xml version="1.0" encoding="unicode"?-->
+              <config>
+                  <servername>127.0.0.1</servername>            #数据库地址<br>
+                  <dbname>spd_comm</dbname>                #库名<br>
+                  <dbuser>sa</dbuser>                      #用户<br>
+                  <dbpwd>sap360E206</dbpwd>              #密码<br>
+              </config> <pre>
+<div id="v73">
+    <h4><a href="#v73">7.3	双击安装程序</a></h4>
+    <p><img src="image891.png" width="735" height="444">
+    </p><div id="v74">
+    <h4><a href="#v74">7.4 查看服务是否正常运行</a></h4>
+    <p><img src="image892.png" width="735" height="444">
+    </p><p><img src="image893.png" width="735" height="444">
+</p><pre>【说明】 <br>
+		  安装包位置：ERP环境搭建压缩包<br>
+                  消息推送服务程序位置：D:\SAP360\    （建议统一位置）<br>
+                                             到此已经完成安装<pre>
+
+<p>&nbsp;</p>
+            <div id="v8"><h3>8 报错处理</h3></div>
+<div id="v81">
+    <h4><a href="#v81">8.1API报错：</a></h4>
+			<pre>问题一<br>
+		启动时提HTTP错误500.19，错误代码0x80070021<br>
+            原因：添加IIS服务时没有安装应用程序开发功能的ASP.NET。<pre>   				<p><img src="image111.png" width="735" height="444">
+                </p><pre>解决方案<br>
+            方法：打开和关闭系统功能---》Internet信息服务--》万维网服务---》应用程序开发功能—》勾选asp.net。<pre>                <p><img src="image113.png" width="735" height="444">
+                    </p><pre>问题二<br>
+			启动时提示数据库升级错误，启动失败。
+            <p><img src="image115.png" width="735" height="444">
+            </p><pre>解决方案<br>
+            原因：用户名称字段超过20位导致。
+            解决办法：先检查用户表用户名超过20位的，通过修改用户单的用户名称
+            SELECT * FROM T_OUSI WHERE LEN(USERNAME)&gt;20
+
+            <pre>问题三<br>
+			Confi配置文件无权限访问
+            <p><img src="image117.png" width="735" height="444">
+            </p><pre>解决方案<br>
+            <p><img src="image119.png" width="735" height="444">
+            </p><p><img src="image121.png" width="735" height="444">
+                    </p><p><img src="image123.png" width="735" height="444">
+                    </p><p><img src="image125.png" width="735" height="444">
+                    </p><p><img src="image127.png" width="735" height="444">
+                    </p><p><img src="image129.png" width="735" height="444">
+                        注：因测试所以选择的是所有用户，正式使用请指定特定用户权限
+                    </p><p><img src="image131.png" width="735" height="444">
+                    </p><p><img src="image133.png" width="735" height="444">
+                    </p><p><img src="image135.png" width="735" height="444">
+                    </p><p><img src="image137.png" width="735" height="444">
+                    </p><p><img src="image139.png" width="735" height="444">
+                    </p><div id="v82">
+                        <h4><a href="#v82">8.2 报错：创建公司工具</a></h4>
+			<pre>问题一<br>
+		启动时提HTTP错误500.19，错误代码0x80070021<br>
+            原因：添加IIS服务时没有安装应用程序开发功能的ASP.NET。<pre>   				<p><img src="image141.jpg" width="735" height="444">
+                </p><pre>解决方案<br>
+            【说明】：<br>
+        再创建公司的时候报错密码不能为空，是因为创建人手机号码在公有云数据库用户表中不存在。<br>
+
+        处理方法：<br>
+                 联系运维人员再公有云添加即可<pre>
+<div id="v83">
+    <h4><a href="#v83">8.3 报错：windows2008r2系统报错</a></h4>
+			<pre>问题一<br>
+		创建公司工具打开报错<br>
+            原因：没有安装.net4 <pre>   				<p><img src="QQ图片20180205150225.png" width="735" height="444">
+                </p><pre>解决方案<br>
+            【说明】：<br>
+        安装.net4 。<br>
+
+			<pre>问题二<br>
+		启动消息推送服务报错<br>
+            原因：没有安装.net4 <pre>   				<p><img src="QQ图片20180205150214.png" width="735" height="444">
+                </p><pre>解决方案<br>
+            【说明】：<br>
+        安装.net4 。<br>
+
+			<pre>问题三<br>
+		IIS浏览报错<br>
+            原因：应用程序池.net版本 <pre>   				<p><img src="QQ图片20180205150903.png" width="735" height="444">
+                </p><p><img src="QQ图片20180205151039.png" width="735" height="444">
+                </p><pre>解决方案<br>
+            【说明】：<br>
+        应用程序池需修改为.net 4.0。<br>
+</pre></pre></pre></pre></pre></pre></pre></pre></pre></div></pre></pre></pre></pre></div></pre></pre></pre></pre></pre></pre></pre></pre></div></pre></pre></div></div></pre></pre></div></pre></div></pre></pre></pre></pre></div></pre></pre></div></pre></div></pre></pre></div></div></pre></div></div></div></div></div></div></div></div></pre></pre></div></div></div></div></pre></div></div></div></div></body></html>

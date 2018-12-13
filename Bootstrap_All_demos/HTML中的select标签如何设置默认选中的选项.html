@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<select  id =  "sel" >
+<option  value = "1" >a</option >
+<option  value = "2" >b</option >
+<option  value = "3" >c</option >
+</select >
+<input  type = "button"  value = "JS原生设值"  onclick = "set()"  />
+<input  type = "button"  value = "JS原生取值"  onclick = "get()"  />
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //https://blog.csdn.net/function__/article/details/71410291
+    function set(){
+        document.getElementById("sel")[2].selected=true;
+    }
+    function get(){
+        debugger;
+        var objS = document.getElementById("sel");
+        var v = objS.options[objS.selectedIndex].value;
+        var t = objS.options[objS.selectedIndex].text;
+        alert(v+","+t);
+    }
+</script>
+</body>
+</html>

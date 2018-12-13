@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+		<link href="../css/bootstrap.css" rel="stylesheet">
+		<link href="//res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+		<link rel="stylesheet" href="css/mobile.css">
+		<title>HMTL5分类拍照上传</title>
+		<style type="text/css">
+			#btn{
+				width:200px;
+				height:50px;
+				background:deeppink;
+				text-align:center;
+				line-height:50px;
+				margin:10px auto;
+			}
+			.album{
+				width:100%;
+				display:flex;
+				height:auto;
+				background:#999999;
+				min-height:50px;
+				justify-content:space-around;
+				flex-wrap:wrap;
+			}
+			.album>div{
+				width:24%;
+				height:auto;
+			}
+			.album>div>img{
+				width:100%;
+			}
+
+			.showLocalImg{
+				text-align: center
+			}
+			.showLocalImg img{
+				/*图片通过压缩尺寸和质量得到的大小并不受图片CSS样式宽和高的影响*/
+				max-width: 100%;
+				/*width: 100px;
+				height: 100px;*/
+			}
+		</style>
+	</head>
+	<body style="background-color:#EFEFF4">
+	<div class="ItemFileUpload">
+		<div class="wxQueryResult">
+			<form id="formData" class="formFormatterInfo">
+				<div class="clearfix wxQueryResultBox">
+					<div class="pull-left wxQueryResultBoxTitle">客户名称</div>
+					<div class="wxQueryResultBoxContent">
+						<input type="text" class="form-control createComTitleContent clearInput text-right" maxlength="50" name="CardName" value="" placeholder="请输入">
+					</div>
+				</div>
+				<div class="clearfix wxQueryResultBox">
+					<div class="pull-left wxQueryResultBoxTitle">房号</div>
+					<div class="wxQueryResultBoxContent">
+						<input type="text" class="form-control createComTitleContent clearInput text-right vld_int_FisrtZero" maxlength="50" name="FNum" value="" placeholder="请输入">
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="pull-left wxQueryResultBoxTitle">签约日期</div>
+					<div class="wxQueryResultBoxContent">
+						<input type="text" readonly class="form-control createComTitleContent clearInput text-right mobileDate" maxlength="50" name="QDate" value="" placeholder="请输入">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!--附件上传-->
+	<div class="ItemFileUpload" style="margin-top:20px;">
+		<div class="multiplePhoto">
+			<!--合同上传-->
+			<div class="clearfix">
+				<div class="pull-left wxQueryResultBoxTitle">合同</div>
+				<div class="wxQueryResultBoxContent">
+					<div class="parentFile">
+						<button type="button" class="btn btn-danger" id="contractBtn">
+							<i class="glyphicon glyphicon-upload"></i>
+							<span>请选择</span>
+							<input type="file" id="csl_gater_file_contract" accept="image/*" style="display: none;" multiple='multiple'>
+						</button>
+					</div>
+				</div>
+				<!--合同上传-预览图片-->
+				<div id="contract" class="text-center multiplePhotoWrap clearfix"></div>
+			</div>
+
+			<!--发票上传-->
+			<div class="clearfix">
+				<div class="pull-left wxQueryResultBoxTitle" style="width:185px;">发票<span style="color:#999">（请拍蓝色抵扣联）</span></div>
+				<div class="wxQueryResultBoxContent" style="margin-left:200px;">
+					<div class="parentFile">
+						<button type="button" class="btn btn-danger" id="invoiceBtn">
+							<i class="glyphicon glyphicon-upload"></i>
+							<span>请选择</span>
+							<input type="file" id="csl_gater_file_invoice" accept="image/*" style="display: none;" multiple='multiple'>
+						</button>
+					</div>
+				</div>
+				<!--发票上传-预览图片-->
+				<div id="invoice" class="text-center multiplePhotoWrap clearfix"></div>
+			</div>
+
+			<!--付款申请表上传-->
+			<div class="clearfix">
+				<div class="pull-left wxQueryResultBoxTitle">付款申请</div>
+				<div class="wxQueryResultBoxContent">
+					<div class="parentFile">
+						<button type="button" class="btn btn-danger" id="paymentBtn">
+							<i class="glyphicon glyphicon-upload"></i>
+							<span>请选择</span>
+							<input type="file" id="csl_gater_file_payment" accept="image/*" style="display: none;" multiple='multiple'>
+						</button>
+					</div>
+				</div>
+				<!--付款申请上传-预览图片-->
+				<div id="payment" class="text-center multiplePhotoWrap clearfix"></div>
+			</div>
+
+			<!--其它上传-->
+			<div class="clearfix">
+				<div class="pull-left wxQueryResultBoxTitle">其它</div>
+				<div class="wxQueryResultBoxContent">
+					<div class="parentFile">
+						<button type="button" class="btn btn-danger" id="othersBtn">
+							<i class="glyphicon glyphicon-upload"></i>
+							<span>请选择</span>
+							<input type="file" id="csl_gater_file_others" accept="image/*" style="display: none;" multiple='multiple'>
+						</button>
+					</div>
+				</div>
+				<!--其它上传-预览图片-->
+				<div id="others" class="text-center multiplePhotoWrap clearfix"></div>
+			</div>
+		</div>
+	</div>
+
+	<div style="margin-top: 30px;">
+		<a id="submitInfo" class="btn btn-default btn-block nextStep" href="javascript:void(0)"> 提交</a>
+	</div>
+	</body>
+	<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../layer/mobile/layer.js"></script>
+	<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+	<script type='text/javascript' src="js/MultiCslCamera.js"></script>
+	<script type='text/javascript' src="js/tool.js"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+		$(function () {
+			//单据附件 - 新增
+			function CreateDocEntryAttachAdds(TableName, DocEntry, LineNum, AttachCode, Form_ID, Attaches, OKCallback) {
+				var postJson = {
+					"TableName": TableName,        // 单据表名，字符型，必填
+
+					"DocEntry": DocEntry || "",              // 单据编号，整形，  可填
+					"LineNum": LineNum || "",                 // 单据行号，整形，  可填
+					"IsUnableLineNum": 0,            // 是否不启用LineNum,0-启用（保理项目）  1-不启用（正常ERP项目）
+
+					"AttachCode": AttachCode || 0,            // 附件主键，整形，可为0则后台自动创建一个新的，并绑定到单据上
+					"ObjType": Form_ID,            // 对象类型，整形，必填（默认为Line）
+
+					"Attaches": Attaches,
+				};
+				var ly = layer.open({ type: 2, content: '提交中', shadeClose: false });
+				$tool._ajax("/Home/AttachAdds/", "POST", { postJson: JSON.stringify(postJson) }, function (res) {
+					layer.close(ly);
+					OKCallback(res)
+				}, function (res) {
+					layer.close(ly);
+					layer.open({ content: res, skin: 'msg', time: 3, shadeClose: false });
+				}, false)
+			}
+
+			//单据附件 -列表查看
+			function GetDocEntryAttach(Code, Form_ID, OKCallback) {
+				var postJson = {
+					"Code": Code,             // 附件主键，整形，必填
+					"ObjType": Form_ID,       // 对象类型，整形，必填（默认为Line）
+				};
+				var ly = layer.open({ type: 2, content: '加载中', shadeClose: false });
+				$tool._ajax("/Home/Query/", "POST", { postJson: JSON.stringify(postJson) }, function (res) {
+					layer.close(ly);
+					OKCallback(res)
+				}, function (res) {
+					layer.close(ly);
+					layer.open({ content: res, skin: 'msg', time: 3, shadeClose: false});
+				})
+			}
+
+			//单据附件 - 删除
+			function DeleteDocEntryAttachAdds(TableName, DocEntry, LineNum, AttachCode, Form_ID, Attaches, OKCallback) {
+				var postJson = {
+					"TableName": TableName,        // 单据表名，字符型，必填
+
+					"DocEntry": DocEntry,              // 单据编号，整形，  可填
+					"LineNum": LineNum,                 // 单据行号，整形，  可填
+					"IsUnableLineNum": 0,            // 是否不启用LineNum,0-启用（保理项目）  1-不启用（正常ERP项目）
+
+					"AttachCode": AttachCode,            // 附件主键，整形，必填
+					"ObjType": Form_ID,            // 对象类型，整形，必填（单据未窗口编号，其他默认为Line）
+
+					"Attaches": Attaches,
+				};
+				var ly = layer.open({ type: 2, content: '加载中', shadeClose: false });
+				$tool._ajax("/Home/AttachDeletes/", "POST", { postJson: JSON.stringify(postJson) }, function (res) {
+					layer.close(ly);
+					OKCallback(res)
+				}, function (res) {
+					layer.close(ly);
+					layer.open({ content: res, skin: 'msg', time: 3, shadeClose: false});
+				}, false)
+			}
+
+			var FormID = getSearchString("formid");
+			var DocEntry = getSearchString("docentry");
+			var CardNameInfo = JSON.parse(window.localStorage.getItem("CardNameInfo"));
+			/*$('#formData [name="CardName"]').val(CardNameInfo.CardName);
+			$('#formData [name="FNum"]').val(CardNameInfo.FNum);
+			$('#formData [name="QDate"]').val($tool._formatToDate(CardNameInfo.QDate, "y-m-d"));*/
+
+			var MobileUploadFile = null;
+			var MobileUploadFileLayer = null;
+			var ly_imagUpload = null;
+			$(".mobileDate").calendar();//选择日期
+
+			//资料上传
+			function uploadImage(imageData) {/*这里写上传方法,图片流是base64_encode的*/
+				var lyPic = null;
+				var isTrue = false;
+				$.ajax({
+					url: "/Webuploader/Pt_FileUploadWX",
+					type: "post",
+					data: { postJson: imageData },
+					async: false,
+					dataType: 'json',
+					beforeSend: function () {
+						lyPic = layer.open({ type: 2, content: '加载中', shadeClose: false});
+					},
+					success: function (result) {
+						isTrue = false;
+						console.log("成功返回", result);
+						MobileUploadFile = JSON.parse(result.Result);
+						//alert("result:" + result.Result)
+						layer.close(lyPic);
+					},
+					error: function (xhr,txt) {
+						isTrue = true;
+						console.log("错误返回", txt);
+						alert("xhr对象:" + JSON.stringify(xhr) + "\n错误消息：" + txt);
+						layer.close(lyPic);
+					}
+				});
+				if (isTrue) {
+					$.toast('图片上传失败！', "forbidden");
+					return false;
+				}
+			}
+
+			//资料上传
+			var callBack = function (album) {
+				album.forEach(function (val, idx) {
+					var fileID = val.fileID;
+					var img = new Image(), maxH = 640;
+					img.src = val.data;
+					img.onload = function () {
+						var cvs = document.createElement('canvas'),
+								ctx = cvs.getContext('2d');
+
+						if (img.height > maxH) {
+							img.width *= maxH / img.height;
+							img.height = maxH;
+						}
+
+						cvs.width = img.width;
+						cvs.height = img.height;
+
+						ctx.clearRect(0, 0, cvs.width, cvs.height);
+						ctx.drawImage(img, 0, 0, img.width, img.height);
+
+						var dataUrl = cvs.toDataURL('image/jpeg', 1);
+
+						//查看压缩后的文件大小
+						cvs.toBlob(function (blob) {
+							console.log("查看压缩后的文件大小:"+ (blob.size / 1024) + "KB");
+						}, 'image/jpeg', 1);
+
+						uploadImage(dataUrl);//提交附件图片 获取文档服务器返回的图片地址
+
+						var div = $("<div class='everyOneImg'></div>");
+						var img_new = $("<img/>");
+						img_new.attr({ "src": MobileUploadFile.fileServerPath, "data-FileName": val.name, "data-FileSize": val.size, "data-ObjFileName": MobileUploadFile.fileServerPath, "data-ProName": val.fileID });
+						// img_new.css("max-width", "100%");
+						img_new.css({ "width": "64px", "height": "64px" });
+						img_new.addClass("mobileImgUpload");
+						div.append(img_new);
+						// img_new.wrap('<a href="' + MobileUploadFile.fileServerPath + '"></a>');
+						div.append('<span class="ItemDelImg">删除</span>');
+						switch (fileID) {
+							case "csl_gater_file_contract"://合同
+								$("#contract").append(div).show();
+								break;
+							case "csl_gater_file_invoice"://发票
+								$("#invoice").append(div).show();
+								break;
+							case "csl_gater_file_payment"://付款申请
+								$("#payment").append(div).show();
+								break;
+							case "csl_gater_file_others"://其它
+								$("#others").append(div).show();
+								break;
+							default:
+								break;
+						}
+						funcReadImgInfo()
+					};
+				});
+			}
+			var carera_contract = new $.Pgater($("#contractBtn"), $("#csl_gater_file_contract"), callBack);
+			var carera_invoice = new $.Pgater($("#invoiceBtn"), $("#csl_gater_file_invoice"), callBack);
+			var carera_payment = new $.Pgater($("#paymentBtn"), $("#csl_gater_file_payment"), callBack);
+			var carera_others = new $.Pgater($("#othersBtn"), $("#csl_gater_file_others"), callBack);
+
+			//删除图片
+			$(".ItemFileUpload").on("click", ".ItemDelImg", function () {
+				$(this).parent().remove();
+				if ($("#contract .everyOneImg").length==0) {
+					$("#contract").hide();
+				}
+				if ($("#invoice .everyOneImg").length == 0) {
+					$("#invoice").hide();
+				}
+				if ($("#payment .everyOneImg").length == 0) {
+					$("#payment").hide();
+				}
+				if ($("#others .everyOneImg").length == 0) {
+					$("#others").hide();
+				}
+			})
+
+			//提交
+			$("#submitInfo").click(function () {
+				//新增附件
+				if ($(".mobileImgUpload").length != 0) {
+					var fj = [];
+					$.each($(".mobileImgUpload"), function (i, d) {
+						fj.push({
+							FileName: $(d).attr("data-FileName"),
+							FileSize: parseFloat($(d).attr("data-FileSize")),
+							ProName: ($(d).attr("data-ProName") == "csl_gater_file_contract" ? "合同" : $(d).attr("data-ProName") == "csl_gater_file_invoice" ? "发票" : $(d).attr("data-ProName") == "csl_gater_file_payment" ? "付款申请" :"其它"),
+							ObjFileName: $(d).attr("src"),
+						})
+					});
+
+					CreateDocEntryAttachAdds(CardNameInfo.TableName, CardNameInfo.DocEntry, CardNameInfo.LineNum, CardNameInfo.Attachment, "Line", fj, function (data) {
+						console.log(data);
+						$.toast("提交成功", function () {
+							//WeixinJSBridge.call('closeWindow');
+							window.location.href = "/WXAuth/ItemDetail?docentry=" + DocEntry + "&formid=" + FormID;
+						});
+					})
+				} else {
+					layer.open({ content: "请上传附件！", skin: 'msg', time: 3, shadeClose: false});
+					return false;
+				}
+			})
+
+			/*调用微信预览图片的方法*/
+			function funcReadImgInfo() {
+				var imgs = [];
+				var imgObj = $("img.mobileImgUpload");//这里改成相应的对象
+				for (var i = 0; i < imgObj.length; i++) {
+					imgs.push(imgObj.eq(i).attr('src'));
+					imgObj.eq(i).click(function () {
+						var nowImgurl = $(this).attr('src');
+						WeixinJSBridge.invoke("imagePreview", {
+							"urls": imgs,
+							"current": nowImgurl
+						});
+					});
+				}
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue.js4</title>
+    <![endif]-->
+</head>
+<body>
+<div id="app">
+    <blog-post  v-for="item in posts" v-bind:post="item"></blog-post>
+</div>
+<!--<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>-->
+<script src="js/vue.js"></script>
+<script>
+    Vue.component('blog-post', {
+        props: ['post'],
+        template: `
+                <div>
+                  <h3>{{ post.id }}:{{ post.title }}</h3>
+                  <div v-html="post.content"></div>
+                </div>
+              `
+    })
+
+   var vm= new Vue({
+        el: '#app',
+        data: {
+           posts: [
+               { id: 1, title: 'title1',content:"<span>content1</span>" },
+               { id: 2, title: 'title2' ,content:"<span>content2</span>"},
+               { id: 3, title: 'title3' ,content:"<span>content3</span>"}
+           ]
+       }
+    })
+</script>
+</body>
+</html>

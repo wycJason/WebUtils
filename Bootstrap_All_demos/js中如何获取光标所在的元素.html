@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div contenteditable="true" id="edit">
+    <p>变换的文字1</p>
+    <h2>变换的文字2</h2>
+</div>
+<button type="button" id="btn1" >由标题改为正文</button><Br>
+<button type="button" id="btn2" >由正文改为标题</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    var oldNode;
+    window.onload = function() {
+        edit.onclick = function (e) {
+            console.log(e.target);
+            oldNode= e.target;
+        }
+    }
+
+        function H2P(){
+            var newNode=document.createElement("H2");
+            newNode.innerHTML=oldNode.innerText;
+            oldNode.parentNode.replaceChild(newNode,oldNode);
+        }
+        function P2H(){
+            var newNode=document.createElement("p");
+            newNode.innerHTML=oldNode.innerText;
+            oldNode.parentNode.replaceChild(newNode,oldNode);
+        }
+
+    btn2.onclick=function(){
+        debugger;
+        if(oldNode!=undefined){
+            H2P()
+        }
+    }
+
+    btn1.onclick=function(){
+        debugger;
+        if(oldNode!=undefined){
+            P2H()
+        }
+    }
+</script>
+</body>
+</html>

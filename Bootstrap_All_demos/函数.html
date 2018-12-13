@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>什么是高阶函数？</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<input id="ipt" value="123" onblur="testFun(this)">
+<body>
+<h1><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499355829ead974e550644e2ebd9fd8bb1b0dd721000" target="_blank">什么是高阶函数？</a></h1>
+<img src="Images/Higher-order-function.png">
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    //在事件处理函数中，函数中的This就指事件所绑定的元素对象，这里指input元素
+    function testFun(note){
+        console.log(note.value);//123
+    }
+
+    function outer(a,b){//函数嵌套
+        function square(x){return x*x};
+        return Math.sqrt(square(a)+square(b))
+    }
+    console.log(outer(3,4))//5
+
+    var obj={
+        name:"jason",
+        age:28,
+        say:function(){
+            console.log("你好！"+this.name)
+        }
+    };
+    var objInvoking = {
+        name: "Simon",
+        age: 38
+    };
+
+    for(prop in obj){
+        console.log(prop);
+    }
+    console.log(("name" in obj))//true
+
+    //函数赋值方法
+    var myfun=function(x){
+        console.log(x)
+    }
+    obj.custom=myfun;
+    obj.custom(8);
+
+//call apply  call要求传入函数的参数必须独立传入。  apply要求传入函数的参数必须放入一个数组或集合中，整体传入   fn.call(this,name,speed)   fn.apply(this,[name,speed])
+/*
+ 如果一个函数或对象的方法中有使用this关键字，当在调用这个函数或方法时，如果函数或方法中的this关键字不是自己想要的，则可以使用call或apply临时替换函数或方法中的this为指定对象。
+*/
+//函数调用
+var myfunCall=function(x){
+    console.log(x,this.name)
+}
+myfunCall.call(obj,1);
+myfunCall.apply(obj,[2])
+//方法调用
+obj.say();
+obj.say.call(objInvoking);
+
+//阶乘   arguments.callee: 调用了当前正在执行的函数对象，专门实现递归调用      arguments.callee.caller: 表示调用了当前正在执行的函数对象的外层函数。
+  /*  当函数被调用时，它的arguments.callee对象就会指向自身，也就是一个对自己的引用。由于arguments在函数被调用时才有效，因此arguments.callee在函数未调用时是不存在的（即null.callee），
+      且引用它会产生异常。
+     在一个函数A调用另一个函数B时，被调用函数B会自动生成一个caller属性，指向调用它的函数A对象。如果该函数B当前未被调用，或并非被其他函数调用，则caller为null。*/
+    var factorial=function(x){
+        if(x<=1) return 1;
+        return x*arguments.callee(x-1);//return x*factorial(x-1)   //arguments.callee其实就是factorial函数自身
+    }
+console.log(factorial(4))//4*3*2*1=24
+
+
+
+    //自定义函数属性或方法
+    function propFun(){
+        return propFun.counter;
+    }
+    propFun.counter=100;
+    propFun.names="jason";
+    propFun.age=28;
+    propFun.method=function(){
+        console.log("我是函数调用函数的方法")
+    }
+    console.log( propFun(),propFun.names,propFun.age);//100 "jason" 28
+    propFun.method();//我是函数调用函数的方法
+
+    //函数作为参数传递
+    function paramFun(str){
+        console.log(str)
+    }
+    function invokingFun(callback){
+        callback("我是函数作为参数传递进来")//调用执行
+    }
+    /*
+     invokingFun(paramFun)   的执行解释：
+     callback=paramFun;
+     callback("我是函数作为参数传递进来")=paramFun("我是函数作为参数传递进来")
+
+     invokingFun(function(n){console.log(n)})    的执行解释：
+     callback=function(n){console.log(n)};
+     callback("我是函数作为参数传递进来")
+    */
+    invokingFun(paramFun);//有名函数
+    invokingFun(function(n){console.log(n)})//匿名函数
+
+
+    //把函数作为参数传递
+    function test(Func){
+        Func()
+    }
+    test(function(){console.log("匿名函数作为参数传递")})
+
+
+    function test1(value,Func){
+        Func(value)
+    }
+    function test2(data){
+        console.log(data);
+    }
+    test1('有名函数作为参数传递',test2);
+    /*test1('有名函数作为参数传递',test2);执行的解释
+     value=='有名函数作为参数传递'
+     Func==test2
+     Func(value)== test2(value)
+     */
+
+
+
+    //给函数赋值并调用
+    function autoFun(callback){
+        var obj={
+            name:"jason",
+            age:28
+        }
+        callback(obj);
+    }
+    autoFun(function name(obj){//有名函数
+        console.log("给有名函数参数赋值：",obj);
+    })
+    autoFun(function(obj){//匿名函数
+        console.log("给匿名函数参数赋值：",obj);
+    })
+
+    //将参数param的cbOk方法赋值给对象UploadFile的cbOk方法
+    var UploadFile = {
+        cbOk: {},
+        show: function (param) {//param:{cbOk:function(){}}
+            this.cbOk = param.cbOk;
+            this.cbOk();
+        }
+    };
+    UploadFile.show({
+        cbOk:function(){
+            console.log("对象转函数")
+        }
+    })
+</script>
+</body>
+</html>

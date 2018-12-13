@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <link rel="stylesheet" href="jstree/themes/default/style.css" />
+
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div>
+    <a href="http://blog.csdn.net/qq_30337695/article/details/51219346">jsTree简单例子</a>
+</div>
+<!-- 搜索框 -->
+<input type="text" id="search"  /><br/>
+
+<!-- 案由列表 -->
+<div id="treeview"></div>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="jstree/jstree.js"></script>
+<script>
+    var ay_mssys =
+            [
+                {
+                    "id": "1",
+                    "text": "民事案由(2008版)",
+                    //data:[1,2,3],
+                    "state": {
+                        "opened": true,          //展示第一个层级下面的node
+                        "disabled": false         //该根节点不可点击
+                    },
+                    "children":
+                            [
+                                {
+                                    "id": "2",
+                                    "text": "人格权纠纷",
+                                    "children":
+                                            [
+                                                {
+                                                    "id": "3",
+                                                    "text": "人格权纠纷",
+                                                    "children": [
+                                                        {
+                                                            "id": "4",
+                                                            "text": "生命权、健康权、身体权纠纷",
+                                                            "children":
+                                                                    [
+                                                                        {
+                                                                            "id": "5",
+                                                                            "text": "道路交通事故人身损害赔偿纠纷"
+                                                                        }
+                                                                    ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                }
+                            ]
+                },
+            ];
+
+
+    //1）生成jstree：
+    $("#treeview").jstree({
+        'core' : { //core：整个jstree显示的核心，里面包括多种项配置：
+            "multiple" : false,//multiple : false  不可多选
+            'data' : ay_mssys,//data： 这里是使用json格式的数据；还可以使用html或者ajax请求等
+            'dblclick_toggle': false,          //禁用tree的双击展开
+            "check_callback" : true,  //节点unique
+        },
+        "plugins" : [
+            "contextmenu",
+            "dnd",
+            "search",
+            "sort",
+            "changed",
+            "types",
+            "unique",
+            "wholerow"
+        ] //plugins： 这个jstree引用了哪些插件  一共12个插件
+    });
+
+
+    //2）点击jstree的每个子项，获取该节点的text、id等信息：
+    //tree change时事件
+    $('#treeview').on("changed.jstree", function (e, data) {
+        console.log("被点击的节点data是:",data);
+        console.log("被点击的节点id是:",data.node.id);               //选择的node id
+        console.log("被点击的节点text是:",data.node.text);            //选择的node text
+        console.log("被选择的节点id是:",data.changed.selected); // newly selected
+        console.log("刚取消的节点id是:",data.changed.deselected); // newly deselected
+    });
+
+
+//3）点击jstree子项，控制该节点展开、收缩等：
+    //jstree单击事件
+        $("#treeview").bind("select_node.jstree", function (e, data) {
+        if(data.node.id !=1 ){                           //排除第一个节点(2011民事案由)
+            data.instance.toggle_node(data.node);        //单击展开下面的节点
+        }
+
+    });
+
+//4）使用插件search搜索（jstree自带的插件）：
+    //输入框输入定时自动搜索
+    var to = false;
+    $('#search').keyup(function () {
+        if(to) {
+            clearTimeout(to);
+        }
+        to = setTimeout(function () {
+            $('#treeview').jstree(true).search($('#search').val());
+        }, 250);
+    });
+
+</script>
+</body>
+</html>

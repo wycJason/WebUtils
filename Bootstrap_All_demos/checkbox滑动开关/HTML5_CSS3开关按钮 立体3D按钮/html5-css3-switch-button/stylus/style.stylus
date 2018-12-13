@@ -1,0 +1,287 @@
+//Yiwei: The code needs some clean up...
+  
+// Variables
+
+// Colors
+
+$white = #ededed
+$gray = #9d9d9d
+
+$switch-width = 300px
+$switch-height = 280px
+$switch-padding = 5px 0
+$switch-background-color = $white
+$switch-background-image = linear-gradient(darken($white, 3%), darken($white, 10%) 49%, darken($white, 5%))
+$switch-border-color = #916749
+$switch-border-radius = $switch-width * .15
+$switch-box-shadow =  0 5px 10px rgba(#000, .3), inset 0 0 3px #333
+
+// Styles
+
+html, body
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  background: #ca9f6a
+  background: radial-gradient(ellipse at center, #ca9f6a 0%,#ad7846 100%)
+  font-family: "Open Sans"
+
+h3
+  color: #f5f5f5
+  position: relative
+  text-align: center
+  text-transform: uppercase
+  width: 200px
+  display: block
+  margin: 20px auto
+  
+  &:before,
+  &:after
+    content: ""
+    display: block
+    height: 1px
+    width: 60px
+    background-color: rgba(#fff, .3)
+    position: absolute
+    top: 50%
+    left: -60px
+
+  &:after
+    right: -60px
+    left: auto
+      
+.canvas
+  padding: 20px
+  text-align: center
+
+.switch
+  margin: 50px
+  display: inline-block
+
+// Switch
+
+/*.switch,
+.switch *
+  box-sizing: border-box */
+
+.switch
+  width:$switch-width
+  height: $switch-height
+  padding: $switch-padding
+  background-color: $gray
+  background-image: linear-gradient(lighten($gray, 25%), lighten($gray, 50%), $gray)
+  border: 2px solid $switch-border-color
+  border-radius: $switch-border-radius
+  box-shadow: $switch-box-shadow
+  position: relative
+
+  &:before
+    content: ""
+    display: block
+    background-color: $switch-background-color
+    background-image: $switch-background-image  
+    position: absolute
+    top: 10px
+    bottom: 5px
+    left: 3px
+    right: 3px
+    border-radius: $switch-border-radius
+    box-shadow: 0 -6px 1px rgba(255,255,255,.65), inset 0 2px 8px darken($white, 10%)
+
+.switch-button-outer
+  width: 42%
+  height: 66%
+  margin: 17% auto 0
+  padding-bottom: 17%
+  overflow: hidden
+  position: relative
+  z-index: 1
+  border-radius 35px
+  
+  &:before
+    content: ""
+    background: linear-gradient(#afb3b5 0%, #d5d8d9 100%)  
+    width: 100%;
+    top: 0
+    left:0
+    position: absolute
+    bottom: 21%
+    z-index: 1
+    border-radius: 30px
+    box-shadow: 0 0 3px rgba(#fff,.4)
+
+.switch-button
+  height: 90%
+  width: 86%
+  background: linear-gradient(#F3F3F3, #fff)
+  border-radius: 30px
+  overflow: auto
+  position: relative
+  top: (100% - @height)*.5 
+  left: (100% - @width)*.5
+  cursor: pointer
+  box-shadow: 0 16px 8px -8px rgba(#000, .33) inset, 0 0 3px rgba(#000, .85)
+  z-index: 2
+    
+.switch-button-inner
+  width:98%
+  height: 87%
+  margin: 0 1%
+  background: linear-gradient(#9d9d9d,#dedede, #f0f0f0)
+  position: absolute;
+  bottom: 0
+  border-radius: 25px
+  position: absolute
+  z-index: 3
+
+  &:before
+    content: ""
+    height: 16px
+    width: 4px
+    margin-left: -2px
+    background-color: rgba(#000, .1)
+    border-bottom: 2px solid rgba(#fff, .5)
+    position: absolute
+    top: 10px
+    left: 50%
+    box-shadow: 0 1px 2px rgba(#000, .2) inset
+
+  &:after
+    content: ""
+    width: 20px
+    height: @width
+    border: 2px solid rgba(#000, .08)
+    margin-left: -12px
+    position: absolute
+    left: 50%
+    bottom: 10px
+    border-radius: 50%
+    box-shadow: 0 2px 0 rgba(#fff, .7)
+      
+// States
+  
+.switch
+  &:hover
+    .switch-button
+      background-image: linear-gradient(#fcfcfc, #fff)
+      box-shadow: 0 14px 8px -7px rgba(#000, .33) inset, 0 -6px 8px -4px rgba(#000, .33) inset, 0 0 3px rgba(#000, .85)
+    .switch-button-inner
+      bottom: 3px
+      background: linear-gradient(lighten(#9d9d9d, 30%),#dedede 40%, darken(#f0f0f0, 5%))
+      box-shadow: inset 0 -4px 3px rgba(#fff, .6)
+      
+      &:before
+        top: 9.5px
+      
+      &:after
+        height: 19px
+      
+  &.checked
+    .switch-button-outer
+      &:after
+        content: ""
+        height: 50%
+        width: 80%
+        background: transparent
+        position: absolute
+        top: 6%
+        left: 10%
+        z-index: 1
+        border-radius: 20px
+        box-shadow: 0 60px 25px rgba(#000, .35)
+      
+    .switch-button
+      background-image: linear-gradient(#fff, #f3f3f3)
+      box-shadow: 0 -3px 8px rgba(#fff, .5) inset, 0 -15px 0px rgba(#000, .33) inset, 0 0 3px rgba(#000, .85)
+    
+      &:before
+        content: ""
+        width: 100%
+        height: 20px
+        margin-left: - @width*.5
+        background-image: radial-gradient(ellipse at bottom center, rgba(#fff,.7),rgba(#fff,0) 70%)
+        display: block
+        position: absolute
+        bottom: 0
+        left: 50%
+        
+    .switch-button-inner
+      background: linear-gradient(#ddd,#dedede, #fff)
+      bottom: auto
+      top: 2px
+      
+      &:before
+        height: 18px
+      
+      &:after
+        height: 16px
+    
+    &:hover
+      .switch-button
+        background-image: linear-gradient(#f3f3f3, #fff)
+        box-shadow: 0 1px 8px rgba(#fff, .5) inset, 0 -13px 0px rgba(#000, .33) inset, 0 0 3px rgba(#000, .85)
+        &:before
+          background-image: radial-gradient(ellipse at bottom center, rgba(#fff,.6),rgba(#fff,0) 60%)
+      
+      .switch-button-inner
+        background: linear-gradient(darken(#ddd, 5%), #dedede, #fff)
+        bottom: auto
+        top: 5px
+        box-shadow: inset 0 -4px 3px rgba(#fff, .6)
+      
+        &:before
+          top: 9.5px
+      
+        &:after
+          height: 19px
+          bottom: 9px
+      
+// Screw
+
+.screws
+  position: absolute
+  width: 100%
+  height: 100%
+      
+.screw
+  display: block
+  width: 16px
+  height @width
+  background-color: rgba(#000, .6)
+  background-image: radial-gradient(circle at top center, #fcfcfc, transparent)
+  border: 1px solid #999
+  color: rgba(#000, .85)
+  font-family: 'Open Sans'
+  font-size: 20px
+  font-weight: bold
+  text-align: center
+  line-height: 24px
+  position: absolute
+  left: 25px
+  top: 20px
+  border-radius: 50%
+  box-shadow: 0 2px 1px rgba(#fff,0.5)
+      
+  &:before
+    content:""
+    width: 100%
+    height: 60%
+    background-image: radial-gradient(center bottom, rgba(#fff, .5) 50%, transparent)
+    position: absolute
+    bottom: 0
+    left: 0
+    border-radius: 50%
+      
+  &:nth-child(2)
+    left: auto
+    right: 25px
+    
+  &:nth-child(3),
+  &:nth-child(4)
+   top: auto
+   bottom: 25px 
+
+  &:nth-child(4)
+   right: 25px
+   left: auto

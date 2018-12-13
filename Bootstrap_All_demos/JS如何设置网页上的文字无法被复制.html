@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+    	.test {
+    		padding: 10px;
+    		-webkit-user-select: none;
+    		-moz-user-select: none;
+    		-0-user-select: none;
+    		-ms-user-select: none;
+    		user-select: none;
+    		background: #eee;
+    	}
+       /* ::selection
+        {
+            color:#ff0000;
+        }
+        ::-moz-selection
+        {
+            color:#ff0000;
+        }*/
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="test" onselectstart="return false;" unselectable="on">选择我试试，你会发现怎么也选择不到我，哈哈哈哈</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+/*
+ none：文本不能被选择
+text：可以选择文本
+all：当所有内容作为一个整体时可以被选择。如果双击或者在上下文上点击子元素，那么被选择的部分将是以该子元素向上回溯的最高祖先元素。
+element：可以选择文本，但选择范围受元素边界的约束
+
+ 禁止鼠标右键：oncontextmenu="return false"；
+ 禁止选择：onselectstart="return false"；
+ 禁止拖放：ondragstart="return false"；
+ 禁止拷贝：oncopy=document.selection.empty() 。
+ 禁止复制：oncopy = "return false"；
+ 禁止保存：<noscript><iframe src="*.htm"></iframe></noscript>，放在head里面。
+ 禁止粘贴：<input type=text onpaste="return false">
+ 禁止剪贴：oncut = "return false"；
+ 关闭输入法：<input style="ime-mode:disabled">
+
+ 注：
+ 1、onselectstart事件不被input和textarea标签支持，而onselect事件只被input和textarea支持。
+ 2、Firefox/Opera不支持onselectstart事件Firefox中可以使用CSS "-moz-user-select:none"属性来禁止文本选定
+ 3、webkit浏览器可以使用“-khtml-user-select”，当然也可以使用onselectstart事件来阻止用户选定元素内文本，如下
+ <div onselectstart="return false">accc</div>
+
+ onselect
+ onselect是在文本框（input、textarea）内的文本被选中时所触发的事件，其触发时间是在文本被选择以后（即文本已经被选择，已经
+ 显式的表现出来）。该事件只被input和textarea标签支持。
+*/
+</script>
+</body>
+</html>

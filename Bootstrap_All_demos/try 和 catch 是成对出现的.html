@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<input type="button" value="查看消息" onclick="message()" />
+
+<h1>我的第一个 JavaScript 程序</h1>
+<p>请输入 5 到 10 之间的数字：</p>
+<input id="demo" type="text">
+<button type="button" onclick="myFunction()">测试输入值</button>
+<p id="mess"></p>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+
+    //以下示例在 try 块中引发错误，并在 catch 中对其进行捕获。错误对象e是throw的对象
+    // 例如throw 8,  e 就是8；
+    // throw new Error(200)  e 就是一个错误对象，e.message就是200；
+
+    try {
+        throw new Error(200);
+    }
+    catch (e) {
+        console.log(e,e.message);
+    }
+    // Output: 200.
+
+
+
+    try {
+        throw 100; // 抛出一个数值异常
+    } catch (e) {
+        if (e <= 50) {
+            // 异常在 1-50 之间时，直接处理
+        } else {
+            // 异常无法处理，重新抛出
+            throw e;
+        }
+    }
+
+
+
+
+    var txt="";
+    function message()
+    {
+        try
+        {
+            alertt("Welcome guest!");
+        }
+        catch(err)
+        {
+            txt="本页有一个错误。\n\n";
+            txt+="错误描述：" + err + "\n\n";
+            txt+="点击确定继续。\n\n";
+            alert(txt);
+        }
+    }
+
+    if (!window.jQuery) {
+        throw new Error('我的函数库依赖于jQuery')
+    }
+
+//常用
+    function myFunction()
+    {
+        try
+        {
+            var x=document.getElementById("demo").value;
+            if(x=="")    throw "值为空";
+            if(isNaN(x)) throw "不是数字";
+            if(x>10)     throw "太大";
+            if(x<5)      throw "太小";
+        }
+        catch(err)
+        {
+            var y=document.getElementById("mess");
+            y.innerHTML="错误：" + err + "。";
+        }
+    }
+</script>
+</body>
+</html>

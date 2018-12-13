@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .test{
+            width: 500px;
+            height: 500px;
+            background-color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="css/animate.css">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1 class="animated fadeIn">使用CSS为元素添加动画</h1>
+<h1 class="animated rollIn">使用CSS为元素添加动画</h1>
+<h1 class="animated flash">使用CSS为元素添加动画</h1>
+<h1 class="animated bounce">使用CSS为元素添加动画</h1>
+<h1 class="animated bounce infinite">使用CSS为元素添加动画无限循环</h1>
+<br/>
+<h1 id="myH1">使用JS为元素就添加动画，请点击看效果</h1>
+<div class="test animated fadeInRight"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    myH1.onclick = function(){
+        this.className = "animated hinge";
+    }
+</script>
+</body>
+</html>

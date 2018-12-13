@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h3><a href="http://blog.csdn.net/u014607184/article/details/52372551" target="_blank">HTML5 FormData 方法介绍以及实现文件上传</a></h3>
+<h4><a href="http://blog.csdn.net/hsany330/article/details/70156477" target="_blank">FormData详解</a></h4>
+
+<form id="myForm" action="url" method="get" enctype="application/x-www-form-urlencoded">
+    <input type="text" name="a" value="1" />
+    <input type="text" name="b" value="2"/>
+    <input name="c" value="3"/>
+    <input name="d" value="4"/>
+    <input name="e" value="5"/>
+    <input type="radio" name="f" value="r1" checked/>
+    <input type="radio" name="f" value="r2"/>
+    <input type="checkbox" name="g" value="c1" checked/>
+    <input type="checkbox" name="g" value="c2"/>
+    <select name="s">
+        <option value="s1" selected>s1</option>
+        <option value="s2">s2</option>
+    </select>
+    <textarea name="t" cols="10" rows="5">t1</textarea>
+    <input type="file" name="h"/>
+    <input type="submit" value="提交"/>
+    <!--
+    url?a=1&b=2&c=3&d=4&e=5&f=r1&g=c1&s=s1&t=t1&h=car.png
+
+    get:jason?a=1&b=2&c=3&d=4&e=5
+    a=1&b=2&c=3&d=4&e=5
+    a:1
+    b:2
+    c:3
+    d:4
+    e:5
+    -->
+</form>
+
+<br><br><br>
+<input type="button" onclick="formData()" value="HTML5 FormData 方法介绍以及实现文件上传"/>
+
+<br><br><br>
+<input id="upload" type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" >
+
+<br><br><br>
+<input type="button" onclick="formSerialize()" value="表单序列化及反序列化"/>
+<input type="button" onclick="formSerializeStr()" value="字符串解析为对象"/>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //参考文档：https://blog.csdn.net/hsany330/article/details/70156477     https://blog.csdn.net/u014607184/article/details/52372551
+    function formData(){
+        debugger;
+        var form=document.getElementById("myForm");
+        var fd =new FormData(form);
+        console.log(fd.get("h"));
+        for(var pair of fd.entries()) {
+            console.log(pair[0]+ ':'+ pair[1]);
+        }
+    }
+
+
+    $("#upload").change(function(){
+        /*
+         File(26112)
+         lastModified:1514968617966
+         lastModifiedDate:Wed Jan 03 2018 16:36:57 GMT+0800 (中国标准时间) {}
+         name:"用户导入.xls"
+         size:26112
+         type:"application/vnd.ms-excel"
+         webkitRelativePath:""
+        */
+        debugger;
+        console.log(this.files[0]);
+        console.log(this.value)
+    });
+
+    function formSerialize(){
+        //没有file类型的输入表单
+        var data=$("#myForm").serialize();
+        var dataArr=$("#myForm").serializeArray();
+        console.log(data,dataArr);
+    }
+
+    //将字符串解析为对象
+    function parseStrObjByRegExpKV(strDes) {//字符串转化为对象（正则表达式方式）parseStrObjByRegExpKV("name=jack&age=20&love=lily");
+        var obj = {};
+        strDes.replace(/(\w+)(?:=([^&]*))?/g, function (str, key, value) {
+            obj[key] = value;
+        });
+        return obj;
+    }
+    function formSerializeStr(){
+        debugger;
+        var data = parseStrObjByRegExpKV(decodeURIComponent($("#myForm").serialize(), true));
+        console.log(data);
+    }
+
+</script>
+</body>
+</html>

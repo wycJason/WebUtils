@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<a href="http://www.w3school.com.cn/jquery/ajax_ajax.asp">参考文献</a><br><br><br><br>
+<button id="bt3">异步请求</button><br><br><br><br>
+<a href="https://m.kuaidi100.com/index_all.html?type=shunfeng&postid=086074911001">快递页面</a><br><br><br><br>
+<a href="http://www.kuaidi100.com/query?type=shunfeng&postid=086074911001">顺丰快递数据</a><br><br><br><br>
+<a href="http://www.kuaidi100.com/query?type=yunda&postid=3905228205409">韵达快递数据</a><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    /*function f1(data){
+        console.log('开始处理响应数据');
+        console.log(data);
+    }*/
+    //JSONP手段
+    $('#bt3').click(function(){
+       /* var script = document.createElement('script');
+        script.src="http://127.0.0.1/Bootstrap_All_demos/jsonp.php?callback=f1";
+        document.head.appendChild(script);
+*/
+
+
+
+        $.ajax({//最重点是三个参数：dataType: "JSONP",   jsonp:"callback",jsonpCallback:"f1"，
+            dataType: "JSONP",
+            jsonp:"callback",//在一个 jsonp 请求中重写回调函数的名字。这个值用来替代在 "callback=?" 这种 GET 或 POST 请求中 URL 参数里的 "callback" 部分，比如 {jsonp:'onJsonPLoad'} 会导致将 "onJsonPLoad=?" 传给服务器。
+            //jsonpCallback:"f1",//为 jsonp 请求指定一个回调函数名。这个值将用来取代 jQuery 自动生成的随机函数名。这主要用来让 jQuery 生成度独特的函数名，这样管理请求更容易，也能方便地提供回调函数和错误处理。你也可以在想让浏览器缓存 GET 请求的时候，指定这个回调函数名。
+            url: "http://127.0.0.1/Bootstrap_All_demos/jsonp.php",//接口服务器地址:?type=shunfeng&postid=086074911001   http://127.0.0.1/Bootstrap_All_demos/jsonp.php
+            data: {},//请求数据
+            success: function () {
+                //成功执行
+                console.log(arguments);
+            },
+            error: function (e) {
+                //失败执行
+                console.log(arguments);
+            }
+        })
+
+    });
+
+
+</script>
+</body>
+</html>

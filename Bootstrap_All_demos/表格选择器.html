@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+       /* #main table tr td:not(:first-child){
+            background-color: red;
+        }*/
+       /*
+         #main table tr td:not(:nth-child(2)){
+            background-color: red;
+        }
+        #main table tr td:not(:last-child){
+            background-color: red;
+        }*/
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="main">
+    <table border="1">
+        <tr>
+            <td>张无忌</td>
+            <td>张翠山</td>
+            <td>张三丰</td>
+            <td>
+                <div class="test">小龙女</div>
+            </td>
+        </tr>
+        <tr>
+            <td>张无忌</td>
+            <td>张翠山</td>
+            <td>张三丰</td>
+            <td>殷素素</td>
+        </tr>
+        <tr>
+            <td>张无忌</td>
+            <td>张翠山</td>
+            <td>张三丰</td>
+            <td>殷素素</td>
+        </tr>
+    </table>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+$(".test").parent().siblings(":not(:first-child)").css("background-color","red");
+</script>
+</body>
+</html>

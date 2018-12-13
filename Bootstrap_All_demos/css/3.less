@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/*多行注释*/
+//单行注释
+/*多行注释*/
+//单行注释
+@std-border-width: 1px;
+@theme-color: #e4393c;
+@std-font: 'SimSong';
+@common-border: solid;
+@half-opacity: .6;
+
+.box {
+  font-family: @std-font;
+  border: @std-border-width @common-border @theme-color;
+  opacity: @half-opacity;
+}
+.alert {
+  font-family: @std-font;
+}
+
+@container-width: 120px;
+@gutter-width: 10px;
+
+.col-md-1 {
+  width: @container-width/12;
+  padding-left: @gutter-width/2;
+  padding-right: @gutter-width/2;
+}
+
+.base-box {//会被编译至CSS中
+  padding: 20px;
+  margin-bottom: 10px;
+  border-right: 2px;
+}
+.alert {
+  .base-box;
+  font-size: 14px;
+}
+.well {
+  .base-box;
+  box-shadow: 0 0 5px #aaa;
+}
+
+.base(@mg, @pd, @opct:.6) {
+  margin: @mg;
+  padding: @pd;
+  opacity: @opct;
+}
+.modal {
+  .base(10px, 20px, .5);
+}
+.collapse {
+  .base(30px, 40px);
+}
+
+/*********************/
+
+.base2(){//加个()  不会被编译至CSS中  可与.base-box作比较
+  margin: 10px;
+  padding: 20px;
+}
+.page-header {
+  .base2;
+}
+.well {
+  .base2;
+}
+
+
+/***************/
+/*
+#main {
+  background: #aaa;
+}
+#main .left {
+  float: left;
+}
+#main .right {
+  margin-left: 200px;
+}
+#main .right  ul {
+  list-style: none;
+}
+#main .right ul li {
+  display: inline-block;
+}
+#main .right ul li a {
+  text-decoration: none;
+}
+#main .right ul li a:hover {
+  color: red;
+}
+*/
+.main {
+  background: #aab;
+  .left {
+    float:left;
+  }
+  .right {
+    margin-left: 200px;
+    ul {
+      list-style: none;
+      li {
+        display: inline-block;
+        a {
+          text-decoration: none;
+          &:hover {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/************/
+.box {
+  //盒子的宽和高与一幅图片一致
+  width: image-width('../img/11.jpg');
+  height: image-height('../img/11.jpg');
+  padding: ceil(970px/12);
+}
+
+
+
+
+
+
+

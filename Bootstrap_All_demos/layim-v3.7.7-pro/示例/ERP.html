@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>ERP</title>
+    <link rel="stylesheet" href="../src/css/layui.css">
+    <link href="//res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css" rel="stylesheet">
+  <!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-weui/1.2.0/css/jquery-weui.min.css" rel="stylesheet">-->
+    <link href="../../jQueryWeUI_V1.2.0/jQuery-WeUI-V1.2.0.css" rel="stylesheet">
+    <style>
+      /*  $(".layim-chat-list").css({"display":"none"});//聊天面板不显示
+        $(".layim-chat-box").css({"margin-left":"0"});//聊天窗口全屏*/
+        .layim-chat-list{ /*聊天列表*/
+            display: none !important;
+        }
+        .layim-chat-box{ /*聊天窗口*/
+            margin-left: 0 !important;
+        }
+        .layim-tool-hyperLink{ /*超链接*/
+            font-size: 16px !important;
+        }
+      .layui-card { /*消息模板*/
+          padding: 0 15px !important;
+      }
+      .layui-card-header { /*面板头部*/
+          border-bottom: 1px solid #E7E7E7 !important;
+      }
+        .layui-agree:hover, .layui-refuse:hover, .layui-detail:hover{ /*同意 拒绝 详情*/
+            cursor: pointer;
+        }
+      .layim-chat-send .layim-menu-box{ /*设置发送消息快捷键*/
+          top: -80px !important;
+      }
+
+      /*@@符选择人员*/
+      .groupChatMember {
+          padding-left: 0;
+          list-style: none;
+          width: 160px;
+          max-height: 75px;
+          overflow-y: auto;
+          overflow-x: hidden;
+          font-size: 0;
+          border-radius: 3px;
+          box-shadow: 1px 1px 1px 2px #D2D1D1;
+      }
+
+      .groupChatMember:after {
+          content: "";
+          display: block;
+          clear: both;
+      }
+
+      .groupChatMember li {
+          line-height: 18px;
+          height: 18px;
+          width: 154px;
+          font-size: 12px;
+          padding: 3px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: #000;
+          text-align: left;
+          cursor: pointer;
+          display: inline-block;
+      }
+
+      .groupChatMember li:nth-child(2n) {
+          background: #E3F1F9
+      }
+
+      .groupChatMember li:nth-child(2n+1) {
+          background: #fff;
+      }
+
+      .groupChatMember > li:hover {
+          background: #F2EBCD;
+      }
+    </style>
+</head>
+<body>
+<div style="position: absolute;z-index: 999999999;left: 31%">
+    <button id="btn1" class="layui-btn layui-btn-normal">在线客服-小苍A</button>
+    <button id="btn2" class="layui-btn layui-btn-warm">在线客服-小苍B</button>
+    <button id="btn3" class="layui-btn layui-btn-normal">在线客服-小苍A</button>
+    <button id="btn4" class="layui-btn layui-btn-warm">在线客服-小苍B</button>
+    <button id="btn5" class="layui-btn layui-btn-danger">群聊A</button>
+    <button id="btn6" class="layui-btn layui-btn-normal">群聊B</button>
+</div>
+<div id="groupChatMemberShow" style="position: absolute; display:none;z-index: 999999999;">
+    <ul id="groupChatWindow" class="groupChatMember">
+        <li>Lucas--刘源</li>
+        <li>Steven-王潇-研发</li>
+        <li>雷总（King）</li>
+        <li>Eric-许志坚-研发 </li>
+    </ul>
+</div>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<script src="../../js/jquery-1.11.3.js"></script>
+<script src="../src/layui.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>-->
+<script src="../../jQueryWeUI_V1.2.0/jQuery-WeUI-V1.2.0.js"></script>
+<script src="../../js/kingwolfofsky.js"></script>
+<script id="weui-twhp" type="text/html">
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__hd">图文组合列表</div>
+        <div class="weui-panel__bd">
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">标题一</h4>
+                    <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>
+            </a>
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">标题二</h4>
+                    <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>
+            </a>
+        </div>
+        <div class="weui-panel__ft">
+            <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                <div class="weui-cell__bd">查看更多</div>
+                <span class="weui-cell__ft"></span>
+            </a>
+        </div>
+    </div>
+</script>
+<script id="weui-wzlb" type="text/html">
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__hd">文字组合列表</div>
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_text">
+                <h4 class="weui-media-box__title">标题一</h4>
+                <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+            </div>
+            <div class="weui-media-box weui-media-box_text">
+                <h4 class="weui-media-box__title">标题二</h4>
+                <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+            </div>
+        </div>
+        <div class="weui-panel__ft">
+            <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                <div class="weui-cell__bd">查看更多</div>
+                <span class="weui-cell__ft"></span>
+            </a>
+        </div>
+    </div>
+</script>
+<script id="weui-xtphp" type="text/html">
+    <div class="weui-panel">
+        <div class="weui-panel__hd">小图文组合列表</div>
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access" href="javascript:;">
+                        <div class="weui-cell__hd"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>文字标题文字标题文字标题文字标题</p>
+                        </div>
+                        <span class="weui-cell__ft"></span>
+                    </a>
+                    <a class="weui-cell weui-cell_access" href="javascript:;">
+                        <div class="weui-cell__hd"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" style="width:20px;margin-right:5px;display:block"></div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>文字标题文字标题文字标题文字标题</p>
+                        </div>
+                        <span class="weui-cell__ft"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script id="layui-panel" type="text/html">
+    <div class="layui-card">
+        <div class="layui-card-header">思普达——全球领先的平台化移动化企业管理软件提供商</div>
+        <div class="layui-card-body">
+            深圳市思普达软件系统股份有限公司（以下简称思普达，股票代码：871347）成立于2012年，公司位于深圳市南山区科技园，是SAP行业解 决方案市场的重要合作伙伴，公司于2017年登陆新三板。
+        </div>
+    </div>
+</script>
+<script id="layui-panel-operate" type="text/html">
+    <div class="layui-card">
+        <div class="layui-card-header">深圳市思普达软件系统股份有限公司</div>
+        <div class="layui-card-body">公司多年来专注于企业管理软件及企业移动互联网软件（移动办公APP 、CRM、ERP 、OA 、 HR）的产品研发、销售和服务。同时提供基 于公有云和私有云的企业管理系统软件产品和服务，业务范围覆盖多个细分应用市场，包括商业保理管理系统、IC设计企业管理系统、IC分 销管理系统、IC封测管理系统、生产制造管理系统、工程项目管理系统、连锁零售管理系统等。</div>
+        <div class="layui-card-body" style="border-top:1px solid #E7E7E7">
+            <div class="layui-row">
+                <div class="layui-col-xs4 layui-agree" style="text-align: center;color:#46B0FF">同意</div>
+                <div class="layui-col-xs4 layui-refuse" style="text-align: center;color:#E72C32">拒绝</div>
+                <div class="layui-col-xs4 layui-detail" style="text-align: center;color:#949494">详情</div>
+            </div>
+        </div>
+    </div>
+</script>
+<script>
+    //@@符选择人员
+    function show(elem) {
+        var p = kingwolfofsky.getInputPositon(elem);
+        var s = document.getElementById('groupChatMemberShow');
+        s.style.top = p.bottom + 'px';
+        s.style.left = p.left + 'px';
+        debugger
+        var $this = $(elem);
+        var content = $.trim($this.val());
+        var last = content.length - 1;
+        if (content[last] == "@") {
+            s.style.display = 'block';
+            $("#groupChatMemberShow").unbind("click").bind("click", function (e) {
+                if ($(e.target).is("li")) {
+                    var currentContent = $.trim($this.val());
+                    var selectMember = $(e.target).text();
+                    $this.val(currentContent + selectMember);
+                    $("#groupChatMemberShow").unbind("click");
+                    s.style.display = 'none';
+                }
+            })
+            $(".layui-layim-chat").unbind("click").bind("click", function (e) {
+                //点击【#groupChatWindow】以外的地方关闭人员选择弹层
+                if (!($(e.target).closest("#groupChatMemberShow").length > 0)) {
+                    $(".layui-layim-chat").unbind("click");
+                    s.style.display = 'none';
+                }
+            })
+        }
+    }
+if(!/^http(s*):\/\//.test(location.href)){
+  alert('请部署到localhost上查看该演示');
+}
+layui.use(['layim','laytpl'], function(layim,laytpl){
+    //调取私聊公用方法
+    function invokeChatWindow(to_obj){
+        if($(".layui-layer-max").length==0){
+            layim.chat({
+                name:to_obj.name
+                ,type: to_obj.type||'kefu'
+                ,avatar: to_obj.avatar
+                ,id: to_obj.id //定义唯一的id方便你处理信息
+            });
+            $(".layui-layer-max").hide().click();//初始化全屏显示 并隐藏最大最小化按钮
+        }else{
+            layim.chat({
+                name:to_obj.name
+                ,type: to_obj.type||'kefu'
+                ,avatar: to_obj.avatar
+                ,id: to_obj.id  //定义唯一的id方便你处理信息
+            });
+        }
+    }
+
+    //调取群聊公用方法
+    function invokeGroupChatWindow(to_obj){
+        if($(".layui-layer-max").length==0){
+            layim.chat({
+                name:to_obj.name
+                ,type: to_obj.type||'group'//群组类型
+                ,avatar: to_obj.avatar
+                ,id: to_obj.id //定义唯一的id方便你处理信息
+                ,members: to_obj.members //成员数，不好获取的话，可以设置为0
+            });
+            $(".layui-layer-max").hide().click();//初始化全屏显示 并隐藏最大最小化按钮
+        }else{
+            layim.chat({
+                name:to_obj.name
+                ,type: to_obj.type||'group'//群组类型
+                ,avatar: to_obj.avatar
+                ,id: to_obj.id //定义唯一的id方便你处理信息
+                ,members: to_obj.members //成员数，不好获取的话，可以设置为0
+            });
+        }
+    }
+
+    $("#btn1").click(function(){
+        invokeChatWindow({
+            name: '在线客服-小苍A'
+            ,type: 'kefu'
+            ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.180.180.180/7f5f6861jw1e8qgp5bmzyj2050050aa8.jpg'
+            ,id: -1
+        })
+      /*  layim.chat({
+            name: '在线客服-小苍A'
+            ,type: 'kefu'
+            ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.180.180.180/7f5f6861jw1e8qgp5bmzyj2050050aa8.jpg'
+            ,id: -1
+        });
+        $(".layui-layer-max").hide().click();//初始化全屏显示 并隐藏最大最小化按钮*/
+    })
+    $("#btn2").click(function(){
+        invokeChatWindow({
+            name: '在线客服-小苍B'
+            ,type: 'kefu'
+            ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.180.180.180/7f5f6861jw1e8qgp5bmzyj2050050aa8.jpg'
+            ,id: -2
+        })
+      /*  layim.chat({
+            name: '在线客服-小苍B'
+            ,type: 'kefu'
+            ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.180.180.180/7f5f6861jw1e8qgp5bmzyj2050050aa8.jpg'
+            ,id: -2
+        });*/
+    })
+    $("#btn3").click(function(){
+        invokeChatWindow({
+            name: '在线客服-小苍A'
+            ,type: 'kefu'
+            ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.180.180.180/7f5f6861jw1e8qgp5bmzyj2050050aa8.jpg'
+            ,id: -1
+        })
+       /* layim.chat({
+            name: '在线客服-小苍A'
+            ,type: 'kefu'
+            ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.180.180.180/7f5f6861jw1e8qgp5bmzyj2050050aa8.jpg'
+            ,id: -1
+        });*/
+    })
+    $("#btn4").click(function(){
+        invokeChatWindow({
+            name: '在线客服-小苍B'
+            ,type: 'kefu'
+            ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.180.180.180/7f5f6861jw1e8qgp5bmzyj2050050aa8.jpg'
+            ,id: -2
+        })
+       /* layim.chat({
+            name: '在线客服-小苍B'
+            ,type: 'kefu'
+            ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.180.180.180/7f5f6861jw1e8qgp5bmzyj2050050aa8.jpg'
+            ,id: -2
+        });*/
+    })
+    $("#btn5").click(function(){
+        invokeGroupChatWindow({
+            name: '群聊A'
+            ,type: 'group' //群组类型
+            ,avatar: 'http://tp2.sinaimg.cn/5488749285/50/5719808192/1'
+            ,id: 1001 //定义唯一的id方便你处理信息
+            ,members: 12 //成员数，不好获取的话，可以设置为0
+        })
+       /* layim.chat({
+            name: '群聊A'
+            ,type: 'group' //群组类型
+            ,avatar: 'http://tp2.sinaimg.cn/5488749285/50/5719808192/1'
+            ,id: 1001 //定义唯一的id方便你处理信息
+            ,members: 0 //成员数，不好获取的话，可以设置为0
+        });*/
+    })
+    $("#btn6").click(function(){
+        invokeGroupChatWindow({
+            name: '群聊B'
+            ,type: 'group' //群组类型
+            ,avatar: 'http://tp2.sinaimg.cn/5488749285/50/5719808192/1'
+            ,id: 1002 //定义唯一的id方便你处理信息
+            ,members: 12 //成员数，不好获取的话，可以设置为0
+        })
+        /* layim.chat({
+         name: '群聊B'
+         ,type: 'group' //群组类型
+         ,avatar: 'http://tp2.sinaimg.cn/5488749285/50/5719808192/1'
+         ,id: 1002 //定义唯一的id方便你处理信息
+         ,members: 0 //成员数，不好获取的话，可以设置为0
+         });*/
+    })
+    //点击同意
+    $("body").on("click",".layui-agree",function(){
+        layer.confirm('是否同意?', { title:"提示"}, function(index){
+            layer.msg('你已同意');
+            layer.close(index);
+        });
+    });
+    //点击拒绝
+    $("body").on("click",".layui-refuse",function(){
+        layer.confirm('是否拒绝?', { title:"提示"}, function(index){
+            layer.msg('你已拒绝');
+            layer.close(index);
+        });
+    });
+    //点击详情
+    $("body").on("click",".layui-detail",function(){
+        layer.open({
+            type: 1,
+            maxmin: true,
+            title:"思普达信息",
+            area: ["450px","100%"],
+            offset: 'rb',
+            shade: 0,//如果你不想显示遮罩，可以shade: 0
+            anim: 2,
+            content:"",
+        });
+    });
+
+
+  //演示自动回复
+  var autoReplay = [
+    '您好，我现在有事不在，一会再和您联系。',
+      '你没发错吧？face[微笑] ',
+      '洗澡中，请勿打扰，偷窥请购票，个体四十，团体八折，订票电话：一般人我不告诉他！face[哈哈] ',
+      '你好，我是主人的美女秘书，有什么事就跟我说吧，等他回来我会转告他的。face[心] face[心] face[心] ',
+      'face[威武] face[威武] face[威武] face[威武] ',
+      '<（@￣︶￣@）>',
+      '你要和我说话？你真的要和我说话？你确定自己想说吗？你一定非说不可吗？那你说吧，这是自动回复。',
+      'face[黑线]  你慢慢说，别急……',
+      '(*^__^*) face[嘻嘻] ，是贤心吗？',
+       ,document.getElementById("weui-twhp").innerHTML
+       ,document.getElementById("weui-wzlb").innerHTML
+       ,document.getElementById("weui-xtphp").innerHTML
+       ,document.getElementById("layui-panel").innerHTML
+      ,document.getElementById("layui-panel-operate").innerHTML
+  ];
+  
+  //基础配置
+  layim.config({
+    //初始化接口
+   /* init: {
+      url: 'json/getList.json'
+      ,data: {}
+    }*/
+    
+    //或采用以下方式初始化接口
+    init: {
+      mine: {
+        "username": "LayIM体验者" //我的昵称
+        ,"id": "10086" //我的ID
+        ,"status": "online" //在线状态 online：在线、hide：隐身
+        ,"remark": "在深邃的编码世界，做一枚轻盈的纸飞机" //我的签名
+        ,"avatar": "http://cdn.firstlinkapp.com/upload/2016_6/1465575923433_33812.jpg" //我的头像
+      }
+      ,friend: []
+      ,group: []
+    }
+
+    //查看群员接口
+    ,members: {
+      url: 'json/getMembers.json'
+      ,data: {}
+    }
+    
+    //上传图片接口
+    ,uploadImage: {
+      url: '/upload/image' //（返回的数据格式见下文）
+      ,type: '' //默认post
+    } 
+    
+    //上传文件接口
+    ,uploadFile: {
+      url: '/upload/file' //（返回的数据格式见下文）
+      ,type: '' //默认post
+    }
+    
+    ,isAudio: false //开启聊天工具栏音频
+    ,isVideo: false //开启聊天工具栏视频
+    
+    //扩展工具栏
+    ,tool: [
+    /*{
+      alias: 'code'
+      ,title: '代码'
+      ,icon: '&#xe64e;'
+    },*/
+          {
+          alias: 'hyperLink'
+          ,title: '超链接'
+          ,icon: '&#xe64c;'
+      }]
+    
+    ,brief: true //是否简约模式（若开启则不显示主面板）
+    
+    //,title: 'WebIM' //自定义主面板最小化时的标题
+    //,right: '100px' //主面板相对浏览器右侧距离
+    //,minRight: '90px' //聊天面板最小化时相对浏览器右侧距离
+    ,initSkin: '5.jpg' //1-5 设置初始背景
+    //,skin: ['aaa.jpg'] //新增皮肤
+    ,copyright:true
+    //,isfriend: false //是否开启好友
+    //,isgroup: false //是否开启群组
+    //,min: true //是否始终最小化主面板，默认false
+    ,notice: true //是否开启桌面消息提醒，默认false
+    //,voice: false //声音提醒，默认开启，声音文件为：default.mp3
+    
+    ,msgbox: layui.cache.dir + 'css/modules/layim/html/msgbox.html' //消息盒子页面地址，若不开启，剔除该项即可
+    ,find: layui.cache.dir + 'css/modules/layim/html/find.html' //发现页面地址，若不开启，剔除该项即可
+    ,chatLog: layui.cache.dir + 'css/modules/layim/html/chatlog.html' //聊天记录页面地址，若不开启，剔除该项即可
+    
+  });
+
+  /*layim.chat({
+    name: '在线客服-小苍'
+    ,type: 'kefu'
+    ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.180.180.180/7f5f6861jw1e8qgp5bmzyj2050050aa8.jpg'
+    ,id: -1
+  });
+  $(".layui-layer-max").click();//初始化全屏显示*/
+
+  /* layim.chat({
+     name: '在线客服一' //名称
+     ,type: 'kefu' //聊天类型
+     ,avatar: '//tp1.sinaimg.cn/5619439268/180/40030060651/1' //头像
+     ,id: 1111111 //定义唯一的id方便你处理信息
+   }).chat({
+     name: '在线客服二' //名称
+     ,type: 'kefu' //聊天类型
+     ,avatar: '//tp1.sinaimg.cn/5619439268/180/40030060651/1' //头像
+     ,id: 2222222 //定义唯一的id方便你处理信息
+   });*/
+  /*layim.setChatMin();*/
+
+  //监听在线状态的切换事件
+  layim.on('online', function(data){
+    //console.log(data);
+  });
+  
+  //监听签名修改
+  layim.on('sign', function(value){
+    //console.log(value);
+  });
+
+  //监听自定义工具栏点击，以添加代码为例
+  layim.on('tool(code)', function(insert){
+    layer.prompt({
+      title: '插入代码'
+      ,formType: 2
+      ,shade: 0
+    }, function(text, index){
+      layer.close(index);
+      insert('[pre class=layui-code]' + text + '[/pre]'); //将内容插入到编辑器
+    });
+  });
+    //监听自定义工具栏点击，超链接
+    layim.on('tool(hyperLink)', function(insert){
+        layer.prompt({
+            title: '插入超链接或网络图片'
+            ,formType: 2
+            ,shade: 0
+        }, function(text, index){
+            layer.close(index);
+            if ((/(.JPEG|.jpeg|.JPG|.jpg|.GIF|.gif|.BMP|.bmp|.PNG|.png|.webp)$/.test(text))) {//图片
+                insert('img['+text+']'); //将内容插入到编辑器
+            } else {//超链接
+                insert('a('+text+')['+text+']'); //将内容插入到编辑器
+            }
+        });
+    });
+
+  //监听layim建立就绪
+  layim.on('ready', function(res){
+
+    //console.log(res.mine);
+    
+    layim.msgbox(5); //模拟消息盒子有新消息，实际使用时，一般是动态获得
+  
+    //添加好友（如果检测到该socket）
+    layim.addList({
+      type: 'group'
+      ,avatar: "http://tva3.sinaimg.cn/crop.64.106.361.361.50/7181dbb3jw8evfbtem8edj20ci0dpq3a.jpg"
+      ,groupname: 'Angular开发'
+      ,id: "12333333"
+      ,members: 0
+    });
+    layim.addList({
+      type: 'friend'
+      ,avatar: "http://tp2.sinaimg.cn/2386568184/180/40050524279/0"
+      ,username: '冲田杏梨'
+      ,groupid: 2
+      ,id: "1233333312121212"
+      ,remark: "本人冲田杏梨将结束AV女优的工作"
+    });
+    
+    setTimeout(function(){
+      //接受消息（如果检测到该socket）
+      layim.getMessage({
+        username: "Hi"
+        ,avatar: "http://qzapp.qlogo.cn/qzapp/100280987/56ADC83E78CEC046F8DF2C5D0DD63CDE/100"
+        ,id: "10000111"
+        ,type: "friend"
+        ,content: "临时："+ new Date().getTime()
+      });
+      
+      /*layim.getMessage({
+        username: "贤心"
+        ,avatar: "http://tp1.sinaimg.cn/1571889140/180/40030060651/1"
+        ,id: "100001"
+        ,type: "friend"
+        ,content: "嗨，你好！欢迎体验LayIM。演示标记："+ new Date().getTime()
+      });*/
+      
+    }, 3000);
+  });
+
+  //监听查看群员
+  layim.on('members', function(data){
+      debugger;
+    //console.log(data);
+  });
+    //监听聊天窗口的切换   (每次窗口打开或切换，即更新对方的状态)
+  layim.on('chatChange', function(res){
+    var type = res.data.type;
+   // console.log(res.data.id)
+    if(type === 'friend'){
+      //模拟标注好友状态
+      layim.setChatStatus('<span style="color:#FF5722;">在线</span>');
+    } else if(type === 'group'){
+        $(res.textarea).attr("onkeyup","show(this)");//给输入文本域绑定keyup事件
+      //模拟系统消息
+      layim.getMessage({
+        system: true
+        ,id: res.data.id
+        ,type: "group"
+        ,content: '模拟群员'+(Math.random()*100|0) + '加入群聊'
+      });
+    }
+  });
+
+    //监听发送消息
+    layim.on('sendMessage', function(data){
+        var To = data.to;
+        // console.log("监听发送消息:",data);
+        debugger;
+        if(To.type === 'friend'){
+            layim.setChatStatus('<span style="color:#FF5722;">对方正在输入...</span>');
+        }
+        //演示自动回复
+        setTimeout(function(){
+            var obj = {};
+            if(To.type === 'group'){
+                obj = {
+                    username: '模拟群员'+(Math.random()*100|0)
+                    ,avatar: layui.cache.dir + 'images/face/'+ (Math.random()*72|0) + '.gif'
+                    ,id: To.id
+                    ,type: To.type
+                    ,content: autoReplay[parseInt(Math.random()*(autoReplay.length))]||autoReplay[Math.random()*9|0]||autoReplay[autoReplay.length-1]
+                }
+            } else {
+                obj = {
+                    username: To.name
+                    ,avatar: To.avatar
+                    ,id: To.id
+                    ,type: To.type
+                    ,content:  autoReplay[parseInt(Math.random()*(autoReplay.length))]||autoReplay[Math.random()*9|0]||autoReplay[autoReplay.length-1]
+                }
+                layim.setChatStatus('<span style="color:#FF5722;">在线</span>');
+            }
+            //系统消息
+            systemMsg=1;//0：系统消息   //显示在中间
+            if(!systemMsg){
+                layim.getMessage({
+                     system: true //系统消息
+                     ,id: To.id //聊天窗口ID (即对方窗口ID  -1小苍A  -2小苍B)
+                     ,type: To.type //聊天窗口类型
+                     ,content: '对方已掉线'
+                 });
+            }else{
+                layim.getMessage(obj);
+            }
+
+        }, 1000);
+    });
+});
+</script>
+</body>
+</html>

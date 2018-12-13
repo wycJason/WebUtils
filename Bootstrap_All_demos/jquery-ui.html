@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+    .myPicture{
+        /*声明 transition*/
+        /*transition-property:transform;
+        transition-duration:1s;
+        transition-timing-function:ease-out;
+        transition-delay:0s;*/
+        transition:transform 1s ease-out 0s;
+    }
+    .myPicture:hover{
+        transform:scale(1.5);
+    }
+
+    @-webkit-keyframes change{
+        0%{
+            background:red;
+            left:0px;
+            top:0px;
+        }
+        25%{
+            background:green;
+            left:200px;
+            top:0px;
+        }
+        50%{
+            background:blue;
+            left:200px;
+            top:200px;
+        }
+        75%{
+            background:yellow;
+            left:0px;
+            top:200px;
+        }
+        100%{
+            background:red;
+            left:0px;
+            top:0px;
+        }
+    }
+    #d1{
+        width:200px;
+        height:200px;
+        border:1px solid #333;
+        position:relative;
+        /*调用动画*/
+        animation-name:change;
+        animation-duration:5s;
+        animation-timing-function:linear;
+        animation-iteration-count:infinite;
+        animation-direction:normal;
+        animation-fill-mode:forwards;
+
+        -webkit-animation-name:change;
+        -webkit-animation-duration:5s;
+        -webkit-animation-timing-function:linear;
+        -webkit-animation-iteration-count:infinite;
+        -webkit-animation-direction:normal;
+        -webkit-animation-fill-mode:forwards;
+
+        /*animation:change 5s linear 0s infinite normal;
+          animation-fill-mode:forwards;
+        -webkit-animation:change 5s linear 0s infinite normal;
+        -webkit-animation-fill-mode:forwards; */
+    }
+    #d1:hover{
+        -webkit-animation-play-state:paused;
+    }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container" style="margin: 500px">
+    <img class="myPicture" src="img/1.jpg" alt=""/>
+    <div id="d1"></div>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+<script>
+    /*$("img").hover(function(){
+        $(this).animate({width:"20%"},3000)
+    },function(){
+        $(this).animate({width:"1%"},3000)
+    })*/
+</script>
+</body>
+</html>

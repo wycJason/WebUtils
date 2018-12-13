@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<span>班次名称 </span>
+<input id="txt" type="text" maxlength="6" required/>
+<span id="vld"></span>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $("#txt").blur(function(){
+        var reg=/^[\u4e00-\u9fa5]*[A-z]*\d*$/ig;
+        var str=$(this).val();
+        var bl=reg.test(str);
+        console.log(bl);
+        if(bl==false||str==""){
+            $("#vld").html("请重新输入，格式不对，最多6个字符（中英文或数字）！")
+        }else if(bl==true){
+            $("#vld").html("输入正确")
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0051)http://www.trendskitchens.co.nz/jquery/contextmenu/ -->
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+	<HEAD>
+		<TITLE>ContextMenu plugin</TITLE>
+    <META http-equiv=Content-Type content="text/html; charset=gb2312">
+    <META content="MSHTML 6.00.2900.5897" name=GENERATOR>
+    <LINK href="jq22/page_style.css" type=text/css rel=stylesheet>
+    <SCRIPT src="jq22/jquery-1.1.3.js" type=text/javascript></SCRIPT>
+    <SCRIPT src="jq22/jquery.contextmenu.r2.js" type=text/javascript></SCRIPT>
+    <SCRIPT type=text/javascript>
+    $(document).ready(function() {
+      $('span.demo1').contextMenu('myMenu1', {
+        bindings: {
+          'open': function(t) {
+            alert('Trigger was '+t.id+'\nAction was Open');
+          },
+          'email': function(t) {
+            alert('Trigger was '+t.id+'\nAction was Email');
+          },
+          'save': function(t) {
+            alert('Trigger was '+t.id+'\nAction was Save');
+          },
+          'delete': function(t) {
+            alert('Trigger was '+t.id+'\nAction was Delete')
+          }
+        }
+      });
+      $('#demo2').contextMenu('myMenu2', {
+        menuStyle: {
+          border: '2px solid #000'
+        },
+        itemStyle : {
+          fontFamily: 'verdana',
+          backgroundColor: '#666',
+          color: 'white',
+          border: 'none',
+          padding: '1px'
+        },
+        itemHoverStyle: {
+          color: '#fff',
+          backgroundColor: '#0f0',
+          border: 'none'
+        }
+      });
+      $('table tr').contextMenu('myMenu3', {
+        onContextMenu: function(e) {
+          if ($(e.target).attr('id') == 'dontShow'){
+          	return false;
+          }else{
+          	return true;
+          }
+        },
+        onShowMenu: function(e, menu) {
+          if ($(e.target).attr('id') == 'showOne') {
+            $('#item_2, #item_3', menu).remove();
+          }
+          return menu;
+        }
+      });
+      
+      
+    });
+    </SCRIPT>
+  </HEAD>
+  <BODY>
+  	
+  	
+  	<H1>右键菜单插件(ContextMenu plugin)</H1>
+  	<P><B>右键菜单(ContextMenu)</B>是一个轻量级的jquery插件，使用它你可以选择性的用自定义的右键菜单替换浏览器的右键菜单。</P>
+  	<DIV class=contextMenu id=myMenu1>
+  		<UL>
+  			<LI id=open><IMG src="jq22/folder.png"> Open </LI>
+  		  <LI id=email><IMG src="jq22/email.png"> Email </LI>
+  		  <LI id=save><IMG src="jq22/disk.png"> Save </LI>
+  		  <LI id=delete><IMG src="jq22/cross.png"> Delete</LI>
+  		</UL>
+  	</DIV>
+    <DIV class=contextMenu id=myMenu2>
+      <UL>
+      	<LI id=item_1>Item 1 </LI>
+        <LI id=item_2>Item 2 </LI>
+        <LI id=item_3>Item 3 </LI>
+        <LI id=item_4>Item 4 </LI>
+        <LI id=item_5>Item 5 </LI>
+        <LI id=item_6>Item 6 </LI>
+        <LI id=item_7>Item 7 </LI>
+        <LI id=item_8>Item 8 </LI>
+      </UL>
+    </DIV>
+    <DIV class=contextMenu id=myMenu3>
+      <UL>
+        <LI id=item_1>Item 1 </LI>
+        <LI id=item_2>Item 2 </LI>
+        <LI id=item_3>Item 3 </LI>
+      </UL>
+    </DIV>
+    <SPAN class=demo1 id=quickDemo style="BORDER-RIGHT: #888 1px solid; BORDER-TOP: #888 1px solid; FLOAT: right; BORDER-LEFT: #888 1px solid; BORDER-BOTTOM: #888 1px solid">
+    	<B>DEMO</B> 右键点击我!! 
+    </SPAN>
+    <H2>特性</H2>
+		<UL>
+		  <LI>一个页面可以使用多个菜单</LI>
+		  <LI>菜单可以绑定到多种页面元素</LI>
+		  <LI>自定义样式 </LI>
+		  <LI>指定菜单回调函数</LI>
+		</UL>
+		<H2>当前版本</H2>
+		<TABLE>
+		  <TBODY>
+			  <TR>
+			    <TH>版本号</TH>
+			    <TD>r2</TD></TR>
+			  <TR>
+			    <TH>发布日期</TH>
+			    <TD>2007-7-16</TD>
+			  </TR>
+			  <TR>
+			    <TH>作者</TH>
+			    <TD>Chris Domigan <I>(cdomigan@gmail.com)</I></TD></TR>
+			  <TR>
+			    <TH>贡献者</TH>
+			    <TD>Dan G. Switzer, II</TD></TR>
+			  <TR>
+			    <TH>类库需求</TH>
+			    <TD><A href="http://www.jquery.com/">jQuery</A>V1.1或更高</TD></TR>
+			  <TR>
+			    <TH>支持浏览器</TH>
+			    <TD>Firefox 1.5+<BR>Internet Explorer 6.0+ </TD>
+			  </TR>
+		  </TBODY>
+		</TABLE>
+		<H2>更新日志</H2>
+		<UL>
+		  <LI><B>版本2</B> - 2007-7-16 
+		  <UL>
+		    <LI>可以正确使用默认参数
+		    <LI>增加 <B>shadow</B>, <B>eventPosX</B>, <B>eventPosY</B>,<B>onContextMenu</B> 和 <B>onShowMenu</B> 选项 
+		    <LI>大部分修改由Dan G. Switzer, II完成</LI>
+		  </UL>
+		  <LI><B>版本1</B> - 2007-3-9 
+		  <UL>
+		    <LI>首次发布</LI>
+		  </UL>
+		  </LI>
+		</UL>
+		<H2>使用方法</H2>
+		  <P>$(<I>elements</I>).contextMenu(String <B>menu_id</B> [, Object <B>settings</B>]); </P>
+		  <P>在HTML标签中定义菜单结构.对于每个菜单，在使用样式"contextMenu"的div标签中放置一些无序列表和你要调用的ID(参见例子).
+		  	 div标签可以放置在任意位置，它会被插件隐藏起来.<BR>
+		  	 你可以在页面上定义任意多的菜单. 每个&lt;li&gt;标签会作为一个菜单选项. 
+		  	 为每个&lt;li&gt;标签分配一个唯一id，这样就可以为其绑定操作. <BR>
+		  	 <B>注意:菜单(ContextMenu)目前不支持嵌套菜单. 这个特性也许在以后的版本出现.</B> 
+		  </P>
+		<H2>参数</H2>
+		<H3>菜单ID</H3>
+		<P>菜单id是在菜单中定义的.可以将菜单绑定到一个或多个元素上. <br>
+			 例：<CODE>$("table td").contextMenu("myMenu")</CODE> 会将菜单绑定到id为"myMenu"的表格单元格中<BR>
+			 <font style="COLOR: red">注意: 版本1中，id前需要加上一个"#"</font> </P>
+		<H3>设置</H3>
+		<P>菜单插件(ContextMenu)接收一个额外的参数对象来设置菜单项的样式和绑定鼠标事件. 菜单插件(ContextMenu)支持一下参数设置: 
+		<DL>
+		  <DT>bindings 
+		  <DD>包含id的对象:函数组. 当关联的菜单项被点击时调用所提供的函数.触发当前菜单的元素作为第一个参数传递给函数.<br>
+		  <font style="COLOR: red">注意: 版本1中，id前需要加上一个"#"</font>
+		  <DT>menuStyle 
+		  <DD>包含样式名的对象:装饰包含菜单的容器的名值对.
+		  <DT>itemStyle 
+		  <DD>包含样式名的对象:装饰&lt;li&gt;标签的名值对. 
+		  <DT>itemHoverStyle 
+		  <DD>包含样式名的对象:装饰鼠标浮动到&lt;li&gt;上的效果. 
+		  <DT>shadow 
+		  <DD>布尔型:是否显示菜单下拉阴影. <br>
+		  	<font style="COLOR: green">默认为<B>true</B></font> 
+		  <DT>eventPosX 
+		  <DD>定义当鼠标点击时菜单的x轴位置.有时候(特别是在使用IE6时)设置为"clientX". <BR>
+		  	<font style="COLOR: green">默认为<b>'pageX'</b></font> 
+		
+		  <DT>eventPosY 
+		  <DD>定义当鼠标点击时菜单的y轴位置.有时候(特别是在使用IE6时)设置为"clientY". <BR>
+		  	<font style="COLOR: green">默认为<b>'pageY'</b></font>		
+		  <DT>onContextMenu(<B>event</B>) 
+		  <DD>菜单显示前调用的自定义事件函数.如果函数返回false，菜单将不显示.该事件可实现在大块元素
+		  	(或整个页面)上绑定菜单，然后判断是否在右击时显示菜单 		 
+		  <DT>onShowMenu(<B>event</B>, <B>menu</B>) 
+		  <DD>菜单显示前调用的自定义事件函数.该事件传递一个参数在菜单显示前操作输出.在显示菜单前，
+		  	  你可以通过该事件来显示、隐藏或其他你想要的任何操作. 该函数返回值必须是menu. 
+		  </DD>
+		</DL>
+		<H3>更改默认参数</H3>
+		<P>除了通过参数对象来设置菜单样式外,你还可以通过调用<B>$.contextMenu.defaults(settings)</B>
+			 来扩展默认参数.除<B>bindings</B>外每个设置都会用作默认参数.<BR>
+			例: 
+			<pre>
+$.contextMenu.defaults({
+	menuStyle : {
+	  border : "2px solid green"
+	},
+	shadow: false,
+	onContextMenu: function(e) {
+	  alert('Did someone asked for a context menu?!');
+	}		
+});
+		  </pre>
+
+      <H2>例子</H2>
+      <H3>例1 - 简单应用</H3>
+      <P>
+      	<SPAN class=demo1 id=demo1_yellow><B>RIGHT CLICK FOR DEMO</B></SPAN> 
+      	<SPAN class=demo1 id=demo1_green style="BACKGROUND-COLOR: lightgreen">
+      		<B>THIS WORKS TOO</B>
+      	</SPAN> 
+      </P>
+      <H4>Html</H4>
+    <PRE>
+    &lt;div class="contextMenu" id="myMenu1"&gt;
+      &lt;ul&gt;
+        &lt;li id="open"&gt;&lt;img src="folder.png" /&gt; Open&lt;/li&gt;
+        &lt;li id="email"&gt;&lt;img src="email.png" /&gt; Email&lt;/li&gt;
+        &lt;li id="save"&gt;&lt;img src="disk.png" /&gt; Save&lt;/li&gt;
+        &lt;li id="close"&gt;&lt;img src="cross.png" /&gt; Close&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;</PRE>
+<H4>Javascript</H4><PRE>
+    $('span.demo1').contextMenu('myMenu1', {
+      bindings: {
+        'open': function(t) {
+          alert('Trigger was '+t.id+'\nAction was Open');
+        },
+        'email': function(t) {
+          alert('Trigger was '+t.id+'\nAction was Email');
+        },
+        'save': function(t) {
+          alert('Trigger was '+t.id+'\nAction was Save');
+        },
+        'delete': function(t) {
+          alert('Trigger was '+t.id+'\nAction was Delete');
+        }
+      }
+    });</PRE>
+    <P>上述代码将菜单"myMenu1"绑定到样式为"demo1"的所有span元素上</P>
+<H3>例2 - 基本样式 </H3>
+<P id=demo2 style="BACKGROUND-COLOR: lightpink">Right clicking anywhere in this 
+paragraph will trigger the context menu. </P>
+<H3>Html</H3><PRE>
+  &lt;div class="contextMenu" id="myMenu2"&gt;
+    &lt;ul&gt;
+      &lt;li id="item_1"&gt;Item 1&lt;/li&gt;
+      &lt;li id="item_2"&gt;Item 2&lt;/li&gt;
+      &lt;li id="item_3"&gt;Item 3&lt;/li&gt;
+      &lt;li id="item_4"&gt;Item 4&lt;/li&gt;
+      &lt;!-- etc... --&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;</PRE>
+<H3>Javascript</H3><PRE>
+    $('#demo2').contextMenu('myMenu2', {
+      menuStyle: {
+        border: '2px solid #000'
+      },
+      itemStyle: {
+        fontFamily : 'verdana',
+        backgroundColor : '#666',
+        color: 'white',
+        border: 'none',
+        padding: '1px'
+      },
+      itemHoverStyle: {
+        color: '#fff',
+        backgroundColor: '#0f0',
+        border: 'none'
+      }
+    });
+  </PRE>
+<P>上述代码将菜单"myMenu2"绑定到id为"demo2"的元素上. </P>
+<H3>例3 - 带有回调函数的高级应用</H3>
+<P style="FONT-WEIGHT: bold"><SPAN class=demo3 id=dontShow 
+style="PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; BACKGROUND-COLOR: pink">Don't 
+show menu</SPAN> <SPAN class=demo3 id=showOne 
+style="PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; BACKGROUND-COLOR: lightgreen">Just 
+first item</SPAN> <SPAN class=demo3 id=showAll 
+style="PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; BACKGROUND-COLOR: lightblue">Show 
+all</SPAN> </P>
+<H3>Html</H3><PRE>
+  &lt;div class="contextMenu" id="myMenu3"&gt;
+    &lt;ul&gt;
+      &lt;li id="item_1"&gt;Item 1&lt;/li&gt;
+      &lt;li id="item_2"&gt;Item 2&lt;/li&gt;
+      &lt;li id="item_3"&gt;Item 3&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;</PRE>
+<H3>Javascript</H3><PRE>
+    $('span.demo3').contextMenu('myMenu3', {
+      onContextMenu: function(e) {
+        if ($(e.target).attr('id') == 'dontShow') return false;
+        else return true;
+      },
+      onShowMenu: function(e, menu) {
+        if ($(e.target).attr('id') == 'showOne') {
+          $('#item_2, #item_3', menu).remove();
+        }
+        return menu;
+      }
+    });
+  </PRE>
+  </BODY>
+</HTML>

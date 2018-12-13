@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<table id="table_User"></table>
+<div id="pager_User" class="pull-right"></div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    var _grid = null;
+    var _table_User_Height = $(window).height() - 430;//jason调整
+    var postParam = {
+        "CurrentPage": 1,
+        "LastRowNum": 0,
+        "DataSource": 0,
+        "SearchText": "",
+        "CardCode": "",
+
+    };
+    $(function () {
+        $.jgrid.defaults.styleUI = "Bootstrap";
+        _grid = $("#table_User").jqGrid({
+            colNames: ["名称", "职位", "公司名称", "移动电话"],
+            colModel: [
+                { name: "Name", index: "Name", sortable: "false" },
+                { name: "Position", index: "Position", sortable: false },
+                { name: "CompanyName", index: "CompanyName", sortable: false },
+                { name: "Cellolar", index: "Cellolar", sortable: false },
+            ],
+            url: '/BaseData/ContactData',//获取数据的地址
+            //data: tbJsonData,
+            postData: { "PostJson": JSON.stringify(postParam) },//此数组内容直接赋值到url上，参数类型：{name1:value1…}
+            datatype: "json",//json=load server url data,local=load local json data.从服务器端返回的数据类型，默认xml。可选类型：xml，local，json，jsonnp，script，xmlstring，jsonstring，clientside
+            onPaging: loadPageGrid,//点击翻页按钮填充数据之前触发此事件，同样当输入页码跳转页面时也会触发此事件
+            //ondblClickRow: dbEditInfo,//双击行时触发。rowid：当前行id；iRow：当前行索引位置；iCol：当前单元格位置索引；e:event对象
+            jsonReader: {//描述json 数据格式的数组
+                root: "Result",
+                page: "CurrentPage",
+                total: "TotalPage",
+                records: "TotalRow",
+                repeatitems: false
+            },
+            loadComplete: function (data) { console.log("用户表格数据加载完成", data); },//当从服务器返回响应时执行，xhr：XMLHttpRequest 对象
+            pager: "#pager_User", width: 'auto', autowidth: false, shrinkToFit: true, rowNum: 20,// rowList: [10, 20, 30],
+            loadtext: "Loading...", emptyrecords: "暂无数据", viewrecords: true, caption: "", hidegrid: false,
+            height: _table_User_Height
+        });
+        resizeLayoutUser();
+        $(window).bind("resize", function () {
+                    resizeLayoutUser();
+                }
+        );
+        $("#gbox_table_User").css({ "width": "100%", "overflow": "auto", "border": "none", "margin-bottom": "15px" });//jason调整
+        $("#gview_table_User").css("margin-bottom", "0px");//jason调整
+    })
+    function loadPageGrid(e) {
+        var curPage = _grid.getGridParam('page');
+        switch (e) {//first,last,prev,next,user
+            case "first":
+                curPage = 1;
+                break;
+            case "prev":
+                curPage -= 1;
+                break;
+            case "next":
+                curPage += 1;
+                break;
+            case "last":
+                curPage = $("#sp_1_pager_User").text();
+                break;
+            case "user":
+                curPage = $("#input_pager_User input[class*='ui-pg-input']").val();
+                break;
+            default:
+                break;
+        }
+        // $("#grid_curIndex").val(curPage);
+        postParam.CurrentPage = curPage;
+        $("#table_User").jqGrid('setGridParam', {
+            page: curPage,
+            postData: { "PostJson": JSON.stringify(postParam) }
+        }).trigger("reloadGrid");
+    }
+    //jason调整
+    function resizeLayoutUser() {
+        var b = $(".jqGrid_wrapper").width();
+        $("#table_User").setGridWidth(b, true);
+    }
+
+    //数据来源发生改变时
+    $("#dataSource").change(function () {
+        searchUserListFun();
+    });
+    //点击搜索按钮
+    $("#btn_SearchUser").click(function () {
+        searchUserListFun()
+    });
+    //给当前搜索框添加键盘事件
+    $("#txt_searchInput").keydown(function (event) {//搜索
+        switch (event.keyCode) {
+            case 13: //enter
+                $(this).blur();
+                $("#btn_SearchUser").click();
+                break;
+            default:
+                break;
+        }
+    });
+    function searchUserListFun() {
+        postParam.CurrentPage = 1;
+        var dataSource = $("#dataSource").val();
+        if ($.trim(dataSource) != "") {
+            postParam.DataSource = parseInt(dataSource);
+        } else {
+            postParam.DataSource = 0;
+        };
+        var str = $("#txt_searchInput").val();
+        if ($.trim(str) != "") {
+            postParam.SearchText = $.trim(str);
+        } else {
+            postParam.SearchText = "";
+        }
+        $("#table_User").jqGrid('setGridParam', {
+            page: 1,
+            postData: { "PostJson": JSON.stringify(postParam) }
+        }).trigger("reloadGrid");
+    }
+</script>
+</body>
+</html>

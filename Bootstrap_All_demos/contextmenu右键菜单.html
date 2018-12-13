@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<p contextmenu="supermenu">本段落拥有一个名为 "supermenu" 的上下文菜单。这个菜单会在用户右键单击该段落时出现。</p>
+<menu id="supermenu">
+    <command label="Step 1: Write Tutorial" onclick="doSomething()">
+        <command label="Step 2: Edit Tutorial" onclick="doSomethingElse()">
+</menu>
+
+
+<div contextmenu="mymenu">
+    Refresh和Twitter
+    <menu type="context" id="mymenu">
+        <menuitem label="Refresh"></menuitem>
+        <menuitem label="Twitter"></menuitem>
+    </menu>
+</div>
+<p><b>注释：</b>目前只有 Firefox 支持 contextmenu 属性。</p>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>实现双向通信</title>
+</head>
+<body>
+<input type="text" id="data"/>
+<button id="btn">发送</button>
+<script>
+    var btn = document.getElementById("btn");
+    btn.onclick = function(){
+        //TODO 1.获取输入框的内容
+        var data = document.getElementById("data").value;
+        //TODO 2.创建worker对象
+        var worker = new Worker('worker/worker4.js');
+        //TODO 3.向worker文件传递消息
+        worker.postMessage({ 'msg' : data });
+        //TODO 4.接收worker文件传递的消息
+        worker.onmessage = function(event){
+            console.log(event.data);
+        }
+    }
+</script>
+</body>
+</html>

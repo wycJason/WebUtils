@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div>
+    <span>John</span>
+    <b>Kim</b>
+    <span>A</span>
+    <b>Rafael</b>
+    <span>Oleg</span>
+</div>
+<div>
+    <b>Dave</b>
+    <span>Ann</span>
+</div>
+<div>
+    <i><span>Maurice</span></i>
+    <span>Richard</span>
+    <span>B</span>
+    <span>Jason</span>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //查找每个span，这个 span 是 其所有兄弟span元素中的第二个元素。
+console.log($("span:nth-of-type(2)")[0],$("span:nth-of-type(2)")[1]);
+console.log($("span:nth-of-type(2)").toArray());
+</script>
+</body>
+</html>

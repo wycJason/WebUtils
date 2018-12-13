@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    //格式化字符串
+    var a= 1,b= 2,c=3;
+    console.log(formatToStr("{0}-{1}-{2}",a,b,c));
+    function  formatToStr() {
+        if (arguments.length == 0)
+            return null;
+        var result = arguments[0];
+        for (var i = 1; i < arguments.length; i++) {
+            var re = new RegExp('\\{' + (i - 1) + '\\}', 'gm');
+            result = result.replace(re, arguments[i]);   //  re={0}或{1……}
+        }
+        return result;
+    }
+
+
+    /**
+     *这里需要先用Number进行数据类型转换，然后去指定截取转换后的小数点后几位(按照四舍五入)，这里是截取两位，0.12667转换后会变成12.67%
+     */
+    function toPercent(point){
+        var str=Number(point*100).toFixed(2);
+        str+="%";
+        return str;
+    }
+    console.log(toPercent("0.7588"),toPercent(0.7588));
+
+
+    //日期格式化
+   function formatToDate(t, s, o) {//日期格式化
+        if (t == "0001-01-01T00:00:00+08:00")
+            return "";
+        var $t, $s = 'ymdhis';
+        if (typeof o == "undefined") $o = true;//是否需要补0;[true需要,false不需要]
+        else $o = o;
+        if (!s) s = "y-m-d h:i:s"; //如果没规定格式默认格式
+        if (t) $t = new Date(t); ////new Date("1989/09/24 23:59:59")    Sun Sep 24 1989 23:59:59 GMT+0800 (中国标准时间)
+        else $t = new Date();
+        var $y = [$t.getFullYear(), $t.getMonth() + 1, $t.getDate(), $t.getHours(), $t.getMinutes(), $t.getSeconds(), " 00:00:00"]
+        for (var i = 0; i < $y.length - 1; i++) {
+            if ($o)
+                s = s.toLowerCase().replace($s.charAt(i), ($y[i].toString().length == 1 ? "0" + $y[i].toString() : $y[i]));
+            else
+                s = s.toLowerCase().replace($s.charAt(i), $y[i]);
+        }
+        return s;
+    }
+    console.log(formatToDate("2018-01-01T19:00:00+08:00","y-m-d"));
+    console.log(formatToDate("2018-05-01 13:59:59","y"));
+    console.log(formatToDate("2018-05-01 13:59:59","y-m"));
+    console.log(formatToDate("2018-05-01 13:59:59","y-m-d"));
+    console.log(formatToDate("2018-05-01 13:59:59","y-m-d h"));
+    console.log(formatToDate("2018-05-01 13:59:59","y-m-d h:i"));
+    console.log(formatToDate("2018-05-01 13:59:59","y-m-d h:i:s"));
+    console.log(formatToDate("2018-05-01 13:59:59","h:i"));
+
+
+    //转换为东八区时间
+    function formatToeEast8Date(date) {
+        return formatToDate(date, "y-m-d") + "T00:00:00+08:00";
+    }
+    console.log(formatToeEast8Date("2018-05-01 13:59:59"));//2018-05-01T00:00:00+08:00
+
+
+    function _ajax(){
+        $.ajax({
+            url: "/BaseData/DeleteExpType",
+            type: 'post',
+            data: { PostJson: JSON.stringify(jsonObj) },
+            dataType: 'json',
+            success: function (response) {
+                var flag = response.ContentType;
+                if (flag == "True") {
+                    if (JSON.parse(response.Data).Code == 0) {
+                        layer.msg("数据已删除！", { icon: 1 });
+                        setTimeout(function () { loadingData_CostList(); }, 1000);
+                    } else {
+                        layer.msg(JSON.parse(response.Data).Msg, { icon: 2 });
+                    }
+                } else {
+                    layer.msg("服务器请求失败!", { icon: 5 });
+                }
+            },
+            error: function (request) { layer.msg("服务器请求失败", { icon: 2 }) }
+        });
+    }
+
+
+
+
+    //判断是不是苹果移动端
+    function CheckIsIOS() {
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return { //移动终端浏览器版本信息
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                };
+            }(),
+        }
+        if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
+            return true;
+
+            return false;
+        }
+    }
+
+    //判断是不是安卓移动端
+    function CheckIsAndroid() {
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return { //移动终端浏览器版本信息
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                };
+            }(),
+        }
+        //if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
+        //    return false;
+        //}
+        if (browser.versions.android)
+            return true;
+        return false;
+    }
+</script>
+</body>
+</html>

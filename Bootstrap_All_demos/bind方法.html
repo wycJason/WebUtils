@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--
+ bind:基于一个现有函数，创建一个新函数，同时永久绑定原来函数中this为指定对象和部分参数。
+  为什么:
+    call和apply:  借用函数.call(指定对象，参数……)   借用函数.apply(指定对象，[参数……])
+    临时借用函数，替换其中的this，传入参数。
+    问题: 临时借用，临时替换this
+    解决:bind
+  何时使用: 永久绑定this和部分参数时
+  如何使用:
+   var fun=Fun.bind( obj, 参数1 , 参数2,...)
+   基于已有的Fun函数，返回一个新函数 fun，同时永久绑定新函数fun中的this为obj，同时绑定原函数中部分参数值：为参数1,参数2……,
+-->
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    function calc(base,bonus){
+        document.write( this.name+"的总工资:"+(base+bonus)+"<br>");
+    }
+
+    var lilei={name:"Li Lei"};
+    var hmm={name:"Han Meimei"};
+
+    calc.call(lilei,10000,5000);
+    calc.apply(lilei,[10000,5000]);
+
+    calc.call(hmm,9000,7000);
+    calc.apply(hmm,[9000,7000]);
+
+    var lilei_calc=calc.bind(lilei,10000);
+    /*lilei_calc:function(){ calc.apply(lilei,arguments)}*/
+    lilei_calc(5000);
+    lilei_calc(9000);
+
+
+
+   /* (call vs apply) vs bind
+    call,apply: 强行借用一个函数，并临时替换函数中的this为指定对象。
+    call,apply其实是执行一个函数
+    bind: 创建一个新函数，并永久绑定this和部分参数。
+    bind不是执行函数，而是创建新函数*/
+    function stu(name,score,age){
+        this.name=name;
+        this.score=score;
+        this.age=age;
+        this.method=function(){
+            console.log(
+                    "我的名字叫"+this.name+
+                    ",我高考（满分750分）一共考了"+this.score+
+                    "，我的年纪是"+this.age+"岁。")
+        };
+    }
+    var lilei=new stu("王愿超",650,18);
+    console.log(lilei)  // 对象
+    lilei.method();
+
+    /*带参函数、对象、call/apply/bind三者的互用
+     掌握已有对像、构造函数后及二者与call/apply/bind的用法
+     */
+    function score(chinese,math,English){
+        console.log("我的名字叫"+this.name+
+                ",我高考（满分750分）一共考了"+this.score+
+                "，我的年纪是"+this.age+"岁。"+
+                "期末成绩是，语文："+chinese+
+                "分，数学"+math+
+                "分，英语"+English+"分。")
+    };
+    score.call(lilei,125,138,148)
+</script>
+</body>
+</html>

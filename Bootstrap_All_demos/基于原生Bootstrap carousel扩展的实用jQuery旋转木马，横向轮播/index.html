@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>基于原生Bootstrap carousel扩展的实用jQuery旋转木马</title>
+	<link rel="stylesheet" href="http://libs.baidu.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+	
+	<!--[if IE]>
+		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	
+	<section class="jq22-container">
+		<div class="container">
+		  <h2>Standard Rotation</h2>
+		  <div id="full" class="carousel slide" data-ride="carousel">
+		    <div class="carousel-inner">
+		      <ul class="row item active">
+		        <li class="col-xs-4">
+		          <img src="http://placehold.it/200/6dc066/ffffff&text=1" srcset="http://placehold.it/200/6dc066/ffffff&text=1 1x, http://placehold.it/400/6dc066/ffffff&text=1 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-4">
+		          <img src="http://placehold.it/200/6dc066/ffffff&text=2" srcset="http://placehold.it/200/6dc066/ffffff&text=2 1x, http://placehold.it/400/6dc066/ffffff&text=2 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-4">
+		          <img src="http://placehold.it/200/6dc066/ffffff&text=3" srcset="http://placehold.it/200/6dc066/ffffff&text=3 1x, http://placehold.it/400/6dc066/ffffff&text=3 2x" class="img-responsive">
+		        </li>
+		      </ul>
+		      <ul class="row item">
+		        <li class="col-xs-4">
+		          <img src="http://placehold.it/200/6dc066/ffffff&text=4" srcset="http://placehold.it/200/6dc066/ffffff&text=4 1x, http://placehold.it/400/6dc066/ffffff&text=4 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-4">
+		          <img src="http://placehold.it/200/6dc066/ffffff&text=5" srcset="http://placehold.it/200/6dc066/ffffff&text=5 1x, http://placehold.it/400/6dc066/ffffff&text=5 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-4">
+		          <img src="http://placehold.it/200/6dc066/ffffff&text=6" srcset="http://placehold.it/200/6dc066/ffffff&text=6 1x, http://placehold.it/400/6dc066/ffffff&text=6 2x" class="img-responsive">
+		        </li>
+		      </ul>
+		    </div>
+
+		    <a class="carousel-control left" href="#full" data-slide="prev">Previous</a>
+		    <a class="carousel-control right" href="#full" data-slide="next">Next</a>
+		  </div>
+
+		  <h2>Single Item Rotation</h2>
+		  <div id="single" class="carousel slide" data-ride="carousel" data-shift="1">
+		    <div class="carousel-inner">
+		      <ul class="row item active">
+		        <li class="col-xs-4 one">
+		          <img src="http://placehold.it/200/666dc0/ffffff&text=1" srcset="http://placehold.it/200/666dc0/ffffff&text=1 1x, http://placehold.it/400/666dc0/ffffff&text=1 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-4 two">
+		          <img src="http://placehold.it/200/666dc0/ffffff&text=2" srcset="http://placehold.it/200/666dc0/ffffff&text=2 1x, http://placehold.it/400/666dc0/ffffff&text=2 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-4 three">
+		          <img src="http://placehold.it/200/666dc0/ffffff&text=3" srcset="http://placehold.it/200/666dc0/ffffff&text=3 1x, http://placehold.it/400/666dc0/ffffff&text=3 2x" class="img-responsive">
+		        </li>
+		      </ul>
+		      <ul class="row item">
+		        <li class="col-xs-4 four">
+		          <img src="http://placehold.it/200/666dc0/ffffff&text=4" srcset="http://placehold.it/200/666dc0/ffffff&text=4 1x, http://placehold.it/400/666dc0/ffffff&text=4 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-4 five">
+		          <img src="http://placehold.it/200/666dc0/ffffff&text=5" srcset="http://placehold.it/200/666dc0/ffffff&text=5 1x, http://placehold.it/400/666dc0/ffffff&text=5 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-4 six">
+		          <img src="http://placehold.it/200/666dc0/ffffff&text=6" srcset="http://placehold.it/200/666dc0/ffffff&text=6 1x, http://placehold.it/400/666dc0/ffffff&text=6 2x" class="img-responsive">
+		        </li>
+		      </ul>
+		    </div>
+
+		    <a class="carousel-control left" href="#single" data-slide="prev">Previous</a>
+		    <a class="carousel-control right" href="#single" data-slide="next">Next</a>
+		  </div>
+		  
+		  <p>The goal here was to change the way the carousel behaves without actually changing the way the markup is initially written.</p>
+  			<p>In order to achieve this, I had to use JS to reconstruct the carousel markup into more slides. Then alter the styles to make it move only one item. This is all triggered on page load by a data attribute.</p>
+		  <p>The modified styles are calculated and injected with JS as well. Each carousel is assigned a unique class in the JS so styles don't interfere with other carousels on the page. This allows each carousel to operate independently regardless of how many items it displays. So the styles making the 3-wide carousel work aren't going to affect the 4-wide carousel below.</p>
+		  
+		  <div id="single-quad" class="carousel slide" data-ride="carousel" data-shift="1">
+		    <div class="carousel-inner">
+		      <ul class="row item active">
+		        <li class="col-xs-3 one">
+		          <img src="http://placehold.it/200/c0666d/ffffff&text=1" srcset="http://placehold.it/200/c0666d/ffffff&text=1 1x, http://placehold.it/400/c0666d/ffffff&text=1 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-3 two">
+		          <img src="http://placehold.it/200/c0666d/ffffff&text=2" srcset="http://placehold.it/200/c0666d/ffffff&text=2 1x, http://placehold.it/400/c0666d/ffffff&text=2 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-3 three">
+		          <img src="http://placehold.it/200/c0666d/ffffff&text=3" srcset="http://placehold.it/200/c0666d/ffffff&text=3 1x, http://placehold.it/400/c0666d/ffffff&text=3 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-3 four">
+		          <img src="http://placehold.it/200/c0666d/ffffff&text=4" srcset="http://placehold.it/200/c0666d/ffffff&text=4 1x, http://placehold.it/400/c0666d/ffffff&text=4 2x" class="img-responsive">
+		        </li>
+		      </ul>
+		      <ul class="row item">
+		        <li class="col-xs-3 five">
+		          <img src="http://placehold.it/200/c0666d/ffffff&text=5" srcset="http://placehold.it/200/c0666d/ffffff&text=5 1x, http://placehold.it/400/c0666d/ffffff&text=5 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-3 six">
+		          <img src="http://placehold.it/200/c0666d/ffffff&text=6" srcset="http://placehold.it/200/c0666d/ffffff&text=6 1x, http://placehold.it/400/c0666d/ffffff&text=6 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-3 seven">
+		          <img src="http://placehold.it/200/c0666d/ffffff&text=7" srcset="http://placehold.it/200/c0666d/ffffff&text=7 1x, http://placehold.it/400/c0666d/ffffff&text=7 2x" class="img-responsive">
+		        </li>
+		        <li class="col-xs-3 eight">
+		          <img src="http://placehold.it/200/c0666d/ffffff&text=8" srcset="http://placehold.it/200/c0666d/ffffff&text=8 1x, http://placehold.it/400/c0666d/ffffff&text=8 2x" class="img-responsive">
+		        </li>
+		      </ul>
+		    </div>
+
+		    <a class="carousel-control left" href="#single-quad" data-slide="prev">Previous</a>
+		    <a class="carousel-control right" href="#single-quad" data-slide="next">Next</a>
+		  </div>
+		  
+		  <p><b>DISCLAIMER:</b> I don't know that I would recommend using this method for doing this on a regular basis. If you are maintaining your own HTML and you know what you are doing, it would probably be more beneficial to just initially code it to what the JS is changing it to. But I am typically making things that other people are going to be implementing. And the easier it is for them to build and understand, the easier it is for me troubleshoot when things don't work. Not that my things don't work or anything... =)</p>
+		</div>
+	</section>
+	<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://libs.baidu.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

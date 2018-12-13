@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        /*左侧菜单*/
+        .leftMeun {
+            box-sizing: border-box;
+            float: left;/*左右布局*/
+            width: 180px;/*左右布局*/
+            /*min-height: 800px;*/
+            border:1px solid #E6E6E7;
+            list-style: none;
+            padding: 0;
+            background-color: #f5f6f7;
+            overflow:auto; /*左右布局垂直滚动条*/
+        }
+        .leftMeun li{
+            /*height:35px;
+            line-height:35px;*/
+        }
+        a.meun-item {
+            line-height:35px;
+            height:35px;
+            color: #000000;
+            cursor: pointer;
+            display: inline-block;
+            width: 100%;
+            text-decoration: none;
+        }
+        a.meun-item>span{
+            margin:0 5px;
+        }
+        div.wrap>ul>li> a{
+            padding-left: 15px;
+        }
+        div.wrap>ul>li.active > a,li.downArrow>ul>li.active>a,a.meun-item:hover{/*菜单选项被选中的颜色和鼠标移上去的背景颜色及字体颜色*/
+            background:#ffffff;
+            color: #41a0ff;
+            text-decoration: none;
+        }
+        li.downArrow>ul>li.active>a{/*二级子菜单被选中时右偏移*/
+            padding-left:48px;
+        }
+        li.downArrow>ul{
+            padding-left: 0px;
+        }
+        li.downArrow>ul>li>a{
+            padding-left:43px;
+        }
+        li.downArrow>ul>li>a{
+            text-decoration: none;
+        }
+        .meun-item img {
+            padding-right: 8px;
+            height: 20px;
+            vertical-align: middle;
+            margin-top: -5px;
+        }
+        .downArrow{
+            position: relative;
+            /*以下为实现手风琴效果，覆盖panel的CSS样式*/
+            margin-bottom: 0px;
+            background-color: #f5f6f7;
+            border:none;
+            border-radius: 0px;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        li.downArrow>span{
+            position: absolute;
+            font-size: 14px;
+            width: 20px;
+            height: 20px;
+            right: 0px;
+            top: 14px;
+            cursor: pointer;
+        }
+
+        .glyphicon-chevron-down:before {
+            content: "\e114";
+        }
+        .glyphicon-chevron-up:before {
+            content: "\e113";
+        }
+    </style>
+</head>
+<body>
+<!-- 左侧菜单栏目块 -->  <!--手风琴一定要有面板panel类-->
+<div class="wrap">
+    <ul class="leftMeun" id="leftMeun">
+        <li class="active"><a class="meun-item item-link" href="javascript:void(0)" data-link="Home" data-toggle="tab"><span class="glyphicon glyphicon-home"></span>首页</a></li>
+        <li id="ogzArrow" class="downArrow panel">
+            <a class="meun-item" data-toggle="collapse" href="#ogzStructure" data-parent="#leftMeun"><span class="glyphicon glyphicon-list-alt"></span>组织架构</a>
+            <span class="glyphicon glyphicon-chevron-down" data-toggle="collapse" data-target="#ogzStructure" data-parent="#leftMeun"></span>
+            <ul id="ogzStructure" class="collapse">
+                <li><a class="meun-item item-link" data-link="/Organization/UserManage" data-toggle="tab" href="javascript:void(0)">用户</a></li>
+                <li><a class="meun-item item-link" data-link="/Organization/DeptManage" data-toggle="tab" href="javascript:void(0)">部门</a></li>
+                <li><a class="meun-item item-link" data-link="/Organization/RoleManage" data-toggle="tab" href="javascript:void(0)">职位</a></li>
+            </ul>
+        </li>
+        <li id="atdArrow" class="downArrow panel">
+            <a class="meun-item" data-toggle="collapse" href="#attendanceSet" data-parent="#leftMeun"><span class="glyphicon glyphicon-tasks"></span>考勤设置</a>
+            <span class="glyphicon glyphicon-chevron-down" data-toggle="collapse" data-target="#attendanceSet" data-parent="#leftMeun"></span>
+            <ul id="attendanceSet" class="collapse">
+                <li><a class="meun-item item-link" data-link="/Attendance/AtdGrpMgt" data-toggle="tab" href="javascript:void(0)">考勤组管理</a></li>
+                <li><a class="meun-item item-link" data-link="/Attendance/AtdTeamMgt" data-toggle="tab" href="javascript:void(0)">班次管理</a></li>
+                <li><a class="meun-item item-link" data-link="/Attendance/AtdInfo"  data-toggle="tab" href="javascript:void(0)">考勤统计</a></li>
+            </ul>
+        </li>
+        <li><a class="meun-item item-link" data-link="/Approval/ApprovalManage"  data-toggle="tab"><span class="glyphicon glyphicon-random"></span>审批设置 </a></li>
+        <li><a class="meun-item item-link"  data-link="/Target/TargetMgt" data-toggle="tab"><span class="glyphicon glyphicon-bookmark"></span>目标管理</a></li>
+        <li><a class="meun-item item-link"  data-link="/Integral/_Main" data-toggle="tab"><span class="glyphicon glyphicon-heart"></span>积分管理</a></li>
+        <li style="display:none;"><a class="meun-item item-link" data-link="/CompanySet/CompanySetInfo" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span>公司管理</a></li>
+        <li><a class="meun-item item-link" data-link="/Icon/IconManage" data-toggle="tab"><span class="glyphicon glyphicon-picture"></span>图标管理</a></li>
+        <li id="dbArrow" class="downArrow panel">
+            <a class="meun-item" data-toggle="collapse" href="#baseData" data-parent="#leftMeun"><span class="glyphicon glyphicon-calendar"></span>基础数据</a>
+            <span class="glyphicon glyphicon-chevron-down" data-toggle="collapse" data-target="#baseData" data-parent="#leftMeun"></span>
+            <ul id="baseData" class="collapse">
+                <li><a class="meun-item item-link" data-link="/BaseData/Customer" data-toggle="tab" href="javascript:void(0)">客户</a></li>
+                <li><a class="meun-item item-link" data-link="/BaseData/Contact" data-toggle="tab" href="javascript:void(0)">联系人</a></li>
+                <li><a class="meun-item item-link"  data-link="/BaseData/PartnerGroup"  data-toggle="tab" href="javascript:void(0)">客户组</a></li>
+                <li><a class="meun-item item-link"  data-link="/BaseData/Cost"  data-toggle="tab" href="javascript:void(0)">费用</a></li>
+                <li><a class="meun-item item-link"  data-link="/BaseData/MeasurementUnit"  data-toggle="tab" href="javascript:void(0)">计量单位</a></li>
+                <li><a class="meun-item item-link"  data-link="/BaseData/UnitGroup"  data-toggle="tab" href="javascript:void(0)">单位组</a></li>
+                <li><a class="meun-item item-link" data-link="/BaseData/UnitManage" data-toggle="tab" href="javascript:void(0)">单位管理</a></li>
+                <li><a class="meun-item item-link" data-link="/BaseData/IC" data-toggle="tab" href="javascript:void(0)">IC管理</a></li>
+            </ul>
+        </li>
+        <li id="icArrow" class="downArrow panel">
+            <a class="meun-item" data-toggle="collapse" href="#icData" data-parent="#leftMeun"><span class="glyphicon glyphicon-calendar"></span>IC管理</a>
+            <span class="glyphicon glyphicon-chevron-down" data-toggle="collapse" data-target="#icData" data-parent="#leftMeun"></span>
+            <ul id="icData" class="collapse">
+                <li><a class="meun-item item-link" data-link="/BaseData/IC" data-toggle="tab" href="javascript:void(0)">库存上传</a></li>
+                <li><a class="meun-item item-link" data-link="/BaseData/ICSQ" data-toggle="tab" href="javascript:void(0)">合作伙伴授权</a></li>
+                <li><a class="meun-item item-link" data-link="/BaseData/ICFile" data-toggle="tab" href="javascript:void(0)">上传记录</a></li>
+            </ul>
+        </li>
+        <li id="rptArrow" class="downArrow panel">
+            <a class="meun-item" data-toggle="collapse" href="#generalSet" data-parent="#leftMeun"><span class="glyphicon glyphicon-list-alt"></span>一般设置</a>
+            <span class="glyphicon glyphicon-chevron-down" data-toggle="collapse" data-target="#generalSet" data-parent="#leftMeun"></span>
+            <ul id="generalSet" class="collapse">
+                <li><a class="meun-item item-link" data-link="/GeneralSet/GeneralSetA"  data-toggle="tab" href="javascript:void(0)">一般设置1</a></li>
+                <li><a class="meun-item item-link" data-link="/GeneralSet/GeneralSetB"  data-toggle="tab" href="javascript:void(0)">一般设置2</a></li>
+                <li><a class="meun-item item-link" data-link="/GeneralSet/GeneralSetC"  data-toggle="tab" href="javascript:void(0)">一般设置3</a></li>
+            </ul>
+        </li>
+        <li id="sysArrow" class="downArrow panel">
+            <a class="meun-item" data-toggle="collapse" href="#systemMgt" data-parent="#leftMeun"><span class="glyphicon glyphicon-cog"></span>系统管理</a>
+            <span class="glyphicon glyphicon-chevron-down" data-toggle="collapse" data-target="#systemMgt" data-parent="#leftMeun"></span>
+            <ul id="systemMgt" class="collapse">
+                <li><a class="meun-item item-link" data-link="/SystemMgt/SystemMgtPurchaseModule" data-toggle="tab" href="javascript:void(0)">模块购买</a></li>
+                <li><a class="meun-item item-link" data-link="/SystemMgt/SystemMgtSet"  data-toggle="tab" href="javascript:void(0)">系统设置</a></li>
+                <li><a class="meun-item item-link" data-link="/SystemMgt/SystemMgtAuthoritySet"  data-toggle="tab" href="javascript:void(0)">权限设置</a></li>
+                <li><a class="meun-item item-link" data-link="/SystemMgt/SystemMgtModuleSet" data-toggle="tab" href="javascript:void(0)">模块设置</a></li>
+                <li><a class="meun-item item-link" data-link="/SystemMgt/SystemMgtCustomMenu" data-toggle="tab" href="javascript:void(0)">自定义菜单</a></li>
+                <li><a class="meun-item item-link" data-link="/SystemMgt/SystemMgtReport" data-toggle="tab" href="javascript:void(0)">报表组</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    /*左侧导航栏一级菜单与二级菜单 被选中激活active时背景色切换效果*/
+    $("li.downArrow>ul>li").click(function(){
+        $("#leftMeun").children("li.active").removeClass("active");
+    });
+    $("#leftMeun>li").click(function(){
+        $("li.downArrow>ul").children("li.active").removeClass("active");
+    });
+
+    /*二级菜单下拉箭头上下切换效果（bootstrap里的css箭头样式上下顺序有改变过 624行与627行对换过位置）*/
+    $("#dbArrow>a,#dbArrow>span").click(function(){
+        $("#dbArrow>span").toggleClass('glyphicon-chevron-up');
+    });
+    $("#icArrow>a,#icArrow>span").click(function () {
+        $("#icArrow>span").toggleClass('glyphicon-chevron-up');
+    });
+    $("#rptArrow>a,#rptArrow>span").click(function(){
+        $("#rptArrow>span").toggleClass('glyphicon-chevron-up');
+    });
+    $("#ogzArrow>a,#ogzArrow>span").click(function(){
+        $("#ogzArrow>span").toggleClass('glyphicon-chevron-up');
+    });
+    $("#atdArrow>a,#atdArrow>span").click(function(){
+        $("#atdArrow>span").toggleClass('glyphicon-chevron-up');
+    });
+    $("#sysArrow>a,#sysArrow>span").click(function(){
+        $("#sysArrow>span").toggleClass('glyphicon-chevron-up');
+    });
+
+    /*二级菜单 手风琴下拉箭头上下切换效果*/
+    $("li.downArrow>a,li.downArrow>span").click(function () {
+        $(this).parent().siblings(".downArrow").children("span").attr("class", "glyphicon glyphicon-chevron-down")
+    })
+</script>
+</body>
+</html>

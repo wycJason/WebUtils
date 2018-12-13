@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>时间选择器</title>
+    <style>
+        .el-time-spinner__list {
+            margin-top: -9px !important;
+        }
+    </style>
+<!--    <link href="css/bootstrap.css" rel="stylesheet">-->
+    <!-- 引入element-ui样式 -->
+    <link rel="stylesheet" href="css/element-ui.css">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="datetime">
+        <el-date-picker v-model="value" type="datetime" placeholder="选择日期时间"></el-date-picker>
+</div>
+<br/>
+<button id="btn">点击输出时间</button>
+
+<br/><br/>
+<div id="datetimerange">
+        <el-date-picker v-model="value" type="datetimerange" placeholder="选择日期时间范围"></el-date-picker>
+</div>
+
+<br/><br/>
+<div id="time">
+        <el-time-picker v-model="value" format="HH:mm"  placeholder="任意时间点:小时：分钟"></el-time-picker>
+</div>
+
+<br/><br/>
+<div id="time2">
+        <el-time-picker v-model="value" format="HH:mm:ss"  placeholder="任意时间点:小时:分钟:秒"></el-time-picker>
+</div>
+
+<br/><br/>
+<div id="ymd">
+        <el-date-picker v-model="value"  type="date"   placeholder="选择日期"></el-date-picker>
+</div>
+
+<br/><br/>
+<div id="month">
+        <el-date-picker v-model="value"  type="month"  placeholder="选择月"></el-date-picker>
+</div>
+
+<br/><br/>
+<div id="year">
+        <el-date-picker v-model="value"  type="year"  placeholder="选择年"></el-date-picker>
+</div>
+
+<br/><br/>
+<div id="week">
+        <el-date-picker v-model="value"  type="week" format="yyyy 第 WW 周"  placeholder="选择周"></el-date-picker>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<!--<script src="js/bootstrap.js"></script>-->
+<!-- 先引入 Vue,vue-js整体文件夹要引入，彼此文件间有这依赖关系 -->
+<script src="vue-js/vue.js"></script>
+<!-- 引入element-ui组件库 -->
+<script src="js/element-ui.js"></script>
+<script>
+     new Vue({
+        el: '#datetime',
+        data: {
+                value: '',
+            }
+    });
+   var timePickerElements=$(".el-input__inner");
+    $("#btn").click(function(){
+       console.log(timePickerElements[0].value);
+    })
+
+     new Vue({
+         el: '#datetimerange',
+         data: {
+             value: '',
+         }
+     });
+
+     new Vue({
+         el: '#time',
+         data:  {
+                 value: ''
+             }
+     });
+
+     new Vue({
+         el: '#time2',
+         data:  {
+             value: ''
+         }
+     });
+
+     new Vue({
+         el: '#ymd',
+         data:  {
+             value: ''
+         }
+     });
+
+     new Vue({
+         el: '#month',
+         data:  {
+             value: ''
+         }
+     });
+
+     new Vue({
+         el: '#year',
+         data:  {
+             value: ''
+         }
+     });
+
+     new Vue({
+         el: '#week',
+         data:  {
+             value: ''
+         }
+     });
+</script>
+</body>
+</html>

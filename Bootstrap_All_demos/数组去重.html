@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1>
+    <a href="http://www.cnblogs.com/jq-melody/p/4505290.html" target="_blank">js数组去重的三种常用方法总结</a>
+</h1>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+/*
+ 思路：
+
+ 1.创建一个新的数组存放不重新的结果
+
+ 2.创建一个空对象用于对比是否重复
+
+ 3.for循环时，每次取出原数组一个元素值与对象的属性进行对比，如果这个元素不重复，则把它存放到结果数组中，同时把这个元素的内容作为对象的一个属性，并赋值为1，存入到第2步建立的对象中。
+
+ 说明：至于如何对比，就是每次从原数组中取出一个元素，然后到对象中去访问这个属性，如果能访问到值，则说明重复。
+*/
+    Array.prototype.unique = function(){
+        //this 指数组的实例，谁调用这个unique()，方法，this就指.前的对象，即原数组
+        var res = [];
+        var json = {};
+        for(var i = 0; i < this.length; i++){
+            if(!json[this[i]]){
+                res.push(this[i]);
+                json[this[i]] = 1;
+            }
+        }
+        return res;
+    }
+    var arr = [112,112,34,'你好',112,112,34,'你好','str','str1'];
+    console.log(arr.unique());
+
+
+
+    //JavaScript判断数组重复内容    一般,我们可能会给数组去重,这个操作并不复杂,执行一个循环就是了.现在,我要做的是,判断数组中是否有重复的内容,如果有,返回 true 否则,返回 false.
+function arrRepeat(arr){
+    debugger
+    var arrStr = JSON.stringify(arr),str;
+    for (var i = 0; i < arr.length; i++) {
+        if ((arrStr.match(new RegExp(arr[i],"g")).length)>1){
+            return true;//重复
+        }
+    };
+    return false;//不重复
+}
+var arrR = ["aa","bb","dd","ff","gg"];
+console.log(arrRepeat(arrR));
+
+
+    //去重的最简单方式   参考：https://segmentfault.com/a/1190000008804891
+    var x=[1,1,2,2,3,3,"王愿超","王愿超","jason"];
+    var set=new Set(x);
+    console.log("set", [...set]);
+
+    for(let item of set.values()) {
+        console.log(item); //red green no
+    }
+
+    var y=Array.from(new Set(x));
+    console.log(y)
+</script>
+</body>
+</html>

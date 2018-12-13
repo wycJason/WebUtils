@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .img_wrap{
+            display: none;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<svg width="600" height="600" style="background:pink;">
+    <!-- 绘制矩形 -->
+    <rect x="10" y="10" width="100" height="100" />
+    <rect x="10" y="120" width="100" height="100" fill="white" stroke="black" />
+    <rect x="10" y="230" width="100" height="100" rx="10" ry="10" />
+    <rect x="10" y="340" width="100" height="100" rx="50" ry="50" style="fill:white;stroke:black;" />
+</svg>
+<svg width="600" height="600" style="background:pink;">
+    <!-- 绘制圆形 -->
+    <circle cx="170" cy="60" r="50" />
+    <circle cx="170" cy="170" r="50" fill="white" stroke="black" />
+</svg>
+<svg width="600" height="600" style="background:pink;">
+    <!-- 绘制椭圆 -->
+    <ellipse cx="280" cy="70" rx="50" ry="60" />
+    <ellipse cx="280" cy="190" rx="50" ry="50" />
+    <ellipse cx="280" cy="300" rx="50" ry="30" />
+</svg>
+
+<canvas id="myCanvas" width="400" height="400"></canvas>
+<img class="img_wrap">
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //获取画布画图像
+    var canvas = document.getElementById('myCanvas');//获取画布
+    var context = canvas.getContext('2d');//得到画笔
+
+    var imageObj = new Image();
+    imageObj.src = 'Images/girls.jpg';
+    imageObj.onload = function() {
+        context.drawImage(imageObj, 100, 100);//图片加载完成后将其画到画布上   * drawImage(img,x,y,width,height)
+    };
+
+
+    //创建画布画图像
+    var imgs = new Image(),maxH = 150;
+    imgs.src = 'Images/ICfriend.png';
+    imgs.onload = function () {
+        var cvs = document.createElement('canvas');
+        var ctx = cvs.getContext('2d');
+
+        if (imgs.height > maxH) {
+            imgs.width *= maxH / imgs.height;
+            imgs.height = maxH;
+        }
+        //设置画布大小
+        cvs.width = imgs.width;
+        cvs.height = imgs.height;
+
+        ctx.clearRect(0, 0, cvs.width, cvs.height);//清除后重画
+        ctx.drawImage(imgs, 0, 0, imgs.width, imgs.height);
+        var dataUrl = cvs.toDataURL('image/jpeg', 1);// 返回一个包含图片展示的 data URI   参考：https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL
+        $(".img_wrap").attr("src", dataUrl);
+        $(".img_wrap").show();
+    };
+</script>
+</body>
+</html>

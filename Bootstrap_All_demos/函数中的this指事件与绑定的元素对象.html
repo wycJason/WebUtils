@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+    .common{
+        height: 50px;
+        border: 1px solid black;
+    }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div>
+    <p class="common">1</p>
+
+    <p class="common">2</p>
+
+    <p class="common">3</p>
+
+    <p class="common">4</p>
+
+    <p class="common">5</p>
+
+    <p class="common">6</p>
+
+    <p class="common">7</p>
+
+    <p class="common">8</p>
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+//函数中的this指事件所绑定的元素对象，在click事件中,点击哪个就获取哪个元素对象,用$(this)
+    $(".common").click(function(){
+        $(this).css("background","red").siblings(".common").removeAttr("style");
+
+    })
+</script>
+</body>
+</html>

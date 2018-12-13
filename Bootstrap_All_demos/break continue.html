@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //break 语句用于跳出循环。continue 如果出现了指定的条件，则程序停止执行，用于跳过循环中的一个迭代，然后继续循环中的下一个迭代。
+    function myFun(){
+        for(var i=1; i<=6; i++) {
+            if( i % 3 == 0) {
+                //break;
+                continue;
+            }
+            console.log( i); //continue 1、2、4、5、测试    break//1、2、测试
+        }
+        return "测试";//不会被输出
+    }
+    console.log(myFun());
+
+</script>
+</body>
+</html>

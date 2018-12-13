@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        #canvas{
+            border: 1px solid #f70707;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<input type="file" accept="image/*" capture="camera"  id="demo_input" />
+<div class="text-center">
+    <img src="" id="demoa" style="max-width: 100%">
+</div>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    window.onload = function(){
+        var demo=document.getElementById("demo_input");
+        var demoa=document.getElementById("demoa");
+        //判断浏览器是否支持FileReader
+        if(!window.FileReader){
+            alert("浏览器不支持FileReader")
+        }
+        demo.onchange = function(){
+            var file=this.files[0];
+            //利用正则表达式判断图片的格式
+            if(!/(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(file.type)){
+                alert("上传的图片的格式不对");
+                return;
+            }
+            //获取上传图片的base64
+            var reader=new FileReader();
+            reader.readAsDataURL(file);
+            //利用canvas对图片进行等比例缩放和压缩
+            reader.onload=function(){
+                var canvas=document.createElement("canvas");
+                var ctx=canvas.getContext("2d");
+                var image=new Image();
+                image.src=this.result;
+                image.onload=function(){
+                   /* var cw=image.width;
+                    var ch=image.height;
+                    var w=image.width;
+                    var h=image.height;
+                    canvas.width=w;
+                    canvas.height=h;
+                    if(cw>400&&cw>ch){
+                        w=400;
+                        h=(400*ch)/cw;
+                        canvas.width=w;
+                        canvas.height=h;
+                    }
+                    if(ch>400&&ch>cw){
+                        h=400;
+                        w=(400*cw)/ch;
+                        canvas.width=w;
+                        canvas.height=h;
+                    }*/
+                    // ctx.drawImage(image,0,0,w,h);
+                    canvas.width=image.width;
+                    canvas.height=image.height;
+                    ctx.drawImage(image,0,0,image.width,image.height);
+                    var dataURL=canvas.toDataURL("image/jpeg",0.8);
+                    demoa.src=dataURL;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

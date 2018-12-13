@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>js模板加载</title>
+</head>
+<body>
+
+<div id="container"></div>
+<!-- 分隔线 -->
+<div id="el">
+    <ul>
+        <li class="{class}">姓名：<{name}></li>
+        <li>年龄：<{age}></li>
+        <li>电话：<{phone}></li>
+        <li>QQ:<{QQ}></li>
+    </ul>
+</div>
+<div id="el2"></div>
+
+
+
+<script type="text/tmplate" id="tmp">
+    <div>
+        <ul>
+            <li>姓名：{name}</li>
+            <li>年龄：{age}</li>
+            <li>电话：{phone}</li>
+            <li>QQ:{QQ}</li>
+        </ul>
+    </div>
+</script>
+<script type="text/javascript">
+    /*
+     https://blog.csdn.net/thirteenfloor/article/details/55097802
+     * getTemplate(id tplID)  参数,模板容器的id
+     * getTemplate.assign(key,value)  赋值,将数据赋值到模板中
+     * getTemplate.display(str elementID)   加载模板内容,将模板内容放置到elementID中
+     *           如果elementID为空，说明模板容器与放置容器是同一个
+     * getTemplate.action.setLimitR/setLimitL(str)  设置左右定界符
+     *
+     */
+    function getTemplate(tplID){
+        var _this=this;         //保存自身指针
+        var assignArr=[];       //定义一个哈希数组，存放assign的k,v
+        var config={           //配置项
+            limitL:"{",
+            limitR:"}",
+            voidModify:'',      //如果模板元素无值，则显示为空
+        }
+        var limitArr={          //私有变量，存储转义定界符
+            '<':'&lt;',
+            '>':'&gt;',
+        };
+        var encodeLimter=function(str){     //私有方法，转义字符
+            for(var tmp in limitArr){
+                if(str.search(tmp)>=0){
+                    str=str.replace(tmp,limitArr[tmp]);
+                }
+            }
+            return str;
+        };
+        this.action={                       //公有方法，修改定界符，空参数
+            setLimitL:function(str){
+                config.limitL=encodeLimter(str);
+                return _this;
+            },
+            setLimitR:function(str){
+                config.limitR=encodeLimter(str);
+                return _this;
+            },
+            setVoidModify:function(str){
+                config.voidModify=str;
+                return _this;
+            }
+        }
+        this.assign=function(key,value){
+            //赋值，创建带有定界符哈希数组
+            assignArr[config.limitL+key+config.limitR]=value;
+            return this;
+        };
+        this.display=function(elementID){
+            try{
+                var targetID=elementID||tplID;          //如果elementID为空，说明模板容器与放置容器是同一个
+                var tmplate=document.getElementById(tplID).innerHTML;  //获取模板容器的内容
+                var ptn=new RegExp(config.limitL+'(\\w+)?'+config.limitR,'g');    //创建正则表达式
+                var tmpRegArr=tmplate.match(ptn);               //存储所有符合条件的模板元素
+                for(var i=0;i<tmpRegArr.length;i++){
+                    //移除模板内容中的标签，替换为值
+                    var changeStr=assignArr[tmpRegArr[i]]||config.voidModify;
+                    tmplate=tmplate.replace(tmpRegArr[i],changeStr);
+                }
+            }catch(e){
+                console.log(e.message);
+                console.log("The limit code is not accord with your set");
+            }
+            document.getElementById(targetID).innerHTML= tmplate;
+            return this;
+        }
+    };
+</script>
+<script type="text/javascript">
+    //text/tempLate 模板
+    var tmpObj={
+        name:'萧十三楼',
+        age:25,
+        phone:18888888888,
+        QQ:905519160
+    }
+    var container=new getTemplate('tmp');
+    for(var tmp in tmpObj){
+        container.assign(tmp,tmpObj[tmp]);
+    }
+    container.display('container');
+</script>
+
+
+<script type="text/javascript">
+    //html标签做模板
+    var elObj={
+        name:'萧十二楼',
+        phone:18888888888,
+        class:'show',
+        QQ:905519160
+    }
+    var el=new getTemplate('el');
+    el.action.setVoidModify('值为空')
+            .action.setLimitL('<{')
+            .action.setLimitR('}>');
+
+
+    for(var tmp in elObj){
+        el.assign(tmp,elObj[tmp]);
+    }
+    el.display();
+</script>
+</body>
+</html>

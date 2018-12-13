@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Template</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="container" style="width: 400px; height: 400px; margin: 0 auto"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<script src="js/highcharts.js"></script>
+<script src="js/highcharts-more.js"></script>
+<script src="js/solid-gauge.js"></script>
+<script>
+    $(function () {
+        Highcharts.chart('container', {
+                    chart: {
+                        type: 'solidgauge',
+                        marginTop: 50,
+                        //ignoreHiddenSeries:true,//隐藏中间文本
+                    },
+
+                    title: {
+                        text: null,
+                       /* style: {
+                            fontSize: '24px'
+                        }*/
+                    },
+
+                    tooltip: {
+                        borderWidth: 0,
+                        backgroundColor: 'none',
+                        shadow: false,
+                        style: {
+                            fontSize: '16px'
+                        },
+                        pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}个</span>',
+                        positioner: function (labelWidth) {
+                            return {
+                                x: 200 - labelWidth / 2,
+                                y: 180
+                            };
+                        }
+                    },
+
+                    pane: {
+                        startAngle: 0,
+                        endAngle: 360,
+                        background: [{ // Track for Move
+                            outerRadius: '103%',  //112%    背景圆环大小
+                            innerRadius: '96%',  //88%     背景圆环半径大小
+                            backgroundColor: Highcharts.Color("#ddd"/*Highcharts.getOptions().colors[0]*/).setOpacity(0.3).get(),
+                            borderWidth: 0,
+                        }/*, { // Track for Exercise
+                            outerRadius: '87%',
+                            innerRadius: '63%',
+                            backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[1]).setOpacity(0.3).get(),
+                            borderWidth: 0
+                        }, { // Track for Stand
+                            outerRadius: '62%',
+                            innerRadius: '38%',
+                            backgroundColor: Highcharts.Color(Highcharts.getOptions().colors[2]).setOpacity(0.3).get(),
+                            borderWidth: 0
+                        }*/]
+                    },
+
+                    credits:{
+                        enabled:false // 禁用版权信息
+                    },
+
+                    yAxis: {
+                        min: 0,
+                        max: 100,
+                        lineWidth: 0,
+                        tickPositions: []
+                    },
+
+                    plotOptions: {
+                        solidgauge: {
+                            borderWidth: '34px',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            linecap: 'round',
+                            stickyTracking: false
+                        }
+                    },
+
+                    series: [{
+                        name: '账号购买',
+                        borderColor: "red"/*Highcharts.getOptions().colors[0]*/,
+                        borderRadius: 0,            //图框的圆角大小
+                        borderWidth: 8,             //图框的边框大小
+                        data: [{
+                            color: "blue"/*Highcharts.getOptions().colors[0]*/,//中间字体颜色
+                            radius: '100%',
+                            innerRadius: '100%',
+                            y: 80,
+                        }]
+                    }/*, {
+                        name: 'Exercise',
+                        borderColor: Highcharts.getOptions().colors[1],
+                        data: [{
+                            color: Highcharts.getOptions().colors[1],
+                            radius: '75%',
+                            innerRadius: '75%',
+                            y: 65
+                        }]
+                    }, {
+                        name: 'Stand',
+                        borderColor: Highcharts.getOptions().colors[2],
+                        data: [{
+                            color: Highcharts.getOptions().colors[2],
+                            radius: '50%',
+                            innerRadius: '50%',
+                            y: 50
+                        }]
+                    }*/]
+                },
+
+                /**
+                 * In the chart load callback, add icons on top of the circular shapes
+                 */
+                function callback() {
+
+                    // Move icon
+                   /* this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8])
+                            .attr({
+                                'stroke': '#303030',
+                                'stroke-linecap': 'round',
+                                'stroke-linejoin': 'round',
+                                'stroke-width': 2,
+                                'zIndex': 10
+                            })
+                            .translate(190, 26)
+                            .add(this.series[2].group);*/
+
+                    // Exercise icon
+                    /*this.renderer.path(['M', -8, 0, 'L', 8, 0, 'M', 0, -8, 'L', 8, 0, 0, 8, 'M', 8, -8, 'L', 16, 0, 8, 8])
+                            .attr({
+                                'stroke': '#303030',
+                                'stroke-linecap': 'round',
+                                'stroke-linejoin': 'round',
+                                'stroke-width': 2,
+                                'zIndex': 10
+                            })
+                            .translate(190, 61)
+                            .add(this.series[2].group);*/
+
+                    // Stand icon
+                   /* this.renderer.path(['M', 0, 8, 'L', 0, -8, 'M', -8, 0, 'L', 0, -8, 8, 0])
+                            .attr({
+                                'stroke': '#303030',
+                                'stroke-linecap': 'round',
+                                'stroke-linejoin': 'round',
+                                'stroke-width': 2,
+                                'zIndex': 10
+                            })
+                            .translate(190, 96)
+                            .add(this.series[2].group);*/
+                });
+
+
+    });
+</script>
+</body>
+</html>

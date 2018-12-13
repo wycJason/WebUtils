@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <!--https://cn.vuejs.org/v2/guide/components-props.html#禁用特性继承-->
+    <base-input
+            v-model="username"
+            class="username-input"
+            placeholder="Enter your username"
+            ></base-input>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+<script>
+    Vue.component('base-input', {
+        inheritAttrs: false,
+        props: ['label', 'value'],
+        template: `
+            <label>
+              {{ label }}
+              <input
+                v-bind="$attrs"
+                v-bind:value="value"
+                v-on:input="$emit('input', $event.target.value)"
+              >
+            </label>
+          `
+    })
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            username:"王愿超"
+        },
+        methods: {}
+    })
+</script>
+</body>
+</html>

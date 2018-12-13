@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+		<style>
+				ul,ol {
+		     list-style: none
+		}
+		.view-fwb{
+			/*display: none;*/
+			width: 40%;
+			height: 200px;
+			margin-top: 20px;
+			border:1px solid red;
+			text-align: center;
+			margin-left: 20%;
+			position: relative;
+		}
+			.view-fwb .operation{
+				position: absolute;
+				width: 350px;
+				/*height: 700px;*/
+				top:0px;
+				left: 650px;
+				border:1px solid red;
+				
+			}
+			.view-bt{
+				/*display: none;*/
+				width: 40%;
+				height: 200px;
+				margin-top: 20px;
+				border:1px solid red;
+				margin-left: 20%;
+				position: relative;
+			}
+			.view-fu{
+				/*display: none;*/
+				width: 40%;
+				height: 200px;
+				margin-top: 20px;
+				border:1px solid red;
+				margin-left: 20%;
+				position: relative;
+			}
+			.view-ban{
+				/*display: none;*/
+				width: 40%;
+				height: 200px;
+				margin-top: 20px;
+				border:1px solid red;
+				margin-left: 20%;
+				position: relative;
+			}
+			.view-ban .operation{
+				position: absolute;
+				width: 350px;
+				top:0px;
+				left: 650px;
+				border:1px solid red;
+			}
+			.view-b{
+				/*display: none;*/
+				width: 40%;
+				height: 320px;
+				margin-top: 20px;
+				border:1px solid red;
+				margin-left: 20%;
+				position: relative;
+			}
+			.view-b.operation{
+				position: absolute;
+				width: 350px;
+			/*	height: 700px;*/
+				top:0px;
+				left: 650px;
+				border:1px solid red;
+			/*	font-size: 8px;*/
+			}
+			.view-list{
+				/*text-align: center;
+				line-height: 200px;*/
+				width: 100%;
+				height: 100%;
+				background: red;
+			}
+			.operation{
+				position: absolute;
+				width: 350px;
+				top:0px;
+				left: 650px;
+				border:1px solid red;
+			}
+			
+			.view-fu .operation{
+				position: absolute;
+				width: 350px;
+				top:53px;
+				left: 650px;
+				border:1px solid red;
+			}
+				.view-shop{
+				/*display: none;*/
+				width: 40%;
+				height: 200px;
+				margin-top: 20px;
+				border:1px solid red;
+				margin-left: 20%;
+				position: relative;
+			}
+			 .view-shop .operation{
+				position: absolute;
+				width: 350px;
+				/*height: 700px;*/
+				top:0px;
+				left: 650px;
+				border:1px solid red;
+			/*	font-size: 8px;*/
+			}
+		
+		
+			.container{
+				height: 200px;
+				border:1px solid red;
+				text-align: center;
+				margin-top: 20px;
+				width: 40%;
+				margin-left: 20%;
+			}
+			.container li{
+					float: left;
+					
+			}
+			.container li a{
+				margin-left: 27px;
+
+			}
+			.actions-wrap{
+				margin-left: 506px;
+				margin-top: 153px;
+			}
+		</style>
+</head>
+<body>
+	<!--<div class="view-bt">
+		<div class="view-list">
+			标题名
+			<div class="actions-wrap"><span class="action edit">编辑</span><span class="action add">加内容</span><span class="action delete">删除</span></div>
+		</div>
+		<div class="operation">
+			<div><form class="form-horizontal" novalidate="">
+			    <div class="control-group">
+			        <label class="control-label"><em class="required">*</em>标题名：</label>
+			        <div class="controls">
+			            <input type="text" name="title" value="" maxlength="100">
+			        </div>
+			    </div>
+			    <div class="control-group">
+			        <label class="control-label">标题模版：</label>
+			        <div class="controls">
+			            <label class="radio inline">
+			                <input type="radio" name="title_template" value="0" checked="">传统样式
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="title_template" value="1">模仿微信图文页样式
+			            </label>
+			        </div>
+			    </div>
+			    <div class="control-group">
+			        <label class="control-label">副标题：</label>
+			        <div class="controls">
+			            <input type="hidden" class="js-time-holder hasDatepicker" id="dp1496799506638">
+			            <input type="text" name="sub_title" value="" maxlength="100">
+			            <a href="javascript: void(0);" class="js-time">日期</a>
+			        </div>
+			    </div>
+			    <div class="control-group">
+			        <label class="control-label">显示：</label>
+			        <div class="controls">
+			            
+			                <label class="radio inline">
+			                    <input type="radio" name="show_method" value="0" checked="">居左显示
+			                </label>
+			                <label class="radio inline">
+			                    <input type="radio" name="show_method" value="1">居中显示
+			                </label>
+			                <label class="radio inline">
+			                    <input type="radio" name="show_method" value="2">居右显示
+			                </label>
+			            
+			        </div>
+			    </div>
+			    <div class="control-group">
+			        <label class="control-label">背景颜色：</label>
+			        <div class="controls">
+			            <input type="color" value="#ffffff" name="color">
+			            <button class="btn js-reset-bg" type="button">重置</button>
+			        </div>
+			    </div>
+			    <div class="control-group js-collection-region"><ul class="choices"></ul></div>
+			    <div class="control-group options">
+			        <a href="javascript:void(0);" class="add-option js-add-option"><i class="icon-add"></i> 添加一个文本导航</a>
+			    </div>    
+			</form>
+			</div>
+		</div>
+	</div>
+	<div class="view-fu">
+		<div class="view-list">
+			辅助线
+		</div>
+			<div class="operation">
+				<div class="app-sidebar-inner js-sidebar-region"><div class="edit-search"><div class="form-horizontal" novalidate="">
+				    <div class="control-group">
+				        <div class="pull-left">
+				            <label class="control-label">颜色：</label>
+				            <div class="input-append">
+				                <input type="color" value="#e5e5e5" name="color" class="span1">
+				                <button class="btn js-reset-bg" type="button">重置</button>
+				            </div>
+				        </div>
+				        <div class="pull-left">
+				            <label class="control-label"></label>
+				            <label class="checkbox inline">
+				                <input type="checkbox" name="hasPadding"> 左右留边
+				            </label>
+				        </div>
+				    </div>
+
+				    <div class="control-group">
+				        <label class="control-label">样式：</label>
+				        <div class="controls">
+				            <label class="radio inline">
+				                <input type="radio" name="lineType" value="solid" checked="">实线
+				            </label>
+				            <label class="radio inline">
+				                <input type="radio" name="lineType" value="dashed">虚线
+				            </label>
+				            <label class="radio inline">
+				                <input type="radio" name="lineType" value="dotted">点线
+				            </label>
+				        </div>
+				    </div>
+				</div>
+				</div></div>
+		</div>
+	</div>
+	<div class="view-ban">
+			<div class="view-list">
+				图片广告
+			</div>
+			<div class="operation">
+				
+				<div>
+					<form class="form-horizontal" novalidate="">
+	    
+				        <div class="control-group">
+				            <label class="control-label">显示方式：</label>
+				            <div class="controls">
+				                
+				                    <label class="radio inline">
+				                            <input type="radio" name="show_method" value="0" checked="">折叠轮播
+				                    </label>
+				                    <label class="radio inline">
+				                            <input type="radio" name="show_method" value="1">分开显示
+				                    </label>
+				                
+				            </div>
+				        </div>
+				        <div class="control-group">
+				            <label class="control-label">显示大小：</label>
+				            <div class="controls">
+				                <label class="radio inline">
+				                    <input type="radio" name="size" value="0" checked="">大图
+				                </label>
+				                
+				            </div>
+				        </div>
+				    
+
+				    <div class="control-group js-choices-region"><ul class="choices ui-sortable"></ul></div>
+
+				    <div class="control-group options">
+				        <a href="javascript:void(0);" class="add-option js-add-option"><i class="icon-add"></i> 添加一个广告</a>
+				    </div>
+
+				    <div class="control-group">
+				        <div class="controls" name="sub_entry" style="margin-left: 0;"></div>
+				    </div>
+
+				    <p class="app-component-desc" style="font-size: 12px; color:#666;">最多添加10个广告</p>
+					</form>
+				</div>
+
+			</div>
+	</div>
+	<div class="view-b">
+		<div class="view-list">
+			商品列表
+		</div>
+		<div class="operation">
+			<div><form class="form-horizontal" novalidate="">
+			    <div class="control-group">
+			        <label class="control-label">商品来源：</label>
+			        <div class="controls">
+			            
+			                <a href="javascript:void(0);" class="js-add-goods add-goods control-action">从商品分组中选择</a>
+			            
+			            <p class="help-desc">选择商品来源后，左侧实时预览暂不支持显示其包含的商品数据</p>
+			        </div>
+			    </div>
+			    <div class="control-group">
+			        <label class="control-label">显示个数：</label>
+			        <div class="controls">
+			            <label class="radio inline">
+			                <input type="radio" name="goods_number_type" value="0" checked="">6
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="goods_number_type" value="1">12
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="goods_number_type" value="2">18
+			            </label>
+			        </div>
+			    </div>
+			</form>
+			<div class="js-goods-style-region" style="margin-top: 10px;"><div><form class="form-horizontal" novalidate="">
+			    <div class="control-group">
+			        <label class="control-label">列表样式：</label>
+			        <div class="controls">
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="0">大图
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="1">小图
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="2" checked="">一大两小
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="3">详细列表
+			            </label>
+			        </div>
+			    </div>
+			    
+			    <div class="control-group">
+			        <div class="controls">
+			            <div class="controls-card">
+			                <div class="controls-card-tab">
+			                    <label class="radio inline">
+			                        <input type="radio" name="size_type" value="0" checked="">
+			                        卡片样式
+			                    </label>
+			                    
+			                    <label class="radio inline">
+			                        <input type="radio" name="size_type" value="2">
+			                        极简样式
+			                    </label>
+			                    
+			                </div>
+			                
+			                <div class="controls-card-item">
+			                    <div>
+			                        <label class="checkbox inline">
+			                            
+			                                <input type="checkbox" name="buy_btn" value="1" checked="">显示购买按钮
+			                            
+			                        </label>
+			                    </div>
+			                    
+			                    <div style="margin: 10px 0 0 20px;">
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="1" checked="">
+			                            样式1
+			                        </label>
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="2">
+			                            样式2
+			                        </label>
+			                        
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="3">
+			                            样式3
+			                        </label>
+			                        
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="4">
+			                            样式4
+			                        </label>
+			                    </div>
+			                    
+			                </div>
+			                
+			                
+			                
+			                    
+			                    <div class="controls-card-item">
+			                        <label class="checkbox inline">
+			                            
+			                                <input type="checkbox" name="title" value="0">显示商品名 (小图不显示名称)
+			                            
+			                        </label>
+			                    </div>
+			                    
+			                    
+			                    <div class="controls-card-item">
+			                        <label class="checkbox inline">
+			                            
+			                                <input type="checkbox" name="price" value="1" checked="">显示价格
+			                            
+			                        </label>
+			                    </div>
+			                
+			            </div>
+			        </div>
+			    </div>
+			    
+			</form>
+			</div></div>
+			</div>
+		</div>
+	</div>
+	<div class="view-shop">
+		<div class="view-list">
+			商品
+		</div>
+		<div class="operation">
+			<div><form class="form-horizontal" novalidate="">
+			    <div class="control-group">
+			        <label class="control-label">选择商品：</label>
+			        <div class="controls">
+			            <ul class="module-goods-list clearfix ui-sortable" name="goods">
+			                
+			                <li>
+			                    <a href="javascript:void(0);" class="js-add-goods add-goods"><i class="icon-add"></i></a>
+			                </li>
+			            </ul>
+			        </div>
+			    </div>
+			</form>
+			<div class="js-goods-style-region" style="margin-top: 10px;"><div><form class="form-horizontal" novalidate="">
+			    <div class="control-group">
+			        <label class="control-label">列表样式：</label>
+			        <div class="controls">
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="0">大图
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="1">小图
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="2" checked="">一大两小
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="3">详细列表
+			            </label>
+			        </div>
+			    </div>
+			    
+			    <div class="control-group">
+			        <div class="controls">
+			            <div class="controls-card">
+			                <div class="controls-card-tab">
+			                    <label class="radio inline">
+			                        <input type="radio" name="size_type" value="0" checked="">
+			                        卡片样式
+			                    </label>
+			                    
+			                    <label class="radio inline">
+			                        <input type="radio" name="size_type" value="2">
+			                        极简样式
+			                    </label>
+			                    
+			                </div>
+			                
+			                <div class="controls-card-item">
+			                    <div>
+			                        <label class="checkbox inline">
+			                            
+			                                <input type="checkbox" name="buy_btn" value="1" checked="">显示购买按钮
+			                            
+			                        </label>
+			                    </div>
+			                    
+			                    <div style="margin: 10px 0 0 20px;">
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="1" checked="">
+			                            样式1
+			                        </label>
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="2">
+			                            样式2
+			                        </label>
+			                        
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="3">
+			                            样式3
+			                        </label>
+			                        
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="4">
+			                            样式4
+			                        </label>
+			                    </div>
+			                    
+			                </div>
+			                
+			                
+			                
+			                    
+			                    <div class="controls-card-item">
+			                        <label class="checkbox inline">
+			                            
+			                                <input type="checkbox" name="title" value="0">显示商品名 (小图不显示名称)
+			                            
+			                        </label>
+			                    </div>
+			                    
+			                    
+			                    <div class="controls-card-item">
+			                        <label class="checkbox inline">
+			                            
+			                                <input type="checkbox" name="price" value="1" checked="">显示价格
+			                            
+			                        </label>
+			                    </div>
+			                
+			            </div>
+			        </div>
+			    </div>
+			    
+			</form>
+			</div></div>
+			</div>
+		</div>
+	</div>
+	<div class="view-fwb">
+		<div class="view-list">
+			富文本
+		</div>
+		<div class="operation">
+			<div>
+				<span>背景颜色 <input type="text">重置</span>
+				<span>是否全屏: <input  type="radio">全屏显示</span>
+			</div>	
+		</div>
+	</div>-->
+
+	<div class="container">
+		<h4>添加内容</h4>
+		<ul id="parent">
+			<li><a href="#" id="fbw" class="cls">富文本</a></li>
+			<li><a href="#" id="shop" class="cls">商品</a></li>
+			<li><a href="#" id="shop-b" class="cls">商品列表</a></li>
+			<li><a href="#" id="ban" class="cls">图片广告</a></li>
+			<li><a href="#" id="fuzu" class="cls">辅助</a></li>
+			<li><a href="#" id="bt" class="cls">标题</a></li>
+		</ul>
+	</div>
+
+	<div id="dynamisDom"></div>
+
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#parent").on("click",".cls",function(){
+				var idVal=$(this).attr("id");
+				switch(idVal){
+					case "fbw":
+							$("#dynamisDom").append(`<div class="view-fwb">
+		<div class="view-list">
+			富文本
+		</div>
+		<div class="operation">
+			<div>
+				<span>背景颜色 <input type="text">重置</span>
+				<span>是否全屏: <input  type="radio">全屏显示</span>
+			</div>
+		</div>
+	</div>`);
+						break;
+					case "shop":
+						$("#dynamisDom").append(`<div class="view-shop">
+		<div class="view-list">
+			商品
+		</div>
+		<div class="operation">
+			<div><form class="form-horizontal" novalidate="">
+			    <div class="control-group">
+			        <label class="control-label">选择商品：</label>
+			        <div class="controls">
+			            <ul class="module-goods-list clearfix ui-sortable" name="goods">
+
+			                <li>
+			                    <a href="javascript:void(0);" class="js-add-goods add-goods"><i class="icon-add"></i></a>
+			                </li>
+			            </ul>
+			        </div>
+			    </div>
+			</form>
+			<div class="js-goods-style-region" style="margin-top: 10px;"><div><form class="form-horizontal" novalidate="">
+			    <div class="control-group">
+			        <label class="control-label">列表样式：</label>
+			        <div class="controls">
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="0">大图
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="1">小图
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="2" checked="">一大两小
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="3">详细列表
+			            </label>
+			        </div>
+			    </div>
+
+			    <div class="control-group">
+			        <div class="controls">
+			            <div class="controls-card">
+			                <div class="controls-card-tab">
+			                    <label class="radio inline">
+			                        <input type="radio" name="size_type" value="0" checked="">
+			                        卡片样式
+			                    </label>
+
+			                    <label class="radio inline">
+			                        <input type="radio" name="size_type" value="2">
+			                        极简样式
+			                    </label>
+
+			                </div>
+
+			                <div class="controls-card-item">
+			                    <div>
+			                        <label class="checkbox inline">
+
+			                                <input type="checkbox" name="buy_btn" value="1" checked="">显示购买按钮
+
+			                        </label>
+			                    </div>
+
+			                    <div style="margin: 10px 0 0 20px;">
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="1" checked="">
+			                            样式1
+			                        </label>
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="2">
+			                            样式2
+			                        </label>
+
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="3">
+			                            样式3
+			                        </label>
+
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="4">
+			                            样式4
+			                        </label>
+			                    </div>
+
+			                </div>
+
+
+
+
+			                    <div class="controls-card-item">
+			                        <label class="checkbox inline">
+
+			                                <input type="checkbox" name="title" value="0">显示商品名 (小图不显示名称)
+
+			                        </label>
+			                    </div>
+
+
+			                    <div class="controls-card-item">
+			                        <label class="checkbox inline">
+
+			                                <input type="checkbox" name="price" value="1" checked="">显示价格
+
+			                        </label>
+			                    </div>
+
+			            </div>
+			        </div>
+			    </div>
+
+			</form>
+			</div></div>
+			</div>
+		</div>
+	</div>`);
+						break;
+					case "shop-b":
+						$("#dynamisDom").append(`<div class="view-b">
+		<div class="view-list">
+			商品列表
+		</div>
+		<div class="operation">
+			<div><form class="form-horizontal" novalidate="">
+			    <div class="control-group">
+			        <label class="control-label">商品来源：</label>
+			        <div class="controls">
+
+			                <a href="javascript:void(0);" class="js-add-goods add-goods control-action">从商品分组中选择</a>
+
+			            <p class="help-desc">选择商品来源后，左侧实时预览暂不支持显示其包含的商品数据</p>
+			        </div>
+			    </div>
+			    <div class="control-group">
+			        <label class="control-label">显示个数：</label>
+			        <div class="controls">
+			            <label class="radio inline">
+			                <input type="radio" name="goods_number_type" value="0" checked="">6
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="goods_number_type" value="1">12
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="goods_number_type" value="2">18
+			            </label>
+			        </div>
+			    </div>
+			</form>
+			<div class="js-goods-style-region" style="margin-top: 10px;"><div><form class="form-horizontal" novalidate="">
+			    <div class="control-group">
+			        <label class="control-label">列表样式：</label>
+			        <div class="controls">
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="0">大图
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="1">小图
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="2" checked="">一大两小
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="size" value="3">详细列表
+			            </label>
+			        </div>
+			    </div>
+
+			    <div class="control-group">
+			        <div class="controls">
+			            <div class="controls-card">
+			                <div class="controls-card-tab">
+			                    <label class="radio inline">
+			                        <input type="radio" name="size_type" value="0" checked="">
+			                        卡片样式
+			                    </label>
+
+			                    <label class="radio inline">
+			                        <input type="radio" name="size_type" value="2">
+			                        极简样式
+			                    </label>
+
+			                </div>
+
+			                <div class="controls-card-item">
+			                    <div>
+			                        <label class="checkbox inline">
+
+			                                <input type="checkbox" name="buy_btn" value="1" checked="">显示购买按钮
+
+			                        </label>
+			                    </div>
+
+			                    <div style="margin: 10px 0 0 20px;">
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="1" checked="">
+			                            样式1
+			                        </label>
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="2">
+			                            样式2
+			                        </label>
+
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="3">
+			                            样式3
+			                        </label>
+
+			                        <label class="radio inline">
+			                            <input type="radio" name="buy_btn_type" value="4">
+			                            样式4
+			                        </label>
+			                    </div>
+
+			                </div>
+
+
+
+
+			                    <div class="controls-card-item">
+			                        <label class="checkbox inline">
+
+			                                <input type="checkbox" name="title" value="0">显示商品名 (小图不显示名称)
+
+			                        </label>
+			                    </div>
+
+
+			                    <div class="controls-card-item">
+			                        <label class="checkbox inline">
+
+			                                <input type="checkbox" name="price" value="1" checked="">显示价格
+
+			                        </label>
+			                    </div>
+
+			            </div>
+			        </div>
+			    </div>
+
+			</form>
+			</div></div>
+			</div>
+		</div>
+	</div>`);
+						break;
+					case "ban" :
+						$("#dynamisDom").append(`<div class="view-ban">
+			<div class="view-list">
+				图片广告
+			</div>
+			<div class="operation">
+
+				<div>
+					<form class="form-horizontal" novalidate="">
+
+				        <div class="control-group">
+				            <label class="control-label">显示方式：</label>
+				            <div class="controls">
+
+				                    <label class="radio inline">
+				                            <input type="radio" name="show_method" value="0" checked="">折叠轮播
+				                    </label>
+				                    <label class="radio inline">
+				                            <input type="radio" name="show_method" value="1">分开显示
+				                    </label>
+
+				            </div>
+				        </div>
+				        <div class="control-group">
+				            <label class="control-label">显示大小：</label>
+				            <div class="controls">
+				                <label class="radio inline">
+				                    <input type="radio" name="size" value="0" checked="">大图
+				                </label>
+
+				            </div>
+				        </div>
+
+
+				    <div class="control-group js-choices-region"><ul class="choices ui-sortable"></ul></div>
+
+				    <div class="control-group options">
+				        <a href="javascript:void(0);" class="add-option js-add-option"><i class="icon-add"></i> 添加一个广告</a>
+				    </div>
+
+				    <div class="control-group">
+				        <div class="controls" name="sub_entry" style="margin-left: 0;"></div>
+				    </div>
+
+				    <p class="app-component-desc" style="font-size: 12px; color:#666;">最多添加10个广告</p>
+					</form>
+				</div>
+
+			</div>
+	</div>`);
+						break;
+					case"fuzu" :
+						$("#dynamisDom").append(`<div class="view-fu">
+		<div class="view-list">
+			辅助线
+		</div>
+			<div class="operation">
+				<div class="app-sidebar-inner js-sidebar-region"><div class="edit-search"><div class="form-horizontal" novalidate="">
+				    <div class="control-group">
+				        <div class="pull-left">
+				            <label class="control-label">颜色：</label>
+				            <div class="input-append">
+				                <input type="color" value="#e5e5e5" name="color" class="span1">
+				                <button class="btn js-reset-bg" type="button">重置</button>
+				            </div>
+				        </div>
+				        <div class="pull-left">
+				            <label class="control-label"></label>
+				            <label class="checkbox inline">
+				                <input type="checkbox" name="hasPadding"> 左右留边
+				            </label>
+				        </div>
+				    </div>
+
+				    <div class="control-group">
+				        <label class="control-label">样式：</label>
+				        <div class="controls">
+				            <label class="radio inline">
+				                <input type="radio" name="lineType" value="solid" checked="">实线
+				            </label>
+				            <label class="radio inline">
+				                <input type="radio" name="lineType" value="dashed">虚线
+				            </label>
+				            <label class="radio inline">
+				                <input type="radio" name="lineType" value="dotted">点线
+				            </label>
+				        </div>
+				    </div>
+				</div>
+				</div></div>
+		</div>
+	</div>`);
+						break;
+					case"bt"  :
+						$("#dynamisDom").append(`<div class="view-bt">
+		<div class="view-list">
+			<span id="contentTitle">标题名</span>
+			<div class="actions-wrap"><span class="action edit">编辑</span><span class="action add">加内容</span><span class="action delete">删除</span></div>
+		</div>
+		<div class="operation">
+			<div><form class="form-horizontal" novalidate="">
+			    <div class="control-group">
+			        <label class="control-label"><em class="required">*</em>标题名：</label>
+			        <div class="controls">
+			            <input id="myTitle" type="text" name="title" value="" maxlength="100">
+			        </div>
+			    </div>
+			    <div class="control-group">
+			        <label class="control-label">标题模版：</label>
+			        <div class="controls">
+			            <label class="radio inline">
+			                <input type="radio" name="title_template" value="0" checked="">传统样式
+			            </label>
+			            <label class="radio inline">
+			                <input type="radio" name="title_template" value="1">模仿微信图文页样式
+			            </label>
+			        </div>
+			    </div>
+			    <div class="control-group">
+			        <label class="control-label">副标题：</label>
+			        <div class="controls">
+			            <input type="hidden" class="js-time-holder hasDatepicker" id="dp1496799506638">
+			            <input type="text" name="sub_title" value="" maxlength="100">
+			            <a href="javascript: void(0);" class="js-time">日期</a>
+			        </div>
+			    </div>
+			    <div class="control-group">
+			        <label class="control-label">显示：</label>
+			        <div class="controls">
+
+			                <label class="radio inline">
+			                    <input type="radio" name="show_method" value="0" checked="">居左显示
+			                </label>
+			                <label class="radio inline">
+			                    <input type="radio" name="show_method" value="1">居中显示
+			                </label>
+			                <label class="radio inline">
+			                    <input type="radio" name="show_method" value="2">居右显示
+			                </label>
+
+			        </div>
+			    </div>
+			    <div class="control-group">
+			        <label class="control-label">背景颜色：</label>
+			        <div class="controls">
+			            <input type="color" value="#ffffff" name="color">
+			            <button class="btn js-reset-bg" type="button">重置</button>
+			        </div>
+			    </div>
+			    <div class="control-group js-collection-region"><ul class="choices"></ul></div>
+			    <div class="control-group options">
+			        <a href="javascript:void(0);" class="add-option js-add-option"><i class="icon-add"></i> 添加一个文本导航</a>
+			    </div>
+			</form>
+			</div>
+		</div>
+	</div>`);
+						/*$("#myTitle").on("keyup",function(){
+							$("#contentTitle").text($(this).val());
+						});*/
+						break;
+					default :
+						break;
+				}
+			})
+
+
+
+
+
+$("#dynamisDom").on("keyup","#myTitle",function(){
+	$("#contentTitle").text($(this).val());
+})
+
+
+
+
+
+
+
+
+
+/*			$("#fbw").click(function () {
+				$(".view-fwb").show();
+			});
+			$("#bt").click(function () {
+				$(".view-bt").show();
+			});
+			$("#fuzu").click(function () {
+				$(".view-fu").show();
+			});
+			$("#ban").click(function () {
+				$(".view-ban").show();
+			});
+			$("#shop-b").click(function () {
+				$(".view-b").show();
+			});
+			$("#shop").click(function () {
+				$(".view-shop").show();
+			});*/
+	
+		});
+	</script>
+
+
+				
+
+			
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <h1>table2excel</h1>
+    <div id="table2excelParent">
+        <table id="table2excel" class="table table-bordered">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>住址</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="noExl">
+            <td>9999</td>
+            <td>晓芹</td>
+            <td>海淀区万寿路120号</td>
+            <td>
+                <a class="btn btn-danger btn-xs" href="http://www.baidu.com">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1001</td>
+            <td>唐牧</td>
+            <td>海淀区万寿路123号</td>
+            <td>
+                <a class="btn btn-danger btn-xs" href="http://www.baidu.com">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>马丽</td>
+            <td>海淀区万寿路124号</td>
+            <td>
+                <a class="btn btn-success btn-xs" href="http://www.baidu.com">修改</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>岳寒</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-info btn-xs" href="http://www.baidu.com">详情</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1004</td>
+            <td>金士顿</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-warning btn-xs" href="http://www.baidu.com">更新</a>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">我合并了4列</td>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+
+    <br><br><br>
+    <button id="btn1" type="button">table导出表格</button>
+    <button id="btn2" type="button">tableParent导出表格</button>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.table2excel.js"></script>
+<script>
+    //参考网址：http://www.tuicool.com/articles/yaABvui
+    //注意导出的Excel文件的格式，默认导出为.xlsx格式的excel文件，需要excel2010以上的版本才能打开，如果是使用低版本的excel，可以手动将文件扩展名修改为.xls。
+    $(function() {
+        //表格本身导出
+        $("#btn1").click(function(){
+            $("#table2excel").table2excel({
+                exclude: ".noExl",//不被导出的表格行的CSS class类。
+                name: "Excel Document Name",//导出的Excel文档的名称。
+                filename: "myFileName",//Excel文件的名称。
+                fileext: ".xls",
+                exclude_img: true,//是否排除导出图片。
+                exclude_links: true,//是否排除导出超链接
+                exclude_inputs: true//是否排除导出输入框中的内容。
+            });
+        });
+
+        //表格父层导出
+        $("#btn2").click(function(){
+            $("#table2excelParent").table2excel({
+                exclude: ".noExl",
+                name: "Excel Document Name",
+                filename: "myFileName",
+                fileext: ".xls",
+                exclude_img: true,
+                exclude_links: true,
+                exclude_inputs: true
+            });
+        });
+    });
+</script>
+</body>
+</html>

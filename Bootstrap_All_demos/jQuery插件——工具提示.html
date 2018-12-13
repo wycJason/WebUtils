@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+    <style>
+        .popover {
+            max-width: 1920px !important;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>jQuery插件——工具提示</h1>
+  <a data-toggle="tooltip" data-title="跳转到达内首页" href="#">达内首页</a>
+  <button data-toggle="tooltip" data-title="关闭当前窗体" type="button">关闭</button>
+  <p data-toggle="tooltip" data-placement="bottom" data-title="新闻详情">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, aliquam debitis illum itaque iusto laboriosam libero modi nemo odit ratione sequi temporibus, veniam veritatis. Aspernatur doloribus placeat quidem sint velit.</p>
+</div>
+
+<div class="container">
+  <h1>jQuery插件——弹出框</h1>
+  <a href="http://www.runoob.com/bootstrap/bootstrap-popover-plugin.html" target="_blank">Bootstrap 弹出框（Popover）插件</a>
+  <div class="well">
+    <a href="javascript:void(0)" id="example" data-trigger="hover" class="btn btn-success" data-toggle="popover" data-content="为我的网站创建一个提示框如此简单！" data-title="Bootstrap 弹出框">hover</a>
+  </div>
+  <div class="well">
+    <a href="javascript:void(0)" id="example_left" data-trigger="click" class="btn btn-success" data-toggle="popover" data-content="为我的网站创建一个提示框如此简单！" data-title="Bootstrap 弹出框">click</a>
+  </div>
+  <div class="well">
+    <a href="javascript:void(0)" id="example_top" data-trigger="focus" class="btn btn-success" data-toggle="popover" data-content="为我的网站创建一个提示框如此简单！" data-title="Bootstrap 弹出框">focus</a>
+  </div>
+
+  <div class="well">
+    <a href="javascript:void(0)" id="example_custom" class="btn btn-success" data-toggle="popover">focus/click</a>
+  </div>
+
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<!--<script src="js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+<script src="//cdn.bootcss.com/bootstrap/3.2.0/js/tooltip.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.2.0/js/popover.min.js"></script>
+
+    <!--
+    初始化
+     由于性能的原因，工具提示和弹出框的 data 编程接口（data api）是必须要手动初始化的。
+
+     在一个页面上一次性初始化所有弹出框的方式是通过 data-toggle 属性选中他们：
+
+     Copy
+     $(function () {
+         $('[data-toggle="popover"]').popover()
+         $('[data-toggle="tooltip"]').tooltip();
+     })
+     -->
+
+<script>
+  (function () {
+  /*  var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s)*/
+      $('[data-toggle="tooltip"]').tooltip();
+
+
+  var htm=`<table class="table" style="text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">工作日</th>
+                                        <th style="text-align: center;">班次名称</th>
+                                        <th style="text-align: center;">考勤时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>周一</td>
+                                        <td>休息休息休息</td>
+                                        <td>第一班从 09:00 到 12:00<br>第二班从 14:00 到 18:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>周二</td>
+                                        <td>休息</td>
+                                        <td>第一班从 09:00 到 18:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>周三</td>
+                                        <td>休息</td>
+                                        <td>第一班从 09:00 到 12:00<br>第二班从 14:00 到 18:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>周四</td>
+                                        <td>休息</td>
+                                        <td>第一班从 09:00 到 12:00<br>第二班从 14:00 到 18:00<br>第三班从 19:00 到 21:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>周五</td>
+                                        <td>休息</td>
+                                        <td>第一班从 09:00 到 12:00<br>第二班从 14:00 到 18:00<br>第三班从 19:00 到 21:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>周六</td>
+                                        <td>休息</td>
+                                        <td>第一班从 09:00 到 12:00<br>第二班从 14:00 到 18:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>周日</td>
+                                        <td>休息</td>
+                                        <td>第一班从 09:00 到 18:00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+  `;
+
+  var atd='<table class="table" style="text-align: center;"><thead> <tr> <th style="text-align: center;">工作日</th> <th style="text-align: center;">班次名称</th><th style="text-align: center;">考勤时间</th></tr> </thead> <tbody><tr> <td>周一</td><td>休息休息休息</td><td>第一班从 09:00 到 12:00<br>第二班从 14:00 到 18:00</td></tr> <tr> <td>周二</td><td>休息</td><td>第一班从 09:00 到 18:00</td></tr> <tr> <td>周三</td><td>休息</td><td>第一班从 09:00 到 12:00<br>第二班从 14:00 到 18:00</td></tr> <tr> <td>周四</td><td>休息</td><td>第一班从 09:00 到 12:00<br>第二班从 14:00 到 18:00<br>第三班从 19:00 到 21:00</td></tr><tr><td>周五</td><td>休息</td><td>第一班从 09:00 到 12:00<br>第二班从 14:00 到 18:00<br>第三班从 19:00 到 21:00</td></tr><tr><td>周六</td><td>休息</td><td>第一班从 09:00 到 12:00<br>第二班从 14:00 到 18:00</td></tr><tr><td>周日</td><td>休息</td><td>第一班从 09:00 到 18:00</td></tr></tbody></table>';
+
+    $("#example").popover();
+    $("#example_left").popover({placement:'left'});
+    $("#example_top").popover({placement:'top'});
+    $("#example_bottom").popover({placement:'bottom'});
+
+    $("#example_custom").popover({
+      html:true,
+      content: atd,
+      trigger:"focus",//.popover 宽度自定即可  定义如何触发弹出框： click| hover | focus | manual。您可以传递多个触发器，每个触发器之间用空格分隔。
+      //title: '<h3>Bootstrap 弹出框</h3>',
+      //placement:"auto",
+    });
+  })();
+</script>
+</body>
+</html>
+
+

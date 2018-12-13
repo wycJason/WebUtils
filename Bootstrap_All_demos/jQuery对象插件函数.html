@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<ul>
+    <li>11</li>
+    <li>22</li>
+    <li>33</li>
+    <li>44</li>
+    <li>55</li>
+</ul>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    /**
+     *我的jQuery对象函数库(Library)，基于jQuery而编写
+     * jQuery对象插件函数：
+     $()函数的返回是一个jQuery对象——类数组对象，其中封装着选中的DOM对象，对这些DOM对象进行操作的扩展函数，称为“jQuery对象插件函数”。
+     声明方式： 把扩展函数声明为jQuery对象的原型(即jQuery.fn)身上：  jQuery.fn.avg = function(){ }
+     调用方法： $('li').avg()	$('td').max()	$('p.num').min()
+     */
+    if(!window.jQuery){
+        throw new Error('我的函数库依赖于jQuery');
+    }
+    /**调用方法： $('选择器').avg()  **/
+    jQuery.fn.avg = function(){
+        //this => jQuery对象，类数组对象
+        var sum = 0;
+        for(var i=0; i<this.length; i++){
+            sum += parseFloat( this[i].innerHTML );
+        }
+        return sum / this.length;
+    }
+
+    /**调用方法： $('选择器').max()  **/
+    jQuery.fn.max = function(){
+        //this => jQuery对象，类数组对象
+        var num = parseFloat(this[0].innerHTML);
+        for(var i=1; i<this.length; i++){
+            var n = parseFloat(this[i].innerHTML);
+            if(n>num){
+                num = n;
+            }
+        }
+        return num;
+    }
+
+    /**调用方法： $('选择器').min()  **/
+    jQuery.fn.min = function(){
+        //this => jQuery对象，类数组对象
+        var num = parseFloat(this[0].innerHTML);
+        for(var i=1; i<this.length; i++){
+            var n = parseFloat(this[i].innerHTML);
+            if(n<num){
+                num = n;
+            }
+        }
+        return num;
+    }
+
+    console.log('平均分：'+$('ul > li').avg() );
+    console.log('最高分：'+$('ul > li').max() );
+    console.log('最低分：'+$('ul > li').min() );
+</script>
+</body>
+</html>

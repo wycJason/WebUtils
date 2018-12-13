@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="scrolldIV" style="overflow:auto; height: 100px; width: 400px; border: 1px solid #999;"></div>
+<input type="button" value="插入一行" onclick="add();">
+
+
+<div id="content" style="overflow:auto; height: 100px; width: 400px; border: 1px solid #999;"></div>
+<button id="btn">点击加载更多数据</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //方法一：原生
+    function add()
+    {
+        var now = new Date();
+        var div = document.getElementById('scrolldIV');
+        div.innerHTML = div.innerHTML + 'time_' + now.getTime() + '<br />';
+        div.scrollTop = div.scrollHeight;
+    }
+
+
+
+    //方法二：jQuery
+    $("#btn").click(function(){
+        $("#content").append('<p>这是一条测试数据</p>');
+        $('#content').scrollTop($('#content')[0].scrollHeight);
+
+    })
+</script>
+</body>
+</html>

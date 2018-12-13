@@ -1,0 +1,13 @@
+.weui-cells_checkbox .weui-cell__hd {
+  padding-right: 0.35em;
+}
+.weui-cells_checkbox .weui-icon-checked:before {
+  content: '\EA01';
+  color: #C9C9C9;
+  font-size: 23px;
+  display: block;
+}
+.weui-cells_checkbox .weui-check:checked + .weui-icon-checked:before {
+  content: '\EA06';
+  color: #09BB07;
+}

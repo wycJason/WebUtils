@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>光标：可编辑div 获取光标位置及插入内容ContentEditAble</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<button type="button" onclick="document.getElementById('test').focus(); insertHtmlAtCaret('<h1>插入字符</h1><img src=\'http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_12_5a1997bb62054af6b7a8ec2ddc74434b.jpg/administrator.jpg \'>')">插入字符</button>
+<br>
+<div contentEditable="true" style="min-height:600px; border:1px solid red;" id="test"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //https://www.jb51.net/article/57650.htm 参考文档
+    function insertHtmlAtCaret(html) {
+        debugger;
+        var sel, range;
+        if (window.getSelection) {
+        // IE9 and non-IE
+            sel = window.getSelection();//表示用户选择的文本范围或光标的当前位置    window.getSelection().toString() 得到用户被选中的文本
+            if (sel.getRangeAt && sel.rangeCount) {
+                range = sel.getRangeAt(0);//返回一个包含当前选区内容的区域对象。  将返回 range 对象     index 该参数指定需要被处理的子集编号（从零开始计数）。如果该数值被错误的赋予了大于或等于 rangeCount 结果的数字，将会产生错误。
+               //Range表示包含节点和部分文本节点的文档片段  https://developer.mozilla.org/zh-CN/docs/Web/API/Range
+                range.deleteContents();//从文档（Document）中移除 Range 中的内容。
+                // Range.createContextualFragment() would be useful here but is
+                // non-standard and not supported in all browsers (IE9, for one)
+                var el = document.createElement("div");
+                el.innerHTML = html;
+                var frag = document.createDocumentFragment(), node, lastNode;
+                while ( (node = el.firstChild) ) {
+                    lastNode = frag.appendChild(node);
+                }
+                range.insertNode(frag);
+                // Preserve the selection
+                if (lastNode) {
+                    range = range.cloneRange();
+                    range.setStartAfter(lastNode);
+                    range.collapse(true);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+            }
+        } else if (document.selection && document.selection.type != "Control") {
+            // IE < 9
+            document.selection.createRange().pasteHTML(html);
+        }
+    }
+</script>
+</body>
+</html>

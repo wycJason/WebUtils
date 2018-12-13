@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #d1{
+            border:1px solid black;
+            height:100px;
+            /*width: 200px;*/
+            overflow: auto;/*父元素对子元素溢出自动处理，父元素的宽随窗口大小而改变*/
+            background-color:red;
+        }
+        #d2{
+            height:50px;
+            min-width:600px;/*子元元要定宽px，这样它里面的内容才不会被挤压*/
+            border:1px solid black;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="d1">
+    <div id="d2">Lorem ipsum dolor sit amet, consectetunem maxime nobis perferendis possimus quia recusandae veritatis voluptas! Alias ex maiores quae.</div>
+</div>
+</body>
+</html>

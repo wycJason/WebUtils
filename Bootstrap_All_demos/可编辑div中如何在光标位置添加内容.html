@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<button onclick="add()" id="cmdInsert" style="border: none;background-color: #fff;">增加节点</button>
+<div id="myEditor" class="flag" style="position:absolute;width:800px;height:240px;border:1px;border-color: red;background-color: #f5f5f5" contenteditable="true">
+
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    $(function(){
+        $("#myEditor").focus(function(){
+            $("#myEditor").removeClass("flag");
+        });
+        /* $("#myEditor").blur(function(){
+         $("#myEditor").addClass("flag");
+         }); */
+    });
+
+    function add(){
+        insertHTML("<img src='http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_12_5a1997bb62054af6b7a8ec2ddc74434b.jpg/administrator.jpg' />");
+    }
+
+    //再加入一个全屏事件
+    $(window).click(function(e)
+    {
+        if (window.getSelection)
+        {
+            var getevent=e.srcElement?e.srcElement:e.target;//不要告诉我不知道这句的意思
+            //console.log(getevent.id,getevent.tagName);
+            if(getevent.id!=null && getevent.id=="cmdInsert"||getevent.id=="myEditor")
+            {
+                //alert(0);
+                //代表 点了插入html的按钮
+                //则不执行getFocus方法
+            }
+            else
+                $("#myEditor").addClass("flag");//除非点了那个插入html的按钮 其他时候必须要执行getFocus来更新最后失去焦点的div
+        }
+
+    })
+
+
+    function insertHTML(html) {
+        var dthis=$("#myEditor")[0];//要插入内容的某个div,在标准浏览器中 无需这句话
+        //dthis.focus();
+        var sel, range;
+        console.log($(dthis).hasClass("flag"));
+        if($(dthis).hasClass("flag")){
+            $(dthis).html(dthis.innerHTML+html);
+            return;
+        }
+        if (window.getSelection)
+        {
+            // IE9 and non-IE
+            sel = window.getSelection();
+            if (sel.getRangeAt && sel.rangeCount) {
+                range = sel.getRangeAt(0);
+                range.deleteContents();
+                var el = document.createElement('div');
+                el.innerHTML = html;
+                var frag = document.createDocumentFragment(), node, lastNode;
+                while ( (node = el.firstChild) )
+                {
+                    lastNode = frag.appendChild(node);
+                }
+
+                range.insertNode(frag);
+                if (lastNode) {
+                    range = range.cloneRange();
+                    range.setStartAfter(lastNode);
+                    range.collapse(true);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+            }
+        } else if (document.selection && document.selection.type !='Control'){
+            $(dthis).focus(); //在非标准浏览器中 要先让你需要插入html的div 获得焦点
+            ierange= document.selection.createRange();//获取光标位置
+            ierange.pasteHTML(html);    //在光标位置插入html 如果只是插入text 则就是fus.text="..."
+            $(dthis).focus();
+
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>组合表头</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-table/bootstrap-table.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="padding-top: 50px">
+<div class="container">
+    <table id="table"></table>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="bootstrap-table/bootstrap-table.js"></script>
+<script src="bootstrapAll/js/bootstrap-table-export.js"></script>
+<script src="bootstrapAll/js/tableExport.js"></script>
+<script src="bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<script>
+    //表头：3行5列   二维数组，里面的每一个数组元素都是一行，
+    var json= [
+             {"name":"滚筒","mideaNum":"10","mideaPercent":"29%","panasonicNum":"10","panasonicPercent":"29%"},
+             {"name":"波轮","mideaNum":"9","mideaPercent":"28%","panasonicNum":"10","panasonicPercent":"29%"}
+         ];
+    $("#table").bootstrapTable({
+        data:json,
+        columns:[
+            [
+                {
+                    "title": "洗衣机统计表",
+                    "halign":"center",
+                    "align":"center",
+                    "colspan": 5
+                }
+            ],
+            [
+                {
+                    field: 'name',
+                    title: "功能分组",
+                    valign:"middle",
+                    align:"center",
+                    //colspan: 1,
+                    rowspan: 2
+                },
+                {
+                    title: "美的",
+                    valign:"middle",
+                    align:"center",
+                    colspan: 2,
+                    //rowspan: 1
+                },
+                {
+                    title: "松下",
+                    valign:"middle",
+                    align:"center",
+                    colspan: 2,
+                    //rowspan: 1
+                }
+            ],
+            [
+                {
+                    field: 'mideaNum',
+                    title: '数量',
+                    valign:"middle",
+                    align:"center"
+                },
+                {
+                    field: 'mideaPercent',
+                    title: '占比',
+                    valign:"middle",
+                    align:"center"
+                },
+                {
+                    field: 'panasonicNum',
+                    title: '数量',
+                    valign:"middle",
+                    align:"center"
+                },
+                {
+                    field: 'panasonicPercent',
+                    title: '占比',
+                    valign:"middle",
+                    align:"center"
+                }
+            ]
+        ]
+    })
+</script>
+</body>
+</html>

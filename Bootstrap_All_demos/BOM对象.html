@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .cl {
+            width: 100px;
+            height: 200px;
+            border:1px;
+            background-color: red;
+            margin: 10px 0 0 20px;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="cl" id="test"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    console.log(test.offsetHeight,test.offsetWidth,test.offsetLeft,test.offsetTop)//200 100 20 10
+/*
+ 初始窗口大小的位置 两步     http://www.w3school.com.cn/js/js_window.asp
+ 1. 在打开窗口时，就调整大小和位置
+ 定义配置字符串:
+ var config="top=100,left=100,width=200,height=200"  	//不加单位px
+ 强调:
+ width和height仅是文档显示区的大小。
+ top和left却是整个窗口左上角的坐标。
+ 2. 在打开窗口时，将config作为第三个参数。
+ var pop=open("about:blank","pop",config);
+ 特殊: 多数浏览器不允许修改当前窗口大小。只能修改新弹出的另一个小窗口的大小。
+
+ 1、 config: 配置打开新窗口的大小和位置
+ var  config="top=50,left=100,width=100,height=100";
+ 2、open方法会返回打开的新窗口对象
+ var pop=open("about:blank","pop",config);
+ 综合：pop其实就是新窗口的window    var pop=open("url","name",config)
+*/
+var config="top=100,left=100,width=200,height=200"
+//open("about:blank","newWindow",config);
+</script>
+</body>
+</html>

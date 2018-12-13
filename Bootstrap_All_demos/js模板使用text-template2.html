@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="http://cdn.bootcss.com/weui/1.1.1/style/weui.css" rel="stylesheet">
+    <title>微信案例</title>
+
+</head>
+<style>
+    .weui-media-box_appmsg .weui-media-box__hd {
+        margin-right: .8em;
+        width: 80px;
+        line-height: 80px;
+
+    }
+    .weui-media-box {
+        padding: 10px;
+
+    }
+</style>
+<script id="template" type="text/template">
+    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+            <img class="weui-media-box__thumb" src="<%=pic%>">
+        </div>
+        <div class="weui-media-box__bd">
+            <p><%=title%></p>
+        </div>
+    </a>
+</script>
+
+<body>
+
+<div class="weui-panel weui-panel_access">
+    <div class="weui-panel__hd">体育热点</div>
+    <div id="panelBody" class="weui-panel__bd">
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    //格式化
+    function formatHtml(str,obj) {
+        return str.replace('<%=title%>',obj.title).replace('<%=pic%>',obj.pic);
+    }
+
+    var templateStr  = document.getElementById('template').innerHTML;
+     console.log(templateStr);
+    var panelBody = document.getElementById('panelBody');
+
+    var array  = [
+        {title:'勇士对太阳',pic:'https://ks.sinaimg.cn/n/sports/transform/20170218/yxCN-fyarrcc7809590.jpg/w120h90z1l50t1657.jpg'},
+        {title:'骑士对热火',pic:'https://ks.sinaimg.cn/n/sports/transform/20170218/yxCN-fyarrcc7809590.jpg/w120h90z1l50t1657.jpg'}
+    ];
+    var temp = [];
+    array.forEach(function(element) {
+        console.log(element);
+        temp.push(formatHtml(templateStr,element))
+    });
+
+    panelBody.innerHTML = temp.join('');
+</script>
+
+</body>
+</html>

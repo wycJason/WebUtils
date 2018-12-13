@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="https://www.cnblogs.com/hhhyaaon/p/5929492.html" target="_blank">[HTML5] FileReader对象</a></h1>
+<h1><a href="https://www.cnblogs.com/hhhyaaon/p/5928152.html" target="_blank">[HTML5] Blob对象</a></h1>
+
+<input type="file" id="file"/>
+<br><br><br>
+
+<input type="file" id="fileImg"/>
+<img id="file_img" src=""/>
+<img id="file_img_Binary" src=""/>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    //测试txt文件
+    var input  = document.getElementById("file"); //input file
+    input.onchange = function(){
+        debugger;
+        var file = this.files[0];
+        if(!!file){
+            //读取本地文件，以gbk编码方式输出
+            var reader = new FileReader();
+            // 通过四种方式读取文件  reader.readAsXXX(file);
+            //reader.readAsArrayBuffer(file);
+            //reader.readAsBinaryString(file);
+            //reader.readAsDataURL(file);
+            reader.readAsText(file,"utf-8");
+
+            reader.onload = function(){
+                //查看文件输出内容
+                console.log(this.result);
+                //查看文件内容字节大小
+                console.log(new Blob([this.result]))
+            }
+        }
+    }
+
+    //在线预览本地文件
+    var inputImg  = document.getElementById("fileImg");   // input file
+    inputImg.onchange = function(){
+        var file = this.files[0];
+        console.log(new Blob([file]))//查看大小
+        debugger;
+        if(!!file){
+            var reader = new FileReader();
+            // 图片文件转换为base64
+            reader.readAsDataURL(file);//readAsDataURL会将文件内容进行base64编码后输出
+            reader.onload = function(){
+                document.getElementById("file_img").src = this.result;
+            }
+
+            //图片文件转换为二进制
+            //window.URL对象可以为Blob对象生成一个网络地址，结合a标签的download属性，可以实现点击url下载文件
+            var imgSRC=URL.createObjectURL(file);//https://developer.mozilla.org/zh-CN/docs/Web/API/URL/createObjectURL
+            document.getElementById("file_img_Binary").src =imgSRC;
+            //URL.revokeObjectURL(imgSRC);//当你结束使用某个 URL 对象时，应该通过调用这个方法来让浏览器知道不再需要保持这个文件的引用了。
+        }
+    }
+</script>
+</body>
+</html>

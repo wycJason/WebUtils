@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .box>img{width: 100%;height: 100%;}
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h3><a href="https://blog.csdn.net/qq_31301099/article/details/55096932">参考文档</a></h3>
+<div class="box" style="border: 1px solid red;width: 500px;height: 200px;"></div>
+
+<canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+
+    ctx.font="20px Georgia";
+    ctx.fillText("Hello World!",10,50);
+
+    ctx.font="30px Verdana";
+    // Create gradient
+    var gradient=ctx.createLinearGradient(0,0,c.width,0);
+    gradient.addColorStop("0","magenta");
+    gradient.addColorStop("0.5","blue");
+    gradient.addColorStop("1.0","red");
+    // Fill with gradient
+    ctx.fillStyle=gradient;
+    ctx.fillText("w3school.com.cn",10,90);
+
+
+    var img = convertCanvasToImage(c);
+    $('.box').append(img);
+    console.log(img);
+
+    function convertCanvasToImage(canvas) {
+        var image = new Image();
+        image.src = canvas.toDataURL("image/png", 0.85);
+        return image;
+    }
+</script>
+</body>
+</html>

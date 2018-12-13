@@ -1,0 +1,13 @@
+.weui-btn_disabled {
+  color: rgba(255, 255, 255, 0.6);
+}
+.weui-btn_disabled.weui-btn_default {
+  color: rgba(0, 0, 0, 0.3);
+  background-color: #F7F7F7;
+}
+.weui-btn_disabled.weui-btn_primary {
+  background-color: #9ED99D;
+}
+.weui-btn_disabled.weui-btn_warn {
+  background-color: #EC8B89;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button>发起异步请求</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $('button').click(function(){
+        $.ajax({
+            url: 'data/9999.php',
+            type: 'GET',
+            data: {'uname':'tom', 'age':20},
+            beforeSend: function(){
+                console.log('before send...');
+                console.log(arguments);
+                console.log('\n');
+            },
+            success: function(){
+                console.log('success...');
+                console.log(arguments);
+                console.log('\n');
+            },
+            error: function(){
+                console.log('error...');
+                console.log(arguments);
+                console.log('\n');
+            },
+            complete: function(){
+                console.log('complete...');
+                console.log(arguments);
+                console.log('\n');
+            }
+        });
+    });
+
+    function ajaxFun(url, type, data,isAsync, successback, errorback) {
+        $.ajax({
+            url: url,
+            type: type,
+            data: data,
+            dataType: 'json',
+            async:isAsync||true,
+            success: function (result) {
+                if (result.Code == 0) {
+                    successback(result);
+                } else {
+                        errorback(result.Msg);
+                }
+            },
+            error: function (request) {
+                errorback(request);
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

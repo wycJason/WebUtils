@@ -1,0 +1,124 @@
+// start configure pen
+* {
+  &, &:before, &:after {
+    box-sizing: border-box;
+    &, &:focus, &:active, &:focus:active {
+      outline: none;
+    }
+  }
+}
+
+body {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  padding: 0;
+}
+// end configure pen
+
+h2 {
+  text-align: center;
+  &:not(:first-child) {
+    margin: {
+      top: 45px;
+    }
+  }
+}
+
+p {
+  margin: 20px 0 10px;
+  
+  + p {
+    margin: {
+      top: 0;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.carousel {  
+  $button-spacing: 30px;
+  
+  margin: 0 $button-spacing;
+  width: calc(100% - ($button-spacing * 2));
+  
+  &[data-shift="1"] {
+    .carousel-inner {
+      > .item {
+        transition: all .5s ease-in-out;
+      }
+    }
+  }
+  
+  .carousel-inner > .item.row {
+    margin: 0;
+  }
+  
+  .carousel-control {
+    background: none;
+    color: transparent;
+    overflow: hidden;
+    text-shadow: none;
+    transition: all .3s ease-in-out;
+    width: $button-spacing;
+    &:before {
+      color: #444;
+      font: {
+        family: 'Glyphicons Halflings';
+      }
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: $button-spacing;
+    }
+    &:after {
+      border: {
+        radius: 50%;
+      }
+      box-shadow: 0 0 0 0 rgba(black, .7);
+      content: '';
+      height: 60%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: all .3s ease-in-out;
+      width: 100%;
+    }
+    &:hover {
+      &:after {
+        box-shadow: 0 0 $button-spacing 0 rgba(black, .7);
+      }
+    }
+    
+    &.left {
+      left: -$button-spacing;
+      &:before {
+        content: '\e079';
+      }
+      &:after {
+        right: -100%;
+      }
+    }
+    
+    &.right {
+      right: -$button-spacing;
+      &:before {
+        content: '\e080';
+      }
+      &:after {
+        left: -100%;
+      }
+    }
+  }
+}

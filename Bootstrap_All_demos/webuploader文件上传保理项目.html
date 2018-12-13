@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>webuploader文件上传保理项目</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/webuploader.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<button id="selBtn" type="button" class="btn btn-default">选择按钮</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/webuploader.js"></script>
+<script>
+    $("#selBtn").click(function () {
+        UploadFile.show({
+            multiple: true,
+            cbOk: function (data) {
+                console.log("加载成功");
+            },
+            cbErr: function (err) {
+                console.log("加载失败："+err);
+            }
+        });
+    })
+
+    /*仅供参考*/
+    function initHtml() {
+        var strHtl = '<div class="modal inmodal" id="upload-file" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">\
+<div class="modal-dialog">\
+    <div class="modal-content animated bounceInRight">\
+        <div class="modal-header" style="padding:10px;">\
+            <button type="button" class="close" data-dismiss="modal">\
+                <span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>\
+            </button>\
+        </div>\
+        <div class="modal-body">\
+            <div id="uploader">\
+                <div id="thelist" class="uploader-list"></div>\
+                <div id="upload-picker" style="width:100%;text-align:center;margin: 80px; max-height:63px;">点击选择文件</div>\
+            </div>\
+            <div class="file-container" id="all-up" style="display:none;">\
+                <button class="uploadBtn upnow">开始上传</button>\
+                <button class="file-pick" onclick="againUp()">继续添加</button>\
+            </div>\
+            <div class="file-container" id="all-uping" style="display:none;">\
+                <button class="file-pick">上传中</button>\
+            </div>\
+            <div class="file-container" id="all-uped" style="display:none;">\
+                <button class="uploadBtn upend">上传完成</button>\
+            </div>\
+            <div class="file-container" id="all-up-again" style="display:none;">\
+                <button class="uploadBtn up-again">重新上传</button>\
+            </div>\
+        </div>\
+    </div>\
+</div>\
+</div>';
+    $('body').append(strHtl);
+    };
+    initHtml();
+
+    var uploader = {};
+    var UploadFile = {
+        UpFiles: [],
+        cbOk: {},
+        show: function (param) {//param:{isImg:是否图片, multiple:是否多传}
+            $("#uploader").html('<div id="thelist" class="uploader-list"></div><div id="upload-picker" style="width:100%;text-align:center;margin: 80px; max-height:63px;">点击选择文件</div>');//重置上传按钮
+            $("#upload-picker").show();
+            $("#all-up").hide();
+            $("#all-uping").hide();
+            $("#all-uped").hide();
+            $("#all-up-again").hide();
+            var $this = this;
+            $this.cbOk = param.cbOk;
+            $this.UpFiles = [];
+            var webUploader = {
+                pick: {
+                    id: '#upload-picker',
+                    multiple: param.multiple || false
+                },
+                //dnd: '#uploader .queueList',
+                //paste: document.body,
+                accept: param.accept || {
+                    title: 'files',
+                    mimeTypes: '*'
+                },
+                // swf文件路径
+                swf: '../plugins/webuploader/Uploader.swf',
+
+                //disableGlobalDnd: true,
+
+                chunked: param.chunked || true,
+                chunkSize: param.chunkSize || 1 * 1024 * 1024,
+                server: param.server || '/webuploader/Pt_FileUpload',
+                fileNumLimit: param.fileNumLimit || 300,
+                fileSizeLimit: param.fileSizeLimit || 200 * 1024 * 1024,    // 200 M
+                fileSingleSizeLimit: param.fileSingleSizeLimit || 10 * 1024 * 1024    // 10 M
+            };
+            uploader = WebUploader.create(webUploader);
+            uploader.on('fileQueued', function (file) {
+                console.log("文件上传队列", file);
+                $("#upload-picker").hide();
+                $("#all-up").show();
+                var $list = $("#thelist");
+                $list.append('<div id="' + file.id + '" class="item">' +
+                        '<h4 class="info">' + file.name + '</h4>' +
+                        '<p class="state">等待上传...</p>' +
+                        '</div>');
+            });
+            // 文件上传过程中创建进度条实时显示。
+            uploader.on('uploadProgress', function (file, percentage) {
+                console.log("文件上传进度", file);
+                var $li = $('#' + file.id),
+                        $percent = $li.find('.progress .progress-bar');
+                // 避免重复创建
+                if (!$percent.length) {
+                    $percent = $('<div class="progress progress-striped active">' +
+                            '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+                            '</div>' +
+                            '</div>').appendTo($li).find('.progress-bar');
+                }
+                $li.find('p.state').text('上传中');
+                $percent.css('width', percentage * 100 + '%');
+            });
+            uploader.on('startUpload', function (file) {
+                $("#all-up").hide();
+                $("#all-uping").show();
+                console.log("开始上传", file);
+            });
+            uploader.on('uploadError', function (file) {
+                console.log("上传失败", file);
+                $('#' + file.id).find('p.state').text('上传出错');
+                param.cbErr(file);
+            });
+            uploader.on('uploadSuccess', function (file, response) {
+                console.log("上传成功", file);
+                console.log("上传返回", response);
+                if (response.Code == 0) {
+                    response.Result = JSON.parse(response.Result);
+                    $this.UpFiles.push(response);
+                    $('#' + file.id).find('p.state').text('已上传');
+                } else if (response.Code != 0 && response.Code != 9999) {
+                    file.setStatus('error', JSON.parse(response.Result).fileServerName);
+                    $('#' + file.id).find('p.state').text('上传错误');
+                    $("#all-uping").hide();
+                    $("#all-up-again").show();  //重新上传
+                    param.cbErr(response);
+                }
+                if (uploader.getStats().successNum == uploader.getFiles().length && uploader.getStats().uploadFailNum == 0) {
+                    uploader.reset();
+                    $("#all-uping").hide();
+                    $("#all-up-again").hide();
+                    $("#all-uped").show();
+                }
+            })
+            uploader.on('uploadComplete', function (file) {
+                console.log("上传完成");
+                $('#' + file.id).find('.progress').fadeOut();
+            });
+            uploader.on('error', function (obj) {
+                console.log("失败", obj);
+                var msg = '';
+                switch (obj) {
+                    case 'Q_EXCEED_NUM_LIMIT':
+                        msg = "添加的文件数量超出限定值！";
+                        break;
+                    case 'Q_EXCEED_SIZE_LIMIT':
+                        msg = "添加的文件总大小超出限定值！";
+                        break;
+                    case 'F_EXCEED_SIZE':
+                        msg = "添加的文件大小超出限定值！";
+                        break;
+                    case 'Q_TYPE_DENIED':
+                        msg = "导入的文件类型错误！";
+                        break;
+                    default:
+                        break;
+                }
+                if (msg != '') {
+                    alert(msg);
+                }
+            })
+            //当文件被加入队列之前触发，
+            uploader.on('beforeFileQueued', function (file) {
+                console.log("当文件被加入队列之前触发");
+            });
+            //当所有文件上传结束时触发。
+            uploader.on('uploadFinished',function () {
+                console.log("所有文件上传结束");
+            });
+            $("#upload-file").modal("show");
+        },
+    };
+    function againUp() {
+        $("#upload-picker").find('label').click();
+    }
+    $('.upnow').on("click", function () {
+        uploader.upload();
+    });
+    $('.upend').on("click", function () {
+        UploadFile.cbOk(UploadFile.UpFiles);
+        $("#upload-file").modal("hide");
+    });
+
+   /* function Upload(d) {
+        UploadFile.show({
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/jpg,image/jpeg,image/png,image/bmp,image/gif'
+            }, multiple: false, cbOk: function (data) {
+                $(d).find(".defaultImg").hide();
+                $(d).find(".showImg").html($tool._formatToStr("<img src='{0}' _src='{1}' style='height:40px;width:40px;' />", data[0].Result.fileServerPath.replace("-s", ""), data[0].Result.fileServerName.replace("-s", "")));
+            }, cbErr: function (err) {
+                console.log(err)
+            }
+        });
+    }*/
+</script>
+</body>
+</html>

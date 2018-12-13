@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue.js3</title>
+    <style>
+
+    </style>
+<!--    <link href="css/bootstrap.css" rel="stylesheet">-->
+    <!--[if lt IE 9]>
+<!--    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>-->
+    <![endif]-->
+</head>
+<body>
+<div id="app">
+    <h1 v-if="8==8">Yes</h1>
+    <h1 v-else>No</h1>
+    <h1>{{message}}</h1>
+    <input type="text" v-model="message">
+    <button @click="doSomething()">doSomething()</button>
+    <button @click="doSomething">doSomething</button>
+</div>
+
+<div id="counter-event-example">
+    <p>{{ total }}</p>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+</div>
+
+<!--<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>-->
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message:'hello vue.js.'
+        },
+        methods: {
+            doSomething: function () {
+                alert("你好，vue!")
+            }
+        }
+    })
+
+//increment自定义事件increment
+    Vue.component('button-counter', {
+        template: '<button v-on:click="incrementCounter">{{ counter }}</button>',
+        data: function () {
+            return {
+                counter: 0
+            }
+        },
+        methods: {
+            incrementCounter: function () {
+                this.counter += 1
+                this.$emit('increment')
+            }
+        },
+    })
+    new Vue({
+        el: '#counter-event-example',
+        data: {
+            total: 0
+        },
+        methods: {
+            incrementTotal: function () {
+                this.total += 1
+            }
+        }
+    })
+</script>
+</body>
+</html>

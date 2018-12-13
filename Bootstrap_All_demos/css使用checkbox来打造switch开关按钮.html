@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .widget_switch_checkbox {
+            display: none;
+        }
+
+        .widget_switch_label {
+            margin-top: 5px;
+            background-color: grey;
+            display: inline-block;
+            position: relative;
+            height: 30px;
+            width: 80px;
+            border-radius: 1000px;
+            box-shadow: 0 0 2px black;
+        }
+
+        .widget_switch_checkbox:checked~.widget_switch_label .widget_switch_circle {
+            left: 50px;
+        }
+
+        .widget_switch_circle {
+            position: absolute;
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            background-color: #eee;
+            left: 0;
+            /*过渡效果，可考虑不加*/
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .widget_switch_checkbox:checked~.widget_switch_label {
+            background: lime;
+        }
+    </style>
+</head>
+<body>
+<input type="checkbox" class="widget_switch_checkbox" id="widget_switch_checkbox">
+<label for="widget_switch_checkbox" class="widget_switch_label">
+    <span class="widget_switch_circle"></span>
+</label>
+<script>
+    document.querySelector("input.widget_switch_checkbox").addEventListener("click", function() {
+        if(document.querySelector("input.widget_switch_checkbox").checked) {
+            console.log(new Date().getTime());
+            console.log("选中状态");
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+<div id="test" data-age="28">data-属性名="属性值"</div>
+<!--最终渲染 <div id="test" data-age="28" data-name="jason" data-gender="male">data-属性名="属性值"</div>-->
+<script>
+    var tst=document.querySelector("#test");
+    console.log(tst.dataset.age);//获取自定义属性值
+
+    //第一种方法：设值 取值
+    tst.dataset.name="jason";//设置自定义属性
+    console.log(tst.dataset.name);//获取自定义属性值
+
+    //第二种方法：设值 取值
+    tst.setAttribute("data-gender","male");//设置自定义属性
+    console.log( tst.getAttribute("data-gender"));//获取自定义属性值
+</script>
+</body>
+</html>

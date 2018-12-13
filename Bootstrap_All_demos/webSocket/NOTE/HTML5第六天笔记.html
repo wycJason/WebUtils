@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<title>HTML5第六天笔记</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">HTML5 第六天笔记</h1>
+
+<h2 id="toc_1">Web Workers</h2>
+
+<h3 id="toc_2">1. 基础内容</h3>
+
+<h4 id="toc_3">1）什么是 Web Workers</h4>
+
+<blockquote>
+<p>能够把 JavaScript 计算委托给后台线程，通过允许这些活动以防止使交互型事件变得缓慢。</p>
+</blockquote>
+
+<p>上句话是 MDN 对象 Web Workers 的简单描述。</p>
+
+<p>Web Workers 是可以在后台（页面端）运行的任务，它能够被轻松的创建，还能向它的创建者发送消息。 </p>
+
+<p>Web Workers 的三大主要特征：能够长时间运行（响应），理想的启动性能以及理想的内存消耗。</p>
+
+<h4 id="toc_4">2）两种 Web Workers</h4>
+
+<p>Web Workers 可以分为两种类型：Dedicated Web Worker（专用线程）和 Shared Web Worker（共享线程）。</p>
+
+<h5 id="toc_5">a. Dedicated Web Worker</h5>
+
+<p>目前绝大多数的应用场景所使用的是 Dedicated Web Worker（专用线程）。Dedicated Web Worker随着 HTML 页面关闭而被终止，这就意味着 Dedicated Web Worker 只能被创建它的 HTML 页面所访问。</p>
+
+<p>在 JavaScript 代码中，<code>Work</code> 类型代表 Dedicated Web Worker。</p>
+
+<h5 id="toc_6">b. Shared Web Worker</h5>
+
+<p>与 Dedicated Web Worker（专用线程）相比，Shared Web Worker 一般用于一些特定情况，可以为多个 HTML 页面服务，即可以被多个 HTML 页面所访问。与之对应的，只有将与之相关的所有 HTML 页面都关闭才能被终止。</p>
+
+<p>在 JavaScript 代码中，<code>SharedWorker</code> 类型代表 Shared Web Worker。</p>
+
+<h4 id="toc_7">3）Web Workers 的限制</h4>
+
+<p>Web Workers 在具体使用中，具有以下几种限制：</p>
+
+<ul>
+<li>Web Workers 无法访问 DOM 节点；</li>
+<li>Web Workers 无法访问全局变量或是全局函数；</li>
+<li>Web Workers 无法调用 <code>alert()</code> 或者 <code>confirm()</code> 之类的函数；</li>
+<li>Web Workers 无法访问 window、document 之类的浏览器全局变量；</li>
+</ul>
+
+<p>Web Workers 可以在它的作用域内访问 navigator 对象。它含有如下能够识别浏览器的字符串，就像在普通脚本中做的那样：</p>
+
+<ul>
+<li>appName</li>
+<li>appVersion</li>
+<li>platform</li>
+<li>userAgent</li>
+</ul>
+
+<h4 id="toc_8">4）Web Workers 的使用场景</h4>
+
+<ul>
+<li>Web Workers 线程能够在不干扰 UI 的情况下执行一些计算的任务。</li>
+<li>Web Workers 线程能够使用 XMLHttpRequest 对象与服务器端进行异步交互。</li>
+</ul>
+
+<h4 id="toc_9">5）参考资料</h4>
+
+<ul>
+<li><a href="http://www.w3.org/TR/workers/">Web Workers - W3C</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers">使用 Web Workers</a></li>
+<li><a href="https://msdn.microsoft.com/library/hh673568(v=vs.85).aspx">Microsoft Web Workers</a></li>
+</ul>
+
+<h3 id="toc_10">2. Worker API</h3>
+
+<h4 id="toc_11">1）Worker 构造函数</h4>
+
+<div><pre class="line-numbers"><code class="language-javascript">Worker(DOMString scriptURL)</code></pre></div>
+
+<p>通过该构造函数可以直接创建 Worker 对象，并传递 Worker 文件的路径（scriptURL）。具体用法如下：</p>
+
+<div><pre class="line-numbers"><code class="language-javascript">var worker = new Worker(my_task.js);</code></pre></div>
+
+<p>通过 Worker 的构造函数得到 Worker 对象，在 HTML 页面与 Worker 文件之间创建通信。</p>
+
+<blockquote>
+<p><strong>值得注意的是：</strong>指定的 Worker 文件路径必须遵循<code>同源策略</code>。</p>
+</blockquote>
+
+<h4 id="toc_12">2）监听通信消息机制</h4>
+
+<div><pre class="line-numbers"><code class="language-javascript">worker.onmessage = function(event){
+    逻辑编写在这里...
+}</code></pre></div>
+
+<p>当 Worker 传递消息给 HTML 页面（或 HTML 页面传递消息给 Worker）时，可以通过 onmessage 事件进行监听并且捕获。</p>
+
+<p>传递的消息存储在 onmessage 事件处理函数的参数 <code>data</code> 中。</p>
+
+<div><pre class="line-numbers"><code class="language-javascript">worker.onmessage = function(event) {
+  console.log(&quot;Worker&#39;s message: &quot; + event.data);
+};</code></pre></div>
+
+<h4 id="toc_13">3）发送通信消息方法</h4>
+
+<div><pre class="line-numbers"><code class="language-javascript">postMessage(JSObject message)</code></pre></div>
+
+<p>HTML 页面通过该方法向 Worker 的内部作用域内传递消息。该方法接收一个单独的参数，即要传递给 Worker 的数据。</p>
+
+<p><code>message</code> 参数用于传递给 Worker 的数据，该数据将包含于传递给 onmessage 处理函数的事件对象中的 data 字段内。</p>
+
+<div><pre class="line-numbers"><code class="language-javascript">// 普通数据
+worker.postMessage(&quot;ali&quot;);
+// JSON格式的数据
+worker.postMessage({&quot;cmd&quot;: &quot;init&quot;, &quot;timestamp&quot;: Date.now()});</code></pre></div>
+
+<h4 id="toc_14">4）终止 Worker 通信</h4>
+
+<div><pre class="line-numbers"><code class="language-javascript">terminate()</code></pre></div>
+
+<p>该方法用于立即终止 Worker。该方法不会给 Worker 留下任何完成操作的机会；就是简单的立即停止。</p>
+
+<h4 id="toc_15">5）监听通信错误机制</h4>
+
+<div><pre class="line-numbers"><code class="language-javascript">worker.onerror = function(event){
+    错误处理编写在这里...
+}</code></pre></div>
+
+<p>错误信息对象包含三个属性：</p>
+
+<ul>
+<li>message：一个可读性良好的错误信息。</li>
+<li>filename：产生错误的脚本文件名。</li>
+<li>lineno：发生错误时所在的脚本文件行号。</li>
+</ul>
+
+<h3 id="toc_16">3. 双向通信</h3>
+
+<p>所谓“单向通信”就是指 HTML 页面与 Worker 建立通信后，只是 Worker 向 HTML 页面传递消息。</p>
+
+<p>所谓“双向通信”就是指 HTML 页面与 Worker 之间可以相互传递消息的一种方式。</p>
+
+<p>要建立双向通信，HTML 页面和 Worker 线程都要侦听 onmessage 事件。</p>
+
+<ul>
+<li>首先，该脚本创建 worker 线程。</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-javascript">var echo = new Worker(&#39;echo.js&#39;); 
+echo.onmessage = function(e) {
+  alert(e.data); 
+}</code></pre></div>
+
+<ul>
+<li>当用户单击提交按钮时，脚本会将两条信息以 JavaScript 对象文本的形式传递给 Worker。</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-markup">&lt;script&gt;
+window.onload = function() {
+  var echoForm = document.getElementById(&#39;echoForm&#39;); 
+  echoForm.addEventListener(&#39;submit&#39;, function(e) {
+    echo.postMessage({
+      message : e.target.message.value,
+      timeout : e.target.timeout.value
+    }); 
+    e.preventDefault();
+  }, false); 
+  }
+&lt;/script&gt;
+&lt;form id=&quot;echoForm&quot;&gt;
+  &lt;p&gt;Echo the following message after a delay.&lt;/p&gt;
+  &lt;input type=&quot;text&quot; name=&quot;message&quot; value=&quot;Input message here.&quot;/&gt;&lt;br/&gt;
+  &lt;input type=&quot;number&quot; name=&quot;timeout&quot; max=&quot;10&quot; value=&quot;2&quot;/&gt; seconds.&lt;br/&gt;
+  &lt;button type=&quot;submit&quot;&gt;Send Message&lt;/button&gt;
+&lt;/form&gt;</code></pre></div>
+
+<ul>
+<li>最后，Worker 侦听消息，并在指定的超时间隔之后将其返回。</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-javascript">onmessage = function(e){
+  setTimeout(function(){
+    postMessage(e.data.message);
+  }, 
+  e.data.timeout * 1000);
+}</code></pre></div>
+
+<h2 id="toc_17">Web 存储</h2>
+
+<p>在开发 Web 应用时，开发人员有时需要在本地存储数据。当前浏览器支持 cookie 存储，但其大小有 4KB 的限制。</p>
+
+<p>HTML5 中新引入了 Web Storage 机制，通过使用键值对在客户端保存数据，并且提供了更大容量的存储空间。</p>
+
+<p>HTML5 中的 Web 存储对象有两种类型：</p>
+
+<ul>
+<li>sessionStorage 对象负责存储一个会话的数据。如果用户关闭了页面或浏览器，则会销毁数据。</li>
+<li>localStorage 对象负责存储没有到期的数据。当 Web 页面或浏览器关闭时，仍会保持数据的存储，当然这还取决于为此用户的浏览器设置的存储量。</li>
+</ul>
+
+<p>这两种存储对象具有相同的方法和属性。</p>
+
+<blockquote>
+<p><strong>值得注意的是：</strong>Web 存储并不比 cookies 安全。所以不要在客户端存储敏感信息，比如密码或信用卡信息。</p>
+</blockquote>
+
+<p>官方规范资料地址：<a href="https://html.spec.whatwg.org/multipage/webstorage.html">https://html.spec.whatwg.org/multipage/webstorage.html</a></p>
+
+<h3 id="toc_18">1. sessionStorge</h3>
+
+<h4 id="toc_19">1）浏览器支持性检查</h4>
+
+<div><pre class="line-numbers"><code class="language-javascript"> //sessionStorage 
+ if(window.sessionStorage){ 
+    alert(“support sessionStorage”); 
+ }else{ 
+    alert(“not support sessionStorage”); 
+    // 不支持 sessionStorage 
+ } </code></pre></div>
+
+<h4 id="toc_20">2）sessionStorage的方法</h4>
+
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>setItem(key, value)</td>
+<td>为 Web 存储对象添加一个键/值对，供以后使用。该值可以是任何的数据类型：字符串、数值、数组等。</td>
+</tr>
+<tr>
+<td>getItem(key)</td>
+<td>基于起初用来存储它的这个键检索值。</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>从此 Web 存储对象清除所有的键/值对。</td>
+</tr>
+<tr>
+<td>removeItem(key)</td>
+<td>基于某个键从此 Web 存储对象清除特定的键/值对。</td>
+</tr>
+<tr>
+<td>key(n)</td>
+<td>检索 key[n] 的值。</td>
+</tr>
+</tbody>
+</table>
+
+<h5 id="toc_21">a. 向 Web 存储对象添加键/值对</h5>
+
+<ul>
+<li>使用 <code>setItem()</code> 方法</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-javascript">sessionStorage.setItem(&#39;myKey&#39;, &#39;myValue&#39;);</code></pre></div>
+
+<ul>
+<li>使用 Web 存储对象来直接设置此键的值</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-javascript">sessionStorage.myKey = &#39;myValue&#39;;</code></pre></div>
+
+<h5 id="toc_22">b. 从 Web 存储对象中检索键/值对</h5>
+
+<ul>
+<li>使用 <code>getItem()</code> 方法</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-javascript">sessionStorage.getItem(&#39;myKey&#39;);</code></pre></div>
+
+<ul>
+<li>使用 Web 存储对象来直接获取此键的值</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-javascript">sessionStorage.myKey;</code></pre></div>
+
+<h5 id="toc_23">c. 删除所有键/值对</h5>
+
+<div><pre class="line-numbers"><code class="language-javascript">sessionStorage.clear();</code></pre></div>
+
+<h5 id="toc_24">d. 删除单个键/值对</h5>
+
+<div><pre class="line-numbers"><code class="language-javascript">sessionStorage.removeItem(&#39;myKey&#39;);</code></pre></div>
+
+<h4 id="toc_25">示例代码</h4>
+
+<div><pre class="line-numbers"><code class="language-markup">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+ &lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;sessionStorage&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;input type=&quot;text&quot; id=&quot;data&quot;&gt;
+  &lt;input type=&quot;button&quot; id=&quot;save&quot; value=&quot;保存&quot;&gt;
+  &lt;input type=&quot;button&quot; id=&quot;read&quot; value=&quot;读取&quot;&gt;
+  &lt;input type=&quot;button&quot; id=&quot;dele&quot; value=&quot;删除&quot;&gt;
+  &lt;script&gt;
+    var save = document.getElementById(&quot;save&quot;);
+    save.onclick = function(){
+        // 将用户输入的数据,保存到sessionStorage中
+        // 1. 获取用户输入的数据
+        var value = document.getElementById(&quot;data&quot;).value;
+        // 2. 如何生成存储数据所使用的KEY
+        var key = new Date().getTime();// 时间戳
+        // 3. 存储数据
+        window.sessionStorage.setItem(key,value);
+    }
+    var read = document.getElementById(&quot;read&quot;);
+    read.onclick = function(){
+        // 读取sessionSotorage中所有的数据
+        // 1. 获取当前sessionStorage中所有数据的个数
+        var count = window.sessionStorage.length;
+        // 2. 进行遍历
+        for(var i=0;i&lt;count;i++){
+            // 3. 根据索引值得到key
+            var key = window.sessionStorage.key(i);
+            // 4. 根据key值得到value
+            var value = window.sessionStorage.getItem(key);
+            // 5. 进行测试
+            console.log(key + &quot; : &quot; + value);
+        }
+    }
+    var dele = document.getElementById(&quot;dele&quot;);
+    dele.onclick = function(){
+        // removeItem()
+        //window.sessionStorage.removeItem(1452666425707);
+        window.sessionStorage.clear();
+    }
+  &lt;/script&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+
+<h3 id="toc_26">2. localStorage</h3>
+
+<h4 id="toc_27">1）浏览器支持性检查</h4>
+
+<div><pre class="line-numbers"><code class="language-javascript">//localStorage 
+ if(window.localStorage){ 
+    alert(“support localStorage”); 
+ }else{ 
+    alert(“not support localStorage”); 
+    // 不支持 localStorage 
+ }</code></pre></div>
+
+<h4 id="toc_28">2）localStorage的方法</h4>
+
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>setItem(key, value)</td>
+<td>为 Web 存储对象添加一个键/值对，供以后使用。该值可以是任何的数据类型：字符串、数值、数组等。</td>
+</tr>
+<tr>
+<td>getItem(key)</td>
+<td>基于起初用来存储它的这个键检索值。</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>从此 Web 存储对象清除所有的键/值对。</td>
+</tr>
+<tr>
+<td>removeItem(key)</td>
+<td>基于某个键从此 Web 存储对象清除特定的键/值对。</td>
+</tr>
+<tr>
+<td>key(n)</td>
+<td>检索 key[n] 的值。</td>
+</tr>
+</tbody>
+</table>
+
+<h5 id="toc_29">a. 向 Web 存储对象添加键/值对</h5>
+
+<ul>
+<li>使用 <code>setItem()</code> 方法</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-javascript">localStorage.setItem(&#39;myKey&#39;, &#39;myValue&#39;);</code></pre></div>
+
+<ul>
+<li>使用 Web 存储对象来直接设置此键的值</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-javascript">localStorage.myKey = &#39;myValue&#39;;</code></pre></div>
+
+<h5 id="toc_30">b. 从 Web 存储对象中检索键/值对</h5>
+
+<ul>
+<li>使用 <code>getItem()</code> 方法</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-javascript">localStorage.getItem(&#39;myKey&#39;);</code></pre></div>
+
+<ul>
+<li>使用 Web 存储对象来直接获取此键的值</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-javascript">localStorage.myKey;</code></pre></div>
+
+<h5 id="toc_31">c. 删除所有键/值对</h5>
+
+<div><pre class="line-numbers"><code class="language-javascript">localStorage.clear();</code></pre></div>
+
+<h5 id="toc_32">d. 删除单个键/值对</h5>
+
+<div><pre class="line-numbers"><code class="language-javascript">localStorage.removeItem(&#39;myKey&#39;);</code></pre></div>
+
+<h4 id="toc_33">3）localStorage的事件</h4>
+
+<p>如果想在存储成功或修改存储的值时执行一些操作，可以用 Web Storage 接口提供的事件。</p>
+
+<div><pre class="line-numbers"><code class="language-javascript">// 显示存储事件的相关内容
+ function handleStorageEvent(e) { 
+    document.write(“key” + e.key + “oldValue” + e.oldValue + “newValue” + e.newValue); 
+ } 
+ // 添加存储事件监听
+ window.addEventListener(“storage”, handleStorageEvent, false);</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>事件参数</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>key</td>
+<td>发生改变的键</td>
+</tr>
+<tr>
+<td>oldValue</td>
+<td>键改变之前的值</td>
+</tr>
+<tr>
+<td>newValue</td>
+<td>键改变之后的值</td>
+</tr>
+<tr>
+<td>url</td>
+<td>触发存储事件的页面 url</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_34">Web Sockets</h2>
+
+<h3 id="toc_35">1. 什么是 Web Sockets</h3>
+
+<h4 id="toc_36">1）什么是 Web Sockets</h4>
+
+<p>Web Sockets 技术使得浏览器直接与服务器端的程序通过 socket 可以实时的推送或者获取信息的通讯方式成为可能。</p>
+
+<p>在 HTML5 之前实现浏览器与服务器端实时通信的技术如下：</p>
+
+<ul>
+<li>轮询：原理简单易懂，就是客户端通过一定的时间间隔以频繁请求的方式向服务器发送请求，来保持客户端和服务器端的数据同步。</li>
+<li>Flash：Flash 通过自己的 Socket 实现完成数据交换，再利用 Flash 暴露出相应的接口为 JavaScript 调用，从而达到实时传输目的。</li>
+</ul>
+
+<h4 id="toc_37">2）Web Sockets 的优势与劣势</h4>
+
+<h5 id="toc_38">a. Web Sockets 的优势</h5>
+
+<ul>
+<li>Web Sockets 提供强大的、双向、低延迟和易于处理的错误。</li>
+<li>它没有很多连接，比如：Comet 长轮询。</li>
+</ul>
+
+<h5 id="toc_39">b. Web Sockets 的劣势</h5>
+
+<ul>
+<li>Web Sockets 是 HTML5 的新规范，并不是所有浏览器都支持。</li>
+<li>无请求作用域。由于 Web Sockets 是一个 TCP 套接字，而不是一个 HTTP 请求，因此无法轻松使用请求作用域服务。</li>
+</ul>
+
+<h4 id="toc_40">3）Web Sockets 的实现原理</h4>
+
+<p>下图展示了如何使用 WebSockets 进行通信：</p>
+
+<p><img src="http://i4.buimg.com/567571/d48c5818025f623e.gif" alt=""></p>
+
+<ol>
+<li>HTTP 握手被发送到带有特定标头的服务器。</li>
+<li>在 JavaScript 的服务器或客户端上提供某种类型的套接字。</li>
+<li>使用该套接字来通过事件处理器异步接收数据。</li>
+</ol>
+
+<h3 id="toc_41">2. Web Sockets API</h3>
+
+<h4 id="toc_42">1）Web Sockets 的构造函数</h4>
+
+<div><pre class="line-numbers"><code class="language-javascript">var websocket = new WebSocket(url, protocols);</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>url</td>
+<td>表示要连接的URL,这个URL应该是响应WebSocket的地址。</td>
+</tr>
+<tr>
+<td>protocols</td>
+<td>单个协议名称或字符串数组,默认为空字符串。</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p><strong>值得注意的是：</strong>Web Sockets 的请求地址（url）必须是 <code>ws://</code> 或 <code>wss://</code>。</p>
+</blockquote>
+
+<div><pre class="line-numbers"><code class="language-javascript">var exampleSocket = new WebSocket(&quot;ws://www.example.com/socketserver&quot;);</code></pre></div>
+
+<h4 id="toc_43">2）Web Sockets 的方法</h4>
+
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>send(data)</td>
+<td>data表示发送的请求数据。</td>
+<td>通过 WebSocket 连接向服务器发送数据。</td>
+</tr>
+<tr>
+<td>close()</td>
+<td></td>
+<td>关闭WebSocket连接或停止正在进行的连接请求。</td>
+</tr>
+</tbody>
+</table>
+
+<div><pre class="line-numbers"><code class="language-javascript">exampleSocket.send(&quot;Here&#39;s some text that the server is urgently awaiting!&quot;);</code></pre></div>
+
+<h4 id="toc_44">3）Web Sockets 的属性</h4>
+
+<p>Web Sockets 的属性主要使用的就是 <code>readyState</code>，该属性表示连接的当前状态。</p>
+
+<table>
+<thead>
+<tr>
+<th>常量名</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>CONNECTING</td>
+<td>0</td>
+<td>连接还没开启。</td>
+</tr>
+<tr>
+<td>OPEN</td>
+<td>1</td>
+<td>连接已开启并准备好进行通信。</td>
+</tr>
+<tr>
+<td>CLOSING</td>
+<td>2</td>
+<td>连接正在关闭的过程中。</td>
+</tr>
+<tr>
+<td>CLOSED</td>
+<td>3</td>
+<td>连接已经关闭，或者连接无法建立。</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="toc_45">4）Web Sockets 的事件</h4>
+
+<table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>onopen</td>
+<td>用于监听 Web Sockets 打开的事件。</td>
+</tr>
+<tr>
+<td>onmessage</td>
+<td>用于监听 Web Sockets 服务器端传递消息的事件。</td>
+</tr>
+<tr>
+<td>onerror</td>
+<td>用于监听 Web Sockets 发生错误的事件。</td>
+</tr>
+<tr>
+<td>onclose</td>
+<td>用于监听 Web Sockets 通信关闭的事件。</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="toc_46">5）Web Sockets 使用步骤</h4>
+
+<div><pre class="line-numbers"><code class="language-javascript">var ws = new WebSocket(&#39;ws://127.0.0.1:8080/async&#39;); 
+ws.onopen = function() { 
+    // called when connection is opened 
+}; 
+ws.onerror = function(e) { 
+    // called in case of error, when connection is broken in example 
+}; 
+ws.onclose = function() { 
+    // called when connexion is closed 
+}; 
+ws.onmessage = function(msg) { 
+    // called when the server sends a message to the client. 
+    // msg.data contains the message. 
+}; 
+// Here is how to send some data to the server 
+ws.send(&#39;some data&#39;); 
+// To close the socket:
+ws.close();</code></pre></div>
+
+<h3 id="toc_47">3. Web Sockets 案例</h3>
+
+<ul>
+<li>客户端代码示例：</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-javascript">// 假设服务端ip为127.0.0.1
+ws = new WebSocket(&quot;ws://127.0.0.1:2346&quot;);
+ws.onopen = function() {
+    alert(&quot;连接成功&quot;);
+    ws.send(&#39;tom&#39;);
+    alert(&quot;给服务端发送一个字符串：tom&quot;);
+};
+ws.onmessage = function(e) {
+    alert(&quot;收到服务端的消息：&quot; + e.data);
+};</code></pre></div>
+
+<ul>
+<li>服务器端代码示例：</li>
+</ul>
+
+<p>这里利用了 PHP 的第三方框架 Workerman 实现 Web Sockets 的服务器端逻辑。</p>
+
+<div><pre class="line-numbers"><code class="language-php">&lt;?php
+use Workerman\Worker;
+require_once &#39;/Workerman/Autoloader.php&#39;;
+
+// 创建一个Worker监听2346端口，使用websocket协议通讯
+$ws_worker = new Worker(&quot;websocket://0.0.0.0:2346&quot;);
+
+// 启动4个进程对外提供服务
+$ws_worker-&gt;count = 4;
+
+// 当收到客户端发来的数据后返回hello $data给客户端
+$ws_worker-&gt;onMessage = function($connection, $data)
+{
+    // 向客户端发送hello $data
+    $connection-&gt;send(&#39;hello &#39; . $data);
+};
+
+// 运行worker
+Worker::runAll();
+?&gt;</code></pre></div>
+
+<blockquote>
+<p><strong>原创声明：</strong>如发布或转载请注明以下作者信息，谢谢！</p>
+
+<p>本文作者 - 金云龙</p>
+
+<p>联系方式 - QQ：2080954535；微信：imlonge；微信公众号：longestory</p>
+
+<p>个人网站：<a href="http://www.longestory.com">http://www.longestory.com</a></p>
+</blockquote>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\w\W]*?\*\//,lookbehind:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0}],string:{pattern:/(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,lookbehind:!0,inside:{punctuation:/(\.|\\)/}},keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,"boolean":/\b(true|false)\b/,"function":/[a-z0-9_]+(?=\()/i,number:/\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,operator:/--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+Prism.languages.php=Prism.languages.extend("clike",{keyword:/\b(and|or|xor|array|as|break|case|cfunction|class|const|continue|declare|default|die|do|else|elseif|enddeclare|endfor|endforeach|endif|endswitch|endwhile|extends|for|foreach|function|include|include_once|global|if|new|return|static|switch|use|require|require_once|var|while|abstract|interface|public|implements|private|protected|parent|throw|null|echo|print|trait|namespace|final|yield|goto|instanceof|finally|try|catch)\b/i,constant:/\b[A-Z0-9_]{2,}\b/,comment:{pattern:/(^|[^\\])(?:\/\*[\w\W]*?\*\/|\/\/.*)/,lookbehind:!0}}),Prism.languages.insertBefore("php","class-name",{"shell-comment":{pattern:/(^|[^\\])#.*/,lookbehind:!0,alias:"comment"}}),Prism.languages.insertBefore("php","keyword",{delimiter:/\?>|<\?(?:php)?/i,variable:/\$\w+\b/i,"package":{pattern:/(\\|namespace\s+|use\s+)[\w\\]+/,lookbehind:!0,inside:{punctuation:/\\/}}}),Prism.languages.insertBefore("php","operator",{property:{pattern:/(->)[\w]+/,lookbehind:!0}}),Prism.languages.markup&&(Prism.hooks.add("before-highlight",function(e){"php"===e.language&&(e.tokenStack=[],e.backupCode=e.code,e.code=e.code.replace(/(?:<\?php|<\?)[\w\W]*?(?:\?>)/gi,function(a){return e.tokenStack.push(a),"{{{PHP"+e.tokenStack.length+"}}}"}))}),Prism.hooks.add("before-insert",function(e){"php"===e.language&&(e.code=e.backupCode,delete e.backupCode)}),Prism.hooks.add("after-highlight",function(e){if("php"===e.language){for(var a,n=0;a=e.tokenStack[n];n++)e.highlightedCode=e.highlightedCode.replace("{{{PHP"+(n+1)+"}}}",Prism.highlight(a,e.grammar,"php").replace(/\$/g,"$$$$"));e.element.innerHTML=e.highlightedCode}}),Prism.hooks.add("wrap",function(e){"php"===e.language&&"markup"===e.type&&(e.content=e.content.replace(/(\{\{\{PHP[0-9]+\}\}\})/g,'<span class="token php">$1</span>'))}),Prism.languages.insertBefore("php","comment",{markup:{pattern:/<[^?]\/?(.*?)>/,inside:Prism.languages.markup},php:/\{\{\{PHP[0-9]+\}\}\}/}));
+</script>
+
+<script type="text/javascript">
+Prism.languages.insertBefore("php","variable",{"this":/\$this\b/,global:/\$(?:_(?:SERVER|GET|POST|FILES|REQUEST|SESSION|ENV|COOKIE)|GLOBALS|HTTP_RAW_POST_DATA|argc|argv|php_errormsg|http_response_header)/,scope:{pattern:/\b[\w\\]+::/,inside:{keyword:/(static|self|parent)/,punctuation:/(::|\\)/}}});
+</script>
+
+<script type="text/javascript">
+Prism.languages.javascript=Prism.languages.extend("clike",{keyword:/\b(as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,number:/\b-?(0x[\dA-Fa-f]+|0b[01]+|0o[0-7]+|\d*\.?\d+([Ee][+-]?\d+)?|NaN|Infinity)\b/,"function":/[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*(?=\()/i}),Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:/(^|[^\/])\/(?!\/)(\[.+?]|\\.|[^\/\\\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})]))/,lookbehind:!0,greedy:!0}}),Prism.languages.insertBefore("javascript","class-name",{"template-string":{pattern:/`(?:\\\\|\\?[^\\])*?`/,greedy:!0,inside:{interpolation:{pattern:/\$\{[^}]+\}/,inside:{"interpolation-punctuation":{pattern:/^\$\{|\}$/,alias:"punctuation"},rest:Prism.languages.javascript}},string:/[\s\S]+/}}}),Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{script:{pattern:/(<script[\w\W]*?>)[\w\W]*?(?=<\/script>)/i,lookbehind:!0,inside:Prism.languages.javascript,alias:"language-javascript"}}),Prism.languages.js=Prism.languages.javascript;
+</script>
+
+<script type="text/javascript">
+Prism.languages.markup={comment:/<!--[\w\W]*?-->/,prolog:/<\?[\w\W]+?\?>/,doctype:/<!DOCTYPE[\w\W]+?>/,cdata:/<!\[CDATA\[[\w\W]*?]]>/i,tag:{pattern:/<\/?(?!\d)[^\s>\/=.$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\w\W])*\1|[^\s'">=]+))?)*\s*\/?>/i,inside:{tag:{pattern:/^<\/?[^\s>\/]+/i,inside:{punctuation:/^<\/?/,namespace:/^[^\s>\/:]+:/}},"attr-value":{pattern:/=(?:('|")[\w\W]*?(\1)|[^\s>]+)/i,inside:{punctuation:/[=>"']/}},punctuation:/\/?>/,"attr-name":{pattern:/[^\s>\/]+/,inside:{namespace:/^[^\s>\/:]+:/}}}},entity:/&#?[\da-z]{1,8};/i},Prism.hooks.add("wrap",function(a){"entity"===a.type&&(a.attributes.title=a.content.replace(/&amp;/,"&"))}),Prism.languages.xml=Prism.languages.markup,Prism.languages.html=Prism.languages.markup,Prism.languages.mathml=Prism.languages.markup,Prism.languages.svg=Prism.languages.markup;
+</script>
+
+<script type="text/javascript">
+!function(){"undefined"!=typeof self&&self.Prism&&self.document&&Prism.hooks.add("complete",function(e){if(e.code){var t=e.element.parentNode,s=/\s*\bline-numbers\b\s*/;if(t&&/pre/i.test(t.nodeName)&&(s.test(t.className)||s.test(e.element.className))&&!e.element.querySelector(".line-numbers-rows")){s.test(e.element.className)&&(e.element.className=e.element.className.replace(s,"")),s.test(t.className)||(t.className+=" line-numbers");var n,a=e.code.match(/\n(?!$)/g),l=a?a.length+1:1,m=new Array(l+1);m=m.join("<span></span>"),n=document.createElement("span"),n.className="line-numbers-rows",n.innerHTML=m,t.hasAttribute("data-start")&&(t.style.counterReset="linenumber "+(parseInt(t.getAttribute("data-start"),10)-1)),e.element.appendChild(n)}}})}();
+</script>
+
+
+</body>
+
+</html>

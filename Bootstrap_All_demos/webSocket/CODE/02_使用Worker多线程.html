@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>使用Worker多线程</title>
+</head>
+<body>
+<button id="btn">调用worker</button>
+<script>
+    var btn = document.getElementById("btn");
+    btn.onclick = function(){
+        //TODO 创建Worker的多线程效果
+        var worker1 = new Worker('worker/worker2.js');
+        worker1.onmessage = function(event){
+            console.log(event.data);
+        }
+
+        var worker2 = new Worker('worker/worker3.js');
+        worker2.onmessage = function(event){
+            console.log(event.data);
+        }
+    }
+</script>
+</body>
+</html>

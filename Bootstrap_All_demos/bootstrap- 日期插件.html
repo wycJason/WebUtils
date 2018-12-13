@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="form-inline">
+<input type="text" value="" id="datetimepicker" class="form-control" readonly>
+<input type="text" value=""  id="datetimepickerYY" class="form-control" readonly>
+</div>
+<br>
+
+<!--<div class="form-inline">
+    <input type="text" value="2012-05-15" id="datetimePkr" class="form-control" data-date-format="yyyy-mm-dd" readonly>
+</div>-->
+<div class="form-inline">
+    <input type="text" value="2012-05-15" id="datetimePkr" class="form-control" readonly>
+</div>
+
+<br>
+<div class="form-inline userPlanCtn">
+    <span class="userPlanName">日期范围：</span>
+    <input type="text" class="form-control" name="beginDate" value="2016-12-1"  style="width:110px;"/> -
+    <input type="text" class="form-control" name="endDate" value="2016-12-31"  style="width:110px;"/>
+</div>
+
+<br>
+<button data-toggle="modal" data-target="#datetime" type="button">日期控件与模态框的z-index</button>
+<div class="modal fade" id="datetime">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span data-dismiss="modal" class="close">&times;</span>
+                <h3 class="modal-title">用户登录</h3>
+            </div>
+            <div class="modal-body">
+                <input type="text" value="" id="testDatetimepicker" class="form-control" readonly>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-success" href="#">提交</a>
+                <a class="btn btn-danger" href="#" data-dismiss="modal">关闭</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="http://www.bootcss.com/p/bootstrap-datetimepicker/index.htm" target="_blank">日期时间选择器参考文献</a>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<!--<script src="js/bootstrap-datetimepicker.min.js"></script>-->
+<script src="js/bootstrap-datetimepicker.js"></script>
+<script src="js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+    /*
+    参考文档：http://www.bootcss.com/p/bootstrap-datetimepicker/index.htm
+     startView
+     Number, String. 默认值：2, 'month'
+
+     日期时间选择器打开之后首先显示的视图。 可接受的值：
+     0 or 'hour' for the hour view
+     1 or 'day' for the day view
+     2 or 'month' for month view (the default)
+     3 or 'year' for the 12-month overview
+     4 or 'decade' for the 10-year overview. Useful for date-of-birth datetimepickers.
+
+     minView
+     Number, String. 默认值：0, 'hour'
+     日期时间选择器所能够提供的最精确的时间选择视图。
+    */
+    $('#datetimepickerYY').datetimepicker({
+         format: 'yyyy',
+         autoclose: true,
+         language:  'zh-CN',
+         todayBtn:"linked",
+         startView:4,//默认值：2, 'month'
+         minView: 4, //选择日期后，不会再跳转去选择时分秒*/
+    }).on("show", function () {
+        $(".table-condensed th").css({"opacity": "1", "height": "auto", "float": "none"})
+    });
+
+    $('#datetimepicker').datetimepicker({
+       /* format: 'yyyy-mm-dd',
+        autoclose: true,
+        language:  'zh-CN',
+        todayBtn:"linked",
+        //startView:2,//默认值：2, 'month'
+        minView: "month", //选择日期后，不会再跳转去选择时分秒*/
+
+
+        /*format: 'yyyy-mm-dd hh:ii',
+        autoclose: true,
+        language:  'zh-CN',
+        todayBtn:"linked",
+        //startView:2,//默认值：2, 'month'
+        //minView: 0,//默认值：0, 'hour'
+        //minuteStep:5,//默认值: 5  此数值被当做步进值用于构建小时视图。对于每个 minuteStep 都会生成一组预设时间（分钟）用于选择*/
+
+
+
+        format: 'hh:ii',
+        /*startDate:00,
+        endDate:23,*/
+        pickDate:false,
+        pickerPosition:'bottom-left',
+        autoclose: true,
+        language:  'zh-CN',
+        todayBtn:"linked",
+        startView:1,//默认值：2, 'month'
+        minView: 0,//默认值：0, 'hour'
+        minuteStep:5,//默认值: 5  此数值被当做步进值用于构建小时视图。对于每个 minuteStep 都会生成一组预设时间（分钟）用于选择
+
+
+       /*  format: 'yyyy-mm',
+         autoclose: true,
+         language:  'zh-CN',
+         todayBtn:"linked",
+         startView: 3,
+         minView: 3,*/
+         //minuteStep:5,//默认值: 5  此数值被当做步进值用于构建小时视图。对于每个 minuteStep 都会生成一组预设时间（分钟）用于选择
+    }).on("show",function(){
+        $(".table-condensed th").css({"opacity":"0","height":"0","float":"left"})
+    });//.datetimepicker('update',new Date() );
+    //$('#datetimepicker').datetimepicker('update',new Date() );//设置当前时间
+
+    $('[name="beginDate"],[name="endDate"]').datetimepicker({
+         format: 'yyyy-mm-dd',
+         autoclose: true,
+         language:  'zh-CN',
+         todayBtn:"linked",
+         startView:2,//默认值：2, 'month'
+         minView: 2, //选择日期后，不会再跳转去选择时分秒
+    }).on("show", function () {
+        $(".table-condensed th").css({"opacity": "1", "height": "auto", "float": "none"})
+    });
+
+
+$('#datetimePkr,#testDatetimepicker').datetimepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true,
+    language:  'zh-CN',
+    todayBtn:"linked",
+    startView:2,//默认值：2, 'month'
+    minView: 2, //选择日期后，不会再跳转去选择时分秒
+}).on("show", function () {
+    $(".table-condensed th").css({"opacity": "1", "height": "auto", "float": "none"})
+});
+
+/*设置当前日期*/
+   /* var date=new Date();
+    var year=date.getFullYear();
+    var month=date.getMonth()+1;
+    var day=date.getDate();
+    var hour=date.getHours();
+    var minite=date.getMinutes();
+    var currentDate=year+"-"+month+"-"+day;
+    var currentYearMonth=year+"-"+month;
+    var currentHourMinite=hour+":"+minite;
+    $('#datetimePkr').val( currentDate);
+    $('#datetimepicker').val(currentHourMinite);
+    var ymd=(new Date().getFullYear())+"."+(new Date().getMonth()+1)+"."+new Date().getDate();
+ */
+
+
+    //      0    1  2     3      4        5
+    /*  IE:"Tue Jul 4 17:50:32 UTC+0800 2017"
+           "Mon Feb 27 00:00:00 UTC+0800 2017"
+
+      edge:"Tue Jul 04 2017 16:54:54 GMT+0800 (中国标准时间)"*/
+    var edge="Tue Jul 04 2017 16:54:54 GMT+0800 (中国标准时间)";
+
+    var date="Tue Jul 15 17:50:32 UTC+0800 2017";//IE浏览器下时间转化为中国标准时间
+    var dateArr=date.split(" ");
+    var dateFormat=dateArr[0]+" "+dateArr[1]+" "+(parseInt((dateArr[2]))>10?dateArr[2]:"0"+dateArr[2])+" "+(dateArr[5])+" "+(dateArr[3])+" GMT+0800 (中国标准时间)";
+    console.log(edge);
+    console.log(dateFormat);
+
+    /*
+    * 后台返回："2017-02-27T11:40:24.023+08:00"
+    * 转化成为： Mon Feb 27 2017 11:40:24 GMT+0800 (中国标准时间)
+     * */
+    var backRusult="2017-02-27T11:40:24.023+08:00";
+//IE8下javascript的时间函数Date()不兼容问题，显示NAN
+    function NewDate(str) {
+        if(str==null)
+            return false;
+        str = str.split('-');
+        var date = new Date();
+        date.setUTCFullYear(str[0], str[1] - 1, str[2]);
+        date.setUTCHours(0, 0, 0, 0);
+        return date;
+    }
+
+    function parseISO8601(dateStringInRange) {
+        var isoExp = /^\s*(\d{4})-(\d\d)-(\d\d)\s*$/,
+                date = new Date(NaN), month,
+                parts = isoExp.exec(dateStringInRange);
+
+        if(parts) {
+            month = +parts[2];
+            date.setFullYear(parts[1], month - 1, parts[3]);
+            if(month != date.getMonth() + 1) {
+                date.setTime(NaN);
+            }
+        }
+        return date.toString();
+    }
+    //console.log(NewDate("2017-02-27"));    //Mon Feb 27 2017 00:00:00 GMT+0800 (中国标准时间)
+    console.log("new日期",parseISO8601(backRusult.slice(0,10)).replace("00:00:00",backRusult.slice(11,19)))//Mon Feb 27 2017 00:00:00 GMT+0800 (中国标准时间)
+    //var dataArr=parseISO8601(backRusult.slice(0,10)).split(" ");
+    //var chinaStandardTime=parseISO8601(backRusult.slice(0,10)).split(" ")[0]+" "+parseISO8601(backRusult.slice(0,10)).split(" ")[1]+" "+(parseInt((parseISO8601(backRusult.slice(0,10)).split(" ")[2]))>10?parseISO8601(backRusult.slice(0,10)).split(" ")[2]:"0"+parseISO8601(backRusult.slice(0,10)).split(" ")[2])+" "+(parseISO8601(backRusult.slice(0,10)).split(" ")[5])+" "+(parseISO8601(backRusult.slice(0,10)).split(" ")[3])+" GMT+0800 (中国标准时间)";
+
+    console.log("拼接日期",backRusult.slice(0,10)+" "+backRusult.slice(11,19));
+</script>
+</body>
+</html>

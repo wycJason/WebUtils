@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Template</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="main" style="width: 214px; height: 214px"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/echarts.js"></script>
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    var num1=80,num2=100-num1,count=num1+"个";
+    var option = {
+        series : [
+            {
+                name:'账号使用统计',
+                type:'pie',
+                radius : ['95%', '100%'],
+                avoidLabelOverlap: false,
+                hoverAnimation:false,
+                clickable:false,
+                itemStyle:{
+                    normal:{
+                        label:{
+                            show: true,
+                            position:'center',
+                            textStyle:{
+                                color:'#000',
+                                fontStyle:'normal',
+                                fontFamily:'Microsoft YaHei',
+                                fontSize: '25',
+                                fontWeight: 'bold',
+                            },
+                        },
+                    },
+                },
+                data:[
+                    {value:num1, name:count, itemStyle:{
+                                                            normal:{color:'#F47F70'},
+                                                            emphasis:{color:'#F47F70'}
+                                                         }
+                    },
+                    {value:num2, name:'', itemStyle:{
+                                                        normal:{color:'#EDF1F4'},
+                                                        emphasis:{color:'#EDF1F4'}
+                                                     }
+                    }
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option);
+</script>
+</body>
+</html>

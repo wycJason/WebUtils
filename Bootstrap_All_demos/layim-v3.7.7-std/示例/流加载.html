@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>layui流加载</title>
+<link rel="stylesheet" href="../dist/css/layui.css">
+</head>
+<body>
+<ul class="flow-default" style="height: 300px;" id="LAY_demo2"></ul>
+<script src="../dist/layui.js"></script>
+<script>
+  layui.use('flow', function(flow){
+    //信息流-手工加载
+    flow.load({
+      elem: '#LAY_demo2' //流加载容器
+      ,scrollElem: '#LAY_demo2' //滚动条所在元素，一般不用填，此处只是演示需要。
+      ,isAuto: false
+      ,isLazyimg: true
+      ,done: function(page, next){ //加载下一页
+        //模拟插入
+        setTimeout(function(){
+          var lis = [];
+          for(var i = 0; i < 1; i++){
+            lis.push('<li style="text-align: center"><img width="300" src="//s17.mogucdn.com/p2/161011/upload_279h87jbc9l0hkl54djjjh42dc7i1_800x480.jpg?v='+ ( (page-1)*6 + i + 1 ) +'"></li>')
+          }
+          next(lis.join(''), page < 6); //假设总页数为 6
+        }, 500);
+      }
+    });
+  })
+</script>
+</body>
+</html>

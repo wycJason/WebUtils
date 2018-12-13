@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .modal {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0,0,0, 0.5);
+            display: none;
+        }
+        .modal-dialog {
+            width: 1149px;
+            margin: 100px auto;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<button id="btRegister">注册</button>
+<div class="modal" id="modalRegister">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div>
+                <button id="cancelBtn">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $("#btRegister").click(function(){
+        $("#modalRegister").show();
+    })
+    $("#cancelBtn").click(function(){
+        $("#modalRegister").hide();
+    })
+</script>
+</body>
+</html>

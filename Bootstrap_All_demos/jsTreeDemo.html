@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <link rel="stylesheet" href="jstree/themes/default/style.css" />
+
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div>
+    <a href="http://blog.csdn.net/qq_30337695/article/details/51219346">jsTree简单例子</a>
+</div>
+
+<div id="treeview1"></div>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="jstree/jstree.js"></script>
+<script>
+    var mydata =
+            [
+                {
+                    "id": "1",
+                    "text": "民事案由(2001版)",
+                    "children":
+                            [
+                                {
+                                    "id": "10",
+                                    "text": "人格权纠纷"
+                                }
+                            ]
+                },
+                {
+                    "id": "2",
+                    "text": "民事案由(2002版)",
+                    "children":
+                            [
+                                {
+                                    "id": "20",
+                                    "text": "人格权纠纷"
+                                }
+                            ]
+                } ,
+                {
+                    "id": "3",
+                    "text": "民事案由(2003版)",
+                    "children":
+                            [
+                                {
+                                    "id": "30",
+                                    "text": "人格权纠纷"
+                                }
+                            ]
+                },
+                {
+                    "id": "4",
+                    "text": "民事案由(2005版)",
+                }
+
+            ];
+
+
+
+    //plugins： 这个jstree引用了哪些插件
+    //1）生成jstree：
+    $("#treeview1").jstree({
+        'core' : {//core：整个jstree显示的核心，里面包括多种项配置：
+            "multiple" : false,//multiple : false  不可多选
+            'data' : mydata,//data： 这里是使用json格式的数据；还可以使用html或者ajax请求等
+            'dblclick_toggle': false          //禁用tree的双击展开
+        },
+        "plugins" : [
+            "unique",
+        ] //plugins： 这个jstree引用了哪些插件  一共12个插件
+    });
+
+
+    //2）点击jstree的每个子项，获取该节点的text、id等信息：
+    //tree change时事件
+    $('#treeview1').on("changed.jstree", function (e, data) {
+        console.log("被点击的节点是:");
+        console.log(data.node.id);               //选择的node id
+        console.log(data.node.text);            //选择的node text
+
+       // form_data.ay = data.node.text;
+        //form_data.ay_id = data.node.id;
+
+    });
+
+
+//3）点击jstree子项，控制该节点展开、收缩等：
+    //jstree单击事件
+    $("#treeview1").bind("select_node.jstree", function (e, data) {
+        if(data.node.id !=1 ){                           //排除第一个节点(2011民事案由)
+            data.instance.toggle_node(data.node);        //单击展开下面的节点
+        }
+
+    });
+
+
+
+</script>
+</body>
+</html>

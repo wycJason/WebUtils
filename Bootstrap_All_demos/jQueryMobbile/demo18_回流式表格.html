@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.css"/>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script src="jqm/jquery.mobile-1.4.5.js"></script>
+  <title></title>
+</head>
+<body>
+<div data-role="page">
+  <div data-role="header">
+    <h1>header</h1>
+  </div>
+
+  <div class="ui-content">
+    <table data-role="table" class="ui-responsive">
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>性别</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Michael</td>
+          <td>26</td>
+          <td>男</td>
+        </tr>
+
+        <tr>
+          <td>Lincoln</td>
+          <td>28</td>
+          <td>男</td>
+        </tr>
+
+        <tr>
+          <td>Maphen</td>
+          <td>29</td>
+          <td>男</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br/>
+    <!-- 列切换式表格-->
+    <table data-role="table" data-mode="columntoggle" data-column-btn-text="请选择" class="ui-responsive">
+      <thead>
+      <tr>
+        <th data-priority="1">姓名</th>
+        <th>年龄</th>
+        <th data-priority="6">性别</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Michael</td>
+        <td>26</td>
+        <td>男</td>
+      </tr>
+
+      <tr>
+        <td>Lincoln</td>
+        <td>28</td>
+        <td>男</td>
+      </tr>
+
+      <tr>
+        <td>Maphen</td>
+        <td>29</td>
+        <td>男</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h1>footer</h1>
+  </div>
+
+</div>
+</body>
+</html>

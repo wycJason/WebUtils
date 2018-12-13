@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="height: 800px;background: grey">
+<div id="elementID">123</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+//https://www.jianshu.com/p/13a0e7f4c335        handleEvent()	把任意对象注册为事件处理程序
+var obj = {
+    name: 'foo',
+    handleEvent: function(e) {
+        switch(e.type) {
+            case "click":
+                console.log("click event");
+                break;
+            case "mousedown":
+                console.log("mousedown event");
+                break;
+        }
+    }
+};
+
+document.body.addEventListener('click', obj, false);
+document.body.addEventListener('mousedown', obj, false);
+
+
+//https://www.cnblogs.com/tongchuanxing/p/javascript_handleEvent.html
+var events = {
+    handleEvent: function(event) {
+        switch (event.type) {
+            case 'mousedown':
+                this.mousedown(event);
+                break;
+            case 'mouseleave':
+                this.mouseleave(event);
+                break;
+            case 'mouseenter':
+                this.mouseenter(event);
+                break;
+        }
+    },
+    mousedown:function(event){
+        console.log("mousedown event");
+    },
+    mouseleave:function(event){
+        console.log("mouseleave event");
+    },
+    mouseenter:function(event){
+        console.log("mouseenter event");
+    }
+}
+
+document.getElementById('elementID').addEventListener('mousedown',events,false);
+document.getElementById('elementID').addEventListener('mouseleave',events,false);
+document.getElementById('elementID').addEventListener('mouseenter',events,false);
+</script>
+</body>
+</html>

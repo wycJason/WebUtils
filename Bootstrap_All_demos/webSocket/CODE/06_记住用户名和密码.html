@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>记住用户名和密码</title>
+</head>
+<body>
+<!-- TODO 在表单提交时,判断是否需要记住用户名和密码 -->
+<form action="#" onsubmit="submitForm()">
+    用户名:<input type="text" id="user" name="user"><br/>
+    密码:<input type="text" id="pwd" name="pwd"><br/>
+    <input type="checkbox" id="isrem"/>记住用户名和密码
+    <br/>
+    <input type="submit"/>
+</form>
+<script>
+    //TODO 当页面加载完毕后,检查是否存储用户信息
+    window.onload = function(){
+        var user = window.localStorage.getItem("user");
+        if(user){//TODO 存储用户信息
+            var json = JSON.parse(user);
+            var userEle = document.getElementById("user");
+            userEle.value = json.user;
+            var pwdEle = document.getElementById("pwd");
+            pwdEle.value = json.pwd;
+        }
+    }
+
+    //TODO 封装函数 - 在提交表单调用
+    function submitForm(){
+        //TODO 判断用户是否勾选了"记住用户名和密码"
+        var isrem = document.getElementById("isrem");
+        if(isrem.checked){//TODO 勾选
+            var user = document.getElementById("user").value;
+            var pwd = document.getElementById("pwd").value;
+            var json = {
+                "user" : user,
+                "pwd" : pwd
+            }
+            var jsonString = JSON.stringify(json);
+            window.localStorage.setItem('user',jsonString);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>检测@符二</title>
+    <style>
+        /*@@符选择人员*/
+        .groupChatMember {
+            padding-left: 0;
+            list-style: none;
+            width: 160px;
+            max-height: 75px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            font-size: 0;
+            border-radius: 3px;
+            box-shadow: 1px 1px 1px 2px #D2D1D1;
+        }
+
+        .groupChatMember:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .groupChatMember li {
+            line-height: 18px;
+            height: 18px;
+            width: 154px;
+            font-size: 12px;
+            padding: 3px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #000;
+            text-align: left;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .groupChatMember li:nth-child(2n) {
+            background: #E3F1F9
+        }
+
+        .groupChatMember li:nth-child(2n+1) {
+            background: #fff;
+        }
+
+        .groupChatMember > li:hover {
+            background: #F2EBCD;
+        }
+
+        .groupChatMemberHover {
+            background: #F2EBCD !important;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="groupChatMemberShow" style="position: absolute; display:none;z-index: 999999999;">
+        <ul id="groupChatWindow" class="groupChatMember">
+            <li class="groupChatMemberHover" data-UserSign="" data-IconUrl="" data-ApproveID="">Lucas--刘源</li>
+            <li>Steven-王潇-研发</li>
+            <li>雷总（King）</li>
+            <li>Eric-许志坚-研发 </li>
+            <li>Steven-王潇-研发</li>
+            <li>雷总（King）</li>
+            <li>Eric-许志坚-研发 </li>
+        </ul>
+    </div>
+    <textarea class="toMsg" cols="50" rows="10" onkeyup="show(this)"></textarea>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="layer/pc/layer.js"></script>
+<script type="text/javascript" src="js/kingwolfofsky.js"></script>
+<script>
+    function show(elem) {
+        var p = kingwolfofsky.getInputPositon(elem);//获取文本输入域的位置
+        var s = document.getElementById('groupChatMemberShow');//控制显示位置
+        s.style.top = p.bottom + 'px';
+        s.style.left = p.left + 'px';
+        var $this = $(elem);
+        var content = $.trim($this.val());
+        var last = content.length - 1;
+        if (content[last] == "@") {
+            s.style.display = 'block';
+            $("#groupChatMemberShow").unbind("click").bind("click", function (e) {
+                if ($(e.target).is("li")) {
+                    var currentContent = $.trim($this.val());
+                    var selectMember = $(e.target).text();
+                    $this.val(currentContent + selectMember+" ").focus();
+                    $("#groupChatMemberShow").unbind("click");
+                    $("#groupChatWindow").scrollTop(0);//初始化滚动高度为0
+                    s.style.display = 'none';
+
+                    $("#groupChatWindow .groupChatMemberHover").removeClass("groupChatMemberHover");
+                    $("#groupChatWindow li:first").addClass("groupChatMemberHover");
+
+                }
+            })
+            $("body").unbind("click").bind("click", function (e) {
+                //点击【#groupChatWindow】以外的地方关闭人员选择弹层
+                if (!($(e.target).closest("#groupChatMemberShow").length > 0)) {
+                    $(".layui-layim-chat").unbind("click");
+                    $("#groupChatWindow").scrollTop(0);//初始化滚动高度为0
+                    s.style.display = 'none';
+
+                    $("#groupChatWindow .groupChatMemberHover").removeClass("groupChatMemberHover");
+                    $("#groupChatWindow li:first").addClass("groupChatMemberHover");
+                }
+            })
+        }else {
+            s.style.display = 'none';
+        }
+    }
+
+    //通过键盘上下键控制，选择@@人员
+    function stopDefault(e) {   //阻止事件执行
+        if (e && e.preventDefault) {//阻止默认浏览器动作(W3C)
+            e.preventDefault();  //火狐的 事件是传进来的e
+        }else {//IE中阻止函数器默认动作的方式
+            event.returnValue = false; //ie 用的是默认的event
+        }
+    }
+    $(document.body).off('keydown').keydown(function (event) {//通过键盘上下键控制，选择@@人员
+        var active_index = $("#groupChatWindow .groupChatMemberHover").index();//获取已选中的索引
+        var li_length = $("#groupChatWindow li").length;//获取li的长度
+
+        var upDownClickNum = $("#groupChatWindow .groupChatMemberHover ").length;
+        if ($("#groupChatMemberShow").css("display") == "block") {
+            //38:上  40:下  13:Enter
+            if (event.keyCode == 38) {
+                if (upDownClickNum < 1) {
+                    $("#SearchTips li:last").addClass("groupChatMemberHover");
+                } else {
+                    $("#groupChatWindow .groupChatMemberHover ").removeClass("groupChatMemberHover").prev().addClass("groupChatMemberHover");
+                    //控制滚动条
+                    if (active_index >= 3) {
+                        $("#groupChatWindow").scrollTop(24 * (active_index - 1));
+                    } else {
+                        $("#groupChatWindow").scrollTop(0);
+                    }
+                }
+                stopDefault(event);//不阻止光标户向前移动
+            } else if (event.keyCode == 40) {
+                if (upDownClickNum < 1) {
+                    $("#groupChatWindow li:first").addClass("groupChatMemberHover");
+                } else {
+                    $("#groupChatWindow .groupChatMemberHover").removeClass("groupChatMemberHover").next().addClass("groupChatMemberHover");
+                    //控制滚动条
+                    if (active_index >= 2) {
+                        if (active_index == li_length - 1) {
+                            $("#groupChatWindow").scrollTop(0);
+                        } else {
+                            $("#groupChatWindow").scrollTop(24 * (active_index - 1));
+                        }
+                    }
+                }
+                stopDefault(event);//不阻止光标户向前移动
+            } else if (event.keyCode == 13) {
+                var $textarea = $('.toMsg');
+                var currentContent = $.trim($textarea.val());
+                var selectMember = $("#groupChatWindow .groupChatMemberHover").text();
+                $textarea.val(currentContent + selectMember + " ").focus();
+                $("#groupChatWindow .groupChatMemberHover").removeClass("groupChatMemberHover");
+                $("#groupChatWindow").scrollTop(0);//初始化滚动高度为0
+                $("#groupChatMemberShow").hide();
+
+                $("#groupChatWindow .groupChatMemberHover").removeClass("groupChatMemberHover");
+                $("#groupChatWindow li:first").addClass("groupChatMemberHover");
+
+                stopDefault(event);//不阻止光标户向前移动
+            }
+            upDownClickNum++;
+        }
+    });
+</script>
+</body>
+</html>

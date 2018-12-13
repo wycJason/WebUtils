@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    $("body").bind("customEvent",function(event,msg1,msg2){
+        alert(msg1+","+msg2);//1,2
+    })
+    $("body").trigger("customEvent",[1,2])
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    function checkout(){
+        //arguments:[  ]  只能在函数内部使用
+        //如果没有传入参数
+        if(arguments.length==0){
+            console.log("微信结账",arguments);
+        }else if(arguments.length==1){
+            //否则，如果传入1个参数
+            console.log("现金结账",arguments,arguments.callee,arguments.callee.caller);
+        }else{//否则，
+            console.log("刷卡结账",arguments);
+        }
+    }
+    checkout();//"微信结账 undefined
+    checkout(100);//现金结账 100
+    checkout("xxxx xxxx xxxx xxxx","123456");//刷卡结账 xxxx xxxx xxxx xxxx
+</script>
+</body>
+</html>

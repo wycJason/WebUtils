@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="main" style="width: 600px;height:400px;"></div>
+<div id="bar" style="width: 600px;height:400px;"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<!--<script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.min.js"></script>-->
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script>
+    var dom = document.getElementById("main");
+    var myChart = echarts.init(dom);
+    var option = {
+        title : {
+            text: '某站点用户访问来源',
+            subtext: '纯属虚构',
+            x:'center'
+        },
+        selectedMode:"multiple",
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            show:false,
+            orient: 'horizontal',
+            left: 'left',
+            data: ['直接访问','邮件营销','搜索引擎']
+        },
+        series : [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius : '65%',
+                label:{
+                    show:true,
+                    position:'outside',
+                    formatter: '{b}\n\n{d}%',
+                    // color:'#000',
+                    fontSize:'14',
+                },
+                data:[
+                    {value:335, name:'直接访问',itemStyle:{color:'red'}},
+                    {value:310, name:'邮件营销', itemStyle:{color:'green'}},
+                    {value:400, name:'搜索引擎', itemStyle:{color:'blue'}},
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+
+
+
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart_bar = echarts.init(document.getElementById('bar'));
+
+    // 指定图表的配置项和数据
+    var option_bar = {
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+            data:['销量']
+        },
+        xAxis: {
+            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            label:{
+                show:true,
+                position:'top',
+                //formatter: '{b}: {c}'
+            },
+            //data: [5, 20, 36, 10, 10, 20],
+            data:[
+                {name:"衬衫",value:85,itemStyle:{color:'#c23531'}},
+                {name:"羊毛衫",value:15,itemStyle:{color:'#2f4554'}},
+                {name:"雪纺衫",value:255,itemStyle:{color:'#61a0a8'}},
+                {name:"裤子",value:65,itemStyle:{color:'#d48265'}},
+                {name:"高跟鞋",value:45,itemStyle:{color:'#91c7ae'}},
+                {name:"袜子",value:95,itemStyle:{color:'#749f83'}},
+            ]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart_bar.setOption(option_bar);
+</script>
+</body>
+</html>

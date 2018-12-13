@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .modal {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0,0,0, 0.5);
+            display: none;
+        }
+        .modal-dialog {
+            width: 1149px;
+            margin: 100px auto;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 2px;
+            padding: 10px;
+        }
+
+        .BMap{
+            position: relative;
+        }
+        .allmap {
+            width: 1116px;
+            height: 396px;
+            border: 1px solid black;
+        }
+        .BMapInput{
+            position: absolute;
+            top:40px;
+            right: 8px;
+            z-index: 9999;
+        }
+        .tangram-suggestion-main {
+            z-index: 8888;
+        }
+    </style>
+</head>
+<body>
+<h1>首页</h1>
+<p id="welcome">欢迎回来：游客</p>
+<button id="btRegister">注册</button>
+<div class="modal" id="modalRegister">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="BMap">
+                <div id="allmap" class="allmap"></div>
+                <div class="BMapInput">
+                    <input class="tangram-suggestion-main" type="text" id="suggestId" placeholder="搜索地区" />
+                    <input type="button" id="searchMapBtn" value="搜索地图" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=iOZWxGbrCu3XgciOtWYfN95hmKGM241E"></script>
+<script>
+    $("#btRegister").click(function(){
+        $("#modalRegister").show();
+    })
+
+
+    $('#baidu').click();//使用js在页面加载完成后触发一个点击事件
+    //初始化地图
+    var map = new BMap.Map("allmap");//在百度地图容器中创建一个地图
+    var point = new BMap.Point(116.3964, 39.9093);//定义一个中心点坐标 北京的经纬度116.3964, 39.9093   深圳的经纬度114.025974, 22.546054
+    map.addOverlay(new BMap.Marker(point));//创建一个地图标注
+    map.centerAndZoom(point, 11);//设定地图的中心点和坐标并将地图显示在地图容器中 zoom - 设置显示级别(3~19)，值越大，区域越小，越清晰
+    map.enableScrollWheelZoom();//允许鼠标滑轮放大或缩小
+    map.addControl(new BMap.NavigationControl({//添加缩放控件
+        anchor : BMAP_ANCHOR_TOP_LEFT,
+    }));
+    map.addControl(new BMap.MapTypeControl());//添加地图类型控件,地图，卫星，三维
+
+
+    var ac = new BMap.Autocomplete(	//建立一个自动完成的对象
+            {
+                "input": "suggestId",
+                "location": map
+            });
+
+    ac.addEventListener("onhighlight", function (e) {  //鼠标放在下拉列表上的事件
+        var str = "";
+        var _value = e.fromitem.value;
+        var value = "";
+        if (e.fromitem.index > -1) {
+            value = _value.province + _value.city + _value.district + _value.street + _value.business;
+        }
+        str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+        value = "";
+        if (e.toitem.index > -1) {
+            _value = e.toitem.value;
+            value = _value.province + _value.city + _value.district + _value.street + _value.business;
+        }
+        str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+    });
+
+    /*点击搜索按钮时进行搜索*/
+    var myValue;
+    $("#searchMapBtn").click(function(){
+        myValue=$("#suggestId").val();
+        setPlace();
+        //console.log(myValue);
+    });
+
+    ac.addEventListener("onconfirm", function (e) {	//鼠标点击下拉列表后的事件
+        var _value = e.item.value;
+        myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
+        setPlace();
+    });
+
+    function setPlace() {// 创建地址解析器实例
+        var myGeo = new BMap.Geocoder();// 将地址解析结果显示在地图上,并调整地图视野
+        myGeo.getPoint(myValue, function (point) {
+            if (point) {
+                map.centerAndZoom(point, 13);//重新定位地图中心点
+                map.addOverlay(new BMap.Marker(point));//创建一个地图标注
+            }
+        }, "北京市");
+    }
+</script>
+</body>
+</html>

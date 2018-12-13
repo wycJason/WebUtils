@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>弹层组件-电脑端</title>
+</head>
+<body>
+<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe60c;</i>
+<input type="button" id="test1" value="layer.msg"/>
+<input type="button" id="test2" value="layer.load"/>
+<input type="button" id="test3" value="layer.alert"/>
+<input type="button" id="test4" value="layer.confirm"/>
+<input type="button" id="test5" value="layer.open"/>
+<input type="button" id="test6" value="layer.prompt"/>
+<script src="../../js/jquery-1.11.3.js"></script>
+<script src="layer.js"></script>
+<script>
+    //全局使用。即所有弹出层都默认采用，但是单个配置skin的优先级更高
+    layer.config({
+       // skin: 'demo-class'//layui-layer-lan   layui-layer-molv    demo-class
+    })
+
+
+
+
+    $('#test1').on('click', function(){
+        layer.msg('你确认继续吗?3秒后请选择。',{ icon: 1 },function(){
+            alert("好的")
+        });
+    });
+
+    $('#test2').on('click', function(){
+        var ly = layer.load();
+        //此处用setTimeout演示ajax的回调
+        setTimeout(function(){
+            layer.close(ly);
+        }, 1*1000);
+    });
+
+    $('#test3').on('click', function(){
+        layer.alert('只想简单的提示');
+    });
+
+    $('#test4').on('click', function(){
+        layer.confirm('is not?', {icon: 3, title:'提示'}, function(index){
+            //do something
+            layer.alert('只想简单的提示');
+            //layer.close(index);
+        });
+    });
+
+    $('#test5').on('click', function(){
+        layer.open({
+            title: '在线调试',
+            content: '可以填写任意的layer代码'
+        });
+    });
+
+    $('#test6').on('click', function(){
+        layer.prompt({
+            formType: 0,//输入框类型，支持0（文本）默认1（密码）2（多行文本）
+            value: '初始值',//初始时的值，默认空字符
+            title: '请输入值',
+            area: ['800px', '350px'], //自定义文本域宽高
+            maxlength: 500, //可输入文本的最大长度，默认500
+        }, function(value, index, elem){//value 表单值  index 索引  elem 表单元素
+            layer.alert(value); //得到value
+            layer.close(index);//关闭对话框
+        });
+    });
+</script>
+</body>
+</html>

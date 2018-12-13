@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="http://www.cnblogs.com/Kellana/p/6648651.html" target="_blank">js 中面向对象的多态</a></h1>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    //多态：同一个方法，在不同情况下，表现出不同的状态。可根据参数的类型或数量来做判断
+    var googleMap = {
+        show: function () {
+            console.log('开始渲染谷歌地图');
+        }
+    };
+    var bdMap = {
+        show: function () {
+            console.log('开始渲染百度地图');
+        }
+    };
+    var sosoMap = {
+        show: function () {
+            console.log('开始渲染搜搜地图');
+        }
+    };
+
+    var renderMap = function( map ){
+        if ( map.show instanceof Function ){
+            map.show();
+        }else{
+            console.log("渲染错误");
+        }
+    };
+    renderMap( googleMap ); // 输出:开始渲染谷歌地图
+    renderMap( bdMap ); // 输出:开始渲染百度地图
+    renderMap( sosoMap ); // 输出:开始渲染搜搜地图
+
+
+
+
+    function checkout(){
+        //arguments:[  ]  只能在函数内部使用
+        //如果没有传入参数
+        if(arguments.length==0){
+            console.log("微信结账");
+        }else if(arguments.length==1){
+            //否则，如果传入1个参数
+            console.log("现金结账",arguments[0]);
+        }else{//否则，
+            console.log("刷卡结账",arguments[0],arguments[1]);
+        }
+    }
+    console.log("-----------------------------------------")
+    checkout();//"微信结账"
+    checkout(100);//"现金结账"
+    checkout("xxxx xxxx xxxx xxxx","123456");//刷卡结账
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="http://www.jb51.net/article/46712.htm" target="_blank">Javascript写入txt和读取txt原理方法</a></h1>
+<h1><a href="http://blog.csdn.net/chentao866/article/details/70224409" target="_blank">JS读取/创建本地文件及目录文件夹的方法</a></h1>
+<button onclick='file()'>创建一个文本文件</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    /*
+     F12开发者模式调试时发现：运行至new ActiveXObject这行时，automation服务器未能创建对象。
+     解决方法：
+     IE浏览器->工具->Internet选项->安全->自定义级别->设置 ->“对未标记为可安全执行脚本的ActiveX控件初始化并执行脚本”设置为启用，确定即可。
+     注意：
+     启用此选项只可用于调试本地代码，在访问其它网站前一定记得改过来。
+     否则恶意脚本将通过IE具有读、写、遍历你本地文件等的全部权限！
+    * */
+    function file(){
+        var fso;
+        try {
+            fso=new ActiveXObject("Scripting.FileSystemObject");
+
+        } catch (e) {
+            alert("当前浏览器不支持");
+            return;
+        }
+        alert("方法已执行2");
+        var f1 = fso.createtextfile("E:\\1.txt",true);
+        f1.write("这是一个文本文档");
+        var openf1 = fso.OpenTextFile("1.txt");
+
+        str = openf1.ReadLine();
+        alert("里面的内容为'" + str + "'");
+    }
+</script>
+</body>
+</html>

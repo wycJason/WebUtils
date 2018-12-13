@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+只输入数字和小数点（小数点没做控制）：<input  type="text" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" /><br/><br/>
+
+整数:只能输入数字(小数点也不能输入)：<input  type="text" onkeyup="clearNoPoint(this)"/><br/><br/>
+小数：只能输入数字和一位小数点且小数点不能为首位和小数点后面两位小数：<input  type="text" onkeyup="clearNoNum(this)" /><br/><br/>
+小数：只能输入数字和一位小数点且小数点不能为首位和小数点后面小数位数自定义：<input  type="text" data-decimalCount="4" onkeyup="CustomClearNoNum(this)" />
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+
+
+
+
+    /* 整数：只能输入数字且不能以0或.为开头*/
+    function clearNoPoint(obj){
+        obj.value = obj.value.replace(/[^0-9]/g,'');  //只能输数字
+        if(obj.value.indexOf(".")< 0 && obj.value !=""){//以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额
+            obj.value= parseFloat(obj.value);
+        }else if(obj.value.indexOf(".")== 0){
+            obj.value=obj.value.replace(/[^0-9]/g,'')
+        }
+    }
+
+    //小数：js控制input框只能输入数字和一位小数点且小数点和0不能为首位和小数点后面两位小数
+    function clearNoNum(obj){debugger;
+        obj.value = obj.value.replace(/[^\d.]/g,"");  //清除“数字”和“.”以外的字符
+        obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的
+        obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+        obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');//只能输入两个小数 加个\d输入三位小数   不限制小数，注释这条即可
+        if(obj.value.indexOf(".")< 0 && obj.value !=""){//以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额
+            obj.value= parseFloat(obj.value);  //不能以0开头
+        }else if(obj.value.indexOf(".")== 0){
+            obj.value=obj.value.replace(/[^0-9]/g,'')//不能以小数点.开头
+        }
+    }
+
+
+    //小数：js控制input框只能输入数字和一位小数点且小数点和0不能为首位和小数点后面小数位数自定义
+    function CustomClearNoNum(obj){debugger;
+        var n=parseInt(obj.dataset.decimalcount);
+        var reg = new RegExp("^(\\-)*(\\d+)\\.(\\d{"+n+"}).*$");
+        obj.value = obj.value.replace(/[^\d.]/g,"");  //清除“数字”和“.”以外的字符
+        obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的
+        obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+        obj.value = obj.value.replace(reg,'$1$2.$3');//只能输入两个小数 加个\d输入三位小数   不限制小数，注释这条即可
+        if(obj.value.indexOf(".")< 0 && obj.value !=""){//以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额
+            obj.value= parseFloat(obj.value);  //不能以0开头
+        }else if(obj.value.indexOf(".")== 0){
+            obj.value=obj.value.replace(/[^0-9]/g,'')//不能以小数点.开头
+        }
+    }
+    console.log(parseFloat("01"),parseInt("000001"))//   不能以0开头的两种表达
+</script>
+</body>
+</html>

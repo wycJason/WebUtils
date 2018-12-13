@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <base-input onfocus="onFocus()"></base-input>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+<script>
+    Vue.component('base-input', {
+        inheritAttrs: false,
+        props: ['label', 'value'],
+        computed: {
+            inputListeners: function () {
+                var vm = this
+                // `Object.assign` 将所有的对象合并为一个新对象
+                return Object.assign({},
+                        // 我们从父级添加所有的监听器
+                        this.$listeners,
+                        // 然后我们添加自定义监听器，
+                        // 或覆写一些监听器的行为
+                        {
+                            // 这里确保组件配合 `v-model` 的工作
+                            input: function (event) {
+                                vm.$emit('input', event.target.value)
+                            }
+                        }
+                )
+            }
+        },
+        template: `
+                    <label>
+                      {{ label }}
+                      <input
+                        v-bind="$attrs"
+                        v-bind:value="value"
+                        v-on="inputListeners"
+                      >
+                    </label>
+                  `
+    })
+
+    new Vue({
+        el: '#app',
+        data: {},
+        methods: { }
+    })
+
+    function onFocus(){
+        console.log("获得焦点")
+    }
+</script>
+</body>
+</html>

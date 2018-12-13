@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+  <style>
+    div {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>全局CSS样式——栅格布局系统</h1>
+
+  <h3>适用于不同屏幕的列的适用范围</h3>
+  <div class="row">
+    <div class="col-xs-2">XS-2</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">SM-2</div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">MD-2</div>
+  </div>
+
+  <h3>一个div可以声明多个列宽</h3>
+  <div class="row">
+    <div class="col-xs-10 col-sm-6 col-md-3">响应式列</div>
+  </div>
+
+  <h3>隐藏特定的列</h3>
+  <div class="row">
+    <div class="col-xs-6 hidden-sm">6/12</div>
+  </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+  /*(function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s)
+  })();*/
+</script>
+</body>
+</html>

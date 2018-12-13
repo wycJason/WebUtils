@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script>
+    //REST参数
+    function input(...params){
+        console.log(params)
+    }
+    console.log(input(1,2,3,4)) //[1,2,3,4]
+
+    function input2(a,b,...params){
+        console.log(params)
+    }
+    console.log(input2(1,2,3,4))  //[3,4]
+
+
+    //扩展运算符
+    var arr1 = [1,2,3],arr2 = [4,5,6],arr3 = [7,8,9];
+    var arr4 = [...arr1,...arr2,...arr3]; //[1,2,3,4,5,6,7,8,9]  用于数组合并
+    console.log(arr4);
+
+    var list = [1,2,3,4,5]
+    let [a,b, ...c] = list;
+    console.log(a,b,c);//1,2,[3,4,5]
+    // 用于解耦，感觉这有点像是rest参数的应用，应为结果是数组
+</script>
+</body>
+</html>

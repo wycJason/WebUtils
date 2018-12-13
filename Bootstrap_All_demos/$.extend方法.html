@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<a href="http://www.cnblogs.com/zikai/p/5074686.html" target="_blank">参考文献</a>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //扩展一个jquery的全局对象方法hello和属性male
+    $.extend({
+        hello:function(){alert('你好');},
+        male:"女"
+    });
+    //$.hello();
+    // $.male;
+
+
+
+    //扩展一个jquery的实例对象方法methods和属性prop
+    $.fn.extend({
+        methods:function(){alert('方法');},
+        female:"女"
+    });
+    //$("body").methods();
+    //console.log($("body").female);
+
+//在jquery全局对象中扩展一个net命名空间。
+$.extend({
+    net:{}
+});
+//将hello方法扩展到之前扩展的Jquery的net命名空间中去。
+$.extend($.net,{
+    hello:function(){alert('hello');},
+    name:"world"
+})
+//$.net.hello();
+//console.log($.net.name);
+//console.log($.net.name, $.male);
+
+
+
+//对象的合并1
+    var result1=$.extend({},{name:"wong",age:21},{name:"jason",age:29});
+    console.log("result1",result1);//{name: "jason", age: 29}
+//对象的合并2
+    var result2=$.extend( false, {},
+            { name: "wong", location:{city: "A",county:"B"} },
+            { last: "jason", location: {state: "1",county:"2"} }
+    );
+    console.log("result2",result2);
+
+    //索引下标相同，后者覆盖前者
+    var arr=$.extend([1,2,3,4], [6,7,8,9]);
+    console.log("arr",arr);//[6, 7, 8, 9]
+</script>
+</body>
+</html>

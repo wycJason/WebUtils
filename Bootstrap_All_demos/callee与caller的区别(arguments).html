@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+//https://www.cnblogs.com/angus-jiang/p/4434259.html
+//js中callee与caller的区别
+function chenA(x){
+    if (x<=1) {
+        return 1;
+    } else{
+        return x*chenA(x-1);
+    };
+};
+
+function chenB(x){
+    if (x<=1) {return 1;
+    }else{
+        return x*arguments.callee(x-1);
+    };
+};
+
+console.log(chenA(3),chenB(3))
+
+
+function a(){
+    b();
+};
+function b(){
+    console.log(b.caller);
+};
+a(); //结果就是弹出函数a
+
+
+function c(){
+    d();
+};
+
+function d(){
+    console.log(arguments.callee.caller);
+};
+c(); //结果就是弹出函数c
+</script>
+</body>
+</html>

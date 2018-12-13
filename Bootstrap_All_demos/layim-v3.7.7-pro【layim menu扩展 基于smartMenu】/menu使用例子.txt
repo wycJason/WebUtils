@@ -1,0 +1,196 @@
+//右键菜单
+    layui.menu.init('layim',{
+		menu: [
+			{
+				id:'layim_friend',//  id 就是菜单唯一名字
+				rootele:'.layui-layim-main',//rootele 是事件代理的最大监听对象 没有默认为body
+				ele: 'li[data-type="friend"]',// ele是监听的对象
+				items: [
+					{ text: '发起聊天', name: 'initiate_chat',icon:'layui-icon-dialogue', group: 'g1'},
+					{ text: '好友资料', name: 'friend_info', icon: 'layui-icon-form', group: 'g2'},
+					{ text: '聊天记录', name: 'friend_chat_record', icon: 'layui-icon-file', group: 'g2'},
+					{ text: '删除好友', name: 'friend_del', icon: 'layui-icon-delete', group: 'g3'},
+				]
+			}
+			,{
+				id:'layim_group',
+				rootele:'.layui-layim-main',
+				ele: '.layim-list-group li[data-type="group"]',
+				items: [
+					{ text: '发起聊天', name: 'initiate_chat',icon:'layui-icon-dialogue',  group: 'g1' },
+					{ text: '聊天记录', name: 'group_chat_record', icon: 'layui-icon-file', group: 'g2'},
+					{ text: '查看成员', name: 'group_member', icon: 'layui-icon-user', group: 'g2'},
+					//{ text: '屏蔽消息', name: 'group_hide',icon:'layui-icon-dialogue', group: 'g2' },
+					{ text: '退出群聊', name: 'group_quit',icon:'layui-icon-close-fill', group: 'g3' },
+
+				]
+			}
+			,{
+				id:'layim_organize',
+				rootele:'.layui-layim-main',
+				ele: 'h5[layim-event="spread"]',
+				items: [
+					{ text: '修改名称', name: 'organize_edit', icon:'layui-icon-edit', group: 'g1' },
+					{ text: '新增分组', name: 'organize_add', icon:'layui-icon-add-circle', group: 'g2' },
+					{ text: '删除分组', name: 'organize_del', icon: 'layui-icon-delete', group: 'g2' }
+				]
+			}
+			,{//历史会话右键菜单操作
+				id:'layim_history',
+				rootele:'.layui-layim-main',
+				ele:'.layim-list-history li[data-type="history"]',
+				items: [
+					{ text: '移除该会话', name: 'history_one', icon:'layui-icon-delete',  group: 'g1' },
+					{ text: '清空全部会话列表', name: 'history_all', icon:'layui-icon-delete',  group: 'g1' },
+				]
+			}
+			,{  //聊天右键菜单操作
+				id:'layim_chat',
+				ele:'.layim-chat-main li[data-cid]',
+				items: [
+					{ text: '引用', name: 'msg_quote', icon:'layui-icon-code-circle',  group: 'g1' },
+					{ text: '复制', name: 'msg_copy', icon:'layui-icon-list',  group: 'g1' },
+					{ text: '撤回', name: 'msg_withdraw', icon:'layui-icon-shrink-right',  group: 'g2' ,show:{attr:{'data-mine':'true'}}},
+					{ text: '删除', name: 'msg_del', icon:'layui-icon-delete',  group: 'g2' },
+					{ text: '重发', name: 'msg_resend', icon:'layui-icon-refresh-1',  group: 'g2' ,show:{attr:{'data-state':'error'}}},
+				]
+			}
+		]
+	});
+    //右键点击事件
+	layui.menu.on('layim', function (name,othis) {
+		var right_type = name;
+		var local  = layui.data('layim')[cache.mine.id] || {},parent,_this = $(othis),
+		type = _this.data('type'),cid,
+		id = _this.attr('class')?_this.attr('class').split(" ")[0].replace("layim-group","").replace("layim-friend","").replace("layim-history","").trim():'';
+		//console.log(name);
+		switch(right_type){
+			case 'initiate_chat'://好友菜单 [发起聊天]
+				var index = _this.data('index'),_class = _this.attr('class').trim().split(' ')[0].trim();
+				var list = _this.attr('data-list') || _this.index(), data = {};
+				if(type === 'friend'){
+					list = cache[type][index].list;
+					var its = _class.split('-');
+					if(its.length == 2){//正常数据
+						var id = undefined; 
+						if(its[1].startsWith('friend')){
+							id = its[1].split("friend")[1];
+						}
+					}
+					if(id){
+						layui.each(list,function(index,item){
+							if(id == item.id){
+								data = item;
+								return true;
+							}
+						});
+					}
+
+				} else if(type === 'group'){
+					data = cache[type][list];
+				} else if(type === 'history'){
+					data = (local.history || {})[index] || {};
+				}
+				data.name = data.name || data.username || data.groupname;
+				if(type !== 'history'){
+					data.type = type;
+				}
+				popchat(data);
+				break;
+			case 'friend_info'://好友菜单 [好友资料]
+				break;
+			case 'friend_chat_record'://好友菜单 [聊天记录]
+				if(!cache.base.chatLog){
+					return layer.msg('未开启更多聊天记录');
+				}
+				if(events.chatLog.index){
+					layer.close(events.chatLog.index);
+					events.chatLog.index = undefined;
+				}
+				var username = _this.find('span:first').text();
+				return events.chatLog.index = layer.open({
+					type: 2
+					,maxmin: true
+					,title: '与 '+ username+' 的聊天记录'
+					,area: ['450px', '100%']
+					,shade: false
+					,offset: 'rb'
+					,skin: 'layui-box'
+					,anim: 2
+					,id: 'layui-layim-chatlog'
+					,content: cache.base.chatLog + '?id=' + id + '&type=' + type
+				});
+				break;
+			case 'friend_del'://好友菜单 [删除好友]
+				break;
+			case 'history_one'://历史会话右键菜单操作 移除该会话
+				var hisElem = layimMain.find('.layim-list-history');
+				var history = local.history;
+				delete history[_this.data('index')];
+				local.history = history;
+				layui.data('layim', {
+				  key: cache.mine.id
+				  ,value: local
+				});
+				hisElem.find('.layim-'+_this.data('index')).remove();//修复删除失败$('#'+parent.data('id')).remove();
+				if(hisElem.find('li').length === 0){
+				  hisElem.html('<li class="layim-null">暂无历史会话</li>');
+				}
+				break;
+			case 'history_all'://历史会话右键菜单操作 清空全部会话列表
+				delete local.history;
+				layui.data('layim', {
+				  key: cache.mine.id
+				  ,value: local
+				});
+				layimMain.find('.layim-list-history').html('<li class="layim-null">暂无历史会话</li>');
+				break;
+			case 'msg_quote'://消息处理[引用]
+				var thatChat = thisChat(),cid = _this.data('cid'),msg = findChatLogByCid(cid);
+				if(msg){
+					thatChat.textarea.val('[pre class=layui-code]「'+msg.username+': '+msg.content+'」[/pre]\n'+thatChat.textarea.val()).focus();
+				}
+				break;
+			case 'msg_copy'://消息处理[复制]
+				var thatChat = thisChat(),cid = _this.data('cid'),msg = findChatLogByCid(cid);
+				if(msg){
+					thatChat.textarea.val(thatChat.textarea.val()+'\n'+msg.content).focus();
+				}
+				break;
+			case 'msg_withdraw'://消息处理[撤回]
+				cid = _this.data('cid');
+				var msg = findChatLogByCid(cid);
+				if(msg.mine){
+					if(Math.abs((new Date() - msg.timestamp)/60000) < MAX_MINUTE){
+						withdrawChatLog(msg);//撤回消息
+						layui.each(call.withdraw, function(index, item){
+							item && item(msg);
+						});
+					}else{
+						layer.msg("超过["+MAX_MINUTE+"]分钟的消息无法撤回！");
+					}
+				}else{
+					layer.msg("该消息不支持撤回");
+				}
+				break;
+			case 'msg_del'://消息处理[删除]
+				cid = _this.data('cid');
+				var msg = findChatLogByCid(cid);
+				delChatLog(msg);//
+				layui.each(call.delMessage, function(index, item){
+					item && item(msg);
+				});
+				layer.msg("你删除了一条消息!");
+				break;
+			case 'msg_resend'://消息处理[重发]
+				cid = _this.data('cid');
+				var msg = findChatLogByCid(cid);
+				if(msg.mine){
+					delChatLog(msg);
+					sendMessageData(msg.cid,msg.content);
+				}else{
+					layer.msg("该消息不支持重发");
+				}
+				break;
+		};
+	});

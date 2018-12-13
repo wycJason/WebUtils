@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<ul id="point_sysItem">
+    <li>
+        <a data-toggle="tab" style="width:158px" data-val="11-0-分享-0" href="#SysRuleCategory-11">分享</a>
+    </li>
+    <li>
+        <a data-toggle="tab" style="width:158px" data-val="6-0-任务-2" href="#SysRuleCategory-6">任务</a>
+    </li>
+    <li>
+        <a data-toggle="tab" style="width:158px" data-val="12-0-日志-1" href="#SysRuleCategory-12">日志</a>
+    </li>
+    <li class="active">
+        <a data-toggle="tab" style="width:158px" data-val="15-0-外勤签到-0" href="#SysRuleCategory-15">外勤签到</a>
+    </li>
+</ul>
+
+<div class="sixContent">
+    <div class="tab-content">
+        <!--积分管理_系统规则设置_日志-->
+        <div class="tab-pane" data-sysrule="log" id="SysRuleCategory-12">
+            <ul class="signIn">
+                <li>
+                    <span>积分类别:</span>
+                    <select id="sel_IntegralType_log" name="">
+                        <option value="0">无</option>
+                        <option value="1">现金分</option>
+                        <option value="2">荣誉积分</option>
+                    </select>
+                </li>
+                <li>
+                    <span>创建增加:</span>
+                    <input id="txt_AddQty_log" style="width: 50px" type="text" name="" value="100">
+                    <span style="width: 30px">积分</span>
+                </li>
+                <li>
+                    <span>点评1星得:</span>
+                    (
+                    <div class="icheckbox_flat-blue checked" style="position: relative;"><input id="ckb_log_1" class="logCmt" type="checkbox" name="ckbIsAdd" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    <label id="lb_log_1" for="ckb_log_1">奖励</label>
+                    )
+                    <input id="txt_log_1" style="width: 50px" type="text" name="" value="1">
+                    <span style="width: 30px">积分</span>
+                </li>
+                <li>
+                    <span>点评2星得:</span>
+                    (
+                    <div class="icheckbox_flat-blue checked" style="position: relative;"><input id="ckb_log_2" class="logCmt" type="checkbox" name="ckbIsAdd" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    <label id="lb_log_2" for="ckb_log_2">奖励</label>
+                    )
+                    <input id="txt_log_2" style="width: 50px" type="text" name="" value="2">
+                    <span style="width: 30px">积分</span>
+                </li>
+                <li>
+                    <span>点评3星得:</span>
+                    (
+                    <div class="icheckbox_flat-blue checked" style="position: relative;"><input id="ckb_log_3" class="logCmt" type="checkbox" name="ckbIsAdd" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    <label id="lb_log_3" for="ckb_log_3">奖励</label>
+                    )
+                    <input id="txt_log_3" style="width: 50px" type="text" name="" value="3">
+                    <span style="width: 30px">积分</span>
+                </li>
+                <li>
+                    <span>点评4星得:</span>
+                    (
+                    <div class="icheckbox_flat-blue checked" style="position: relative;"><input id="ckb_log_4" class="logCmt" type="checkbox" name="ckbIsAdd" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    <label id="lb_log_4" for="ckb_log_4">奖励</label>
+                    )
+                    <input id="txt_log_4" style="width: 50px" type="text" name="" value="4">
+                    <span style="width: 30px">积分</span>
+                </li>
+                <li>
+                    <span>点评5星得:</span>
+                    (
+                    <div class="icheckbox_flat-blue checked" style="position: relative;"><input id="ckb_log_5" class="logCmt" type="checkbox" name="ckbIsAdd" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    <label id="lb_log_5" for="ckb_log_5">奖励</label>
+                    )
+                    <input id="txt_log_5" style="width: 50px" type="text" name="" value="5">
+                    <span style="width: 30px">积分</span>
+                </li>
+            </ul>
+        </div>
+        <!--积分管理_系统规则设置_任务-->
+        <div class="tab-pane" data-sysrule="task" id="SysRuleCategory-6">
+            <ul class="signIn">
+                <li>
+                    <span>积分类别:</span>
+                    <select id="sel_IntegralType_task" name="">
+                        <option value="0">无</option>
+                        <option value="1">现金分</option>
+                        <option value="2">荣誉积分</option>
+                    </select>
+                </li>
+                <li>
+                    <span>按时完成奖励:</span>
+                    <input id="txt_FinishedAddQty" style="width: 50px" type="text" name="" value="100">
+                    <span style="width: 30px">积分</span>
+                </li>
+                <li>
+                    <span>超期完成扣减:</span>
+                    <input id="txt_OverTimeSubQty" style="width: 50px" type="text" name="" value="50">
+                    <span style="width: 30px">积分</span>
+                </li>
+                <li>
+                    <span>点评1星得:</span>
+                    (
+                    <div class="icheckbox_flat-blue checked" style="position: relative;"><input id="ckb_task_1" class="logCmt" type="checkbox" name="ckbIsAdd" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    <label id="lb_task_1" for="ckb_task_1">奖励</label>
+                    )
+                    <input id="txt_task_1" style="width: 50px" type="text" name="" value="1">
+                    <span style="width: 30px">积分</span>
+                </li>
+                <li>
+                    <span>点评2星得:</span>
+                    (
+                    <div class="icheckbox_flat-blue checked" style="position: relative;"><input id="ckb_task_2" class="logCmt" type="checkbox" name="ckbIsAdd" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    <label id="lb_task_2" for="ckb_task_2">奖励</label>
+                    )
+                    <input id="txt_task_2" style="width: 50px" type="text" name="" value="2">
+                    <span style="width: 30px">积分</span>
+                </li>
+                <li>
+                    <span>点评3星得:</span>
+                    (
+                    <div class="icheckbox_flat-blue checked" style="position: relative;"><input id="ckb_task_3" class="logCmt" type="checkbox" name="ckbIsAdd" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    <label id="lb_task_3" for="ckb_task_3">奖励</label>
+                    )
+                    <input id="txt_task_3" style="width: 50px" type="text" name="" value="3">
+                    <span style="width: 30px">积分</span>
+                </li>
+                <li>
+                    <span>点评4星得:</span>
+                    (
+                    <div class="icheckbox_flat-blue checked" style="position: relative;"><input id="ckb_task_4" class="logCmt" type="checkbox" name="ckbIsAdd" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    <label id="lb_task_4" for="ckb_task_4">奖励</label>
+                    )
+                    <input id="txt_task_4" style="width: 50px" type="text" name="" value="4">
+                    <span style="width: 30px">积分</span>
+                </li>
+                <li>
+                    <span>点评5星得:</span>
+                    (
+                    <div class="icheckbox_flat-blue checked" style="position: relative;"><input id="ckb_task_5" class="logCmt" type="checkbox" name="ckbIsAdd" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    <label id="lb_task_5" for="ckb_task_5">奖励</label>
+                    )
+                    <input id="txt_task_5" style="width: 50px" type="text" name="" value="5">
+                    <span style="width: 30px">积分</span>
+                </li>
+            </ul>
+        </div>
+        <!--积分管理_系统规则设置_分享-->
+        <div class="tab-pane active" data-sysrule="share" id="SysRuleCategory-11">
+            <ul class="signIn">
+                <li>
+                    <span>积分类别:</span>
+                    <select id="sel_IntegralType_share" name="">
+                        <option value="0">无</option>
+                        <option value="1">现金分</option>
+                        <option value="2">荣誉积分</option>
+                    </select>
+                </li>
+                <li>
+                    <span>创建增加:</span>
+                    <input id="txt_AddQty_shared" style="width: 50px" type="text" name="" value="80">
+                    <span style="width: 30px">积分</span>
+                </li>
+            </ul>
+        </div>
+        <!--积分管理_系统规则设置_签到-->
+        <div class="tab-pane" data-sysrule="signIn" id="SysRuleCategory-15">
+            <ul class="signIn">
+                <li>
+                    <span>积分类别:</span>
+                    <select id="sel_IntegralType_signIn" name="">
+                        <option value="0">无</option>
+                        <option value="1">现金分</option>
+                        <option value="2">荣誉积分</option>
+                    </select>
+                </li>
+                <li>
+                    <span>创建增加:</span>
+                    <input id="txt_AddQty_signIn" style="width: 50px" type="text" name="" value="100">
+                    <span style="width: 30px">积分</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+  /*  var a=99;
+    var htm='<a href="http://www.baidu.com'+a+'">'+"我是链接"+"</a>";
+    $(document.body).append(htm);*/
+
+    $("#point_sysItem").empty();
+    var dataRes=[
+        {OrderType:"share",Caption:"分享"},
+        {OrderType:"task",Caption:"任务"},
+        {OrderType:"log",Caption:"日志"},
+        {OrderType:"sigIn",Caption:"签到"}
+    ]
+
+    $.each(dataRes, function (k, v) {
+        var htm = '<li><a data-toggle="tab" style="width:158px"  href="#'+v.OrderType+'">' + v.Caption + '</a></li>';
+        //console.log(htm);
+        $("#point_sysItem").append(htm);
+    });
+
+    $('#point_sysItem [href*="share"]').parent().addClass("active");//分享导航默认被选中
+    //更新系统规则设置_左侧导航条对应的标签页ID值
+    //console.log($('.pointMenu [href*="分享"]').attr("href").slice(1));
+    $('.sixContent [data-sysRule="share"]').attr("id", $('#point_sysItem [href*="share"]').attr("href").slice(1));
+    $('.sixContent [data-sysRule="task"]').attr("id", $('#point_sysItem [href*="task"]').attr("href").slice(1));
+    $('.sixContent [data-sysRule="log"]').attr("id", $('#point_sysItem [href*="log"]').attr("href").slice(1));
+    $('.sixContent [data-sysRule="signIn"]').attr("id", $('#point_sysItem [href*="sigIn"]').attr("href").slice(1));
+</script>
+</body>
+</html>

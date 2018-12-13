@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JS批量下载</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<a id="download" href="data/contracs.pdf" target="_blank" download="PDF下载">PDF下载</a>
+<!--
+前言：
+在html5中 a 标签多了一个属性download，用户点击a链接浏览器会打开并显示该链接的内容，若在a链接中加了 download 属性，点击该链接就不会打开这个文件，而是直接下载。
+注意，download是html5中的a标签的新特性，所以（不支持h5）的低版本浏览器不兼容！
+-->
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //单文件下载
+    //JavaScript多文件下载   https://github.com/barretlee/javascript-multiple-download
+   /* var imgs = [
+        "http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_16_b736031ba5f9472ba29aa029cddd35fe.jpg",
+        "http://111.204.53.174:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_9_30_04b0a2721b1d4e5aa0fba7eda757e1ed.jpg",
+        "http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_16_9450d20e8e874d4284eaf0f01994984b.jpg",
+        "http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_16_020062213492457fba84aa788a2a52d9.jpg",
+        "http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_16_091d93f2c861484d8a7c7024474e5707.jpg"
+    ];
+    imgs.map(function(i){
+        var a = document.createElement('a');
+        a.download="合同下载";
+        a.href=i;
+        a.target="_blank";
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+    })*/
+
+    /*function downloadFile(fileName, content){
+        var aLink = document.createElement("a"),
+             evt = document.createEvent("HTMLEvents");
+
+        evt.initEvent("click");
+        aLink.download = fileName;
+        aLink.href = content;
+
+        aLink.dispatchEvent(evt);
+    }*/
+
+
+
+    //多文件下载
+    //https://www.cnblogs.com/cnsevennight/p/3849345.html
+    //把下载链接放入集合里　　
+    var downloadData = [
+        "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_6ab1021388ba480486b1c12fca82423a.pdf/%E6%B7%B1%E5%9C%B3--%E6%9C%80%E6%96%B0%E9%80%9A%E8%AE%AF%E5%BD%95-11%E6%9C%88%E4%BB%BD.pdf",
+        "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_2bf9449db18c47958816a0ba6d692a3f.pdf/%E5%BC%A0%E4%B8%89.pdf",
+        "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_b233378ad7064b96a6bcb2259dc9a10f.pdf/%E6%9D%8E%E5%9B%9B.pdf",
+        "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_e518170dca334d85b9824734e392b268.pdf/%E7%8E%8B%E4%BA%94.pdf"
+    ];
+    var downloadNum=0;//方法执行次数
+    circularWindow(downloadNum);
+    function circularWindow(){//循环弹窗
+        setTimeout(function(){
+            jumpDownloadWindow(downloadNum);
+        },500);//次数设置一下延时，不然有的手机会因为反应不过来而出现误差
+    }
+    function jumpDownloadWindow(i){//弹出下载窗口
+        var fileFrame = document.createElement("iframe");
+        fileFrame.src = downloadData[i];//文件路径
+        fileFrame.style.display = "none";
+        document.body.appendChild(fileFrame);
+        downloadNum++;
+        if(downloadNum!=downloadData.length){
+            circularWindow();
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+</head>
+<body>
+
+<div>
+      <ul id="treeDemo" class="ztree"></ul>
+</div>
+
+<script>
+    var zTreeObj;
+    // zTree 的参数配置，普通使用，无必须设置的参数,深入使用请参考 API 文档（setting 配置详解）
+    var setting = {
+
+    };
+    // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+    var zNodes = [
+        {name:"test1", open:false, children:[{name:"test1_1"}, {name:"test1_2"}]},
+        {name:"test2", open:false, children:[{name:"test2_1"}, {name:"test2_2", open:false, children:[{name:"test2_2_1"}, {name:"test2_2_2"}]}]}
+    ];
+
+    $(document).ready(function(){
+        zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        //console.log( zTreeObj.getNodes()[0].children);
+    });
+</script>
+</body>
+</html>

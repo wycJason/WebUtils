@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .test{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #dddddd;
+            position: absolute;
+            display: none;
+        }
+        .ipt{
+            margin: 80px 0px 0 50px;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <input type="text" id="ipt" class="ipt"/>
+    <div id="test" class="test">
+        <ul>
+            <li>你好</li>
+            <li>你好</li>
+            <li>你好</li>
+        </ul>
+    </div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+$("#ipt").focus(function (e) {
+    //获取元素在当前窗口或视口中的位置
+    debugger;
+    var obj = $(this);
+    var offset = obj.offset();
+
+    var left=offset.left;//50px
+    var top=offset.top;//80px
+
+    var down = offset.top+obj.outerHeight();
+    $("#test").css({"left":left,"top":down}).show();
+    console.log(offset);
+
+    $(window.document).bind("click", function (e) {
+        if (!($(e.target).closest("#test").length>0||$(e.target).parents().is("#test") || $(e.target).is("#ipt"))) {
+            $(window.document).unbind("click");
+            $("#test").hide();
+        }
+    })
+})
+
+
+</script>
+</body>
+</html>

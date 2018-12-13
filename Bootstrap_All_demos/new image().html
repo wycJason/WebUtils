@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="http://blog.csdn.net/hdchangchang/article/details/9036511" target="_blank">js的 new image()</a></h1>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    //<img width="200" height="200" src="1.jpg">
+    /*
+     建立图像对象：图像对象名称=new Image([宽度],[高度])
+     图像对象的属性： border complete height hspace lowsrc name src vspace width
+     图像对象的事件：onabort onerror onkeydown onkeypress onkeyup onload
+     需要注意的是：src 属性一定要写到 onload 的后面，否则程序在 IE 中会出错。
+    */
+    var myImage = new Image(200, 200);
+    myImage.onload=function(){console.log("img is loaded")};
+    myImage.src = 'img/1.jpg';
+    document.body.appendChild(myImage);
+</script>
+</body>
+</html>

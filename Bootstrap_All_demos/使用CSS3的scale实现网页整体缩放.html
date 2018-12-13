@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>测试页面</title>
+    <style type="text/css">
+        div {
+            width: 600px;
+            text-align: center;
+            font-size: 4em;
+            color: #333;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div>改变窗口大小试试，你会发现什么？</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    $(function() {
+        var r = document.body.offsetWidth / window.screen.availWidth;
+        $(document.body).css("-webkit-transform","scale(" + r + ")");
+    });
+    $(window).resize(function() {
+        var r = document.body.offsetWidth / window.screen.availWidth;
+        $(document.body).css("-webkit-transform","scale(" + r + ")");
+    });
+</script>
+</body>
+</html>

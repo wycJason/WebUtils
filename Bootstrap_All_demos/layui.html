@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap Template</title>
+    <style>
+        .test{
+            display: none;
+        }
+        .testA{
+            margin: 100px auto;
+            width: 200px;
+        }
+    </style>
+    <link href="layui/css/layui.css" rel="stylesheet">
+</head>
+<body>
+<i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe60c;</i>
+<img lay-src="Images/go.png">
+<input type="button" id="test1" value="layer.msg"/>
+<input type="button" id="test2" value="layer.load"/>
+<input type="button" id="test3" value="layer.alert"/>
+<input type="button" id="test4" value="layer.confirm"/>
+<input type="button" id="test5" value="layer.open"/>
+<input type="button" id="test6" value="layer.prompt"/>
+<input type="button" id="test7" value="iframe层"/>
+<input type="button" id="test8" value="页面层"/>
+<input type="button" id="test9" value="tab层"/>
+<input type="button" id="test10" value="多媒体层"/>
+ <input type="button" id="test11" value="提示层"/>
+<input type="button" id="test12" value="吸附层"/>
+<div class="test" id="myTest">
+    <p>SAP360SAP360SAP360SAP360SAP360SAP360SAP360SAP360SAP360</p>
+    <p>SAP360SAP360SAP360SAP360SAP360SAP360SAP360SAP360SAP360</p>
+    <p>SAP360SAP360SAP360SAP360SAP360SAP360SAP360SAP360SAP360</p>
+    <p>SAP360SAP360SAP360SAP360SAP360SAP360SAP360SAP360SAP360</p>
+    <p>SAP360SAP360SAP360SAP360SAP360SAP360SAP360SAP360SAP360</p>
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="layui/layui.js"></script>
+<script>
+   /* layui.use('layer', function(){
+     var layer = layui.layer;
+    });*/
+    layui.use('layer');
+
+   $('#test12').on('click', function(){
+       layer.open({
+           type: 4,
+           content: ['吸附层', '#test12'], //数组第二项即吸附元素选择器或者DOM
+           shadeClose:true,
+           //tips:[2,'#c00']
+       });
+   })
+
+    $('#test11').on('click', function(){
+        //提示层
+        layer.tips('只想提示地精准些', $(this),{
+            tips: 2 //1:上,2:右,3:下,4:左  默认是在右边
+        });
+    })
+
+
+    $('#test10').on('click', function(){
+        //iframe层-多媒体
+        layer.open({
+            type: 2,
+            title: false,
+            area: ['630px', '360px'],
+            shade: 0.8,
+            closeBtn: 0,
+            shadeClose: true,
+            content: 'http://player.youku.com/embed/XMjY3MzgzODg0'
+        });
+    })
+
+    $('#test9').on('click', function(){
+        //debugger;
+        layer.tab({
+            area: ['600px', '300px'],
+            tab: [{
+                title: 'TAB1',
+                content:'<span style="color: red">内容1</span>'
+            }, {
+                title: 'TAB2',
+                content: '内容2'
+            }, {
+                title: 'TAB3',
+                content: '内容3'
+            }]
+        });
+
+    })
+
+    $('#test8').on('click', function(){
+       /* layer.open({
+            type: 1,
+            title:"页面层",
+            /!*area: ["800px","400px"],*!/
+            /!*fixed: false, //不固定*!/
+            maxmin: true,
+            /!*time:3000,*!/
+           /!* anim:7,*!/
+            //content: 'http://www.baidu.com' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+            content:$("#myTest"),
+        });*/
+
+        // 全屏
+     var index=layer.open({
+            type: 1,
+            title:"页面层",
+            area: ["500px","100%"],
+            offset: 'r',
+            /*fixed: false, //不固定*/
+            maxmin: false,
+            /*time:3000,*/
+            /* anim:7,*/
+            //content: 'http://www.baidu.com' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+            content:$("#myTest"),
+            full:function(dom){
+                alert("全屏")
+            },
+             min: function(dom){
+                alert("最小化"+$(dom).attr("id"));
+                console.log($(dom));
+                // setTimeout(function(){$(dom).css({left:"91%"})},0);//最小化到右下角
+            },
+             restore:function(dom) {
+                 alert("还原")
+             }
+        });
+        //layer.full(index);
+       // layer.min(index);
+       // layer.restore(index);
+    });
+
+
+    $('#test7').on('click', function(){
+        layer.open({
+            title:"百度",
+            type: 2,
+            area: ["800px","400px"],
+            fixed: false, //不固定
+            maxmin: true,
+            /*time:3000,*/
+            anim:0,
+            //content: 'http://www.baidu.com' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+            content:['http://www.baidu.com','no']
+        });
+    });
+
+
+    $('#test1').on('click', function(){
+        layer.msg('你确认继续吗?3秒后请选择。',{
+            title:"我爱你",
+            offset:"rb"
+            },
+            function(){
+            alert("好的")
+        });
+    });
+
+    $('#test2').on('click', function(){
+        layer.load(0, {time: 5*1000}); //又换了种风格，并且设定最长等待1秒，1秒后自动关闭
+
+    /*  var ly = layer.load();
+        //此处用setTimeout演示ajax的回调
+        setTimeout(function(){
+            layer.close(ly);
+        }, 1*1000);*/
+
+    });
+
+    $('#test3').on('click', function(){
+       // layer.alert('只想简单的提示');
+        //捕获页
+
+      layer.open({
+            type: 1,
+            shade: false,
+            title: false, //不显示标题
+            area:"500px",
+            content:$("#myTest"), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+            cancel: function(){
+                layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', {time: 5000, icon:6});
+            }
+        });
+
+    });
+
+    $('#test4').on('click', function(){
+        layer.confirm('is not?', {icon: 3, title:'提示'}, function(index){
+            //do something
+            layer.alert('只想简单的提示');
+            //layer.close(index);
+        });
+    });
+
+    $('#test5').on('click', function(){
+        layer.open({
+            title: '在线调试',
+            content: '可以填写任意的layer代码'
+        });
+    });
+
+    $('#test6').on('click', function(){
+        layer.prompt({
+            formType: 2,//输入框类型，支持0（文本）默认1（密码）2（多行文本）
+            title: '请输入值',
+            value: '初始值',//初始时的值，默认空字符
+            area: ['800px', '350px'], //自定义文本域宽高
+            maxlength: 500, //可输入文本的最大长度，默认500
+        }, function(value, index, elem){//value 表单值  index 索引  elem 表单元素
+            alert(value); //得到value
+            alert(index); //得到index   1
+            console.log(elem[0]); //得到elem
+            layer.close(index);//关闭对话框
+        });
+    });
+
+
+//定义模块1
+   layui.define(function(exports){
+       //do something
+
+       exports('demo', function(){
+           alert('Hello World2!');
+       });
+   });
+    //layui.demo();
+
+   //定义模块2
+   layui.define(function(exports){
+       var obj = {
+           hello: function(str){
+               alert('Hello '+ (str||'test'));
+           },
+       };
+
+       //输出test接口
+       exports('test', obj);
+   });
+ //  layui.test.hello('World!'); //弹出Hello World!
+
+   //图片懒加载
+   layui.use('flow',function(){
+       var flow = layui.flow;
+       //当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
+       flow.lazyimg();
+   });
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .myfocusNav {
+            margin-top: 5px;
+            padding-left: 0;
+            list-style: none;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .myfocusNav:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .myfocusNav li {
+            float: left;
+            width: 16.6%;
+        }
+
+        .myfocusNav li a {
+            line-height: 30px;
+            height: 30px;
+            width: 100%; /*179px  223px*/
+            color: #000;
+            text-align: center;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .myfocusNav>li.active>a,
+        .myfocusNav>li>a:hover {
+            /*菜单选项被选中的颜色和鼠标移上去的背景颜色及字体颜色*/
+            text-decoration: none;
+            color: #5FA0EA;
+            border-bottom: 1px solid #5FA0EA;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1>组件——导航(标签页)<a href="http://www.runoob.com/bootstrap/bootstrap-tab-plugin.html" target="_blank">参考文献</a></h1>
+<!--我关注的标签页：tab页-->
+<ul class="myfocusNav" id="myfocusNav">
+    <!--<li><a data-toggle="tab" href="#vistorReport" id="">访客报告</a></li>
+    <li><a data-toggle="tab" href="#notice" id="">公告</a></li>
+    <li><a data-toggle="tab" href="#legworkSign" id="">外勤签到</a></li>
+    <li><a data-toggle="tab" href="#task" id="">任务</a></li>
+    <li><a data-toggle="tab" href="#approval" id="">审批</a></li>
+    <li><a data-toggle="tab" href="#share" id="">分享</a></li>
+    <li><a data-toggle="tab" href="#sixThing" id="">六件事</a></li>
+    <li><a data-toggle="tab" href="#businessReq" id="">业务需求</a></li>
+    <li><a data-toggle="tab" href="#logRecord" id="">日志</a></li>-->
+</ul>
+<!--我关注的标签页：tab内容页-->
+<div class="tab-content">
+    <div class="tab-pane tabContent" id=""></div>
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    var itemsObject=[
+        {"ModuleCode":1,"ModuleName":"a"},
+        {"ModuleCode":2,"ModuleName":"b"},
+        {"ModuleCode":3,"ModuleName":"c"},
+        {"ModuleCode":4,"ModuleName":"d"},
+        {"ModuleCode":5,"ModuleName":"e"},
+        {"ModuleCode":6,"ModuleName":"f"},
+    ];
+    var htm="";
+    $.each(itemsObject, function (i, v) {
+        htm+='<li><a data-toggle="tab" href="#'+v.ModuleCode+"_"+v.ModuleName+'">'+v.ModuleName+'</a></li>'
+    })
+    $("#myfocusNav").append(htm);
+
+
+    $('#myfocusNav a').click(function(e) {
+        e.preventDefault();
+        var tabID=$(this).attr("href").slice(1);//取标签页ID
+        $('.tabContent').attr("id",tabID).text(tabID);//设标签内容页ID
+        $(this).tab('show');//触发标签页和对应的标签内容页
+    })
+
+    //$('#myfocusNav a:first').tab('show')//默认触发第一个标签页和对应的标签内容页   ---标签内容页无显示
+    $('#myfocusNav a:first').click();//默认触发第一个标签页和对应的标签内容页   ---标签内容页有显示
+</script>
+</body>
+</html>

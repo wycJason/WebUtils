@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+  <style>
+    body {
+      /*margin-top: 50px;;*/
+      margin-bottom: 50px;
+      height: 5000px;
+    }
+  </style>
+</head>
+<body>
+<!--相对定位在顶部的导航条-->
+<div class="navbar navbar-default">
+  <div class="container">
+    <!--导航条头部，包含商标+汉堡包-->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img src="img/logo.png" style="margin-top:-8px;">
+      </a>
+      <a data-toggle="collapse" href="#my-menu" class="navbar-toggle" >
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+    </div>
+
+    <!--导航条折叠部分，包含菜单、表单、文字...-->
+    <div id="my-menu" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        <li class="active"><a href="#">News</a></li>
+        <li><a href="#">Product</a></li>
+      </ul>
+
+      <a class="navbar-link navbar-text navbar-right" href="#">注册</a>
+      <span class="navbar-text navbar-right">|</span>
+      <a class="navbar-btn navbar-right btn btn-success" href="#">登录</a>
+      <!--在导航条中添加一个搜索表单-->
+      <form action="#" class="navbar-form navbar-right">
+        <div class="form-group has-feedback">
+          <label class="sr-only" for="kw">请输入搜索关键字</label>
+          <input class="form-control" id="kw" placeholder="请输入搜索关键字">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h1>响应式导航条的写法</h1>
+  <p class="text-justify"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto blanditiis consequuntur corporis dolore ea fugiat laudantium modi ratione tempore? Alias aliquid explicabo facere, hic inventore nesciunt officia ratione tempora.</span><span>At ducimus iure necessitatibus qui tenetur. Cum ducimus expedita inventore mollitia qui quis vero! Accusantium deleniti est itaque nulla rerum! Ad, explicabo fugit laborum laudantium magnam necessitatibus totam velit veritatis.</span><span>Ab, ad, consequuntur cupiditate dignissimos dolorum impedit itaque maxime minima neque officia perferendis possimus quam temporibus voluptas voluptatibus? Ab atque autem dolor error eveniet, impedit nihil obcaecati perferendis sed vel?</span><span>Amet blanditiis in ipsam? Alias aliquid amet, cum delectus esse est illo magnam molestias mollitia natus, perspiciatis quod saepe sequi soluta tempora ut voluptatem! Accusamus eaque non porro provident veritatis?</span><span>Accusantium aliquam consectetur, cum distinctio dolores doloribus nemo praesentium quia tenetur voluptas. Accusantium aliquam, animi at beatae blanditiis eos eum facilis illum in iste odit perspiciatis placeat quasi, quidem sed?</span><span>Deleniti, dolore fugit hic iusto nostrum qui ut veniam voluptate! Aliquam architecto asperiores consequuntur, culpa debitis distinctio facere fugit ipsam iste non odio qui quibusdam repudiandae sequi sunt vel, voluptates!</span><span>A architecto, dolorum iste porro qui quisquam quod? A amet assumenda atque cupiditate debitis et expedita inventore iusto laboriosam libero quae quisquam recusandae repellat repellendus reprehenderit repudiandae tempore velit, veniam!</span><span>Animi autem consectetur culpa, eaque earum eius enim exercitationem, in laboriosam modi nisi omnis perspiciatis praesentium quibusdam quidem quisquam saepe tempora, vel veniam veritatis. Eum in officia optio quasi voluptatibus.</span><span>Deserunt dicta illo obcaecati quia repellendus. Ab accusamus consequuntur dicta dignissimos distinctio, dolorem ea eum facere facilis in laborum magni nulla numquam possimus quo repellendus sit, sunt veritatis voluptate voluptatem.</span><span>Ab aut commodi, deserunt eaque ex expedita, laboriosam porro possimus quisquam, quos sed veritatis. Aperiam at debitis, deleniti dignissimos earum est inventore, magnam magni obcaecati quas quos, reprehenderit similique voluptates.</span></p>
+</div>
+
+<!--固定定位在底部的导航条-->
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container">
+    <!--导航条头部，包含商标+汉堡包-->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">TARENA</a>
+      <a class="navbar-toggle" href="#">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+    </div>
+    <!--导航条折叠部分，包含菜单、表单、文字...-->
+    <div class="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        <li class="active"><a href="#">News</a></li>
+        <li><a href="#">Product</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+ABCD
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+ /* (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s)
+  })();*/
+</script>
+</body>
+</html>

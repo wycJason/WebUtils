@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <!--当用在组件上时，v-model 则会这样：-->
+    <custom-input v-bind:value="searchText" v-on:input="searchText = $event"></custom-input>
+
+    <!--现在 v-model 就应该可以在这个组件上完美地工作起来了：-->
+    <custom-input v-model="searchText"></custom-input>
+
+    <!--以上两者使用起来是一样的-->
+
+    <base-checkbox v-model="lovingVue"></base-checkbox>
+
+    <!--通过插槽分发内容-->
+    <alert-box>Something bad happened.</alert-box>
+    <alert-box></alert-box>
+
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+<script>
+    // 通过插槽分发内容
+    Vue.component('alert-box', {
+        template: `
+                    <div>
+                      <strong>Error!</strong>
+                      <slot></slot>
+                    </div>
+                  `
+    })
+
+
+    Vue.component('custom-input', {
+        props: ['value'],
+        template: `
+                    <input
+                     type="text"
+                      v-bind:value="value"
+                      v-on:input="$emit('input', $event.target.value)"
+                    >
+                  `
+    })
+
+    //注意你仍然需要在组件的 props 选项里声明 checked 这个 prop。
+    Vue.component('base-checkbox', {
+        model: {
+            prop: 'checked',
+            event: 'change'
+        },
+        props: {
+            checked: Boolean
+        },
+        template: `
+                    <input
+                      type="checkbox"
+                      v-bind:checked="checked"
+                      v-on:change="$emit('change', $event.target.checked)"
+                    >
+                  `
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            searchText:"搜索文本",
+            lovingVue:true
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>jQuery插件——collapse</h1>
+  <h3>折叠插件使用方法本身很简单</h3>
+  <a data-toggle="collapse" href="#my-div">展开/收起</a>
+  <!-- <button data-toggle="collapse" data-target="#my-div">展开/收起</button>-->
+  <hr/>
+  <div class="collapse in" id="my-div">
+    <div class="well">
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium at beatae ea eius esse exercitationem explicabo, inventore iusto magnam minima molestiae nam numquam rem sequi tempora ullam vel, veniam!</span><span>Aspernatur deleniti dolor dolorum id officiis qui quis quo. Consectetur delectus deleniti dolorum eum eveniet, harum impedit laudantium libero modi molestiae mollitia nam natus perferendis, similique tempora tempore, voluptatem! Praesentium?</span><span>Blanditiis consequuntur dolore dolores error esse, fugit hic ipsa ipsum, iste libero maxime minus odio pariatur, quae quaerat qui quo reprehenderit sit soluta velit? Ab et neque non qui voluptas.</span><span>Accusamus cupiditate dolores et molestias odio quaerat, rerum? Aperiam at dolor explicabo fugiat illo. A ad alias assumenda et hic, illum inventore odio perferendis reiciendis rerum sit tempore, temporibus vitae!</span><span>Autem blanditiis consequatur, corporis distinctio doloribus ea eius error esse id itaque labore laudantium minus nam necessitatibus, nihil quaerat quo tenetur voluptas. Ad assumenda deleniti dolor, dolore eveniet rerum suscipit?</span></p>
+    </div>
+  </div>
+
+
+
+
+  <h3>使用折叠插件+面板组件实现手风琴</h3>
+  <div id="accordion">
+    <div class="panel">
+        <a data-toggle="collapse" data-parent="#accordion"  href="#sgz">三国志简介</a><!--触发元素-->
+        <div id="sgz" class="collapse in "><!--被触发元素-->
+          <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium eos fuga ipsum iusto qui ratione, unde veniam? Aperiam asperiores aspernatur illo iure minima nulla possimus, quia recusandae repellat, rerum sint.</span><span>Et eveniet incidunt officia? Assumenda commodi cum dolor dolorem dolorum enim illo illum iusto laborum molestias neque, qui reiciendis reprehenderit suscipit veniam? Animi, delectus dicta magnam maiores obcaecati quis veritatis.</span><span>Accusantium assumenda at corporis dolor, dolore error esse incidunt ipsum modi, neque officiis possimus quam rem. Ad cum deleniti illo ipsa iusto laudantium maxime neque quibusdam, rem repellendus soluta temporibus!</span></p>
+        </div>
+    </div>
+
+    <div class="panel">
+      <a data-toggle="collapse"  data-parent="#accordion" href="#hlm">红楼梦简介</a>
+      <div class="collapse" id="hlm">
+          <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium eos fuga ipsum iusto qui ratione, unde veniam? Aperiam asperiores aspernatur illo iure minima nulla possimus, quia recusandae repellat, rerum sint.</span><span>Et eveniet incidunt officia? Assumenda commodi cum dolor dolorem dolorum enim illo illum iusto laborum molestias neque, qui reiciendis reprehenderit suscipit veniam? Animi, delectus dicta magnam maiores obcaecati quis veritatis.</span><span>Accusantium assumenda at corporis dolor, dolore error esse incidunt ipsum modi, neque officiis possimus quam rem. Ad cum deleniti illo ipsa iusto laudantium maxime neque quibusdam, rem repellendus soluta temporibus!</span></p>
+      </div>
+    </div>
+
+    <div class="panel">
+        <a data-toggle="collapse"  data-parent="#accordion" href="#xyj">西游记简介</a>
+        <div class="collapse" id="xyj">
+            <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium eos fuga ipsum iusto qui ratione, unde veniam? Aperiam asperiores aspernatur illo iure minima nulla possimus, quia recusandae repellat, rerum sint.</span><span>Et eveniet incidunt officia? Assumenda commodi cum dolor dolorem dolorum enim illo illum iusto laborum molestias neque, qui reiciendis reprehenderit suscipit veniam? Animi, delectus dicta magnam maiores obcaecati quis veritatis.</span><span>Accusantium assumenda at corporis dolor, dolore error esse incidunt ipsum modi, neque officiis possimus quam rem. Ad cum deleniti illo ipsa iusto laudantium maxime neque quibusdam, rem repellendus soluta temporibus!</span></p>
+        </div>
+    </div>
+  </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+ /* (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s)
+  })();*/
+</script>
+</body>
+</html>

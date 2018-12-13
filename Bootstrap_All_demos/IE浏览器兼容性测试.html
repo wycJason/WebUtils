@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .IETest{
+            color: green;
+        }
+    </style>
+   <!--[if IE]>
+        <style>
+            .IETest{
+                color: red;
+            }
+        </style>
+    <![endif]-->
+
+    <!--
+    看到这里只可能会觉得 [if !IE] 这样不就可以了吗？
+    如果你这样想就错了，因为非ie根本不会识别ie的条件注释，所以就直接全部是注释了，
+    ok，来看看正确的写法吧
+    关键是条件注释后头的 <–-> 在IE中被当作内部注释，而在非IE浏览器中会闭合之前的注释，从而起到区分非IE浏览器的作用，一般常用<!–->。
+    -->
+</head>
+<body>
+    <div class="IETest">浏览器兼容性测试</div>
+
+    <!--[if IE]>
+        <div>只在IE下显示</div>
+    <![endif]-->
+
+    <!--[if !IE]><!-->
+        <div>只在非IE下显示</div>
+    <![endif]-->
+
+    <!--[if IE]>只有IE6,7,8,9浏览器显示(IE10标准模 <br> <![endif]-->
+    <!--[if !IE]><!-->只有非IE浏览器显示(不包括IE10)<br><![endif]-->
+    <!--[if IE 9]>IE9浏览器显示<br><![endif]-->
+    <!--[if IE 8]>IE8浏览器显示<br><![endif]-->
+    <!--[if IE 7]>IE7浏览器显示<br><![endif]-->
+    <!--[if IE 6]>IE6浏览器显示<br><![endif]-->
+    <!--[if lt IE 10]>IE10以下版本浏览器显示(不包括IE10)<br><![endif]-->
+    <!--[if lte IE 9]>IE9及IE9以下版本浏览器显示(包括IE9)<br><![endif]-->
+    <!--[if gt IE 6]>IE6以上版本浏览器显示(不含IE6)<br><![endif]-->
+    <!--[if gte IE 7]>IE7及IE7以上版本浏览器显示(包含IE7)<br><![endif]-->
+    <script>
+        /*ie10及以上不支持ie浏览器的判断了，因为ie11已经不支持document.all了，下面是支持ie11的版本的，当然ie6-8也是支持的*/
+        function isIE() { //ie?
+            if (!!window.ActiveXObject || "ActiveXObject" in window)
+                return true;
+            else
+                return false;
+        }
+
+    </script>
+</body>
+</html>

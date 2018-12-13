@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>bootstrap-table编辑功能</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
+    <link href="bootstrap-table-x-editable-develop/dist/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h1><a href="https://blog.csdn.net/wzj0808/article/details/59104035" target="_blank">bootstrap-table使用总结</a></h1>
+    <h1><a href="http://vitalets.github.io/x-editable/docs.html#editable" target="_blank">官方文档</a></h1>
+    <table id="table"></table>
+    <br />
+    <a href="#" id="test">superuser</a>
+    <div>
+        <span>Username:</span>
+        <a href="#" id="username" data-type="text" data-placement="right" data-title="Enter username">superuser</a>
+    </div>
+    <div>
+        <span>Status:</span>
+        <a href="#" id="status"></a>
+    </div>
+    <br/>
+    <a href="#" id="comments" data-type="textarea" data-pk="1">awesome comment!</a>
+    <br/>
+    <a href="#" id="dob" data-type="date" data-pk="1"  data-title="Select date">15/05/1984</a>
+    <br/>
+    <a href="#" id="options" data-type="checklist" data-pk="1"  data-title="Select options"></a>
+</div>
+
+
+<script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+<script src="bootstrap-table-x-editable-develop/dist/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+<script>
+    $('#table').bootstrapTable({
+        columns: [{
+            field: 'id',
+            title: 'Item ID'
+        }, {
+            field: 'name',
+            title: 'Item Name'
+        }, {
+            field: 'price',
+            title: 'Item Price'
+        }],
+        data: [{
+            id: 1,
+            name: 'Item 1',
+            price: '$1'
+        }, {
+            id: 2,
+            name: 'Item 2',
+            price: '$2'
+        }]
+    });
+
+
+
+    $('#options').editable({
+        value: [1,2, 3],
+        source: [
+            {value: 1, text: 'option1'},
+            {value: 2, text: 'option2'},
+            {value: 3, text: 'option3'}
+        ]
+    });
+    $('#dob').editable({
+        format: 'yyyy-mm-dd',
+        viewformat: 'dd/mm/yyyy',
+        datepicker: {
+            weekStart: 1
+        },
+        placement: 'right',
+    });
+    //$.fn.editable.defaults.mode = 'inline';
+    $('#test').editable({
+        type: 'text',
+        pk: 1,
+        placement: 'right',
+        //url: '/post',
+        title: 'Enter username'
+    });
+
+    //make username editable
+    $('#username').editable();
+
+    //make status editable
+    $('#status').editable({
+        type: 'select',
+        title: 'Select status',
+        placement: 'right',
+        value: 3,
+        source: [
+            {value: 1, text: 'status 1'},
+            {value: 2, text: 'status 2'},
+            {value: 3, text: 'status 3'}
+        ]
+        /*
+         //uncomment these lines to send data on server
+         ,pk: 1
+         ,url: '/post'
+         */
+    });
+    $('#comments').editable({
+        //url: '/post',
+        title: 'Enter comments',
+        rows: 10,
+        placement: 'right',
+    });
+</script>
+</body>
+</html>

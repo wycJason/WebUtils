@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<canvas id="myCanvas" width="800" height="800"></canvas>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //https://developer.mozilla.org/zh-CN/docs/Web/API/WindowOrWorkerGlobalScope/createImageBitmap
+    //createImageBitmap(image, sx, sy, sw, sh[, options]).then(function(response) { ... });
+    // 图像被剪裁成自（sx，sy）且宽度为sw,高度为sh的像素的矩形。
+    var canvas = document.getElementById('myCanvas'),
+            ctx = canvas.getContext('2d'),
+            image = new Image();
+            image.src = 'Images/girls.jpg';
+    image.onload = function() {
+        Promise.all([
+            createImageBitmap(this, 0, 0, 32, 32),
+            createImageBitmap(this, 32, 0, 32, 32)
+        ]).then(function(sprites) {
+            ctx.drawImage(sprites[0], 0, 0);
+            ctx.drawImage(sprites[1], 32, 32);
+        });
+    }
+</script>
+</body>
+</html>

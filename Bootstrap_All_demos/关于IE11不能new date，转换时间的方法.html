@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //格式化日期
+    function FormatDate(strTime){ //这里的 strTime = "2017-03-31 11:42:00";
+        //  IE11里面不能直接转换带"-",必须先替换成"/"
+        strTime = strTime.replace(/-/g,"/");
+        var date = new Date(strTime); //这里也可以写成 Date.parse(strTime);
+        return date.getFullYear()+"-"+FormatNum(date.getMonth()+1)+"-"+FormatNum(date.getDate());
+    }
+    //格式化星期和时间
+    function FormatTime(strTime){
+        strTime = strTime.replace(/-/g,"/");
+        var date = new Date(strTime);
+        var day=null;
+        switch (date.getDay())
+        {case 0:day="天";break;case 1:day="一";break;case 2:day="二";break;case 3: day="三";break;case 4:day="四";break;case 5: day="五";break;case 6:day="六";break;}
+        return "星期"+day+"   "+FormatNum(date.getHours())+":"+FormatNum(date.getMinutes())+":"+FormatNum(date.getSeconds());
+    }
+    //格式化时间，如果不足2位，前面补0
+    function FormatNum(strTime) {
+        if(strTime<10){return "0"+strTime}else{return strTime}
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+HTML {
+	BACKGROUND-COLOR: #d6e0f5
+}
+BODY {
+	/*BORDER-RIGHT: #ccc 5px solid;
+	PADDING-RIGHT: 15px;
+	BORDER-TOP: #ccc 5px solid;
+	PADDING-LEFT: 15px;*/
+	FONT-SIZE: 13px;
+	/*PADDING-BOTTOM: 0px;
+	BORDER-LEFT: #ccc 5px solid;
+	WIDTH: 640px; COLOR: #444;
+	PADDING-TOP: 0px;
+	BORDER-BOTTOM: #ccc 5px solid;
+	FONT-FAMILY: arial;
+	BACKGROUND-COLOR: #fff*/
+}
+H2 {
+	MARGIN: 25px 0px 5px
+}
+H3 {
+	MARGIN-BOTTOM: 2px
+}
+P {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; MARGIN: 5px 0px; PADDING-TOP: 10px
+}
+PRE {
+	BORDER-RIGHT: #ddd 1px dashed; BORDER-TOP: #ddd 1px dashed; MARGIN-LEFT: 0px; BORDER-LEFT: #ddd 1px dashed; BORDER-BOTTOM: #ddd 1px dashed; BACKGROUND-COLOR: #eef
+}
+LI {
+	
+}
+SPAN.demo1 {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; MARGIN-RIGHT: 20px; PADDING-TOP: 5px; BACKGROUND-COLOR: yellow
+}
+TABLE TH {
+	PADDING-RIGHT: 5px; VERTICAL-ALIGN: top; TEXT-ALIGN: right
+}
+DL {
+	MARGIN-LEFT: 15px
+}
+DT {
+	FONT-WEIGHT: bold
+}

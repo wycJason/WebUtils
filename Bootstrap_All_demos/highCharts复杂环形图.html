@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Template</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="donutChart" style="width: 1250px; height: 550px; margin: 0 auto"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/highcharts.js"></script>
+<script>
+    $(function(){
+        var colors = Highcharts.getOptions().colors,
+                categories = ['花', '树', '鱼', '鸟', '鲸'],
+                name = 'Browser brands',
+                data = [{
+                    y: 55.11,
+                    color: colors[0],
+                    drilldown: {
+                        name: '花的种类',
+                        categories: ['梅花', '桃花', '梨花', '樱花'],
+                        data: [13.6, 7.35, 33.06, 2.81],
+                        color: colors[0]
+                    }
+                }, {
+                    y: 21.63,
+                    color: colors[1],
+                    drilldown: {
+                        name: '树的种类',
+                        categories: ['樟树', '桉树', '茶树', '桃树', '梨树'],
+                        data: [15.20, 3.83, 18.58, 13.12, 45.43],
+                        color: colors[1]
+                    }
+                }, {
+                    y: 11.94,
+                    color: colors[2],
+                    drilldown: {
+                        name: '鱼的种类',
+                        categories: ['鲫鱼', '鲢鱼', '草鱼', '青鱼', '鲦鱼','鳙鱼', '鲥鱼'],
+                        data: [41.12, 10.19, 11.12, 14.36, 21.32, 9.91, 17.50],
+                        color: colors[2]
+                    }
+                }, {
+                    y: 7.15,
+                    color: colors[3],
+                    drilldown: {
+                        name: '鸟的种类',
+                        categories: ['松鸡', '卷尾', '鹪鹩', '岩鹨', '山鹑','画眉', '金鸡'],
+                        data: [14.55, 19.42, 16.23, 16.21, 18.20, 23.19, 10.14],
+                        color: colors[3]
+                    }
+                }, {
+                    y: 2.14,
+                    color: colors[4],
+                    drilldown: {
+                        name: '鲸的种类',
+                        categories: ['须鲸', '蓝鲸', '虎鲸'],
+                        data: [ 24.12, 18.37, 32.65],
+                        color: colors[4]
+                    }
+                }];
+
+
+        // 构建物种数据
+        var speciesData = [];
+        var speData = [];
+        for (var i = 0; i < data.length; i++) {
+
+            // 添加物种数据
+            speciesData.push({
+                name: categories[i],
+                y: data[i].y,
+                color: data[i].color
+            });
+
+            for (var j = 0; j < data[i].drilldown.data.length; j++) {
+                var brightness = 0.4 - (j / data[i].drilldown.data.length) / 5 ;
+                speData.push({
+                    name: data[i].drilldown.categories[j],
+                    y: data[i].drilldown.data[j],
+                    color: Highcharts.Color(data[i].color).brighten(brightness).get()
+                });
+            }
+        }
+
+        // 创建圆环图
+        $('#donutChart').highcharts({
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: '物种数量及其比例'
+            },
+            yAxis: {
+                title: {
+                    text: '比例'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    shadow: true,
+                    center: ['50%', '50%']
+                }
+            },
+            tooltip: {
+                valueSuffix: '%'
+            },
+            series: [{
+                name: '物种',
+                data: speciesData,
+                size: '70%',
+                dataLabels: {
+                    formatter: function() {
+                        return this.y > 5 ? this.point.name : null;
+                    },
+                    color: 'white',
+                    distance: -30
+                }
+            }, {
+                name: '数量',
+                data: speData,
+                size: '80%',
+                innerSize: '80%',
+                dataLabels: {
+                    formatter: function() {
+                        return this.y > 1 ? '<b>'+ this.point.name +':</b> '+ this.y +'%'  : null;
+                    }
+                }
+            }]
+        });
+    });
+</script>
+</body>
+</html>

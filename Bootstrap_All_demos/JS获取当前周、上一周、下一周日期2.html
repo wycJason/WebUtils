@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        table  tr  td {
+            width: 100px;;
+            border: 1px solid #000;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<button id="last-week">上一周</button>
+<button id="next-week">下一周</button>
+<table id="monitor">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    window.onload = function(){
+        function formatDate(date) {
+            var year = date.getFullYear() + '年';
+            var month = (date.getMonth() + 1) + '月';
+            var day = date.getDate() + '日';
+            return year + month + day
+        };
+        //修改分量：日
+        function addDate(date, n) {
+            date.setDate(date.getDate() + n);
+            return date;
+        };
+
+        //原始版：n=0为当前周的周一或周日对应的日期，n=-1表示上周的周一或周日，n=1表示下周的周一或周日
+       /* function curMonday(date,n){
+            var lastNextWeek=7*n;
+            var week = date.getDay()-1;
+            date = addDate(date,week*-1);
+
+            date=addDate(date,lastNextWeek);
+            curFirstDate=formatDate(date);
+            console.log(curFirstDate);
+        }
+
+        function curSunday(date,n){
+            var lastNextWeek=7*n;
+            var week = date.getDay()-1;
+            date = addDate(date,week*-1);
+
+            date=addDate(date,6);
+            date==addDate(date,lastNextWeek);
+            var curLastDate=formatDate(date);
+            console.log(curLastDate);
+        }*/
+
+//压缩版：n=0为当前周的周一或周日对应的日期，n=-1表示上周的周一或周日，n=1表示下周的周一或周日
+        function curMonday(date,n){
+            var lastNextWeek=7*n;
+            var week = date.getDay()-1;
+            date=addDate(addDate(date,week*-1),lastNextWeek);
+            curFirstDate=formatDate(date);
+            console.log(curFirstDate);
+        }
+
+        function curSunday(date,n){
+            var lastNextWeek=7*n;
+            var week = date.getDay()-1;
+            date==addDate(addDate(addDate(date,week*-1),6),lastNextWeek);
+            var curLastDate=formatDate(date);
+            console.log(curLastDate);
+        }
+
+
+        function curMonthFirstDay(){
+            var firstDate = new Date();
+            firstDate.setDate(1); //当月第一天
+            firstDate=formatDate(firstDate);
+            console.log(firstDate);
+        }
+
+        function curMonthLastDay(){
+            var endDate = new Date();
+            endDate.setMonth(endDate.getMonth()+1);//需要修正: 计算机中的月份，比现实中的月份少1
+            endDate.setDate(0); //当月最后一天
+            endDate=formatDate(endDate);
+            console.log(endDate);
+        }
+
+        function curDate() {
+            date=new Date();
+            var year = date.getFullYear() + '年';
+            var month = (date.getMonth() + 1) + '月';
+            var day = date.getDate() + '日';
+            console.log(year + month + day);
+            return year + month + day
+        };
+
+        curMonday(new Date(),-1);
+        curSunday(new Date(),-1);
+        curMonthFirstDay();
+        curMonthLastDay();
+        curDate();
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        a{
+            display:inline-block;
+            position:relative;
+            overflow:hidden;
+        }
+        a:hover{
+            cursor:pointer;
+        }
+        .fileInput{
+            position:absolute;
+            right:0;
+            top:0;
+            font-size:22px;
+            opacity:0;
+            filter:alpha(opacity=0);
+        }
+    </style>
+</head>
+<body style="padding: 15px">
+<input type="file"/>
+<a href="javascript:void (0)" class="btn btn-success">选择文件
+    <input class="fileInput" type="file"/>
+</a>
+<!--参考网址：http://www.cnblogs.com/jason-liu-blogs/archive/2013/06/13/3133377.html-->
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+
+</script>
+</body>
+</html>

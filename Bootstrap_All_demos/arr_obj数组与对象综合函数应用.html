@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //数组arr中的每一个元素都是obj对象中的一个属性；数组中的元素要根据对象的属性来自定义；
+    var obj={
+            "姓名":"王愿超",
+            "年龄":"28",
+            "性别":"男",
+            "爱好":"思考",
+            "手机":"苹果手机5"
+            };
+      var arr=["姓名","年龄","性别","爱好","手机"];
+
+    function  myArrObject(arr, obj) {
+        $.each(arr, function (i, v) {
+            console.log(obj[v]);
+        })
+    };
+    myArrObject(arr, obj);
+    console.log("----------------------------------------------------------------")
+    //for in 循环遍历对象中的每一个属性或方法并储存在key中
+    for(var key in obj){
+        console.log(obj[key]);
+    }
+    console.log("----------------------------------------------------------------")
+    //循环遍历对象中的每一个属性和值，分别存储在k和v中
+    $.each(obj,function(k,v){
+        console.log(k+":"+v);
+    })
+    console.log("----------------------------------------------------------------")
+</script>
+</body>
+</html>

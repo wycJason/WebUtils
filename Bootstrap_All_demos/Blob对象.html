@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //https://www.cnblogs.com/hhhyaaon/p/5928152.html
+    function createDownload(fileName, content){
+        var blob = new Blob([content]);
+        var link = document.createElement("a");
+        link.innerHTML = fileName;
+        link.download = fileName;
+        link.href = URL.createObjectURL(blob);//https://developer.mozilla.org/zh-CN/docs/Web/API/URL/createObjectURL
+        document.getElementsByTagName("body")[0].appendChild(link);
+    }
+    createDownload("download.txt","download file");
+</script>
+</body>
+</html>

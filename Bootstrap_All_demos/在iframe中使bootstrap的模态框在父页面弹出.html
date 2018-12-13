@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<iframe  name="iframe1" src="ifram_Src.html" width="500" height="500"></iframe>
+
+<!--第一种情况-->
+<div class="modal fade" id="ajax" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+
+<!--第二种情况-->
+<div class="modal fade" id="atdMember" data-backdrop= "static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" data-dismiss="modal">&times;</span>
+                <span style="font-size:14px;font-weight:bold;">标题</span>
+            </div>
+            <div class="modal-body">正文主体</div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" class="btn btn-default" data-dismiss="modal">取消</a>
+                <a href="javascript:void(0)" class="btn btn-info">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    /*第一种情况*/
+    function modalOut(url) {
+        debugger;
+        $("#ajax").modal({
+            remote: url
+        })
+    }
+
+    /*第二种情况*/
+    function modalShow() {
+        $("#atdMember").modal("show");
+    }
+</script>
+</body>
+</html>

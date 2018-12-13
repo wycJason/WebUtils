@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<input type="text" id="txt1" value="abcde" onclick="getTxt1CursorPosition()">
+<textarea id="a" cols="30" rows="10">1234567890</textarea>
+<p>选择这段文字</p>
+<button type="button" onclick="alert(getSelectText())">查看选中文字</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    //获取光标位置 input元素
+    function getTxt1CursorPosition(){
+        var oTxt1 = document.getElementById("txt1");
+        var cursurPosition=-1;
+        if(oTxt1.selectionStart||oTxt1.selectionStart==0){//非IE浏览器
+            cursurPosition= oTxt1.selectionStart;
+        }else{//IE
+            var range = document.selection.createRange();
+            range.moveStart("character",oTxt1.value.length);
+            cursurPosition=range.text.length;
+        }
+        alert(cursurPosition);
+    }
+
+    //获取编辑区域光标位置-推荐使用
+    function getCursortPosition(obj) {
+        var cursorIndex = -1;
+        if (document.selection) {  // IE Support 8+
+            var range = document.selection.createRange();
+            range.moveStart('character', obj.value.length);
+            cursorIndex = range.text.length;
+        } else if (obj.selectionStart || obj.selectionStart==0) {// another support
+            cursorIndex = obj.selectionStart;
+        }
+        alert(cursorIndex);
+         return cursorIndex;
+    }
+
+    $("#a").click(function(){
+        getCursortPosition(this)
+    })
+
+
+    //js如何获取用户用鼠标选取了哪些文字？
+    function getSelectText(){
+        try{//chrome
+            return window.getSelection().toString();
+        }catch(e){//IE8+
+            return document.selection.createRange().text;
+        }
+    }
+</script>
+</body>
+</html>

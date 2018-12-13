@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<a href="http://blog.csdn.net/genius_yym/article/details/53945766">JS函数递归</a>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    function fun()
+    {
+        // 自己调用自己，称为递归调用
+        console.log("1")
+        fun();
+        console.log("2");
+    }
+   // fun();
+
+    // 用递归 来求 5 的阶乘
+    // n! = n * (n-1)!
+
+    // 定义一个函数，用于求 n 的阶乘
+    function func(n)
+    {
+        if (n == 1)
+        {
+            return 1;
+        }
+
+        // func(n-1) 因为传递的参数是 n-1,那么就是求 (n-1) 的阶乘
+        return n * func(n-1);
+    }
+    console.log(     func(5)   );
+</script>
+</body>
+</html>

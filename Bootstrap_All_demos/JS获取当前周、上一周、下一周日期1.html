@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        table  tr  td {
+            width: 100px;;
+            border: 1px solid #000;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<button id="last-week">上一周</button>
+<button id="next-week">下一周</button>
+<table id="monitor">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    window.onload = function(){
+        var cells = document.getElementById('monitor').getElementsByTagName('td');
+        var clen = cells.length;
+        var currentFirstDate;//当前周的开始日期如2017.6.26-2017-7-2（周一至周日）
+        var currentLasttDate;//当前周的结束日期如2017.6.26-2017-7-2（周一至周日）
+        var formatDate = function(date){
+            var year = date.getFullYear()+'年';
+            var month = (date.getMonth()+1)+'月';
+            var day = date.getDate()+'日';
+            var week = '('+['星期天','星期一','星期二','星期三','星期四','星期五','星期六'][date.getDay()]+')';
+
+            return year+month+day+' '+week;
+        };
+        var addDate= function(date,n){
+            date.setDate(date.getDate()+n);
+            return date;
+        };
+        var setDate = function(date){debugger;
+            var week = date.getDay()-1;
+            date = addDate(date,week*-1);
+            currentFirstDate = new Date(date);
+
+            for(var i = 0;i<clen;i++){
+                cells[i].innerHTML = formatDate(i==0 ? date : addDate(date,1));
+            }
+        };
+        document.getElementById('last-week').onclick = function(){
+            setDate(addDate(currentFirstDate,-7));
+        };
+        document.getElementById('next-week').onclick = function(){
+            setDate(addDate(currentFirstDate,7));
+        };
+        setDate(new Date());
+    }
+</script>
+</body>
+</html>

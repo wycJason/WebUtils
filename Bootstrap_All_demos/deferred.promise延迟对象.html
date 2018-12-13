@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>延迟对象</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //https://www.cnblogs.com/webFrontDev/p/3265568.html
+  //https://api.jquery.com/deferred.promise/
+    // https://blog.csdn.net/ligang2585116/article/details/51589073  延迟对象
+    function asyncEvent() {
+        var dfd = jQuery.Deferred();
+
+        // Resolve after a random interval
+        setTimeout(function() {
+            dfd.resolve( "hurray" );
+        }, Math.floor( 400 + Math.random() * 2000 ) );
+
+        // Reject after a random interval
+        setTimeout(function() {
+            dfd.reject( "sorry" );
+        }, Math.floor( 400 + Math.random() * 2000 ) );
+
+        // Show a "working..." message every half-second
+        setTimeout(function working() {
+            if ( dfd.state() === "pending" ) {
+                dfd.notify( "working... " );
+                setTimeout( working, 500 );
+            }
+        }, 1 );
+        // Return the Promise so caller can't change the Deferred
+        return dfd.promise();
+    }
+
+    // Attach a done, fail, and progress handler for the asyncEvent
+    $.when( asyncEvent() ).then(
+            function( status ) {
+                alert( status + ", things are going well" );
+            },
+            function( status ) {
+                alert( status + ", you fail this time" );
+            },
+            function( status ) {
+                $( "body" ).append( status );
+            }
+    );
+
+
+    //可以多个then连续使用，此功能相当于顺序调用异步回调。
+    $.ajax({
+        url: 't2.html',
+        dataType: 'html',
+        data: {
+            d: 4
+        }
+    }).then(function(){
+        console.log('success');
+    },function(){
+        console.log('failed');
+    }).then(function(){
+        console.log('second');
+        return $.ajax({
+            url: 'jquery-1.9.1.js',
+            dataType: 'script'
+        });
+    }, function(){
+        console.log('second f');
+        return $.ajax({
+            url: 'jquery-1.9.1.js',
+            dataType: 'script'
+        });
+    }).then(function(){
+        console.log('success2');
+    },function(){
+        console.log('failed2');
+    });
+</script>
+</body>
+</html>

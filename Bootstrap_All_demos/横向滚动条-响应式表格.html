@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        .parent{
+            padding: 100px;
+            border: 1px solid #000000;
+            min-height: 250px;
+            overflow: auto;
+        }
+        .tb{
+            white-space: nowrap;/*表格还要定宽*/
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="parent">
+    <table class="table tb">
+        <thead>
+        <tr>
+            <th style="width: 100px">编号</th>
+            <th style="width: 100px">姓名</th>
+            <th style="width: 100px">住址</th>
+            <th style="width: 100px">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1001</td>
+            <td>唐牧</td>
+            <td>海淀区万寿路123号</td>
+            <td>
+                <a class="btn btn-danger btn-xs" href="#">删除</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>马丽</td>
+            <td>海淀区万寿路124号</td>
+            <td>
+                <a class="btn btn-success btn-xs" href="#">修改</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>岳寒</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-info btn-xs" href="#">详情</a>
+            </td>
+        </tr>
+        <tr>
+            <td>1004</td>
+            <td>金士顿</td>
+            <td>海淀区万寿路125号</td>
+            <td>
+                <a class="btn btn-warning btn-xs" href="#">更新</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<input id="EnquiryDescInfo_Emit" type="text"  name="" value="" style="width:588px;margin-left:14px;" />
+<ul id="EnquiryDescInfo" style="border: 1px solid #ddd;display: none">
+    <li>
+        <input type="checkbox" name="" value="" />
+        <span class="EnquiryDescInfo_item">要求现货，没有勿接单</span>
+    </li>
+    <li>
+        <input type="checkbox" name="" value="" />
+        <span class="EnquiryDescInfo_item">要求现货，没有勿接单</span>
+    </li>
+    <li>
+        <input type="checkbox" name="" value="" />
+        <span class="EnquiryDescInfo_item">要求现货，没有勿接单</span>
+    </li>
+    <li>
+        <input type="checkbox" name="" value="" />
+        <span class="EnquiryDescInfo_item">要求现货，没有勿接单</span>
+    </li>
+    <li>
+        <input type="checkbox" name="" value="" />
+        <span class="EnquiryDescInfo_item">要求现货，没有勿接单</span>
+    </li>
+    <li>
+        <input type="checkbox" name="" value="" />
+        <span class="EnquiryDescInfo_item">要求现货，没有勿接单</span>
+    </li>
+    <li>
+        <input type="checkbox" name="" value="" />
+        <span class="EnquiryDescInfo_item">要求现货，没有勿接单</span>
+    </li>
+    <li>
+        <input type="checkbox" name="" value="" />
+        <span class="EnquiryDescInfo_item">要求现货，没有勿接单</span>
+    </li>
+    <li>
+        <input type="checkbox" name="" value="" />
+        <span class="EnquiryDescInfo_item">要求现货，没有勿接单</span>
+    </li>
+</ul>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $("#EnquiryDescInfo_Emit").focus(function () {
+        $("#EnquiryDescInfo").show();
+    })
+    window.document.onclick = function (e) {
+        if (typeof (e) != undefined) {
+            if (!($(e.target).parents().is("#EnquiryDescInfo") || $(e.target).is("#EnquiryDescInfo_Emit"))) {
+                $("#EnquiryDescInfo").hide();
+            }
+        }
+    }
+</script>
+</body>
+</html>

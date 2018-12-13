@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    /**
+     * 数字格式转换成千分位
+     *@param{Object}num
+     */
+    function commafy(num){
+        if((num+"").trim()==""){
+            return"";
+        }
+        if(isNaN(num)){
+            return"";
+        }
+        num = num+"";
+        if(/^.*\..*$/.test(num)){
+            varpointIndex =num.lastIndexOf(".");
+            varintPart = num.substring(0,pointIndex);
+            varpointPart =num.substring(pointIndex+1,num.length);
+            intPart = intPart +"";
+            var re =/(-?\d+)(\d{3})/
+            while(re.test(intPart)){
+                intPart =intPart.replace(re,"$1,$2")
+            }
+            num = intPart+"."+pointPart;
+        }else{
+            num = num +"";
+            var re =/(-?\d+)(\d{3})/
+            while(re.test(num)){
+                num =num.replace(re,"$1,$2")
+            }
+        }
+        return num;
+    }
+
+    /**
+     * 去除千分位
+     *@param{Object}num
+     */
+
+    function delcommafy(num){
+        num=num.toString();
+        if((num).trim()==""){
+            return"";
+        }
+        num=num.replace(/,/gi,'');
+        return num;
+    }
+
+    console.log(commafy(789123456789),commafy("789123456789"),delcommafy("78,912,345,679"),delcommafy(78912345679));
+
+</script>
+</body>
+</html>

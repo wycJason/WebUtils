@@ -1,0 +1,6 @@
+.weui-flex {
+  display: flex;
+}
+.weui-flex__item {
+  flex: 1;
+}

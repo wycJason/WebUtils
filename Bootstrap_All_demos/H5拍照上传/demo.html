@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+		<title></title>
+		<style type="text/css">
+			#btn{
+				width:200px;
+				height:50px;
+				background:deeppink;
+				text-align:center;
+				line-height:50px;
+				margin:10px auto;
+			}
+			.album{
+				width:100%;
+				display:flex;
+				height:auto;
+				background:#999999;
+				min-height:50px;
+				justify-content:space-around;
+				flex-wrap:wrap;
+			}
+			.album>div{
+				width:24%;
+				height:auto;
+			}
+			.album>div>img{
+				width:100%;
+			}
+
+			.showLocalImg{
+				text-align: center
+			}
+			.showLocalImg img{
+				/*图片通过压缩尺寸和质量得到的大小并不受图片CSS样式宽和高的影响*/
+				max-width: 100%;
+				/*width: 100px;
+				height: 100px;*/
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type='text/javascript' src="js/cslCamera.js"></script>
+	</head>
+	<body>
+		<div id="btn">点击拍照</div>
+		<div style="display: none;" class="album"></div>
+
+		<div class="showLocalImg">
+			<img class="img_wrap" style="display: none;">
+		</div>
+	</body>
+	<script type="text/javascript">
+		//上传至服务器
+		function uploadImage(imageData) {/*这里写上传方法,图片流是base64_encode的*/
+			$.ajax({
+				url: "/Webuploader/Pt_FileUploadWX",
+				type: "post",
+				data: { postJson: imageData },
+				async:false,
+				dataType: 'json',
+				success: function (result) {
+					console.log("成功返回", result);
+				},
+				error: function (result) {
+					console.log("错误返回", result);
+				}
+			});
+		}
+
+		var uploadImgData = "";
+		//本地显示图片
+		var callBack=function(album){
+			debugger;
+			alert("压缩前"+album[0].size/1024/1024);
+			console.log("压缩前"+album[0].size/1024/1024);
+			console.log(album);
+			album.forEach(function(val,idx){
+				var imgs = new Image(), maxH = 640;
+				imgs.src = val.data;
+				imgs.onload = function () {
+					var cvs = document.createElement('canvas'),
+					    ctx = cvs.getContext('2d');
+
+					//尺寸等比压缩
+					/*if (imgs.height > maxH) {
+						imgs.width *= maxH / imgs.height;
+						imgs.height = maxH;
+					}*/
+					cvs.width = imgs.width;
+					cvs.height = imgs.height;
+
+					ctx.clearRect(0, 0, cvs.width, cvs.height);
+					ctx.drawImage(imgs, 0, 0, imgs.width, imgs.height);
+					var dataUrl = cvs.toDataURL('image/jpeg', 0.85);//清晰度压缩 参考：https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL
+					$(".img_wrap").attr("src", dataUrl).show();
+
+					uploadImgData = dataUrl;
+
+					//查看压缩后的文件大小
+					cvs.toBlob(function(blob){//https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toBlob
+						alert("压缩后"+blob.size/1024/1024)
+						console.log("压缩后"+blob.size/1024/1024);
+					},'image/jpeg',0.85);
+				};
+			});
+		}
+		var carera=new $.Pgater($("#btn"),callBack);
+
+
+		//图片上传略  uploadImage(uploadImgData);
+	</script>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue.js1</title>
+    <style>
+
+    </style>
+   <!-- <link href="css/bootstrap.css" rel="stylesheet">-->
+    <!--[if lt IE 9]>
+   <!-- <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>-->
+    <![endif]-->
+</head>
+<body>
+<div id="demo" :title="fullName">
+    {{ fullName }}
+</div>
+
+<div id="app6">
+    <p v-text="msg">aaa</p>
+    <p v-html="span">bbb</p>
+    <div>{{message}}</div>
+    <div>{{message | uppercase}}</div>
+    <input type="text" v-model="message">
+    <span v-bind:title="message">鼠标悬停几秒钟查看此处动态绑定的提示信息！</span>
+    <h3 v-show="true">{{message}}</h3> <!--指令（Directives）是带有 v- 前缀的特殊属性。指令的职责就是当其表达式的值改变时相应地将某些行为应用到 DOM 上。-->
+    <span v-for="n in 10"> {{ n }} </span><Br>
+    <span v-for="(k,v) in 10"> {{ k }}:{{v}} </span><br>
+    <span v-if="msg=='文本'">我是大学生</span><br>
+</div>
+<br><br><br>
+
+
+<div id="app-7">
+    <ol>
+        <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+    </ol>
+</div>
+<br><br><br>
+
+<div id="app-8">
+    <ol>
+        <todo item="你好！"></todo>
+        <todo item="世界！"></todo>
+    </ol>
+</div>
+
+<ul id="repeat-object">
+    <li v-for="(key,value) in object">
+        {{ key }} : {{ value }}
+    </li>
+</ul>
+
+<!--<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>-->
+<script src="js/vue.js"></script>
+<script>
+    //vuejs2+axios设置   http://www.cnblogs.com/easyweb/p/6710843.html
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'jason',
+            lastName: 'wong'
+        },
+        computed: {//计算属性默认只有 getter ，不过在需要时你也可以提供一个 setter ：
+           /* fullName: function () {
+                return this.firstName + ' ' + this.lastName
+            }*/
+            fullName: {
+                //现在再运行 vm.fullName = 'John Doe' 时，setter 会被调用，vm.firstName 和 vm.lastName 也会相应地被更新。
+                // getter
+                get: function () {
+                    setTimeout(function(){
+                        vm.fullName = 'John Doe';
+                    },3000);
+
+                    return this.firstName + ' ' + this.lastName;
+                },
+                // setter
+                set: function (newValue) {
+                    var names = newValue.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        }
+    })
+
+
+
+    //每个 Vue 实例都会代理其 data 对象里所有的属性：
+    //this 指向调用它的 Vue 实例
+    var app6 = new Vue({
+        el:'#app6',
+        data: {
+            message:'hello vue.js.',
+            msg:"文本",
+            span:"<span style='color: red'>我是html</span>",
+        },
+        methods: {
+            getAnswer:function(){
+                this.message="值已改变";
+            }
+        },
+        watch: {
+            // 如果 message 发生改变，这个函数就会运行
+            message: function () {
+                // `this` 指向 app6 实例
+                this.getAnswer();
+            }
+        },
+        created: function () {
+            // `this` 指向 app6 实例
+            console.log( this.message);//created 这个钩子在实例被创建之后被调用
+        },
+    });
+
+    //组件要在new Vue之前；组件在注册之后，便可以在父实例的模块中以自定义元素 <my-component></my-component> 的形式使用。要确保在初始化根实例之前注册了组件：
+    //参考链接Prop：https://cn.vuejs.org/v2/guide/components.html#Prop
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>'
+    })
+    var app7 = new Vue({
+        el: '#app-7',
+        data: {
+            groceryList: [
+                { text: 'Vegetables' },
+                { text: 'Cheese' },
+                { text: 'Whatever else humans are supposed to eat' }
+            ]
+        }
+    })
+
+    Vue.component('todo', {
+        props: ['item'],
+        template: '<li>This is a todo {{item}}</li>'
+    })
+    var app8 = new Vue({
+        el: '#app-8',
+    })
+
+
+    new Vue({
+        el: '#repeat-object',
+        data: {
+            object: {
+                FirstName: 'John',
+                LastName: 'Doe',
+                Age: 30
+            }
+        }
+    })
+</script>
+</body>
+</html>

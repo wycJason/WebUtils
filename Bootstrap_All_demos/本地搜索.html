@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        * { padding: 0; margin: 0; }
+        ol , ul { list-style: none; }
+        body { font-size: 12px; color:#333; }
+        .search-test-inner { margin: 100px auto; padding: 10px; width: 400px; background: #e0e0e0; border-radius: 10px; box-shadow: 1px 2px 6px #444; }
+        .search-val-inner { margin-bottom: 20px; padding: 10px; background: #fff; }
+        .member-list-inner .search-li { padding: 10px; }
+        .search-value-list { margin-top: 10px; }
+        .search-value-list li { padding: 5px;cursor: pointer }
+        .search-value-list li:hover{background-color: #E0E0E0}
+        .member-list-inner .search-li .phone,
+        .search-value-list li .phone { float: right; }
+        .search-value { width: 100%; height: 30px; line-height: 30px; }
+        .tips { font-weight: bold; }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<H3 class="text-center"><a href="http://www.cnblogs.com/zhwl/p/3586253.html" target="_blank">参考资料</a></H3>
+<div class="search-test-inner">
+
+    <div class="search-val-inner">
+        <input type="text" class="search-value" placeholder="搜索">
+        <ul class="search-value-list"></ul>
+    </div>
+
+    <div class="member-list-inner">
+        <ul>
+            <li class="search-li" data-name="战士" data-phone="13914157895">
+                <span class="phone">13914157895</span>
+                <span class="name">战士</span>
+            </li>
+            <li class="search-li" data-name="牧师" data-phone="15112357896">
+                <span class="phone">15112357896</span>
+                <span class="name">牧师</span>
+            </li>
+            <li class="search-li" data-name="盗贼" data-phone="13732459980">
+                <span class="phone">13732459980</span>
+                <span class="name">盗贼</span>
+            </li>
+            <li class="search-li" data-name="德鲁伊" data-phone="18015942365">
+                <span class="phone">18015942365</span>
+                <span class="name">德鲁伊</span>
+            </li>
+            <li class="search-li" data-name="武僧" data-phone="15312485698">
+                <span class="phone">15312485698</span>
+                <span class="name">武僧</span>
+            </li>
+            <li class="search-li" data-name="死灵法师" data-phone="13815963258">
+                <span class="phone">13815963258</span>
+                <span class="name">死灵法师</span>
+            </li>
+            <li class="search-li" data-name="圣骑士" data-phone="13815934258">
+                <span class="phone">13815934258</span>
+                <span class="name">圣骑士</span>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jQuery.Hz2Py-min.js"></script>
+<script>
+    //---------------------------------------------------【初始化】
+    function SEARCH_ENGINE(dom,searchInput,searchResultInner,searchList){
+
+        //存储拼音+汉字+数字的数组
+        this.searchMemberArray = [];
+
+        //作用对象
+        this.dom = $("." + dom);
+
+        //搜索框
+        this.searchInput = "." + searchInput;
+
+        //搜索结果框
+        this.searchResultInner = this.dom.find("." + searchResultInner);
+
+        //搜索对象的名单列表
+        this.searchList = this.dom.find("." + searchList);
+
+        //转换成拼音并存入数组
+        this.transformPinYin();
+
+        //绑定搜索事件
+        this.searchActiveEvent();
+
+    }
+    SEARCH_ENGINE.prototype = {
+        //-----------------------------【转换成拼音，并将拼音、汉字、数字存入数组】
+        transformPinYin : function(){
+
+            //临时存放数据对象
+            $("body").append('<input type="text" class="hidden pingying-box">');
+            var $pinyin = $("input.pingying-box");
+
+            for(var i=0;i<this.searchList.length;i++){
+
+                //存放名字，转换成拼音
+                $pinyin.val(this.searchList.eq(i).attr("data-name"));
+
+                //汉字转换成拼音
+                var pinyin = $pinyin.toPinyin().toLowerCase().replace(/\s/g,"");
+
+                //汉字
+                var cnCharacter = this.searchList.eq(i).attr("data-name");
+
+                //数字
+                var digital = this.searchList.eq(i).attr("data-phone");
+
+                //存入数组
+                this.searchMemberArray.push(pinyin + "&" + cnCharacter + "&" + digital);
+            }
+
+            //删除临时存放数据对象
+            $pinyin.remove();
+        },
+
+        //-----------------------------【模糊搜索关键字】
+        fuzzySearch : function(type,val){
+            var s;
+            var returnArray = [];
+
+            //拼音
+            if(type === "pinyin"){
+                s = 0;
+            }
+            //汉字
+            else if(type === "cnCharacter"){
+                s = 1;
+            }
+            //数字
+            else if(type === "digital"){
+                s = 2;
+            }
+
+            for(var i=0;i<this.searchMemberArray.length;i++){
+                //包含字符
+                if(this.searchMemberArray[i].split("&")[s].indexOf(val) >= 0){
+                    returnArray.push(this.searchMemberArray[i]);
+                }
+            }
+
+            return returnArray;
+
+        },
+
+        //-----------------------------【输出搜索结果】
+        postMemberList : function(tempArray){
+            var html = '';
+
+            //有搜索结果
+            if(tempArray.length > 0){
+
+                html += '<li class="tips">搜索结果（' + tempArray.length + '）</li>';
+
+                for(var i=0;i<tempArray.length;i++){
+                    var sArray = tempArray[i].split("&");
+
+                    html += '<li>';
+                    html += '<span class="phone">' + sArray[2] + '</span>';
+                    html += '<span class="name">' + sArray[1] + '</span>';
+                    html += '</li>';
+                }
+            }
+            //无搜索结果
+            else{
+
+                if($(this.searchInput).val() != ""){
+                    html += '<li class="tips">无搜索结果……</li>';
+                }else{
+                    this.searchResultInner.html("");
+                }
+            }
+            this.searchResultInner.html(html);
+        },
+
+        //-----------------------------【绑定搜索事件】
+        searchActiveEvent : function(){
+
+            var searchEngine = this;
+
+            $(document).on("keyup",this.searchInput,function(){
+
+                //临时存放找到的数组
+                var tempArray = [];
+
+                var val = $(this).val();
+
+                //判断拼音的正则
+                var pinYinRule = /^[A-Za-z]+$/;
+
+                //判断汉字的正则
+                var cnCharacterRule = new RegExp("^[\\u4E00-\\u9FFF]+$","g");
+
+                //判断整数的正则
+                var digitalRule = /^[-\+]?\d+(\.\d+)?$/;
+
+                //只搜索3种情况
+                //拼音
+                if(pinYinRule.test(val)){
+                    tempArray = searchEngine.fuzzySearch("pinyin",val);
+                }
+                //汉字
+                else if(cnCharacterRule.test(val)){
+                    tempArray = searchEngine.fuzzySearch("cnCharacter",val);
+                }
+                //数字
+                else if(digitalRule.test(val)){
+
+                    tempArray = searchEngine.fuzzySearch("digital",val);
+                }
+                else{
+                    searchEngine.searchResultInner.html('<li class="tips">无搜索结果……</li>');
+                }
+
+                searchEngine.postMemberList(tempArray);
+
+            });
+        }
+    };
+    //启用方式
+    // search-test-inner --->  最外层div
+    // search-value --->  input 输入框
+    // search-value-list --->  搜索结果显示div
+    // search-li --->  搜索条目
+    new SEARCH_ENGINE("search-test-inner","search-value","search-value-list","search-li");
+
+
+    //jason自定义事件
+    $(document).on("click","ul.search-value-list>li",function(){
+        var $this=$(this);
+        var name=$this.children(".name").text();
+        console.log(name);
+        $(".search-value").val("").keyup().val(name);
+    });
+</script>
+</body>
+</html>

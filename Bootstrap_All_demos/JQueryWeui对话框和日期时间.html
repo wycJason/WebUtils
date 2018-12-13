@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WEUI对话框</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="//res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery-weui.min.css">
+</head>
+
+<body>
+<h1><a href="http://jqweui.com/components#dialog" target="_blank">参考文献</a></h1><br/><br/>
+<h3>Toast</h3>
+<div class='demos-content-padded'>
+    <a href="javascript:;" id='show-toast' class="weui-btn weui-btn_primary">显示 Toast 成功</a>
+    <a href="javascript:;" id='show-toast-cancel' class="weui-btn weui-btn_primary">显示 Toast 取消</a>
+    <a href="javascript:;" id='show-toast-forbidden' class="weui-btn weui-btn_primary">显示 Toast 禁止</a>
+    <a href="javascript:;" id='show-toast-text' class="weui-btn weui-btn_primary">显示 Toast 纯文本</a>
+    <a href="javascript:;" id='show-loading' class="weui-btn weui-btn_primary">显示 Loading</a>
+</div>
+<br/><br/>
+
+<h3>Dialog</h3>
+<div class='demos-content-padded'>
+    <a href="javascript:;" id='show-alert' class="weui-btn weui-btn_primary">显示 Alert</a>
+    <a href="javascript:;" id='show-confirm' class="weui-btn weui-btn_primary">显示 Confirm</a>
+    <a href="javascript:;" id='show-prompt' class="weui-btn weui-btn_primary">显示 Prompt</a>
+    <a href="javascript:;" id='show-login' class="weui-btn weui-btn_primary">显示登录弹窗</a>
+    <a href="javascript:;" id='show-custom' class="weui-btn weui-btn_primary">显示自定义对话框</a>
+</div>
+<br/><br/>
+
+<h3>Datetime</h3>
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="time" class="weui-label">默认配置</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="time" type="text" value="2012-12-12 12:12">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="time2" class="weui-label">无分钟</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="time2" type="text" value="2012-12-12 12时">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="time3" class="weui-label">上午下午</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="time3" type="text">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="time4" class="weui-label">定制时间</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="time4" type="text" value="2012-12-12 上午8点">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="time-format" class="weui-label">自定义格式</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="time-format" type="text" value="2012年12月12日 12时13分">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="time-format" class="weui-label">日历</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" id="calendar" type="text" value="2012-12-12">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="time-format" class="weui-label">Picker1</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input"  type="text" id='picker'/>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="time-format" class="weui-label">Picker2</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input"  type="text" id='picker-name'/>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="time-format" class="weui-label">Select</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input"  type="text" id='job' value="打球" data-values="2"/>
+        </div>
+    </div>
+</div>
+<br/><br/>
+
+<h3>Select</h3>
+<div class="weui-cell weui-cell_select weui-cell_select-before">
+    <div class="weui-cell__hd">
+        <select class="weui-select" name="select2">
+            <option value="1">+86</option>
+            <option value="2">+80</option>
+            <option value="3">+84</option>
+            <option value="4">+87</option>
+        </select>
+    </div>
+    <div class="weui-cell__bd">
+        <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入号码">
+    </div>
+</div>
+<br/><br/>
+
+<h3>单选列表项</h3>
+<div class="weui-cells weui-cells_radio">
+    <label class="weui-cell weui-check__label" for="x11">
+        <div class="weui-cell__bd">
+            <p>cell standard</p>
+        </div>
+        <div class="weui-cell__ft">
+            <input type="radio" class="weui-check" name="radio1" id="x11">
+            <span class="weui-icon-checked"></span>
+        </div>
+    </label>
+    <label class="weui-cell weui-check__label" for="x12">
+
+        <div class="weui-cell__bd">
+            <p>cell standard</p>
+        </div>
+        <div class="weui-cell__ft">
+            <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">
+            <span class="weui-icon-checked"></span>
+        </div>
+    </label>
+    <a href="javascript:void(0);" class="weui-cell weui-cell_link">
+        <div class="weui-cell__bd">添加更多</div>
+    </a>
+</div>
+<br/><br/>
+
+<h3>复选列表项</h3>
+<div class="weui-cells weui-cells_checkbox">
+    <label class="weui-cell weui-check__label" for="s11">
+        <div class="weui-cell__hd">
+            <input type="checkbox" class="weui-check" name="checkbox1" id="s11" checked="checked">
+            <i class="weui-icon-checked"></i>
+        </div>
+        <div class="weui-cell__bd">
+            <p>standard is dealt for u.</p>
+        </div>
+    </label>
+    <label class="weui-cell weui-check__label" for="s12">
+        <div class="weui-cell__hd">
+            <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
+            <i class="weui-icon-checked"></i>
+        </div>
+        <div class="weui-cell__bd">
+            <p>standard is dealicient for u.</p>
+        </div>
+    </label>
+    <a href="javascript:void(0);" class="weui-cell weui-cell_link">
+        <div class="weui-cell__bd">添加更多</div>
+    </a>
+</div>
+<br/><br/>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/jquery-weui.min.js"></script>
+<script>
+			//toast可以指定一个回调函数，当toast关闭的时候会调用此函数。
+            $.toast.prototype.defaults.duration = 3000;
+            $(document).on("click", "#show-toast", function () {
+                $.toast("操作成功", function (toast) {
+                    console.log(toast);
+                });
+            })
+            .on("click", "#show-toast-cancel", function () {
+                $.toast("取消操作", "cancel", function (toast) {
+                    console.log(toast);
+                });
+            })
+            .on("click", "#show-toast-forbidden", function () {
+                $.toast("禁止操作", "forbidden", function (toast) {
+                    console.log(toast);
+                });
+            })
+            .on("click", "#show-toast-text", function () {
+                $.toast("纯文本", "text", function (toast) {
+                    console.log(toast);
+                });
+            })
+            .on("click", "#show-loading", function () {
+                $.showLoading();
+                setTimeout(function () {
+                    $.hideLoading();
+                }, 3000)
+            });
+</script>
+<script>
+   /* 默认配置
+    对话框的默认是 $.modal.prototype.defaults，默认配置如下：
+    defaults = $.modal.prototype.defaults = {
+        title: "提示",
+        text: undefined,
+        buttonOK: "确定",
+        buttonCancel: "取消",
+        buttons: [{
+            text: "确定",
+            className: "primary"
+        }],
+        autoClose: true //点击按钮自动关闭对话框，如果你不希望点击按钮就关闭对话框，可以把这个设置为false
+    };*/
+    $(document).on("click", "#show-alert", function() {
+        $.alert("AlphaGo 就是天网的前身，人类要完蛋了！", "警告！");
+    });
+    $(document).on("click", "#show-confirm", function() {
+        $.confirm("您确定要删除文件<<毛泽东语录>>吗?", "确认删除?", function() {
+            //确认操作
+            $.toast("文件已经删除!");
+        }, function() {
+            //取消操作
+            $.toast("文件已取消！","cancel");
+        });
+    });
+    $(document).on("click", "#show-prompt", function() {
+        $.prompt({
+            title: "输入姓名",
+            text: "名字不能超过6个字符",
+            input: '王愿超',//输入框默认值
+            empty: false, // 是否允许为空
+            onOK: function(text) {
+                $.alert("您的名字是:"+text, "角色设定成功");
+            },
+            onCancel: function() {
+                $.toast("取消了!","cancel");
+            },
+        });
+    });
+    $(document).on('click', '#show-login', function() {
+        $.login({
+            title: '登录',
+            text: '请输入用户名和密码',
+            username: 'tom',  // 默认用户名
+            password: 'tom',  // 默认密码
+            onOK: function (username, password) {
+                console.log(username, password);
+                $.toast('登录成功!');
+            },
+            onCancel: function () {
+                $.toast('取消登录!', 'cancel');
+            }
+        });
+    });
+    $(document).on("click", "#show-custom", function() {
+        $.modal({
+            title: "Hello",
+            text: "我是自定义的modal",
+            buttons: [
+                { text: "取消", className: "default", onClick:function(){ $.alert("你选择了取消"); }},
+                { text: "支付宝", onClick: function(){ $.alert("你选择了支付宝"); } },
+                { text: "微信支付", onClick: function(){ $.alert("你选择了微信支付"); } },
+            ]
+        });
+    });
+</script>
+<script>
+    $("#picker").picker({
+        title: "请选择您的手机",
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2', 'iPad Retina', 'iPad Air', 'iPad mini', 'iPad mini 2', 'iPad mini 3']
+            }
+        ],
+
+    });
+    $("#picker-name").picker({
+        title: "请选择您的称呼",
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['赵', '钱', '孙', '李', '周', '吴', '郑', '王']
+                //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
+            },
+            {
+                textAlign: 'center',
+                values: ['杰伦', '磊', '明', '小鹏', '燕姿', '菲菲', 'Baby']
+            },
+            {
+                textAlign: 'center',
+                values: ['先生', '小姐']
+            }
+        ]
+    });
+    $("#job").select({
+        title: "选择职业",
+        items: [{
+                title: "画画",
+                value: 1,
+            },
+            {
+                title: "打球",
+                value: 2
+            },
+            {
+                title: "唱歌",
+                value: 3
+            },
+            {
+                title: "游泳",
+                value: 4
+            }],
+        closeText:"关闭",
+        //multi: true,
+        onChange: function () {
+
+        }
+    });
+</script>
+<script>
+    $("#time").datetimePicker({
+        title: '出发时间',
+        min: "1990-12-12",
+        max: "2022-12-12 12:12",
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+    $("#time2").datetimePicker({
+        times: function () {
+            return [
+                {
+                    values: (function () {
+                        var hours = [];
+                        for (var i=0; i<24; i++) hours.push(i > 9 ? i : '0'+i);
+                        return hours;
+                    })()
+                },
+                {
+                    divider: true,  // 这是一个分隔符
+                    content: '时'
+                }
+            ];
+        },
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        },
+    });
+    $("#time3").datetimePicker({
+        times: function () {
+            return [
+                {
+                    values: ['上午', '下午']
+                }
+            ];
+        },
+        value: '2012-12-12 上午',
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+    $("#time4").datetimePicker({
+        times: function () {
+            return [
+                {
+                    values: ['上午8点', '下午2点', '晚上8点']
+                }
+            ];
+        },
+        max: '2013-12-12',
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+
+    $("#time-format").datetimePicker({
+        title: '自定义格式',
+        yearSplit: '年',
+        monthSplit: '月',
+        dateSplit: '日',
+        times: function () {
+            return [  // 自定义的时间
+                {
+                    values: (function () {
+                        var hours = [];
+                        for (var i=0; i<24; i++) hours.push(i > 9 ? i : '0'+i);
+                        return hours;
+                    })()
+                },
+                {
+                    divider: true,  // 这是一个分隔符
+                    content: '时'
+                },
+                {
+                    values: (function () {
+                        var minutes = [];
+                        for (var i=0; i<59; i++) minutes.push(i > 9 ? i : '0'+i);
+                        return minutes;
+                    })()
+                },
+                {
+                    divider: true,  // 这是一个分隔符
+                    content: '分'
+                }
+            ];
+        },
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+    $("#calendar").calendar();
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <div v-bind:class="{ active: isActive }">对象语法</div>
+    <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">对象语法</div>
+    <div v-bind:class="classObject">对象语法</div>
+    <div v-bind:class="[activeClass, errorClass]">数组语法</div>
+    <div v-bind:class="[isActive ? activeClass : '', errorClass]">数组语法</div>
+    <div v-bind:class="[{ active: isActive }, errorClass]">混合语法，有数组有对象</div>
+
+    <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">内联样式</div>
+    <div v-bind:style="styleObject">内联样式</div>
+    <div v-bind:style="[baseStyles, overridingStyles]">内联样式</div>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            hasError: false,
+            activeClass: 'active',
+            errorClass: 'text-danger',
+            activeColor: 'red',
+            fontSize: 16,
+            classObject: {
+                active: true,
+                'text-danger': false
+            },
+            styleObject: {
+                color: 'red',
+                fontSize: '16px'
+            },
+            baseStyles:{
+                color: 'blue',
+            },
+            overridingStyles:{
+                fontSize: '16px'
+            }
+        },
+        methods: {}
+    })
+</script>
+</body>
+</html>

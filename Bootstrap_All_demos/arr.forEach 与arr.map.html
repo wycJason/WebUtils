@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    var arr1=[1,2,3,4,5];
+
+    var arr2= arr1.map(function(val,idx,arr){  //返回新数组
+                return val*2;
+            });
+    document.write(String(arr1)+"<br>");//1,2,3,4,5
+    document.write(String(arr2)+"<br>");//2,4,6,8,10
+
+    arr1.map(function(val,idx,arr){
+        arr[idx]*=2;//修改原数组
+    });
+    document.write(String(arr1)+"<br>");
+
+    /*  arr1.forEach(function(val,idx,arr){
+            arr[idx]*=2;//修改原数组
+     });
+     document.write(String(arr1)+"<br>");//2,4,6,8,10
+     */
+</script>
+</html>

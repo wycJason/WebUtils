@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+</head>
+<body>
+   <ul id="ztree" class="ztree"></ul>
+
+
+<script>
+    var zTreeObj;
+    // zTree 的参数配置，普通使用，无必须设置的参数,深入使用请参考 API 文档（setting 配置详解）
+    //每次点击节点后， 弹出该节点的 tId、name 的信息
+    function zTreeOnClick(event, treeId, treeNode) {
+        debugger;
+        //判断是否为父节点
+        if(!treeNode.isParent){
+            alert(treeNode.tId + ", " +treeNode.parentTId + ", " + treeNode.name+ ", " + treeId);
+        }
+    };
+    var setting = {
+        callback: {
+            onClick: zTreeOnClick
+        }
+    };
+    // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+    var zNodes = [
+        {id:1,name:"test1", open:true, children:[{id:11,name:"test1_1"}, {id:12,name:"test1_2"}]},
+        {id:2,name:"test2", open:true,
+            children:[
+                {id:21,name:"test2_1"},
+                {id:22,name:"test2_2", open:true, children:[
+                    {id:221,name:"test2_2_1"}, {id:222,name:"test2_2_2"}
+                ]}
+            ]
+        }
+    ];
+
+    $(document).ready(function(){
+            zTreeObj = $.fn.zTree.init($("#ztree"), setting, zNodes);
+            //console.log( zTreeObj.getNodes()[0].children);//获取第一个根节点的子节点
+            //var newNodes = [{name:"newNode1"}, {name:"newNode2"}, {name:"newNode3"}];
+            //zTreeObj.addNodes(zTreeObj.getNodeByParam("id", 1, null), newNodes);
+    });
+</script>
+</body>
+</html>

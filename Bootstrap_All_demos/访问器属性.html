@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    /*
+     get/set方法都不用手动调用：
+     何时调用:
+     试图获取访问器属性保护的值，自动调用get方法
+     试图为访问器属性保护的属性赋值时，自动调用set方法，会传入等号右侧的新值给val参数，再赋给受保护的属性。
+     * */
+    var emp={
+        id:1001,
+        name:"eric"
+    };
+
+    //定义访问器属性age
+    (function(){
+        var _age;//受保护的属性
+        Object.defineProperty(emp,"age",{   //新添加了访问器属性age，但未赋值
+            get:function(){ return _age;},//取值时自动调用
+            set:function(val){ //设置访问器age属性的值val
+                if(val<18||val>65){
+                    throw new RangeError("age must between 18 and 65");
+                }else{
+                    _age=val;//访问器age属性的值val赋给对象属性_age
+                }
+            }
+        });
+    })();
+    console.log(emp.age);//undefined
+    emp.age=30;
+    console.log(emp.age);//30
+    emp.age++;
+    console.log(emp.age)//31
+</script>
+</body>
+</html>

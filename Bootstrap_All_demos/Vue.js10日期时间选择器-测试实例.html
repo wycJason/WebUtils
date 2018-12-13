@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>时间选择器</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- 引入element-ui样式 -->
+    <link rel="stylesheet" href="css/element-ui.css">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="app">
+    <template>
+        <el-date-picker v-model="value1" type="datetime" placeholder="选择日期时间" ></el-date-picker>
+    </template>
+</div>
+
+<button id="btn">点击输出时间</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<!-- 先引入 Vue,vue-js整体文件夹要引入，彼此文件间有这依赖关系 -->
+<script src="vue-js/vue.js"></script>
+<!-- 引入element-ui组件库 -->
+<script src="js/element-ui.js"></script>
+<script>
+     var vm=new Vue({
+        el: '#app',
+        data: {
+                value1: new Date("2017/1/1 18:00"),
+            }
+    });
+   var timePickerElements=$(".el-input__inner");
+    $("#btn").click(function(){
+       console.log(timePickerElements[0].value);
+    })
+</script>
+</body>
+</html>

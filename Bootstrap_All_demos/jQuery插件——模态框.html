@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>jQuery插件——模态框</h1>
+
+  <a id="bt-login" data-toggle="modal" href="#modal-login">登录</a>
+  <!--摸态框都是固定定位的，放在最后即可-->
+  <div class="modal fade" id="modal-login" data-backdrop= "static" data-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span data-dismiss="modal" class="close">&times;</span>
+          <h3 class="modal-title">用户登录</h3>
+        </div>
+        <div class="modal-body">主体</div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-default" data-dismiss="modal">取消</a>
+          <a href="#" class="btn btn-info">确定</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <button data-toggle="modal" data-target="#modal-register" type="button">全屏</button>
+  <!--模态框全屏 modal 15px左内边距，modal-dialog上下30px外边距-->
+  <div class="modal fade" id="modal-register" data-backdrop= "static" data-keyboard="false" style="padding-left:0px">
+    <div class="modal-dialog modal-lg" id="modalFullscreen" style="margin: 0px auto">
+      <div class="modal-content">
+        <div class="modal-header"><span data-dismiss="modal" class="close">&times;</span>头部</div>
+        <div class="modal-body">正文</div>
+        <div class="modal-footer">尾部</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <button data-toggle="modal" data-target="#atdMember" type="button">考勤人员</button>
+  <!--公用_模态框-->
+  <div class="modal fade" id="atdMember" data-backdrop= "static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" data-dismiss="modal">&times;</span>
+          <span style="font-size:14px;font-weight:bold;color: #555;text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);">标题</span>
+        </div>
+        <div class="modal-body">正文主体</div>
+        <div class="modal-footer">
+          <a href="javascript:void(0)" class="btn btn-default" data-dismiss="modal">取消</a>
+          <a href="javascript:void(0)" class="btn btn-info">确定</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+//  使用js触发一个事件
+//  $('#bt-login').trigger('click');
+ // $('#bt-login').click();r
+//$("#modal-register").modal("show");
+
+
+/*模态框全屏*/
+function pageLayoutFullscreen() {
+  $("#modal-register").css("padding-left","0px");
+  $("#modalFullscreen").css("width",$(window).width());
+  $("#modalFullscreen  div.modal-body").css("height",$(window).height()-105);
+}
+pageLayoutFullscreen();
+$(window).resize(function () { pageLayoutFullscreen() });//当调整浏览器窗口的大小时，发生 resize 事件。
+
+
+
+</script>
+<!--<script>
+  (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s)
+  })();
+</script>-->
+</body>
+</html>

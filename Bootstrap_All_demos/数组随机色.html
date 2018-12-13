@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //随机色,不重复
+    var colorRandomList = ["#FFFF99","#B5FF91","#94DBFF","#FFBAFF","#FFBD9D","#C7A3ED","#CC9898","#8AC007","#CCC007","#FFAD5C"];
+    for(var i=0;i<10;i++){
+        var bgColor = getColorByRandom(colorRandomList);
+        //console.log(bgColor);
+    }
+    function getColorByRandom(colorRandomList){
+        var colorIndex = Math.floor(Math.random()*colorRandomList.length);
+        var color = colorRandomList[colorIndex];
+        colorRandomList.splice(colorIndex,1);
+        return color;
+    }
+    //var bgColor = getColorByRandom(colorList);
+    //console.log(bgColor);
+
+//按顺序循环取色
+    var colorList = ["#2DB7F5","#FF5500","#87D068","#FFAA00"];
+    var initColorIndex=0;
+    function getColorByOrder(colorList){
+            if(initColorIndex<colorList.length){
+                var color = colorList[initColorIndex];
+                initColorIndex++;
+                return color;
+             }else{
+                initColorIndex=0;
+                var color = colorList[initColorIndex];
+                initColorIndex++;
+                return color;
+             }
+    }
+    for(var i=0;i<8;i++){
+        console.log(getColorByOrder(colorList));
+    }
+</script>
+</body>
+</html>

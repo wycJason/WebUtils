@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <hello-world></hello-world>
+</div>
+
+<div id="example">
+    {{message}}
+    <br>
+    <example></example>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+<script type="text/x-template" id="hello-world-template">
+    <h1>Hello world!</h1>
+</script>
+<script>
+    Vue.component('hello-world', {
+        template: '#hello-world-template'
+    })
+
+    Vue.component('example', {
+        template: '<span @click="updateMessage">{{ message }}</span>',
+        data: function () {
+            return {
+                message: '没有更新'
+            }
+        },
+        methods: {
+            updateMessage: function () {
+                this.message = '更新完成'
+                console.log(this.$el.textContent) // => '没有更新'
+                this.$nextTick(function () {
+                    console.log(this.$el.textContent) // => '更新完成'
+                })
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app',
+        data: { },
+        methods: {}
+    })
+
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            message: '123'
+        }
+    })
+    vm.message = 'new message' // 更改数据
+    vm.$el.textContent === 'new message' // false
+    Vue.nextTick(function () {
+        vm.$el.textContent === 'new message' // true
+    })
+</script>
+</body>
+</html>

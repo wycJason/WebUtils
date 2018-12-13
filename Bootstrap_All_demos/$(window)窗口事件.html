@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<input type="text"/><br />
+<button id="btn1">把数据添加到 div 元素</button><br />
+<button id="btn2">获取已添加到 div 元素的数据</button>
+<div></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    /*当窗口发生变化时触发事件*/
+$(window).resize(function(){
+    var w=$(window).width();
+    var h=$(window).height();
+    console.log("浏览器窗口宽度："+w+"px    ","浏览器窗口宽度："+h+"px");
+})
+document.write("浏览器窗口宽度："+$(window).width()+"px   ","浏览器窗口高度："+$(window).height()+"px"+"<br>");
+document.write("IE:浏览器窗口宽度："+document.documentElement.clientWidth+"px   ","IE:浏览器窗口高度："+document.documentElement.clientHeight+"px");
+
+//data() 方法向被选元素附加数据，或者从被选元素获取数据。
+$("#btn1").click(function(){
+    $("div").data("greeting", "Hello World");
+});
+$("#btn2").click(function(){
+    alert($("div").data("greeting"));
+});
+
+$("input[type='text']").change( function() {
+    // 这里可以写些验证代码
+    debugger;
+    console.log("测试change事件")
+});
+</script>
+</body>
+</html>

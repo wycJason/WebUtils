@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <link rel="stylesheet" href="jstree/themes/default/style.css" />
+
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="tree"></div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="jstree/jstree.js"></script>
+<script>
+    var json={
+            "Result": {
+                "Folders": [
+                    {
+                        "FolderID": 1,
+                        "FolderName": "内部管理解决方案",
+                        "Folders": [
+                            {
+                                "FolderID": -10010,
+                                "FolderName": "报表查询",
+                                "Folders": [],
+                                "Querys": [
+                                    {
+                                        "QueryID": 235,
+                                        "QueryName": "销售工作日志列表"
+                                    },
+                                    {
+                                        "QueryID": 237,
+                                        "QueryName": "企商宝账户统计"
+                                    },
+
+                                    {
+                                        "QueryID": 422,
+                                        "QueryName": "供应商关系链查询"
+                                    }
+                                ]
+                            },
+                            {
+                                "FolderID": -10004,
+                                "FolderName": "项目实施",
+                                "Folders": [],
+                                "Querys": [
+                                    {
+                                        "QueryID": 125,
+                                        "QueryName": "取实施人员"
+                                    },
+                                    {
+                                        "QueryID": 210,
+                                        "QueryName": "实施管理单查询项目费用明细"
+                                    },
+                                    {
+                                        "QueryID": 211,
+                                        "QueryName": "实施管理单查询项目费用"
+                                    },
+                                    {
+                                        "QueryID": 218,
+                                        "QueryName": "顾问工作日志据验证查询"
+                                    },
+                                    {
+                                        "QueryID": 223,
+                                        "QueryName": "获取项目实施日志信息"
+                                    },
+                                    {
+                                        "QueryID": 224,
+                                        "QueryName": "获取项目需求变更信息"
+                                    },
+                                    {
+                                        "QueryID": 227,
+                                        "QueryName": "获取项目部人员信息"
+                                    },
+                                    {
+                                        "QueryID": 229,
+                                        "QueryName": "顾问工作日志列表查询"
+                                    },
+                                    {
+                                        "QueryID": 230,
+                                        "QueryName": "顾问工作日志列表查询1"
+                                    },
+                                    {
+                                        "QueryID": 308,
+                                        "QueryName": "移动费用报销查询列表"
+                                    },
+                                    {
+                                        "QueryID": 309,
+                                        "QueryName": "费用报销草稿单列表查询"
+                                    },
+                                    {
+                                        "QueryID": 310,
+                                        "QueryName": "取费用报销汇总"
+                                    },
+                                    {
+                                        "QueryID": 312,
+                                        "QueryName": "问题查询图片"
+                                    },
+                                    {
+                                        "QueryID": 313,
+                                        "QueryName": "问题反馈单更新单据"
+                                    },
+                                    {
+                                        "QueryID": 314,
+                                        "QueryName": "取BUG类型"
+                                    },
+                                    {
+                                        "QueryID": 316,
+                                        "QueryName": "取开发部门人员"
+                                    },
+                                    {
+                                        "QueryID": 317,
+                                        "QueryName": "问题处理开发单更新语句"
+                                    },
+                                    {
+                                        "QueryID": 318,
+                                        "QueryName": "问题反馈处理--待处理"
+                                    },
+                                    {
+                                        "QueryID": 319,
+                                        "QueryName": "问题查询图片－待处理"
+                                    },
+                                    {
+                                        "QueryID": 320,
+                                        "QueryName": "问题反馈处理--已处理"
+                                    },
+                                    {
+                                        "QueryID": 321,
+                                        "QueryName": "取当前日期"
+                                    },
+                                    {
+                                        "QueryID": 322,
+                                        "QueryName": "问题反馈处理--待处理（顾问）"
+                                    },
+                                    {
+                                        "QueryID": 324,
+                                        "QueryName": "问题反馈处理--待核查（顾问）"
+                                    },
+                                    {
+                                        "QueryID": 327,
+                                        "QueryName": "问题反馈处理--已处理（开发）"
+                                    },
+                                    {
+                                        "QueryID": 345,
+                                        "QueryName": "系统改进取客户"
+                                    },
+                                    {
+                                        "QueryID": 363,
+                                        "QueryName": "直接上属审批查询"
+                                    },
+                                    {
+                                        "QueryID": 368,
+                                        "QueryName": "物品归还单取物品"
+                                    },
+                                    {
+                                        "QueryID": 408,
+                                        "QueryName": "查看已请假情况"
+                                    },
+                                    {
+                                        "QueryID": 409,
+                                        "QueryName": "请假情况明细"
+                                    },
+                                    {
+                                        "QueryID": 410,
+                                        "QueryName": "算出请假小时"
+                                    },
+                                    {
+                                        "QueryID": 414,
+                                        "QueryName": "查询带参数"
+                                    }
+                                ]
+                            },
+                            {
+                                "FolderID": -10000,
+                                "FolderName": "人力资源相关",
+                                "Folders": [],
+                                "Querys": [
+                                    {
+                                        "QueryID": 27,
+                                        "QueryName": "取员工职位信息"
+                                    },
+                                    {
+                                        "QueryID": 28,
+                                        "QueryName": "待删除-根据一级部门取二级部门"
+                                    },
+                                    {
+                                        "QueryID": 29,
+                                        "QueryName": "取业务伙伴主数据"
+                                    },
+                                    {
+                                        "QueryID": 30,
+                                        "QueryName": "取用户信息"
+                                    },
+                                    {
+                                        "QueryID": 31,
+                                        "QueryName": "取窗口编号"
+                                    },
+                                    {
+                                        "QueryID": 32,
+                                        "QueryName": "取引用用户转置报表清单"
+                                    },
+                                    {
+                                        "QueryID": 33,
+                                        "QueryName": "获取员工所属公司"
+                                    },
+                                    {
+                                        "QueryID": 34,
+                                        "QueryName": "合同编码"
+                                    },
+                                    {
+                                        "QueryID": 36,
+                                        "QueryName": "取工龄"
+                                    },
+                                    {
+                                        "QueryID": 37,
+                                        "QueryName": "取民族信息"
+                                    },
+                                    {
+                                        "QueryID": 38,
+                                        "QueryName": "取省份城市信息"
+                                    },
+                                    {
+                                        "QueryID": 39,
+                                        "QueryName": "取地区省份"
+                                    },
+                                    {
+                                        "QueryID": 41,
+                                        "QueryName": "取员工部门信息"
+                                    },
+                                    {
+                                        "QueryID": 42,
+                                        "QueryName": "获取员工职位"
+                                    },
+                                    {
+                                        "QueryID": 43,
+                                        "QueryName": "取员工主数据"
+                                    },
+                                    {
+                                        "QueryID": 44,
+                                        "QueryName": "取合同类型"
+                                    },
+                                    {
+                                        "QueryID": 45,
+                                        "QueryName": "取司龄"
+                                    },
+                                    {
+                                        "QueryID": 46,
+                                        "QueryName": "取岗位职级"
+                                    },
+                                    {
+                                        "QueryID": 47,
+                                        "QueryName": "取工资类型"
+                                    },
+                                    {
+                                        "QueryID": 48,
+                                        "QueryName": "取上一次调薪记录"
+                                    },
+                                    {
+                                        "QueryID": 49,
+                                        "QueryName": "取天数"
+                                    },
+                                    {
+                                        "QueryID": 50,
+                                        "QueryName": "员工主数据取员工入职登记"
+                                    },
+                                    {
+                                        "QueryID": 51,
+                                        "QueryName": "根据所属公司取员工所属部门"
+                                    },
+                                    {
+                                        "QueryID": 52,
+                                        "QueryName": "取员工基础信息"
+                                    },
+                                    {
+                                        "QueryID": 53,
+                                        "QueryName": "待删除-取技术职级"
+                                    },
+                                    {
+                                        "QueryID": 54,
+                                        "QueryName": "培训计划搜索课程管理信息"
+                                    },
+                                    {
+                                        "QueryID": 55,
+                                        "QueryName": "培训实施取未完成的培训计划相关信息"
+                                    },
+                                    {
+                                        "QueryID": 56,
+                                        "QueryName": "培训评估取未评估的培训实施信息"
+                                    },
+                                    {
+                                        "QueryID": 57,
+                                        "QueryName": "培训评估取培训实施信息"
+                                    },
+                                    {
+                                        "QueryID": 58,
+                                        "QueryName": "讲师管理从员工档案取讲师信息"
+                                    },
+                                    {
+                                        "QueryID": 59,
+                                        "QueryName": "取讲师管理的讲师定义信息"
+                                    },
+                                    {
+                                        "QueryID": 60,
+                                        "QueryName": "取培训实施授课人信息"
+                                    },
+                                    {
+                                        "QueryID": 61,
+                                        "QueryName": "获取人力单据状态"
+                                    },
+                                    {
+                                        "QueryID": 62,
+                                        "QueryName": "获取人力区域信息"
+                                    },
+                                    {
+                                        "QueryID": 63,
+                                        "QueryName": "获取性别信息"
+                                    },
+                                    {
+                                        "QueryID": 64,
+                                        "QueryName": "招聘渠道信息"
+                                    },
+                                    {
+                                        "QueryID": 65,
+                                        "QueryName": "面试通知获取招聘计划"
+                                    },
+                                    {
+                                        "QueryID": 66,
+                                        "QueryName": "获取面试通知信息"
+                                    },
+                                    {
+                                        "QueryID": 67,
+                                        "QueryName": "获取面试通知人员信息"
+                                    },
+                                    {
+                                        "QueryID": 68,
+                                        "QueryName": "校园招聘计划取合作院校"
+                                    },
+                                    {
+                                        "QueryID": 69,
+                                        "QueryName": "取校招计划信息"
+                                    },
+                                    {
+                                        "QueryID": 70,
+                                        "QueryName": "校招评估取校招行程信息"
+                                    },
+                                    {
+                                        "QueryID": 71,
+                                        "QueryName": "取系统用户信息"
+                                    },
+                                    {
+                                        "QueryID": 72,
+                                        "QueryName": "取所属公司(带空行)"
+                                    },
+                                    {
+                                        "QueryID": 73,
+                                        "QueryName": "取员工主数据"
+                                    },
+                                    {
+                                        "QueryID": 74,
+                                        "QueryName": "社会招聘计划自动计算查询"
+                                    },
+                                    {
+                                        "QueryID": 75,
+                                        "QueryName": "取集团所有部门信息"
+                                    },
+                                    {
+                                        "QueryID": 76,
+                                        "QueryName": "获取员工基本信息"
+                                    },
+                                    {
+                                        "QueryID": 77,
+                                        "QueryName": "取员工主数据的学历列表信息"
+                                    },
+                                    {
+                                        "QueryID": 78,
+                                        "QueryName": "取人才库注册资格列表信息"
+                                    },
+                                    {
+                                        "QueryID": 79,
+                                        "QueryName": "取合作院校信息"
+                                    },
+                                    {
+                                        "QueryID": 80,
+                                        "QueryName": "根据所属公司取部门"
+                                    },
+                                    {
+                                        "QueryID": 81,
+                                        "QueryName": "取所有岗位的职级"
+                                    }
+                                ]
+                            },
+                            {
+                                "FolderID": 2,
+                                "FolderName": "单据验证",
+                                "Folders": [],
+                                "Querys": [
+                                    {
+                                        "QueryID": 89,
+                                        "QueryName": "已经报销的费用报销单验证"
+                                    },
+                                    {
+                                        "QueryID": 90,
+                                        "QueryName": "已确认的费用领支登记表验证"
+                                    },
+                                    {
+                                        "QueryID": 120,
+                                        "QueryName": "服务确认单验证"
+                                    },
+                                    {
+                                        "QueryID": 131,
+                                        "QueryName": "客户主数据验证"
+                                    },
+                                    {
+                                        "QueryID": 196,
+                                        "QueryName": "实施管理单单据验证"
+                                    },
+                                    {
+                                        "QueryID": 199,
+                                        "QueryName": "解决方案库单据验证"
+                                    },
+                                    {
+                                        "QueryID": 202,
+                                        "QueryName": "销售合同单据验证"
+                                    },
+                                    {
+                                        "QueryID": 219,
+                                        "QueryName": "服务确认单单据验证查询"
+                                    },
+                                    {
+                                        "QueryID": 221,
+                                        "QueryName": "项目实施日志单据验证"
+                                    },
+                                    {
+                                        "QueryID": 263,
+                                        "QueryName": "销假单单据验证"
+                                    },
+                                    {
+                                        "QueryID": 297,
+                                        "QueryName": "访客报告单据验证"
+                                    },
+                                    {
+                                        "QueryID": 323,
+                                        "QueryName": "问题处理单单据验证"
+                                    },
+                                    {
+                                        "QueryID": 326,
+                                        "QueryName": "开发问题待修改单据验证"
+                                    },
+                                    {
+                                        "QueryID": 333,
+                                        "QueryName": "巡检日期录入验证"
+                                    },
+                                    {
+                                        "QueryID": 350,
+                                        "QueryName": "客户跟进单据验证"
+                                    },
+                                    {
+                                        "QueryID": 351,
+                                        "QueryName": "取下次回访时间"
+                                    },
+                                    {
+                                        "QueryID": 411,
+                                        "QueryName": "客户单据验证"
+                                    }
+                                ]
+                            },
+                            {
+                                "FolderID": 3,
+                                "FolderName": "查询报表",
+                                "Folders": [
+                                    {
+                                        "FolderID": -10008,
+                                        "FolderName": "采购报表",
+                                        "Folders": [
+                                            {
+                                                "FolderID": -10009,
+                                                "FolderName": "服务性采购报表",
+                                                "Folders": [],
+                                                "Querys": []
+                                            }
+                                        ],
+                                        "Querys": []
+                                    },
+                                    {
+                                        "FolderID": -10007,
+                                        "FolderName": "人事报表",
+                                        "Folders": [],
+                                        "Querys": []
+                                    },
+                                    {
+                                        "FolderID": -10006,
+                                        "FolderName": "财务报表",
+                                        "Folders": [],
+                                        "Querys": []
+                                    },
+                                    {
+                                        "FolderID": -10005,
+                                        "FolderName": "管理报表",
+                                        "Folders": [],
+                                        "Querys": []
+                                    },
+                                    {
+                                        "FolderID": -10003,
+                                        "FolderName": "开发报表",
+                                        "Folders": [],
+                                        "Querys": []
+                                    },
+                                    {
+                                        "FolderID": -10002,
+                                        "FolderName": "销售报表",
+                                        "Folders": [],
+                                        "Querys": [
+                                            {
+                                                "QueryID": 128,
+                                                "QueryName": "查询客户主数据并判断权限"
+                                            },
+                                            {
+                                                "QueryID": 155,
+                                                "QueryName": "活动查询"
+                                            },
+                                            {
+                                                "QueryID": 300,
+                                                "QueryName": "客户跟进取联系人"
+                                            },
+                                            {
+                                                "QueryID": 393,
+                                                "QueryName": "部门任务列表"
+                                            },
+                                            {
+                                                "QueryID": 395,
+                                                "QueryName": "个人任务列表"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "FolderID": -10001,
+                                        "FolderName": "实施报表",
+                                        "Folders": [],
+                                        "Querys": [
+                                            {
+                                                "QueryID": 216,
+                                                "QueryName": "查询数据源-取日志明细"
+                                            },
+                                            {
+                                                "QueryID": 217,
+                                                "QueryName": "查询数据源-取顾问日志明细"
+                                            },
+                                            {
+                                                "QueryID": 336,
+                                                "QueryName": "美工设计列表"
+                                            },
+                                            {
+                                                "QueryID": 337,
+                                                "QueryName": "版本说明文档列表"
+                                            },
+                                            {
+                                                "QueryID": 338,
+                                                "QueryName": "测试报告列表"
+                                            },
+                                            {
+                                                "QueryID": 339,
+                                                "QueryName": "服务器维护日志列表"
+                                            },
+                                            {
+                                                "QueryID": 340,
+                                                "QueryName": "版本更新检查列表"
+                                            },
+                                            {
+                                                "QueryID": 344,
+                                                "QueryName": "应用市场日下载量"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "Querys": [
+                                    {
+                                        "QueryID": 233,
+                                        "QueryName": "签到信息子查询"
+                                    }
+                                ]
+                            },
+                            {
+                                "FolderID": 4,
+                                "FolderName": "分析报表",
+                                "Folders": [],
+                                "Querys": []
+                            },
+                            {
+                                "FolderID": 5,
+                                "FolderName": "打印管理",
+                                "Folders": [],
+                                "Querys": []
+                            },
+                            {
+                                "FolderID": 6,
+                                "FolderName": "审批管理",
+                                "Folders": [],
+                                "Querys": [
+                                    {
+                                        "QueryID": 413,
+                                        "QueryName": "物品领用审批分支"
+                                    },
+                                    {
+                                        "QueryID": 415,
+                                        "QueryName": "物品领用分支条件"
+                                    }
+                                ]
+                            },
+                            {
+                                "FolderID": 7,
+                                "FolderName": "警报管理",
+                                "Folders": [],
+                                "Querys": [
+                                    {
+                                        "QueryID": 84,
+                                        "QueryName": "试用期到期提醒"
+                                    },
+                                    {
+                                        "QueryID": 86,
+                                        "QueryName": "新员工转正一周提醒"
+                                    },
+                                    {
+                                        "QueryID": 154,
+                                        "QueryName": "活动分配信息提醒警报"
+                                    },
+                                    {
+                                        "QueryID": 257,
+                                        "QueryName": "清除请假数据"
+                                    },
+                                    {
+                                        "QueryID": 373,
+                                        "QueryName": "在线用户数警报"
+                                    }
+                                ]
+                            },
+                            {
+                                "FolderID": 8,
+                                "FolderName": "格式化搜索",
+                                "Folders": [],
+                                "Querys": [
+                                    {
+                                        "QueryID": 1,
+                                        "QueryName": "获取机会来源信息"
+                                    },
+                                    {
+                                        "QueryID": 2,
+                                        "QueryName": "获取经营行业信息"
+                                    },
+                                    {
+                                        "QueryID": 3,
+                                        "QueryName": "获取业务伙伴信息"
+                                    },
+                                    {
+                                        "QueryID": 4,
+                                        "QueryName": "获取关系定义信息"
+                                    },
+                                    {
+                                        "QueryID": 5,
+                                        "QueryName": "获取系统用户信息"
+                                    },
+                                    {
+                                        "QueryID": 6,
+                                        "QueryName": "获取员工部门信息"
+                                    },
+                                    {
+                                        "QueryID": 7,
+                                        "QueryName": "数量乘以单价求总计"
+                                    },
+                                    {
+                                        "QueryID": 9,
+                                        "QueryName": "获取联系人职位信息"
+                                    },
+                                    {
+                                        "QueryID": 10,
+                                        "QueryName": "获取员工主数据信息"
+                                    },
+                                    {
+                                        "QueryID": 11,
+                                        "QueryName": "获取兴趣范围信息"
+                                    },
+                                    {
+                                        "QueryID": 12,
+                                        "QueryName": "获取合同条款信息"
+                                    },
+                                    {
+                                        "QueryID": 13,
+                                        "QueryName": "获取机会中项目信息"
+                                    },
+                                    {
+                                        "QueryID": 14,
+                                        "QueryName": "日期相减计算天数"
+                                    },
+                                    {
+                                        "QueryID": 15,
+                                        "QueryName": "获取客户主数据信息"
+                                    },
+                                    {
+                                        "QueryID": 16,
+                                        "QueryName": "获取功能模块信息"
+                                    },
+                                    {
+                                        "QueryID": 17,
+                                        "QueryName": "获取问题类型信息"
+                                    },
+                                    {
+                                        "QueryID": 18,
+                                        "QueryName": "获取问题原因信息"
+                                    },
+                                    {
+                                        "QueryID": 19,
+                                        "QueryName": "获取处理方式信息"
+                                    },
+                                    {
+                                        "QueryID": 20,
+                                        "QueryName": "获取创新类型信息"
+                                    },
+                                    {
+                                        "QueryID": 21,
+                                        "QueryName": "获取销售合同中项目及合同编号信息"
+                                    },
+                                    {
+                                        "QueryID": 22,
+                                        "QueryName": "获取合同付款方式信息"
+                                    },
+                                    {
+                                        "QueryID": 23,
+                                        "QueryName": "获取实施阶段信息"
+                                    },
+                                    {
+                                        "QueryID": 25,
+                                        "QueryName": "获取默认联系人电话"
+                                    },
+                                    {
+                                        "QueryID": 40,
+                                        "QueryName": "获取员工状态"
+                                    },
+                                    {
+                                        "QueryID": 82,
+                                        "QueryName": "结束日期按计划方式计算"
+                                    },
+                                    {
+                                        "QueryID": 83,
+                                        "QueryName": "获取销售合同涉及付款阶段等信息"
+                                    },
+                                    {
+                                        "QueryID": 87,
+                                        "QueryName": "计算费用报销单行总计"
+                                    },
+                                    {
+                                        "QueryID": 118,
+                                        "QueryName": "获取项目编号"
+                                    },
+                                    {
+                                        "QueryID": 119,
+                                        "QueryName": "实施管理单乙方人员"
+                                    },
+                                    {
+                                        "QueryID": 121,
+                                        "QueryName": "销售报价项"
+                                    },
+                                    {
+                                        "QueryID": 123,
+                                        "QueryName": "知识类型"
+                                    },
+                                    {
+                                        "QueryID": 129,
+                                        "QueryName": "根据员工部门获取员工信息"
+                                    },
+                                    {
+                                        "QueryID": 130,
+                                        "QueryName": "获取实施项目的项目编号信息"
+                                    },
+                                    {
+                                        "QueryID": 137,
+                                        "QueryName": "员工主数据计算转正日期"
+                                    },
+                                    {
+                                        "QueryID": 138,
+                                        "QueryName": "获取伙伴联系人信息"
+                                    },
+                                    {
+                                        "QueryID": 140,
+                                        "QueryName": "获取项目中的客户信息"
+                                    },
+                                    {
+                                        "QueryID": 141,
+                                        "QueryName": "根据客户信息获取实施的项目信息"
+                                    },
+                                    {
+                                        "QueryID": 143,
+                                        "QueryName": "获取权限部门信息(带参数)"
+                                    },
+                                    {
+                                        "QueryID": 144,
+                                        "QueryName": "两个参数相乘"
+                                    },
+                                    {
+                                        "QueryID": 145,
+                                        "QueryName": "获取业务伙伴主数据"
+                                    },
+                                    {
+                                        "QueryID": 146,
+                                        "QueryName": "获取销售员"
+                                    },
+                                    {
+                                        "QueryID": 148,
+                                        "QueryName": "获取销售机会状态"
+                                    },
+                                    {
+                                        "QueryID": 149,
+                                        "QueryName": "获取参数查询"
+                                    },
+                                    {
+                                        "QueryID": 150,
+                                        "QueryName": "获取活动类型"
+                                    },
+                                    {
+                                        "QueryID": 153,
+                                        "QueryName": "公共知识库更改问题状态格式化"
+                                    },
+                                    {
+                                        "QueryID": 156,
+                                        "QueryName": "传递参数"
+                                    },
+                                    {
+                                        "QueryID": 157,
+                                        "QueryName": "取项目实施甲方人员"
+                                    },
+                                    {
+                                        "QueryID": 158,
+                                        "QueryName": "获取会计科目"
+                                    },
+                                    {
+                                        "QueryID": 159,
+                                        "QueryName": "获取管理费-差旅费"
+                                    },
+                                    {
+                                        "QueryID": 160,
+                                        "QueryName": "获取权限部门信息"
+                                    },
+                                    {
+                                        "QueryID": 161,
+                                        "QueryName": "获取员工信息"
+                                    },
+                                    {
+                                        "QueryID": 171,
+                                        "QueryName": "获取项目"
+                                    },
+                                    {
+                                        "QueryID": 173,
+                                        "QueryName": "项目编码1"
+                                    },
+                                    {
+                                        "QueryID": 177,
+                                        "QueryName": "获取营销凭证单据状态"
+                                    },
+                                    {
+                                        "QueryID": 178,
+                                        "QueryName": "获取日期对应星期几"
+                                    },
+                                    {
+                                        "QueryID": 184,
+                                        "QueryName": "获取客户项目信息"
+                                    },
+                                    {
+                                        "QueryID": 189,
+                                        "QueryName": "项目2"
+                                    },
+                                    {
+                                        "QueryID": 191,
+                                        "QueryName": "取供应商信息"
+                                    },
+                                    {
+                                        "QueryID": 193,
+                                        "QueryName": "取户籍"
+                                    },
+                                    {
+                                        "QueryID": 194,
+                                        "QueryName": "根据项目权限获取客户信息"
+                                    },
+                                    {
+                                        "QueryID": 195,
+                                        "QueryName": "根据权限获取项目信息"
+                                    },
+                                    {
+                                        "QueryID": 198,
+                                        "QueryName": "自动添加人和日期"
+                                    },
+                                    {
+                                        "QueryID": 203,
+                                        "QueryName": "系统用户获取员工信息"
+                                    },
+                                    {
+                                        "QueryID": 204,
+                                        "QueryName": "工作日志表获取日期信息"
+                                    },
+                                    {
+                                        "QueryID": 208,
+                                        "QueryName": "取项目阶段"
+                                    },
+                                    {
+                                        "QueryID": 209,
+                                        "QueryName": "取阶段状态"
+                                    },
+                                    {
+                                        "QueryID": 220,
+                                        "QueryName": "取当前用户及当前日期"
+                                    },
+                                    {
+                                        "QueryID": 222,
+                                        "QueryName": "项目实施日志取合同及项目信息"
+                                    },
+                                    {
+                                        "QueryID": 225,
+                                        "QueryName": "单据状态信息"
+                                    },
+                                    {
+                                        "QueryID": 226,
+                                        "QueryName": "获取项目实施日志单客户信息"
+                                    },
+                                    {
+                                        "QueryID": 228,
+                                        "QueryName": "销售合同根据客户获取项目信息"
+                                    },
+                                    {
+                                        "QueryID": 231,
+                                        "QueryName": "根据客户获取联系人"
+                                    },
+                                    {
+                                        "QueryID": 236,
+                                        "QueryName": "访客报告列表"
+                                    },
+                                    {
+                                        "QueryID": 296,
+                                        "QueryName": "取行业"
+                                    },
+                                    {
+                                        "QueryID": 301,
+                                        "QueryName": "取会面时长"
+                                    },
+                                    {
+                                        "QueryID": 302,
+                                        "QueryName": "取职位"
+                                    },
+                                    {
+                                        "QueryID": 303,
+                                        "QueryName": "根据客户取联系人信息"
+                                    },
+                                    {
+                                        "QueryID": 331,
+                                        "QueryName": "获取应用市场信息"
+                                    },
+                                    {
+                                        "QueryID": 332,
+                                        "QueryName": "获取应用市场信息自动刷新"
+                                    },
+                                    {
+                                        "QueryID": 355,
+                                        "QueryName": "获取客户会场信息"
+                                    },
+                                    {
+                                        "QueryID": 400,
+                                        "QueryName": "运营获取地区信息"
+                                    },
+                                    {
+                                        "QueryID": 401,
+                                        "QueryName": "运营获取组别信息"
+                                    },
+                                    {
+                                        "QueryID": 402,
+                                        "QueryName": "运营获取所属行业信息"
+                                    },
+                                    {
+                                        "QueryID": 403,
+                                        "QueryName": "运营获取目标课程信息"
+                                    },
+                                    {
+                                        "QueryID": 407,
+                                        "QueryName": "目标课期列表"
+                                    }
+                                ]
+                            },
+                            {
+                                "FolderID": 9,
+                                "FolderName": "数据查询源",
+                                "Folders": [],
+                                "Querys": [
+                                    {
+                                        "QueryID": 95,
+                                        "QueryName": "销售合同合同内容明细"
+                                    },
+                                    {
+                                        "QueryID": 96,
+                                        "QueryName": "合同单号列表"
+                                    },
+                                    {
+                                        "QueryID": 97,
+                                        "QueryName": "销售合同合同明细2"
+                                    },
+                                    {
+                                        "QueryID": 98,
+                                        "QueryName": "服务确认单服务明细"
+                                    },
+                                    {
+                                        "QueryID": 99,
+                                        "QueryName": "服务确认单列表"
+                                    },
+                                    {
+                                        "QueryID": 100,
+                                        "QueryName": "实施管理单-表变量"
+                                    },
+                                    {
+                                        "QueryID": 104,
+                                        "QueryName": "进度表-表变量"
+                                    },
+                                    {
+                                        "QueryID": 105,
+                                        "QueryName": "服务确认单主表-表变量"
+                                    },
+                                    {
+                                        "QueryID": 106,
+                                        "QueryName": "销售合同单号-表变量"
+                                    },
+                                    {
+                                        "QueryID": 110,
+                                        "QueryName": "服务确认单工作内容"
+                                    },
+                                    {
+                                        "QueryID": 111,
+                                        "QueryName": "销售合同实施范围"
+                                    },
+                                    {
+                                        "QueryID": 112,
+                                        "QueryName": "销售合同合同条款"
+                                    },
+                                    {
+                                        "QueryID": 113,
+                                        "QueryName": "销售合同付款方式"
+                                    },
+                                    {
+                                        "QueryID": 114,
+                                        "QueryName": "项目管理参与人员人天数统计"
+                                    },
+                                    {
+                                        "QueryID": 115,
+                                        "QueryName": "项目按项目阶段与人分组统计"
+                                    },
+                                    {
+                                        "QueryID": 116,
+                                        "QueryName": "项目成员项目阶段服务确认单明细"
+                                    },
+                                    {
+                                        "QueryID": 117,
+                                        "QueryName": "是否主要需求"
+                                    },
+                                    {
+                                        "QueryID": 126,
+                                        "QueryName": "实施人员在项目中人天占比"
+                                    },
+                                    {
+                                        "QueryID": 133,
+                                        "QueryName": "根据销售机会编号查询对应的阶段信息"
+                                    },
+                                    {
+                                        "QueryID": 134,
+                                        "QueryName": "销售机会查询根据机会编号获取合作伙伴信息"
+                                    },
+                                    {
+                                        "QueryID": 135,
+                                        "QueryName": "根据机会编号查询相关的竞争对手信息"
+                                    },
+                                    {
+                                        "QueryID": 136,
+                                        "QueryName": "根据销售机会编号查询售前人员支持信息"
+                                    },
+                                    {
+                                        "QueryID": 213,
+                                        "QueryName": "查询数据源-取项目"
+                                    },
+                                    {
+                                        "QueryID": 214,
+                                        "QueryName": "查询数据源-取顾问日志汇总"
+                                    }
+                                ]
+                            },
+                            {
+                                "FolderID": 10,
+                                "FolderName": "自动计算字段",
+                                "Folders": [],
+                                "Querys": [
+                                    {
+                                        "QueryID": 8,
+                                        "QueryName": "业务伙伴代码自动编号"
+                                    },
+                                    {
+                                        "QueryID": 24,
+                                        "QueryName": "服务编号字段自动计算"
+                                    },
+                                    {
+                                        "QueryID": 26,
+                                        "QueryName": "销售合同编号字段自动计算"
+                                    },
+                                    {
+                                        "QueryID": 88,
+                                        "QueryName": "日志流水号自动计算"
+                                    },
+                                    {
+                                        "QueryID": 107,
+                                        "QueryName": "销售机会项目编号自动计算"
+                                    },
+                                    {
+                                        "QueryID": 139,
+                                        "QueryName": "销售工作日志流水号自动计算"
+                                    },
+                                    {
+                                        "QueryID": 142,
+                                        "QueryName": "公共知识库问题流水号自动计算"
+                                    },
+                                    {
+                                        "QueryID": 354,
+                                        "QueryName": "客户编码自动计算"
+                                    }
+                                ]
+                            },
+                            {
+                                "FolderID": 11,
+                                "FolderName": "单据触发器",
+                                "Folders": [],
+                                "Querys": [
+                                    {
+                                        "QueryID": 91,
+                                        "QueryName": "费用报销单添加更新单据状态"
+                                    },
+                                    {
+                                        "QueryID": 93,
+                                        "QueryName": "更新实施管理单项目人天合计"
+                                    },
+                                    {
+                                        "QueryID": 94,
+                                        "QueryName": "更新实施管理单进度表的实际人天"
+                                    },
+                                    {
+                                        "QueryID": 108,
+                                        "QueryName": "销售机会发送到项目信息"
+                                    },
+                                    {
+                                        "QueryID": 109,
+                                        "QueryName": "实施项目单信息更新到项目表"
+                                    },
+                                    {
+                                        "QueryID": 197,
+                                        "QueryName": "实施管理自动发送单据"
+                                    },
+                                    {
+                                        "QueryID": 206,
+                                        "QueryName": "离职员工自动锁定系统用户"
+                                    },
+                                    {
+                                        "QueryID": 207,
+                                        "QueryName": "员工主数据-更新"
+                                    },
+                                    {
+                                        "QueryID": 369,
+                                        "QueryName": "物品归还单单据触发器－添加"
+                                    },
+                                    {
+                                        "QueryID": 385,
+                                        "QueryName": "访客报告添加单据触发器"
+                                    }
+                                ]
+                            },
+                            {
+                                "FolderID": 13,
+                                "FolderName": "人事行政",
+                                "Folders": [],
+                                "Querys": [
+                                    {
+                                        "QueryID": 85,
+                                        "QueryName": "取员工角色"
+                                    },
+                                    {
+                                        "QueryID": 92,
+                                        "QueryName": "部门列表"
+                                    },
+                                    {
+                                        "QueryID": 147,
+                                        "QueryName": "取未添加的用户格式化搜索"
+                                    }
+                                ]
+                            }
+                        ],
+                        "Querys": []
+                    },
+                    {
+                        "FolderID": 14,
+                        "FolderName": "移动端报表分组",
+                        "Folders": [
+                            {
+                                "FolderID": 15,
+                                "FolderName": "报表1",
+                                "Folders": [],
+                                "Querys": []
+                            },
+                            {
+                                "FolderID": 16,
+                                "FolderName": "报表查询1",
+                                "Folders": [],
+                                "Querys": []
+                            },
+                            {
+                                "FolderID": 20,
+                                "FolderName": "测试组",
+                                "Folders": [],
+                                "Querys": []
+                            },
+                            {
+                                "FolderID": 23,
+                                "FolderName": "报表组二",
+                                "Folders": [],
+                                "Querys": []
+                            },
+                            {
+                                "FolderID": 32,
+                                "FolderName": "报表查询aaabc",
+                                "Folders": [],
+                                "Querys": []
+                            },
+                            {
+                                "FolderID": 34,
+                                "FolderName": "采购报表1",
+                                "Folders": [],
+                                "Querys": []
+                            },
+                            {
+                                "FolderID": 35,
+                                "FolderName": "采购报表ttttttt",
+                                "Folders": [],
+                                "Querys": []
+                            },
+                            {
+                                "FolderID": 36,
+                                "FolderName": "采购报表jason",
+                                "Folders": [],
+                                "Querys": []
+                            }
+                        ],
+                        "Querys": []
+                    }
+                ]
+            },
+            "Code": 0,
+            "Msg": ""
+    }
+
+var jstreeDemo={
+
+}
+
+
+    $(function(){
+        formatData(json.Result);
+        console.log(json.Result.Folders);
+        $('#tree').jstree({
+            'core' : {
+                'data' :json.Result, // {id:0,text:"abc",children:[{id:1,text:"def",children:[]}]}
+                'themes': {
+                    'responsive': false,
+                    'variant': 'small',
+                    'stripes': true
+                }
+            },
+            'types': {
+                'default': { 'icon': 'folder' },
+                'file': { 'valid_children': [], 'icon': 'file' }
+            },
+            'unique': {
+                'duplicate': function (name, counter) {
+                    return name + ' ' + counter;
+                }
+            },
+            'plugins': ['state', 'sort', 'dnd', 'types', 'contextmenu', 'unique']
+        });
+
+        $('#tree').on("select_node.jstree", function (e, data) {
+            console.log("被选中的节点数据：",data);
+        });
+
+        $("#tree").on("loaded.jstree", function (e, data) {
+            debugger;
+            //console.log("根节点：", data);
+            data.instance.open_all(); //  打开所有节点
+        })
+
+    })
+
+    function formatData(d){
+        console.count("函数被执行的次数");
+        d.id=d.FolderID;
+        d.text=d.FolderName;
+        d.children =[];
+        if(typeof (d.Folders)!="undefined"&&d.Folders.length>0){
+            $.each(d.Folders,function(a,b){
+                d.children.push({id:b.FolderID,text:b.FolderName,children: b.Folders})
+            })
+        }
+        if(typeof (d.Querys)!="undefined"&&d.Querys.length>0){
+            $.each(d.Querys,function(a,b){
+                d.children.push({id:b.QueryID,text:b.QueryName,children:[]})
+            })
+        }
+        if(typeof (d.Folders)!="undefined"&&d.Folders.length>0)
+        {
+            $.each(d.Folders,function(a,b){
+                formatData(b);
+            })
+        }
+    }
+</script>
+</body>
+</html>

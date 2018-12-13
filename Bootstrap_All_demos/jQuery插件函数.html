@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="tip"></div>
+<a href="http://www.cnblogs.com/zikai/p/5074686.html">“插件”参考网址</a>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    $.fn.extend({//对象插件函数     实例对象
+        hello:function(){alert('hello');}
+    });
+    //$("#tip").hello();
+
+    $.extend({//全局插件函数     全局对象
+        hello:function(){alert('hello');}
+    });
+    //$.hello();
+
+    //对象的合并
+    var result=$.extend({},{name:"Tom",age:21},{name:"Jerry",sex:"Boy"});
+    //console.log(result);
+
+    //对象的合并:深拷贝
+    var result1=$.extend( true, {},
+            { name: "John", location: {city: "Boston",county:"USA"} },
+            { last: "Resig", location: {state: "MA",county:"China"} } );
+    console.log("深拷贝",result1);
+
+    //对象的合并:浅拷贝
+    var result2=$.extend( false, {},
+            { name: "John", location:{city: "Boston",county:"USA"} },
+            { last: "Resig", location: {state: "MA",county:"China"} }
+    );
+    console.log("浅拷贝",result2);
+</script>
+</body>
+</html>

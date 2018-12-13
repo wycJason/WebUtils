@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        #dropzone {
+            min-height: 600px;
+            border: black 1px solid;
+            overflow:auto;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="dropzone" contenteditable="true"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+//https://segmentfault.com/a/1190000007434697?_ea=1531953
+var dz = document.getElementById('dropzone');
+dz.onpaste = function(e) {
+    if ( !(e.clipboardData && e.clipboardData.items) ) {
+        return ;
+    }
+
+    for (var i = 0, len = e.clipboardData.items.length; i < len; i++) {
+        var item = e.clipboardData.items[i];
+
+        if (item.kind === "string") {
+            item.getAsString(function (str) {
+                // str 是获取到的字符串
+            })
+        } else if (item.kind === "file") {
+            var pasteFile = item.getAsFile();
+            // pasteFile就是获取到的文件
+        }
+    }
+}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>右键菜单</title>
+    <style>
+        body{
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+<h1><a href="http://www.jq22.com/yanshi2747" target="_blank">右键菜单插件(ContextMenu plugin)</a></h1>
+<span class="menu">右击鼠标</span>
+<!--class="contextMenu"是初始化菜单  style="display: none"是避免刷新时菜单显隐-->
+<div id="myMenu" class="contextMenu" style="display: none">
+    <ul>
+        <li id="open"><img src="jq22/folder.png" /> Open</li>
+        <li id="email"><img src="jq22/email.png" /> Email</li>
+        <li id="save"><img src="jq22/disk.png" /> Save</li>
+        <li id="close"><img src="jq22/cross.png" /> Close</li>
+    </ul>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="jq22/jquery.contextmenu.r2.js"></script>
+<script>
+    $('span.menu').contextMenu('myMenu', {
+        bindings: {
+            'open': function(t) {debugger;
+                alert('解发元素的类名是： '+t.className+'\n动作是： Open');
+            },
+            'email': function(t) {
+                alert('解发元素的类名是： '+t.className+'\n动作是： Email');
+            },
+            'save': function(t) {
+                alert('解发元素的类名是： '+t.className+'\n动作是： Save');
+            },
+            'close': function(t) {
+                alert('解发元素的类名是： '+t.className+'\n动作是： Delete');
+            }
+        },
+       /* menuStyle: {
+            border: '2px solid #000'
+        },
+        itemStyle: {
+            fontFamily : 'verdana',
+            backgroundColor : '#666',
+            color: 'white',
+            border: 'none',
+            padding: '1px'
+        },
+        itemHoverStyle: {
+            color: '#fff',
+            backgroundColor: '#0f0',
+            border: 'none'
+        }*/
+       /* onContextMenu: function(e) {
+            if ($(e.target).is(".menu")) {
+                return false;
+            }else {
+                return true
+            }
+        },*/
+        /*onShowMenu: function(e, menu) {
+            if ($(e.target).is(".menu")) {
+                $('#open, #email').hide();
+            }
+            return menu;
+        }*/
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei";
+            font-size: 14px;
+            /*overflow: hidden;*/ /*设置垂直滚动条*/
+            margin-bottom:100px;
+        }
+
+        h1, h2, h3, h4, h5, h6, p, ul, li, ol, li, dl, dt, dd {
+            list-style: none;
+            border: none;
+        }
+
+
+        .colleaguesItem,.multiClg{
+            padding-left: 0;
+        }
+        ul.colleaguesItem{
+            border: 1px solid #dddddd;
+            width: 280px;
+            padding: 8px;
+        }
+        ul.colleaguesItem>li:not(:last-child){
+            border-bottom: 1px solid #dddddd;
+        }
+        ul.multiClg{
+            padding: 6px;
+        }
+        ul.multiClg>li{
+            float: left;
+        }
+        ul.multiClg>li:first-child{
+            height: 60px;
+            line-height: 60px;
+            margin-right: 5px;
+        }
+        ul.multiClg>li span{
+            display: block;
+        }
+        .borderSet{
+            height: 9px;
+            width: 9px;
+            border-width: 2px 2px 0 0;
+            border-color: #c8c8cd;
+            border-style: solid;
+            -webkit-transform: matrix(.71,.71,-.71,.71,0,0);
+            transform: matrix(.71,.71,-.71,.71,0,0);
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<select name="passenger_1_seat_detail_select"style="display:block"  id="passenger_1_seat_detail_select"onchange="setSeatDetail('1')">
+    <option value="0">随机</option>
+    <option value="3">上铺</option>
+    <option value="2">中铺</option>
+    <option value="1">下铺</option>
+</select>
+
+
+<button disabled onclick="alert(1)">点击</button>
+<div class="borderSet"></div>
+<div>
+    <span>取值</span>
+    <input id="customColor" type="range" min="12" max="22" step="1" style="display: inline-block;width: auto;vertical-align: middle"/>
+</div>
+<div>
+    数字类型:<input type="number" min="18" max="50" step="2" value="30"><br>
+    范围类型:<input type="range" min="18" max="50" step="2" value="30" style="display: inline-block;width: auto;vertical-align: middle"><br>
+</div>
+
+<div>
+    <input type="text" placeholder="可输入备注信息" style="color: red;font-size: 22px;font-style: italic;font-weight: bold" value="思普达"/><br/>
+    <input id="chk" type="checkbox" style="color: red;font-size: 22px;font-style: italic;font-weight: bold"/><br/>
+    <input type="radio" style="color: red;font-size: 22px;font-style: italic;font-weight: bold"/><br/>
+    <select id="sel" style="color: red;font-size: 22px;font-style: italic;font-weight: bold">
+        <option value="a" data-a="a" data-b="b">1</option>
+        <option value="b">2</option>
+        <option value="c">3</option>
+    </select><br/>
+    <textarea id="textareaInfo" style="color: red;font-size: 22px;font-style: italic;font-weight: bold;height: 300px">
+        热烈庆祝中国共产党第十九次全国代表大会于2018年10月18日9：00正式召开
+    </textarea>
+</div>
+
+<div id="mytest" data-abc="123" >789</div>
+<input type="tel" value="输数字"/><Br><Br>
+<input type="text" value="输任何内容"/><Br><Br>
+<a href="javascript:alert(0);console.log(1)">JS</a><br><br>
+<a href="tel:18688888888">拨号</a><Br><Br>
+<a href="sms:18688888888">发短信</a><Br><Br>
+<a href="data/file.xls">下载文件</a><Br><Br>
+<a href="mailto:408657994@qq.com">发邮件</a><Br><Br>
+<a href="www.baidu.com" id="btnTest">百度</a>
+<ul class="colleaguesItem">
+    <li>
+        <ul class="multiClg clearfix">
+            <li>
+                <input type="checkbox" name="colleagues"/>
+            </li>
+            <li>
+                <span>深圳市思普达软件系统股份公司</span>
+                <span>张小芹</span>
+                <span>150192244568</span>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <ul class="multiClg clearfix">
+            <li>
+                <input type="checkbox" name="colleagues"/>
+            </li>
+            <li>
+                <span>深圳市思普达软件系统股份公司</span>
+                <span>张小芹</span>
+                <span>150192244568</span>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<!--<p class="pull-left">
+    <input type="radio"/>
+</p>
+<p class="pull-left">
+    <span>深圳市思普达软件系统股份公司</span>
+    <span>张小芹</span>
+    <span>150192244568</span>
+</p>-->
+
+
+<a href="javascript:void(0)">点击跳转</a>
+<br>
+<button id="btn">刷新页面</button>
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+   // prompt("input your salary","123");
+    //setTimeout(function(){  window.close()},3000)
+    $("#btn").click(function(){
+        location.reload()
+    })
+
+    function test(){
+        return 8;
+    }
+    var obj={
+        age:test,
+    }
+    console.log(obj.age());
+
+
+    var a=[
+        {"name":"jason"},
+        {"age":"28"}
+    ]
+    console.log($.extend(a,[{"name":"eric"}, {"age":"35"}]))
+
+   $("#btnTest").click(function(){
+      alert(1)
+       return false
+   })
+
+
+    function tst(n){
+        switch(n){
+            case 1:
+                    return 1
+                break;
+            case 2:
+                return 2
+                break;
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>WebSockets</title>
+</head>
+<body>
+<script>
+    /*
+      TODO 1.创建 WebSocket 对象
+      TODO   * 客户端HTML页面与服务器端建立链接
+     */
+    var websocket = new WebSocket('ws://127.0.0.1:80');
+    //TODO 2.监听客户端与服务器端是否建立链接
+    websocket.onopen = function(){
+        /*
+          TODO 客户端与服务器端已经建立链接
+          TODO 3.向服务器端发送请求数据
+         */
+        websocket.send('tarena');
+        alert("成功地给服务器端发送数据: tarena");
+    }
+    //TODO 4.客户端接收服务器端的响应数据
+    websocket.onmessage = function(event){
+        alert("收到的服务器端消息: "+event.data);
+        //TODO 5.关闭链接
+        websocket.close();
+    }
+</script>
+</body>
+</html>

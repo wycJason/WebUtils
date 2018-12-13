@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/codemirror.css"/>
+    <script src="js/codemirror.js"></script>
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<h1><a href="https://segmentfault.com/a/1190000004288686" target="_blank">js获取剪切板内容，js控制图片粘贴。</a></h1>
+<textarea name="aaa" id="aaa"></textarea>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    var pasteEle=document.getElementById("aaa")
+    pasteEle.addEventListener("paste", function (e){
+        debugger;
+       // e.clipboardData===>DataTransfer  items:DataTransferItemList(item:DataTransferItem)
+        /*
+         DataTransferItem有两个属性kind和type
+         kind 一般为string或者file
+         type 具体的数据类型，例如具体是哪种类型字符串或者哪种类型的文件，即MIME-Type，常见的值有images/*、text/plain、text/html、Files。
+         方法
+         getAsFile 空 如果kind是file，可以用该方法获取到文件
+         getAsString 回调函数 如果kind是string，可以用该方法获取到字符串，字符串需要用回调函数得到，回调函数的第一个参数就是剪切板中的字符串
+        */
+
+        if ( !(e.clipboardData && e.clipboardData.items) ) {
+            alert("该浏览器不支持操作");
+            return ;
+        }
+
+        for (var i = 0, len = e.clipboardData.items.length; i < len; i++) {
+            var item = e.clipboardData.items[i];
+
+            if (item.kind === "string") {
+                item.getAsString(function (str) {
+                    console.log(str)
+                    // str 是获取到的字符串
+                })
+            } else if (item.kind === "file") {
+                var pasteFile = item.getAsFile();
+                console.log(pasteFile)
+                // pasteFile就是获取到的文件
+            }
+        }
+    });
+
+    pasteEle.addEventListener("drop", function (e){
+        e.preventDefault();
+        e.stopPropagation();
+        debugger;
+        var data = new FormData();
+        var files = e.dataTransfer.files;
+        var i = 0;
+        var len = files.length;
+        while (i < len){
+            data.append("file" + i, files[i]);
+            i++;
+        }
+
+       /* var xhr = new XMLHttpRequest();
+        xhr.open("post", "/upload", true);
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4){
+                alert(xhr.responseText);
+            }
+        };
+        xhr.send(data);*/
+
+
+        /*$.ajax({
+            url: "/upload",
+            type: "post",
+            data: data,
+            processData: false,  // 告诉jQuery不要去处理发送的数据
+            contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (response) {
+                console.log(response)
+            }
+        });*/
+    });
+</script>
+
+<!--<script>
+    var textarea=document.getElementById("aaa")
+    var editor = CodeMirror.fromTextArea(textarea, {
+        lineNumbers: true
+    });
+    editor.on("paste",function(editor,e){
+        // console.log(e.clipboardData)
+        if(!(e.clipboardData&&e.clipboardData.items)){
+            alert("该浏览器不支持操作");
+            return;
+        }
+        for (var i = 0, len = e.clipboardData.items.length; i < len; i++) {
+            var item = e.clipboardData.items[i];
+            // console.log(item.kind+":"+item.type);
+            if (item.kind === "string") {
+                item.getAsString(function (str) {
+                    // str 是获取到的字符串
+                })
+            } else if (item.kind === "file") {
+                var pasteFile = item.getAsFile();
+                // pasteFile就是获取到的文件
+                console.log(pasteFile);
+                fileUpload(pasteFile);
+            }
+        }
+    });
+    editor.on("drop",function(editor,e){
+        debugger;
+        // console.log(e.dataTransfer.files[0]);
+        if(!(e.dataTransfer&&e.dataTransfer.files)){
+            alert("该浏览器不支持操作");
+            return;
+        }
+        for(var i=0;i<e.dataTransfer.files.length;i++){
+            console.log(e.dataTransfer.files[i]);
+            fileUpload(e.dataTransfer.files[i]);
+        }
+        e.preventDefault();
+    });
+    //文件上传
+    function fileUpload(fileObj){
+        var data = new FormData();
+        data.append("file",fileObj);
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", "/upload", true);
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4){
+                alert(xhr.responseText);
+            }
+        };
+        xhr.send(data);
+    }
+    //阻止浏览器默认打开拖拽文件的行为
+    window.addEventListener("drop",function(e){
+        e = e || event;
+        e.preventDefault();
+        if (e.target.tagName == "textarea") {  // check wich element is our target
+            e.preventDefault();
+        }
+    },false);
+</script>-->
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+        #edit{
+            height:500px;
+            width:500px;
+            border:1px solid red;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="edit" contenteditable onkeyup="getCursorStr(this)"></div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //支持IE9+  参考 https://segmentfault.com/a/1190000005869372
+    // 定义最后光标对象
+    var lastEditRange;
+    // 编辑框点击事件
+    document.getElementById('edit').onclick = function() {
+        // 获取选定对象
+        var selection = getSelection()
+        // 设置最后光标对象
+        lastEditRange = selection.getRangeAt(0)
+        // 编辑框设置焦点
+        edit.focus()
+    }
+
+    // 编辑框按键弹起事件
+   function getCursorStr(edit) {
+        // 获取选定对象
+        var selection = getSelection()
+        // 设置最后光标对象
+        lastEditRange = selection.getRangeAt(0)
+
+       // 获取选定对象
+       var selection = getSelection()
+       // 判断是否有最后光标对象存在
+       if (lastEditRange) {
+           // 存在最后光标对象，选定对象清除所有光标并添加最后光标还原之前的状态
+           selection.removeAllRanges()
+           selection.addRange(lastEditRange)
+       }
+       // 判断选定对象范围是编辑框还是文本节点
+       if (selection.anchorNode.nodeName != '#text') {
+
+       } else {
+           // 如果是文本节点则先获取光标对象
+           var range = selection.getRangeAt(0)
+           // 获取光标对象的范围界定对象，一般就是textNode对象
+           var textNode = range.startContainer;
+           // 获取光标位置
+           var rangeStartOffset = range.startOffset;
+
+           // 文本节点在光标位置处插入新的表情内容
+           textNode.insertData(rangeStartOffset, "@")
+
+           //文本节点在光标位置处插入新的内容
+          console.log(textNode.data.substr(rangeStartOffset,1))
+
+           // 光标移动到到原来的位置加上新内容的长度
+           range.setStart(textNode, rangeStartOffset + 1)
+
+           // 光标开始和光标结束重叠
+           range.collapse(true)
+
+           // 清除选定对象的所有光标对象
+           selection.removeAllRanges()
+
+           // 插入新的光标对象
+           selection.addRange(range)
+       }
+
+       // 无论如何都要记录最后光标对象
+       lastEditRange = selection.getRangeAt(0)
+    }
+</script>
+</body>
+</html>

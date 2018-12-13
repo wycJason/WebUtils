@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <style>
+
+  </style>
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<h1><a href="https://github.com/calledT/soshm" target="_blank">Social Share参考资料</a></h1>
+	
+	<button id="shareBtn">分享</button>
+	
+	<div id="share"></div>
+	<script src="../js/jquery-1.11.3.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="dist/soshm.min.js"></script>
+	<script>
+		//渲染页面分享
+		 soshm('#share', {
+   // 分享的链接，默认使用location.href
+			url: 'http://www.baidu.com',
+			// 分享的标题，默认使用document.title
+			title: '标题',
+			// 分享的摘要，默认使用<meta name="description" content="">content的值
+			digest: '内容',
+			// 分享的图片，默认获取本页面第一个img元素的src
+			pic: 'src/img/qq.png',
+			// 默认显示的网站为以下六个,支持设置的网站有 weixin,weixintimeline,qq,qzone,yixin,weibo,tqq,renren,douban,tieba
+      sites: ['weixin', 'weixintimeline', 'weibo', 'yixin', 'qzone', 'tqq', 'qq','renren','douban','tieba']
+  });
+		
+		//按钮点击分享
+		document.getElementById('shareBtn').addEventListener('click', function() {
+    soshm.popIn({
+      // 分享的链接，默认使用location.href
+			url: 'http://www.baidu.com',
+			// 分享的标题，默认使用document.title
+			title: '弹窗分享',
+			// 分享的摘要，默认使用<meta name="description" content="">content的值
+			digest: '自定义',
+			// 分享的图片，默认获取本页面第一个img元素的src
+			pic: 'src/img/qq.png',
+			// 默认显示的网站为以下六个,支持设置的网站有 weixin,weixintimeline,qq,qzone,yixin,weibo,tqq,renren,douban,tieba
+      sites: ['weixin', 'weixintimeline', 'weibo', 'yixin', 'qzone', 'tqq', 'qq','renren','douban','tieba']
+    });
+  }, false);
+	</script>
+</body>
+</html>

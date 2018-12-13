@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--<link href="css/bootstrap-select.css" rel="stylesheet">-->
+    <link href="https://cdn.bootcss.com/bootstrap-select/1.12.3/css/bootstrap-select.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<a href="https://developer.snapappointments.com/bootstrap-select/" target="_blank">bootstrap-select</a><br/>
+<select id="test" class="selectpicker" data-width="auto" data-live-search="true" title="单选，和搜索" >
+    <option  data-tokens="ketchup1" value="1">王小芳</option>
+    <option  data-tokens="mustard2" value="2">张大林</option>
+    <option  data-tokens="frosting3" value="3">何美丽</option>
+    <option  data-icon="glyphicon-heart" data-tokens="ketchup4" value="4">王小芳</option>
+    <option  data-icon="glyphicon-heart" data-tokens="mustard5" value="5">张大林</option>
+    <option  data-icon="glyphicon-heart" data-tokens="frosting6" value="6">何美丽</option>
+    <option  data-content="<span class='label label-success'>王小芳</span>" data-tokens="ketchup7" value="7">王小芳</option>
+    <option  data-content="<span class='label label-info'>张大林</span>" data-tokens="mustard8" value="8">张大林</option>
+    <option  data-content="<span class='label label-primary'>何美丽</span>" data-tokens="frosting9" value="9">何美丽</option>
+</select>
+
+<select id="myCustom" class="selectpicker"  data-live-search="true" data-live-search-placeholder="自动搜索" title="单选，和搜索">
+    <option value="1">王小芳</option>
+    <option value="2">张大林</option>
+    <option value="3">何美丽</option>
+</select>
+
+
+<select id="selA" class="selectpicker" data-width="auto" data-live-search="true" data-live-search-placeholder="自动搜索" multiple title="多选，和搜索" data-selected-text-format="count > 3" data-size="auto" data-actions-box="true" data-deselect-all-text="取消" data-select-all-text="全选" data-header="关闭">
+    <option value="1">王小芳</option>
+    <option value="2">张大林</option>
+    <option value="3">何美丽</option>
+    <option value="4">刘小美</option>
+    <option value="5">何琪慧</option>
+    <option value="6">张小丽</option>
+    <option value="7">李小芹</option>
+    <option value="8">欧阳婉儿</option>
+    <option value="9">何媛</option>
+    <option value="10">佟芳芳</option>
+    <option value="11">徐丽丽</option>
+    <option value="12">张小晓</option>
+</select>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<!--<script src="js/bootstrap-select.js"></script>-->
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.3/js/i18n/defaults-zh_CN.js"></script>
+<script>
+    //设值
+    $('#myCustom').selectpicker('val', '3');//单选
+    //$('#test').selectpicker('refresh');
+
+   //$('#selA').selectpicker('val', '1');
+   $('#selA').selectpicker('val',['1','2','3']);//多选 也可以这种方法设值
+    //$('#selA').selectpicker('selectAll');
+    //$('#selA').selectpicker('deselectAll');
+    //$('#selA').selectpicker('destroy');
+    //如果是动态加载选项，最后要刷新一下，$('#selA').selectpicker('refresh');
+
+    //取值--两种取法
+    $('#myCustom').selectpicker('val');
+    $('#myCustom').val();
+
+
+    $('#myCustom').change(function(){
+        var $this=$(this);
+        console.log($this.val())
+    })
+</script>
+</body>
+</html>

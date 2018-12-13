@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    function checkEndTime(startTime,endTime){
+        var start=new Date(startTime.replace(/-/ig,"/"));
+        var end=new Date(endTime.replace(/-/ig,"/"));
+        if(end<start){
+            alert("结束时间必须晚于开始时间！");
+        }
+    }
+    checkEndTime("2017-4-9","2017-4-10");
+</script>
+</body>
+</html>

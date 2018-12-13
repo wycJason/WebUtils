@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JS批量下载</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<a href="data/contracs.pdf" target="_blank" download="PDF下载">a标签PDF下载</a>
+<!--<iframe src="http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_e518170dca334d85b9824734e392b268.pdf/%E7%8E%8B%E4%BA%94.pdf" class="hidden"></iframe>-->
+<br/>
+<br/>
+<br/>
+
+<!--
+前言：
+在html5中 a 标签多了一个属性download，用户点击a链接浏览器会打开并显示该链接的内容，若在a链接中加了 download 属性，点击该链接就不会打开这个文件，而是直接下载。
+注意，download是html5中的a标签的新特性，所以（不支持h5）的低版本浏览器不兼容！
+-->
+<button id="multiDownLad">iframe批量下载</button>
+<button id="multiDownLadWindow">Window批量下载</button>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<!--<script type="text/html" id="allDownLoadPDFS">-->
+    <!--<iframe src="http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_e518170dca334d85b9824734e392b268.pdf/%E7%8E%8B%E4%BA%94.pdf" class="hidden"></iframe>-->
+<!--</script>-->
+<script>
+    //多文件下载  https://segmentfault.com/a/1190000016771027     https://www.cnblogs.com/hustskyking/p/multiple-download-with-javascript.html
+    //https://www.cnblogs.com/cnsevennight/p/3849345.html
+    var downloadData = [];//把下载链接放入集合里　　
+    var downloadNum=0;//方法执行次数
+    function circularWindow(){//循环弹窗
+        setTimeout(function(){
+            jumpDownloadWindow(downloadNum);
+        },500);//次数设置一下延时，不然有的手机会因为反应不过来而出现误差
+    }
+    function jumpDownloadWindow(i){//弹出下载窗口
+        var fileFrame = document.createElement("iframe");
+        fileFrame.src = downloadData[i];//文件路径
+        fileFrame.style.display = "none"; // 防止影响页面
+        document.body.appendChild(fileFrame);// 这一行必须，iframe挂在到dom树上才会发请求  iframe不会相互影响，可以连续下载哦!
+        
+        downloadNum++;
+        if(downloadNum!=downloadData.length){
+            circularWindow();
+        }
+    }
+
+    $("#multiDownLad").click(function(){
+        downloadData = [
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_6ab1021388ba480486b1c12fca82423a.pdf/%E6%B7%B1%E5%9C%B3--%E6%9C%80%E6%96%B0%E9%80%9A%E8%AE%AF%E5%BD%95-11%E6%9C%88%E4%BB%BD.pdf",
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_2bf9449db18c47958816a0ba6d692a3f.pdf/%E5%BC%A0%E4%B8%89.pdf",
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_b233378ad7064b96a6bcb2259dc9a10f.pdf/%E6%9D%8E%E5%9B%9B.pdf",
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_e518170dca334d85b9824734e392b268.pdf/%E7%8E%8B%E4%BA%94.pdf"
+        ];
+
+       /* downloadData=[
+            "http://120.136.129.178:8059/openapi/company/zqsign/v1/contractpdfdown/68253188/26363/-9684/399/134/1544601671/2de63ceef37ace9c629bd857ae13dfac/HHBL-CS-2018001ZR01.pdf",
+            "http://120.136.129.178:8059/openapi/company/zqsign/v1/contractpdfdown/68253188/26363/-9684/399/135/1544601671/188f98cca256dc284910f055cb0870fc/HHBL-CS-2018001DB01.pdf",
+            "http://120.136.129.178:8059/openapi/company/zqsign/v1/contractpdfdown/68253188/26363/-9484/398/136/1544601671/fb9fea1723526926bb44fe7f1399908e/HHBL-CS-2018001DJ01.pdf"
+        ]*/
+        downloadNum=0;//方法执行次数
+        circularWindow(downloadNum);
+    })
+
+    $("#multiDownLadWindow").click(function(){
+        downloadData = [
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_6ab1021388ba480486b1c12fca82423a.pdf/%E6%B7%B1%E5%9C%B3--%E6%9C%80%E6%96%B0%E9%80%9A%E8%AE%AF%E5%BD%95-11%E6%9C%88%E4%BB%BD.pdf",
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_2bf9449db18c47958816a0ba6d692a3f.pdf/%E5%BC%A0%E4%B8%89.pdf",
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_b233378ad7064b96a6bcb2259dc9a10f.pdf/%E6%9D%8E%E5%9B%9B.pdf",
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_e518170dca334d85b9824734e392b268.pdf/%E7%8E%8B%E4%BA%94.pdf"
+        ];
+     //   window.open("http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_e518170dca334d85b9824734e392b268.pdf/%E7%8E%8B%E4%BA%94.pdf")
+        downloadData.forEach(function(url){
+            window.open(url);
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<button id="old">.trigger("focus")</button>
+<button id="new">.triggerHandler("focus")</button><br/><br/>
+<input type="text" value="To Be Focused"/>
+<br/><br/>
+<a id="test" onclick="" href="http://www.baidu.com">百度</a>
+<button id="btn" onclick="test()">百度测试trigger、triggerHandler</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    $("#old").click(function(){
+        $("input").trigger("focus");
+    });
+    $("#new").click(function(){
+        $("input").triggerHandler("focus");
+    });
+    $("input").focus(function(){
+        $("<span>Focused!</span>").appendTo("body").fadeOut(1000);
+    });
+
+    function test(){
+        //$('#test').triggerHandler('click');//这个特别的方法将会触发指定的事件类型上所有绑定的处理函数。但不会执行浏览器默认动作，也不会产生事件冒泡。
+        $('#test').trigger('click');//这个函数也会导致浏览器同名的默认行为的执行。比如，如果用trigger()触发一个'submit'，则同样会导致浏览器提交表单。如果要阻止这种默认行为，应返回false。
+    }
+</script>
+</body>
+</html>

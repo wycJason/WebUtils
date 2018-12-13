@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Div光标位置 插入文字或 HTML</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div id="myDiv" style="width: 300px; height: 100px;border: black 1px solid; font-size:small; line-height:1; "
+     onclick="getPos();" contenteditable="true">
+    好好学习，天天向上
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //https://www.cnblogs.com/zxy562323273/p/4800144.html
+    function getPos()
+    {
+        debugger
+        var range = window.getSelection().getRangeAt(0);//找到焦点位置
+        var span = document.createElement('span');
+        span.innerHTML = 'qqqqqqqqqqqqqqqqqqqqqqqqqq';
+        range.insertNode(span);//在焦点插入节点
+    }
+</script>
+</body>
+</html>

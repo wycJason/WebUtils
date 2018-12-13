@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<input type="hidden" id="ArrObj"/>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+function test(){
+    console.log(1);
+    return true;
+    console.log(2);//1  true
+}
+console.log(test());
+
+/**
+ * [parseStrObjByRegExp 字符串转化为对象（正则表达式方式）]
+ * @param  {[type]} strDes    [字符串]
+ */
+function parseStrObjByRegExp(strDes){
+    var obj = {};
+    strDes.replace(/(\w+)(?:=([^;]*))?/g,function(str, key, value){
+        obj[key] = value;
+    });
+    return obj;
+}
+var obj = parseStrObjByRegExp("name=jack;age=20;love=lily");
+console.log(obj);
+
+
+function parseStrObjByRegExpKV(strDes){
+    var obj = {};
+    strDes.replace(/(\w+)(?:=([^&]*))?/g,function(str, key, value){
+        obj[key] = value;
+    });
+    return obj;
+}
+var objKV = parseStrObjByRegExpKV("name=jack&age=20&love=lily");
+console.log(objKV);
+
+//数组对象
+    var arr=[];
+    arr.push({
+        name:"jason",
+        age:28
+    })
+    $("#ArrObj").val(JSON.stringify(arr));
+    console.log(JSON.parse($("#ArrObj").val()));
+</script>
+</body>
+</html>

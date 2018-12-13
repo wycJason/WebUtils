@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!--响应式导航条-->
+<div class="navbar navbar-default">
+  <div class="container">
+    <!--导航条头部：brand + toggle-->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">TARENA</a>
+      <a data-toggle="collapse" href="#menu" class="navbar-toggle">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+    </div>
+
+    <!--导航条折叠部分：nav、form、btn、text-->
+    <div id="menu" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#">首页</a></li>
+        <li class="active"><a href="#">新闻</a></li>
+        <li class="dropdown">
+          <a data-toggle="dropdown" href="#">产品大全<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">冰箱</a></li>
+            <li><a href="#">洗衣机</a></li>
+            <li><a href="#">电视</a></li>
+            <li><a href="#">空调</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a class="navbar-link navbar-text navbar-right" href="#">注册</a>
+      <span class="navbar-text navbar-right">|</span>
+      <a class="btn btn-success navbar-btn navbar-right" href="#">登录</a>
+
+      <form action="#" class="navbar-form navbar-right">
+        <div class="form-group has-feedback">
+          <label class="sr-only" for="kw">产品搜索</label>
+          <input class="form-control" id="kw" placeholder="产品搜索">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--主体内容-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 col-sm-3">
+      <!--组件——列表组-->
+      <div class="list-group">
+        <a class="list-group-item" href="#">
+          <span class="glyphicon glyphicon-home"></span>
+          主页
+          <span class="badge">1213</span>
+        </a>
+        <a class="list-group-item" href="#">
+          <span class="glyphicon glyphicon-camera"></span>
+          照片墙
+          <span class="badge">91</span>
+        </a>
+        <a class="list-group-item" href="#">
+          <span class="glyphicon glyphicon-cog"></span>
+          个人中
+          <span class="badge">10</span>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-10 col-sm-9">
+      <!--手风琴=面板+折叠-->
+      <div class="panel-group" id="pg">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#pg" href="#jtxc" class="panel-title">家庭相册</a>
+          </div>
+          <div class="panel-collapse collapse in" id="jtxc">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="media">
+                    <div class="media-left">
+                      <img src="img/1.jpg" alt=""/>
+                    </div>
+                    <div class="media-body">
+                      <h3 class="media-heading">花红似火</h3>
+                      <p>照片的详细介绍...</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="media">
+                    <div class="media-left">
+                      <img src="img/2.jpg" alt=""/>
+                    </div>
+                    <div class="media-body">
+                      <h3 class="media-heading">花红似火</h3>
+                      <p>照片的详细介绍...</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="media">
+                    <div class="media-left">
+                      <img src="img/3.jpg" alt=""/>
+                    </div>
+                    <div class="media-body">
+                      <h3 class="media-heading">花红似火</h3>
+                      <p>照片的详细介绍...</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="media">
+                    <div class="media-left">
+                      <img src="img/4.jpg" alt=""/>
+                    </div>
+                    <div class="media-body">
+                      <h3 class="media-heading">花红似火</h3>
+                      <p>照片的详细介绍...</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#pg" href="#txxc" class="panel-title">同学相册</a>
+          </div>
+          <div class="panel-collapse collapse" id="txxc">
+            <div class="panel-body">
+              主体内容
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#pg" href="#yj" class="panel-title">游记</a>
+          </div>
+          <div class="panel-collapse collapse" id="yj">
+            <div class="panel-body">
+              主体内容
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+  (function () {
+    var s = document.createElement("script");
+    s.onload = function () {
+      bootlint.showLintReportForCurrentDocument([]);
+    };
+    s.src = "js/bootlint.js";
+    document.body.appendChild(s)
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <!-- 阻止单击事件继续传播 -->
+    <a v-on:click.stop="doThis">阻止单击事件继续传播</a>
+
+    <!-- 提交事件不再重载页面 -->
+    <form v-on:submit.prevent="onSubmit">提交事件不再重载页面</form>
+
+    <!-- 修饰符可以串联 -->
+    <a v-on:click.stop.prevent="doThat">修饰符可以串联</a>
+
+    <!-- 只有修饰符 -->
+    <form v-on:submit.prevent>只有修饰符</form>
+
+    <!-- 添加事件监听器时使用事件捕获模式 -->
+    <!-- 即元素自身触发的事件先在此处理，然后才交由内部元素进行处理 -->
+    <div v-on:click.capture="doThis">元素自身触发的事件先在此处理，然后才交由内部元素进行处理</div>
+
+    <!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+    <!-- 即事件不是从内部元素触发的 -->
+    <div v-on:click.self="doThat">当在 event.target 是当前元素自身时触发处理函数</div>
+
+    <!-- 点击事件将只会触发一次 -->
+    <a v-on:click.once="doThis">击事件将只会触发一次</a>
+
+    <!--按键修饰符-->
+    <!-- 只有在 `keyCode` 是 13 时调用 `vm.submit()` --><br>
+    <input v-on:keyup.13="submit">
+    <!-- 同上 -->
+    <input v-on:keyup.enter="submit">
+    <!-- 缩写语法 -->
+    <input @keyup.enter="submit">
+
+    <br>
+    <input @keyup.left="left">
+
+    <br>
+    <!--系统修饰键-->
+    <!-- Alt + C -->
+    <input @keyup.alt.67="clear">
+
+    <!-- Ctrl + Click -->
+    <div @click.ctrl="doSomething">Do something</div>
+
+    <!-- 即使 Alt 或 Shift 被一同按下时也会触发 -->
+    <button @click.ctrl="onClick">A</button>
+
+    <!-- 有且只有 Ctrl 被按下的时候才触发 -->
+    <button @click.ctrl.exact="onCtrlClick">A</button>
+
+    <!-- 没有任何系统修饰符被按下的时候才触发 -->
+    <button @click.exact="onClick">A</button>
+
+
+    <br>
+    <!--鼠标按钮修饰符-->
+    <button @click.left="onClick">M</button>
+    <button @click.middle="onClick">M</button>
+    <button @click.right="onClick">M</button>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {
+            doThis:function(){
+                alert("doThis")
+            },
+            doThat:function(){
+                alert("doThat")
+            },
+            onSubmit:function(){
+                alert("onSubmit")
+            },
+            submit:function(){
+                alert("13")
+            },
+            left:function(){
+                alert("left")
+            },
+            clear:function(){
+                alert("clear")
+            },
+            doSomething:function(){
+                alert("doSomething")
+            },
+            onClick:function(){
+                alert("onClick")
+            },
+            onCtrlClick:function(){
+                alert("onCtrlClick")
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,914 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+
+    <script type="text/javascript" src="/rs/js/jquery-1.12.4.min.js"></script><script type="text/javascript" src="/rs/js/jquery-migrate-1.4.1.js"></script>
+    <script type="text/javascript" src="/rs/js/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="/rs/js/ui.core.js"></script>
+    <script type="text/javascript" src="/rs/js/ui.dialog.js"></script>
+    <script type="text/javascript" src="/rs/js/ui.resizable.js"></script>
+    <script type="text/javascript" src="/rs/js/ui.draggable.js"></script>
+    <script type="text/javascript" src="/rs/js/register/checkDescribe.jsp"></script>
+    <script type="text/javascript" src="/rs/js/validate/common.jsp"></script>
+    <script type="text/javascript" src="/rs/js/ChangeStaticFile.js"></script>
+
+    <link href="/rs/css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/rs/css/flora.all.css" type="text/css" />
+
+
+
+    <script language="javascript">
+
+        /*退出登记前的确认信息*/
+        function confirmExit()
+        {
+            if(confirm('确认放弃登记？')){
+                window.location.href='/rs/mainpage.do';
+            }
+
+        }
+    </script>
+
+    <title>动产融资统一登记公示系统</title>
+
+    <script type="text/javascript">
+
+        var changeNameFirst = "";
+        var changeNameSecond = "";
+        var changeType = "";
+        var changeFlag = "";
+
+        //完善提示信息
+        var type_name = "";
+        var type_NO = "";
+
+        $(document).ready(function(){
+
+            //修改出质人、出让人、承租人和质权人、受让人、出租人
+            //alert("getSession btype = " + "A00200");
+            if("A00200" == "A00101"){
+                //最高债权业务
+                changeNameFirst = "出质人";
+                changeNameSecond = "质权人";
+                changeType = "质押";
+
+                type_name = "主";
+                type_NO = "最高债权额";
+                $(".maincodeclass").each(function(){
+                    this.innerHTML = "主合同号码：";
+                });
+
+                $(".maincurrencyclass").each(function(){
+                    this.innerHTML = "主合同币种：";
+                });
+
+                $(".mainsumclass").each(function(){
+                    this.innerHTML = "最高债权额：";
+                });
+
+                $(".subcodeclass").each(function(){
+                    this.innerHTML = "质押合同号码：";
+                });
+
+                $(".subcurrencyclass").each(function(){
+                    this.innerHTML = "质押合同币种：";
+                });
+
+                $(".subsumclass").each(function(){
+                    this.innerHTML = "质押财产价值：";
+                });
+
+                //描述信息后内容维护
+                $("#describeInfo").text('请根据被质押的应收账款的特点进行描述，描述内容大小不超过4000个字符。现将常见的几类应收账款的描述举例说明，供参考。');
+                $("#upInfo").text('可点击此处上传与质押财产有关的图片资料。');
+            }
+            if("A00200" == "A00102" ||
+                    "A00200" == "A00104" ||
+                    "A00200" == "A00105"){
+                //小额贷款和普通业务
+                changeNameFirst = "出质人";
+                changeNameSecond = "质权人";
+                changeType = "质押";
+
+                type_name = "主";
+                type_NO = "主合同金额";
+
+                $(".maincodeclass").each(function(){
+                    this.innerHTML = "主合同号码：";
+                });
+
+                $(".maincurrencyclass").each(function(){
+                    this.innerHTML = "主合同币种：";
+                });
+
+                $(".mainsumclass").each(function(){
+                    this.innerHTML = "主合同金额：";
+                });
+
+                $(".subcodeclass").each(function(){
+                    this.innerHTML = "质押合同号码：";
+                });
+
+                $(".subcurrencyclass").each(function(){
+                    this.innerHTML = "质押合同币种：";
+                });
+
+                $(".subsumclass").each(function(){
+                    this.innerHTML = "质押财产价值：";
+                });
+                //描述信息后内容维护
+                $("#describeInfo").text('请根据被质押的应收账款的特点进行描述，描述内容大小不超过4000个字符。现将常见的几类应收账款的描述举例说明，供参考。');
+                $("#upInfo").text('可点击此处上传与质押财产有关的图片资料。');
+            }
+
+            if("A00200" == "A00200"){
+                //转让业务
+                changeNameFirst = "出让人";
+                changeNameSecond = "受让人";
+                changeType = "转让";
+
+                type_name = "转让";
+                type_NO = "转让财产价值";
+                $(".maincodeclass").each(function(){
+                    this.innerHTML = "转让合同号码：";
+                });
+
+                $(".maincurrencyclass").each(function(){
+                    this.innerHTML = "转让合同币种：";
+                });
+
+                $(".mainsumclass").each(function(){
+                    this.innerHTML = "转让财产价值：";
+                });
+
+                // 设置转让保理业务提示信息(动态展示 只有转让登记才显示)
+                $("#textlable").show();
+
+
+                $("#addmain").val("增加" + changeType + "合同");
+                $("#describeSub").hide();
+                $("#addsubtr").hide();
+                //$("tr[id='loanlimittr']").hide();
+                //$("#loanlimittr").hide();
+
+                //描述信息后内容维护
+                $("#describeInfo").text('请根据被转让的应收账款的特点进行描述，描述内容大小不超过4000个字符。现将常见的几类应收账款的描述举例说明，供参考。');
+                $("#upInfo").text('可点击此处上传与转让财产有关的图片资料。');
+            }
+            if("A00200" == "B00000"){
+                //融资租赁业务
+                changeNameFirst = "承租人";
+                changeNameSecond = "出租人";
+                changeType = "租赁";
+
+                type_name = "租赁";
+                type_NO = "租金总额";
+                $(".maincodeclass").each(function(){
+                    this.innerHTML = "租赁合同号码：";
+                });
+
+                $(".maincurrencyclass").each(function(){
+                    this.innerHTML = "租赁合同币种：";
+                });
+
+                $(".mainsumclass").each(function(){
+                    this.innerHTML = "租金总额：";
+                });
+
+                $("#addmain").val("增加" + changeType + "合同");
+                $("#describeSub").hide();
+                $("#addsubtr").hide();
+                //$("tr[id='loanlimittr']").hide();
+                //$("#loanlimittr").hide();
+
+                $("#identificationcodetr").show();
+
+                //描述信息后内容维护
+                $("#describeInfo").text('请通过租赁财产的名称、规格、质量、数量、金额、所在地等信息，或通过概括性描述来界定租赁财产，达到能够识别租赁财产的目的。租赁财产描述内容大小不超过4000个字符。');
+                $("#upInfo").text('可点击此处上传与租赁财产有关的图片资料。');
+
+                $("#tsinfo").hide();//融资租赁隐藏上传协议提示信息
+            }
+            if("A00200" == "A00103"){
+                //企业发债业务
+                changeNameFirst = "出质人";
+                changeNameSecond = "受托管理人";
+                changeType = "质押";
+
+                $("#describeMain").hide();
+                $("#addmaintr").hide();
+                //$("tr[id='loanlimittr']").hide();
+                //$("#loanlimittr").hide();
+
+                $("#enterprisetr1").show();
+                $("#enterprisetr2").show();
+                $("#enterprisetr3").show();
+                $("#enterprisetr4").show();
+
+
+                $(".subcodeclass").each(function(){
+                    this.innerHTML = "质押合同号码：";
+                });
+
+                $(".subcurrencyclass").each(function(){
+                    this.innerHTML = "质押合同币种：";
+                });
+
+                $(".subsumclass").each(function(){
+                    this.innerHTML = "质押财产价值：";
+                });
+
+                //上传附件内容维护信息
+                $("#uploadInfo").text('');
+                //描述信息后内容维护
+                $("#describeInfo").text('请根据被质押的应收账款的特点进行描述，描述内容大小不超过4000个字符。现将常见的几类应收账款的描述举例说明，供参考。');
+                $("#upInfo").text('可点击此处上传与质押财产有关的图片资料。');
+            }
+
+            $("#firstName").append(changeNameFirst + "信息");
+            $("#secondName").append(changeNameSecond + "信息");
+            $("#typeName").append(changeType + "财产信息");
+            $("#discribetd").append(changeType + "财产描述：");
+            $("#addsub").val("增加" + changeType + "合同");
+            $("#attachinfo").append("点击这里上传" + changeType + "财产附件" );
+
+
+            $( "#uploadDiv" ).dialog({
+                autoOpen: false,
+                modal:true,
+                resizable:false,
+                width:428,
+                height:220,
+                position:'center',
+                draggable:false,
+                overlay:{opacity:0.5,background:"black"}
+            });
+
+            //checkError --- Attach number and size
+            if("" == "" || "" == null  ){
+
+            }else{
+                alert("");
+            }
+            //resultCode --- Attach type and ...
+            if("0" == "" || "0" == null  ){
+
+            }else{
+                if("0" == 1){
+                    alert("附件应为JPG格式的图片");
+                }
+
+                if("0" == 0){
+                    alert("附件上传成功");
+                }
+            }
+
+            $( "#attachinfo" ).click(function() {
+                if(checkChange()){
+                    $( "#uploadDiv" ).dialog( "open" );
+                    $( "#file" ).focus();
+                }
+            });
+
+            addDiv();
+        });
+
+
+
+
+
+        function onkeycheck(dom){
+            if(!checkfmoney(dom)){return;}
+            var dd = $(dom);
+            var ddinfo = dd.val().replace(/\,/g,'');
+            if(parseInt(ddinfo)>=100000000){
+                showTip($(dd),"请输入真实金额！");
+            }else{
+                hideTip();
+            }
+        }
+        function addDiv(){
+            var div = '<div style="padding:5px 10px;color:gray;position:absolute;z-index:99;display:none;width:120px;background-color: #f5f5b5;border: 1px solid #DECA7E;text-align:left;" id="RegInfo"></div>';
+            $('body').append(div);
+            $('#RegInfo').hide();
+        }
+
+        function showTip(dd,info){
+            var loc = $("#RegInfo");
+            var dom = $(dd);
+            var offset = dom.offset();
+            var left = offset.left+dom.outerWidth()+20;
+            var top = offset.top-10;
+            loc.css({'left':left,'top':top});
+            loc.text(info);
+            loc.show();
+        }
+
+        function hideTip(){
+            var loc = $("#RegInfo");
+            loc.hide();
+            loc.text("");
+        }
+
+        function checkChange(){
+            if(changeFlag == "1"){
+                return confirm("请保存,未保存的信息将会丢失,确认继续操作?");
+            }
+            return true;
+        }
+
+        function addDescribeMain(){
+            if("A00200" != "B00000" && "A00200" != "A00200" && "A00200" != "A00103"){
+                var mainobj = $("#describeMain").clone();
+                var loanobj = $("#loanlimittr").clone();
+                mainobj.find('.clear').val("");
+                mainobj.find('img[name="vIcon"]').remove();
+                loanobj.find('.clear').val("");
+                $("tr[id='loanlimittr']:last").after(mainobj);
+                $("tr[id='describeMain']:last").after(loanobj);
+            }else{
+                var mainobj = $("#describeMain").clone();
+                mainobj.find('.clear').val("");
+                mainobj.find('img[name="vIcon"]').remove();
+                $("tr[id='describeMain']:last").after(mainobj);
+            }
+            changeFlag="1";
+        }
+
+        function addDescribeSub(){
+            var subobj = $("#describeSub").clone();
+            subobj.find('.clear').val("");
+            subobj.find('img[name="vIcon"]').remove();
+            $("tr[id='describeSub']:last").after(subobj);
+            //$('#describeSub').after(subobj);
+            changeFlag="1";
+        }
+
+        function deleteMain(tag){
+
+            if("A00200" != "B00000" && "A00200" != "A00200" && "A00200" != "A00103"){
+                var sum=document.getElementsByName("maincontractno");
+                if(sum.length>1){
+                    if(confirm("确认删除此条记录？")){
+                        $(tag).closest('tr').next().remove();
+                        $(tag).closest('tr').remove();
+                    }
+                }else{
+                    alert("只剩最后一条"+type_name+"合同，不可删除！！");
+                }
+            }else{
+                var sum=document.getElementsByName("maincontractno");
+                var father = tag.parentNode.parentNode;
+                var fatherF = father.parentNode;
+                if(sum.length>1){
+                    if(confirm("确认删除此条记录？")){
+                        fatherF.removeChild(father);
+                    }
+                }else{
+                    alert("只剩最后一条"+type_name+"合同，不可删除！！");
+                }
+            }
+            changeFlag="1";
+        }
+
+        function deleteSub(tag){
+            var sum=document.getElementsByName("contractno");
+            var father = tag.parentNode.parentNode;
+            if(sum.length>1){
+                if(confirm("确认删除此条记录？")){
+                    father.parentNode.removeChild(father);
+                }
+            }else{
+                alert("只剩最后一条质押合同，不可删除！！");
+            }
+            changeFlag="1";
+        }
+
+        function saveDescribeInfo(){
+            checkDescribe(type_name ,type_NO);
+        }
+
+
+        function saveDescribeInfo2(){
+            checkDescribe1();
+        }
+
+
+        function regbaseinfo(){
+            if(checkChange()){
+                window.location.href = "/rs/regbaseinfo.do";
+            }
+        }
+
+        function spinfo(){
+            if(checkChange()){
+                window.location.href="/rs/spinfo.do";
+            }
+        }
+
+        function debtorinfo(){
+            if(checkChange()){
+                window.location.href="/rs/debtorinfo.do";
+            }
+        }
+        function describeinfo(){
+            if(checkChange()){
+                window.location.href="/rs/describeinfo.do";
+            }
+        }
+
+        function openUpload(){
+            if(checkChange()){
+                $("#uploadDiv").show().dialog({
+                    modal:true,
+                    resizable:false,
+                    width:428,
+                    height:220,
+                    overlay:{opacity:0.5,background:"black"}
+                });
+            }
+        }
+        function uploadCancel(){
+            $("#uploadDiv").dialog('close');
+        }
+        function deleteAttach(id){
+            if(checkChange()){
+                if(confirm("确认删除此附件？")){
+                    window.location.href="/rs/deleteAttach.do?attachid=" + id;
+                }
+            }
+        }
+
+        function preview(){
+            if(checkChange()){
+                $("#previewbutton").attr("disabled" , "disabled");
+                window.location.href="/rs/initRegPreview.do";
+            }
+        }
+
+        function addicode(){
+            if(checkChange()){
+                window.location.href="/rs/toaddicode.do";
+            }
+        }
+
+        function importicode(){
+            if(checkChange()){
+                window.location.href="/rs/importicode.do";
+            }
+        }
+
+        function deleteicode(id){
+            if(checkChange()){
+                if(confirm("确认删除此条记录？")){
+                    window.location.href="/rs/deleteicode.do?icodeid=" + id;
+                }
+            }
+        }
+        function getfileLength(val){
+            var realFile = "";
+            realFile =val.substring(val.lastIndexOf("\\")+1);
+            return $.trim(realFile).replace(/[^\x00-\xff]/g, "**").length;
+        }
+        function attachUpload(){
+            var fileLength = "";
+            var fileVal = "";
+            if($("#file").val() == ""){
+                alert("请选择上传附件");
+            }else{
+                fileVal = $("#file").val();
+                fileLength = getfileLength(fileVal);
+                if(fileLength > 34){
+                    alert("上传文件名不能超过30个字符");
+                    return false;
+                }
+                var fullName = $("#file").val();
+                var extend = fullName.substring(fullName.lastIndexOf(".") + 1).toLowerCase();
+                if(extend == "jpg"){
+                    $("#describeUpload").submit();
+                }else{
+                    alert("请选择jpg格式的附件");
+                }
+            }
+        }
+
+        function describeInfoChange(){
+            changeFlag="1";
+        }
+
+        function mydatePickerBegin(obj){
+            var beginjobj = $(obj);
+            var beginpjobj = beginjobj.parent();
+            var endDate = beginpjobj.find("input[name='loanenddate']").val();
+            WdatePicker({el:obj,isShowToday:false,dateFmt:'yyyy-MM-dd',readOnly:true,maxDate:endDate});
+        }
+
+        function mydatePickerEnd(obj){
+            var endjobj = $(obj);
+            var endpjobj = endjobj.parent();
+            var beginDate = endpjobj.find("input[name='loanbegindate']").val();
+            WdatePicker({el:obj,isShowToday:false,dateFmt:'yyyy-MM-dd',readOnly:true,minDate:beginDate});
+        }
+        function formatSum(obj){
+            hideTip();
+            if(checkfmoney(obj)){
+                var num = "";
+                n = 2;
+                jobj = $(obj);
+                s = jobj.val();
+                if(s != ""){
+                    num = fmoney(s , n);
+                }
+                jobj.val(num);
+            }
+        }
+
+        function fmoney(s , n){
+            n = n > 0 && n <= 20 ? n : 2;
+            s = (s + "").replace(/[^\d\.-]/g,"") + "";
+            var l = s.split(".")[0].split("").reverse();
+            t = "";
+            for(i=0;i<l.length;i++){
+                t += l[i] + ((i + 1)%3 == 0 && (i+1) != l.length ? "," : "");
+            }
+
+//处理尾部
+            sTmp = s.split(".");
+            if(sTmp.length == 1){
+                r="00";
+            }
+            if(sTmp.length == 2){
+                tail = sTmp[1];
+                if(tail.length == 1){
+                    r = tail + "0";
+                }
+                if(tail.length == 2){
+                    r = tail;
+                }
+            }
+
+            return t.split("").reverse().join("") + "." + r;
+        }
+
+        function checkfmoney(obj){
+            var dom = $(obj);
+            dom.parent().find('img[name="vIcon"]').remove();
+            $("#warningInfo").text("");
+            $("#warningInfo").hide();
+
+            var money = dom.val().replace(/\,/g,'');
+            if(!/^(0(?:[.](?:[1-9]\d?|0[1-9]))|[1-9]\d{0,17}(?:[.]\d{1,2}|$)|0|0.0||0.00)$/.test(money)){
+                dom.parent().find('img[name="vIcon"]').remove();
+                var img = $("<img name='vIcon' src='/rs/images/wrong.gif' style='margin-left:5px;margin-bottom:5px'/>");
+                dom.parent().append(img);
+                return false;
+            }
+
+            return true;
+        }
+
+        function setInfo(obj){
+            //onkeycheck(obj);
+        }
+
+    </script>
+
+
+</head>
+<body class="flora">
+
+
+
+<div id="header" align="right">
+    <div class="font-13" style="padding-top: 2px; padding-right: 3px;color:white;">
+        <!--  <span class="bold">今日访问量:</span><span class="xiaxian">0</span>-->
+    </div>
+</div>
+<div class="main-table hui">
+    <div class="main-table-title"  style="margin-bottom:0;">
+        <span style="float:left;margin-top:10px;" >&nbsp;&nbsp;您现在的位置:>>&nbsp;<span class="bold">初始登记</span></span>
+
+
+        <div style="float: right; margin-top: 10px; padding-right: 15px;"><img src="/rs/images/icon17.gif" style="margin-right: 5px"/>欢迎<span style="font-weight: bold">查询及登记操作员</span>"<span style="font-weight: bold">zhangsuiquan2</span>"登录<a href="/rs/main.do" style="font-weight: bold;margin-left: 20px">返回主页</a>|<a href="/rs/logout.do"
+                                                                                                                                                                                                                                                                                                                             style="font-weight: bold">退出系统</a></div>
+
+    </div>
+
+
+
+
+
+
+    <table>
+        <tr>
+            <td valign="top">
+                <table class="table1 xianbian">
+                    <tr>
+                        <td id="tab0" class="sec1" style="CURSOR: hand" width="25%"><a
+                                href="javascript:regbaseinfo();"><img
+                                src="images/vip_12.gif" width="10" height="9" />&nbsp;填表人/基本信息</a></td>
+                        <td id="tab2" class="sec1" style="CURSOR: hand" width="25%"><a id="firstName"
+                                                                                       href="javascript:debtorinfo();"><img
+                                src="images/vip_12.gif" width="10" height="9" />&nbsp;</a></td>
+                        <td id="tab3" class="sec1" style="CURSOR: hand" width="25%"><a id="secondName"
+                                                                                       href="javascript:spinfo();"><img
+                                src="images/vip_12.gif" width="10" height="9" />&nbsp;</a></td>
+                        <td id="tab4" class="sec2" style="CURSOR: hand" width="25%"><a id="typeName"
+                                                                                       href="javascript:describeinfo();"><img
+                                src="images/vip_12.gif" width="10" height="9" />&nbsp;</a></td>
+                    </tr>
+                </table>
+
+                <form name="initRegDescribeInfoForm" method="post" action="/rs/initRegDescribeInfo.do" id="describeInfoform"><input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="6fd3141003fcf5424c19d7b0a92cbdc6">
+                    <div>
+                        <input type="hidden" name="descno" id="descno" value="1813782"/>
+                    </div>
+
+                    <table class="table3 lankuang" style="margin:5px auto;">
+
+                        <!-- 企业发债数据项 -->
+                        <tr id="enterprisetr1" style="display: none;" class="lanhuibiao">
+                            <td class="bold right">债券名称：</td>
+                            <td colspan="5" class="left-td"><input onchange="describeInfoChange();" name="bondname" id="bondname" type="text" value="" style="width: 600px;" maxlength="200"/>债券<span class="hong">&nbsp;*</span></td>
+                        </tr>
+                        <tr id="enterprisetr2" style="display: none;" class="baibiao">
+                            <td class="bold right">发行人名称：</td>
+                            <td class="left-td"><input onchange="describeInfoChange();" name="publishername" id="publishername" type="text" maxlength="200" value=""/> </td>
+                            <td class="bold right">发行期限(起始)：</td>
+                            <td class="left-td"><input onchange="describeInfoChange();" name="publishlimitbegin" id="publishlimitbegin" onclick="WdatePicker({isShowToday:false,dateFmt:'yyyy-MM-dd',readOnly:true,maxDate:'#F{$dp.$D(\'publishlimitend\')}'});" type="text" value=""/>   </td>
+                            <td class="bold right">发行期限(终止)：</td>
+                            <td class="left-td"><input onchange="describeInfoChange();" name="publishlimitend" id="publishlimitend" onclick="WdatePicker({isShowToday:false,dateFmt:'yyyy-MM-dd',readOnly:true,minDate:'#F{$dp.$D(\'publishlimitbegin\')}'});" type="text" value=""/> </td>
+                        </tr>
+                        <tr id="enterprisetr3" style="display: none;" class="lanhuibiao">
+                            <td class="bold right">发行币种：</td>
+                            <td class="left-td"><select onchange="describeInfoChange();" id="publishcurrency" name="publishcurrency" >
+                                <option value="">请选择</option>
+
+                                <option value="CNY"  >人民币</option>
+
+                                <option value="USD"  >美元</option>
+
+                                <option value="EUR"  >欧元</option>
+
+                                <option value="GBP"  >英镑</option>
+
+                                <option value="JPY"  >日元</option>
+
+                                <option value="HKY"  >港币</option>
+
+                                <option value="OTH"  >其他币种</option>
+
+                            </select></td>
+                            <td class="bold right">	债券期限(起始)：</td>
+                            <td class="left-td"><input onchange="describeInfoChange();" id="bondlimitbegin" name="bondlimitbegin" onclick="WdatePicker({isShowToday:false,dateFmt:'yyyy-MM-dd',readOnly:true,maxDate:'#F{$dp.$D(\'bondlimitend\')}'});" type="text" value="">  </td>
+                            <td class="bold right">	债券期限(终止)：</td>
+                            <td class="left-td"><input onchange="describeInfoChange();" id="bondlimitend" name="bondlimitend" onclick="WdatePicker({isShowToday:false,dateFmt:'yyyy-MM-dd',readOnly:true,minDate:'#F{$dp.$D(\'bondlimitbegin\')}'});" type="text" value="">  </td>
+                        </tr>
+                        <tr id="enterprisetr4" style="display: none;" class="baibiao">
+                            <td class="bold right">发行总额：</td>
+                            <td class="left-td"><input onfocus="setInfo(this)" onblur="formatSum(this);"  onchange="describeInfoChange();" id="publishsum" name="publishsum" maxlength="26" type="text" value="">元</td>
+                            <td class="bold right">票面利率：</td>
+                            <td colspan="3" class="left-td"><input onchange="describeInfoChange();" maxlength="200" id="couponrate" name="couponrate" type="text" value=""></td>
+                        </tr>
+
+
+
+
+
+                        <tr id="describeMain"  class="lanhuibiao">
+                            <td id="maincodetd" class="maincodeclass bold right"></td>
+                            <td class="left-td"><input type="text" class="clear" onchange="describeInfoChange();"  value="123564" name="maincontractno" id="maincontractno"  maxlength="100"></td>
+
+                            <td id="maincurrencytd" class="maincurrencyclass bold right"></td>
+                            <td class="left-td"><select id="maincontractcurrency" onchange="describeInfoChange();"  name="maincontractcurrency" class="clear" value="CNY">
+                                <option value="">请选择</option>
+
+                                <option value="CNY" selected="selected">人民币</option>
+
+                                <option value="USD" >美元</option>
+
+                                <option value="EUR" >欧元</option>
+
+                                <option value="GBP" >英镑</option>
+
+                                <option value="JPY" >日元</option>
+
+                                <option value="HKY" >港币</option>
+
+                                <option value="OTH" >其他币种</option>
+
+                            </select></td>
+
+                            <td id="mainsumtd" class="mainsumclass bold right"></td>
+
+                            <td class="left-td"><input type="text" onkeyup="onkeycheck(this);" onfocus="setInfo(this)" onblur="formatSum(this);" onchange="describeInfoChange();" class="clear" maxlength="26" value="1,246.00" name="maincontractsum" id="maincontractsum">元&nbsp;&nbsp;
+                                <!-- <a href="#" onclick="deleteMain(this);">删除</a>--></td>
+
+                        </tr>
+
+
+
+                        <!--
+                        <tr class="lanhuibiao" id="addmaintr">
+                            <td colspan="6">
+                                <input class="anniu1" id="addmain" type="button"  value="增加主合同" onclick="addDescribeMain();"/>
+                            </td>
+                        </tr>
+                        -->
+
+
+                        <tr id="describeSub" class="baibiao">
+                            <td id="subcodetd" class="subcodeclass bold right"></td>
+                            <td class="left-td"><input type="text" onchange="describeInfoChange();"  class="clear" maxlength="100" name="contractno" id="contractno"></td>
+
+                            <td id="subcurrencytd" class="subcurrencyclass bold right"></td>
+                            <td class="left-td"><select id="contractcurrency" onchange="describeInfoChange();"  class="clear" name="contractcurrency">
+                                <option value="">请选择</option>
+
+                                <option value="CNY">人民币</option>
+
+                                <option value="USD">美元</option>
+
+                                <option value="EUR">欧元</option>
+
+                                <option value="GBP">英镑</option>
+
+                                <option value="JPY">日元</option>
+
+                                <option value="HKY">港币</option>
+
+                                <option value="OTH">其他币种</option>
+
+                            </select></td>
+
+                            <td id="subsumtd" class="subsumclass bold right"></td>
+
+                            <td class="left-td"><input type="text" onkeyup="onkeycheck(this);" onfocus="setInfo(this)" onblur="formatSum(this);" onchange="describeInfoChange();"  class="clear" maxlength="26" name="collateralsum" id="collateralsum">元&nbsp;&nbsp;
+                                <!-- <a href="#" onclick="deleteSub(this);">删除</a> --></td>
+
+                        </tr>
+
+
+
+
+
+                        <!--
+                                    <tr class="baibiao" id="addsubtr">
+                                        <td colspan="6">
+                                            <input type="button" class="anniu1" id="addsub" value="增加质押合同"  onclick="addDescribeSub();"/>
+                                        </td>
+                                    </tr>
+                        -->
+
+
+                        <tr class="baibiao">
+                            <!--
+                            <td style="width:135px;" class="bold right"><p id="discribetd"></p><br />
+                            <a class="STATIC_SERVER" href="(Static_Link)djzy/201509/beb785c5c96c47d882aff380ba1e420a.shtml" target="_blank"
+                                style="text-decoration: none"><span class="hong">描述示例</span></a>&nbsp;&nbsp;</td>
+                            <td colspan="5" class="left-td">&nbsp;<div style="float:left;"><textarea
+                                onchange="describeInfoChange();" name="description" cols="75" rows="15" id="description">测试测试</textarea><span
+                                class="hong">&nbsp;*</span></div>
+                                <div style="float:right;width:130px;word-break:normal;" id="describeInfo">
+                                </div>
+                            </td>
+                            -->
+                            <td style="width:135px;" class="bold right"><p id="discribetd"></p><br/>
+                                <a class="STATIC_SERVER" href="(Static_Link)djzy/201509/beb785c5c96c47d882aff380ba1e420a.shtml" target="_blank" style="text-decoration: none"><span class="hong">描述示例</span></a>&nbsp;&nbsp;
+                            </td>
+                            <td colspan="5" class="left-td">&nbsp;
+                                <div style="float:left;">
+                                    <div style="position: relative;" id="textareadiv">
+                                        <div style="left:5px; top:5px; color:#999;display:none; width:580px;" for="description" id="textlable">为了保护应收账款质押或转让相关的权利，当事人可以对应收账款的债权人和债务人、应收账款数额和履行期限、应收账款回款专用户的账户名称、回款数额及预计进账时间等信息在文本框进行描述。</div>
+                                        <textarea onchange="describeInfoChange();" name="description" cols="78" rows="15" id="description" style="padding-top:0px;">测试测试</textarea>
+                                        <span class="hong">&nbsp;*</span>
+                                    </div>
+                                </div>
+                                <div style="float:right;width:130px;word-break:normal;" id="describeInfo"></div>
+                            </td>
+                        </tr>
+                        <tr id="identificationcodetr" style="display: none;" class="baibiao">
+                            <td class="bold right">租赁财产唯一标识码：</td>
+                            <td colspan="5">
+                                <input class="anniu1" type="button" value="添加租赁财产唯一标识码" onclick="addicode();" id="addidentificationcode" onmouseover="cc(this)" onmouseout="document.getElementById('buttonInfo').style.display='none'"/>
+                                <input class="anniu1" type="button" value="导入租赁财产唯一标识码" onclick="importicode();" id="importidentificationcode"/>
+                            </td>
+                        </tr>
+
+                        <!-- 添加租赁财产唯一标识码 提示信息 -->
+                        <div style="padding:5px 10px;color:gray;position:absolute;z-index:99;display:none;width:200px;background-color: #f5f5b5;border: 1px solid #DECA7E;text-align:left;" id="buttonInfo">根据法律法规、行业惯例确定的租赁财产标识编码，例如机动车等交通工具的发动机号、机器设备的机身号码。
+                        </div>
+
+                        <!-- 提示信息 -->
+                        <div style="padding:5px 10px;color:red;position:absolute;z-index:99;display:none;width:200px;background-color: #f5f5b5;border: 1px solid #DECA7E;text-align:left;" id="warningInfo"></div>
+
+                        <!-- 添加附件提示信息 -->
+                        <div style="padding:5px 10px;color:gray;position:absolute;z-index:99;display:none;width:200px;background-color: #f5f5b5;border: 1px solid #DECA7E;text-align:left;" id="upInfo"></div>
+
+
+                        <!-- show icode list -->
+
+
+                    </table>
+                </form>
+                <table>
+                    <tr>
+                        <td align="right">
+
+
+
+                            <input type="button" class="anniu" value="保&nbsp;&nbsp;存" onclick="saveDescribeInfo();">
+
+                        </td>
+
+                    </tr>
+                </table>
+
+                <div id="divattachmentupload" style="display: block" class="font-14 bold">
+                    <a id="attachinfo" style="CURSOR: hand"  onmouseover="uploadTT(this)" onmouseout="document.getElementById('upInfo').style.display='none'"></a>
+                    <div class="hong bold" style="margin-top:5px;word-wrap:break-word;width:48%;" id="tsinfo">
+                        根据《应收账款质押登记办法》的相关规定，质权人办理质押登记前应与出质人签订协议，并将协议作为登记附件提交登记系统。请点击上方链接上传协议。
+                    </div>
+                    <div id="uploadInfo"></div>
+                </div>
+
+                <table class="lankuang" width="600px" style="margin:5px auto;">
+
+                    <tr class="lanhuibiao">
+                        <th width="400px">文件名称</th>
+                        <th width="100px">文件大小</th>
+                        <th width="100px">操作</th>
+                    </tr>
+
+
+                    <tr class="baibiao">
+                        <td>testPic.jpg  </td>
+                        <td>137305字节</td>
+                        <td>
+                            [<a href="javascript:deleteAttach('4171724');">删除</a>]
+                        </td>
+                    </tr>
+
+                    <tr class="baibiao">
+                        <td>testPic.jpg  </td>
+                        <td>137305字节</td>
+                        <td>
+                            [<a href="javascript:deleteAttach('4171770');">删除</a>]
+                        </td>
+                    </tr>
+
+                    <tr class="baibiao">
+                        <td>testPic.jpg  </td>
+                        <td>137305字节</td>
+                        <td>
+                            [<a href="javascript:deleteAttach('4172007');">删除</a>]
+                        </td>
+                    </tr>
+
+                </table>
+
+
+                <div id="uploadDiv">
+                    <form id="describeUpload" action="/rs/describeUpload.do" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" value="0" name="attachType" id="attachType"/>
+                        <table width="400" border="1" cellspacing="1" cellpadding="10">
+                            <caption><span class="font-14">上传附件</span></caption>
+                            <tr>
+                                <td colspan="2" class="hong">附件限于jpg格式，个数不超过20个，大小总计不超过5M。</td>
+                            </tr>
+                            <tr>
+                                <td class="bold" align="right" height="25">浏览附件：</td>
+                                <td align="left">&nbsp;<input id="file" name="file" type="file" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <input type="button" onclick="attachUpload();" value="上传" />
+                                    <input type="reset" value="重设" />
+                                    <input type="button" onclick="uploadCancel();" value="取消">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <table style="margin:5px auto;">
+                    <tr>
+                        <td><input type="button" class="anniu" id="previewbutton" onclick="preview();" value="预&nbsp;&nbsp;览"/>
+                            <input type="button" class="anniu" onclick="confirmExit();" value="返回主页" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+<div id="footer">&nbsp;</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+</head>
+
+<body>
+<input type="checkbox" title="" alt="" id=""/>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $('input'). change(function(){
+        //console.log(this.checked); //原生DOM没有问题，可以取出来
+        //非true/false类型的属性使用attr()函数来操作
+        //console.log( $(this).attr('checked')  );
+
+        //所有的HTML属性中，只有三个必须使用prop()函数来操作：
+        //checked  /  selected  /  disabled
+        console.log( $(this).prop('checked')  );
+        console.log( $(this).is(":checked") )
+    });
+
+</script>
+</body>
+</html>

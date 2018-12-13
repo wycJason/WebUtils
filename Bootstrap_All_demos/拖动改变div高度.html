@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jquery实现鼠标拖动改变div高度</title>
+    <style>
+        #main{background-color:red}
+        #footer {height:73px; background-color:blue}
+        #expander{  height:6px; background-color:green;}
+        #expander:hover{ cursor:n-resize;}
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="main"></div>
+<div id="footer" contenteditable="true">
+    <div id="expander"></div>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //https://blog.csdn.net/u012811805/article/details/73724863
+    $(function(){// 兼容IE8+
+        $("#main").css("height",$(window).height()-73-1);
+        var src_posi_Y = 0, dest_posi_Y = 0, move_Y = 0, is_mouse_down = false, destHeight = 73;
+        $("#expander").mousedown(function(e){
+                    src_posi_Y = e.pageY;//event.pageY 属性是鼠标指针的位置，相对于文档的上边缘。
+                    is_mouse_down = true;
+        });
+        $(document).on("click mouseup",function(e){
+            if(is_mouse_down){
+                is_mouse_down = false;
+            }
+        }).mousemove(function(e){
+                    dest_posi_Y = e.pageY;
+                    move_Y = src_posi_Y - dest_posi_Y;
+                    src_posi_Y = dest_posi_Y;
+                    destHeight = $("#footer").height() + move_Y;
+                    if(is_mouse_down){
+                        $("#footer").css("height", destHeight > 73 ? destHeight : 73);
+                        $("#main").css("height",$(window).height()-destHeight-1);
+                    }
+          });
+    })
+</script>
+</body>
+</html>

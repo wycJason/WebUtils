@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ICSearch</title>
+    <style>
+        /*公共样式*/
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei";
+            font-size: 14px;
+            overflow:hidden; /*设置垂直滚动条*/
+        }
+        h1,h2,h3,h4,h5,h6,p,ul,li,ol,li,dl,dt,dd{
+            list-style:none;
+            border:none;
+        }
+/*页面头部*/
+.logo{
+    width: 1030px;
+    height: 100px;
+    margin: 0 auto;
+}
+.logo:before{
+    content: "";
+    display: table;
+}
+.header{
+    border-bottom: 1px solid #dddddd;
+    position: relative
+}
+.companyLogo{
+    margin-top: 27px;
+    width: 300px;
+}
+.portrait{
+    position: absolute!important;
+    top: 34px;
+    right: 52px;
+}
+/*页面主体*/
+        .main{
+            width: 1030px;
+            margin: 0 auto;
+        }
+        .ICfriend{
+            display:block ;
+            width: 125px;
+            margin:90px auto 40px;
+        }
+        .footer{
+            width: 792px;
+            margin: 135px auto 300px;
+        }
+        .main>.footer>ul>li{
+            float: left;
+        }
+        .quotationModule{
+            display: inline-block;
+            width: 198px;
+            text-align: center;
+            color: #333333;
+            font-size: 16px;
+        }
+        .quotationModule:hover{
+            color: #41A0FF;
+        }
+        .quotationModuleFont{
+            padding-bottom: 10px;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--页首-->
+<header class="header">
+    <div class="logo">
+        <div class="companyLogo">
+            <a href="javascript:void(0)"><img src="Images/companyLogo.png" alt="公司LOGO" /></a>
+        </div>
+    </div>
+    <div class="dropdown portrait">
+        <img style="min-width: 30px;min-height:30px;max-height:30px;max-width:30px; border-radius:20px;padding:0px" src="Images/uface.jpg" alt="头像" />
+        <a href="javascript:void(0)" data-toggle="dropdown" style="color: black;">
+            <span>小芳</span>
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" style="min-width: 100%">
+            <li>
+                <a href="javascript:void(0)">个人信息</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">修改密码</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">联系方式</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="javascript:void(0)">退出</a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<!--页面主体-->
+<section class="main">
+    <a class="ICfriend" href="javascript:void(0)"><img src="Images/ICfriend.png" alt="IC熟人圈"/></a>
+
+    <div class="input-group" style="width: 792px;margin: 0 auto">
+        <input type="text" class="form-control" placeholder="请输入型号搜索" style="height: 54px">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" style="background-color: #41A0FF;color: white;width: 90px;height: 54px"><span style="font-size: 25px;" class="glyphicon glyphicon-search"></span></button>
+        </span>
+    </div>
+
+    <div class="footer">
+        <ul style="padding-left: 0px">
+            <li>
+                <a class="quotationModule" href="javascript:void(0)">
+                    <dl>
+                        <dt class="quotationModuleFont"><span class="glyphicon glyphicon-upload "></span></dt>
+                        <dd>我发出的询价</dd>
+                    </dl>
+                </a>
+            </li>
+            <li>
+                <a class="quotationModule" href="javascript:void(0)">
+                    <dl>
+                        <dt class="quotationModuleFont"><span class="glyphicon glyphicon-download-alt"></span></dt>
+                        <dd>我收到的询价</dd>
+                    </dl>
+                </a>
+            </li>
+            <li>
+                <a class="quotationModule" href="javascript:void(0)">
+                    <dl>
+                        <dt class="quotationModuleFont"><span class="glyphicon glyphicon-upload "></span></dt>
+                        <dd>我发出的报价</dd>
+                    </dl>
+                </a>
+            </li>
+            <li>
+                <a class="quotationModule" href="javascript:void(0)">
+                    <dl>
+                        <dt class="quotationModuleFont"><span class="glyphicon glyphicon-download-alt"></span></dt>
+                        <dd>我收到的报价</dd>
+                    </dl>
+                </a>
+            </li>
+            <li>
+                <a class="quotationModule" href="javascript:void(0)">
+                    <dl>
+                        <dt class="quotationModuleFont"><span class="glyphicon glyphicon-stats "></span></dt>
+                        <dd>询价报表</dd>
+                    </dl>
+                </a>
+            </li>
+            <li>
+                <a class="quotationModule" href="javascript:void(0)">
+                    <dl>
+                        <dt class="quotationModuleFont"><span class="glyphicon glyphicon-thumbs-up"></span></dt>
+                        <dd>所有伙伴</dd>
+                    </dl>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

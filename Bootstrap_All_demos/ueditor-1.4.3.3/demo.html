@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>ueditor demo</title>
+    <link rel="stylesheet" href="themes/default/_css/ueditor.css"/>
+</head>
+
+<body>
+<!-- 加载编辑器的容器 -->
+<script id="container" type="text/plain">
+        这里写你的初始化内容
+</script>
+<!-- 配置文件 -->
+<script type="text/javascript" src="ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('container',{
+                theme:"default", //皮肤
+                lang:'zh-cn', //语言
+                autoClearinitialContent:true, //focus时自动清空初始化时的内容
+                wordCount:true, //是否显示字数统计
+                elementPathEnabled:true//是否显示elementPath
+                //更多其他参数，请参考ueditor.config.js中的配置项
+            });
+</script>
+</body>
+
+</html>

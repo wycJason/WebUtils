@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://ask.csdn.net/upload.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>上传图片</title>
+    <meta name="author" content="CSDN">
+    <meta name="Copyright" content="CSDN">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="http://ask.csdn.net/favicon.ico" rel="SHORTCUT ICON">
+    <script src="./jquery-1.11.1.min.js"></script>
+    <script src="./jquery.form.js"></script>
+<style>
+    body {margin: 0;}
+    * {box-sizing: border-box; font: 12px/20px 'microsoft yahei';}
+    .up_img_loading {display: none;}
+    .up_img_loading.active {display: block; position: fixed; z-index: 3; background: rgba(255,255,255,.9); background: #fff \9; width: 100%; height: 100%; line-height: 90px; top: 0; right: 0; text-align: center;}
+    .markdown_file_name {width: 100%; height: 30px; border: 1px solid #ddd; margin: 25px 0; padding: 5px 5px; white-space: nowrap; overflow: hidden; color: #999;}
+    .markdown_file_msg {color: #666; position: absolute; margin-top: -25px;}
+    .btn {text-align: right;}
+    .btn span {background: #999; color: #fff; padding: 3px 10px; cursor: pointer;}
+    label {position: absolute; right: 1px; top: 26px; background: #eee; color: #666; padding: 4px 8px; border-left: 1px solid #ddd;}
+    form {width: 1px; height: 1px ; position: absolute; overflow: hidden;}
+</style>
+</head>
+<body>
+<div class="markdown_file_name"></div>
+<div class="markdown_file_msg"></div>
+<label for="markdown_file">浏览..</label>
+<div class="up_img_loading">上传中...</div>
+<div class="btn" onclick="submit()"><span>上传图片</span></div>
+
+<form action="http://ask.csdn.net/upload_picture.json" id="picture_dialog_form" method="post">
+    <input type="file" name="markdown_file" id="markdown_file" accept="image/gif, image/jpeg, image/png">
+</form>
+<script>
+    $('.up_img_loading').removeClass('active');
+    document.domain = "csdn.net";
+    $('#markdown_file').change(function() {
+        var file_name = $(this).val();
+        $('.markdown_file_name').text(file_name);
+        $(".markdown_file_msg").html("");
+    });
+    function submit(){
+        $('.up_img_loading').addClass('active');
+
+        var form = $("#picture_dialog_form");
+        $(form).ajaxSubmit({
+            success: function (result) {
+                result = $.parseJSON(result);
+                if( result.status==500){
+                    $(".markdown_file_msg").html(result.msg);
+                    $('.up_img_loading').removeClass('active');
+                }else{
+                    $('.markdown_file_name').text(result.url);
+                    $('.up_img_loading').removeClass('active');
+                    window.parent.editor_change_ask_o(result.url);
+                }
+            },
+            error: function(err) {
+                $(".markdown_file_msg").html("系统繁忙，请稍后再试");
+                $('.up_img_loading').removeClass('active');
+            }
+        });
+    }
+</script>
+
+
+<audio controls="controls" style="display: none;"></audio></body><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></html>
