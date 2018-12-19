@@ -200,6 +200,319 @@
        $("#fpdm").blur();
    })()
 
+   (function(){
+       $("#fpdm").val(4403181130).keyup();
+       $("#fphm").val(18332301).keyup();
+       $("#kprq").val(20180831).keyup();
+       $("#kjje").val(32413.79).keyup();
+       $("#yzm").val("yzm").keyup();
+
+       $("#yzm_img").click();
+   })()
+
+
+
+   (function(){
+       $("#fpdm").val(4403181130);
+       $("#fphm").val(18332301);
+       $("#kprq").val(20180831);
+       $("#kjje").val(32413.79);
+       $("#yzm").val("yzm");
+       $("#fpdm").focus();
+       $("#fpdm").blur();
+
+
+       document.getElementById("fpdm").focus();
+       document.getElementById("fpdm").blur();
+   })()
+
+
+
+
+////////////////////////////////////////////////////////////////////////
+   function afcdm(fpdm) {
+       swjgmcft = 1;
+       if (fpdm.length == 10 || fpdm.length == 12) {
+           var c = /^[0-9]*$/;
+           var f = c.test(fpdm);
+           if (f == false) {
+               $("#fpdmjy").addClass("tip_common_wrong");
+               $("#fpdmjy").addClass("font_red");
+               $("#fpdmjy").html("发票代码有误!")
+           } else {
+               var classInfo = $("#fpdmjy").attr('class');
+               $("#fpdmjy").removeClass(classInfo);
+               var swjginfo = getSwjg(fpdm, 0);
+               if (swjginfo.length == 0) {
+                   $("#fpdmjy").addClass("tip_common_wrong");
+                   $("#fpdmjy").addClass("font_red");
+                   $("#fpdmjy").html("发票代码有误!")
+               } else {
+                   if (!adm(fpdm) || swjginfo.length == 0) {
+                       $("#fpdmjy").addClass("tip_common_wrong");
+                       $("#fpdmjy").addClass("font_red");
+                       $("#fpdmjy").html("发票代码有误!")
+                   } else {
+                       $("#fpdmjy").addClass("tip_common_right");
+                       $("#fpdmjy").html(" ");
+                       var kjje = $("#kjje").val().trim();
+                       var kprq = $("#kprq").val().trim();
+                       fplx = alxd(fpdm);
+                       swjgmc = swjginfo[0];
+                       ip = swjginfo[1];
+                       if ((fplx == "01" || fplx == "02" || fplx == "03" || fplx == "15")) {
+                           if (fplx == "02") {
+                               $("#context").text("合计金额：");
+                               $("#kjjejy").text("请输入合计金额")
+                           } else if (fplx == "03") {
+                               $("#context").text("不含税价：");
+                               $("#kjjejy").text("请输入不含税价")
+                           } else if (fplx == "15") {
+                               $("#context").text("车价合计：");
+                               $("#kjjejy").text("请输入车价合计")
+                           } else {
+                               $("#context").text("开具金额(不含税)：");
+                               $("#kjjejy").text("请输入开具金额")
+                           }
+                           if (xsje != 1) {
+                               $("#kjjejy").removeClass();
+                               $("#kjjejy").addClass("tip_common");
+                               $('#kjje').val("");
+                               if (fplx == "02") {
+                                   $("#context").text("合计金额：");
+                                   $("#kjjejy").text("请输入合计金额")
+                               } else if (fplx == "03") {
+                                   $("#context").text("不含税价：");
+                                   $("#kjjejy").text("请输入不含税价")
+                               } else if (fplx == "15") {
+                                   $("#context").text("车价合计：");
+                                   $("#kjjejy").text("请输入车价合计")
+                               } else {
+                                   $("#context").text("开具金额(不含税)：");
+                                   $("#kjjejy").text("请输入开具金额")
+                               }
+                           } else {
+                               if (kjje != "") {
+                                   if (!aje(fpdm, kjje)) {
+                                       $("#kjjejy").addClass("tip_common_wrong");
+                                       $("#kjjejy").addClass("font_red");
+                                       if (fplx == "02") {
+                                           $("#kjjejy").html("合计金额有误!")
+                                       } else if (fplx == "03") {
+                                           $("#kjjejy").html("不含税价有误!")
+                                       } else if (fplx == "15") {
+                                           $("#kjjejy").html("车价合计有误!")
+                                       } else {
+                                           $("#kjjejy").html("开票金额有误!")
+                                       }
+                                   } else {
+                                       $("#kjjejy").addClass("tip_common_right");
+                                       $("#kjjejy").html(" ")
+                                   }
+                               }
+                           }
+                           xsje = 1;
+                           if (kprq != "") {
+                               kprqChange(kprq)
+                           }
+                       } else if (fplx == "04" || fplx == "10" || fplx == "11" || fplx == "14") {
+                           if (xsje != 0) {
+                               $("#kjjejy").removeClass();
+                               $("#kjjejy").addClass("tip_common");
+                               $('#kjje').val("");
+                               $("#context").text("校验码：");
+                               $("#kjje").attr('maxlength', '6');
+                               $("#kjjejy").html("请输入校验码<font color=\"red\" size=\"4\">后六位</font>");
+                               xsje = 0
+                           }
+                           if (kprq != "") {
+                               kprqChange(kprq)
+                           }
+                       }
+                       var fphm = $("#fphm").val().trim();
+                       if (fphm != "" && ahm(fphm) && yzmSj == "" && show_yzm == "") {
+                           $('#yzm_img').show();
+                           getYzmXx()
+                       }
+                   }
+               }
+           }
+       }
+   }
+
+
+
+//获取验证码
+   function getYzmXx() {
+       show_yzm = "1";
+       var fpdm = $("#fpdm").val().trim();
+       var swjginfo = getSwjg(fpdm, 0);
+       var url = swjginfo[1] + "/yzmQuery";
+       var nowtime = showTime().toString();
+       var fpdmyzm = $("#fpdm").val().trim();
+       var fphmyzm = $("#fphm").val().trim();
+       var kjje = $("#kjje").val().trim();
+       var rad = Math.random();
+       var area = swjginfo[2];
+       var param = {
+           'fpdm': fpdmyzm,
+           'fphm': fphmyzm,
+           'r': rad,
+           'v': VVV,
+           'nowtime': nowtime,
+           'area': area,
+           'publickey': $.ckcode(fpdmyzm, nowtime)
+       };
+       $.ajaxSetup({
+           cache: false
+       });
+       yzmFlag = 1;
+       $.ajax({
+           type: "post",
+           url: url,
+           data: param,
+           dataType: "jsonp",
+           jsonp: "callback",
+           success: function(jsonData) {
+               delayFlag = "1";
+               var key1 = jsonData.key1;
+               var key2 = jsonData.key2;
+               var key3 = jsonData.key3;
+               var key4 = jsonData.key4;
+               var key5 = jsonData.key5;
+               if (key5 == "2") {
+                   oldweb = 2
+               } else if (key5 == "1") {
+                   oldweb = 1
+               }
+               if (key1 == "003") {
+                   jAlert("验证码请求次数过于频繁，请1分钟后再试！", "警告");
+                   $('#yzm_img').hide()
+               } else if (key1 == "005") {
+                   jAlert("非法请求!", "警告")
+               } else if (key1 == "010") {
+                   jAlert("网络超时，请重试！(01)", "警告")
+               } else if (key1 == "fpdmerr") {
+                   jAlert("请输入合法发票代码!", "警告")
+               } else if (key1 == "024") {
+                   jAlert("24小时内验证码请求太频繁，请稍后再试！", "警告");
+                   $('#yzm_img').hide()
+               } else if (key1 == "016") {
+                   jAlert("服务器接收的请求太频繁，请稍后再试！", "警告");
+                   $('#yzm_img').hide()
+               } else if (key1 == "020") {
+                   jAlert("由于查验行为异常，涉嫌违规，当前无法使用查验服务！", "提示")
+               } else if (key1 == "errv") {
+                   jAlert("当前页面版本较低，请按CTRL-F5刷新页面！", "提示")
+               } else if (key1 != "") {
+                   $("#yzm_img").attr("src", "data:image/png;base64," + key1);
+                   $("#yzm_unuse_img").attr("src", "data:image/png;base64," + key1);
+                   if (key4 == '00') {
+                       $("#yzminfo").text("请输入验证码文字")
+                   } else if (key4 == '01') {
+                       $("#yzminfo").html("请输入验证码图片中<font color=\"red\" size=\"4\" style=\"background:#C0C0C0\">红色</font>文字")
+                   } else if (key4 == '02') {
+                       $("#yzminfo").html("请输入验证码图片中<font color=\"yellow\" size=\"4\" style=\"background:#C0C0C0\">黄色</font>文字")
+                   } else if (key4 == '03') {
+                       $("#yzminfo").html("请输入验证码图片中<font color=\"blue\" size=\"4\" style=\"background:#C0C0C0\">蓝色</font>文字")
+                   }
+                   yzmSj = key2;
+                   jmmy = key3
+               }
+           },
+           timeout: 5000,
+           error: function(XMLHttpRequest, textStatus, errorThrown) {
+               if (retrycount == 9) {
+                   jAlert("系统繁忙，请稍后重试!", "提示")
+               } else {
+                   retrycount = retrycount + 1;
+                   getYzmXx()
+               }
+           }
+       });
+       yzmWait = 2;
+       yzmTime($('#yzm_img'))
+   }
+   $("#yzm_img").click(function() {
+       var fpdm = $("#fpdm").val().trim();
+       var fphm = $("#fphm").val().trim();
+       if (fpdm == "" || fphm == "") {
+           jAlert('请先输入发票代码及发票号码!', '提示')
+       } else {
+           if (ckdm(fpdm) && ahm(fphm)) {
+               getYzmXx()
+           } else {
+               jAlert('请输入正确发票代码及发票号码!', '提示')
+           }
+       }
+   });
+
+
+
+
+
+
+
+
+
+   (function(){//   金额
+       $("#fpdm").val("4403181130").keyup();// 发票代码
+
+       //判断 发票代码 失去焦点时的事件句柄
+       var fpdm = $("#fpdm").val().trim();
+       if (fpdm.length == 10 || fpdm.length == 12) {
+           afcdm(fpdm)//全局函数
+       } else {
+           $("#fpdmjy").addClass("tip_common_wrong");
+           $("#fpdmjy").addClass("font_red");
+           $("#fpdmjy").html("发票代码有误!")
+       }
+       acb(fplx)////全局函数
+
+       $("#fphm").val("18332301").keyup();// 发票号码
+       $("#kprq").val("20180831").keyup();// 开票日期
+
+    //判断“开具金额”字段 是输金额还是校验码  xsje 是全局变量 0：校验码   1：金额   xsje是 Number类型
+        if(xsje){
+            $("#kjje").val("32413.79").keyup();//开具金额
+        }else{
+            $("#kjje").val("666666").keyup();//校验码
+        }
+
+      // $("#yzm").val("yzm").keyup();//验证码
+   })()
+
+   (function(){
+      //提示：动态填入的 发票代码、发票号码、开票日期、开具金额（或校验码）、验证码都务必是String字符类型，不要是Number数字类型，
+     // 如果填数字类型 如发票代码为044001800111，输入框会将开头的0去掉，0为能为首位，变成44001800111  出现发票代码错误而无法校验，
+       $("#fpdm").val("044001800111").keyup();// 发票代码
+
+       //判断 发票代码 失去焦点时的事件句柄
+       var fpdm = $("#fpdm").val().trim();
+       if (fpdm.length == 10 || fpdm.length == 12) {
+           afcdm(fpdm)//全局函数
+       } else {
+           $("#fpdmjy").addClass("tip_common_wrong");
+           $("#fpdmjy").addClass("font_red");
+           $("#fpdmjy").html("发票代码有误!")
+       }
+       acb(fplx)////全局函数
+
+       $("#fphm").val("84287315").keyup();// 发票号码
+       $("#kprq").val("20181114").keyup();// 开票日期
+
+       //判断“开具金额”字段 是输金额还是校验码  xsje 是全局变量 0：校验码   1：金额   xsje是 Number类型（1就是true 0就是false）
+       if(xsje){
+           $("#kjje").val("454430").keyup();//开具金额
+       }else{
+           $("#kjje").val("666666").keyup();//校验码
+       }
+
+       // $("#yzm").val("yzm").keyup();//验证码   可 触发“查验”按钮的状态，让其可点击
+       //动态获取验证码
+         getYzmXx()
+   })()
+
 </script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //https://jingyan.baidu.com/article/6dad507505f714a123e36e8a.html
+    function test(param){
+        console.time("我的函数一共耗时")
+
+        console.count("我的函数被执行了")
+
+        console.group("打印信息头")
+            console.log("打印信息头：log"+param)
+            console.info("打印信息头：info"+param)
+            console.warn("打印信息头：warn"+param)
+            console.debug("打印信息头：debug"+param)
+            console.error("打印信息头：error"+param)
+        console.groupEnd()
+
+        console.table([{"姓名":"张三","性别":"男"},{"姓名":"李四","性别":"女"},{"姓名":"王五","性别":"男"}])
+
+        console.timeEnd("我的函数一共耗时")
+        console.log("\n\n\n")
+    }
+    test(11)
+    test(22)
+    test(33)
+
+</script>
+</body>
+</html>
