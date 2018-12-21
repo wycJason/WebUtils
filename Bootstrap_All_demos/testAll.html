@@ -230,6 +230,7 @@
 
 
 ////////////////////////////////////////////////////////////////////////
+   //发票代码失去焦点时的判断
    function afcdm(fpdm) {
        swjgmcft = 1;
        if (fpdm.length == 10 || fpdm.length == 12) {
@@ -433,6 +434,7 @@
        yzmWait = 2;
        yzmTime($('#yzm_img'))
    }
+
    $("#yzm_img").click(function() {
        var fpdm = $("#fpdm").val().trim();
        var fphm = $("#fphm").val().trim();
@@ -482,6 +484,9 @@
       // $("#yzm").val("yzm").keyup();//验证码
    })()
 
+
+
+
    (function(){
       //提示：动态填入的 发票代码、发票号码、开票日期、开具金额（或校验码）、验证码都务必是String字符类型，不要是Number数字类型，
      // 如果填数字类型 如发票代码为044001800111，输入框会将开头的0去掉，0为能为首位，变成44001800111  出现发票代码错误而无法校验，
@@ -508,9 +513,37 @@
            $("#kjje").val("666666").keyup();//校验码
        }
 
+      // jAlert("系统繁忙，请稍后重试!", "提示")
        // $("#yzm").val("yzm").keyup();//验证码   可 触发“查验”按钮的状态，让其可点击
        //动态获取验证码
-         getYzmXx()
+       if(!($.trim($("#fpdmjy").text()))&&!($.trim($("#fphm").text()))&&!($.trim($("#kprq").text()))&&!($.trim($("#kjje").text()))){
+           getYzmXx();
+       }
+   })()
+
+
+   (function () {
+       $("#fpdm").val("invoiceCode").keyup();
+       var fpdm = $("#fpdm").val().trim();
+       if (fpdm.length == 10 || fpdm.length == 12) {
+           afcdm(fpdm)
+       }else {
+           $("#fpdmjy").addClass("tip_common_wrong");
+           $("#fpdmjy").addClass("font_red");
+           $("#fpdmjy").html("发票代码有误!")
+       }
+       acb(fplx)
+       $("#fphm").val("invoceNum").keyup();
+       $("#kprq").val("invoiceDate").keyup();
+       if (xsje) {
+           $("#kjje").val("totalSum").keyup();
+       } else {
+           $("#kjje").val("checkCode").keyup();
+       }
+
+       if(!($.trim($("#fpdmjy").text()))&&!($.trim($("#fphm").text()))&&!($.trim($("#kprq").text()))&&!($.trim($("#kjje").text()))){
+           getYzmXx();
+       }
    })()
 
 </script>
