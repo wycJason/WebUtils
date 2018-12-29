@@ -2,11 +2,11 @@
  * 使用http模块接收客户端请求消息
  */
 
-var http = require('http');
-var url = require('url');
+const http = require('http');
+const url = require('url');
 
 //创建一个Web服务器 —— 创建一个面包售货员
-var server = http.createServer();
+const server = http.createServer();
 
 //让Web服务器能够处理客户端连接请求——岗前培训
 server.on('request', function(request, response){

@@ -1,7 +1,7 @@
 /**
- * 演示URL模块的使用
+ * 演示URL模块的使用   参考文档http://nodejs.cn/     node interpreter:C:\Program Files (x86)\nodejs\node.exe
  */
-var url = require('url');   //引入指定模块
+const url = require('url');   //引入指定模块
 
 var str = 'http://tmooc.cn:8000/s.do?uname=mary&age=20#chapter3';
 

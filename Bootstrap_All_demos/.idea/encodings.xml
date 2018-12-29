@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/IC_EnqueryInfo/ic.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/IC_EnqueryInfo/ic.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/chenqiang1.html" charset="UTF-16LE" />
+    <file url="file://$PROJECT_DIR$/jQueryWeui/dist/js/jQuery WeUI V1.2.0.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/publicClass.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/pulicClassMethods.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/layim-v3.7.7-pro(contenteditable可插入图片、表情)/extendModule/demo.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/layim-v3.7.7-pro(contenteditable可插入图片、表情)/extendModule/mymod.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/layim-v3.7.7-pro/extendModule/demo.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/layim-v3.7.7-pro/extendModule/mymod.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/layui-v2.1.5/user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/websocket_demo/server.js" charset="UTF-8" />
+  </component>
+</project>

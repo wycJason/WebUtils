@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="使用Node.js向一个文件中写出内容.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="使用Node.js向一个文件中写出内容.js" working-dir="$PROJECT_DIR$/Node.js/mynode">
+    <method />
+  </configuration>
+</component>

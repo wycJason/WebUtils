@@ -42,6 +42,7 @@ server.on('request', function(request, response) {
     var urlObj = url.parse( request.url , true);
     var fileName = urlObj.pathname; //请求的文件名称
     if(fileName=='/favicon.ico'){
+        console.log(" pathname: '/favicon.ico")
         response.end();  //结束输出
         return;  //不处理图标文件的请求
     }

@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<script src="js/jquery-1.11.3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script>
     //数组arr中的每一个元素都是obj对象中的一个属性；数组中的元素要根据对象的属性来自定义；
@@ -38,7 +38,7 @@
     console.log("----------------------------------------------------------------")
     //for in 循环遍历对象中的每一个属性或方法并储存在key中
     for(var key in obj){
-        console.log(obj[key]);
+        console.log(key+":"+obj[key]);
     }
     console.log("----------------------------------------------------------------")
     //循环遍历对象中的每一个属性和值，分别存储在k和v中

@@ -1,5 +1,5 @@
 /**
- * 演示QueryString模块的使用
+ * 演示QueryString模块的使用  参考文档http://nodejs.cn/  node interpreter:C:\Program Files (x86)\nodejs\node.exe
  */
 
 //require函数用于引入一个Node.js的模块
