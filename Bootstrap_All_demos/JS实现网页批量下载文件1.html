@@ -60,13 +60,13 @@
     //https://www.cnblogs.com/cnsevennight/p/3849345.html
     //把下载链接放入集合里　　
     var downloadData = [
+        "http://120.136.129.178:36002/DocManage/downloadfile/052582f4319744daa7b893215986766d_2019_1_4_c510031e7d5b4915913feb57ffc79b5c.zip",
         "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_6ab1021388ba480486b1c12fca82423a.pdf/%E6%B7%B1%E5%9C%B3--%E6%9C%80%E6%96%B0%E9%80%9A%E8%AE%AF%E5%BD%95-11%E6%9C%88%E4%BB%BD.pdf",
         "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_2bf9449db18c47958816a0ba6d692a3f.pdf/%E5%BC%A0%E4%B8%89.pdf",
         "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_b233378ad7064b96a6bcb2259dc9a10f.pdf/%E6%9D%8E%E5%9B%9B.pdf",
         "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_e518170dca334d85b9824734e392b268.pdf/%E7%8E%8B%E4%BA%94.pdf"
     ];
     var downloadNum=0;//方法执行次数
-    circularWindow(downloadNum);
     function circularWindow(){//循环弹窗
         setTimeout(function(){
             jumpDownloadWindow(downloadNum);
@@ -82,6 +82,8 @@
             circularWindow();
         }
     }
+    //开始下载
+    circularWindow(downloadNum);
 </script>
 </body>
 </html>
