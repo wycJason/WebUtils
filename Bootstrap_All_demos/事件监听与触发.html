@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //参考文档 http://www.fly63.com/article/detial/347
+   // Object.prototype是所有对象的顶级父对象
+    //Function.prototype是所有函数对象的父对象。(函数也是一种特殊的对象，可按对象的方法全使用期属性和方法)
+    //自定义事件
+    var customListeners=new Object();
+    Function.prototype.on=function(name,fn) { //监听事件：[事件名称，执行方法]  ==>定义方法
+        if(typeof fn === "function") {
+            customListeners[name]=fn;
+        }
+    };
+    Function.prototype.trigger=function(name,data){ //执行事件：[事件名称，传递数据]  ==>调用方法
+        if(name && customListeners[name]){
+            customListeners[name](data);
+        }
+    };
+    /*----------------------------------------------------------*/
+    //监听并触发事件
+    function fn(){
+        setTimeout(function(){
+            fn.trigger('done',"异步后执行");//fn发起done的事件
+        }, 1000);
+    }
+    function fn_1(data){
+        console.log('执行：'+data);
+    }
+    fn.on('done', fn_1);//监听事件done   事件回调函数fn_1
+    fn();
+
+    /*----------------------------------------------------------*/
+    fn.on("custom",function(data){
+        alert(data.name);
+    })
+    fn.trigger("custom",{"name":"数据"})
+
+    /*----------------------------------------------------------*/
+    $("body").bind("customEvent",function(event,msg1,msg2){
+        alert(msg1+","+msg2);//1,2
+    })
+    $("body").trigger("customEvent",[1,2])
+</script>
+</body>
+</html>
