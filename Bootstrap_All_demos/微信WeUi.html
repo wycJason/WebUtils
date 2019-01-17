@@ -5,18 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title>微信官方Weui</title>
-    <style>
-
-    </style>
    <!-- <link href="css/bootstrap.css" rel="stylesheet">-->
     <link href="//res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css" rel="stylesheet">
    <!--<link href="css/weui.min.css" rel="stylesheet">-->
    <!--<link href="weui-1.1.2/src/style/widget/weui-flex/weui-flex.css" rel="stylesheet">-->
    <!--<link href="weui-1.1.2/src/example/example.css" rel="stylesheet">-->
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body style="background-color: #F8F8F8;">
 <h2><a href="https://weui.io/" target="_blank">WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计，令用户的使用感知更加统一。</a></h2>
@@ -1161,6 +1154,17 @@
         $('#showAndroidDialog2').on('click', function () {
             $androidDialog2.fadeIn(200);
         });
+    });
+</script>
+
+<script type="text/javascript">
+    //https://github.com/Tencent/weui.js
+    weui.topTips('请填写正确的字段', {
+        duration: 3000,
+        className: 'custom-classname',
+        callback: function(){
+            weui.alert('alert');
+        }
     });
 </script>
 </body>

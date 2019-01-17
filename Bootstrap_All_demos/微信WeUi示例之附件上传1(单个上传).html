@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
+    <title>微信附件上传1</title>
+</head>
+<body>
+<div class="weui-cells weui-cells_form" id="uploader">
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <div class="weui-uploader">
+                <div class="weui-uploader__hd">
+                    <p class="weui-uploader__title">图片上传</p>
+                    <div class="weui-uploader__info"><span id="uploadCount">0</span>/5</div>
+                </div>
+                <div class="weui-uploader__bd">
+                    <ul class="weui-uploader__files" id="uploaderFiles"></ul>
+                    <div class="weui-uploader__input-box">
+                        <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" capture="camera" multiple="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="weui-btn-area">
+    <a id="uploaderCustomBtn" href="javascript:" class="weui-btn weui-btn_primary">上传</a>
+</div>
+<!--<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>-->
+<script src="https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
+<script>
+    //参数说明 https://github.com/Tencent/weui.js/blob/master/docs/component/uploader.md
+    var uploadCustomFileList = [];/* 图片手动上传 */
+    var uploadCount = 0;/* 图片上传数量 */
+    var uploadCountDom = document.getElementById("uploadCount");/* 图片上传数量DOM */
+    weui.uploader('#uploader', {
+        url: 'http://localhost:8081',
+        auto: false,
+        type: 'base64',
+        fileVal: 'fileVal',
+        compress: {
+            width: 1600,
+            height: 1600,
+            quality: .8
+        },
+        onBeforeQueued: function(files) {
+            // `this` 是轮询到的文件, `files` 是所有文件
+
+            if(["image/jpg", "image/jpeg", "image/png", "image/gif"].indexOf(this.type) < 0){
+                weui.alert('请上传图片');
+                return false; // 阻止文件添加
+            }
+            if(this.size > 10 * 1024 * 1024){
+                weui.alert('请上传不超过10M的图片');
+                return false;
+            }
+            if (files.length > 5) { // 防止一下子选择过多文件
+                weui.alert('最多只能上传5张图片，请重新选择');
+                return false;
+            }
+            if (uploadCount + 1 > 5) {
+                weui.alert('最多只能上传5张图片');
+                return false;
+            }
+
+            ++uploadCount;
+            uploadCountDom.innerHTML = uploadCount;
+            // return true; // 阻止默认行为，不插入预览图的框架
+        },
+        onQueued: function(){
+            console.log(this);
+            uploadCustomFileList.push(this);
+            // console.log(this.status); // 文件的状态：'ready', 'progress', 'success', 'fail'
+            // console.log(this.base64); // 如果是base64上传，file.base64可以获得文件的base64
+
+             //this.upload(); // 如果是手动上传，这里可以通过调用upload来实现；也可以用它来实现重传。
+            // this.stop(); // 中断上传
+
+            // return true; // 阻止默认行为，不显示预览图的图像
+        },
+        onBeforeSend: function(data, headers){
+            console.log(this, data, headers);
+            // $.extend(data, { test: 1 }); // 可以扩展此对象来控制上传参数
+            // $.extend(headers, { Origin: 'http://127.0.0.1' }); // 可以扩展此对象来控制上传头部
+
+            // return false; // 阻止文件上传
+        },
+        onProgress: function(procent){
+            console.log(this, procent);
+            // return true; // 阻止默认行为，不使用默认的进度显示
+        },
+        onSuccess: function (ret) {
+            console.log(this, ret);
+            // return true; // 阻止默认行为，不使用默认的成功态
+        },
+        onError: function(err){
+            console.log(this, err);
+            // return true; // 阻止默认行为，不使用默认的失败态
+        }
+    });
+
+    // 缩略图预览
+    document.querySelector('#uploaderFiles').addEventListener('click', function (e) {
+        var target = e.target;
+
+        while (!target.classList.contains('weui-uploader__file') && target) {
+            target = target.parentNode;
+        }
+        if (!target) return;
+
+        var url = target.getAttribute('style') || '';
+        var id = target.getAttribute('data-id');
+
+        if (url) {
+            url = url.match(/url\((.*?)\)/)[1].replace(/"/g, '');
+        }
+        var gallery = weui.gallery(url, {
+            className: 'custom-name',
+            onDelete: function onDelete() {
+                weui.confirm('确定删除该图片？', function () {
+                    --uploadCount;
+                    uploadCountDom.innerHTML = uploadCount;
+
+                    var index;
+                    for (var i = 0, len = uploadCustomFileList.length; i < len; ++i) {
+                        var file = uploadCustomFileList[i];
+                        if (file.id == id) {
+                            index = i;
+                            break;
+                        }
+                    }
+                    uploadCustomFileList.splice(index, 1);
+                    target.remove();
+                    gallery.hide();
+                });
+            }
+        });
+    });
+
+    // 手动上传按钮
+    document.getElementById("uploaderCustomBtn").addEventListener('click', function () {
+        if(uploadCustomFileList.length>0){
+            uploadCustomFileList.forEach(function (file) {
+                file.upload();
+            });
+        }else{
+          //  weui.alert('请上传图片!');
+            weui.topTips('请上传图片!');
+        }
+
+    });
+</script>
+</body>
+</html>
