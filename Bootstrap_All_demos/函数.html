@@ -18,9 +18,14 @@
 <body>
 <h1><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499355829ead974e550644e2ebd9fd8bb1b0dd721000" target="_blank">什么是高阶函数？</a></h1>
 <img src="Images/Higher-order-function.png">
-<script src="js/jquery-1.11.3.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
+    function testParams(P1,P2){
+        console.log(P1,P2)
+    }
+
+
     //在事件处理函数中，函数中的This就指事件所绑定的元素对象，这里指input元素
     function testFun(note){
         console.log(note.value);//123
