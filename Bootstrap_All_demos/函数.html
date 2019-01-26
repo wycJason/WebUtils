@@ -170,6 +170,15 @@ console.log(factorial(4))//4*3*2*1=24
             console.log("对象转函数")
         }
     })
+
+    //函数作为参数来传递
+    function myfunc(param,callback){
+        console.log(param)
+        callback(param)
+    }
+    myfunc(5201313,function(param){
+        console.log(param)
+    })
 </script>
 </body>
 </html>
