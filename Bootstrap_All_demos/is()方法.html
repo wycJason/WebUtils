@@ -18,6 +18,7 @@
 <div id="test1">
     <div id="test2" class="cls" data-val="1">
         <p>测试is()函数，返回一个布尔类型！</p>
+        <div id="abc" class="a b c">测试多个class类型</div>
         <textarea>789</textarea>
     </div>
 </div>
@@ -26,6 +27,21 @@
 <script src="js/bootstrap.js"></script>
 <script>
 $("#btn").click(function(){
+    console.log($("#abc").is(".a"));//true;
+    console.log($("#abc").is(".b"));//true;
+    console.log($("#abc").is(".c"));//true;
+    console.log($("#abc").is(".a.b"));//true;
+    console.log($("#abc").is(".a.b.c"));//true;
+    console.log($("#abc").is(".a.c"));//true;
+    console.log($("#abc").is(".b.c"));//true;
+    console.log($("#abc").is(".a#abc"));//true;
+    console.log($("#abc").is(".b#abc"));//true;
+    console.log($("#abc").is(".c#abc"));//true;
+    console.log($("#abc").is(".a.b#abc"));//true;
+    console.log($("#abc").is(".a.b.c#abc"));//true;
+    console.log($("#abc").is(".a.c#abc"));//true;
+    console.log($("#abc").is(".b.c#abc"));//true;
+    console.log("-------------------");
     console.log($("p").parent().is("#test2"));//true;
     console.log($("p").parent().is("#test1"));//false;
     console.log($("p").parents().is("#test1"));//true;

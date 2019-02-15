@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Table(行内编辑)</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-table/bootstrap-table.css" rel="stylesheet">
+</head>
+<body>
+<div class="table-box" style="margin: 20px;">
+    <div id="toolbar">
+        <button id="button" class="btn btn-default">插入数据</button>
+        <button id="getTableData" class="btn btn-default">获取表格数据</button>
+    </div>
+    <table id="table"></table>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="bootstrap-table/bootstrap-table.js"></script>
+<script src="bootstrapAll/js/bootstrap-table-export.js"></script>
+<script src="bootstrapAll/js/tableExport.js"></script>
+<script src="bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<script>
+//https://blog.csdn.net/dizuncainiao/article/details/81742971
+//https://blog.csdn.net/happy20009/article/details/79468816
+/*
+* 实现原理
+ 通过bootstrap table自带的 onClickCell 方法，点击 td 添加 contenteditable 属性(ps: 使元素可编辑),于是 td 元素具有了类似于文本框的 focus 和 blur 事件，
+ 用户点击 td 获取焦点，编辑完内容失去焦点后，调用 updateCell方法更新单元格数据。
+* */
+$(function() {
+    let $table = $('#table');
+    let $button = $('#button');
+    let $getTableData = $('#getTableData');
+
+    $button.click(function() {
+        $table.bootstrapTable('insertRow', {
+            index: 0,
+            row: {
+                id: '',
+                name: '',
+                price: ''
+            }
+        });
+    });
+
+    $table.bootstrapTable({
+        toolbar: '#toolbar',
+        showToggle: true,//表格与卡片切换
+        pagination: true,       //显示分页条
+        showPaginationSwitch: true,     //显示切换分页按钮
+        showColumns: true,
+        showRefresh: true,      //显示刷新按钮
+        //clickToSelect: true,  //点击row选中radio或CheckBox
+        columns: [{
+            checkbox: true
+        }, {
+            field: 'id',
+            title: 'Item ID'
+        }, {
+            field: 'name',
+            title: 'Item Name'
+        }, {
+            field: 'price',
+            title: 'Item Price'
+        }],
+        data: [
+            { "id": 1, "name": "Item 1", "price": "￥1" },
+            { "id": 2, "name": "Item 2", "price": "￥2" },
+            { "id": 3, "name": "Item 3", "price": "￥3" }
+        ],
+        /*onClickCell: function(field, value, row, $element) {
+            $element.attr('contenteditable', true);
+            $element.blur(function() {
+                let index = $element.parent().data('index');
+                let tdValue = $element.html();
+                saveData(index, field, tdValue);
+            })
+        },*/
+        onDblClickCell: function(field, value, row, $element) {
+            if(!$element.is(".bs-checkbox ")){//复选框不编辑
+                var value = $element.text()||$element.find("input").val();
+                $element.html("<input style='width:100%'/>");
+                $element.find("input").val(value).focus();
+
+                $element.find("input").blur(function() {
+                    let index = $element.parent().attr('data-index');
+                    let tdValue = $element.find("input").val().trim();
+                    saveData(index, field, tdValue);
+
+                    $element.html(tdValue);
+                })
+            }
+        }
+    });
+
+    $getTableData.click(function() {
+      //  alert(JSON.stringify($table.bootstrapTable('getData')));
+        console.table($table.bootstrapTable('getData'))
+    });
+
+    function saveData(index, field, value) {
+        $table.bootstrapTable('updateCell', {
+            index: index,       //行索引
+            field: field,       //列名
+            value: value        //列值
+        })
+    }
+});
+
+</script>
+</body>
+</html>

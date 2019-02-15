@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Table(行内编辑)</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-table/bootstrap-table.css" rel="stylesheet">
+</head>
+<body>
+<div style="margin: 20px;">
+    <div id="toolbar">
+        <button id="addBtn" class="btn btn-default">插入数据</button>
+        <button id="getTableData" class="btn btn-default">获取表格数据</button>
+    </div>
+    <table id="table"></table>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="bootstrap-table/bootstrap-table.js"></script>
+<script src="bootstrapAll/js/bootstrap-table-export.js"></script>
+<script src="bootstrapAll/js/tableExport.js"></script>
+<script src="bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<script>
+    $('#table').bootstrapTable({
+        data: [
+            { "index": 1, "attrValue": "Item 1", "sellPrice": "￥1" },
+            { "index": 2, "attrValue": "Item 2", "sellPrice": "￥1" },
+            { "index": 3, "attrValue": "Item 3", "sellPrice": "￥1" },
+        ],
+        toolbar: '#toolbar',
+        striped: true,
+        uniqueId: 'attrValue',
+        columns: [{
+            title: '序号',
+            field: 'index',
+            formatter: formatterIndex
+        },{
+            title: '规格',
+            field: 'attrValue',
+            class: 'editable'
+        },{
+            title: '价格',
+            field: 'sellPrice',
+            class: 'editable'
+        },{
+            title: '操作',
+            formatter: formatterOperate
+        }]
+    });
+    function formatterIndex(value, row, index){
+        var i = index + 1;
+        if(i < 10){
+            return "0" + i;
+        }else{
+            return i;
+        }
+    }
+    function formatterOperate(value, row, index){
+        return "<button onclick='saveRow("+index+")' class='btn small'><i class='fa fa-edit'></i> 保存</button><button onclick='editRow("+index+")' class='btn small blue'><i class='fa fa-edit'></i> 编辑</button><button onclick='delRow(\""+row.attrValue+"\")' class='btn small red'><i class='fa fa-trash-o'></i> 删除</button>";
+    }
+    $("#addBtn").click(function(){
+        var data = {
+            attrValue: '',
+            sellPrice: ''
+        };
+        $("#table").bootstrapTable('append', data);
+        $("#table tr:last-child td.editable").each(function(){
+            $(this).html("<input>");
+        });
+    });
+    function saveRow(index, value){
+        var obj = $("#table tr:nth-child("+ (index+1) +") td.editable");
+        var attrValue = obj.first().find("input").val().trim();
+        var sellPrice = obj.last().find("input").val().trim();
+        var newData = {
+            attrValue: attrValue,
+            sellPrice: sellPrice
+        };
+        $("#table").bootstrapTable('updateRow', {
+            index: index,
+            row: newData
+        });
+        obj.find("input").remove();
+    }
+    function editRow(index){
+        $("#table tr:nth-child("+ (index+1) +") td.editable").each(function(){
+            var value = $(this).text();
+            $(this).html("<input value='"+value+"'>");
+        });
+    }
+    function delRow(value){
+        $("#table").bootstrapTable('removeByUniqueId', value);
+    }
+
+    $('#getTableData').click(function() {
+        console.table( $("#table").bootstrapTable('getData'))
+    });
+</script>
+</body>
+</html>
