@@ -59,6 +59,7 @@
 <script src="bootstrapAll/js/tableExport.js"></script>
 <script src="bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 <script>
+    //bootstrap-table表格版本为 version: 1.11.1
     //事件对象   http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
     operateEvents = {
         'click .edit': function (e, value, row, index) {
@@ -311,6 +312,7 @@
                     title: '商品名称',
                    // sortable:true,
                     formatter: setName,
+                    halign:"center",
                     cellStyle:cellStyleNumFormatter,
                     //halign:"left",
                    // align:"center"

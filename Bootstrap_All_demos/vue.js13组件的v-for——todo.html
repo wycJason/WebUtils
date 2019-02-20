@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,28 +9,31 @@
 <body>
 <div id="todo-list-example">
     <form v-on:submit.prevent="addNewTodo">
-        <label for="new-todo">Add a todo</label>
-        <input
-                v-model="newTodoText"
-                id="new-todo"
-                placeholder="E.g. Feed the cat"
-                >
+        <input v-model="newTodoText"/>
         <button>Add</button>
     </form>
     <ul>
-        <li
+       <!-- <li
                 is="todo-item"
                 v-for="(todo, index) in todos"
                 v-bind:key="todo.id"
                 v-bind:title="todo.title"
                 v-on:remove="todos.splice(index, 1)"
-                ></li>
+                ></li>-->
+
+        <todo-item
+                v-for="(todo, index) in todos"
+                v-bind:key="todo.id"
+                v-bind:title="todo.title"
+                v-on:remove="todos.splice(index, 1)"
+                ></todo-item>
     </ul>
 </div>
 <!--<script src="js/vue.js"></script>-->
 <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
 <script>
     //https://cn.vuejs.org/v2/guide/list.html#用-v-for-把一个数组对应为一组元素
+    //https://cn.vuejs.org/v2/api/#is  is特殊待性    https://cn.vuejs.org/v2/guide/components.html#动态组件
     Vue.component('todo-item', {
         template: '\
                 <li>\

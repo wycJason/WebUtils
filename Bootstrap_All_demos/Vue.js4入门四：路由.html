@@ -11,30 +11,41 @@
 </head>
 <body>
 <div id="app"></div>
+
+<div id="renderFun"></div>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script>
-    const NotFound = { template: '<p>页面未找到</p>' }
-    const Home = { template: '<p>主页</p>' }
-    const About = { template: '<p>关于页面</p>' }
+    const NotFound = { template: '<h1>页面未找到</h1>' }
+    const Home = { template: '<h1>主页</h1>' }
+    const About = { template: '<h1>关于页面</h1>' }
 
-    const routes = {
+    const routes = {//路径==>组件
         '/': Home,
+        '/home': Home,
         '/about': About
     };
 
     var vm = new Vue({
         el: '#app',
         data: {
-            //currentRoute: window.location.pathname
-            currentRoute: window.location.hash.slice(1)
+            currentRoute: window.location.hash.slice(1)  //  #/about     /about
         },
         computed: {
             ViewComponent: function () {
                 return routes[this.currentRoute] || NotFound
             }
         },
-        render: function (h) {
+        render: function (h) { //h函数将 组件渲染成视图   https://cn.vuejs.org/v2/api/#render
             return h(this.ViewComponent)
+        }
+    })
+
+
+
+    new Vue({
+        el: '#renderFun',
+        render: function (h) { //h函数将 组件渲染成视图   https://cn.vuejs.org/v2/api/#render
+            return h({ template: '<h1>render函数</h1>' })
         }
     })
 </script>

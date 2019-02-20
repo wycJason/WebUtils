@@ -131,20 +131,21 @@
                 this.book = '';
             },
             delBook: function (book) {
-                this.books.$remove(book);
+                console.log(book.name)
+                this.books.$remove(book);//结构删除方法 book为books里对应的对象  https://segmentfault.com/a/1190000007329657
             },
             sortBy: function (sortparam) {
+                console.log(sortparam)
                 this.sortparam = sortparam;
             }
         },
-        computed: {
+        computed: {//计算属性默认只有 getter ，不过在需要时你也可以提供一个 setter ：
             sum: function () {
                 var result = 0;
                 for (var i = 0; i < this.books.length; i++) {
                     //result = Number(this.books[i].price) + result;
                     result += Number(this.books[i].price);
-                }
-                ;
+                } ;
                 return result;
             }
         }

@@ -9,27 +9,29 @@
 </head>
 <body>
 <div id="app">
-    <input v-model="searchText">
+    <input v-model="searchText"/>
     <br>
-    <input  v-bind:value="searchText" v-on:input="searchText = $event.target.value">
-    <br>
-    {{searchText}}
-    <br>
+    <input  v-bind:value="searchText" v-on:input="searchText = $event.target.value"/>
 
-    <!--<custom-input v-bind:value="searchText" v-on:input="searchText = $event" ></custom-input>-->
+    <br><br>
+    {{searchText}}
+    <br><br>
+
     <custom-input v-model="searchText"></custom-input>
+    <!--<custom-input v-bind:value="searchText" v-on:input="searchText = $event" ></custom-input>-->
 </div>
 <!--<script src="js/jquery-1.11.3.js"></script>
 <script src="js/bootstrap.js"></script>-->
 <script src="js/vue.js"></script>
 <script>
+    //input原理v-model原理讲解
     Vue.component('custom-input', {
         props: ['value'],
         template: `
                     <input
                       v-bind:value="value"
                       v-on:input="$emit('input', $event.target.value)"
-                    >
+                    />
                   `
     })
 

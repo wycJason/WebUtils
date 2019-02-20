@@ -312,6 +312,19 @@ ViewBag.Title = "上传库存";
  limit, offset, search, sort, order 否则, 需要包含:
  pageSize, pageNumber, searchText, sortName, sortOrder.
  返回false将会终止请求
+{
+ Code: 0
+ Msg: ""
+ CurrentPage: 0  //当前第几页
+ PageSize: 0  //一页显示多少条
+ Result: "[{},{}]"  //每页显示的数据
+ TotalPage: 0  //总页数
+ TotalRow: 2   //总行数
+}
+
+ totalField: "TotalRow",//总行数
+ dataField: "Result",//返回的数据
+ totalRows:0,//默认为0
 */
     function initViewRepertoryTable() {
         $("#ICProducts").bootstrapTable({
@@ -323,7 +336,6 @@ ViewBag.Title = "上传库存";
             contentType: "application/x-www-form-urlencoded",
             responseHandler: responseHandler,//请求数据成功后，渲染表格前的方法
             dataField: "data",//这是返回的json数组的key.在这里指searchData数组的key，data: searchData
-
 
             //uniqueId: "M",//每一行的唯一标识，一般为主键列
             //idField: "M",//指定主键列

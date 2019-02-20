@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vue路由</title>
-    <style>
-
-    </style>
     <script src="https://unpkg.com/vue@2.2.1/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <style>
+        .router-link-active {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
@@ -20,7 +22,7 @@
 
 <script>
     //var App=Vue.extend();
-
+    //https://router.vuejs.org/zh/installation.html
     var login=Vue.extend({
         template:"<h1>登录</h1>"
     });
@@ -32,6 +34,7 @@
             }
         },
         created:function(){//在实例创建完成后被立即调用。
+            console.log(this.$route.params);
             this.name=this.$route.params.pname
         }
     });
@@ -46,7 +49,7 @@
 
     new Vue({
         el:"#app",
-        router:vueRouter,
+        router:vueRouter,//路由实例
     })
 </script>
 </body>

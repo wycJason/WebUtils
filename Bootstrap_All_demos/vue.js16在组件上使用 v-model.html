@@ -8,15 +8,21 @@
 </head>
 <body>
 <div id="app">
-    <!--当用在组件上时，v-model 则会这样：-->
+    <!--输入框原理：当用在组件上时，v-model 则会这样：-->
     <custom-input v-bind:value="searchText" v-on:input="searchText = $event"></custom-input>
 
-    <!--现在 v-model 就应该可以在这个组件上完美地工作起来了：-->
+    <!--输入框使用：现在 v-model 就应该可以在这个组件上完美地工作起来了：-->
     <custom-input v-model="searchText"></custom-input>
-
     <!--以上两者使用起来是一样的-->
 
+
+    <!--单选框或复选框原理：当用在组件上时，v-model 则会这样：-->
+    <base-checkbox v-bind:checked="lovingVue" v-on:change="lovingVue = $event"></base-checkbox>
+
+    <!--单选框或复选框使用：现在 v-model 就应该可以在这个组件上完美地工作起来了：-->
     <base-checkbox v-model="lovingVue"></base-checkbox>
+    <!--以上两者使用起来是一样的-->
+
 
     <!--通过插槽分发内容-->
     <alert-box>Something bad happened.</alert-box>
@@ -49,8 +55,9 @@
     })
 
     //注意你仍然需要在组件的 props 选项里声明 checked 这个 prop。
+    //  model:  https://cn.vuejs.org/v2/api/#model
     Vue.component('base-checkbox', {
-        model: {
+        model: {//定义模型
             prop: 'checked',
             event: 'change'
         },

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,13 +12,17 @@
     <a v-on:click.stop="doThis">阻止单击事件继续传播</a>
 
     <!-- 提交事件不再重载页面 -->
-    <form v-on:submit.prevent="onSubmit">提交事件不再重载页面</form>
+    <form v-on:submit.prevent="onSubmit">
+        <button>提交事件不再重载页面</button>
+    </form>
 
     <!-- 修饰符可以串联 -->
     <a v-on:click.stop.prevent="doThat">修饰符可以串联</a>
 
     <!-- 只有修饰符 -->
-    <form v-on:submit.prevent>只有修饰符</form>
+    <form v-on:submit.prevent>
+        <button>只有修饰符</button>
+    </form>
 
     <!-- 添加事件监听器时使用事件捕获模式 -->
     <!-- 即元素自身触发的事件先在此处理，然后才交由内部元素进行处理 -->
@@ -50,21 +54,24 @@
     <!-- Ctrl + Click -->
     <div @click.ctrl="doSomething">Do something</div>
 
-    <!-- 即使 Alt 或 Shift 被一同按下时也会触发 -->
-    <button @click.ctrl="onClick">A</button>
+    <!-- Alt 或 Shift 或 Ctrl  + Click 按下时触发 -->
+    <button @click.ctrl="onClick">Ctrl  + Click 按下时触发</button>
+    <button @click.alt="onClick">Alt + Click 按下时触发</button>
+    <button @click.shift="onClick"> Shiftl  + Click 按下时触发</button>
+    <br>
 
     <!-- 有且只有 Ctrl 被按下的时候才触发 -->
-    <button @click.ctrl.exact="onCtrlClick">A</button>
+    <button @click.ctrl.exact="onCtrlClick">有且只有 Ctrl 被按下的时候才触发</button>
 
     <!-- 没有任何系统修饰符被按下的时候才触发 -->
-    <button @click.exact="onClick">A</button>
+    <button @click.exact="onClick">没有任何系统修饰符被按下的时候才触发</button>
 
 
     <br>
     <!--鼠标按钮修饰符-->
-    <button @click.left="onClick">M</button>
-    <button @click.middle="onClick">M</button>
-    <button @click.right="onClick">M</button>
+    <button @click.left="onClick">left</button>
+    <button @click.middle="onClick">Middle</button>
+    <button @click.right="onClick">right</button>
 </div>
 <!--<script src="js/vue.js"></script>-->
 <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
@@ -83,7 +90,7 @@
                 alert("onSubmit")
             },
             submit:function(){
-                alert("13")
+                alert("13和enter")
             },
             left:function(){
                 alert("left")

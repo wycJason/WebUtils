@@ -5,23 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vue.js3</title>
-    <style>
-
-    </style>
-<!--    <link href="css/bootstrap.css" rel="stylesheet">-->
-    <!--[if lt IE 9]>
-<!--    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>-->
-    <![endif]-->
 </head>
 <body>
 <div id="app">
     <input v-model.lazy="message" placeholder="edit me">
     <p>Message is: {{ message }}</p>
     <br><br><br>
+
     <input type="checkbox" id="checkbox" v-model="checked">
     <label for="checkbox">{{ checked }}</label>
     <br><br><br>
+
     <input type="checkbox" id="jack" value="Jack1" v-model="checkedNames">
     <label for="jack">Jack</label>
     <input type="checkbox" id="john" value="John2" v-model="checkedNames">
@@ -31,6 +25,7 @@
     <br>
     <span>Checked names: {{ checkedNames }}</span>
     <br><br><br>
+
     <select v-model="selected">
         <option disabled>请选择</option>
         <option value="a">A</option>
@@ -39,6 +34,7 @@
     </select>
     <span>Selected: {{ selected }}</span>
     <br><br><br>
+
     <select v-model="selectedObj">
         <!-- 内联对象字面量 -->
         <option v-bind:value="{ number: 123 }">123</option>
@@ -47,10 +43,12 @@
     </select>
     <span>selectedObj: {{ selectedObj.number }}</span>
     <br><br><br>
+
     <input v-model.number="age" type="number">
     <span>age类型: {{age}}</span>
     <br><br><br>
-    <my-component prop="prop"></my-component>
+
+    <my-component prop="属性"></my-component>
 </div>
 <!--<script src="js/jquery-1.11.3.js"></script>
 <script src="js/bootstrap.js"></script>-->
