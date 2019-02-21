@@ -29,7 +29,7 @@
         <h1 slot="footer">footer</h1>
     </baselayout>
 
-    <!--如果没有内容取模板里的slot默认值，有则覆盖默认插槽值-->
+    <!--如果baselayout组件没有内容，则取模板里的slot默认值，有则覆盖默认插槽值（没有取名的插槽即为默认插槽）-->
     <hr>
     <baselayout></baselayout>
 
@@ -40,17 +40,17 @@
 <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
 <script>
     var ComponentA = {
-        template: `<div class="container">
-                          <header>
-                            <slot name="header">头</slot>
-                          </header>
-                          <main>
-                            <slot>身体</slot>
-                          </main>
-                          <footer>
-                            <slot name="footer">脚</slot>
-                          </footer>
-                    </div>`
+            template: `<div class="container">
+                              <header>
+                                <slot name="header">头</slot>
+                              </header>
+                              <main>
+                                <slot>身体</slot>
+                              </main>
+                              <footer>
+                                <slot name="footer">脚</slot>
+                              </footer>
+                        </div>`
     }
     var vm = new Vue({
         el: '#app',

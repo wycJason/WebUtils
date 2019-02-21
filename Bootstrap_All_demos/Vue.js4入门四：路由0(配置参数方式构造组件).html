@@ -13,6 +13,7 @@
 <div id="app"></div>
 
 <div id="renderFun"></div>
+
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script>
     const NotFound = { template: '<h1>页面未找到</h1>' }
@@ -28,7 +29,7 @@
     var vm = new Vue({
         el: '#app',
         data: {
-            currentRoute: window.location.hash.slice(1)  //  #/about     /about
+            currentRoute: window.location.hash.slice(1)  //  #/about  ---> /about
         },
         computed: {
             ViewComponent: function () {
@@ -44,8 +45,8 @@
 
     new Vue({
         el: '#renderFun',
-        render: function (h) { //h函数将 组件渲染成视图   https://cn.vuejs.org/v2/api/#render
-            return h({ template: '<h1>render函数</h1>' })
+        render: function (createElement ) { //h函数将 组件渲染成视图   https://cn.vuejs.org/v2/api/#render
+            return createElement ({ template: '<h1>render函数</h1>' })
         }
     })
 </script>

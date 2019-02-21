@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<body>
+<div id="app">
+    <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+
+    <el-dialog
+            title="提示"
+            :visible.sync="dialogVisible"
+            width="30%"
+            :before-close="handleClose">
+        <span>这是一段信息</span>
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span>
+    </el-dialog>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script><!-- import Vue before Element -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script><!-- import JavaScript -->
+<script>
+    new Vue({
+        el: '#app',
+        data: function(){
+            return {
+                dialogVisible: false
+            };
+        },
+        methods: {
+            handleClose:function(done) {
+                this.$confirm('确认关闭？').then(_ => {done();}).catch(_ => {});
+            }
+        }
+    })
+</script>
+</body>
+</html>

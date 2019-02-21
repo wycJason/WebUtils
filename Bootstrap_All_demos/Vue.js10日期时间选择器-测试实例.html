@@ -5,16 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>时间选择器</title>
-    <style>
-
-    </style>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <!-- 引入element-ui样式 -->
-    <link rel="stylesheet" href="css/element-ui.css">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">  <!-- import CSS -->
 </head>
 <body>
 <div id="app">
@@ -24,12 +15,8 @@
 </div>
 
 <button id="btn">点击输出时间</button>
-<script src="js/jquery-1.11.3.js"></script>
-<script src="js/bootstrap.js"></script>
-<!-- 先引入 Vue,vue-js整体文件夹要引入，彼此文件间有这依赖关系 -->
-<script src="vue-js/vue.js"></script>
-<!-- 引入element-ui组件库 -->
-<script src="js/element-ui.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script><!-- import Vue before Element -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script><!-- import JavaScript -->
 <script>
      var vm=new Vue({
         el: '#app',

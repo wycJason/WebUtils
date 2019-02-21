@@ -1,15 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>vue.js路由</title>
-    <style>
-        .router-link-active {
-            color: red;
-        }
-    </style>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
 </head>
 <body>
 <div id="app">
@@ -20,24 +13,22 @@
         <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
         <router-link to="/foo">Go to Foo</router-link>
         <router-link to="/bar">Go to Bar</router-link>
-        <router-link to="/user/u1">/user/u1</router-link>
-        <router-link to="/user/u2">/user/u2</router-link>
     </p>
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 -->
     <router-view></router-view>
 </div>
+
+
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 <script>
     // 0. 如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)
 
-    // 1. 定义 (路由) 组件。
+    // 1. 定义（路由）组件。
     // 可以从其他文件 import 进来
     const Foo = { template: '<div>foo</div>' }
     const Bar = { template: '<div>bar</div>' }
-    const User = {template: '<div>User {{ $route.params.id }}</div>'}
-
 
     // 2. 定义路由
     // 每个路由应该映射一个组件。 其中"component" 可以是
@@ -46,26 +37,23 @@
     // 我们晚点再讨论嵌套路由。
     const routes = [
         { path: '/foo', component: Foo },
-        { path: '/bar', component: Bar },
-        // 动态路径参数 以冒号开头
-        { path: '/user/:id', component: User }
+        { path: '/bar', component: Bar }
     ]
 
-    // 3. 创建 router 实例，然后传 `routes` 配置
+    // 3. 创建 router 实例，然后设置 `routes` 配置参数
     // 你还可以传别的配置参数, 不过先这么简单着吧。
     const router = new VueRouter({
-        routes:routes // (缩写) 相当于 routes: routes
+        routes: routes// （缩写）相当于 routes: routes
     })
 
     // 4. 创建和挂载根实例。
     // 记得要通过 router 配置参数注入路由，
     // 从而让整个应用都有路由功能
     const app = new Vue({
-        el:"#app",
         router:router
-    })
+    }).$mount('#app')  //mount 英文的意思是挂载
 
-    // 现在，应用已经启动了！
 </script>
+
 </body>
 </html>

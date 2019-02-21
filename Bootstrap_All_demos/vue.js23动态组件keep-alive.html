@@ -66,11 +66,9 @@
             v-on:click="currentTab = tab"
             >{{ tab }}</button>
 
+    <!-- keep-alive 组件 主要用于保留组件状态或避免重新渲染。-->
     <keep-alive>
-        <component
-                v-bind:is="currentTabComponent"
-                class="tab"
-                ></component>
+        <component v-bind:is="currentTabComponent" class="tab"></component>
     </keep-alive>
 </div>
 <!--<script src="js/vue.js"></script>-->
@@ -100,31 +98,27 @@
             }
         },
         template: `
-  	<div class="posts-tab">
-      <ul class="posts-sidebar">
-        <li
-          v-for="post in posts"
-          v-bind:key="post.id"
-          v-bind:class="{ selected: post === selectedPost }"
-					v-on:click="selectedPost = post"
-        >
-          {{ post.title }}
-        </li>
-      </ul>
-      <div class="selected-post-container">
-      	<div
-        	v-if="selectedPost"
-          class="selected-post"
-        >
-          <h3>{{ selectedPost.title }}</h3>
-          <div v-html="selectedPost.content"></div>
-        </div>
-        <strong v-else>
-          Click on a blog title to the left to view it.
-        </strong>
-      </div>
-    </div>
-  `
+                    <div class="posts-tab">
+                      <ul class="posts-sidebar">
+                            <li
+                              v-for="post in posts"
+                              v-bind:key="post.id"
+                              v-bind:class="{ selected: post === selectedPost }"
+                              v-on:click="selectedPost = post">
+                              {{ post.title }}
+                            </li>
+                      </ul>
+                      <div class="selected-post-container">
+                            <div v-if="selectedPost" class="selected-post">
+                              <h3>{{ selectedPost.title }}</h3>
+                              <div v-html="selectedPost.content"></div>
+                            </div>
+                            <strong v-else>
+                              Click on a blog title to the left to view it.
+                            </strong>
+                      </div>
+                    </div>
+                  `
     })
 
     Vue.component('tab-archive', {
