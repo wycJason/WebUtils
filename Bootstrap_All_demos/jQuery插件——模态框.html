@@ -69,9 +69,22 @@
 
 </div>
 
-<script src="js/jquery-1.11.3.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!--<script src="//cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.js"></script>-->
+<script src="js/jquery-ui-1.11.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
+  //Bootstrap modal模态框可拖动  需要引入jquery-ui    https://blog.csdn.net/gloomy_114/article/details/53113188
+  //http://www.runoob.com/bootstrap/bootstrap-modal-plugin.html
+  $(document).on("show.bs.modal", ".modal", function(){
+    $(this).draggable();
+   // $(this).css("overflow-y", "hidden"); // 防止出现滚动条，出现的话，你会把滚动条一起拖着走的
+  });
+  $(document).on("hidden.bs.modal", ".modal", function(){
+    $(this).attr("style","display: none;")
+    // $(this).css("overflow-y", "hidden"); // 防止出现滚动条，出现的话，你会把滚动条一起拖着走的
+  });
+
 //  使用js触发一个事件
 //  $('#bt-login').trigger('click');
  // $('#bt-login').click();r
