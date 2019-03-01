@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div class="app">
+        <router-link to="/home">主页</router-link>
+        <router-link to="/news">新闻</router-link>
+        <router-view></router-view>
+</div>
+
+<!--模板-->
+<template id="news">
+    <section>
+           <h2>我是新闻页面</h2>
+            <router-link to="/news/detail/001?a=1">详细新闻</router-link>
+            <router-link to="/news/detail/002?a=2">详细新闻2</router-link>
+            <router-link to="/news/detail/003?a=3">详细新闻3</router-link>
+            <router-view></router-view>
+    </section>
+</template>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    //组件
+    var Home = {
+        template: `<h2>我是主页</h2>`
+    };
+    var News  = {
+        template: `#news`
+    };
+    var Detail = {
+        template: `<p>{{ $route.params }} => {{ $route.query }} => {{ $route.path }}</p>`
+    }
+    //配置路由
+    const routes = [
+        {
+            path:'/home',
+            component: Home
+        },
+        {
+            path:'/news',
+            component:News,
+            children: [
+                {
+                    path:'detail/:id',
+                    component: Detail
+                }
+            ]
+        }
+    ]
+    //生成路由实例
+    const router = new VueRouter({
+        routes:routes
+    });
+    //挂在到vue实例上
+    const vm = new Vue({
+        el: '.app',
+        router:router
+    });
+</script>
+</body>
+</html>

@@ -41,6 +41,13 @@
             arr[idx]*=2;//修改原数组
      });
      document.write(String(myarr1)+"<br>");//2,4,6,8,10
+
+
+
+    var arrTest="1,2,3".split(",").map(function(v){ return parseFloat(v)})
+    var arrNum=[];
+    "4,5,6".split(",").forEach(function(v){arrNum.push( parseFloat(v))})
+    console.log(arrTest,arrNum)
 </script>
 </body>
 </html>

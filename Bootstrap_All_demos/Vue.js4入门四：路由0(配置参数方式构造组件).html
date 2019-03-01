@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vue.js3</title>
     <style>
-
+        .bg{
+            background-color: yellow;
+        }
     </style>
 </head>
 <body>
@@ -14,6 +16,9 @@
 
 <div id="renderFun"></div>
 
+<div id="box"></div>
+
+<div id="template"></div>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script>
     //如果只需要非常简单的路由而不需要引入整个路由库，可以动态渲染一个页面级的组件像这样：
@@ -49,6 +54,50 @@
         render: function (createElement ) { //h函数将 组件渲染成视图   https://cn.vuejs.org/v2/api/#render
             return createElement ({ template: '<h1>render函数</h1>' })
         }
+    })
+
+    new Vue({
+        el: '#box',
+        render: function (createElement ) { //h函数将 组件渲染成视图   https://cn.vuejs.org/v2/api/#render
+            /*   https://www.jianshu.com/p/98b8a8fb00e6
+             数据对象属性
+             class: {},  =>  绑定class，和v-bind:class一样的API
+             style: {},  =>  绑定样式，和v-bind:style一样的API
+             attrs: {},  =>  添加行间属性
+             domProps: {},  =>   DOM元素属性
+             on: {},  =>  绑定事件
+             nativeOn: {},  =>  监听原生事件
+             directives: {},  =>  自定义指令
+             scopedSlots: {},  =>   slot作用域
+             slot: {},  =>   定义slot名称  和组件有关系，插曹
+             key: "key",  =>   给元素添加唯一标识
+             ref: "ref",  =>   引用信息
+
+             */
+            return createElement(//首先调用一个函数
+                    "ul",
+                    {
+                        class:{bg:true},//给UL添加dom属性和绑定事件等,就是v-bind:class="{bg:true}"
+                        style:{fontSize:"50px"},
+                        attrs:{
+                            abc:"Datura"
+                        },
+                        domProps:{
+                          //  innerHTML:"<li>我是html</li>"  //这个权重高，写了这个下面创建的li就都无效了
+                        }
+                    },
+                    [
+                        createElement("li",1),//再次调用createrElement(),设置内容数据是1
+                        createElement("li",2),
+                        createElement("li",3)
+                    ]
+            );
+        }
+    })
+
+    new Vue({
+        el: '#template',
+        template:'<h1>这是模板</h1>'
     })
 </script>
 </body>

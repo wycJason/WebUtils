@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <input v-focus>
+</div>
+
+<div class="app2">
+    <div v-color="colorStatus">我是一个普通的div元素</div>
+    <div v-color>我是一个普通的div元素</div>
+</div>
+
+<div class="app3">
+    <div v-color="colorStatus">我是一个普通的div元素</div>
+    <div v-color>我是一个普通的div元素</div>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+<script>
+    //https://cn.vuejs.org/v2/guide/custom-directive.html
+
+    // 注册一个全局自定义指令 `v-focus`
+    Vue.directive('focus', {
+        // 当被绑定的元素插入到 DOM 中时获取焦点
+        inserted: function (el) {
+            // 聚焦元素
+            el.focus()
+        }
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {}
+    })
+
+
+
+
+    Vue.directive('color',function (el,binding) {//指令名称注意不要加**v-**
+        console.log(el);//当前绑定自定义指令的元素，可以用来直接操作DOM
+        console.log(binding);//一些参数，常用的  => binding.value（指令的值）
+        el.style.backgroundColor = 'lawngreen';
+    })
+    var vm = new Vue({
+        el: '.app2',
+        data: {
+            colorStatus: true
+        }
+    });
+
+
+    var vm = new Vue({
+        el: '.app3',
+        data: {
+            colorStatus: true
+        },
+        directives:{
+            'color':function (el,binding) {
+                el.style.backgroundColor = 'lawngreen';
+            }
+        }
+    });
+</script>
+</body>
+</html>
