@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Template</title>
+    <title>FormData </title>
     <style>
 
     </style>
@@ -57,7 +57,7 @@
 <br><br><br>
 <input type="button" onclick="formSerialize()" value="表单序列化及反序列化"/>
 <input type="button" onclick="formSerializeStr()" value="字符串解析为对象"/>
-<script src="js/jquery-1.11.3.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script>
     //参考文档：https://blog.csdn.net/hsany330/article/details/70156477     https://blog.csdn.net/u014607184/article/details/52372551
@@ -103,11 +103,10 @@
         return obj;
     }
     function formSerializeStr(){
-        debugger;
-        var data = parseStrObjByRegExpKV(decodeURIComponent($("#myForm").serialize(), true));
+        //var data = parseStrObjByRegExpKV(decodeURIComponent($("#myForm").serialize().replace(/\+/g, '%20'), true));
+        var data = parseStrObjByRegExpKV(decodeURIComponent($("#myForm").serialize().replace(/\+/g, ''), true));
         console.log(data);
     }
-
 </script>
 </body>
 </html>

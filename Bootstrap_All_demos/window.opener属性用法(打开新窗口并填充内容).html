@@ -15,8 +15,11 @@
     <![endif]-->
 </head>
 <body>
+
+<iframe width="100%" height="300px" name="main" frameborder=1></iframe>
 <button onclick="fun()">创建新窗口并写入内容</button>
-<script src="js/jquery-1.11.3.js"></script>
+<button onclick="openOnlyWindow()">在新窗口（一般指定窗口）打开，只能打开一个</button>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script>
     //https://blog.csdn.net/sdfdyubo/article/details/59482655
@@ -24,13 +27,17 @@
     //opener	返回对创建此窗口的窗口的引用。
     //opener 属性非常有用，创建的窗口可以引用创建它的窗口所定义的属性和函数。   语法：childWindow（子窗口）  childWindow.opener（父窗口）
     function fun(){
-       /* myWindow=window.open('','MyName','width=200,height=100')
+        myWindow=window.open('','MyName','width=200,height=100')
         myWindow.document.write("<h1>子窗口</h1>")
         myWindow.focus()
-        myWindow.opener.document.write("<h1>父窗口</h1>")*/
+        myWindow.opener.document.write("<h1>父窗口</h1>")
 
-        myWindow=window.open('','_blank')
-        myWindow.document.write("<h1>新窗口</h1>")
+       /* myWindow=window.open('','_blank')
+        myWindow.document.write("<h1>新窗口</h1>")*/
+    }
+
+    function openOnlyWindow(){
+        window.open("http://www.baidu.com","main")
     }
 </script>
 </body>

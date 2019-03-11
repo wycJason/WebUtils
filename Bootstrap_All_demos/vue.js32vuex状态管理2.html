@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+<script src="https://unpkg.com/vuex"></script>
+<script>
+    const store = new Vuex.Store({
+        state: {
+            count: 0
+        },
+        mutations: {
+            increment:function (state) {
+                state.count++
+        }
+        }
+    })
+    //store.commit('increment')
+    //console.log(store.state.count) // -> 1
+
+    // 创建一个 Counter 组件
+    const Counter = {
+        template: `<div>{{ count }}</div>`,
+        computed: {
+            count:function () {
+                return this.$store.state.count
+        }
+        }
+    }
+
+    //通过在根实例中注册 store 选项，该 store 实例会注入到根组件下的所有子组件中，且子组件能通过 this.$store 访问到。
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+        store:store,
+        components: {
+            Counter :Counter
+        },
+        template: `
+            <div class="app">
+              <counter></counter>
+            </div>
+          `,
+    })
+</script>
+</body>
+</html>

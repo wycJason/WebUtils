@@ -16,22 +16,24 @@
 </head>
 <body>
 <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536297874905&di=751a7dbc88fbce8476b8b807bfb973ba&imgtype=0&src=http%3A%2F%2Fupload.cdjudian.com%2Fimage%2F201507%2F22%2F20445853.jpg" width="" height=""><br />
-<select name="" id="choice">
-    <option value="" disabled>请选择</option>
-    <option value="">请选择</option>\
-    <option value="Model">型号</option>\
-    <option value="Brand">品牌</option>\
-    <option value="Package">封装</option>\
-    <option value="Year">年份</option>\
-    <option value="OnHand">库存</option>\
-    <option value="Price">单价</option>\
-    <option value="Desc">说明</option>\
+<select id="choice">
+    <option  disabled>请选择</option>
+    <option value="Model" >型号</option>
+    <option value="Brand">品牌</option>
+    <option value="Package">封装</option>
+    <option value="Year">年份</option>
+    <option value="OnHand">库存</option>
+    <option value="Price">单价</option>
+    <option value="Desc">说明</option>
 </select>
 
-<script src="js/jquery-1.11.3.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
-
+    $("#choice").change(function(){
+        debugger;
+        $(this).val()
+    })
 </script>
 </body>
 </html>

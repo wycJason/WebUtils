@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body onunload="debugger; window.opener.document.location.href='JS关闭窗口时触发事件方法A.html?signStatus=signSucc'">
+<h1>3s关闭窗口</h1>
+<script>
+    // onunload="window.opener.document.location.href='JS关闭窗口时触发事件方法A.html?signStatus=signSucc'"
+    //window.onload =   function (){};
+    //window.onbeforeunload =   function (){};
+
+   /* window.onunload = function(){
+        window.opener.document.location.href='JS关闭窗口时触发事件方法A.html?signStatus=signSucc'
+       // window.opener.location.reload()
+    };*/
+
+    debugger;
+
+    setTimeout(function(){
+        window.close();
+    },3000)
+</script>
+</body>
+</html>

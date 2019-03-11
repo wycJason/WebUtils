@@ -63,6 +63,7 @@
     //事件对象   http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
     operateEvents = {
         'click .edit': function (e, value, row, index) {
+            debugger;
             console.log("event:",e);//event: jQuery.Event {originalEvent: MouseEvent, type: "click", timeStamp: 1383705.2600000002, jQuery1113010179471385779704: true, isDefaultPrevented: function…}
             console.log("val:",value);//value:undefined
             console.log("row:",row);  //row: Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
@@ -84,7 +85,7 @@
     }
 
 
-    //对列进行格式化设置  初始化的时候就加载
+    //对列进行格式化设置  初始化的时候就加载  接收js函数(必须有返回值)
     //data-formatter属性可以格式化该列单元格，
     // data-formatter接收js函数(必须有返回值)该函数可以获取当前行的下标(注意：获取下标参数必须有row，否则index值为undefined)，函数还可以改变单元格元素显示方式
     function setCode(val,row,index){
@@ -252,9 +253,12 @@
         $("#goods").bootstrapTable({
             uniqueId: "Code",//每一行的唯一标识，一般为主键列  此处填写列字段的field值
             idField: "Code",//指定主键列   此处填写列字段的field值
+
             toolbar:"#toolbar",
             toolbarAlign:"left",
+
             pagination:true,
+            //onlyInfoPagination:true,
             height:500,
             pageList:[1,3,5,10,20,50,100,'ALL'],
             paginationLoop:false,//设置为 true 启用分页条无限循环的功能。
@@ -263,27 +267,33 @@
             paginationPreText:"上一页",
             paginationNextText:"下一页",
             undefinedText:"",
-
             pageNumber: 1, //初始化加载第一页，默认第一页
             pageSize: 20,//一页显示20条数据
-          //  totalField: "TotalRow",//总行数    参考 https://blog.csdn.net/sinat_35861664/article/details/65677374
+            //totalField: "TotalRow",//总行数    参考 https://blog.csdn.net/sinat_35861664/article/details/65677374
             //dataField: "Result",//返回的数据
 
             clickToSelect: true,                //是否启用点击选中行
-            //cardView:true,
+            //cardView:true, //将true设置为显示卡片视图表，例如移动视图。
             onCheck: function (row) {
                 //单行最前面的checkbox被选中
-                console.log(row);
+               // console.log(row);
             },
+            //checkboxHeader:true,//设置 false 将在列头隐藏全选复选框。 默认true
+            singleSelect:true,   //设置 true 是否单选。
+
             search:true,//是否启用搜索框
+           //searchOnEnterKey:true,//搜索方法将被执行，直到按下Enter键
+           // trimOnSearch:true,//将true设置为“修剪”搜索字段中的空格。
             showRefresh:true,//是否显示 刷新按钮
             showToggle: true,//是否显示 切换视图（table/card）按钮
             showColumns: true,//是否显示 内容列下拉框
             showExport : true, //是否显示导出按钮
+            //showFullscreen:true,
             exportDataType : "basic", //basic'导出当前页, 'all'导出全部, 'selected'导出选中项
+
+            rememberOrder:true,//设置true以记住每一列的顺序。
+
             data:json,
-            //checkboxHeader:true,//设置 false 将在列头隐藏全选复选框。 默认true
-            singleSelect:true,   //设置 true 是否单选。
             columns: [
                 {
                     title:'<select>\
@@ -293,22 +303,23 @@
                     </select>',
                     align:"center",
                     footerFormatter:footerFormatterFun,//表格参数 showFooter:true,才会有效果，如果为 false则无效果
-                    falign:'right'
+                    falign:'right',
+                    switchable:false,//禁止禁用列项的可切换。
                 },
                 {
                     title:"单选",
                     titleTooltip:"单选",
                     checkbox: true,
+                   // showSelectTitle:true,
                     formatter: stateFormatter,
                 },
                 {
                     field: 'Code',
                     title: '序号',
-                    //sortable:true,
+                    sortable:true,
                     //halign:"center",
                     class:"cls",
                     visible:true,
-                    switchable:false,//禁止禁用列项的可切换。
                     formatter: setCode,
                 },
                 {
@@ -318,8 +329,8 @@
                     formatter: setName,
                     halign:"center",
                     cellStyle:cellStyleNumFormatter,
-                    //halign:"left",
-                   // align:"center"
+					visible:true,
+                    //align:"left"
                 },
                 {
                     field: 'StartDate',
@@ -340,10 +351,12 @@
                 console.log(page,size)
             },*/
             //url:"bootstrap-table/data-json"
-            onPostBody:function(){//在表格 body 渲染完成后触发。
+            onPostBody:function(data){//在表格 body 渲染完成后触发。
+                //console.log(data)
                 //合并页脚
                 merge_footer();
             },
+
              rowStyle: function (row, index) {//行样式
                 if (index%2== 0) {
                     return{
@@ -359,21 +372,22 @@
                     }
                 }
             },
-            detailView:false,//设置为 true 可以显示详细页面模式。
-            detailFormatter:function(index, row) {
-                console.log(index,row);
-               return '<h3>格式化详细页面模式的视图</h3>';
-            },
             rowAttributes:function(row,index) {//自定义行属性 参数为：row: 行数据   index: 行下标,返回值可以为class或者css 支持所有自定义属性
                 if (index%2== 0) {
                     return{
-                       'data-even':'even',
+                        'data-even':'even',
                     }
                 } else {
                     return{
                         'data-odd':'odd',
                     }
                 }
+            },
+
+            detailView:false,//设置为 true 可以显示详细页面模式。
+            detailFormatter:function(index, row, element) {//格式化详细视图
+               // console.log(index,row);
+               return '<h3>格式化详细页面模式的视图</h3>';
             },
             onExpandRow:function(index, row, $detail){//当点击详细图标展开详细页面的时候触发。
 
@@ -382,7 +396,7 @@
 
             },
         });
-        //$("#goods").bootstrapTable("getRowByUniqueId","1")  //根据 uniqueId 获取行数据。 这个数据表的uniqueId:"Code"，根据 uniqueId 获取行数据，此表的uniqueId为Code字段
+        //$("#goods").bootstrapTable("getRowByUniqueId","1")  //根据 uniqueId 获取行数据，此表的uniqueId为Code字段
         // 即根据Code的值来获取对应的行数据。这个方法的意思是获取Code字段值为1的行所在的行数据，这个就是唯一的了。
     });
 </script>

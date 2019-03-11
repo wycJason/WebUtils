@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>js验证年月日（yyyy-mm-dd）格式</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+	//如果是正确的,返回true 否则返回false
+    function isDate(dateString){
+          if(dateString.trim()=="")return true;
+          //年月日正则表达式
+          var r=dateString.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/); 
+          if(r==null){
+             alert("请输入格式正确的日期\n日期格式：yyyy-mm-dd\n日期示例：2008-08-08");
+             return false;
+          }
+          var d=new Date(r[1],r[3]-1,r[4]);   
+          var num = (d.getFullYear()==r[1]&&(d.getMonth()+1)==r[3]&&d.getDate()==r[4]);
+          if(num==0){
+           alert("请输入格式正确的日期\n日期格式：yyyy-mm-dd\n日期示例：2008-08-08");
+          }
+          return (num!=0);          
+        };
+		
+	console.log(isDate("2018-5-24"))
+</script>
+</body>
+</html>

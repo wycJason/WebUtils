@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+<a onclick="window.open('JS关闭窗口时触发事件方法A-B.html','_blank')" href="javascript:void(0)">打开窗口</a>
+<button onclick="signContract()">签约提交</button>
+<script>
+    alert("刷新")
+    function signContract(){
+        myWindow = window.open('', '_blank');
+        myWindow.document.write(`
+                        <!DOCTYPE html>
+                        <html lang="zh-cn">
+                        <head>
+                        <meta charset="utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <title></title>
+                        </head>
+                        <body>
+                        <button id="btn" onclick="signContract()">签约</button>
+                        <script>
+                        function signContract(){
+                        window.location.href="JS关闭窗口时触发事件方法B.html"
+                        }
+                        <\/script>
+                        </body>
+                        </html>
+                        `);
+    }
+
+</script>
+</body>
+</html>
