@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<button onclick="download()">点击下载</button>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    function download() {
+        var image = new Image();
+        image.crossOrigin = "anonymous";
+        image.src = "http://is3.mzstatic.com/image/thumb/Music62/v4/4b/f6/a2/4bf6a267-5a59-be4f-6947-d803849c6a7d/source/200x200bb.jpg";
+        var fileName = image.src.split(/(\\|\/)/g).pop();
+        image.onload = function () {
+            var canvas = document.createElement('canvas');
+            canvas.width = this.naturalWidth; // or 'width' if you want a special/scaled size
+            canvas.height = this.naturalHeight; // or 'height' if you want a special/scaled size
+            canvas.getContext('2d').drawImage(this, 0, 0);
+            var blob;
+            // ... get as Data URI
+            if (image.src.indexOf(".jpg") > -1) {
+                blob = canvas.toDataURL("image/jpeg");
+            } else if (image.src.indexOf(".png") > -1) {
+                blob = canvas.toDataURL("image/png");
+            } else if (image.src.indexOf(".gif") > -1) {
+                blob = canvas.toDataURL("image/gif");
+            } else {
+                blob = canvas.toDataURL("image/png");
+            }
+            $("body").html("<b>点击下载图片.</b><br><a download='" + fileName + "' href='" + blob + "'><img src='" + blob + "'/></a>");
+        };
+    }
+</script>
+</body>
+</html>

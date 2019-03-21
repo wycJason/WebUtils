@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+//https://blog.csdn.net/visionke/article/details/84583105
+function ddd() {
+    console.log(22222)
+    // 创建隐藏的可下载链接  
+    // let  blob = 'http://pic.c-ctrip.com/VacationH5Pic/mice/wechat/ewm01.png';
+    // var a = document.createElement('a');
+    // a.style.display = 'none';
+    // a.href = blob;       
+    // a.download = 'QRcode.jpg';
+    // document.body.appendChild(a);
+    // a.click();
+    // //移除元素
+    // document.body.removeChild(a);
+    //canvans下载
+    let src = 'http://pic.c-ctrip.com/VacationH5Pic/mice/wechat/ewm01.png';
+    var canvas = document.createElement('canvas');
+    var img = document.createElement('img');
+    img.onload = function (e) {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var context = canvas.getContext('2d');
+        context.drawImage(img, 0, 0, img.width, img.height);
+        // window.navigator.msSaveBlob(canvas.msToBlob(),'image.jpg');
+        // saveAs(imageDataUrl, '附件');
+        canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+        canvas.toBlob(function(blob){
+            let link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'aaa';
+            link.click();
+        } ,
+        "image/jpeg"
+        )
+        ;
+        // context.toBlob(function(blob) {
+        // console.log('blob :', blob);
+
+
+        // let link = document.createElement('a');
+        // link.href = window.URL.createObjectURL(blob);
+        // link.download = 'aaa';
+        // }, "image/jpeg");
+    }
+    img.setAttribute("crossOrigin", 'Anonymous');
+    img.src = src;
+
+}
+ddd()
+</script>
+</body>
+</html>

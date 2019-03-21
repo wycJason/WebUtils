@@ -16,10 +16,20 @@
 </head>
 <body>
 <a href="data/contracs.pdf" target="_blank" download="PDF下载">a标签PDF下载</a>
+<!--a标签的download 属性加上以后，src是图片地址的话，是可以下载图片的，得是同源的图片地址才可以下载。-->
+<br>
+<a href="img/1.jpg" download="同源图片下载">同源图片下载</a>
+<br>
+<a href="img/1.jpg" target="_blank">同源图片预览</a>
+
+<br/>
+<a href="http://120.79.92.46:36002/DocManage/DownLoadFile/90b77f24dd944f46a906b0f6c078c6c4_2019_3_20_809188a8313d4f20aa1ede65b4dee324.jpg" download>图片</a>
 <!--<iframe src="http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_e518170dca334d85b9824734e392b268.pdf/%E7%8E%8B%E4%BA%94.pdf" class="hidden"></iframe>-->
 <br/>
 <br/>
 <br/>
+<iframe src="http://120.79.92.46:36002/DocManage/DownLoadFile/90b77f24dd944f46a906b0f6c078c6c4_2019_3_20_809188a8313d4f20aa1ede65b4dee324.jpg" style="display: none;"></iframe>
+<br>
 
 <!--
 前言：
@@ -59,7 +69,7 @@
     $("#multiDownLad").click(function(){
         downloadData = [
             "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_6ab1021388ba480486b1c12fca82423a.pdf/%E6%B7%B1%E5%9C%B3--%E6%9C%80%E6%96%B0%E9%80%9A%E8%AE%AF%E5%BD%95-11%E6%9C%88%E4%BB%BD.pdf",
-            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_2bf9449db18c47958816a0ba6d692a3f.pdf/%E5%BC%A0%E4%B8%89.pdf",
+                "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_2bf9449db18c47958816a0ba6d692a3f.pdf/%E5%BC%A0%E4%B8%89.pdf",
             "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_b233378ad7064b96a6bcb2259dc9a10f.pdf/%E6%9D%8E%E5%9B%9B.pdf",
             "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_e518170dca334d85b9824734e392b268.pdf/%E7%8E%8B%E4%BA%94.pdf"
         ];
