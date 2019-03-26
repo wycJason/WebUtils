@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <current-user>
+        <template v-slot:default="slotProps">
+            {{ slotProps}}<br>
+            {{  slotProps.user.firstName}}
+            {{ slotProps.user.lastName }}
+        </template>
+    </current-user>
+
+    <br>
+    <current-user v-slot:default="slotProps">
+        {{ slotProps.user.firstName }}
+    </current-user>
+
+    <br>
+    <current-user v-slot="slotProps">
+        {{ slotProps.user.firstName }}
+    </current-user>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    //https://cn.vuejs.org/v2/guide/components-slots.html
+    //插槽内容一般是访问父组件中的数据，那么如何访问子组件中的数据呢？
+    Vue.component('current-user', {
+        template: `
+                   <span>
+                        <slot v-bind:user="user"></slot>
+                    </span>
+                  `,
+        data:function(){
+            return {
+                user:{
+                    firstName:"Jason",
+                    lastName:"Wong"
+                }
+            }
+        }
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {}
+    })
+</script>
+</body>
+</html>
