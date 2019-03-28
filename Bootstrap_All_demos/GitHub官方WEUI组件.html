@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
+    <title>官方微信组件</title>
+</head>
+<body>
+<div class="weui-search-bar" id="searchBar">
+    <form class="weui-search-bar__form">
+        <div class="weui-search-bar__box">
+            <i class="weui-icon-search"></i>
+            <input type="search" class="weui-search-bar__input" placeholder="搜索" required="">
+            <a href="javascript:" class="weui-icon-clear"></a>
+        </div>
+        <label class="weui-search-bar__label">
+            <i class="weui-icon-search"></i>
+            <span>搜索</span>
+        </label>
+    </form>
+    <a href="javascript:" class="weui-search-bar__cancel-btn">取消</a>
+</div>
+
+
+<div class="weui-slider-box">
+    <div id="slider" class="weui-slider">
+        <div class="weui-slider__inner">
+            <div class="weui-slider__track"></div>
+            <div class="weui-slider__handler"></div>
+        </div>
+    </div>
+    <div id="sliderValue" class="weui-slider-box__value"></div>
+</div>
+
+<div class="weui-msg">
+    <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+    <div class="weui-msg__text-area">
+        <h2 class="weui-msg__title">操作成功</h2>
+        <p class="weui-msg__desc">内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现<a href="javascript:void(0);">文字链接</a></p>
+    </div>
+    <div class="weui-msg__opr-area">
+        <p class="weui-btn-area">
+            <a href="javascript:history.back();" class="weui-btn weui-btn_primary">推荐操作</a>
+            <a href="javascript:history.back();" class="weui-btn weui-btn_default">辅助操作</a>
+        </p>
+    </div>
+    <div class="weui-msg__extra-area">
+        <div class="weui-footer">
+            <p class="weui-footer__links">
+                <a href="javascript:void(0);" class="weui-footer__link">底部链接文本</a>
+            </p>
+            <p class="weui-footer__text">Copyright &copy; 2008-2016 weui.io</p>
+        </div>
+    </div>
+</div>
+
+<div class="weui-tab" id="tab">
+    <div class="weui-navbar">
+        <div class="weui-navbar__item">反馈</div>
+        <div class="weui-navbar__item">表单</div>
+        <div class="weui-navbar__item">上传</div>
+        <div class="weui-navbar__item">其它</div>
+    </div>
+    <div class="weui-tab__panel">
+        <div class="weui-tab__content">反馈页</div>
+        <div class="weui-tab__content">表单页</div>
+        <div class="weui-tab__content">上传页</div>
+        <div class="weui-tab__content">其它页</div>
+    </div>
+</div>
+<script type="text/javascript" src="//res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
+<script type="text/javascript">
+    weui.searchBar('#searchBar');
+
+    weui.topTips('请填写正确的字段');
+
+    /*weui.toast('操作成功', {
+        duration: 3000,
+        className: 'custom-classname',
+        callback: function(){ console.log('close') }
+    });*/
+
+    weui.tab('#tab',{
+        defaultIndex: 0,
+        onChange: function(index){
+            console.log(index);
+        }
+    });
+
+    weui.slider('#slider', {
+        step: 10,
+        defaultValue: 40,
+        onChange: function(percent){
+            console.log(percent);
+        }
+    });
+
+   /* weui.alert('alert');*/
+
+   /*weui.dialog({
+       title: 'dialog标题',
+       content: 'dialog内容',
+       className: 'custom-classname',
+       buttons: [{
+           label: '取消',
+           type: 'default',
+           onClick: function () { alert('取消') }
+       }, {
+           label: '确定',
+           type: 'primary',
+           onClick: function () { alert('确定') }
+       }]
+   });*/
+
+   /*weui.actionSheet([
+       {
+           label: '拍照',
+           onClick: function () {
+               console.log('拍照');
+           }
+       }, {
+           label: '从相册选择',
+           onClick: function () {
+               console.log('从相册选择');
+           }
+       }, {
+           label: '其他',
+           onClick: function () {
+               console.log('其他');
+           }
+       }
+   ], [
+       {
+           label: '取消',
+           onClick: function () {
+               console.log('取消');
+           }
+       }
+   ], {
+       className: 'custom-classname',
+       onClose: function(){
+           console.log('关闭');
+       }
+   });*/
+
+  /* var gallery = weui.gallery("https://dwz.cn/LAm7tZyi", {
+       className: 'custom-classname',
+       onDelete: function(){
+           if(confirm('确定删除该图片？')){ console.log('删除'); }
+           gallery.hide(function() {
+               console.log('`gallery` has been hidden');
+           });
+       }
+   });*/
+
+  /* var loading = weui.loading('loading', {
+       className: 'custom-classname'
+   });
+   setTimeout(function () {
+       loading.hide(function() {
+           console.log('`loading` has been hidden');
+       });
+   }, 3000);*/
+</script>
+</body>
+</html>
