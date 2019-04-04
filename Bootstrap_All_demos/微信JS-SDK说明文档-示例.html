@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>微信JS-SDK说明文档示例</title>
+</head>
+<body>
+<button id="cameraBtn">拍照或从手机相册中选图接口</button>
+<br><br>
+<button id="closeWindoBtn">关闭窗口</button>
+<br><br>
+<input type="tel" placeholder="tel"/><br><br>
+<a href="tel:15019225796">拨号</a><br><br>
+<a href="sms:15019225796">发短信</a><br><br>
+<br><br>
+<form>
+    Email:<input type="email"><br>
+    搜索:<input type="search"><br>
+    URL地址:<input type="url"><br>
+    电话号码:<input type="tel"><br>
+    数字类型:<input type="number" min="18" max="50" step="2" value="10"><br>
+    范围类型:<input type="range" min="0" max="10" step="2" value="10"><br>
+    颜色类型:<input type="color"><br>
+    日期类型:<input type="date"><br>
+    <input type="submit">
+</form>
+<img src="https://dwz.cn/DPnncDDt"  alt="乔乔" style="max-width: 100%"/>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="//res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script>
+    function guid() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+            return v.toString(16);
+        });
+    }
+   /* wx.config({
+        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: 'wx7adce0eec88c7d25', // 必填，公众号的唯一标识
+        timestamp: new Date().getTime().toString(), // 必填，生成签名的时间戳
+        nonceStr: guid(), // 必填，生成签名的随机串
+        signature: '',// 必填，签名
+        jsApiList: [] // 必填，需要使用的JS接口列表
+    });*/
+    $("#cameraBtn").click(function(){
+        wx.chooseImage({
+            count: 1, // 默认9
+            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+            success: function (res) {
+                var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+            }
+        });
+    })
+
+    /*wx.previewImage({
+        current: 'https://dwz.cn/DPnncDDt', // 当前显示图片的http链接
+        urls: ["https://dwz.cn/DPnncDDt"] // 需要预览的图片http链接列表
+    });*/
+
+    $("#closeWindoBtn").click(function(){
+        WeixinJSBridge.invoke('closeWindow');
+    })
+</script>
+</body>
+</html>

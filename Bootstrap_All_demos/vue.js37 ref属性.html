@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <p ref="p">hello</p>
+    <child-component ref="child"></child-component>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    //https://cn.vuejs.org/v2/api/#ref
+    //如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例
+    Vue.component("child-component",{
+        template:"<h1>测试</h1>",
+        data:function(){
+            return{
+                a:1,
+                b:2
+            }
+        }
+    })
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {}
+    })
+    console.log(vm.$refs)
+    console.log(vm.$refs.p)
+    console.log(vm.$refs.child)
+
+</script>
+</body>
+</html>

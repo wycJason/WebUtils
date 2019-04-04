@@ -5,6 +5,12 @@
     <title>Bootstrap Template</title>
 </head>
 <body>
+<img src="http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_16_091d93f2c861484d8a7c7024474e5707.jpg" alt="小美女" width="200" onclick="previewImg(this)">
+<br>
+<img src="http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_16_020062213492457fba84aa788a2a52d9.jpg" alt="小美女" width="200" onclick="previewImg(this)">
+
+<br>
+
 <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe60c;</i>
 <input type="button" id="test1" value="layer.msg"/>
 <input type="button" id="test2" value="layer.load"/>
@@ -12,9 +18,59 @@
 <input type="button" id="test4" value="layer.confirm"/>
 <input type="button" id="test5" value="layer.open"/>
 <input type="button" id="test6" value="layer.prompt"/>
-<script src="js/jquery-1.11.3.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="layer/pc/layer.js"></script>
 <script>
+    //参考文档：https://blog.csdn.net/l1336037686/article/details/80819477
+    function previewImg(obj) {
+        var img = new Image();
+        img.src = obj.src;
+        debugger;
+        var height = img.height+50; //获取图片高度
+        var width = img.width; //获取图片宽度
+        var imgHtml = "<img src='" + obj.src + "' />";
+        //弹出层
+        layer.open({
+            type: 1,
+            shade: 0.8,
+            offset: 'auto',
+            area: [width + 'px',height+'px'],
+            //maxWidth:1366,
+            shadeClose:true,//点击外围关闭弹窗
+            scrollbar: false,//不现实滚动条
+            title: "图片预览", //不显示标题
+            content: imgHtml, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+            cancel: function () {
+                //layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', { time: 5000, icon: 6 });
+            }
+        });
+    }
+
+    //固定预览图片大小 500 * 500
+    /*function previewImg(obj) {
+        var img = new Image();
+        img.src = obj.src;
+        var imgHtml = "<img src='" + obj.src + "' width='500px' height='500px'/>";
+        //弹出层
+        layer.open({
+            type: 1,
+            shade: 0.8,
+            offset: 'auto',
+            area: [500 + 'px',550+'px'],
+            shadeClose:true,
+            scrollbar: false,
+            title: "图片预览", //不显示标题
+            content: imgHtml, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+            cancel: function () {
+                //layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', { time: 5000, icon: 6 });
+            }
+        });*/
+
+
+
+
+
+
     $('#test1').on('click', function(){
         layer.msg('你确认继续吗?3秒后请选择。',{ icon: 1 },function(){
             alert("好的")

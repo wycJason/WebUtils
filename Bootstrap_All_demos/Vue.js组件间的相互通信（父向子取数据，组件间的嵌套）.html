@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <com-a></com-a>
+</div>
+
+<template id="testA">
+    <div>
+        <span>父组件 => {{msg}}</span>
+        <com-b @child-msg="get"></com-b> <!-- 这个首先就是子组件的展示区，其次在挂载自定义事件，当子组件有数据发送的时候就会触发 -->
+    </div>
+</template>
+<template id="testB">
+    <div>
+        <span>子组件</span>
+        <input type="button" value="发送数据" @click="send" />
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<!--<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>-->
+<script>
+    //https://www.jianshu.com/p/4cbc409516bf
+    var comA = {
+            template:'#testA',
+            data:function() {
+                return {
+                    msg:'',
+                }
+            },
+           methods:{
+                get:function(data){ //这里面接收到的参数就是子组件发送的数据
+                    alert(data);
+                    this.msg = data;
+                }
+            },
+            components:{
+                'comB': {
+                    template:'#testB',
+                    data:function(){
+                        return {
+                            b:'我是子组件的数据'
+                        }
+                    },
+                    methods:{
+                        send:function(){
+                            this.$emit('child-msg',this.b); //这里就是把子组件的b数据通过$emit()方法发送出去
+                        }
+                    }
+                }
+            }
+    };
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+        components:{
+            comA:comA  //这里等价于 <==> 'comA':comA
+        }
+    })
+</script>
+</body>
+</html>

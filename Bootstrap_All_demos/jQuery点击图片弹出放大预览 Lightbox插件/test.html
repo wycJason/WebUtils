@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Lightbox图片放大预览代码</title>
+<link rel="stylesheet" href="dist/zoomify.min.css">
+</head>
+<body>
+
+<img src="http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_16_091d93f2c861484d8a7c7024474e5707.jpg" alt="小美女" width="200" onclick="previewImg(this)">
+
+<img src="http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_16_020062213492457fba84aa788a2a52d9.jpg" alt="小美女" width="200">
+
+<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="dist/zoomify.min.js"></script>
+<script type="text/javascript">
+	//兼容IE9+,不兼容IE8及其以下
+	//http://www.jq22.com/jquery-info9102
+	$('img').zoomify();
+</script>
+
+</body>
+</html>

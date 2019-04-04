@@ -32,15 +32,19 @@ if(!/^http(s*):\/\//.test(location.href)){
   alert('请部署到localhost上查看该演示');
 }
 
-//加载自定义模块
+//加载自定义模块1
 layui.config({//  https://www.layui.com/doc/#modules   具体使用请参考：模块化的用法（推荐）
   base: '../extendModule/' //你存放新模块的目录，注意，不是layui的模块目录
 }).use(['demo','mymod']); //加载入口  上述的 demo mymod即为你 ../extendModule/ 目录下的 demo.js  mymod.js  当只加载一个时就写成use('demo')
 
-
+//加载自定义模块2，拓展一个模块别名
 layui.extend({
   menu: '{/}../menu/menu' // {/}的意思即代表采用自有路径，是一种标识，真实获取路径时会将{/}删除掉，仅剩 menu: '../menu/menu'     即不跟随 base 路径
 })
+
+//自定义模块事件，属于比较高级的应用。有兴趣的同学可以阅读layui.js源码以及form模块   参考：https://www.layui.com/doc/base/infrastructure.html
+//layui.onevent("demo", "customEvent", function(params){alert(params)})
+//layui.event("demo", "customEvent", "自定义模块事件")//执行自定义模块事件，搭配onevent使用
 
 //使用模块
 layui.use(['layim','menu','demo','mymod','element'], function(layim,menu,demo,mymod,element){
