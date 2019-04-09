@@ -1,0 +1,89 @@
+<title>开发页面</title>
+
+<div class="layui-card layadmin-header">
+	<div class="layui-breadcrumb" lay-filter="breadcrumb">
+		<a lay-href="">主页</a>
+		<a><cite>开发页面</cite></a>
+	</div>
+</div>
+
+<div class="layui-fluid">
+	<div class="layui-card">
+		<div class="layui-card-header">开发页面示例</div>
+		<div class="layui-card-body">
+			<h3 lay-href="system/about/uid=123/type=1">跳转至关于系统页面</h3>
+			<a href="#/system/about/uid=123/type=1" target="_self">跳转至关于系统页面</a>
+
+			<script type="text/html" template>
+				<h3>当前 layuiAdmin 的版本是：{{ layui.admin.v }}</h3>
+				<h3>路由地址：{{ layui.router().href }}</h3>
+			</script>
+
+			<script type="text/html" template lay-url="./json/jason/data.js">
+				我叫：{{ d.data.username }}
+			  {{# if(d.data.sex === '男'){ }}
+				  公的
+			  {{# } else { }}
+				  母的
+			  {{# } }}
+			</script>
+
+			<section id="secA"></section>
+			<section id="secB"></section>
+			<i class="layui-icon layui-icon-tips" lay-tips="要支持的噢" lay-offset="5"></i>
+		</div>
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+	//location.hash="/system/about/uid=123/type=1"   //JS:路由跳转
+
+	layui.use(['admin', 'view'], function() {
+		var $ = layui.jquery;
+		var admin = layui.admin;
+		var view = layui.view;
+
+		/* admin.popup({
+			content: "提示内容"
+		}); */
+		//console.log(admin.screen())
+		//admin.exit()
+
+		/* admin.popupRight({
+			id: 'LAY-popup-right-new1', //定义唯一ID，防止重复弹出,
+			success: function() {
+				//将 views 目录下的某视图文件内容渲染给该面板
+				layui.view(this.id).render('jason/index');
+			}
+		}); */
+
+		//setTimeout(()=>{admin.events.refresh()},3000)
+		//setTimeout(()=>{admin.events.closeThisTabs()},3000)
+
+
+		//渲染视图，viewPath 即为视图路径
+		view('secA').render("jason/index").then(function() {
+			//视图文件请求完毕，视图viewPath内容渲染前的回调
+		}).done(function() {
+			//视图文件请求完毕和内容渲染完毕的回调
+		});
+
+		//直接向容器插入 html，tpl 为 模板字符；data 是传入的数据。该方法会自动完成动态模板解析
+		view('secB').send('我是{{d.name}}', {
+			name: "jason"
+		});
+
+		// 下述中的 xxx 可随意定义，不可与已经定义的 hash 事件同名，否则会覆盖上一事件
+		admin.on('hash(abc)', function(router) {
+			console.log(router); //得到路由信息
+		});
+
+		// 下述中的 xxx 可随意定义，不可与已经定义的 side 事件同名，否则会覆盖上一事件
+		admin.on('side(xxx)', function(obj) {
+			console.log(obj.status); //得到伸缩状态：spread 为展开状态，其它值为收缩状态
+		});
+	});
+</script>
