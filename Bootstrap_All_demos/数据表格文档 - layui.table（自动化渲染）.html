@@ -16,7 +16,7 @@
     <![endif]-->
 </head>
 <body>
-<table class="layui-table" lay-data="{height:315, url:'layui-v2.1.5/user/', page:true, id:'test'}" lay-filter="test">
+<table class="layui-table" lay-data="{height:315,url:'layui-v2.1.5/user.js',page:true,id:'test'}" lay-filter="test">
     <thead>
         <tr>
             <th lay-data="{field:'id', width:80, sort: true}">ID</th>
@@ -38,6 +38,15 @@
 <script>
     layui.use('table', function(){
         var table = layui.table;
+        table.render({
+            response: {//如果无需自定义数据响应名称，可不加该参数
+                statusName: 'Code' //数据状态的字段名称，默认：code
+                // ,statusCode: 200 //成功的状态码，默认：0
+                ,msgName: 'Msg' //状态信息的字段名称，默认：msg
+                ,countName: 'Total' //数据总数的字段名称，默认：count
+                ,dataName: 'Result' //数据列表的字段名称，默认：data
+            }
+        })
     });
 </script>
 </body>

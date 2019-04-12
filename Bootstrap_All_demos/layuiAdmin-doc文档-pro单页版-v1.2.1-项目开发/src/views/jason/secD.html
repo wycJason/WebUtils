@@ -1,0 +1,14 @@
+<title>视图View模块-secA</title>
+
+<div class="layui-fluid">
+	<div class="layui-card">
+		<div class="layui-card-header">view().render().done(callback)方法</div>
+		<div class="layui-card-body">			
+			<h1>视图View模块-secD</h1>
+			<script type="text/html" template lay-url="./json/jason/data.js?id={{ d.params.id }}">
+			<h3>我叫{{d.data.username}},是{{d.data.sex}}性;</h3>	
+			<h3>配置了接口的动态模板，且接口动态获取了 render 传入的参数：{{ d.params.id }}</h3>
+			</script>
+		</div>
+	</div>
+</div>

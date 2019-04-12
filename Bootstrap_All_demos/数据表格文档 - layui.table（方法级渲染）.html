@@ -18,7 +18,7 @@
 <body>
 <table id="demo" lay-filter="test"></table>
 
-<script src="js/jquery-1.11.3.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <!--<script src="js/bootstrap.min.js"></script>-->
 <script src="layui-v2.1.5/layui.all.js"></script>
 <script type="text/html" id="barDemo">
@@ -34,10 +34,11 @@
     var tableIns = table.render({
         id: 'idTest',
         elem: '#demo', //指定原始表格元素选择器（推荐id选择器）
-        url: 'layui-v2.1.5/user/',
+        url: 'layui-v2.1.5/user.js',
         height: 'full-200', //容器高度
         width:1250,
         page: true,
+       // skin: 'line', //行边框风格
         initSort: {
             field: 'id' //排序字段，对应 cols 设定的各字段名
             ,type: 'desc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
@@ -50,7 +51,7 @@
         ,cols:  [[ //设置表头
             {checkbox: true}, //其它参数在此省略, LAY_CHECKED: true  无需数据
             {field:'id', width:80, sort: true,title:"ID"},
-            {field:'username', width:80,title:"用户名",templet: '<div><a href="http://www.baidu.com?{{d.id}}" class="layui-table-link">{{d.username}}</a></div>'},
+            {field:'username', width:80,title:"用户名",templet: '<div><a href="http://www.baidu.com?{{d.id}}" target="_blank" class="layui-table-link">{{d.username}}</a></div>'},
             {field:'sex', width:80, sort: true,title:"性别"},
             {field:'city', width:80,title:"城市"},
             {field:'sign', width:177,title:"签名"},
