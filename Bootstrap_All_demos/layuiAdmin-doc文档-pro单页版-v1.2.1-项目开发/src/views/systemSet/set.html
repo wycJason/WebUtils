@@ -1,0 +1,208 @@
+<title>网站设置</title>
+
+<div class="layui-card layadmin-header">
+	<div class="layui-breadcrumb" lay-filter="breadcrumb">
+		<a lay-href="">主页</a>
+		<a><cite>设置</cite></a>
+		<a><cite>系统设置</cite></a>
+	</div>
+</div>
+
+<style>
+	.layui-form-label{
+		width: 150px;
+	}
+	.layui-input-block{
+		margin-left: 180px;
+	}
+</style>
+
+<div class="layui-fluid">
+	<div class="layui-card">
+		<div class="layui-card-header">系统设置</div>
+		<div class="layui-card-body">
+			<form class="layui-form">
+				<div class="layui-row layui-col-space10 layui-form-item">
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">服务器地址(外网)：</label>
+						<div class="layui-input-block">
+							<input type="text" name="fullname" lay-verify="required|url" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">服务器地址(内网)：</label>
+						<div class="layui-input-block">
+							<input type="text" name="fullname" lay-verify="required|url" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-row layui-col-space10 layui-form-item">
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">上传服务器地址：</label>
+						<div class="layui-input-block">
+							<input type="text" name="fullname" lay-verify="required|url" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">下载服务器地址：</label>
+						<div class="layui-input-block">
+							<input type="text" name="fullname" lay-verify="required|url" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-row layui-col-space10 layui-form-item">
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">短信APPID：</label>
+						<div class="layui-input-block">
+							<input type="text" name="fullname" lay-verify="required|number" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">短信安全码：</label>
+						<div class="layui-input-block">
+							<input type="text" name="fullname" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-row layui-col-space10 layui-form-item">
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">服务器版本(只读)：</label>
+						<div class="layui-input-block">
+							<input type="text" name="fullname" readonly lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">开启调试日志：</label>
+						<div class="layui-input-block">
+							<input type="checkbox" name="zzz" lay-skin="switch" lay-text="开启|关闭">
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-row layui-col-space10 layui-form-item">
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">队列服务器名：</label>
+						<div class="layui-input-block">
+							<input type="text" name="fullname" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">队列服务器用户名：</label>
+						<div class="layui-input-block">
+							<input type="text" name="fullname" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-row layui-col-space10 layui-form-item">
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">队列服务器用户密码：</label>
+						<div class="layui-input-block">
+							<input type="password" name="fullname" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">服务器许可证：</label>
+						<div class="layui-input-block">
+							<input type="text" name="fullname" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-row layui-col-space10 layui-form-item">
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">过期日：</label>
+						<div class="layui-input-block">
+							<input type="text" id="expireDate" name="fullname" lay-verify="required|date" placeholder="" autocomplete="off"
+							 class="layui-input">
+						</div>
+					</div>
+					<div class="layui-col-lg6">
+						<label class="layui-form-label">用户数：</label>
+						<div class="layui-input-block">
+							<input type="text" name="fullname" lay-verify="required|number" placeholder="" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button class="layui-btn" lay-submit lay-filter="formData">确认保存</button>
+						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+					</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+	//layui.use('set', layui.factory('set'));
+	layui.use(['layer', 'laytpl', 'view', 'admin', 'form', 'laydate'], function() {
+		var $ = layui.$,
+			layer = layui.layer,
+			laytpl = layui.laytpl,
+			view = layui.view,
+			admin = layui.admin,
+			laydate = layui.laydate,
+			form = layui.form;
+
+		form.render();
+
+		laydate.render({
+			elem: '#expireDate',
+			theme: "#41A0FF"
+		});
+
+		//自定义验证
+		form.verify({
+			nickname: function(value, item) { //value：表单的值、item：表单的DOM对象
+					if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
+						return '用户名不能有特殊字符';
+					}
+					if (/(^\_)|(\__)|(\_+$)/.test(value)) {
+						return '用户名首尾不能出现下划线\'_\'';
+					}
+					if (/^\d+\d+\d$/.test(value)) {
+						return '用户名不能全为数字';
+					}
+				}
+
+				//我们既支持上述函数式的方式，也支持下述数组的形式
+				//数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
+				,
+			pass: [
+					/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格'
+				]
+
+				//确认密码
+				,
+			repass: function(value) {
+				if (value !== $('#LAY_password').val()) {
+					return '两次密码输入不一致';
+				}
+			}
+		});
+
+		//系统设置
+		form.on('submit(formData)', function(obj) {
+			layer.msg(JSON.stringify(obj.field));
+
+			//提交修改
+			/*
+			admin.req({
+			  url: ''
+			  ,data: obj.field
+			  ,success: function(){
+			    
+			  }
+			});
+			*/
+			return false;
+		});
+	});
+</script>

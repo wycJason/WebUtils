@@ -2,6 +2,88 @@
   "code": 0
   ,"msg": ""
   ,"data": [{
+		"name": "systemSet"
+	  ,"title": "系统设置"	
+	  ,"icon": "layui-icon-set"
+		,"jump": "systemSet/set"
+		},{
+		"name": "redisServerGroup"
+	  ,"title": "redis服务器组"	
+	  ,"icon": "layui-icon-template-1"
+		,"jump": "redisServerGroup/list"
+		},{
+		"name": "databaseGroup"
+	  ,"title": "数据库服务器组"	
+	  ,"icon": "layui-icon-app"
+		,"jump": "databaseGroup/list"
+		},{
+		"name": "companyManage"
+	  ,"title": "公司管理"	
+	  ,"icon": "layui-icon-username"
+		,"jump": "companyManage/list"
+		},{
+		"name": "onlineUser"
+	  ,"title": "在线用户"	
+	  ,"icon": "layui-icon-user"
+		,"jump": "onlineUser/list"
+		},	
+		{
+			"name": "jason"
+		  ,"title": "项目开发"	
+		  ,"icon": "layui-icon-fonts-code"
+			,"jump": "jason/index/uid=123/type=1"
+		},
+		
+		
+		
+		
+		
+		
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		{
     "title": "主页"
     ,"icon": "layui-icon-home"
     ,"list": [{
@@ -395,10 +477,5 @@
     ,"title": "授权"
     ,"icon": "layui-icon-auz"
     ,"jump": "system/get"
-  }, {
-		"name": "jason"
-	  ,"title": "项目开发"	
-	  ,"icon": "layui-icon-fonts-code"
-		,"jump": "jason/index/uid=123/type=1"
-	}]
+  }]
 }
