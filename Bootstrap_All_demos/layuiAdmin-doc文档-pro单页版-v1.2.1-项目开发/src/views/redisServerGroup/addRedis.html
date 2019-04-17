@@ -1,0 +1,56 @@
+<form class="layui-form" lay-filter="layuiadmin-form-redis" style="padding: 20px 0 0 0;">
+  <div class="layui-form-item">
+    <label class="layui-form-label">编号</label>
+    <div class="layui-input-inline">
+      <script type="text/html" template>
+        <input type="text" name="A" value="{{ d.params.A || '' }}" lay-verify="required" placeholder="请输入编号" autocomplete="off" class="layui-input">
+      </script>
+    </div>
+  </div>
+	<div class="layui-form-item">
+	  <label class="layui-form-label">服务器描述</label>
+	  <div class="layui-input-inline">
+	    <script type="text/html" template>
+	      <input type="text" name="B" value="{{ d.params.B || '' }}" lay-verify="required" placeholder="请输入服务器描述" autocomplete="off" class="layui-input">
+	    </script>
+	  </div>
+	</div>
+	<div class="layui-form-item">
+	  <label class="layui-form-label">哨兵模式</label>
+	  <div class="layui-input-inline">
+	    <script type="text/html" template>
+	      <input type="text" name="C" value="{{ d.params.C || '' }}" lay-verify="required" placeholder="请输入哨兵模式" autocomplete="off" class="layui-input">
+	    </script>
+	  </div>
+	</div>
+	<div class="layui-form-item">
+	  <label class="layui-form-label">服务器密码</label>
+	  <div class="layui-input-inline">
+	    <script type="text/html" template>
+	      <input type="password" name="D" value="{{ d.params.D || '' }}" lay-verify="required" placeholder="请输入服务器密码" autocomplete="off" class="layui-input">
+	    </script>
+	  </div>
+	</div>
+	<div class="layui-form-item">
+	  <label class="layui-form-label">服务器地址</label>
+	  <div class="layui-input-inline">
+	    <script type="text/html" template>
+	      <input type="text" name="E" value="{{ d.params.E || '' }}" lay-verify="required|url" placeholder="请输入服务器地址" autocomplete="off" class="layui-input">
+	    </script>
+	  </div>
+	</div>
+	<div class="layui-form-item layui-form-text">
+	  <label class="layui-form-label">备注</label>
+	  <div class="layui-input-block">
+	    <script type="text/html" template>
+				<textarea name="F" lay-verify="required" placeholder="请输入备注" autocomplete="off"  class="layui-textarea">{{ d.params.F || '' }}</textarea>
+			</script>
+	  </div>
+	</div>	
+  <div class="layui-form-item">
+    <label class="layui-form-label"></label>
+    <div class="layui-input-inline">
+      <input type="button" lay-submit lay-filter="LAY-redis-front-submit" value="确认" class="layui-btn">
+    </div>
+  </div>
+</form>

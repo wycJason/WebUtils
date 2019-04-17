@@ -1,0 +1,142 @@
+<style>
+	.layui-form-label{
+		width: 100px;
+	}
+	.layui-input-block{
+		margin-left: 130px;
+	}
+</style>
+<div class="layui-fluid">
+	<div class="layui-form" lay-filter="layuiadmin-form-db">
+		<div class="layui-row layui-col-space10 layui-form-item">
+			<div class="layui-col-lg6">
+				<label class="layui-form-label">编号：</label>
+				<div class="layui-input-block">
+					<input type="text" name="A" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-col-lg6">
+				<label class="layui-form-label">服务器描述：</label>
+				<div class="layui-input-block">
+					<input type="text" name="B" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+		</div>
+
+		<div class="layui-row layui-col-space10 layui-form-item">
+			<div class="layui-col-lg6">
+				<label class="layui-form-label">数据库类型：</label>
+				<div class="layui-input-block">
+					<input type="text" name="C" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-col-lg6">
+				<label class="layui-form-label">数据库版本号：</label>
+				<div class="layui-input-block">
+					<input type="text" name="D" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+		</div>
+
+		<div class="layui-row layui-col-space10 layui-form-item">
+			<div class="layui-col-lg6">
+				<label class="layui-form-label">服务器名：</label>
+				<div class="layui-input-block">
+					<input type="text" name="E" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-col-lg6">
+				<label class="layui-form-label">数据库用户：</label>
+				<div class="layui-input-block">
+					<input type="text" name="F" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+		</div>
+
+		<div class="layui-row layui-col-space10 layui-form-item">
+			<div class="layui-col-lg6">
+				<label class="layui-form-label">数据库密码：</label>
+				<div class="layui-input-block">
+					<input type="password" name="G" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-col-lg6">
+				<label class="layui-form-label">备注：</label>
+				<div class="layui-input-block">
+					<input type="text" name="H" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+		</div>
+
+
+		<div class="layui-row layui-col-space10">
+			<div class="layui-col-md12">
+				<div class="layui-fluid">
+					<div class="layui-card">
+						<div class="layui-card-header">从库</div>
+						<div class="layui-card-body">
+							<div style="padding-bottom: 10px;text-align: right;">
+								<button class="layui-btn layuiadmin-btn-useradmin layui-dbAdd" data-type="add">添加</button>
+							</div>
+
+							<table id="LAY-secondary-database" lay-filter="LAY-secondary-database"></table>
+
+							<script type="text/html" id="table-tool-second">
+								<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+							  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit lay-filter="formData">确认添加</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	layui.use(['admin', 'view', 'form', 'table'], function() {
+		var $ = layui.$,
+			admin = layui.admin,
+			view = layui.view,
+			table = layui.table,
+			form = layui.form;
+	
+		//添加事件
+		var active = {
+			add: function() {
+				admin.popup({
+					title: '从库添加',
+					offset: "80px",
+					area: '1200px',
+					id: 'LAY-popup-addSecond',
+					success: function(layero, index) {
+						/* view(this.id).render('databaseGroup/addDB').done(function(){
+		         form.render(null, 'layuiadmin-form-db');	
+		         //监听提交
+		         form.on('submit(formData)', function(data){
+		           var field = data.field; //获取提交的字段
+		
+		           //提交 Ajax 成功后，关闭当前弹层并重载表格
+		           //$.ajax({});
+		           layui.table.reload('LAY-db-manage'); //重载表格
+		           layer.close(index); //执行关闭 
+		         });
+		       }); */
+					}
+				});
+			}
+		};
+
+		//监听添加事件
+		$('.layui-dbAdd').on('click', function() {
+			var type = $(this).data('type');
+			active[type] ? active[type].call(this) : '';
+		});
+	});
+</script>

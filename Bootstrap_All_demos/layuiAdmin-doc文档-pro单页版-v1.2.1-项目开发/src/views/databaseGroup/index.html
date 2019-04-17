@@ -1,0 +1,208 @@
+<title>数据库服务器组</title>
+
+<div class="layui-card layadmin-header">
+	<div class="layui-breadcrumb" lay-filter="breadcrumb">
+		<a><cite>数据库服务器组</cite></a>
+	</div>
+</div>
+
+<div class="layui-fluid">
+	<div class="layui-card">
+		<div class="layui-card-body">
+			<div style="padding-bottom: 10px;text-align: right;">
+				<button class="layui-btn layuiadmin-btn-useradmin layui-dbAdd" data-type="add">添加</button>
+			</div>
+
+			<table id="LAY-db-manage" lay-filter="LAY-db-manage"></table>
+
+			<script type="text/html" id="table-tool">
+				<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+      </script>
+		</div>
+	</div>
+</div>
+
+<script>
+	layui.use(['admin', 'view', 'form', 'table'], function() {
+		var $ = layui.$,
+			admin = layui.admin,
+			view = layui.view,
+			table = layui.table,
+			form = layui.form;
+
+		// 数据库服务器组表格渲染
+		table.render({
+			elem: '#LAY-db-manage',
+			url: './json/jason/databaseGroup.js' //模拟接口
+				,
+			cols: [
+				[{
+					field: 'A',
+					title: '编号'
+				}, {
+					field: 'B',
+					title: '服务器描述'
+				}, {
+					field: 'C',
+					title: '数据库类型'
+				}, {
+					field: 'D',
+					title: '数据库版本号(只读)'
+				}, {
+					field: 'E',
+					title: '服务器名'
+				}, {
+					field: 'F',
+					title: '数据库用户'
+				}, {
+					field: 'G',
+					title: '数据库密码'
+				}, {
+					field: 'H',
+					title: '备注'
+				}, {
+					title: '操作',
+					toolbar: '#table-tool'
+				}]
+			],
+			page: true,
+			limit: 20,
+			height: 'full-320',
+			text: '对不起，加载出现异常！'
+				//,skin: 'line' //行边框风格
+				,
+			even: false //开启隔行背景
+		});
+
+		//监听主库工具条
+		table.on('tool(LAY-db-manage)', function(obj) {
+			var data = obj.data;
+			if (obj.event === 'del') {
+				layer.confirm('是否确认删除？', function(index) {
+					obj.del();
+					layer.close(index);
+				});
+			} else if (obj.event === 'edit') {
+				admin.popup({
+					title: '编辑数据库服务器组',
+					area: ['500px', '550px'],
+					id: 'LAY-popup-edit',
+					success: function(layero, index) {
+						view(this.id).render('databaseGroup/editDB', data).done(function() {
+							form.render(null, '');
+
+							//监听提交
+							form.on('submit(LAY-redis-front-submit)', function(data) {
+								var field = data.field; //获取提交的字段
+
+								//提交 Ajax 成功后，关闭当前弹层并重载表格
+								//$.ajax({});
+								layui.table.reload('LAY-db-manage'); //重载表格
+								layer.close(index); //执行关闭 
+							});
+						});
+					}
+				});
+			}
+		});
+
+		//监听从库工具条
+		table.on('tool(LAY-secondary-database)', function(obj) {
+			var data = obj.data;
+			if (obj.event === 'del') {
+				layer.confirm('是否确认删除？', function(index) {
+					obj.del();
+					layer.close(index);
+				});
+			} else if (obj.event === 'edit') {
+				admin.popup({
+					title: '编辑从库数据库服务器组',
+					area: ['500px', '550px'],
+					id: 'LAY-popup-edit',
+					success: function(layero, index) {
+						/* view(this.id).render('databaseGroup/editDB', data).done(function(){
+	          form.render(null, '');
+	          
+	          //监听提交
+	          form.on('submit(LAY-redis-front-submit)', function(data){
+	            var field = data.field; //获取提交的字段
+	
+	            //提交 Ajax 成功后，关闭当前弹层并重载表格
+	            //$.ajax({});
+	            layui.table.reload('LAY-secondary-database'); //重载表格
+	            layer.close(index); //执行关闭 
+	          });
+	        }); */
+					}
+				});
+			}
+		});
+
+
+		//添加事件
+		var active = {
+			add: function() {
+				admin.popup({
+					title: '添加数据库服务器组',
+					offset: "80px",
+					area: '1200px',
+					id: 'LAY-popup-add',
+					success: function(layero, index) {
+						view(this.id).render('databaseGroup/addDB').done(function() {
+							form.render(null, 'layuiadmin-form-db');
+
+							//渲染从库
+							table.render({
+								elem: '#LAY-secondary-database',
+								url: './json/jason/databaseGroupSecond.js' //模拟接口
+									,
+								cols: [
+									[{
+										field: 'A',
+										title: '编号'
+									}, {
+										field: 'B',
+										title: '服务器描述'
+									}, {
+										field: 'C',
+										title: '数据库类型'
+									}, {
+										field: 'D',
+										title: '备注'
+									}, {
+										title: '操作',
+										toolbar: '#table-tool-second'
+									}]
+								],
+								page: true,
+								limit: 20,
+								height: 300,
+								text: '对不起，加载出现异常！'
+									//,skin: 'line' //行边框风格
+									,
+								even: false //开启隔行背景
+							});
+
+							//监听提交
+							form.on('submit(formData)', function(data) {
+								var field = data.field; //获取提交的字段
+
+								//提交 Ajax 成功后，关闭当前弹层并重载表格
+								//$.ajax({});
+								layui.table.reload('LAY-db-manage'); //重载表格
+								layer.close(index); //执行关闭 
+							});
+						});
+					}
+				});
+			}
+		};
+
+		//监听添加事件
+		$('.layui-dbAdd').on('click', function() {
+			var type = $(this).data('type');
+			active[type] ? active[type].call(this) : '';
+		});
+	});
+</script>

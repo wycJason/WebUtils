@@ -5,33 +5,33 @@
 		"name": "systemSet"
 	  ,"title": "系统设置"	
 	  ,"icon": "layui-icon-set"
-		,"jump": "systemSet/set"
+	  ,"jump": "/"
 		},{
 		"name": "redisServerGroup"
 	  ,"title": "redis服务器组"	
 	  ,"icon": "layui-icon-template-1"
-		,"jump": "redisServerGroup/list"
+	  ,"jump": "redisServerGroup/index"
 		},{
 		"name": "databaseGroup"
 	  ,"title": "数据库服务器组"	
 	  ,"icon": "layui-icon-app"
-		,"jump": "databaseGroup/list"
+	  ,"jump": "databaseGroup/index"
 		},{
 		"name": "companyManage"
 	  ,"title": "公司管理"	
 	  ,"icon": "layui-icon-username"
-		,"jump": "companyManage/list"
+	  ,"jump": "companyManage/list"
 		},{
 		"name": "onlineUser"
 	  ,"title": "在线用户"	
 	  ,"icon": "layui-icon-user"
-		,"jump": "onlineUser/list"
+	  ,"jump": "onlineUser/list"
 		},	
 		{
 			"name": "jason"
 		  ,"title": "项目开发"	
 		  ,"icon": "layui-icon-fonts-code"
-			,"jump": "jason/index/uid=123/type=1"
+		  ,"jump": "jason/index/uid=123/type=1"
 		},
 		
 		
@@ -83,12 +83,13 @@
 
 
 		
-		{
+	{
     "title": "主页"
+	,"name": "console"
     ,"icon": "layui-icon-home"
     ,"list": [{
       "title": "控制台"
-      ,"jump": "/"
+      ,"jump": "home/console"
     }, {
       "name": "homepage1"
       ,"title": "主页一"
