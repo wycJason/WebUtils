@@ -18,10 +18,10 @@
         <!-- 使用 router-link 组件来导航. -->
         <!-- 通过传入 `to` 属性指定链接. -->
         <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
-        <router-link to="/foo">Go to Foo</router-link>
-        <router-link to="/bar">Go to Bar</router-link>
-        <router-link to="/user/u1">/user/u1</router-link>
-        <router-link to="/user/u2">/user/u2</router-link>
+        <router-link to="/foo">Go to Foo</router-link><br>
+        <router-link to="/bar">Go to Bar</router-link><br>
+        <router-link to="/user/100001">/user/id</router-link><br>
+        <router-link to="/user/100002">/user/id</router-link><br>
     </p>
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 -->
@@ -37,7 +37,7 @@
     // 可以从其他文件 import 进来
     const Foo = { template: '<div>foo</div>' }
     const Bar = { template: '<div>bar</div>' }
-    const User = {template: '<div>User {{ $route.params.id }}</div>'}
+    const User = {template: '<div>User: {{ $route.params.id }}</div>'}
 
 
     // 2. 定义路由

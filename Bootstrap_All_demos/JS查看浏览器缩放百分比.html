@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //https://www.jb51.net/article/55753.htm
+    function detectZoom (){
+        var ratio = 0,
+                screen = window.screen,
+                ua = navigator.userAgent.toLowerCase();
+
+        if (window.devicePixelRatio !== undefined) {
+            ratio = window.devicePixelRatio;
+        }
+        else if (~ua.indexOf('msie')) {
+            if (screen.deviceXDPI && screen.logicalXDPI) {
+                ratio = screen.deviceXDPI / screen.logicalXDPI;
+            }
+        }
+        else if (window.outerWidth !== undefined && window.innerWidth !== undefined) {
+            ratio = window.outerWidth / window.innerWidth;
+        }
+
+        if (ratio){
+            ratio = Math.round(ratio * 100);
+        }
+
+        return ratio;
+    };
+
+    console.log(detectZoom())
+</script>
+</body>
+</html>

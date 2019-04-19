@@ -26,16 +26,16 @@
             </div>
         `,
         data:function() {
-        return{
-            a:'我是a数据'
+            return{
+                a:'我是a数据'
+            }
+        },
+        methods:{
+            send:function(){
+                console.log(this.a);
+                Event.$emit('a-msg',this.a);
+            }
         }
-    },
-    methods:{
-        send:function(){
-            console.log(this.a);
-            Event.$emit('a-msg',this.a);
-        }
-    }
     };
     var B = {
         template: `
@@ -45,16 +45,16 @@
             </div>
         `,
         data:function() {
-        return{
-            b:'我是b数据'
+            return{
+                b:'我是b数据'
+            }
+        },
+        methods:{
+            send:function(){
+                console.log(this.b);
+                Event.$emit('b-msg',this.b);
+            }
         }
-    },
-    methods:{
-        send:function(){
-            console.log(this.b);
-            Event.$emit('b-msg',this.b);
-        }
-    }
     };
     var C = {
         template:`
@@ -79,6 +79,7 @@
                 alert(a);//拿到a数据
                 this.a = a;
             }.bind(this));//需要绑定给函数
+
             var _this = this;
             //接收b组件的数据
             Event.$on('b-msg',function (b) {
