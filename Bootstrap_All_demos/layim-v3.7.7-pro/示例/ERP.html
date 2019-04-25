@@ -480,7 +480,7 @@ layui.use(['layim','laytpl'], function(layim,laytpl){
     //,isfriend: false //是否开启好友
     //,isgroup: false //是否开启群组
     //,min: true //是否始终最小化主面板，默认false
-    ,notice: true //是否开启桌面消息提醒，默认false
+    //,notice: true //是否开启桌面消息提醒，默认false
     //,voice: false //声音提醒，默认开启，声音文件为：default.mp3
     
     ,msgbox: layui.cache.dir + 'css/modules/layim/html/msgbox.html' //消息盒子页面地址，若不开启，剔除该项即可
@@ -599,6 +599,7 @@ layui.use(['layim','laytpl'], function(layim,laytpl){
   });
     //监听聊天窗口的切换   (每次窗口打开或切换，即更新对方的状态)
   layim.on('chatChange', function(res){
+	  debugger
     var type = res.data.type;
    // console.log(res.data.id)
     if(type === 'friend'){
