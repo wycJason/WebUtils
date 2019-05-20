@@ -18,16 +18,21 @@
 				<!-- 使用 router-link 组件来导航. -->
 				<!-- 通过传入 `to` 属性指定链接. -->
 				<!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
-				<router-link to="/">同个路由，多个视图就需要多个组件</router-link><br>
+				<router-link to="/">同个路由，多个视图就需要多个组件</router-link><br><br>
+				
 				<router-link to="/nameRoute">嵌套命名视图1</router-link><br>
 				<router-link to="/nameRoute/email">嵌套命名视图2</router-link><br>
-				<router-link to="/nameRoute/profile">嵌套命名视图3</router-link><br>
+				<router-link to="/nameRoute/profile">嵌套命名视图3</router-link><br><br>
+				
 				<router-link to="/foo">Go to Foo</router-link><br>
-				<router-link to="/bar">Go to Bar</router-link><br>
-				<router-link to="/rdt">重定向至Go to Foo</router-link><br>
+				<router-link to="/bar">Go to Bar</router-link><br><br>
+				
+				<router-link to="/rdt">重定向至Go to Foo</router-link><br><br>
+				
 				<router-link to="/subRoute/520">动态路径参数 以冒号开头/subRoute/id</router-link><br>
-				<router-link to="/subRoute/520/profile">嵌套路由/subRoute/id/profile</router-link><br>
-				<router-link to="/subRoute/520/posts">嵌套路由/subRoute/id/posts</router-link><br>
+				<router-link to="/subRoute/521/profile">嵌套路由/subRoute/id/profile</router-link><br>
+				<router-link to="/subRoute/522/posts">嵌套路由/subRoute/id/posts</router-link><br><br>
+				
 				<router-link to="/user/100001">动态路径参数 以冒号开头/user/id</router-link><br>
 				<router-link to="/user/100002">动态路径参数 以冒号开头/user/id</router-link><br>
 			</p>
@@ -69,10 +74,10 @@
 			}
 			//嵌套路由,即组件模板里嵌套<router-view></router-view>
 			const subRoute = {
-				template: `<div>
-							  <div>subRoute {{ $route.params.id }}</div>
-							  <router-view></router-view>
-							</div>`
+				template: '<div>\
+							  <div>subRoute {{ $route.params.id }}</div>\
+							  <router-view></router-view>\
+							</div>'
 			}
 			const UserProfile = {
 				template: '<div>UserProfile</div>'
@@ -83,11 +88,11 @@
 
 			//嵌套命名视图,即组件模板里嵌套<router-view/> 和<router-view name=""/>
 			const nameRoute = {
-				template: `<div>
-							  <h1>User Settings</h1>
-							  <router-view/>
-							  <router-view name="helper"/>
-							</div>`
+				template: '<div>\
+							  <h1>User Settings</h1>\
+							  <router-view/>\
+							  <router-view name="helper"/>\
+							</div>'
 			}
 
 

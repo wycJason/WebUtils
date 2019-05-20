@@ -51,6 +51,7 @@
         this.y = y;
     }
     Point.prototype.toString = function () {
+        //this 指实例化的对象，谁调用这个toString()方法，this就指.前的对象，即原对象
         return "P"+'(' + this.x + ', ' + this.y + ')';
     };
 

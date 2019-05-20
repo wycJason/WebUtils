@@ -80,19 +80,19 @@
 				var imgs = new Image(), maxH = 640;
 				imgs.src = val.data;
 				imgs.onload = function () {
-					var cvs = document.createElement('canvas'),
-					    ctx = cvs.getContext('2d');
+					var cvs = document.createElement('canvas'),ctx = cvs.getContext('2d');
 
 					//尺寸等比压缩
 					/*if (imgs.height > maxH) {
 						imgs.width *= maxH / imgs.height;
 						imgs.height = maxH;
 					}*/
+
 					cvs.width = imgs.width;
 					cvs.height = imgs.height;
 
-					ctx.clearRect(0, 0, cvs.width, cvs.height);
-					ctx.drawImage(imgs, 0, 0, imgs.width, imgs.height);
+					ctx.clearRect(0, 0, cvs.width, cvs.height);////清空一个矩形范围
+					ctx.drawImage(imgs, 0, 0, imgs.width, imgs.height);//使用 drawImage() 方法绘制图像 drawImage(img, x, y, width, height)
 					var dataUrl = cvs.toDataURL('image/jpeg', 0.85);//清晰度压缩 参考：https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL
 					$(".img_wrap").attr("src", dataUrl).show();
 

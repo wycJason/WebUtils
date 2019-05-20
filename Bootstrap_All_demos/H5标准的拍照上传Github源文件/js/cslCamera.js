@@ -8,30 +8,32 @@ $.Pgater=(function(){
 	};
 	File.css('display','none');
 	return function(target,callBack){
-		console.log(File);
+		//console.log(File);
 		this.ele=File;
 		this.parent=target;
 		this.parent.append(this.ele);
-		this.bindClk(this.parent,this.ele[0]);
+
+		this.bindClk(this.parent,this.ele[0]);//触发点击事件
 		this.bindFuc(this.ele,callBack);
 	};
 })();
+
 $.Pgater.prototype.bindFuc=function(ele,callBack){
 	ele.on("change",function(){
-		console.log(ele[0].files);
+		//console.log(ele[0].files);
 		var all=ele[0].files;
 		var reader = new FileReader();
 		var album=[];
-		console.log(all.length);
+		//console.log(all.length);
 		var length=all.length;
 		var i=0;
 		var recur=function(){
-			console.log(all[i]);
+			//console.log(all[i]);
 			reader.readAsDataURL(all[i]);
 			var One=all[i];
 			reader.onload=function(e){
 				//alert(One);
-				console.log(One);
+				//console.log(One);
 				One.data=this.result;
 				album.push(One);
 				i++;
@@ -39,14 +41,14 @@ $.Pgater.prototype.bindFuc=function(ele,callBack){
 					recur();
 				}else{
 					ele.value = '';
-					//alert(i);
-					callBack(album,img);
+					callBack(album);
 				};
 			};
 		};
 		recur();
 	});
 };
+
 $.Pgater.prototype.bindClk=function(ele,tar){
 	ele.on('click',function(){
 		tar.click();

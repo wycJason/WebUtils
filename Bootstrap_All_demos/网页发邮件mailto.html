@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Template</title>
+    <title>网页发送邮件</title>
     <style>
 
     </style>
@@ -15,17 +15,17 @@
     <![endif]-->
 </head>
 <body>
-<input id="upload" type="file">
-<script src="js/jquery-1.11.3.js"></script>
+<a href="mailto:wyc924@sina.com?cc=wyc924@qq.com&subject=邮箱主题&body=邮箱正文">发邮件</a>
+
+<form action="https://formspree.io/435581387@qq.com" method="POST">
+<input type="text"name="name">
+<input type="email"name="_replyto">
+<input type="submit"value="Send">
+</form>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script>
-    var file = new File(["foo"], "foo.txt", {type: "text/plain",});
-    console.log(file)
 
-    $("#upload").change(function(){
-        console.log(this.files[0]);
-        console.log(this.value)
-    });
 </script>
 </body>
 </html>

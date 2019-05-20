@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="container">
+<canvas id="myCanvas" width="800" height="200" style="border: 1px solid #ddd"></canvas>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //绘制图像
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var imageObj = new Image();
+    imageObj.src = 'img/1.jpg';
+    imageObj.onload = function() {//值得注意的是：若调用 drawImage 时，图片没装载完，那什么都不会发生（在一些旧的浏览器中可能会抛出异常）。因此你应该用load事件来保证不会在加载完毕之前使用这个图片：
+        context.drawImage(imageObj, 30, 30);
+
+        //将canvas图像转换为文件
+        //参考：https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toBlob
+        canvas.toBlob(function(blob) {
+            var newImg = document.createElement("img");
+            var url = URL.createObjectURL(blob);
+
+            newImg.onload = function() {
+                // no longer need to read the blob so it's revoked
+                URL.revokeObjectURL(url);
+            };
+
+            newImg.src = url;
+            document.body.appendChild(newImg);
+        })
+    };
+</script>
+</body>
+</html>
