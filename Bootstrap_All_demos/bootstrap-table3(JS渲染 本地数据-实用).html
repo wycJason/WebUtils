@@ -43,8 +43,9 @@
 <div class="container">
     <a href="http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/" target="_blank">bootstrap-table中文文档</a><br>
     <a href="http://www.cnblogs.com/MirageFox/p/5981867.html" target="_blank">bootstrap-table实例1</a><br>
-    <a href="http://www.jq22.com/yanshi10489" target="_blank">bootstrap-table实例2</a>
-    <a href="https://blog.csdn.net/tpc1990519/article/details/79037174" target="_blank">bootstrap-table footerFormatter合并单元格</a>
+    <a href="http://www.jq22.com/yanshi10489" target="_blank">bootstrap-table实例2</a><br>
+    <a href="https://blog.csdn.net/tpc1990519/article/details/79037174" target="_blank">bootstrap-table footerFormatter合并单元格</a><br>
+    <a href="http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/" target="_blank">Bootstrap Table列宽拖动的方法</a><br>
 <!--第三种方法，通过 JavaScript 的方式-->
 <div id="toolbar">
     <button id="get" class="btn btn-default">获取商品名称</button>
@@ -56,10 +57,14 @@
 <img class="center-block" src="img/bstable.png" alt=""/>
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
+<!--渲染表格-->
 <script src="bootstrap-table/bootstrap-table.js"></script>
 <script src="bootstrapAll/js/bootstrap-table-export.js"></script>
 <script src="bootstrapAll/js/tableExport.js"></script>
 <script src="bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<!--bootstrap-table-resizable.js这个插件还依赖于colResizable.js-->
+<script src="bootstrap-table/colresizable/colResizable-1.6.min.js"></script>
+<script src="bootstrap-table/extensions/resizable/bootstrap-table-resizable.min.js"></script>
 <script>
     //bootstrap-table表格版本为 version: 1.11.1
     //事件对象   http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
@@ -258,6 +263,8 @@
 
             toolbar:"#toolbar",
             toolbarAlign:"left",
+
+            //resizable:true,//是否可拖动调整列大小  问题：当设置数据高度时，此插件无法工作。
 
             pagination:true,
             //onlyInfoPagination:true,

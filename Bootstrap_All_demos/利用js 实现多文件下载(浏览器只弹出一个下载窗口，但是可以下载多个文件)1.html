@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<button id="standLoad">浏览器只弹出一个下载窗口，但是可以下载多个文件，一个文件下载完了再继续下载另一个文件</button>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    //浏览器只弹出一个下载窗口，但是可以下载多个文件，一个文件下载完了再继续下载另一个文件。   https://blog.csdn.net/qq_38676810/article/details/79569931
+    //Chrome浏览器怎么样下载时弹出保存位置窗口   https://jingyan.baidu.com/article/37bce2be4a90641002f3a2fa.html
+    $(document).on("click", "#standLoad", function(){
+        let triggerDelay = 100;
+        let removeDelay = 1000;
+        //存放多个下载的url，
+        let url_arr=[
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_6ab1021388ba480486b1c12fca82423a.pdf/%E6%B7%B1%E5%9C%B3--%E6%9C%80%E6%96%B0%E9%80%9A%E8%AE%AF%E5%BD%95-11%E6%9C%88%E4%BB%BD.pdf",
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_2bf9449db18c47958816a0ba6d692a3f.pdf/%E5%BC%A0%E4%B8%89.pdf",
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_b233378ad7064b96a6bcb2259dc9a10f.pdf/%E6%9D%8E%E5%9B%9B.pdf",
+            "http://neobit.orientalsemi.com:36002/DocManage/downloadfile/348742eace494300857d58e2ded40a14_2018_12_11_e518170dca334d85b9824734e392b268.pdf/%E7%8E%8B%E4%BA%94.pdf"
+        ]
+        url_arr.forEach(function(item,index){
+            _createIFrame(item, index * triggerDelay, removeDelay);
+        })
+        function _createIFrame(url, triggerDelay, removeDelay) {
+            //动态添加iframe，设置src，然后删除
+            setTimeout(function() {
+                var frame = $('<iframe style="display: none;" class="multi-download"></iframe>');
+                frame.attr('src', url);
+                $(document.body).after(frame);
+                setTimeout(function() {
+                    frame.remove();
+                }, removeDelay);
+            }, triggerDelay);
+        }
+    });
+</script>
+</body>
+</html>

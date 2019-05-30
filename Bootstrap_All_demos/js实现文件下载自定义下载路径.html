@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Template</title>
+    <style>
+
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<table>
+    <tr>
+        <td>选择导入数据源：</td>
+        <td><input id="path" type="text" name="path" size="30"></td>
+        <td><input type=button value="选择" onclick="browseFolder('path')"></td>
+    </tr>
+</table>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    execCommand("SaveAs",false,"E:")
+
+    /*
+     注：
+     https://blog.csdn.net/yuli_li/article/details/49660707
+     如果点击选择按钮提示：你没有权限，应该如下修改：<br />
+     1. 单击菜单工具->Internet选项->安全->受信任站点->站点->把此网站设为可信站点<br />
+     2. 在自定义级别->对没有标记为安全的ActiveX控件进行初始化和脚本运行"----"启用"
+    * */
+    function browseFolder(path) {
+        try {
+            var Message = "\u8bf7\u9009\u62e9\u6587\u4ef6\u5939"; //选择框提示信息
+            var Shell = new ActiveXObject("Shell.Application");
+            var Folder = Shell.BrowseForFolder(0, Message, 64, 17); //起始目录为：我的电脑
+            //var Folder = Shell.BrowseForFolder(0, Message, 0); //起始目录为：桌面
+            if (Folder != null) {
+                Folder = Folder.items(); // 返回 FolderItems 对象
+                Folder = Folder.item(); // 返回 Folderitem 对象
+                Folder = Folder.Path; // 返回路径
+                if (Folder.charAt(Folder.length - 1) != "\\") {
+                    Folder = Folder + "\\";
+                }
+                document.getElementById(path).value = Folder;
+                return Folder;
+            }
+        }
+        catch (e) {
+            alert(e.message);
+        }
+    }
+</script>
+</body>
+</html>
