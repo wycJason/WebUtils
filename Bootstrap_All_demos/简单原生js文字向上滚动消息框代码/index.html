@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>简单原生js文字向上滚动消息框代码</title>
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<link rel="stylesheet" type="text/css" href="scroll.css" />
+
+</head>
+<body>
+
+<h3>例1: 3秒一次</h3>
+<ul class="_container" id="demo">
+<li>我是第一个出现的</li>
+<li>我是第二个出现的</li>
+<li>我是第三个出现的</li>
+<li>我是第四个出现的</li>
+<li>我要开始循环了(第五个)</li>
+</ul>
+
+<h3>例2：5秒一次</h3>
+<ul class="_container" id="demo2">
+<li>例2我是第一个出现的</li>
+<li>例2我是第二个出现的</li>
+<li>例2我是第三个出现的</li>
+<li>例2我是第四个出现的</li>
+<li>例2我要开始循环了(第五个)</li>
+</ul>
+
+<script src="scroll.js" type="text/javascript" charset="utf-8"></script>
+<script>
+	/*这是启动方式*/
+	/*
+	 * demo 父容器(ul)的id
+	 * -36px 子元素li的高度
+	 * 3000  滚动间隔时间
+	 * 每次滚动持续时间可到css文件中修改
+	 */
+	myScroll.upScroll("demo","-36px",3000);
+	
+	myScroll.upScroll("demo2","-36px",5000);
+	
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://www.lanrenzhijia.com/" target="_blank">懒人</a></p>
+</div>
+</body>
+</html>

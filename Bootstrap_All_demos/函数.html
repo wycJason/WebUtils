@@ -21,6 +21,17 @@
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
+    //对象与方法
+    function mtd(){
+        console.log(this.name);
+    }
+    var mtdObj={
+        name:"wyc_jason",
+        action:mtd
+    }
+    mtdObj.action();
+
+
     function tryFun(p1,p2){
         console.log(p1)
     }
