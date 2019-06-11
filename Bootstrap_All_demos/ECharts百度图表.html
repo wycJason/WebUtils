@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Template</title>
+    <title>ECharts 入门示例</title>
     <style>
 
     </style>
@@ -17,10 +17,11 @@
 <body>
 <div id="main" style="width: 600px;height:400px;"></div>
 <div id="bar" style="width: 600px;height:400px;"></div>
+<div id="bar2" style="width: 600px;height:400px;"></div>
 <script src="js/jquery-1.11.3.js"></script>
 <script src="js/bootstrap.js"></script>
 <!--<script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.min.js"></script>-->
-<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="//echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
 <script>
     var dom = document.getElementById("main");
     var myChart = echarts.init(dom);
@@ -92,7 +93,6 @@
         },
         yAxis: {},
         series: [{
-            name: '销量',
             type: 'bar',
             label:{
                 show:true,
@@ -106,13 +106,61 @@
                 {name:"雪纺衫",value:255,itemStyle:{color:'#61a0a8'}},
                 {name:"裤子",value:65,itemStyle:{color:'#d48265'}},
                 {name:"高跟鞋",value:45,itemStyle:{color:'#91c7ae'}},
-                {name:"袜子",value:95,itemStyle:{color:'#749f83'}},
+                {name:"袜子",value:95,itemStyle:{color:'#749f83'}}
             ]
         }]
     };
 
     // 使用刚指定的配置项和数据显示图表。
     myChart_bar.setOption(option_bar);
+
+
+
+
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart_Two = echarts.init(document.getElementById('bar2'));
+    option2 = {
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+            data:['应还款','实际还款']
+        },
+        xAxis: {
+            data: ["1月","2月","3月","4月","5月","6月"]
+        },
+        yAxis: {},
+        series: [{
+            name: '应还款',
+            type: 'bar',
+            label:{
+                show:true,
+                position:'top',
+                //formatter: '{a}:{b}: {c}'  //{a}：系列名  {b}：数据名  {c}：数据值。
+            },
+            data: [5, 20, 36, 10, 10, 20],
+            itemStyle:{
+                color:'#5B9BD5',
+            }
+        },{
+            name: '实际还款',
+            type: 'bar',
+            label:{
+                show:true,
+                position:'top',
+                //formatter: '{a}:{b}: {c}'  //{a}：系列名  {b}：数据名  {c}：数据值。
+            },
+            data: [15, 25, 30, 2, 5, 9],
+            itemStyle:{
+                color:'#ED7D31',
+            },
+            barGap:'0%',//不同系列的柱间距离，为百分比（default: 30%  '30%'，表示柱子宽度的 30%）。此属性应设置于此坐标系中最后一个 'bar' 系列上才会生效，并且是对此坐标系中所有 'bar' 系列生效。
+        }]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart_Two.setOption(option2);
 </script>
 </body>
 </html>

@@ -32,6 +32,30 @@
     mtdObj.action();
 
 
+
+    //值赋给对象的方法中
+    function action(config){
+        var obj={
+            name:config.name,
+            age:config.age
+        }
+        config.info(obj)
+    }
+    action({
+        name:"王愿超",
+        age:28,
+        info:function(res){
+            console.log(res);
+        }
+    })
+
+
+
+
+
+
+
+
     function tryFun(p1,p2){
         console.log(p1)
     }

@@ -24,11 +24,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="网页调用微信Jssdk实现扫一扫功能.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能.html">
+      <file leaf-file-name="网页调用微信Jssdk实现扫一扫功能（原生方法）.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能（原生方法）.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="24.03125">
-              <caret line="136" column="13" selection-start-line="136" selection-start-column="13" selection-end-line="136" selection-end-column="13" />
+            <state vertical-scroll-proportion="-20.53125">
+              <caret line="208" column="2" selection-start-line="208" selection-start-column="2" selection-end-line="208" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="网页调用微信Jssdk实现扫一扫功能（JQ-WEUI方法）.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能（JQ-WEUI方法）.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.15625">
+              <caret line="171" column="23" selection-start-line="171" selection-start-column="20" selection-end-line="171" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -37,8 +47,8 @@
       <file leaf-file-name="函数.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/函数.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5856481">
-              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.31944445">
+              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -47,8 +57,8 @@
       <file leaf-file-name="jQueryWeUI表单.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jQueryWeUI表单.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="241" column="10" selection-start-line="231" selection-start-column="3" selection-end-line="241" selection-end-column="10" />
+            <state vertical-scroll-proportion="-7.65625">
+              <caret line="353" column="0" selection-start-line="353" selection-start-column="0" selection-end-line="353" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -74,8 +84,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/GitHub官方WEUI组件-视频.html" />
-        <option value="$PROJECT_DIR$/数据表格文档 - layui.table（自动化渲染）.html" />
         <option value="$PROJECT_DIR$/数据表格文档 - layui.table（方法级渲染）.html" />
         <option value="$PROJECT_DIR$/JS查看浏览器缩放百分比.html" />
         <option value="$PROJECT_DIR$/js页面整体放大缩小兼容所有浏览器（ie及firefox等）.html" />
@@ -123,7 +131,9 @@
         <option value="$PROJECT_DIR$/简单原生js文字向上滚动消息框代码/滚动提示.html" />
         <option value="$PROJECT_DIR$/js实现sha1加密算法/sha1.js" />
         <option value="$PROJECT_DIR$/sha1/sha1.js" />
+        <option value="$PROJECT_DIR$/ECharts百度图表.html" />
         <option value="$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能.html" />
+        <option value="$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能（JQ-WEUI方法）.html" />
         <option value="$PROJECT_DIR$/函数.html" />
       </list>
     </option>
@@ -186,7 +196,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -226,6 +235,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -266,19 +276,19 @@
     </option>
   </component>
   <component name="RunManager" selected="JavaScript Debug.函数.html">
-    <configuration default="false" name="index.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/横向滚动广告/index.html">
-      <method />
-    </configuration>
     <configuration default="false" name="jQueryWeUI表单.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/jQueryWeUI表单.html">
       <method />
     </configuration>
-    <configuration default="false" name="网页调用微信Jssdk实现扫一扫功能.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/网页调用微信Jssdk实现扫一扫功能.html">
+    <configuration default="false" name="网页调用微信Jssdk实现扫一扫功能（原生方法）.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/网页调用微信Jssdk实现扫一扫功能（原生方法）.html">
       <method />
     </configuration>
     <configuration default="false" name="生成唯一的GUID值.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/生成唯一的GUID值.html">
       <method />
     </configuration>
     <configuration default="false" name="函数.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/函数.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="ECharts百度图表.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/ECharts百度图表.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -325,19 +335,19 @@
       <item index="2" class="java.lang.String" itemvalue="Node.js.使用Node.js向一个文件中写出内容.js" />
       <item index="3" class="java.lang.String" itemvalue="Node.js.使用Node.js读取一个文件中的内容.js" />
       <item index="4" class="java.lang.String" itemvalue="Node.js.模板字符串1.js" />
-      <item index="5" class="java.lang.String" itemvalue="JavaScript Debug.index.html (1)" />
-      <item index="6" class="java.lang.String" itemvalue="JavaScript Debug.jQueryWeUI表单.html" />
-      <item index="7" class="java.lang.String" itemvalue="JavaScript Debug.网页调用微信Jssdk实现扫一扫功能.html" />
-      <item index="8" class="java.lang.String" itemvalue="JavaScript Debug.生成唯一的GUID值.html" />
-      <item index="9" class="java.lang.String" itemvalue="JavaScript Debug.函数.html" />
+      <item index="5" class="java.lang.String" itemvalue="JavaScript Debug.jQueryWeUI表单.html" />
+      <item index="6" class="java.lang.String" itemvalue="JavaScript Debug.网页调用微信Jssdk实现扫一扫功能（原生方法）.html" />
+      <item index="7" class="java.lang.String" itemvalue="JavaScript Debug.生成唯一的GUID值.html" />
+      <item index="8" class="java.lang.String" itemvalue="JavaScript Debug.函数.html" />
+      <item index="9" class="java.lang.String" itemvalue="JavaScript Debug.ECharts百度图表.html" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.函数.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.jQueryWeUI表单.html" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.网页调用微信Jssdk实现扫一扫功能.html" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.生成唯一的GUID值.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.index.html (1)" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.ECharts百度图表.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.jQueryWeUI表单.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.网页调用微信Jssdk实现扫一扫功能（原生方法）.html" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.生成唯一的GUID值.html" />
       </list>
     </recent_temporary>
   </component>
@@ -362,10 +372,10 @@
     <option name="totallyTimeSpent" value="216000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24130663" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22550052" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -464,20 +474,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/垂直滚动条.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.15625">
-          <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/微信WeUi示例之附件上传1(单个上传).html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="22" column="122" selection-start-line="22" selection-start-column="122" selection-end-line="22" selection-end-column="122" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/H5拍照上传/demo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49421296">
@@ -799,26 +795,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jQueryWeUI表单.html">
+    <entry file="file://$PROJECT_DIR$/ECharts百度图表.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="241" column="10" selection-start-line="231" selection-start-column="3" selection-end-line="241" selection-end-column="10" />
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能（原生方法）.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.53125">
+          <caret line="208" column="2" selection-start-line="208" selection-start-column="2" selection-end-line="208" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能.html">
+    <entry file="file://$PROJECT_DIR$/jQueryWeUI表单.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="24.03125">
-          <caret line="136" column="13" selection-start-line="136" selection-start-column="13" selection-end-line="136" selection-end-column="13" />
+        <state vertical-scroll-proportion="-7.65625">
+          <caret line="353" column="0" selection-start-line="353" selection-start-column="0" selection-end-line="353" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能（JQ-WEUI方法）.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.15625">
+          <caret line="171" column="23" selection-start-line="171" selection-start-column="20" selection-end-line="171" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/函数.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5856481">
-          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.31944445">
+          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
           <folding />
         </state>
       </provider>

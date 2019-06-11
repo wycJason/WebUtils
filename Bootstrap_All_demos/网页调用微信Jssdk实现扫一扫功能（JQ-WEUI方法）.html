@@ -4,11 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
+    <link rel="stylesheet" href="jquery-weui-1.2.1/jquery-weui-1.2.1.min.css">
     <title>网页调用微信Jssdk实现扫一扫功能</title>
 </head>
 <body>
 <button id="scanQRCode">扫一扫</button>
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="jquery-weui-1.2.1/jquery-weui-1.2.1.min.js"></script>
 <script src="//res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
 <script src="sha1/sha1.js"></script>
 <script src="js/jquery.cookie.js"></script>
@@ -61,15 +64,16 @@ function guid() {
     return uuid;
 }
 
+
 //公众号可以使用AppID和AppSecret调用本接口来获取access_token
-function WXgetAccessToken(config,callback){
+function WXgetAccessToken(config, callback) {
     $.ajax({
         url: "https://api.weixin.qq.com/cgi-bin/token",
         type: "get",
         data: {
-            grant_type:"client_credential",//获取access_token填写client_credential
-            appid:config.appid,//第三方用户唯一凭证
-            secret:config.secret,//第三方用户唯一凭证密钥，即appsecret
+            grant_type: "client_credential",//获取access_token填写client_credential
+            appid: config.appid,//第三方用户唯一凭证
+            secret: config.secret,//第三方用户唯一凭证密钥，即appsecret
         },
         dataType: 'json',
         success: function (result) {
@@ -77,19 +81,19 @@ function WXgetAccessToken(config,callback){
             callback(result)
         },
         error: function (request) {
-            alert(request.responseText||request.statusText);
+            $.toast(request.responseText || request.statusText,"forbidden");
         }
     });
 }
 
-//公众号可以根据access_token获取公用于调用微信JS接口的临时票据jsapi_ticket，并生成JS-SDK权限验证的签名
-function WXgetJsapi_ticket(config,callback){
+//公众号可以根据access_token获取公众号用于调用微信JS接口的临时票据jsapi_ticket，并生成JS-SDK权限验证的签名
+function WXgetJsapi_ticket(config, callback) {
     $.ajax({
         url: "https://api.weixin.qq.com/cgi-bin/ticket/getticket",
         type: "get",
         data: {
-            access_token:config.access_token,
-            type:"jsapi"
+            access_token: config.access_token,
+            type: "jsapi"
         },
         dataType: 'json',
         success: function (result) {
@@ -101,19 +105,29 @@ function WXgetJsapi_ticket(config,callback){
              "ticket":"bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA",
              "expires_in":7200
              }
-            **/
+             **/
             callback(result)
         },
         error: function (request) {
-            alert(request.responseText||request.statusText);
+            $.toast(request.responseText || request.statusText, "forbidden");
         }
     });
 }
 
 //调用微信扫一扫功能
-function WXScanQRCode(config,callback) {
+/*
+ config:{
+ debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+ appId: '', // 必填，公众号的唯一标识
+ timestamp: '', // 必填，生成签名的时间戳
+ nonceStr: '', // 必填，生成签名的随机串
+ signature: '',// 必填，签名
+
+ }
+ */
+function WXScanQRCode(config, callback) {
     wx.config({
-        debug: config.debug||false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        debug: config.debug || false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: config.appId, // 必填，公众号的唯一标识
         timestamp: config.timestamp, // 必填，生成签名的时间戳
         nonceStr: config.nonceStr, // 必填，生成签名的随机串
@@ -131,72 +145,84 @@ function WXScanQRCode(config,callback) {
                 // 如：{"checkResult":{"scanQRCode":true},"errMsg":"checkJsApi:ok"}
                 if (!res.checkResult.scanQRCode) {
                     alert("当前客户端版本不支持微信扫一扫功能!")
-                }else{
+                } else {
                     callback()
                 }
             }
         });
     });
     wx.error(function (res) {
-        alert("wx.config配置信息验证失败!")
+        $.toast("wx.config配置信息验证失败!", "forbidden");
         // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
     });
 }
 
-if(!$.cookie('jsapi_ticket')){//一旦过期，值是undefined
-    WXgetAccessToken({appid:"",secret:""},function(result){
-        var access_token=result.access_token;
-        WXgetJsapi_ticket({access_token:access_token},function(res){
-            if(!res.errcode){
-                var jsapi_ticket=res.ticket
-                var noncestr=guid();//
-                var timestamp=new Date().getTime();
-                var url=location.href.split('#')[0];
 
-                var string1=formatToStr("jsapi_ticket={0}&noncestr={1}&timestamp={2}&url={3}",jsapi_ticket,noncestr,timestamp,url)
-                var signature=hex_sha1(string1);
+
+
+//获取微信签名信息
+if ($.cookie('jsapi_ticket')) {//一旦过期，值是undefined
+    WXgetAccessToken({ appid: "", secret: "" }, function (result) {
+        var access_token = result.access_token;
+        WXgetJsapi_ticket({ access_token: access_token }, function (res) {
+            if (!res.errcode) {
+                var jsapi_ticket = res.ticket
+                var noncestr = guid();
+                var timestamp = new Date().getTime();
+                var url = location.href.split('#')[0];
+
+                var string1 = $tool._formatToStr("jsapi_ticket={0}&noncestr={1}&timestamp={2}&url={3}", jsapi_ticket, noncestr, timestamp, url)
+                var signature = hex_sha1(string1);
 
                 //确认config中nonceStr（js中驼峰标准大写S）, timestamp与用以签名中的对应noncestr, timestamp一致。
-                localStorage.setItem("noncestr",noncestr);
-                localStorage.setItem("timestamp",timestamp);
-                localStorage.setItem("signature",signature);
+                localStorage.setItem("noncestr", noncestr);
+                localStorage.setItem("timestamp", timestamp);
+                localStorage.setItem("signature", signature);
 
                 //设置jsapi_ticket过期时间
-                var date=new Date();
-                var minutes=res.expires_in/60;
-                date.setMinutes(date.getMinutes()+minutes);
-                $.cookie('jsapi_ticket',res.ticket,{expires: date});
-            }else{
-                alert(res.errmsg)
+                var date = new Date();
+                var minutes = res.expires_in / 60;
+                date.setMinutes(date.getMinutes() + minutes);
+                $.cookie('jsapi_ticket', res.ticket, { expires: date });
+            } else {
+                $.toast(res.errmsg, "forbidden");
             }
         })
     })
 }
 
-$("#scanQRCode").click(function(){
-    var noncestr=localStorage.getItem(noncestr);
-    var timestamp=localStorage.getItem(timestamp);
-    var signature=localStorage.getItem(signature);
+//调用微信扫一扫功能
+$("#scanQRCode").click(function () {
+    //信息框
+    layer.open({
+        content: '请配置微信公众号中的AppID和AppSecret及IP白名单后再使用【扫一扫】功能！'
+        , btn: '我知道了'
+    });
+    return false
+
+    var noncestr = localStorage.getItem(noncestr);
+    var timestamp = localStorage.getItem(timestamp);
+    var signature = localStorage.getItem(signature);
     //调用微信扫一扫功能
     WXScanQRCode({
         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: "", // 必填，公众号的唯一标识
         timestamp: timestamp, // 必填，生成签名的时间戳
-        nonceStr:noncestr, // 必填，生成签名的随机串
+        nonceStr: noncestr, // 必填，生成签名的随机串
         signature: signature,// 必填，签名
         jsApiList: ['checkJsApi', 'scanQRCode'] // 必填，需要使用的JS接口列表
-    },function(){
+    }, function () {
         //配置成功后
         wx.scanQRCode({
             needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
             scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
             success: function (res) {
                 var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+
             }
         });
     })
 })
-
 </script>
 </body>
 </html>

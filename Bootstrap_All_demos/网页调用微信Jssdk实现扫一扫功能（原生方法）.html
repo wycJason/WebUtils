@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>网页调用微信Jssdk实现扫一扫功能</title>
+</head>
+<body>
+<button id="scanQRCode">扫一扫</button>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="//res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script src="sha1/sha1.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+//前端示例1https://www.jianshu.com/p/a4aea4d12c23
+// 前端示例2：https://www.cnblogs.com/xiaoxiaossrs/p/7101486.html
+//前后端示例：https://www.cnblogs.com/iBensonZ/p/4514136.html
+//微信开发文档：https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115
+//微信access_token 获取校验工具  https://mp.weixin.qq.com/debug/cgi-bin/apiinfo?t=index&type=%E5%9F%BA%E7%A1%80%E6%94%AF%E6%8C%81&form=%E8%8E%B7%E5%8F%96access_token%E6%8E%A5%E5%8F%A3%20/token
+//微信 JS 接口签名校验工具:http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign
+//js实现sha1加密算法   https://blog.csdn.net/qq_34968966/article/details/78035090
+//微信jssdk中请求得到access_token遇到跨域问题，改写为jsonp，报错? https://segmentfault.com/q/1010000013455511
+/*
+ invalid signature签名错误。建议按如下顺序检查：
+
+ 1.确认签名算法正确，可用http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign 页面工具进行校验。
+
+ 2.确认config中nonceStr（js中驼峰标准大写S）, timestamp与用以签名中的对应noncestr, timestamp一致。
+
+ 3.确认url是页面完整的url(请在当前页面alert(location.href.split('#')[0])确认)，包括'http(s)://'部分，以及'？'后面的GET参数部分,但不包括'#'hash后面的部分。
+
+ 4.确认 config 中的 appid 与用来获取 jsapi_ticket 的 appid 一致。
+
+ 5.确保一定缓存access_token和jsapi_ticket。
+
+ 6.确保你获取用来签名的url是动态获取的，动态页面可参见实例代码中php的实现方式。如果是html的静态页面在前端通过ajax将url传到后台签名，前端需要用js获取当前页面除去'#'hash部分的链接（可用location.href.split('#')[0]获取,而且需要encodeURIComponent），因为页面一旦分享，微信客户端会在你的链接末尾加入其它参数，如果不是动态获取当前链接，将导致分享后的页面签名失败。
+*/
+
+
+
+//格式化字符串  console.log(formatToStr("我是{0},我今年{1}",name,age))
+function formatToStr() {
+    if (arguments.length == 0)
+        return null;
+    var result = arguments[0];
+    for (var i = 1; i < arguments.length; i++) {
+        var re = new RegExp('\\{' + (i - 1) + '\\}', 'gm');
+        result = result.replace(re, arguments[i]);
+    }
+    return result;
+}
+//生成唯一的GUID值
+function guid() {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    return uuid;
+}
+
+//公众号可以使用AppID和AppSecret调用本接口来获取access_token
+function WXgetAccessToken(config,callback){
+    $.ajax({
+        url: "https://api.weixin.qq.com/cgi-bin/token",
+        type: "get",
+        data: {
+            grant_type:"client_credential",//获取access_token填写client_credential
+            appid:config.appid,//第三方用户唯一凭证
+            secret:config.secret,//第三方用户唯一凭证密钥，即appsecret
+        },
+        dataType: 'json',
+        success: function (result) {
+            //正常情况下，微信会返回下述JSON数据包给公众号： {"access_token":"ACCESS_TOKEN","expires_in":7200}
+            callback(result)
+        },
+        error: function (request) {
+            alert(request.responseText||request.statusText);
+        }
+    });
+}
+
+//公众号可以根据access_token获取公众号用于调用微信JS接口的临时票据jsapi_ticket，并生成JS-SDK权限验证的签名
+function WXgetJsapi_ticket(config,callback){
+    $.ajax({
+        url: "https://api.weixin.qq.com/cgi-bin/ticket/getticket",
+        type: "get",
+        data: {
+            access_token:config.access_token,
+            type:"jsapi"
+        },
+        dataType: 'json',
+        success: function (result) {
+            //正常情况下，微信会返回下述JSON数据包给公众号
+            /*
+             {
+             "errcode":0,
+             "errmsg":"ok",
+             "ticket":"bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA",
+             "expires_in":7200
+             }
+            **/
+            callback(result)
+        },
+        error: function (request) {
+            alert(request.responseText||request.statusText);
+        }
+    });
+}
+
+//调用微信扫一扫功能
+/*
+ config:{
+ debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+ appId: '', // 必填，公众号的唯一标识
+ timestamp: '', // 必填，生成签名的时间戳
+ nonceStr: '', // 必填，生成签名的随机串
+ signature: '',// 必填，签名
+ }
+ */
+function WXScanQRCode(config,callback) {
+    wx.config({
+        debug: config.debug||false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: config.appId, // 必填，公众号的唯一标识
+        timestamp: config.timestamp, // 必填，生成签名的时间戳
+        nonceStr: config.nonceStr, // 必填，生成签名的随机串
+        signature: config.signature,// 必填，签名
+        jsApiList: ['checkJsApi', 'scanQRCode'] // 必填，需要使用的JS接口列表
+    });
+    wx.ready(function () {
+        // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+
+        //判断当前客户端版本是否支持指定JS接口
+        wx.checkJsApi({
+            jsApiList: ['scanQRCode'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+            success: function (res) {
+                // 以键值对的形式返回，可用的api值true，不可用为false
+                // 如：{"checkResult":{"scanQRCode":true},"errMsg":"checkJsApi:ok"}
+                if (!res.checkResult.scanQRCode) {
+                    alert("当前客户端版本不支持微信扫一扫功能!")
+                }else{
+                    callback()
+                }
+            }
+        });
+    });
+    wx.error(function (res) {
+        alert("wx.config配置信息验证失败!")
+        // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+    });
+}
+
+//获取微信签名信息
+if(!$.cookie('jsapi_ticket')){//一旦过期，值是undefined
+    WXgetAccessToken({appid:"",secret:""},function(result){
+        var access_token=result.access_token;
+        WXgetJsapi_ticket({access_token:access_token},function(res){
+            if(!res.errcode){
+                var jsapi_ticket=res.ticket
+                var noncestr=guid();//
+                var timestamp=new Date().getTime();
+                var url=location.href.split('#')[0];
+
+                var string1=formatToStr("jsapi_ticket={0}&noncestr={1}&timestamp={2}&url={3}",jsapi_ticket,noncestr,timestamp,url)
+                var signature=hex_sha1(string1);
+
+                //确认config中nonceStr（js中驼峰标准大写S）, timestamp与用以签名中的对应noncestr, timestamp一致。
+                localStorage.setItem("noncestr",noncestr);
+                localStorage.setItem("timestamp",timestamp);
+                localStorage.setItem("signature",signature);
+
+                //设置jsapi_ticket过期时间
+                var date=new Date();
+                var minutes=res.expires_in/60;
+                date.setMinutes(date.getMinutes()+minutes);
+                $.cookie('jsapi_ticket',res.ticket,{expires: date});
+            }else{
+                alert(res.errmsg)
+            }
+        })
+    })
+}
+
+//调用微信扫一扫功能
+$("#scanQRCode").click(function(){
+    var noncestr=localStorage.getItem(noncestr);
+    var timestamp=localStorage.getItem(timestamp);
+    var signature=localStorage.getItem(signature);
+    //调用微信扫一扫功能
+    WXScanQRCode({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: "", // 必填，公众号的唯一标识
+        timestamp: timestamp, // 必填，生成签名的时间戳
+        nonceStr:noncestr, // 必填，生成签名的随机串
+        signature: signature,// 必填，签名
+        jsApiList: ['checkJsApi', 'scanQRCode'] // 必填，需要使用的JS接口列表
+    },function(){
+        //配置成功后
+        wx.scanQRCode({
+            needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+            scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+            success: function (res) {
+                var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+            }
+        });
+    })
+})
+</script>
+</body>
+</html>
