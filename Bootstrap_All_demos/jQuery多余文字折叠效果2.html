@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery多余文字折叠效果</title>
+    <style>
+        .checkmore{
+            margin: 50px auto;
+            padding: 8px;
+            border: 1px solid #dddcdd;
+            width: 500px;
+            text-align: justify;
+        }
+        .text{
+            overflow: hidden;
+        }
+        .moreon,.moreoff{
+            cursor:pointer;
+        }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="checkmore">
+    <div class="text">
+        我是爱德华，来自美国旧金山，会英语，德语，法语，毕业于加你福尼亚大学；
+        我是爱德华，来自美国旧金山我是爱德华，来自美国旧金山，会英语，德语，法语，毕业于加你福尼亚大学；
+        我是爱德华，来自美国旧金山，会英语，德语，法语，毕业于加你福尼亚大学；
+        我是爱德华，来自美国旧金山我是爱德华，来自美国旧金山，会英语，德语，法语，毕业于加你福尼亚大学；
+        我是爱德华，来自美国旧金山，会英语，德语，法语，毕业于加你福尼亚大学；
+        我是爱德华，来自美国旧金山我是爱德华，来自美国旧金山，会英语，德语，法语，毕业于加你福尼亚大学；
+        我是爱德华，来自美国旧金山，会英语，德语，法语，毕业于加你福尼亚大学；
+        我是爱德华，来自美国旧金山我是爱德华，来自美国旧金山，会英语，德语，法语，毕业于加你福尼亚大学；
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+    $(function() {
+        function off(){
+            var $this=$(".text");
+            var  height=  $this.height();
+            if(height>88) {
+                $this.css("height","88");
+                $this.addClass('moreon');
+                $this.removeClass("moreoff");
+            }
+        }
+        off()
+
+        $(".checkmore").on('click','.moreon',function(){
+            $(this).parent().children(".text").css("height","auto");
+            $(this).removeClass("moreon");
+            $(this).addClass("moreoff");
+        });
+
+        $(".checkmore").on('click','.moreoff',function(){
+            off()
+        });
+    });
+</script>
+</body>
+</html>

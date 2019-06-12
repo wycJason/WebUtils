@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TinyMCE 5.0富文本编辑器</title>
+</head>
+<body>
+<form method="post">
+    <textarea id="mytextarea">你好，世界!</textarea>
+</form>
+<!--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>-->
+<script src="tinymce/tinymce.min.js"></script>
+<script src="tinymce/langs/zh_CN.js"></script>
+<script>
+    //https://blog.csdn.net/lanming0326/article/details/80860158
+    //https://www.tiny.cloud/
+    tinymce.init({
+        selector: 'textarea',
+        language: 'zh_CN',
+        //statusbar:false,//设为false可以隐藏状态栏。
+        //menubar: false,//菜单栏隐藏  menubar:'file edit view',
+       /* menu:{
+            view: {title: '134', items: 'cut, copy,paste'}
+        }*/
+        //toolbar: false
+        /*toolbar: [
+            'undo redo | styleselect | bold italic |link image',
+            'alignleft aligncenter alignright'
+        ]*/
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kindEditor</title>
+    <style>
+        .ke-icon-hello {
+            background-image: url(themes/default/default.png);
+            background-position: 0px -672px;
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+</head>
+<body>
+<textarea id="editor_id" name="content" style="width:700px;height:300px;"></textarea>
+<script src="kindeditor-all-min.js"></script>
+<script src="lang/zh-CN.js"></script>
+<script>
+    var editor=null;
+    KindEditor.lang({
+        hello : '你好' //取得语言（工具提示）
+    });
+    KindEditor.ready(function(K) {
+        editor = K.create('#editor_id', {
+            items : ['emoticons','image','insertfile','hello']
+        });
+    });
+</script>
+</body>
+</html>

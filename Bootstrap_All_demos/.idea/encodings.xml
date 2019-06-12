@@ -7,12 +7,14 @@
     <file url="file://$PROJECT_DIR$/jQueryWeui/dist/js/jQuery WeUI V1.2.0.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/js/publicClass.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/js/pulicClassMethods.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kindeditor/plugins/hello/hello.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/layim-v3.7.7-pro(contenteditable可插入图片、表情)/extendModule/demo.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/layim-v3.7.7-pro(contenteditable可插入图片、表情)/extendModule/mymod.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/layim-v3.7.7-pro/extendModule/demo.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/layim-v3.7.7-pro/extendModule/mymod.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/layui-v2.1.5/user.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sha1/sha1.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tinymce/tinymce.min.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/websocket_demo/server.js" charset="UTF-8" />
   </component>
 </project>
