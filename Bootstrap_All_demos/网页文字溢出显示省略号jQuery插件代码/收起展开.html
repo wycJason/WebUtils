@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>网页文字溢出显示省略号jQuery插件代码</title>
+<script type="text/javascript" src="src/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" language="javascript" src="src/jquery.dotdotdot.js"></script>
+<script type="text/javascript" language="javascript">
+	$(function() {
+		var $dot5 = $('#dot5');
+		$dot5.append( ' <a class="toggle" href="javascript:;"><span class="open">[ 详情 ]</span><span class="close">[ 收起 ]</span></a>' );
+		function createDots()
+		{
+			$dot5.dotdotdot({
+				after: 'a.toggle'
+			});
+		}
+		function destroyDots() {
+			$dot5.trigger( 'destroy' );
+		}
+		createDots();
+
+		$dot5.on('click','a.toggle',function() {
+				$dot5.toggleClass( 'opened' );
+				if ( $dot5.hasClass( 'opened' ) ) {
+					destroyDots();
+				} else {
+					createDots();
+				}
+				return false;
+			}
+		);
+	});
+</script>
+<style>
+	div.box {
+		border: 1px solid #ccc;
+		height: 80px;
+		padding: 15px 20px 10px 20px;
+	}
+	div.box.opened
+	{
+		height: auto;
+	}
+	div.box .toggle .close,
+	div.box.opened .toggle .open
+	{
+		display: none;
+	}
+	div.box .toggle .opened,
+	div.box.opened .toggle .close
+	{
+		display: inline;
+	}
+	div.box.after {
+		background-color: #eeffee;
+	}
+</style>
+</head>
+<body>
+<div id="dot5" class="box after" >
+	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad autem beatae eos est minus natus necessitatibus! Alias asperiores aut blanditiis, cupiditate doloremque eos, est et maiores neque recusandae repudiandae velit!
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, cum debitis deserunt eos ex fugit laborum libero molestiae natus numquam quas quibusdam similique ut! Consectetur eveniet illum reprehenderit tempore ut.
+</div>
+</body>
+</html>

@@ -24,50 +24,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kindeditor/index.html">
+      <file leaf-file-name="jQueryWeUI表单.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jQueryWeUI表单.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.65625">
-              <caret line="19" column="16" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="16" />
-              <folding>
-                <element signature="n#style#0;n#textarea#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="210" column="16" selection-start-line="210" selection-start-column="16" selection-end-line="210" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hello.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kindeditor/plugins/hello/hello.js">
+      <file leaf-file-name="收起展开.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/网页文字溢出显示省略号jQuery插件代码/收起展开.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.12834822">
-              <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#41#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-6.133333">
+              <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hello.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kindeditor/hello.html">
+      <file leaf-file-name="textarea如何实现高度自适应（不出现滚动条）.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/textarea如何实现高度自适应（不出现滚动条）.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.21875">
-              <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-              <folding>
-                <element signature="n#style#0;n#textarea#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-6.46875">
+              <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qq.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kindeditor/qq.html">
+      <file leaf-file-name="test.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/jQuery点击图片弹出放大预览 Lightbox插件/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-48.125">
-              <caret line="73" column="138" selection-start-line="73" selection-start-column="138" selection-end-line="73" selection-end-column="138" />
-              <folding>
-                <element signature="n#style#0;n#textarea#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.13310185">
+              <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="全局CSS样式——图片.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/全局CSS样式——图片.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.75">
+              <caret line="40" column="25" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,10 +82,10 @@
         <option value="CSS File" />
         <option value="Vue" />
         <option value="ES6转ES5" />
-        <option value="BootStrap" />
         <option value="Html5" />
-        <option value="H5" />
         <option value="JavaScript File" />
+        <option value="BootStrap" />
+        <option value="H5" />
       </list>
     </option>
   </component>
@@ -93,11 +95,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FileReader+canvas实现等比例压缩上传.html" />
-        <option value="$PROJECT_DIR$/[HTML5] FileReader对象,在线预览本地图片.html" />
-        <option value="$PROJECT_DIR$/自定义字体.html" />
-        <option value="$PROJECT_DIR$/构造函数.html" />
-        <option value="$PROJECT_DIR$/H5标准的拍照上传Github源文件/demo.html" />
         <option value="$PROJECT_DIR$/H5标准的拍照上传Github源文件/js/cslCamera.js" />
         <option value="$PROJECT_DIR$/File() 构造器创建新的 File 对象实例.html" />
         <option value="$PROJECT_DIR$/文件上传按钮.html" />
@@ -133,7 +130,6 @@
         <option value="$PROJECT_DIR$/ECharts百度图表.html" />
         <option value="$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能.html" />
         <option value="$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能（JQ-WEUI方法）.html" />
-        <option value="$PROJECT_DIR$/函数.html" />
         <option value="$PROJECT_DIR$/tinymce/TinyMCE 5.0富文本编辑器.html" />
         <option value="$PROJECT_DIR$/tinymce/tinymce.min.js" />
         <option value="$PROJECT_DIR$/TinyMCE 5.0富文本编辑器.html" />
@@ -144,6 +140,12 @@
         <option value="$PROJECT_DIR$/kindeditor/QQ.html" />
         <option value="$PROJECT_DIR$/kindeditor/plugins/hello/hello.js" />
         <option value="$PROJECT_DIR$/kindeditor/hello.html" />
+        <option value="$PROJECT_DIR$/template元素.html" />
+        <option value="$PROJECT_DIR$/函数.html" />
+        <option value="$PROJECT_DIR$/匿名函数自调 .html" />
+        <option value="$PROJECT_DIR$/文字超长 显示省略号 展开 收起.html" />
+        <option value="$PROJECT_DIR$/网页文字溢出显示省略号jQuery插件代码/收起展开.html" />
+        <option value="$PROJECT_DIR$/textarea如何实现高度自适应（不出现滚动条）.html" />
       </list>
     </option>
   </component>
@@ -205,6 +207,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -237,7 +240,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kindeditor" />
+              <option name="myItemId" value="网页文字溢出显示省略号jQuery插件代码" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -251,14 +254,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
+              <option name="myItemId" value="jQuery点击图片弹出放大预览 Lightbox插件" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -279,11 +281,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\WebUtils\Bootstrap_All_demos\网页文字溢出显示省略号jQuery插件代码" />
       <recent name="C:\xampp\htdocs\WebUtils\Bootstrap_All_demos\kindeditor" />
       <recent name="C:\xampp\htdocs\WebUtils\Bootstrap_All_demos" />
       <recent name="C:\xampp\htdocs\WebUtils\Bootstrap_All_demos\Images" />
       <recent name="C:\xampp\htdocs\WebUtils\Bootstrap_All_demos\jQuery点击图片弹出放大预览 Lightbox插件" />
-      <recent name="C:\xampp\htdocs\Bootstrap_All_demos" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -298,20 +300,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.hello.html">
-    <configuration default="false" name="TinyMCE 5.0富文本编辑器.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/TinyMCE 5.0富文本编辑器.html">
+  <component name="RunManager" selected="JavaScript Debug.全局CSS样式——图片.html">
+    <configuration default="false" name="匿名函数自调 .html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/匿名函数自调 .html">
       <method />
     </configuration>
-    <configuration default="false" name="demo.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/ueditor-1.4.3.3/demo.html">
+    <configuration default="false" name="文字超长 显示省略号 展开 收起.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/文字超长 显示省略号 展开 收起.html">
       <method />
     </configuration>
-    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/kindeditor/index.html">
+    <configuration default="false" name="textarea如何实现高度自适应（不出现滚动条）.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/textarea如何实现高度自适应（不出现滚动条）.html">
       <method />
     </configuration>
-    <configuration default="false" name="qq.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/kindeditor/qq.html">
+    <configuration default="false" name="test.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/jQuery点击图片弹出放大预览 Lightbox插件/test.html">
       <method />
     </configuration>
-    <configuration default="false" name="hello.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/kindeditor/hello.html">
+    <configuration default="false" name="全局CSS样式——图片.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Bootstrap_All_demos/全局CSS样式——图片.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -358,19 +360,19 @@
       <item index="2" class="java.lang.String" itemvalue="Node.js.使用Node.js向一个文件中写出内容.js" />
       <item index="3" class="java.lang.String" itemvalue="Node.js.使用Node.js读取一个文件中的内容.js" />
       <item index="4" class="java.lang.String" itemvalue="Node.js.模板字符串1.js" />
-      <item index="5" class="java.lang.String" itemvalue="JavaScript Debug.TinyMCE 5.0富文本编辑器.html" />
-      <item index="6" class="java.lang.String" itemvalue="JavaScript Debug.demo.html" />
-      <item index="7" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
-      <item index="8" class="java.lang.String" itemvalue="JavaScript Debug.qq.html" />
-      <item index="9" class="java.lang.String" itemvalue="JavaScript Debug.hello.html" />
+      <item index="5" class="java.lang.String" itemvalue="JavaScript Debug.匿名函数自调 .html" />
+      <item index="6" class="java.lang.String" itemvalue="JavaScript Debug.文字超长 显示省略号 展开 收起.html" />
+      <item index="7" class="java.lang.String" itemvalue="JavaScript Debug.textarea如何实现高度自适应（不出现滚动条）.html" />
+      <item index="8" class="java.lang.String" itemvalue="JavaScript Debug.test.html" />
+      <item index="9" class="java.lang.String" itemvalue="JavaScript Debug.全局CSS样式——图片.html" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.hello.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.qq.html" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.demo.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.TinyMCE 5.0富文本编辑器.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.全局CSS样式——图片.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.test.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.textarea如何实现高度自适应（不出现滚动条）.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.文字超长 显示省略号 展开 收起.html" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.匿名函数自调 .html" />
       </list>
     </recent_temporary>
   </component>
@@ -395,7 +397,7 @@
     <option name="totallyTimeSpent" value="216000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2402529" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -497,76 +499,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/JQueryWeui标签页.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="16.5">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JQueryWeui面板.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.75">
-          <caret line="8" column="100" selection-start-line="8" selection-start-column="100" selection-end-line="8" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GitHub官方WEUI组件.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.96875">
-          <caret line="73" column="7" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-weui-1.2.1/jquery-weui-1.2.1.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery-weui-1.2.1/jquery-weui-1.2.1.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js实现文件下载自定义下载路径.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JS实现网页批量下载文件1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JS实现网页批量下载文件2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="9" selection-start-line="69" selection-start-column="23" selection-end-line="74" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/利用js 实现多文件下载(浏览器只弹出一个下载窗口，但是可以下载多个文件)1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="9" selection-start-line="36" selection-start-column="7" selection-end-line="46" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/组件——大杂烩（重点）.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="7" selection-start-line="18" selection-start-column="2" selection-end-line="23" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Images/aliPay.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -635,13 +567,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap-table3(JS渲染 本地数据-实用).html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.121527776">
-          <caret line="395" column="21" selection-start-line="395" selection-start-column="21" selection-end-line="395" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/简单原生js文字向上滚动消息框代码/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6006944">
@@ -698,13 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jQueryWeUI表单.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.65625">
-          <caret line="353" column="0" selection-start-line="353" selection-start-column="0" selection-end-line="353" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ueditor-1.4.3.3/UEditor工具栏上自定义按钮、图标、事件、窗口页面/UEditor工具栏上自定义按钮、图标、事件、窗口页面 .html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45544556">
@@ -719,20 +637,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/函数.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31944445">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能（JQ-WEUI方法）.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22800925">
-          <caret line="171" column="23" selection-start-line="171" selection-start-column="20" selection-end-line="171" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能（原生方法）.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7604167">
@@ -744,23 +648,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.94866073">
           <caret line="42" column="5319" selection-start-line="42" selection-start-column="5319" selection-end-line="42" selection-end-column="5319" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jQuery多余文字折叠效果1.html">
+    <entry file="file://$PROJECT_DIR$/jQuery多余文字折叠效果1（省略号）.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5208333">
           <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jQuery多余文字折叠效果2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6805556">
-          <caret line="59" column="40" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -768,7 +662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.52272725">
           <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -776,7 +669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3726852">
           <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -784,7 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3726852">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,7 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,6 +690,105 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kindeditor/themes/default/default.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kindeditor/php/upload_json.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.2578125">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kindeditor/plugins/insertfile/insertfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.387277">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kindeditor/qq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="138" selection-start-line="73" selection-start-column="138" selection-end-line="73" selection-end-column="138" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kindeditor/plugins/hello/hello.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12834822">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap-table3(JS渲染 本地数据-实用).html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="21" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="21" />
+          <folding>
+            <marker date="1559542115083" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1559542115083" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template元素.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/函数.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/全局CSS样式——表单.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="154" column="10" selection-start-line="154" selection-start-column="10" selection-end-line="154" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kindeditor/hello.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.3125">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#textarea#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/匿名函数自调 .html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.011574074">
+          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kindeditor/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.15625">
+          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/网页调用微信Jssdk实现扫一扫功能（JQ-WEUI方法）.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="171" column="53" selection-start-line="171" selection-start-column="26" selection-end-line="171" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -812,70 +801,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kindeditor/themes/default/default.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kindeditor/index.html">
+    <entry file="file://$PROJECT_DIR$/网页文字溢出显示省略号jQuery插件代码/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.65625">
-          <caret line="19" column="16" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#textarea#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kindeditor/php/upload_json.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.2578125">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-3.59375">
+          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kindeditor/plugins/insertfile/insertfile.js">
+    <entry file="file://$PROJECT_DIR$/网页文字溢出显示省略号jQuery插件代码/src/jquery.dotdotdot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.387277">
+        <state vertical-scroll-proportion="-6.776786">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1459424852000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1459424852000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1459424852000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1459424852000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1459424852000" expanded="true" signature="-1:-1" placeholder="..." />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kindeditor/qq.html">
+    <entry file="file://$PROJECT_DIR$/jQuery多余文字折叠效果2（省略号）.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-48.125">
-          <caret line="73" column="138" selection-start-line="73" selection-start-column="138" selection-end-line="73" selection-end-column="138" />
-          <folding>
-            <element signature="n#style#0;n#textarea#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.5729167">
+          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kindeditor/hello.html">
+    <entry file="file://$PROJECT_DIR$/文字超长 显示省略号 展开 收起.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.21875">
-          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#textarea#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.5474537">
+          <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kindeditor/plugins/hello/hello.js">
+    <entry file="file://$PROJECT_DIR$/jQueryWeUI表单.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12834822">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="210" column="16" selection-start-line="210" selection-start-column="16" selection-end-line="210" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/网页文字溢出显示省略号jQuery插件代码/收起展开.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.133333">
+          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/全局CSS样式——图片.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.75">
+          <caret line="40" column="25" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/textarea如何实现高度自适应（不出现滚动条）.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.46875">
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jQuery点击图片弹出放大预览 Lightbox插件/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13310185">
+          <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
+          <folding />
         </state>
       </provider>
     </entry>

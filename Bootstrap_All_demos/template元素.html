@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<template id="tpl">
+    <img src="img/1.jpg">
+</template>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+//https://www.jianshu.com/p/e97206794404
+    var template = document.getElementById('tpl');
+    var image_first = template.content.querySelector("img");
+    var clone = document.importNode(template.content, true);
+    console.log(image_first)
+    console.log(template.innerHTML)
+    console.log(clone.children[0])
+</script>
+</body>
+</html>

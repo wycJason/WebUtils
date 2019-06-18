@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>文字超长 显示省略号 展开 收起</title>
+    <style>
+        .context-wrap{
+            color: #3f3f3f;
+            white-space: normal;
+            word-wrap: break-word;
+            margin-top: 8px;
+            font-size: 16px;
+            line-height: 30px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            min-height: 30px;
+        }
+        .on {
+            color: #3f3f3f;
+            white-space: normal;
+            word-wrap: break-word;
+            margin-top: 8px;
+            font-size: 16px;
+            line-height: 30px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            min-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div  id="test" class="context-wrap">
+        mayouchen,mayouchen,maouchen,mayouchen.mayoucen,mayouchen,mayouchen,maouchen,mayouchen.mayoucen,mayouchen,mayouchen,maouchen,mayouchen.mayouce,ayouchen,mayouchen,maouchen,mayouchen.mayoucen,mayouchen,mayouchen,maouchen,mayouchen.mayoucen,1111111111122222222222222222224444444444444444555
+    </div>
+
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    //IE下无效果
+    window.onload = function(e){
+        document.getElementById("test").onclick = function(e){
+            if($("#test").hasClass("on")){
+                $("#test").removeClass("on").addClass("context-wrap");
+            }else{
+                $("#test").removeClass("context-wrap").addClass("on");
+            }
+        };
+    }
+</script>
+</body>
+</html>
