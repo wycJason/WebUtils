@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="layui-v2.5.4/layui/css/layui.css"/>
+    <title>layui点击图片预览</title>
+</head>
+<body>
+<img class="avatar-round" src="https://download1.100mubiao.com/group1/M00/00/94/wKhkHlfSgbKEcz4dAAAAANeY9BA545.png" alt="头像" onclick="previewImg(this)">
+<img class="avatar-round" src="https://download1.100mubiao.com/group1/M00/00/94/wKhkHlfSgbKEcz4dAAAAANeY9BA545.png" alt="头像" onclick="previewFixImg(this)">
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="layui-v2.5.4/layui/layui.all.js"></script>
+<script>
+//https://blog.csdn.net/l1336037686/article/details/80819477
+ var layer=layui.layer;
+ function previewImg(obj) {
+     var img = new Image();
+     img.src = obj.src;
+     var height = img.height + 50; //获取图片高度
+     var width = img.width; //获取图片宽度
+     var imgHtml = "<img src='" + obj.src + "' />";
+     //弹出层
+     layer.open({
+         type: 1,
+         shade: 0.8,
+         offset: 'auto',
+         area: [width + 'px',height+'px'],
+         shadeClose:true,//点击外围关闭弹窗
+         scrollbar: false,//不现实滚动条
+         title: "图片预览", //不显示标题
+         content: imgHtml, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+         cancel: function () {
+             //layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', { time: 5000, icon: 6 });
+         }
+     });
+ }
+
+
+ //固定预览图片大小 500 * 500
+function previewFixImg(obj) {
+    var img = new Image();
+    img.src = obj.src;
+    var imgHtml = "<img src='" + obj.src + "' width='500px' height='500px'/>";
+    //弹出层
+    layer.open({
+        type: 1,
+        shade: 0.8,
+        offset: 'auto',
+        area: [500 + 'px',550+'px'],
+        shadeClose:true,
+        scrollbar: false,
+        title: "图片预览", //不显示标题
+        content: imgHtml, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+        cancel: function () {
+            //layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', { time: 5000, icon: 6 });
+        }
+    });
+}
+
+</script>
+</body>
+</html>
