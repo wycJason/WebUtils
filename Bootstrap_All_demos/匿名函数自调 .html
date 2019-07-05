@@ -17,6 +17,7 @@
 <script>
     //参考网址：http://blog.csdn.net/limlimlim/article/details/9198111
     //自执行函数表达式：在一个表达式后面加上括号()，该表达式会立即执行
+
     //要解决上述问题，非常简单，我们只需要用大括号（）将全部的代码括住就行了，
     //因为JavaScript里括号()里面不能包含语句，所以在这一点上，解析器在解析function关键字的时候，
     // 会将相应的代码解析成function表达式，而不是function声明。在一个表达式后面加上括号()，该表达式会立即执行
@@ -34,15 +35,20 @@
     //可以将上面的代码拆分成两部分：(function(){}) 和 () , 第1个() 是一个表达式，而这个表达式本身是一个匿名函数，所以在这个表达式后面加 () 就表示执行这个匿名函数。
 
     //以下是函数表达式
-    var f = function () {  console.log(3) } ();//f()   因为i仅仅是function() { /* code */ }这个表达式的一个引用
+    var f = function () {  console.log(3) } ();//f()   因为f仅仅是function() { /* code */ }这个表达式的一个引用
     true && function () { console.log(4)  } ();//短路逻辑
+
     0, function () { console.log(5) } ();
 
     !function () {console.log(6)  } ();
     ~function () { console.log(7)  } ();
     -function () { console.log(8)  } ();
     +function () { console.log(9)  } ();
-    ;!function(){console.log(10)}();
+
+    ;!function () {console.log(10)  } ();
+    ;~function () { console.log(11)  } ();
+    ;-function () { console.log(12)  } ();
+    ;+function () { console.log(13)  } ();
 </script>
 </body>
 </html>
