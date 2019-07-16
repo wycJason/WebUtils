@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<div id="cea" style="border: 1px solid #dddddd;width: 600px;height: 300px;margin: 0 auto" contenteditable="true">
+
+</div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    function atRender(name, usersign) {
+        var cvs = document.createElement('canvas');
+        var ctx = cvs.getContext('2d');
+
+        var txt = '@' + name;
+        var nameWidth = ctx.measureText(txt).width;//谷歌比IE浏览器测出的多20
+        var txtWidth = Math.floor(nameWidth) * 1.6;
+        cvs.width = txtWidth;
+        cvs.height = 20;
+
+        //将文本绘制在左上角
+        ctx.font = '14px sans-serif';
+        ctx.textBaseline = 'bottom';
+        ctx.fillStyle = '#006EFE';
+        ctx.fillText(txt, 3, 18);
+
+        var image = new Image();
+        image.src = cvs.toDataURL("image/png", 0.85);
+        //设置自定义属性和添加at类
+        image.setAttribute("data-username", name);
+        image.setAttribute("data-usersign", usersign);
+        image.className = "at"
+
+        $('#cea').append(image);
+    }
+    //atRender("王愿超", 132456)
+
+
+
+
+
+    //@人员变图片--参考
+    function atRenders(name, usersign, $txt) {
+        var cvs = document.createElement('canvas');
+        var ctx = cvs.getContext('2d');
+
+        var txt = '@' + name;
+        var nameWidth = ctx.measureText(txt).width;//谷歌比IE浏览器测出的多20
+        var txtWidth = Math.floor(nameWidth) * 1.6;
+        cvs.width = txtWidth;
+        cvs.height = 20;
+
+        //将文本绘制在左上角
+        ctx.font = '14px sans-serif';
+        ctx.textBaseline = 'bottom';
+        ctx.fillStyle = '#006EFE';
+        ctx.fillText(txt, 3, 18);
+
+        var image = new Image();
+        image.src = cvs.toDataURL("image/png", 0.85);
+        //设置自定义属性和添加at类
+        image.setAttribute("data-username", name);
+        image.setAttribute("data-usersign", usersign);
+        image.className = "at"
+        $txt.append(image);
+
+        //设置光标置于文本输入域最后
+        if (window.getSelection) {
+            var sel = window.getSelection();//表示用户选择的文本范围或光标的当前位置    window.getSelection().toString() 得到用户被选中的文本
+            if (sel.getRangeAt && sel.rangeCount) {
+                var range = sel.getRangeAt(0);//返回一个包含当前选区内容的区域对象。  将返回 range 对象     index 该参数指定需要被处理的子集编号（从零开始计数）。如果该数值被错误的赋予了大于或等于 rangeCount 结果的数字，将会产生错误。Range表示包含节点和部分文本节点的文档片段  https://developer.mozilla.org/zh-CN/docs/Web/API/Range
+                range = range.cloneRange();
+                range.setStartAfter($(".at:last")[0]);
+                range.collapse(true);
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+        }
+    }
+</script>
+</body>
+</html>

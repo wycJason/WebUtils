@@ -14,7 +14,7 @@
 <script>
     //每个 Vue 实例都会代理其 data 对象里所有的属性：
     //this 指向调用它的 Vue 实例
-    //组件要在new Vue之前；组件在注册之后，便可以在[父实例的模块]中以自定义元素 <my-component></my-component> 的形式使用。要确保在初始化根实例之前注册了组件：
+    //组件要在new Vue之前注册；组件在注册之后，便可以在[父实例的模块]中以自定义元素 <my-component></my-component> 的形式使用。要确保在初始化根实例之前注册了组件：
     //参考链接Prop：https://cn.vuejs.org/v2/guide/components.html#Prop
     Vue.component('todo-item', {
         template: '<button @click="child">{{mymsg}}:{{todo}}</button>',

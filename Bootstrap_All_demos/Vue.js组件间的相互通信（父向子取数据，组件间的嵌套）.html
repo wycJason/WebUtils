@@ -11,12 +11,14 @@
     <com-a></com-a>
 </div>
 
+
 <template id="testA">
     <div>
         <span>父组件 => {{msg}}</span>
         <com-b @child-msg="get"></com-b> <!-- 这个首先就是子组件的展示区，其次在挂载自定义事件，当子组件有数据发送的时候就会触发 -->
     </div>
 </template>
+
 <template id="testB">
     <div>
         <span>子组件</span>

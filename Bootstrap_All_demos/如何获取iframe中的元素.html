@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<iframe src="全局CSS样式——图片.html" id="frame1" width="100%" height="500"></iframe>
+<br /><br />
+<input type="button" onclick="getText()" value="Get text" />
+
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+    function getText()
+    {
+        var x=document.getElementById("frame1").contentDocument;
+        alert(x.getElementsByTagName("h3")[0].childNodes[0].nodeValue);
+    }
+
+</script>
+</body>
+</html>

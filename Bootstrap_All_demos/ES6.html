@@ -34,7 +34,7 @@
             this.type = 'animal'
         }
         says(say){
-            //var self = this;   内部的this使用外层代码块的this在内层函数体外绑定this即可。
+            //var self = this;   内部的this要使用外层代码块的this，需要在内层函数体外绑定this即可。
             setTimeout(function(){
                 console.log(this.type + ' says ' + say)
             }.bind(this), 1000)

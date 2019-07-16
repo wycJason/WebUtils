@@ -16,6 +16,15 @@
 <!--<script src="https://unpkg.com/vue/dist/vue.js"></script>-->
 <!--<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>-->
 <script>
+    /*
+     var Event = new Vue(); 准备一个空的实例对象，就要它身上的方法
+     Event.$emit('a-msg',a); 触发a-msg事件并传参数a
+     Event.$on('a-msg',function (a) { 监听a-msg事件并接收参数a
+     alert(a);//拿到a数据
+     })
+    */
+
+
     //准备一个空的实例对象，就要它身上的方法
     var Event = new Vue();//全局的
     var A = {
@@ -72,6 +81,7 @@
             }
         },
         created:function() {
+            //在实例创建完成后被立即调用
             alert('C组件加载完毕');
             //var _this = this;
             //接收a组件的数据
@@ -79,6 +89,9 @@
                 alert(a);//拿到a数据
                 this.a = a;
             }.bind(this));//需要绑定给函数
+
+
+
 
             var _this = this;
             //接收b组件的数据

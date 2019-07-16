@@ -68,8 +68,13 @@
 .up-opcity{
 	opacity: 0;
 }
-.img-name-p{
+.img-name-p {
 	display: none;
+	width: 190px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	text-align:center;
 }
 .upimg-div .up-section {
     width: 190px;
