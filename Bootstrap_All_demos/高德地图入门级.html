@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>高德地图入门级</title>
+    <style>
+        .gd-map{ height: 400px;margin-bottom: 50px }
+    </style>
+</head>
+<body>
+<div id="container" class="gd-map"></div>
+<div id="container1" class="gd-map"></div>
+<div id="container2" class="gd-map"></div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="//webapi.amap.com/maps?v=1.4.15&key=552083b37cb5ce74180c4ddc23e81271"></script>
+<script>
+    var map = new AMap.Map('container', {
+                resizeEnable: true, //是否监控地图容器尺寸变化
+                zoom:11, //初始化地图层级
+                center:  new AMap.LngLat(116.397428, 39.90923),//初始化地图中心点
+    });
+
+    var marker = new AMap.Marker({
+        position:new AMap.LngLat(116.397428, 39.90923),//位置  坐标标记
+        title: '北京',
+        label:{
+            offset: new AMap.Pixel(0, 0),  //设置文本标注偏移量
+            content: "我是 marker 的 label 标签", //设置文本标注内容
+            direction: 'top' //设置文本标注方位
+        }
+    })
+
+    map.add(marker);//添加到地图
+
+
+/*************************************************************************************************************************/
+    var map1 = new AMap.Map('container1', {
+        resizeEnable: true, //是否监控地图容器尺寸变化
+        zoom:11, //初始化地图层级
+        center:  new AMap.LngLat(116.397428, 39.90923),//初始化地图中心点
+    });
+
+    var marker1 = new AMap.Marker({
+        position: new AMap.LngLat(116.397428, 39.90923),//位置
+        title: '北京',
+        //content:'北京',
+        icon: '//vdata.amap.com/icons/b18/1/2.png', // 添加 Icon 图标 URL  五角星标记
+    });
+    map1.add(marker1);//添加到地图
+/*************************************************************************************************************************/
+    //高德地图定位签到
+    function GDMap(selector,lng,lat) {
+        //初始化地图
+        var map = new AMap.Map(selector, {
+            resizeEnable: true, //是否监控地图容器尺寸变化
+            zoom:20, //初始化地图层级 3-20
+            center:  new AMap.LngLat(lng, lat),//初始化地图中心点
+        });
+        //添加标记
+        var marker = new AMap.Marker({
+            position:new AMap.LngLat(lng, lat)//位置
+        })
+
+        map.add(marker);//添加到地图
+    }
+    GDMap('container2',113.898121,22.57622)
+
+
+    /*******************************************动态添加******************************************************************************/
+    $(document.body).append('<div id="container3"  class="gd-map"></div>')
+    GDMap('container3',113.898121,22.57622)
+</script>
+</body>
+</html>

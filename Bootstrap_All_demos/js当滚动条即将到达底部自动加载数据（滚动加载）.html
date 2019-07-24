@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<section class="discussList" style="height: 1300px;"></section>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    // 加载更多评价的函数
+    function loadMore(){
+        $(".discussList").append('<div class=loading style=display:none;text-align:center;height:30px;line-height:30px;background:#fff;>加载中...</div>');//插入加载中的提示框
+        var stop = true; //默认停止加载
+        // 页数
+        var page = 0;
+        // 每页展示5个
+        var size = 5;
+        var bottomH=50;//距离底部多少像素开始加载
+        $(window).scroll(function() {
+
+            totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop()+bottomH);
+            if ($(document).height() <= totalheight) {
+                if (stop == true) {
+                    stop = false;
+                    $(".loading").show();//显示加载中提示
+                    $.ajax({
+                        url: 'http://ons.me/tools/dropload/json.php?page=' + page + '&size=' + size,
+                        type: 'GET',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function(data) {
+                            var dateLength = data.length; //数据长度
+                            if (dateLength > 0) {
+                                $(".loading").before('<div class=list><p class=listP1> <strong>132***313</strong> <img src=../img/xing3.png alt> <img src=../img/xing3.png alt> <img src=../img/xing3.png alt> <img src=../img/xing3.png alt><img src=../img/xing4.png alt><span>2017-12-26 13:20</span></p><p class=listP2>好吃，一直吃他家的</p></div>')
+                                $('.loading').hide();
+                                page++;
+                                stop = true;
+                            } else {
+                                $(".loading").text("暂无数据")
+                            }
+                        },
+                        error: function(xhr, type) {
+                            $(".loading").hide();
+                            alert("ajax error!");
+                        }
+                    });
+                }
+
+            }
+        });
+    }
+    loadMore()
+</script>
+</body>
+</html>

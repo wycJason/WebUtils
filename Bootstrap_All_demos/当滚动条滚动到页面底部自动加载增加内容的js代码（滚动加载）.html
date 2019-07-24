@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body style="height: 5000px;">
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+//https://www.jb51.net/article/50068.htm
+     var scrollFun=function () {
+         if (getScrollTop() + getClientHeight() >= getScrollHeight()) {
+             alert("到达底部");
+         }
+     }
+     $(window).bind("scroll",scrollFun)
+     //$(window).unbind("scroll",scrollFun)//解绑
+
+/*window.onscroll = function () {
+    if (getScrollTop() + getClientHeight() >= getScrollHeight()) {
+        alert("到达底部");
+    }
+}*/
+
+//获取滚动条当前的位置
+    function getScrollTop() {
+        var scrollTop = 0;
+        if (document.documentElement && document.documentElement.scrollTop) {
+            scrollTop = document.documentElement.scrollTop;
+        }
+        else if (document.body) {
+            scrollTop = document.body.scrollTop;
+        }
+        return scrollTop;
+    }
+
+    //获取当前可是范围的高度
+    function getClientHeight() {
+        var clientHeight = 0;
+        if (document.body.clientHeight && document.documentElement.clientHeight) {
+            clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight);
+        }
+        else {
+            clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight);
+        }
+        return clientHeight;
+    }
+
+    //获取文档完整的高度
+    function getScrollHeight() {
+        return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    }
+</script>
+</body>
+</html>

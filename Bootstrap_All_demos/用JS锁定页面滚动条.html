@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+    <style>
+        .test{
+            height: 3000px;
+            background: red;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="test"></div>
+<button style="position: absolute;top: 300px;left: 500px;" onclick="unScroll()">禁用滚动条</button>
+<button style="position: absolute;top: 600px;left: 500px;" onclick="removeUnScroll()">启用滚动条</button>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    /**
+      * 禁用滚动条
+      */
+    function unScroll(){
+        var top=$(document).scrollTop();
+        $(document).on('scroll.unable',function (e){
+            $(document).scrollTop(top);
+        })
+    }
+
+
+    /**
+      * 解除禁用滚动条
+      */
+    function removeUnScroll(){
+        $(document).unbind("scroll.unable");
+    }
+</script>
+</body>
+</html>

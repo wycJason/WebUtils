@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-<textarea id="editor_id" name="content" style="width:700px;height:300px;"></textarea>
+<textarea id="editor_id" name="content" style="width:700px;height:300px;display: none"></textarea>
 <script src="kindeditor-all-min.js"></script>
 <script src="lang/zh-CN.js"></script>
 <script>
@@ -27,7 +27,7 @@
         editor = K.create('#editor_id', {
             items : ['emoticons','image','insertfile','hello'],
             pasteType: 1,//设置粘贴类型，0:禁止粘贴, 1:纯文本粘贴, 2:HTML粘贴
-            //themeType: 'simple',
+            themeType: 'simple',
         });
     });
 </script>

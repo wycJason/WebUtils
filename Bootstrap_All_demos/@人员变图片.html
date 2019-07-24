@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    //@人员变图片
+    function atRender(name, code) {
+        var cvs = document.createElement('canvas');
+        var ctx = cvs.getContext('2d');
+
+        var txt = '@' + name;
+        var nameWidth = ctx.measureText(txt).width;//谷歌比IE浏览器测出的多20
+        var txtWidth = Math.floor(nameWidth) * 1.4;
+        cvs.width = txtWidth;
+        cvs.height = 22;
+
+        //将文本绘制在左上角
+        ctx.font = '12px sans-serif';
+        ctx.textBaseline = 'alphabetic';
+        ctx.fillStyle = '#006EFE';
+        ctx.fillText(txt, 3, 18);
+
+        var src = cvs.toDataURL("image/png", 0.85);
+
+        return {
+            src: src,
+            name: name,
+            code: code
+        }
+    }
+
+</script>
+</body>
+</html>
