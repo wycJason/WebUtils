@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<textarea id="textarea" name="tarea" placeholder="请输入文字" rows="8" cols="20" ></textarea>
+<br/>
+<button id='insert'>插入</button>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    //js代码：
+    $('#textarea').on('select',function () {
+        message.setCaret(this);
+    }).on('click',function () {
+        message.setCaret(this);
+    }).on('keyup',function () {
+        message.setCaret(this);
+    });
+
+    $('#insert').on('click',function () {
+        var textareaStr = $('#textarea').val();
+        message.insertAtCaret($('#textarea')[0],'<--需要插入的文本-->');
+    });
+
+    var message = {
+        setCaret: function (textObj) {
+            if (textObj.createTextRange) {
+                textObj.caretPos = document.selection.createRange().duplicate();
+            }
+        },
+        insertAtCaret: function (textObj, textFeildValue) {
+            if (document.all) {
+                if (textObj.createTextRange && textObj.caretPos) {
+                    var caretPos = textObj.caretPos;
+                    caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? textFeildValue + ' ' : textFeildValue;
+                } else {
+                    textObj.value = textFeildValue;
+                }
+            } else {
+                if (textObj.setSelectionRange) {
+                    var rangeStart = textObj.selectionStart;
+                    var rangeEnd = textObj.selectionEnd;
+                    var tempStr1 = textObj.value.substring(0, rangeStart);
+                    var tempStr2 = textObj.value.substring(rangeEnd);
+                    textObj.value = tempStr1 + textFeildValue + tempStr2;
+                } else {
+                    alert("This version of Mozilla based browser does not support setSelectionRange");
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

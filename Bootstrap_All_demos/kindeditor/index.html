@@ -8,6 +8,8 @@
 </head>
 <body>
 <textarea id="editor_id" name="content" style="width:700px;height:300px;"></textarea>
+<br/>
+<textarea id="editor_demo" name="content" style="width:700px;height:300px;"></textarea>
 <script src="kindeditor-all-min.js"></script>
 <script src="lang/zh-CN.js"></script>
 <script>
@@ -18,6 +20,18 @@
             filterMode : true
         };
         editor = K.create('#editor_id', options);
+
+
+
+        var optionsDemo={
+            pasteType: 1,//设置粘贴类型，0:禁止粘贴, 1:纯文本粘贴, 2:HTML粘贴
+            themeType: 'simple',
+            items: ['emoticons'],
+            htmlTags: {//指定要保留的HTML标记和属性
+                img: ['src', 'width', 'height', 'border', 'alt', 'title', 'align', '.width', '.height', '.border', 'class', "data-face", "data-usersign", "data-username", "data-deptname", "data-deptcode", "data-isdept", "data-rolename", "data-roleid", "data-isrole"],
+            }
+        };
+        editor_demo = K.create('#editor_demo', optionsDemo);
     });
 </script>
 </body>

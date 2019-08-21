@@ -8,16 +8,19 @@
     <style>
 
     </style>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 <a href="http://www.cnblogs.com/zikai/p/5074686.html" target="_blank">参考文献</a>
-<script src="js/jquery-1.11.3.js"></script>
-<script src="js/bootstrap.js"></script>
+<br/>
+<textarea id="txtarea" cols="8" rows="8">11111111111111</textarea>
+<br>
+<button id="btn">插入</button>
+<br><br><br>
+
+<input id="ipt" type="text" value="22222222"/><button id="iptBtn">插入</button>
+
+
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script>
     //扩展一个jquery的全局对象方法hello和属性male
     $.extend({
@@ -36,6 +39,9 @@
     });
     //$("body").methods();
     //console.log($("body").female);
+
+
+
 
 //在jquery全局对象中扩展一个net命名空间。
 $.extend({
@@ -65,6 +71,42 @@ $.extend($.net,{
     //索引下标相同，后者覆盖前者
     var arr=$.extend([1,2,3,4], [6,7,8,9]);
     console.log("arr",arr);//[6, 7, 8, 9]
+
+
+
+    //应用在input、textarea中光标处插入指定内容(兼容IE10+(含IE10)和谷歌)
+    $(function() {
+        $.fn.extend({
+            insertAtCaret: function(myValue) {
+                var $t = $(this)[0];
+                if (document.selection) {
+                    this.focus();
+                    sel = document.selection.createRange();
+                    sel.text = myValue;
+                    this.focus();
+                } else if ($t.selectionStart || $t.selectionStart == '0') {
+                    var startPos = $t.selectionStart;
+                    var endPos = $t.selectionEnd;
+                    var scrollTop = $t.scrollTop;
+                    $t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+                    this.focus();
+                    $t.selectionStart = startPos + myValue.length;
+                    $t.selectionEnd = startPos + myValue.length;
+                    $t.scrollTop = scrollTop;
+                } else {
+                    this.text(this.text() + myValue);
+                    this.focus();
+                }
+            }
+        });
+    })
+
+    $("#btn").click(function(){
+        $("#txtarea").insertAtCaret("文本域")
+    })
+    $("#iptBtn").click(function(){
+        $("#ipt").insertAtCaret("输入框")
+    })
 </script>
 </body>
 </html>

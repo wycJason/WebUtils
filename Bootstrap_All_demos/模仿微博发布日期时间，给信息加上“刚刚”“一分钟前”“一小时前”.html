@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>发布时间，给信息加上“刚刚”“一分钟前”“一小时前”</title>
+</head>
+<body>
+<div class="Message_list">
+    <ul>
+        <li>
+            <h1 class="h1">留言者：<span>小小球迷</span>    <span class="time" time="2019-08-8 15:35:00"></h1>
+            <div class="txt">有这么厉害的攻击力？全面开火的攻击巴萨和拜仁？我不敢苟同这个观点</div>
+        </li>
+        <li>
+            <h1 class="h1">留言者：<span>风花雪月</span>    <span class="time" time="2019-08-1"></h1>
+            <div class="txt">还记得银河战舰这个吗，这个是我们皇马球迷最骄傲的名字~</div>
+        </li>
+        <li>
+            <h1 class="h1">留言者：<span>小捣蛋</span>    <span class="time" time="2019-08-6"></h1>
+            <div class="txt">有这么厉害的攻击力？全面开火的攻击巴萨和拜仁？我不敢苟同这个观点</div>
+        </li>
+        ......
+    </ul>
+</div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    //参考：https://blog.csdn.net/bigbear00007/article/details/80328607
+    function getDateDiff(dateTimeStamp) {
+        //https://blog.csdn.net/bigbear00007/article/details/80328607
+        //JS转换时间戳为“刚刚”、“1分钟前”、“2小时前”“1天前”等格式
+        var minute = 1000 * 60;
+        var hour = minute * 60;
+        var day = hour * 24;
+        var halfamonth = day * 15;
+        var month = day * 30;
+
+        //若你得到的时间格式不是时间戳，可以使用下面的JavaScript函数把字符串转换为时间戳, 本函数的功能相当于JS版的strtotime：
+        var idata = Date.parse(dateTimeStamp.replace(/-/gi,"/"));  //js函数代码：字符串转换为时间
+        var now = new Date().getTime();
+        var diffValue = now - idata;
+        if (diffValue < 0) {
+
+            //若日期不符则弹出窗口告之
+            //alert("结束日期不能小于开始日期！");
+        }
+        var monthC = diffValue / month;
+        var weekC = diffValue / (7 * day);
+        var dayC = diffValue / day;
+        var hourC = diffValue / hour;
+        var minC = diffValue / minute;
+        if (monthC >= 1) {
+            result = "发表于" + parseInt(monthC) + "个月前";
+        }
+        else if (weekC >= 1) {
+
+            result = "发表于" + parseInt(weekC) + "周前";
+        }
+        else if (dayC >= 1) {
+            result = "发表于" + parseInt(dayC) + "天前";
+        }
+        else if (hourC >= 1) {
+            result = "发表于" + parseInt(hourC) + "个小时前";
+        }
+        else if (minC >= 1) {
+            result = "发表于" + parseInt(minC) + "分钟前";
+        } else
+            result = "刚刚发表";
+        return result;
+    }
+
+    //进行文字替换
+    $(".Message_list li").each(function (i, item) {
+        var time = $(item).find(".time").attr("time");
+        var spantext = getDateDiff(time);
+        $(item).find(".time").text(spantext);
+    })
+</script>
+</body>
+</html>
