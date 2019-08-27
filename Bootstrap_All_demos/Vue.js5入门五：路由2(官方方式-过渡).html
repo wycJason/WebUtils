@@ -26,12 +26,12 @@
 			}
 
 			const Parent = {
-				data() {
+				data:function() {
 					return {
 						transitionName: 'slide-left'
 					}
 				},
-				beforeRouteUpdate(to, from, next) {
+				beforeRouteUpdate:function(to, from, next) {
 					const toDepth = to.path.split('/').length
 					const fromDepth = from.path.split('/').length
 					this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
@@ -84,21 +84,21 @@
 			})
 
 			new Vue({
-				router,
+				router:router,
 				template: `
-    <div id="app">
-      <h1>Transitions</h1>
-      <ul>
-        <li><router-link to="/">/</router-link></li>
-        <li><router-link to="/parent">/parent</router-link></li>
-        <li><router-link to="/parent/foo">/parent/foo</router-link></li>
-        <li><router-link to="/parent/bar">/parent/bar</router-link></li>
-      </ul>
-      <transition name="fade" mode="out-in">
-        <router-view class="view"></router-view>
-      </transition>
-    </div>
-  `
+							<div id="app">
+							  <h1>Transitions</h1>
+							  <ul>
+								<li><router-link to="/">/</router-link></li>
+								<li><router-link to="/parent">/parent</router-link></li>
+								<li><router-link to="/parent/foo">/parent/foo</router-link></li>
+								<li><router-link to="/parent/bar">/parent/bar</router-link></li>
+							  </ul>
+							  <transition name="fade" mode="out-in">
+								<router-view class="view"></router-view>
+							  </transition>
+							</div>
+						  `
 			}).$mount('#app')
 		</script>
 	</body>

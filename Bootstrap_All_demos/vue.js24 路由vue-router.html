@@ -6,13 +6,18 @@
 </head>
 <body>
 <div id="app">
-    <h1>Hello App!</h1>
+    <h1>Hello Vue!</h1>
     <p>
         <!-- 使用 router-link 组件来导航. -->
         <!-- 通过传入 `to` 属性指定链接. -->
         <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
-        <router-link to="/foo">Go to Foo</router-link>
-        <router-link to="/bar">Go to Bar</router-link>
+        <router-link to="/foo">Go to Foo</router-link><br>
+        <router-link to="/bar">Go to Bar</router-link><br>
+        <router-link to="/baz">Go to Baz</router-link><br>
+        <router-link to="/user1/1">Go to User1</router-link><br>
+        <router-link to="/user2/2">Go to User2</router-link><br>
+        <router-link to="/search?q=vue">Go to search</router-link><br>
+        <router-link to="/promotion">Go to promotion</router-link><br>
     </p>
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 -->
@@ -29,6 +34,25 @@
     // 可以从其他文件 import 进来
     const Foo = { template: '<div>foo</div>' }
     const Bar = { template: '<div>bar</div>' }
+    const Baz = { template: '<div>Baz</div>' }
+
+    const User1 = {
+        props: ['id'],
+        template: '<div>User1: {{ id }}</div>'
+    }
+    const User2 = {
+        template: '<div>User2: {{ $route.params.id }}</div>'
+    }
+
+    const SearchUser = {
+        props: ['query'],
+        template: '<div>SearchUser:{{query}}</div>'
+    }
+
+    const Promotion = {
+        props: ['ad'],
+        template: '<div>Promotion:{{ad}}</div>'
+    }
 
     // 2. 定义路由
     // 每个路由路径应该映射一个组件。 其中"component" 可以是
@@ -36,8 +60,25 @@
     // 或者，只是一个组件配置对象。
     // 我们晚点再讨论嵌套路由。
     const routes = [
-        { path: '/foo', component: Foo },
-        { path: '/bar', component: Bar }
+        { path: '/foo', component: Foo},
+        { path: '/bar', component: Bar },
+        { path: '/baz', component: Baz ,alias:"/alias" },//https://router.vuejs.org/zh/guide/essentials/redirect-and-alias.html#重定向
+
+        //使用 props 将组件和路由解耦：取代与 $route 的耦合
+        { path: '/user1/:id', component: User1, props: true },
+        { path: '/user2/:id', component: User2 },
+
+        //你可以创建一个函数返回 props。这样你便可以将参数转换成另一种类型，将静态值与基于路由的值结合等等。
+        {
+            path: '/search', component: SearchUser, props: function (route) {
+                return {
+                    query: route.query.q
+                }
+            }
+        },
+
+        //如果 props 是一个对象，它会被按原样设置为组件属性。当 props 是静态的时候有用
+        { path: '/promotion', component: Promotion, props: { ad: "advertisement" } }
     ]
 
     // 3. 创建 router 实例，然后设置 `routes` 配置参数
@@ -51,7 +92,7 @@
     // 从而让整个应用都有路由功能
     const app = new Vue({
         router:router
-    }).$mount('#app')  //mount 英文的意思是挂载
+    }).$mount('#app')  //mount 英文的意思是挂载，手动地挂载一个未挂载的实例。
 
 </script>
 

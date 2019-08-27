@@ -19,12 +19,11 @@
 <script src="kindeditor-all-min.js"></script>
 <script src="lang/zh-CN.js"></script>
 <script>
-    var editor=null;
     KindEditor.lang({
         hello : '你好' //取得语言（工具提示）
     });
     KindEditor.ready(function(K) {
-        editor = K.create('#editor_id', {
+        window.editor = K.create('#editor_id', {
             items : ['emoticons','image','insertfile','hello'],
             pasteType: 1,//设置粘贴类型，0:禁止粘贴, 1:纯文本粘贴, 2:HTML粘贴
             themeType: 'simple',
