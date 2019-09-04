@@ -39,7 +39,7 @@
     <!-- 当currentTab发生变化时，下面的component视图也会跟着变化-->
     <component v-bind:is="currentTab.component" class="tab"></component>
 
-    <br>
+    <br><br><br>
 
     <!--渲染组件：组件is 属性使用：示例 https://cn.vuejs.org/v2/api/#component-->
     <component v-bind:is="com1" class="tab"></component> <br>
@@ -79,7 +79,7 @@
                 template: '<div>Archive component</div>',
             }
         }
-    ]
+    ];
 
     new Vue({
         el: '#dynamic-component-demo',

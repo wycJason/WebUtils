@@ -10,20 +10,57 @@
 <div id="app">
     <current-user>
         <template v-slot:default="slotProps">
-            {{ slotProps}}<br>
+            slotProps:{{ slotProps}}
             {{  slotProps.user.firstName}}
             {{ slotProps.user.lastName }}
         </template>
     </current-user>
 
+    <!-- 在上述情况下，当父组件被提供的内容只有默认插槽时，组件的标签才可以被当作插槽的模板来使用。这样我们就可以把 v-slot 直接用在组件上：-->
     <br>
     <current-user v-slot:default="slotProps">
         {{ slotProps.user.firstName }}
     </current-user>
 
+    <!-- 这种写法还可以更简单。就像假定未指明的内容对应默认插槽一样，不带参数的 v-slot 被假定对应默认插槽：-->
     <br>
     <current-user v-slot="slotProps">
-        {{ slotProps.user.firstName }}
+        {{ slotProps.user.lastName }}
+    </current-user>
+
+    <br>
+    <br>
+    <br>
+    <current-user v-slot="{user}">
+        user:{{ user }}
+    </current-user>
+
+    <br>
+    <current-user v-slot="{user}">
+        {{ user.firstName }}
+    </current-user>
+
+    <br>
+    <current-user v-slot="{user}">
+        {{ user.lastName }}
+    </current-user>
+
+    <!-- 别名写法-->
+    <br>
+    <br>
+    <br>
+    <current-user v-slot="{user:alias}">
+        alias:{{ alias }}
+    </current-user>
+
+    <br>
+    <current-user v-slot="{user:alias}">
+        {{ alias.firstName }}
+    </current-user>
+
+    <br>
+    <current-user v-slot="{user:alias}">
+        {{ alias.lastName }}
     </current-user>
 </div>
 <!--<script src="js/vue.js"></script>-->
@@ -31,7 +68,8 @@
 <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 <script>
     //https://cn.vuejs.org/v2/guide/components-slots.html
-    //插槽内容一般是访问父组件中的数据，那么如何访问子组件中的数据呢？
+    //插槽内容一般是访问父组件中的数据，那么如何访问子组件中的数据呢？一个不带 name 的 <slot> 出口会带有隐含的名字“default”。
+    //绑定在 <slot> 元素上的特性被称为插槽 prop。
     Vue.component('current-user', {
         template: `
                    <span>

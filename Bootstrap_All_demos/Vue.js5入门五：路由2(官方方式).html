@@ -20,9 +20,9 @@
 				<!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
 				<router-link to="/">同个路由，多个视图就需要多个组件</router-link><br><br>
 				
-				<router-link to="/nameRoute">嵌套命名视图1</router-link><br>
-				<router-link to="/nameRoute/email">嵌套命名视图2</router-link><br>
-				<router-link to="/nameRoute/profile">嵌套命名视图3</router-link><br><br>
+				<router-link to="/nameView">嵌套命名视图:User Settings</router-link><br>
+				<router-link to="/nameView/email">嵌套命名视图：Email</router-link><br>
+				<router-link to="/nameView/profile">嵌套命名视图UserProfile UserPosts</router-link><br><br>
 				
 				<router-link to="/foo">Go to Foo</router-link><br>
 				<router-link to="/bar">Go to Bar</router-link><br><br>
@@ -45,8 +45,8 @@
 			<router-view></router-view>
 
 			<!-- 命名视图一个视图使用一个组件渲染，因此对于同个路由，多个视图就需要多个组件。确保正确使用 components 配置 (带上 s)： -->
-			<router-view name="r1"></router-view>
-			<router-view name="r2"></router-view>
+			<router-view name="v1"></router-view>
+			<router-view name="v2"></router-view>
 		</div>
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
 		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
@@ -85,7 +85,9 @@
 			const UserPosts = {
 				template: '<div>UserPosts</div>'
 			}
-
+			const Email = {
+				template: '<div>Email</div>'
+			}
 			//嵌套命名视图,即组件模板里嵌套<router-view/> 和<router-view name=""/>
 			const nameRoute = {
 				template: '<div>\
@@ -123,13 +125,13 @@
 					component: subRoute,
 					children: [{
 							// 当 /subRoute/:id/profile 匹配成功，
-							// UserProfile 会被渲染在 User 的 <router-view> 中
+							// UserProfile 会被渲染在 subRoute 的 <router-view> 中
 							path: 'profile',
 							component: UserProfile
 						},
 						{
 							// 当 /subRoute/:id/posts 匹配成功
-							// UserPosts 会被渲染在 User 的 <router-view> 中
+							// UserPosts 会被渲染在 subRoute 的 <router-view> 中
 							path: 'posts',
 							component: UserPosts
 						}
@@ -140,22 +142,22 @@
 					path: '/',
 					components: {
 						default: Foo,
-						r1: UserProfile,
-						r2: UserPosts
+						v1: UserProfile,
+						v2: UserPosts
 					}
 				},
 				{
-					path: '/nameRoute',
+					path: '/nameView',
 					// 你也可以在顶级路由就配置命名视图
 					component: nameRoute,
 					children: [{
 						path: 'email',
-						component: UserProfile
+						component: Email
 					}, {
 						path: 'profile',
 						components: {
-							default: UserPosts,
-							helper: UserProfile
+							default: UserProfile,
+							helper: UserPosts
 						}
 					}]
 				}
