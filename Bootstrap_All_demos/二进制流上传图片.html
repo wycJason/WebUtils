@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+
+    <input type="file" id="file-input" name="fileContent" accept="image/jpeg">
+
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    //成功响应后的数据
+    function doResponse(xhr){
+        console.log('开始处理响应数据...');
+        console.log(xhr);
+        console.log("http://in.sap360.com.cn:36002/docmanage/downloadfile/"+JSON.parse(xhr.responseText).FileName)
+    }
+
+    //base64格式图片转为二进制图片文件
+    function dataURLtoFile(dataurl) {
+        let filename="file";
+        let arr = dataurl.split(',')
+        let mime = arr[0].match(/:(.*?);/)[1]
+        let suffix = mime.split('/')[1]
+        let bstr = atob(arr[1])
+        let n = bstr.length
+        let u8arr = new Uint8Array(n)
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n)
+        }
+        return new File([u8arr], `${filename}.${suffix}`, {
+            type: mime
+        })
+    }
+
+
+    $("#file-input").on("change", function() {
+        let fileReader = new FileReader();
+        fileReader.readAsDataURL(this.files[0]);
+        fileReader.onload = function() {
+            let base64Img = this.result;
+
+
+
+            // 依次每字节8位读取，放到一个整数数组
+           // let view = new Uint8Array(base64Img);
+            //console.log(view);
+
+            var imgFile = dataURLtoFile(base64Img);//二进制file文件类型
+
+
+            //1 创建xhr对象
+            var xhr = new XMLHttpRequest();
+            //2 监听xhr状态改变
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState===4){
+                    if(xhr.status===200){
+                        doResponse(xhr); //响应完成且成功
+                    }else{
+                        alert('响应完成但有问题');
+                    }
+                }
+            }
+            //3 连接到服务器
+            xhr.open("post","http://in.sap360.com.cn:36002/docmanage/uploadfile/37c04f71d41d409f95d3ed18d32e3f95/null/jpg",true);
+            //3.1步设置请求头部
+            xhr.setRequestHeader('Content-Type','multipart/form-data');
+            //4 发送请求消息
+            xhr.send(imgFile);
+        }
+    });
+</script>
+</body>
+</html>

@@ -54,6 +54,7 @@
     var inputImg  = document.getElementById("fileImg");   // input file
     inputImg.onchange = function(){
         var file = this.files[0];
+
         console.log(new Blob([file]))//查看大小
         debugger;
         if(!!file){

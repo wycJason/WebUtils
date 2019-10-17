@@ -14,9 +14,16 @@
 <br>
 <br>
 <br>
-<div id="layer-photos-demo">
+<div class="layer-photos-demo">
     <img width="200" src="http://111.204.53.174:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_9_30_04b0a2721b1d4e5aa0fba7eda757e1ed.jpg" >
     <img width="200" src="http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_16_020062213492457fba84aa788a2a52d9.jpg" >
+</div>
+
+<div class="layer-photos-demo">
+    <div>
+        <img width="200" src="http://111.204.53.174:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_9_30_04b0a2721b1d4e5aa0fba7eda757e1ed.jpg" >
+        <img width="200" src="http://in.sap360.com.cn:36002/DocManage/downloadfile/bcb21d727105423a89a7cb988cfdf1e0_2018_11_16_020062213492457fba84aa788a2a52d9.jpg" >
+    </div>
 </div>
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="layui-v2.5.4/layui/layui.all.js"></script>
@@ -70,7 +77,7 @@ function previewFixImg(obj) {
 
 //图片查看器调用示例
 layer.photos({
-    photos: '#layer-photos-demo'
+    photos: '.layer-photos-demo'
     ,shift: 0 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
     ,shade:0.2
 });

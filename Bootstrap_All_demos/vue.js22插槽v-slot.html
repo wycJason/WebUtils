@@ -15,7 +15,7 @@
             <h1>header</h1>
         </template>
 
-        <p>在向具名插槽提供内容的时候，我们可以在一个 <template> 元素上使用 v-slot 指令，并以 v-slot 的参数的形式提供其插槽名称：现在 <template> 元素中的所有内容都将会被传入相应的插槽。任何没有被包裹在带有 v-slot指令 的 <template> 中的内容都会被视为默认插槽的内容。</p>
+        <p>在向具名插槽提供内容的时候，我们可以在一个 template 元素上使用 v-slot 指令，并以 v-slot 的参数的形式提供其插槽名称：现在 template 元素中的所有内容都将会被传入相应的插槽。任何没有被包裹在带有 v-slot指令 的 template中的内容都会被视为默认插槽的内容。</p>
 
         <template v-slot:footer>
             <h1>footer</h1>
@@ -30,7 +30,7 @@
         </template>
 
         <template v-slot:default>
-            <p>如果你希望更明确一些，仍然可以在一个 <template> 中包裹默认插槽的内容：</p>
+            <p>如果你希望更明确一些，仍然可以在一个 template 中包裹默认插槽的内容：</p>
         </template>
 
         <template v-slot:footer>
@@ -80,6 +80,21 @@
 
     <hr>
     <baselayout>{{name}}</baselayout>
+
+    <hr>
+    <baselayout>
+        <h3 slot-scope="slotProps">slotProps:{{slotProps}}</h3>
+    </baselayout>
+
+    <hr>
+    <baselayout>
+        <h3 slot-scope="{user}">user:{{user.firstName}}</h3>
+    </baselayout>
+
+    <hr>
+    <baselayout>
+        <h3 slot-scope="{user:alias}">alias:{{alias}}</h3>
+    </baselayout>
 </div>
 <!--<script src="js/vue.js"></script>-->
 <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
@@ -90,12 +105,24 @@
                                 <slot name="header">头</slot>
                               </header>
                               <section>
-                                <slot>身体</slot>
+                                <slot :user="user" :info="info">身体</slot>
                               </section>
                               <footer>
                                 <slot name="footer">脚</slot>
                               </footer>
-                        </div>`
+                        </div>`,
+            data:function(){
+                return {
+                    user:{
+                        firstName:"Jason",
+                        lastName:"Wong"
+                    },
+                    info:{
+                        age:28,
+                        id:5201314
+                    }
+                }
+            }
     }
     var vm = new Vue({
         el: '#app',

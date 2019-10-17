@@ -22,7 +22,7 @@
 <div id="app6">
     <p v-text="msg">aaa</p>
     <p v-html="span">bbb</p>
-    <div>{{message}}</div>
+    <div id="msg">{{message}}</div>
     <div>{{message | uppercase}}</div>
     <input type="text" v-model="message">
     <span v-bind:title="message">鼠标悬停几秒钟查看此处动态绑定的提示信息！</span>
@@ -102,7 +102,12 @@
         },
         methods: {
             getAnswer:function(){
+                debugger;
                 this.message="值已改变";
+                console.log("DOM更新前："+document.querySelector("#msg").innerText)
+                this.$nextTick(function(){
+                    console.log("DOM更新后："+document.querySelector("#msg").innerText)
+                })
             }
         },
         watch: {

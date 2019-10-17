@@ -34,7 +34,7 @@
             return v.toString(16);
         });
     }
-    function uuid(len, radix) {//这个可以指定长度和基数。比如uuid(8, 10) // "47473046"  // 8 character ID (base=10)
+    function uuid(len, radix) {//这个可以指定长度和基数(进制)。比如uuid(8, 10) // "47473046"  // 8 character ID (base=10)
         var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
         var uuid = [], i;
         radix = radix || chars.length;

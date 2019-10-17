@@ -36,6 +36,10 @@
                 //vm.myData=10;
                 this.myData=10;//此处虽然设置了myData的值，但是结果是12，因为myData是依赖num的
             }
+        },
+        customOption: 'foo',
+        created: function () {
+            console.log(this.$options,this.$options.customOption) // => 'foo'  vm.$options 用于当前 Vue 实例的初始化选项。需要在选项中包含自定义属性时会有用处：
         }
     })
 </script>

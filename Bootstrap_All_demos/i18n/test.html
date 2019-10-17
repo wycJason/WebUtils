@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<label data-locale="username">User Name：</label><input type="text">
+<label data-locale="password">PassWord：</label><input type="password">
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="jquery.i18n.properties.js"></script>
+<script>
+//https://blog.csdn.net/m0_37355951/article/details/77895585
+loadProperties();
+function loadProperties() {
+    $.i18n.properties({
+        name:'strings',    //属性文件名        命名格式： 文件名_国家代号.properties
+        path:'./i18n/',   //注意这里路径是你属性文件的所在文件夹
+        mode:'map',
+        language:"zh",     //这就是国家代号     name+language刚好组成属性文件名：strings+zh -> strings_zh.properties
+        callback:function(){
+            $("[data-locale]").each(function(){
+                console.log($(this).data("locale"));
+                $(this).html($.i18n.prop($(this).data("locale")));
+            });
+        }
+    });
+}
+</script>
+</body>
+</html>

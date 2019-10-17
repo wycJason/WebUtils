@@ -11,8 +11,10 @@
     <current-user>
         <template v-slot:default="slotProps">
             slotProps:{{ slotProps}}
-            {{  slotProps.user.firstName}}
+            {{ slotProps.user.firstName}}
             {{ slotProps.user.lastName }}
+            {{ slotProps.info.age }}
+            {{ slotProps.info.id }}
         </template>
     </current-user>
 
@@ -73,7 +75,7 @@
     Vue.component('current-user', {
         template: `
                    <span>
-                        <slot v-bind:user="user"></slot>
+                        <slot v-bind:user="user" v-bind:info="info"></slot>
                     </span>
                   `,
         data:function(){
@@ -81,6 +83,10 @@
                 user:{
                     firstName:"Jason",
                     lastName:"Wong"
+                },
+                info:{
+                    age:28,
+                    id:5201314
                 }
             }
         }

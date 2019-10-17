@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    //https://www.jianshu.com/p/98b8a8fb00e6
+    /*
+    * 数据对象属性
+     class: {}, => 绑定class，和v-bind:class一样的API
+     style: {}, => 绑定样式，和v-bind:style一样的API
+     attrs: {}, => 添加行间属性
+     domProps: {}, => DOM元素属性
+     on: {}, => 绑定事件
+     nativeOn: {}, => 监听原生事件
+     directives: {}, => 自定义指令
+     scopedSlots: {}, => slot作用域
+     slot: {}, => 定义slot名称 和组件有关系，插曹
+     key: "key", => 给元素添加唯一标识
+     ref: "ref", => 引用信息
+    *
+    * */
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+        render:function(createElement){
+            return createElement(//首先调用一个函数
+                    "ul",
+                    {
+                        class:{bg:true},//给UL添加dom属性和绑定事件等,就是v-bind:class="{bg:true}"
+                        style:{fontSize:"50px"},
+                        attrs:{
+                            id:"app1"
+                        },
+                        domProps:{
+                            innerHTML:"<li>我是html</li>"  //这个权重高，写了这个下面创建的li就都无效了
+                        }
+                    },
+                    [
+                        createElement("li",1),//再次调用createrElement(),设置内容数据是1
+                        createElement("li",2),
+                        createElement("li",3)
+                    ]
+            )
+        }
+    })
+</script>
+</body>
+</html>

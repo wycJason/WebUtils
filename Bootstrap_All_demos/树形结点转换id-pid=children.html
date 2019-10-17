@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    var nodes = [
+        {id:73, pId:0,treeCode:73, treePCode:0, name: "父节点1"},
+            {id:7301, pId:73,treeCode:7301, treePCode:73, name: "子节点1"},
+                {id:73011, pId:7301,treeCode:73011, treePCode:7301, name: "子节点1"},
+                {id:73012, pId:7301, treeCode:73012, treePCode:7301,name: "子节点1"},
+                    {id:730122, pId:73012, treeCode:730122, treePCode:73012,name: "子节点1"},
+
+            {id:7302, pId:73, treeCode:7302, treePCode:73,name: "子节点1"},
+                {id:73021, pId:7302,treeCode:73021, treePCode:7302, name: "子节点1"},
+                {id:73022, pId:7302,treeCode:73022, treePCode:7302, name: "子节点1"}
+    ];
+    window.onload=function(){
+        console.log(initData(nodes,0))
+    }
+    /*
+     *data为ztree的结构数据 code为父级节点的code
+     */
+    function initData(data,code){
+        //第一步：构建两个对象 子对象，与父子关系的对象
+        var treeData;
+        for(var i=0,childObj={},relatArr=[],relatArr1=[],relatObj={},children={children:[]};i<data.length;i++){
+            var _rowData=data[i];
+            if(_rowData.treePCode=='0'){
+                var _pnode=_rowData.treeCode;
+                if(children[_rowData.treeCode]===undefined){
+                    children[_rowData.treeCode]={children:[]};
+                }
+                children.children=children[_rowData.treeCode].children;
+            }else{
+                if(children[_rowData.treeCode]===undefined){
+                    children[_rowData.treeCode]=Object.assign({children:[]},_rowData);//jason
+                }else{
+                    children[_rowData.treeCode]=_rowData; //jason
+                }
+                if(children[_rowData.treePCode]===undefined){
+                    children[_rowData.treePCode]={children:[]};///jason
+                }
+                children[_rowData.treePCode].children.push(children[_rowData.treeCode]);
+            }
+        }
+        //去除nodes为空的键
+        for(var k in children){
+            if(k=='children'){
+                continue;
+            }
+            if(children[k].children.length==0){
+                delete children[k].children;
+            }
+        }
+        return (children.children);
+    }
+</script>
+</body>
+</html>

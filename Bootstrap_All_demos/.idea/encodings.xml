@@ -4,6 +4,14 @@
     <file url="file://$PROJECT_DIR$/IC_EnqueryInfo/ic.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/IC_EnqueryInfo/ic.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/chenqiang1.html" charset="UTF-16LE" />
+    <file url="file://$PROJECT_DIR$/i18n/en/common.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/i18n/en/index.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/i18n/i18n/strings.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/i18n/i18n/strings_zh.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/i18n/zh-CN/common.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/i18n/zh-CN/index.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/i18n/zh-TW/common.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/i18n/zh-TW/index.properties" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jQueryWeui/dist/js/jQuery WeUI V1.2.0.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/js/dataFormate.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/js/publicClass.js" charset="UTF-8" />
