@@ -22,7 +22,7 @@ console.log(obj.query.age);
  hostname: 'tmooc.cn',
  hash: '#chapter3',
  search: '?uname=mary&age=20',
- query: 'uname=mary&age=20',
+   query: 'uname=mary&age=20',
  pathname: '/s.do',
  path: '/s.do?uname=mary&age=20',
  href: 'http://tmooc.cn:8000/s.do?uname=mary&age=20#chapter3'
@@ -39,7 +39,7 @@ console.log(obj.query.age);
  hostname: 'tmooc.cn',
  hash: '#chapter3',
  search: '?uname=mary&age=20',
- query: { uname: 'mary', age: '20' },
+   query: { uname: 'mary', age: '20' },
  pathname: '/s.do',
  path: '/s.do?uname=mary&age=20',
  href: 'http://tmooc.cn:8000/s.do?uname=mary&age=20#chapter3'

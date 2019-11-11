@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vue</title>
+    <style>
+        .cl{
+            color:red;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
@@ -15,6 +20,22 @@
 <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 <script>
     //https://www.jianshu.com/p/98b8a8fb00e6
+    //createElement(标签名,[数据对象],子元素)；
+    /*
+     * 数据对象属性
+     class: {}, => 绑定class，和v-bind:class一样的API
+     style: {}, => 绑定样式，和v-bind:style一样的API
+     attrs: {}, => 添加行间属性
+     domProps: {}, => DOM元素属性
+     on: {}, => 绑定事件
+     nativeOn: {}, => 监听原生事件
+     directives: {}, => 自定义指令
+     scopedSlots: {}, => slot作用域
+     slot: {}, => 定义slot名称 和组件有关系，插曹
+     key: "key", => 给元素添加唯一标识
+     ref: "ref", => 引用信息
+     *
+     * */
     var vm = new Vue({
         el: '#app',
         data: {
@@ -22,11 +43,20 @@
         },
         methods: {},
         render:function(createElement){
-            return createElement('div',{
-                attrs:{
-                    id:'test'
-                }
-            },this.message)
+            if(false){
+                return createElement('div',{
+                    attrs:{
+                        id:'test'
+                    },
+                    class:"cl",
+                    style:{
+                        "font-size":"28px"
+                    }
+                },this.message)
+            }else{
+               // return createElement('div',this.message)
+                return createElement('div',[createElement('h1',"内容1"),createElement('h2',"内容2"),createElement('h3',"内容3"),])
+            }
         }
     })
 </script>

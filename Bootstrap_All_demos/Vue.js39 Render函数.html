@@ -19,8 +19,9 @@
     * 数据对象属性
      class: {}, => 绑定class，和v-bind:class一样的API
      style: {}, => 绑定样式，和v-bind:style一样的API
-     attrs: {}, => 添加行间属性
+     attrs: {}, => 添加元素属性
      domProps: {}, => DOM元素属性
+
      on: {}, => 绑定事件
      nativeOn: {}, => 监听原生事件
      directives: {}, => 自定义指令
@@ -38,13 +39,18 @@
             return createElement(//首先调用一个函数
                     "ul",
                     {
-                        class:{bg:true},//给UL添加dom属性和绑定事件等,就是v-bind:class="{bg:true}"
+                        class:{bg:true},//给ul添加dom属性和绑定事件等,就是v-bind:class="{bg:true}"
                         style:{fontSize:"50px"},
                         attrs:{
                             id:"app1"
                         },
                         domProps:{
                             innerHTML:"<li>我是html</li>"  //这个权重高，写了这个下面创建的li就都无效了
+                        },
+                        on:{
+                            click:function(){
+                                alert("click")
+                            }
                         }
                     },
                     [

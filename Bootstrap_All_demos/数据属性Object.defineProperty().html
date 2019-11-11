@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+'use strict'
+var emp={
+    id:1001,
+    name:"eric",
+    salary:10000
+};
+console.dir(Object.getOwnPropertyDescriptor(emp,"name"))
+
+
+Object.defineProperty(emp,"id",{
+    writable: true,//false
+    enumerable:true,//false
+    configurable:true,//false
+});
+
+emp.id=3000;
+console.log(emp.id);
+
+for(var key in emp){
+    console.log(key+":"+emp[key]);
+}
+
+delete emp.id;
+console.dir(emp);
+
+
+
+
+console.log("-----------------------------------------------------------")
+var stu={
+    id:1001,
+};
+console.dir(Object.getOwnPropertyDescriptor(stu,"id"));
+
+Object.defineProperties(stu,{
+    id:{writable:false,enumerable:false,configurable:false,},
+    salary:{value:10000,},
+})
+
+console.dir(Object.getOwnPropertyDescriptor(stu,"id"));
+console.dir(Object.getOwnPropertyDescriptor(stu,"salary"));
+
+console.log("-----------------------------------------------------------")
+
+//访问器属性
+var employee={
+    id:1,
+    name:"eric"
+};
+//定义访问器属性age
+(function(){
+    var _age;//受保护的属性
+    Object.defineProperty(employee,"age",{   //新添加了访问器属性age，但未赋值
+        get:function(){ return _age;},//取值时自动调用
+        set:function(val){ //设置访问器age属性的值val
+            if(val<18||val>65){
+                throw new RangeError("age must between 18 and 65");
+            }else{
+                _age=val;//访问器age属性的值val赋给对象属性_age
+            }
+        }
+    });
+})();
+
+console.log(employee.age);//undefined
+employee.age=30;
+console.log(employee.age);//30
+employee.age=80;
+console.log(employee.age)//Uncaught RangeError: age must between 18 and 65
+</script>
+</body>
+</html>

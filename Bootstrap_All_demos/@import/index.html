@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+    <style>
+        @import "import.css";
+    </style>
+</head>
+<body>
+<div class="test">字体颜色</div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script type="module">
+import module from "./export.js";
+console.log(module.name,module.age,module.sex);
+</script>
+</body>
+</html>

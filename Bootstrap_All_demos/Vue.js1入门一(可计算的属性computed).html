@@ -15,15 +15,20 @@
     <![endif]-->
 </head>
 <body>
+<div id="div">
+    <p >{{items}}</p>
+    <p >{{person}}</p>
+</div>
+
 <div id="demo" :title="fullName">
-    {{ fullName }}
+    计算属性:{{ fullName }}
 </div>
 
 <div id="app6">
     <p v-text="msg">aaa</p>
     <p v-html="span">bbb</p>
     <div id="msg">{{message}}</div>
-    <div>{{message | uppercase}}</div>
+    <div>{{message}}</div>
     <input type="text" v-model="message">
     <span v-bind:title="message">鼠标悬停几秒钟查看此处动态绑定的提示信息！</span>
     <h3 v-show="true">{{message}}</h3> <!--指令（Directives）是带有 v- 前缀的特殊属性。指令的职责就是当其表达式的值改变时相应地将某些行为应用到 DOM 上。-->
@@ -56,14 +61,40 @@
 
 <!--<script src="js/jquery-1.11.3.js"></script>
 <script src="js/bootstrap.js"></script>-->
-<script src="js/vue.js"></script>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
 <script>
+    var vmRes = new Vue({
+        el:"#div",
+        data: {
+            items: ['a', 'b', 'c'],
+            person:{
+                name:"ling",
+                job:"engineer"
+            }
+        },
+        created:function(){
+            alert(this.person.age)
+        }
+    });
+
+   // vmRes.$set(vmRes.items,2,"ling")
+    Vue.set(vmRes.items,2,"ling")
+
+    vmRes.$set(vmRes.person,"age","26")
+
+
+
+
     //vuejs2+axios设置   http://www.cnblogs.com/easyweb/p/6710843.html
     var vm = new Vue({
         el: '#demo',
         data: {
             firstName: 'jason',
-            lastName: 'wong'
+            lastName: 'wong',
+        },
+        methods:{
+
         },
         computed: {//计算属性默认只有 getter ，不过在需要时你也可以提供一个 setter ：
            /* fullName: function () {
@@ -112,8 +143,9 @@
         },
         watch: {
             // 如果 message 发生改变，这个函数就会运行
-            message: function () {
+            message: function (newVal) {
                 // `this` 指向 app6 实例
+                alert(newVal)
                 this.getAnswer();
             }
         },

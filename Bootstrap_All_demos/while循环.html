@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    var mynum =new Array(70,80,66,90,50,100,89);//定义数组mynum并赋值
+    var i=0;
+    while(i<mynum.length)
+    {
+        if(mynum[i]<60)
+        {
+            document.write("成绩"+mynum[i]+"不及格，不用循环了"+"<br>");
+            break;
+        }
+        document.write("成绩:"+mynum[i]+"及格，继续循环"+"<br>");
+        i=i+1;
+
+    }
+</script>
+</body>
+</html>

@@ -36,12 +36,12 @@
             v-bind:class="['tab-button', { active: currentTab.name === tab.name }]"
             v-on:click="currentTab = tab"
             >{{ tab.name }}</button>
-    <!-- 当currentTab发生变化时，下面的component视图也会跟着变化-->
+    <!-- 当currentTab发生变化时，下面的component视图也会跟着变化，is:is 属性使用，可以是已注册组件的名字，或 一个组件的选项对象-->
     <component v-bind:is="currentTab.component" class="tab"></component>
 
     <br><br><br>
 
-    <!--渲染组件：组件is 属性使用：示例 https://cn.vuejs.org/v2/api/#component-->
+    <!--渲染组件：组件is 属性使用，可以是已注册组件的名字，或 一个组件的选项对象 ：示例 https://cn.vuejs.org/v2/api/#component-->
     <component v-bind:is="com1" class="tab"></component> <br>
     <component v-bind:is="com2" class="tab"></component> <br>
     <component v-bind:is="com3" class="tab"></component> <br>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app1">
+    <props-demo-simple :size="42" message="我的消息"/>
+</div>
+
+<div id="app2">
+    <props-demo-advanced :height="20" :age="30"/>
+</div>
+<script src="js/vue.js"></script>
+<!--<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>-->
+<script>
+        //https://cn.vuejs.org/v2/api/#props
+    // 简单语法
+    Vue.component('props-demo-simple', {
+        template:'<h1>size:{{size}},message:{{message}}</h1>',
+        props: ['size', 'message']
+    })
+
+    // 对象语法，提供验证
+    Vue.component('props-demo-advanced', {
+        template:'<h1>height:{{height}},age:{{age}}</h1>',
+        props: {
+            // 检测类型
+            height: Number,
+            // 检测类型 + 其他验证
+            age: {
+                type: Number,
+                default: 0,
+                required: true,
+                validator: function (value) {
+                    debugger;
+                    return value >= 0
+                }
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app1',
+    })
+
+    new Vue({
+        el: '#app2',
+    })
+</script>
+</body>
+</html>

@@ -206,7 +206,9 @@
         autoClose: true //点击按钮自动关闭对话框，如果你不希望点击按钮就关闭对话框，可以把这个设置为false
     };*/
     $(document).on("click", "#show-alert", function() {
-        $.alert("AlphaGo 就是天网的前身，人类要完蛋了！", "警告！");
+        $.alert("AlphaGo 就是天网的前身，人类要完蛋了！", "警告！",function(){
+            $.toast("已确认");
+        });
     });
     $(document).on("click", "#show-confirm", function() {
         $.confirm("您确定要删除文件<<毛泽东语录>>吗?", "确认删除?", function() {
