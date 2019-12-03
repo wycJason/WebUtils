@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <parent :info="{name:'jason'}"></parent>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+<script>
+    //子组件
+    Vue.component('child', {
+       props:["value"],
+        template:"<div>" +
+                        "<h1>{{value}}</h1>" +
+                        "<slot></slot>" +
+                    "</div>"
+    });
+
+    Vue.component('parent', {
+        props:{
+            info:Object,
+        },
+        render: function(createElement) {
+            return createElement('child', { props:{value:"我是子组件"}},"这是插槽内容"); //父组件使用
+        }
+    });
+
+    var vm = new Vue({
+        el: '#app',
+    })
+</script>
+</body>
+</html>

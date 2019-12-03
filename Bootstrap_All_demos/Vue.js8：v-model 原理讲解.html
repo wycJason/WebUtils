@@ -9,6 +9,7 @@
 </head>
 <body>
 <div id="app">
+    <!-- 一个组件上的 v-model 默认会利用名为 value 的 prop 和名为 input 的事件-->
     <input v-model="searchText"/>
     <br>
     <input  v-bind:value="searchText" v-on:input="searchText = $event.target.value"/>
@@ -18,13 +19,16 @@
     <br><br>
 
     <custom-input v-model="searchText"></custom-input>
-    <!--<custom-input v-bind:value="searchText" v-on:input="searchText = $event" ></custom-input>-->
+
+    <br><br>
+
+    <base-checkbox v-model="lovingVue"></base-checkbox>
 </div>
-<!--<script src="js/jquery-1.11.3.js"></script>
-<script src="js/bootstrap.js"></script>-->
-<script src="js/vue.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
     //input原理v-model原理讲解
+    //https://www.cnblogs.com/signal/p/11696347.html
     Vue.component('custom-input', {
         props: ['value'],
         template: `
@@ -35,10 +39,40 @@
                   `
     })
 
+    //一个组件上的 v-model 默认会利用名为 value 的 prop 和名为 input 的事件，但是像单选框、复选框等类型的输入控件可能会将 value 特性用于不同的目的。model 选项可以用来避免这样的冲突：
+    Vue.component('base-checkbox', {
+        model: {
+            prop: 'checked',
+            event: 'change'
+        },
+        props: {
+            checked: {
+                type:Boolean,
+            }
+        },
+        template: `
+                    <input
+                      type="checkbox"
+                      v-bind:checked="checked"
+                      v-on:change="$emit('change', $event.target.checked)"
+                    >
+                  `
+    })
+
    var vm= new Vue({
         el: '#app',
         data: {
-            searchText:""
+            searchText:"520",
+            lovingVue:true,
+       },
+       watch:{
+           searchText:function(val){
+               console.log(val);
+           },
+           lovingVue:function(val){
+               console.log(val);
+           }
+
        }
     })
 </script>

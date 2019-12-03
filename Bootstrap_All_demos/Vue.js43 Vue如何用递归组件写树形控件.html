@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>树形结构2</title>
+</head>
+<body>
+<div id = "app">
+    <tree :folder = "trees" :select = "select"></tree>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    //https://blog.csdn.net/zhaoxiang66/article/details/80940762
+    //一定要注意，组件内必须要用name属性，而且name的名称要和组件名称（组件标签名称）一致才可以
+    Vue.component('tree', {
+        name:"tree",
+        template:`<ul>
+                        <li v-for = "item in folder">
+                            <span @click = "select(item)">{{ item.label }}</span>
+                            <tree v-if = "item.children" :folder = "item.children" :select = "select"></tree>
+                        </li>
+                    </ul>`,
+        props:["folder","select"],
+    })
+    // <tree v-if = "item.children" :folder = "item.children"></tree>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            msg:"hello world",
+            trees: [
+                {
+                    id:1,
+                    label:"1级目录1",
+                    show:false,
+                    children:[
+                        {
+                            id:"1-1",
+                            label:"1.1目录"
+                        },
+                        {
+                            id:"1-2",
+                            label:"1.2目录"
+                        },
+                        {
+                            id:"1-3",
+                            label:"1.3目录"
+                        },
+                    ]
+                },
+                {
+                    id:2,
+                    label:"1级目录2",
+                    show:false
+                },
+                {
+                    id:3,
+                    label:"1级目录3",
+                    show:false,
+                    children:[
+                        {
+                            id:"3-1",
+                            label:"3.1目录"
+                        },
+                        {
+                            id:"3-2",
+                            label:"3.2目录",
+                            show:false,
+                            children:[
+                                {
+                                    id:"3-2-1",
+                                    label:"3.2.1目录"
+                                },
+                                {
+                                    id:"3-2-2",
+                                    label:"3.2.2目录"
+                                },
+                                {
+                                    id:"3-2-3",
+                                    label:"3.2.3目录"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id:4,
+                    label:"1级目录4",
+                    show:false,
+                    children:[
+                        {
+                            id:"4-1",
+                            label:"4.1目录"
+                        },
+                        {
+                            id:"4-2",
+                            label:"4.2目录",
+                            show:false,
+                            children:[
+                                {
+                                    id:"4-2-1",
+                                    label:"4.2.1目录"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id:5,
+                    label:"1级目录5",
+                    show:false,
+                    children:[
+                        {
+                            id:"5-1",
+                            label:"5.1目录",
+                            show:false,
+                            children:[
+                                {
+                                    id:"5-1-1",
+                                    label:"5.1.1目录"
+                                },
+                                {
+                                    id:"5-1-2",
+                                    label:"5.1.2目录",
+                                    show:false,
+                                    children:[
+                                        {
+                                            id:"5-1-2-1",
+                                            label:"5.1.2.1目录"
+                                        },
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id:"5-2",
+                            label:"5.2目录",
+                            show:false
+                        }
+                    ]
+                },
+            ]
+        },
+        methods:{
+            clickHandler:function(){
+            console.log(23333);
+            },
+        select:function(data){
+            console.log(data);
+        }
+    },
+    mounted:function(){
+        console.log(this.trees);
+    }
+    })
+</script>
+</body>
+</html>

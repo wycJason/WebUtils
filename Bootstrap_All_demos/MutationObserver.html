@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MutationObserver</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    var callback = function(records) {
+        records.map(function(record) {
+            //console.log('Mutation type: ' + record.type);
+            //console.log('Mutation target: ' + record.target);
+            console.dir( record);
+        });
+    };
+
+    var mo = new MutationObserver(callback);
+
+    var option = {
+        'childList': true,
+        'subtree': true
+    };
+
+    mo.observe(document.body, option);
+</script>
+</body>
+</html>

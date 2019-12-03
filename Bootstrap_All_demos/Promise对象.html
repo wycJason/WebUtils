@@ -21,11 +21,13 @@
                 reject('timeout in ' + timeOut + ' seconds.');
             }
         }, timeOut * 1000);
-    }).then(function (resolve) {
-                console.log('Done: ' + resolve);
-            }).catch(function (reject) {
-                console.log('Failed: ' + reject);
-            });
+    })
+    .then(function (resolve) {
+        console.log('Done: ' + resolve);
+    })
+    .catch(function (reject) {
+        console.log('Failed: ' + reject);
+    });
 </script>
 </body>
 </html>

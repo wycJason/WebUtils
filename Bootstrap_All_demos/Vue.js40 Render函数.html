@@ -77,7 +77,7 @@
                     fontSize: '14px'
                 },
                 attrs: {
-                    id: 'foo'
+                    id: 'baz'
                 },
                 domProps: {
                     innerHTML: '<h3>baz</h3>'
@@ -87,7 +87,9 @@
     });
 
     //https://cn.vuejs.org/v2/api/#vm-slots
-    /*vm.$slots 用来访问被插槽分发的内容。每个具名插槽 有其相应的属性 (例如：v-slot:foo 中的内容将会在 vm.$slots.foo 中被找到)。default 属性包括了所有没有被包含在具名插槽中的节点，或 v-slot:default 的内容。
+    /*vm.$slots 用来访问被插槽分发的内容。每个具名插槽 有其相应的属性
+    (例如：v-slot:foo 中的内容将会在 vm.$slots.foo 中被找到)。
+    default 属性包括了所有没有被包含在具名插槽中的节点，或 v-slot:default 的内容。
     注意: v-slot:foo 在 2.6 以上的版本才支持。对于之前的版本，你可以使用废弃了的语法.*/
     Vue.component('blog-post', {
         render: function (createElement) {
