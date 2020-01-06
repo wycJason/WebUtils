@@ -95,6 +95,13 @@
     <baselayout>
         <h3 slot-scope="{user:alias}">alias:{{alias}}</h3>
     </baselayout>
+
+    <hr>
+    <slotcomponent>
+        <template slot="slotName">
+            <h1>this.$slots插槽名称</h1>
+        </template>
+    </slotcomponent>
 </div>
 <!--<script src="js/vue.js"></script>-->
 <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
@@ -123,7 +130,13 @@
                     }
                 }
             }
-    }
+    };
+    var SlotComponent={
+        render: function (createElement) {
+            var htmlStr = this.$slots.slotName;
+            return createElement('div', [createElement('main', htmlStr)])
+        }
+    };
     var vm = new Vue({
         el: '#app',
         data: {
@@ -131,7 +144,8 @@
         },
         methods: {},
         components:{
-            baselayout:ComponentA // 即  组件名称：组件配置项
+            baselayout:ComponentA, // 即  组件名称：组件配置项
+            slotcomponent:SlotComponent
         }
     })
 </script>

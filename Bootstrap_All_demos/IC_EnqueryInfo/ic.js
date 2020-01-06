@@ -72,7 +72,7 @@ function ICInjectJS(path){
     }
     myCustomeStyle();
 
-    $("#hqData .record .col4,#resultList .stair_tr .result_id").prepend('<button type="button" class="customEnquryInfo">询价</button>');
+    $("#resultList .list-table tr td.td-model,#resultList .stair_tr .result_id").prepend('<button type="button" class="customEnquryInfo">询价</button>');
     //添加模态框
     $(document.body).append('<div class="modal" id="ERP_ICEnquery" data-backdrop="static" data-keyboard="false" style="z-index:3000">\
         <div class="modal-dialog" style="width:702px">\
@@ -274,10 +274,13 @@ function ICInjectJS(path){
             $('input[name="Delivery"]').val($.trim(Delivery));
             $('input[name="Supplier"]').val($.trim(CardName));
         }else{//华强电子网
-            var uid=$this.parent().prevAll(".col3").find(".company").attr("uid");
+            var $row=$this.closest("tr");
+            var uid=$row.find(".company").attr("uid");
             var tuid=$("#tuid1").val();
             var company={};
             var Contacts =[];
+
+            //【若取联系电话  供应商电话  地址请将鼠标移至供应商显示提示后再点击“询价”取值】
             if(uid==tuid){
                 company.name=$.trim($("#card #name").text());//供应商名称
                 company.mphone=$.trim($("#card #mphone").text());//联系电话
@@ -307,17 +310,17 @@ function ICInjectJS(path){
            // })
            // $('input[name="Contacts"]').val(JSON.stringify(Contacts));
 
-            $("#cardName").text($this.parent().prevAll(".col3").text());//模态框标题 ：供应商
-            QuoModle=$this.parent().children(".model").children("a").text()||$this.parent().children("span").children("a").text();//型号
-            QuoBrand=($this.parent().nextAll(".col5").attr("dd"))||($this.parent().nextAll(".col5").text());//品牌
-            QuoPackage=($this.parent().nextAll(".col7").attr("dd"))||($this.parent().nextAll(".col7").text());//封装
-            QuoYear=($this.parent().nextAll(".col6").attr("dd"))||($this.parent().nextAll(".col6").text());//年份
-            QuoQty=$this.parent().nextAll(".col10").text();//报价数量
+            $("#cardName").text($row.find(".company").text());//模态框标题 ：供应商
+            QuoModle=$this.parent().find(".max-name").text();//型号
+            QuoBrand=$row.find(".td-brand").text();//品牌
+            QuoPackage=$row.find("td:nth-child(9)").text();//封装
+            QuoYear=$row.find("td:nth-child(8)").text();//年份(注：批号即为年代)
+            QuoQty=$row.find(".td-stockNum p:first-child").text();//报价数量
             QuoPrice=0;//报价价格
             Cost=0;//报价成本
             QuoCurr="RMB";//报价货币
             Delivery="";//交期
-            CardName=$this.parent().prevAll(".col3").text();//供应商
+            CardName=$row.find(".company").text();//供应商
 
             $('input[name="Modle"]').val($.trim(QuoModle));
             $('input[name="Brand"]').val($.trim(QuoBrand));

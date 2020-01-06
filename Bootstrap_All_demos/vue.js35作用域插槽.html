@@ -33,6 +33,23 @@
     <br>
     <br>
     <br>
+    <current-user v-slot="{info}">
+        info:{{ info }}
+    </current-user>
+
+    <br>
+    <current-user v-slot="{info}">
+        {{ info.id }}
+    </current-user>
+
+    <br>
+    <current-user v-slot="{info}">
+        {{ info.age }}
+    </current-user>
+
+    <br>
+    <br>
+    <br>
     <current-user v-slot="{user}">
         user:{{ user }}
     </current-user>
@@ -46,7 +63,6 @@
     <current-user v-slot="{user}">
         {{ user.lastName }}
     </current-user>
-
     <!-- 别名写法-->
     <br>
     <br>
@@ -74,9 +90,9 @@
     //绑定在 <slot> 元素上的特性被称为插槽 prop。
     Vue.component('current-user', {
         template: `
-                   <span>
+                   <div>
                         <slot v-bind:user="user" v-bind:info="info"></slot>
-                    </span>
+                    </div>
                   `,
         data:function(){
             return {

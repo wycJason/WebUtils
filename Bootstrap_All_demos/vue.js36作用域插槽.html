@@ -11,6 +11,7 @@
     <todo-list v-bind:todos="todos">
         <template v-slot:todo="{ todo }">
             <span v-if="todo.isComplete">✓</span>
+            <span v-else>×</span>
             <span>{{ todo.text }}</span>
         </template>
     </todo-list>

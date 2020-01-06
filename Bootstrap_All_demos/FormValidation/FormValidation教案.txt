@@ -1,0 +1,639 @@
+FormValidation
+
+目录结构：
+1.FormValidation.zip：源码
+2.FormValidation_demo：我的演示代码
+
+一、概述
+1.最好的jquery表单验证插件
+2.最新下载：（收费）
+	http://formvalidation.io/
+	http://formvalidation.io/download/
+3.官网案例：
+	http://formvalidation.io/examples/
+4.指南：
+	http://formvalidation.io/getting-started/
+	(api)http://formvalidation.io/api/
+	（参数）http://formvalidation.io/settings/
+	（验证器列表）http://formvalidation.io/validators/
+5.引入：
+	<link href="css/bootstrap.min.css" rel="stylesheet" >
+	<link href="css/formValidation.min.css" rel="stylesheet" >
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/formValidation.min.js"></script>
+	<script type="text/javascript" src="js/framework/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/zh_CN.js"></script>
+	<script type="text/javascript">
+6.不要为提交按钮使用name =“submit”或id =“submit”属性。否则，表单无法在验证后提交
+二、使用
+1.基础案例：	
+	$("#defaultForm").formValidation({
+		fields:{
+			username:{//username为表单元素的name属性值
+				message:"用户名输入错误",
+				validators:{
+					notEmpty:{
+						message:"用户名不能为空"
+					},
+					stringLength:{
+						min:3,
+						max:6,
+						message:"用户名长度必须在3到6之间"
+					},
+					regexp:{
+						regexp:/^[a-zA-Z0-9_]+$/,
+						message:"用户名中有非法字符"
+					}
+				}
+			}
+		}
+	});
+	
+2.添加图标：根据字段有效性指示有效/无效/验证图标。
+	$("#defaultForm").formValidation({
+		icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+		fields:{
+			username:{
+				message:"用户名输入错误",
+				validators:{
+					notEmpty:{
+						message:"用户名不能为空"
+					}					
+				}
+			}
+		}
+	});
+3.远程验证器	
+	1）远程验证时候，remote验证器自动附加当前验证字段的数据给服务器
+		remote: {
+			message: '用户名已存在！',
+			url: '/FormValidation_demo/CheckUsernameServlet',//url不存在时候，返回false
+			type: 'POST'
+		}
+	2）远程URL必须返回包含valid的JSON对象或json串
+		{ "valid": true } 表示验证可用 或 { "valid": false }
+	3）如果远程URL响应{"valid"：null}，则验证器将被忽略
+4.自定义验证规则：使用callback验证器
+	要求输入安全密码，必须满足以下所有条件：
+
+	长度必须超过8个字符
+	必须包含至少一个大写字母
+	必须包含至少一个小写字母
+	必须至少包含一位数字
+	
+	password:{
+		validators:{
+			notEmpty:{
+				message:"密码不能为空"
+			},
+			callback:{
+				message:"密码输入错误",
+				callback:function(value,validator,$field){
+					if(value === ''){
+						return true;
+					}
+					
+					if(value.length < 8){
+						return {
+							valid:false,
+							message:"密码长度不能小于8位"
+						};
+					}
+					
+					// The password doesn't contain any uppercase character
+					if (value === value.toLowerCase()) {
+						return {
+							valid: false,
+							message: '密码至少包含一个大写字母'
+						}
+					}
+
+					// The password doesn't contain any uppercase character
+					if (value === value.toUpperCase()) {
+						return {
+							valid: false,
+							message: '密码至少包含一个小写字母'
+						}
+					}
+
+					// The password doesn't contain any digit
+					if (value.search(/[0-9]/) < 0) {
+						return {
+							valid: false,
+							message: '它必须至少包含一个数字'
+						}
+					}
+					
+					return true;
+				}
+			}
+		}
+5.常用验证器
+	1）email验证器：
+		validators:{
+			emailAddress:{
+				message:"email格式错误"
+			}
+		}
+	2）between验证器：检查输入值是否在两个给定数字之间
+		validators:{
+			between:{
+				min:0,
+				max:150,
+				message:"年龄输入错误"						
+			}
+		}
+	3）different验证器：如果输入值与给定字段的值不同，则返回true
+		different:{
+			field:"username",
+			message:"密码不能与用户名相同"
+		}
+	4）numeric验证器：检查值是否是数字
+		validators:{
+			numeric:{
+				message:"数量必须为数字"
+			}
+		}
+	5）integer验证器：验证整数。接受正数和负数
+		validators:{
+			integer:{
+				message:"数量必须为整数"
+			}
+		}
+	6）日期验证器：
+		date:{
+			format:"yyyy-mm-dd",
+			min:
+		}
+6.%s表示动态消息，与特定验证器相关，与参数定义先后无关
+	age:{
+		validators:{
+			between:{
+				min:0,
+				max:150,
+				message:"年龄必须在%s和%s之间"						
+			}
+		}
+	}
+7.verbose: false//当有一个验证器验证失败时，设置将停止验证
+8.计算验证码：
+1）// Generate a simple captcha
+    function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    };
+    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+2）<div class="form-group">
+		<label class="col-sm-3 control-label" id="captchaOperation"></label>
+		<div class="col-sm-2">
+			<input type="text" class="form-control" name="captcha" />
+		</div>
+	</div>
+3）captcha:{
+		validators:{
+			callback:{
+				message:"验证码输入错误",
+				callback:function(value, validator, $field){
+					var items = $("#captchaOperation").html().split(' ');
+					var sum = parseInt(items[0])+parseInt(items[2]);
+					return value==sum;
+				}
+			}
+			
+		}
+	}
+9.selector：它被用于不能使用name该字段的属性的情况
+	如表单元素名为"emp.ename",直接在fields中像下面这样写报错：
+	fields：{
+		emp.ename:{
+			validators:{
+				notEmpty:{
+					message:"姓名不能为空"
+				}
+			}
+		}
+	}
+	
+	这是应该给该表单添加一个id，如<input type="text" name="emp.ename" id="ename">
+	然后验证改为：
+	
+	fields：{
+		ename:{
+			selector:"#ename",//指定要验证的表单元素
+			validators:{
+				notEmpty:{
+					message:"姓名不能为空"
+				}
+			}
+		}
+	}
+10.把错误消息显示在设置的指定位置上
+	 <div class="form-group">
+		<label class="col-md-3 control-label" >birthday</label>
+		<div class="input-group date col-md-5" id="birthday">
+			<input type="text" class="form-control" name="birthday" readonly/>
+			<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+			<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>								
+		</div>
+		<div class="col-md-3 col-md-offset-3" id="msg"></div>
+	</div>
+	
+	birthday:{
+		validators:{
+			notEmpty: {
+				message: '生日不能为空'
+			}
+		}
+	}
+	
+	err:{
+		container: function($field, validator) {
+			if($field.attr("name") == "birthday"){
+				return $("#msg");//返回特定jquery对象
+			}
+			return null;//返回null，为默认值
+		}
+	}
+11.把上面的页面修改为如下所示，错误提示会显示在默认位置，就不用指定新的错误位置了
+	<div class="form-group">
+		<label class="col-md-3 control-label" >birthday</label>
+		<!-- 多个这层div -->
+		<div class="col-md-5">
+			<div class="input-group date" id="birthday">
+				<input type="text" class="form-control" name="birthday" readonly/>
+				<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+				<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>								
+			</div>
+		</div>
+	</div>
+12.修改提示图标默认位置
+	<style type="text/css">
+	/**
+	 * Override feedback icon position
+	 * See http://formvalidation.io/examples/adjusting-feedback-icon-position/
+	 */
+	#defaultForm .form-control-feedback {
+		top: 0;
+		right: -15px;
+	}
+	</style>
+	
+	把#defaultForm改为具体div的id，可以只修改某个验证图标位置
+13.与Bootstrap DateTimePicker 一起使用的时候，在选择时间后不会马上验证，要等到表单提交才验证
+	可编写如下代码，改为立即验证：
+	$("#birthday").datetimepicker({
+		format:'yyyy-mm-dd',
+		language:'zh-CN',
+		minView:'month',
+		autoclose:true
+	}).on("changeDate",function(){
+		//在修改日期后，对name为birthday的表单元素进行重新验证
+		$('#defaultForm').formValidation('revalidateField', 'birthday');
+	});
+14.完整案例
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" >
+<link href="css/formValidation.min.css" rel="stylesheet" >
+<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" >
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/formValidation.min.js"></script>
+<script type="text/javascript" src="js/framework/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/zh_CN.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript">
+$(function(){	
+	
+	$("#birthday").datetimepicker({
+		format:'yyyy-mm-dd',
+		language:'zh-CN',
+		minView:'month',
+		autoclose:true
+	}).on("changeDate",function(){
+		$('#defaultForm').formValidation('revalidateField', 'birthday');
+	});
+		
+	// Generate a simple captcha
+    function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    };
+    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+
+	
+	$("#defaultForm").formValidation({
+		message:"值输入错误",
+		icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        
+		fields:{			
+			firstName:{
+				row: '.col-md-4',
+				validators:{
+					notEmpty:{
+						message:"firstName不能为空"
+					}
+				}
+			},
+			lastName:{
+				validators:{
+					notEmpty:{
+						message:"lastName不能为空"
+					}
+				}
+			},
+			username:{
+				verbose: false,//当有一个验证器验证失败时，设置将停止验证。
+				validators:{
+					notEmpty:{
+						message:"用户名不能为空"
+					},
+					stringLength:{
+						min:3,
+						max:6,
+						message:"用户名长度必须在3到6之间"
+					},
+					regexp:{
+						regexp:/^[a-zA-Z0-9_]+$/,
+						message:"用户名中有非法字符"
+					},
+					remote: {
+                        message: '用户名已存在！',
+                        url: '/FormValidation_demo/CheckUsernameServlet',//url不存在时候，返回false
+                        type: 'POST'
+                    }
+				}  
+			},
+			
+			email:{
+				validators:{
+					emailAddress:{
+						message:"email格式错误"
+					}
+				}
+			},
+			
+			age:{
+				validators:{
+					between:{
+						max:150,
+						min:0,
+						
+						message:"年龄必须在%s和%s之间"						
+					}
+				}
+			},
+			
+			hobbyNumber:{
+				validators:{
+					integer:{
+						message:"数量必须为整数"
+					}
+				}
+			},
+			
+        	password:{
+        		validators:{
+        			notEmpty:{
+        				message:"密码不能为空"
+        			},
+        			different:{
+        				field:"username",
+        				message:"密码不能与用户名相同"
+        			},
+        			callback:{
+        				message:"密码输入错误",
+        				callback:function(value,validator,$field){
+        					if(value === ''){
+        						return true;
+        					}
+        					
+        					if(value.length < 8){
+        						return {
+        							valid:false,
+        							message:"密码长度不能小于8位"
+        						};
+        					}
+        					
+        					// The password doesn't contain any uppercase character
+                            if (value === value.toLowerCase()) {
+                                return {
+                                    valid: false,
+                                    message: '密码至少包含一个大写字母'
+                                }
+                            }
+
+                            // The password doesn't contain any uppercase character
+                            if (value === value.toUpperCase()) {
+                                return {
+                                    valid: false,
+                                    message: '密码至少包含一个小写字母'
+                                }
+                            }
+
+                            // The password doesn't contain any digit
+                            if (value.search(/[0-9]/) < 0) {
+                                return {
+                                    valid: false,
+                                    message: '它必须至少包含一个数字'
+                                }
+                            }
+        					
+        					return true;
+        				}
+        			}
+        		}
+        	},
+        	captcha:{
+        		validators:{
+        			callback:{
+        				message:"验证码输入错误",
+        				callback:function(value, validator, $field){
+        					var items = $("#captchaOperation").html().split(' ');
+        					var sum = parseInt(items[0])+parseInt(items[2]);
+        					return value==sum;
+        				}
+        			}
+        			
+        		}
+        	},
+        	gender:{
+        		validators:{
+        			notEmpty:{
+        				message:"性别没有选择"
+        			}
+        		}
+        	},
+            agree: {
+                validators: {
+                    notEmpty: {
+                        message: '你必须同意我们的规定'
+                    }
+                }
+            },
+            birthday:{
+            	validators:{
+            		notEmpty: {
+                        message: '生日不能为空'
+                    },
+                    callback:{
+                    	callback:function(value){
+                    		if(value == "2017-04-24"){
+                    			return {
+                    				valid:false,
+                    				message:"生日错误"
+                    			};
+                    		}
+                    		
+                    		return true;
+                    	}
+                    }
+            	}
+            }
+		}
+	});
+});
+
+</script>
+
+<style type="text/css">
+/**
+ * Override feedback icon position
+ * See http://formvalidation.io/examples/adjusting-feedback-icon-position/
+ */
+#defaultForm .form-control-feedback {
+    top: 0;
+    right: -15px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	        <div class="row">
+	            <div class="col-md-8 col-md-offset-2">
+	                <div class="page-header">
+	                    <h2>Bootstrap Form</h2>
+	                </div>
+
+	                <form id="defaultForm" method="post" class="form-horizontal" action="target.php">
+	                    <div class="form-group">
+	                        <label class="col-md-3 control-label">Full name</label>
+	                        <div class="col-md-4">
+	                            <input type="text" class="form-control" name="firstName" placeholder="First name" />
+	                        </div>
+	                        <div class="col-md-4">
+	                            <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <label class="col-md-3 control-label">Username</label>
+	                        <div class="col-md-5">
+	                            <input type="text" class="form-control" name="username" />
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <label class="col-md-3 control-label">Email address</label>
+	                        <div class="col-md-5">
+	                            <input type="text" class="form-control" name="email" />
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <label class="col-md-3 control-label">Password</label>
+	                        <div class="col-md-5">
+	                            <input type="password" class="form-control" name="password" />
+	                        </div>
+	                    </div>
+	                    
+	                    <div class="form-group">
+	                        <label class="col-md-3 control-label" >birthday</label>
+	                        <div class="col-md-5">
+		                        <div class="input-group date" id="birthday">
+		                            <input type="text" class="form-control" name="birthday" readonly/>
+		                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>								
+		                        </div>
+	                        </div>
+	                        <!-- 修改默认位置时候可用
+	                        <div class="col-md-3 col-md-offset-3"><span id="msg"></span></div>
+	                         -->
+	                    </div>
+	                    
+	                    <div class="form-group">
+	                        <label class="col-md-3 control-label">age</label>
+	                        <div class="col-md-5">
+	                            <input type="text" class="form-control" name="age" />
+	                        </div>
+	                    </div>
+	                    
+	                    <div class="form-group">
+	                        <label class="col-md-3 control-label">hobby number</label>
+	                        <div class="col-md-5">
+	                            <input type="text" class="form-control" name="hobbyNumber" />
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <label class="col-md-3 control-label">Gender</label>
+	                        <div class="col-md-6">
+	                            <div class="radio">
+	                                <label>
+	                                    <input type="radio" name="gender" value="male" /> Male
+	                                </label>
+	                            </div>
+	                            <div class="radio">
+	                                <label>
+	                                    <input type="radio" name="gender" value="female" /> Female
+	                                </label>
+	                            </div>
+	                            <div class="radio">
+	                                <label>
+	                                    <input type="radio" name="gender" value="other" /> Other
+	                                </label>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <label class="col-md-3 control-label" id="captchaOperation"></label>
+	                        <div class="col-md-2">
+	                            <input type="text" class="form-control" name="captcha" />
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <div class="col-md-6 col-md-offset-3">
+	                            <div class="checkbox">
+	                                <label>
+	                                    <input type="checkbox" name="agree" value="agree" /> Agree with the terms and conditions
+	                                </label>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <div class="col-md-9 col-md-offset-3">
+	                            <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Submit</button>
+	                        </div>
+	                    </div>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+</body>
+</html>

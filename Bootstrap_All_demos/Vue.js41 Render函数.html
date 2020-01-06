@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="app">
-    <parent :info="{name:'jason'}"></parent>
+    <parent></parent>
 </div>
 <!--<script src="js/vue.js"></script>-->
 <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
@@ -23,9 +23,6 @@
     });
 
     Vue.component('parent', {
-        props:{
-            info:Object,
-        },
         render: function(createElement) {
             return createElement('child', { props:{value:"我是子组件"}},"这是插槽内容"); //父组件使用
         }

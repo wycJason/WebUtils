@@ -89,8 +89,8 @@
 
     function formSerialize(){
         //没有file类型的输入表单
-        var data=$("#myForm").serialize();
-        var dataArr=$("#myForm").serializeArray();
+        var data=$("#myForm").serialize();//a=1&b=2&c=3&d=4&e=5&f=r1&g=c1&s=s1&t=t1
+        var dataArr=$("#myForm").serializeArray();//[{"name": "a","value": "1"},{ name: "b", value: "2" }……]
         console.log(data,dataArr);
     }
 
@@ -105,7 +105,7 @@
     function formSerializeStr(){
         //var data = parseStrObjByRegExpKV(decodeURIComponent($("#myForm").serialize().replace(/\+/g, '%20'), true));
         var data = parseStrObjByRegExpKV(decodeURIComponent($("#myForm").serialize().replace(/\+/g, ''), true));
-        console.log(data);
+        console.log(data);//{ a: "1", b: "2", c: "3", d: "4", e: "5", f: "r1", g: "c1", s: "s1", t: "t1" }
     }
 </script>
 </body>

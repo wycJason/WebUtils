@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" >
+<link href="css/formValidation.min.css" rel="stylesheet" >
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/formValidation.min.js"></script>
+<script type="text/javascript" src="js/framework/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/zh_CN.js"></script>
+<script type="text/javascript">
+$(function(){	
+	/*
+	$('#defaultForm').formValidation({
+        message: 'This value is not valid',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            firstName: {
+                row: '.col-sm-4',
+                validators: {
+                    notEmpty: {
+                        message: 'The first name is required'
+                    }
+                }
+            },
+            lastName: {
+                row: '.col-sm-4',
+                validators: {
+                    notEmpty: {
+                        message: 'The last name is required'
+                    }
+                }
+            },
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: '用户名必须设置'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: '用户名必须在6-30个字符之间'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: '电子邮件不能为空'
+                    },
+                    emailAddress: {
+                        message: '请输入有效的电子邮件地址'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: '密码不能为空'
+                    },
+                    different: {
+                        field: 'username',
+                        message: '密码不能和用户名相同'
+                    }
+                }
+            },
+            gender: {
+                validators: {
+                    notEmpty: {
+                        message: '必须选择一个性别'
+                    }
+                }
+            },
+            captcha: {
+                validators: {
+                    callback: {
+                        message: 'Wrong answer',
+                        callback: function(value, validator, $field) {
+                            var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
+                            return value == sum;
+                        }
+                    }
+                }
+            },
+            agree: {
+                validators: {
+                    notEmpty: {
+                        message: 'You must agree with the terms and conditions'
+                    }
+                }
+            }
+        }
+    });
+	*/
+	
+	// Generate a simple captcha
+    function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    };
+    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+
+	
+	$("#defaultForm").formValidation({
+		message:"值输入错误",
+		icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+		fields:{			
+			firstName:{
+				row: '.col-sm-4',
+				validators:{
+					notEmpty:{
+						message:"firstName不能为空"
+					}
+				}
+			},
+			lastName:{
+				validators:{
+					notEmpty:{
+						message:"lastName不能为空"
+					}
+				}
+			},
+			username:{
+				verbose: false,//当有一个验证器验证失败时，设置将停止验证。
+				validators:{
+					notEmpty:{
+						message:"用户名不能为空"
+					},
+					stringLength:{
+						min:3,
+						max:6,
+						message:"用户名长度必须在3到6之间"
+					},
+					regexp:{
+						regexp:/^[a-zA-Z0-9_]+$/,
+						message:"用户名中有非法字符"
+					},
+					remote: {
+                        message: '用户名已存在！',
+                        url: '/FormValidation_demo/CheckUsernameServlet',//url不存在时候，返回false
+                        type: 'POST'
+                    }
+				}  
+			},
+			
+			email:{
+				validators:{
+					emailAddress:{
+						message:"email格式错误"
+					}
+				}
+			},
+			
+			age:{
+				validators:{
+					between:{
+						max:150,
+						min:0,
+						
+						message:"年龄必须在%s和%s之间"						
+					}
+				}
+			},
+			
+			hobbyNumber:{
+				validators:{
+					integer:{
+						message:"数量必须为整数"
+					}
+				}
+			},
+			
+        	password:{
+        		validators:{
+        			notEmpty:{
+        				message:"密码不能为空"
+        			},
+        			different:{
+        				field:"username",
+        				message:"密码不能与用户名相同"
+        			},
+        			callback:{
+        				message:"密码输入错误",
+        				callback:function(value,validator,$field){
+        					if(value === ''){
+        						return true;
+        					}
+        					
+        					if(value.length < 8){
+        						return {
+        							valid:false,
+        							message:"密码长度不能小于8位"
+        						};
+        					}
+        					
+        					// The password doesn't contain any uppercase character
+                            if (value === value.toLowerCase()) {
+                                return {
+                                    valid: false,
+                                    message: '密码至少包含一个大写字母'
+                                }
+                            }
+
+                            // The password doesn't contain any uppercase character
+                            if (value === value.toUpperCase()) {
+                                return {
+                                    valid: false,
+                                    message: '密码至少包含一个小写字母'
+                                }
+                            }
+
+                            // The password doesn't contain any digit
+                            if (value.search(/[0-9]/) < 0) {
+                                return {
+                                    valid: false,
+                                    message: '它必须至少包含一个数字'
+                                }
+                            }
+        					
+        					return true;
+        				}
+        			}
+        		}
+        	},
+        	captcha:{
+        		validators:{
+        			callback:{
+        				message:"验证码输入错误",
+        				callback:function(value, validator, $field){
+        					var items = $("#captchaOperation").html().split(' ');
+        					var sum = parseInt(items[0])+parseInt(items[2]);
+        					return value==sum;
+        				}
+        			}
+        			
+        		}
+        	},
+        	gender:{
+        		validators:{
+        			notEmpty:{
+        				message:"性别没有选择"
+        			}
+        		}
+        	},
+            agree: {
+                validators: {
+                    notEmpty: {
+                        message: '你必须同意我们的规定'
+                    }
+                }
+            }
+		}
+	});
+	
+});
+
+</script>
+</head>
+<body>
+<div class="container">
+	        <div class="row">
+	            <div class="col-sm-8 col-sm-offset-2">
+	                <div class="page-header">
+	                    <h2>Bootstrap Form</h2>
+	                </div>
+
+	                <form id="defaultForm" method="post" class="form-horizontal" action="target.php">
+	                    <div class="form-group">
+	                        <label class="col-sm-3 control-label">Full name</label>
+	                        <div class="col-sm-4">
+	                            <input type="text" class="form-control" name="firstName" placeholder="First name" />
+	                        </div>
+	                        <div class="col-sm-4">
+	                            <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <label class="col-sm-3 control-label">Username</label>
+	                        <div class="col-sm-5">
+	                            <input type="text" class="form-control" name="username" />
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <label class="col-sm-3 control-label">Email address</label>
+	                        <div class="col-sm-5">
+	                            <input type="text" class="form-control" name="email" />
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <label class="col-sm-3 control-label">Password</label>
+	                        <div class="col-sm-5">
+	                            <input type="password" class="form-control" name="password" />
+	                        </div>
+	                    </div>
+	                    
+	                    <div class="form-group">
+	                        <label class="col-sm-3 control-label">age</label>
+	                        <div class="col-sm-5">
+	                            <input type="text" class="form-control" name="age" />
+	                        </div>
+	                    </div>
+	                    
+	                    <div class="form-group">
+	                        <label class="col-sm-3 control-label">hobby number</label>
+	                        <div class="col-sm-5">
+	                            <input type="text" class="form-control" name="hobbyNumber" />
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <label class="col-sm-3 control-label">Gender</label>
+	                        <div class="col-sm-6">
+	                            <div class="radio">
+	                                <label>
+	                                    <input type="radio" name="gender" value="male" /> Male
+	                                </label>
+	                            </div>
+	                            <div class="radio">
+	                                <label>
+	                                    <input type="radio" name="gender" value="female" /> Female
+	                                </label>
+	                            </div>
+	                            <div class="radio">
+	                                <label>
+	                                    <input type="radio" name="gender" value="other" /> Other
+	                                </label>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <label class="col-sm-3 control-label" id="captchaOperation"></label>
+	                        <div class="col-sm-2">
+	                            <input type="text" class="form-control" name="captcha" />
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <div class="col-sm-6 col-sm-offset-3">
+	                            <div class="checkbox">
+	                                <label>
+	                                    <input type="checkbox" name="agree" value="agree" /> Agree with the terms and conditions
+	                                </label>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <div class="col-sm-9 col-sm-offset-3">
+	                            <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Submit</button>
+	                        </div>
+	                    </div>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+</body>
+</html>

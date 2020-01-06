@@ -1,8 +1,8 @@
 {
   "name": "IC_EnqueryInfo",
-  "description": "IC_EnqueryInfo Btn",
-  "version": "1.0",
-   "manifest_version": 2,
+  "description": "IC询价按钮",
+  "version": "2.0",
+  "manifest_version": 2,
   "content_scripts": [
     {
       "matches": [
@@ -18,7 +18,7 @@
     }
   ],
   "browser_action": {
-      "default_title": "IC_EnqueryInfoBtn.",
+      "default_title": "IC询价",
       "default_icon": "icon.png"
   }
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <base-input
+            v-model="username"
+            label="Name"
+            required
+            placeholder="Enter your username"
+            v-bind="attrObj"
+            ></base-input>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    Vue.component('base-input', {
+        inheritAttrs: false,
+        props: ['label', 'value'],
+        template: `
+                    <label>
+                      {{ label }}
+                      <input
+                        v-bind="$attrs"
+                        v-bind:value="value"
+                        v-on:input="$emit('input', $event.target.value)"
+                      >
+                    </label>
+                    `
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            username:"jason",
+            attrObj:{
+                sex:"male",
+                age:28
+            }
+        },
+        methods: {}
+    })
+</script>
+</body>
+</html>
