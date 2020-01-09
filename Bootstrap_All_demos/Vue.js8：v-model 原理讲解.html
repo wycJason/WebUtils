@@ -13,16 +13,17 @@
     <input v-model="searchText"/>
     <br>
     <input  v-bind:value="searchText" v-on:input="searchText = $event.target.value"/>
-
-    <br><br>
-    {{searchText}}
     <br><br>
 
     <custom-input v-model="searchText"></custom-input>
+    <br>
+    <custom-input v-bind:value="searchText" v-on:input="searchText=$event"></custom-input>
 
     <br><br>
 
     <base-checkbox v-model="lovingVue"></base-checkbox>
+    <br>
+    <base-checkbox v-bind:checked="lovingVue" v-on:change="lovingVue=$event"></base-checkbox>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

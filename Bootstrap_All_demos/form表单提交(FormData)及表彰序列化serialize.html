@@ -34,7 +34,7 @@
     </select>
     <textarea name="t" cols="10" rows="5">t1</textarea>
     <input type="file" name="h"/>
-    <input type="submit" value="提交"/>
+    <input type="submit" value="表单内部提交"/>
     <!--
     url?a=1&b=2&c=3&d=4&e=5&f=r1&g=c1&s=s1&t=t1&h=car.png
 
@@ -47,6 +47,8 @@
     e:5
     -->
 </form>
+<br><br><br>
+<input type="button" onclick="formSubmit()" value="表单外部提交">
 
 <br><br><br>
 <input type="button" onclick="formData()" value="HTML5 FormData 方法介绍以及实现文件上传"/>
@@ -61,6 +63,11 @@
 <script src="js/bootstrap.js"></script>
 <script>
     //参考文档：https://blog.csdn.net/hsany330/article/details/70156477     https://blog.csdn.net/u014607184/article/details/52372551
+    function formSubmit(){
+        //https://www.w3school.com.cn/jsref/met_form_submit.asp
+        document.getElementById("myForm").submit()
+    }
+
     function formData(){
         debugger;
         var form=document.getElementById("myForm");
