@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue</title>
+</head>
+<body>
+<div id="app">
+    <props-demo-advanced :height="h" :age="a"></props-demo-advanced>
+</div>
+<!--<script src="js/vue.js"></script>-->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    Vue.component('props-demo-advanced', {
+        props: {
+            // 检测类型
+            height: Number,
+            // 检测类型 + 其他验证
+            age: {
+                type: Number,
+                default: 0,
+                required: true,
+                validator: function (value) {
+                    return value >= 18
+                }
+            }
+        },
+        template:'<div>{{height}},{{age}}</div>'
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            h:258,
+            a:28
+        },
+        methods: {}
+    })
+</script>
+</body>
+</html>

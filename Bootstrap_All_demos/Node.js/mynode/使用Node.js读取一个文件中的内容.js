@@ -9,7 +9,7 @@ var fs = require('fs');
 console.log(buf);  //输出为<Buffer ...>
 console.log(buf.toString());  //把缓冲区中数据转换为字符串/*/
 
-//第一种方式：读取一个文件中的所有内容——同步读取
+//第二种方式：读取一个文件中的所有内容——同步读取
 fs.readFile('htdocs/1.html', 'utf8', (err, data) => {
     if (err) throw err;
     console.log(data);

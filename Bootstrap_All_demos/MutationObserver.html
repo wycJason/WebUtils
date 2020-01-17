@@ -6,25 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MutationObserver</title>
 </head>
-<body>
+<body contenteditable="true">
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script>
+    //https://www.cnblogs.com/jscode/p/3600060.html
+    /* record:对象
+     type:观察的变动类型（attribute、characterData或者childList）。
+     target:发生变动的DOM对象。
+     addedNodes:新增的DOM对象。
+     removeNodes:删除的DOM对象。
+     previousSibling:前一个同级的DOM对象，如果没有则返回null。
+     nextSibling:下一个同级的DOM对象，如果没有就返回null。
+     attributeName:发生变动的属性。如果设置了attributeFilter，则只返回预先指定的属性。
+     oldValue:变动前的值。这个属性只对attribute和characterData变动有效，如果发生childList变动，则返回null。
+     */
     var callback = function(records) {
-        records.map(function(record) {
+        console.group("records")
+            console.dir(records);
+            records.map(function(record) {
             //console.log('Mutation type: ' + record.type);
             //console.log('Mutation target: ' + record.target);
-            console.dir( record);
-        });
+            //console.dir('Mutation record: ' +  record);
+                console.dir(record);
+            });
+        console.groupEnd()
     };
 
     var mo = new MutationObserver(callback);
 
+
+    /*option:配置对象
+     childList：子元素的变动
+     attributes：属性的变动
+     characterData：节点内容或节点文本的变动
+     subtree：所有下属节点（包括子节点和子节点的子节点）的变动
+     attributeOldValue：值为true或者为false。如果为true，则表示需要记录变动前的属性值。
+     characterDataOldValue：值为true或者为false。如果为true，则表示需要记录变动前的数据值。
+     attributesFilter：值为一个数组，表示需要观察的特定属性（比如['class', 'str']）。
+    */
     var option = {
-        'childList': true,
-        'subtree': true
+        characterData:true,
+        attributes:true,
+        childList: true,
+        subtree: true,
+
+        attributeOldValue:true,
+        characterDataOldValue:true,
+        //attributesFilter:['class', 'id']
     };
 
     mo.observe(document.body, option);
+
+    setTimeout(function(){
+        console.log("定时器调用")
+        $(document.body).append('<h1>插入段落</h1>')
+        $(document.body).append('<h2>插入段落</h2>')
+        $(document.body).append('<h3>插入段落</h3>')
+        $(document.body).append('<h4>插入段落</h4>')
+        $(document.body).append('<h5>插入段落</h5>')
+        $(document.body).append('<h6>插入段落</h6>')
+    },3000)
 </script>
 </body>
 </html>

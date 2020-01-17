@@ -1,5 +1,9 @@
 /**
  * 使用http模块接收客户端请求消息
+ *
+ * 演示QueryString模块的使用  参考文档http://nodejs.cn/
+ * node interpreter: C:\Program Files (x86)\nodejs\node.exe
+ *
  */
 
 const http = require('http');

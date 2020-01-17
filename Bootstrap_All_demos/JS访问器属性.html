@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    var emp={
+        id:1000,
+        name:"eric"
+    };
+    //定义访问器属性age
+    (function(){
+        var _age;//受保护的属性
+        Object.defineProperty(emp,"age",{   //新添加了访问器属性age，但未赋值
+            get:function(){ return _age;},//取值时自动调用
+            set:function(val){ //设置访问器age属性的值val
+                if(val<18||val>65){
+                    throw new RangeError("age must between 18 and 65");
+                }else{
+                    _age=val;//访问器age属性的值val赋给对象属性_age
+                }
+            }
+        });
+    })();
+
+    console.log(emp.age);//undefined
+    emp.age=30;
+    console.log(emp.age);//30
+    emp.age++;
+    console.log(emp.age)//31
+
+
+
+
+
+    function Num(n){
+        this._num = n;
+    }
+    Num.prototype = {
+        get num() {
+            console.log('get');
+            return this._num;
+        },
+        set num(n) {
+            console.log(n,"set")
+            this._num = n;
+        }
+    }
+    let nu = new Num(3);
+    console.log(nu.num,"============")//get   3
+    nu.num = 34 //34 set
+    console.log(nu.num,"------------") //get  34
+</script>
+</body>
+</html>
