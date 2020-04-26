@@ -309,39 +309,54 @@ this.tablist=this._getList().addClass("ui-tabs-nav ui-helper-reset ui-helper-cle
         }else{//华强电子网
             var $row=$this.closest("tr");
             var uid=$row.find(".company").attr("uid");
-            var tuid=$("#tuid1").val();
+			var i=$row.find(".company").attr("i");
+			var tuid=$("#tuid1").val();
             var company={};
             var Contacts =[];
-
-            //【若取联系电话  供应商电话  地址请将鼠标移至供应商显示提示后再点击“询价”取值】
-            if(uid==tuid){
-                company.name=$.trim($("#card #name").text());//供应商名称
-                company.mphone=$.trim($("#card #mphone").text());//联系电话
-                company.phone="";//供应商联系电话
-                company.address=$.trim($("#card #address").text());//地址
-                $("#card #phone li").each(function(i,v){
-                    company.phone+=$(v).text()+"；"
-                    //组装联系人列表
-                     Contacts.push({CntctName:company.name,Tel1:$(v).find("span.b:first").text()+$(v).find("span.b:last").text()})
-                })
-            }else{
-                company.name="";//供应商名称
-                company.mphone="";//联系电话
-                company.phone="";//供应商联系电话
-                company.address="";//地址
-            }
+			var cc=null;	
+			
+			try{
+				cc=companyDataNew[uid+'_'+i];//获取当前供应商信息，companyDataNew为华强电子网的全局变量				
+				company.name=cc.name;//供应商名称
+                company.mphone=cc.mphone;//联系电话
+                company.phone=cc.phone;//供应商联系电话
+                company.address=cc.address;//地址
+				
+				//组装联系人列表
+				var cts=cc.phone.split(",");
+				$.each(cts,function(i,v){
+					var m=v.split(" ");
+					Contacts.push({CntctName:m[1]||cc.name,Tel1:m[0]||cc.mphone})						
+				})
+			}catch(e){
+				//alert("获取当前供应商信息companyDataNew出错,请在生产环境中使用\n错误信息:"+String(e));
+				console.log("获取当前供应商信息companyDataNew出错,请在生产环境中使用,错误信息:"+String(e))
+			}
+			         
+			if(!cc){
+				//【若取联系电话  供应商电话  地址请将鼠标移至供应商显示提示后再点击“询价”取值】
+				if(uid==tuid){
+					company.name=$.trim($("#card #name").text());//供应商名称
+					company.mphone=$.trim($("#card #mphone").text());//联系电话
+					company.phone="";//供应商联系电话
+					company.address=$.trim($("#card #address").text());//地址
+					$("#card #phone li").each(function(i,v){
+						company.phone+=$(v).text()+"；"
+						//组装联系人列表
+						 Contacts.push({CntctName:company.name,Tel1:$(v).find("span.b:first").text()+$(v).find("span.b:last").text()})
+					})
+				}else{
+					company.name="";//供应商名称
+					company.mphone="";//联系电话
+					company.phone="";//供应商联系电话
+					company.address="";//地址
+				}
+			}
+			
             $('input[name="Tel1"]').val($.trim(company.mphone));//联系电话
             $("#IC_TelB").val($.trim(company.phone));//供应商联系电话
             $('input[name="Address"]').val($.trim(company.address));//地址
-            $('input[name="Contacts"]').val(JSON.stringify(Contacts));
-            //组装联系人列表
-            //var contacterList=company.phone.split(",");
-            //var Contacts =[];
-            //$.each(contacterList,function(i,v){
-                //var contacterInfo=v.split(" ");
-               // Contacts.push({CntctName:contacterInfo[1],Tel1:contacterInfo[0]})
-           // })
-           // $('input[name="Contacts"]').val(JSON.stringify(Contacts));
+            $('input[name="Contacts"]').val(JSON.stringify(Contacts));//联系人列表
 
             $("#cardName").text($row.find(".company").text());//模态框标题 ：供应商
             QuoModle=$this.parent().find(".max-name").text();//型号
