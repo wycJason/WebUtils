@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+
+<table id="table" border="1" width="500" height="300">
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+</table>
+
+<br><br><br>
+<table id="table1" border="1" width="500" height="300">
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+</table>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        //动态合并内容相同的单元格
+        function uniteTable(tableId,colLength) {//表格ID，表格列数
+            var tb=document.getElementById(tableId);
+            tb.style.display='';
+            var i = 0;
+            var j = 0;
+            var rowCount = tb.rows.length; //   行数
+            var colCount = tb.rows[0].cells.length; //   列数
+            var obj1 = null;
+            var obj2 = null;
+            //为每个单元格命名
+            for (i = 0; i < rowCount; i++) {
+                for (j = 0; j < colCount; j++) {
+                    tb.rows[i].cells[j].id = "tb__" + i.toString() + "_" + j.toString();
+                }
+            }
+            //合并行
+            for (i = 0; i < colCount; i++) {
+                if (i == colLength) break;
+                obj1 = document.getElementById("tb__0_" + i.toString())
+                for (j = 1; j < rowCount; j++) {
+                    obj2 = document.getElementById("tb__" + j.toString() + "_" + i.toString());
+                    if (obj1.innerText == obj2.innerText && ((obj2.innerText != "" || obj1.innerText != "")&&(obj1.innerText != "-"|| obj2.innerText != "-"))) {
+                        obj1.rowSpan++;
+                        obj2.parentNode.removeChild(obj2);
+                    } else {
+                        obj1 = document.getElementById("tb__" + j.toString() + "_" + i.toString());
+                    }
+                }
+            }
+            //合并列
+            for (i = 0; i < rowCount; i++) {
+                colCount = tb.rows[i].cells.length;
+                obj1 = document.getElementById(tb.rows[i].cells[0].id);
+                for (j = 1; j < colCount; j++) {
+                    if (j >= colLength) break;
+                    if (obj1.colSpan >= colLength) break;
+                    obj2 = document.getElementById(tb.rows[i].cells[j].id);
+                    if (obj1.innerText == obj2.innerText && ((obj2.innerText != "" || obj1.innerText != "")&&(obj1.innerText != "-"|| obj2.innerText != "-"))) {
+                        obj1.colSpan++;
+                        obj2.parentNode.removeChild(obj2);
+                        j = j - 1;
+                    }
+                    else {
+                        obj1 = obj2;
+                        j = j + obj1.rowSpan;
+                    }
+                }
+            }
+        }
+        uniteTable("table1",2)
+
+
+        function mc(tableId, startRow, endRow, col) {
+            var tb = document.getElementById(tableId);
+            debugger
+            if (col >= tb.rows[0].cells.length) {
+                return;
+            }
+            if (col == 0) {
+                endRow = tb.rows.length - 1;
+            }
+            for (var i = startRow; i < endRow; i++) {
+                if (tb.rows[startRow].cells[col].innerHTML == tb.rows[i + 1].cells[0].innerHTML) {
+                    tb.rows[i + 1].removeChild(tb.rows[i + 1].cells[0]);
+                    tb.rows[startRow].cells[col].rowSpan = (tb.rows[startRow].cells[col].rowSpan | 0) + 1;
+                    if (i == endRow - 1 && startRow != endRow) {
+                        mc(tableId, startRow, endRow, col + 1);
+                    }
+                } else {
+                    mc(tableId, startRow, i + 0, col + 1);
+                    startRow = i + 1;
+                }
+            }
+        }
+
+        //mc('table1', 1, 2, 2);
+
+        function table_rowspan(table_id, table_colnum) {
+            table_firsttd = "";
+            table_currenttd = "";
+            table_SpanNum = 0;
+            colnum_Obj = $("#"+table_id + " tr td:nth-child(" + table_colnum + ")");
+            colnum_Obj.each(function (i) {
+                if (i == 0) {
+                    table_firsttd = $(this);
+                    table_SpanNum = 1;
+                } else {
+                    table_currenttd = $(this);
+                    if (table_firsttd.text() == table_currenttd.text()) {
+                        table_SpanNum++;
+                        table_currenttd.hide(); //remove();
+                        table_firsttd.attr("rowSpan", table_SpanNum);
+                    } else {
+                        table_firsttd = $(this);
+                        table_SpanNum = 1;
+                    }
+                }
+            });
+        }
+        //table_rowspan("table1", 2)
+    })
+</script>
+</body>
+</html>

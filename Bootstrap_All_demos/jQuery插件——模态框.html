@@ -81,6 +81,7 @@
 <script>
   //Bootstrap modal模态框可拖动  需要引入jquery-ui    https://blog.csdn.net/gloomy_114/article/details/53113188
   //http://www.runoob.com/bootstrap/bootstrap-modal-plugin.html
+  //第一种方案：不可滚动
   $(document).on("show.bs.modal", ".modal", function(){
     $(this).draggable().css("overflow-y", "hidden");
    // $(this).css("overflow-y", "hidden"); // 防止出现滚动条，出现的话，你会把滚动条一起拖着走的
@@ -91,6 +92,17 @@
     $(this).attr("style","display: none;")
     // $(this).css("overflow-y", "hidden"); // 防止出现滚动条，出现的话，你会把滚动条一起拖着走的
   });
+
+//
+
+  //第二种方案：设置模态框可拖动-优化版本-可滚动
+  $("#atdMember").on("show.bs.modal", function() {
+    $(this).find(".modal-content").draggable()
+  });
+  $("#atdMember").on("hidden.bs.modal", function() {
+    $(this).find(".modal-content").removeAttr("style")
+  });
+
 
 
 //  使用js触发一个事件

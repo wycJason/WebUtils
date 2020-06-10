@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+    <style>
+        #parent {
+            width:150px;
+            height:200px;
+            background:green;
+            position:absolute;
+            left:100px;/*由于parent没有已定位的祖先元素，因此此处parent的位置是以body为准*/
+        }
+        #parent span {
+            position:absolute;
+            width:20px;
+            height:60px;
+            line-height:20px;
+            background:blue;
+            right:-20px;/*绝对定位：以父类的位置为标准，也就是以parent的位置为准，会在parent右边的20px出现span */
+            top:70px
+        }
+    </style>
+</head>
+<body>
+<div id="parent">
+   <span>你好</span>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+//https://blog.csdn.net/qq_42694575/article/details/81431589
+</script>
+</body>
+</html>
