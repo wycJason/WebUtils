@@ -28,6 +28,7 @@
     //opener 属性非常有用，创建的窗口可以引用创建它的窗口所定义的属性和函数。   语法：childWindow（子窗口）  childWindow.opener（父窗口）
     function fun(){
         myWindow=window.open('','MyName','width=200,height=100')
+        myWindow.document.title = "自定义修改标题";
         myWindow.document.write("<h1>子窗口</h1>")
         myWindow.focus()
         myWindow.opener.document.write("<h1>父窗口</h1>")

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<button onclick="openWindow('http://baoli.sap360.com.cn:8059/openapi/company/document/v1/convertdocumenttopdf/12657237/37564/-96135/2/301/1594016683/bc5a36f0cc2347367c735dc355fec1b4', '修改标题')">打开PDF</button>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    // 打开模态窗口
+    function openWindow(url, title, w, h) {
+        const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left;
+        const dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top;
+
+        const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+        const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+        const left = ((width / 2) - (w / 2)) + dualScreenLeft;
+        const top = ((height / 2) - (h / 2)) + dualScreenTop;
+        //const newWindow = window.open('about:blank', title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+        const newWindow = window.open('about:blank', title);
+        newWindow.document.title = title;
+
+        let iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.style.width = '100%';
+        iframe.style.height = '100vh';
+        iframe.style.margin = '0';
+        iframe.style.padding = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.style.border = 'none';
+
+        newWindow.document.body.style.margin = '0';
+        newWindow.document.body.appendChild(iframe);
+
+        if (window.focus) {
+            newWindow.focus();
+        }
+    }
+</script>
+</body>
+</html>
