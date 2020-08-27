@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>将tree的树结构，按顺序拆分成平级数据</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    //https://blog.csdn.net/luckysyy/article/details/80880441
+    //https://www.runoob.com/jquery/misc-merge.html
+    var json = {
+        id:'1',
+        pid:'-1',
+        name:'1',
+        children:[{
+            id:'1_1',
+            pid:'1',
+            name:'1_1',
+        },{
+            id:'1_2',
+            pid:'1',
+            name:'1_2',
+            children:[{
+                id:'2_1',
+                pid:'1_2',
+                name:'2_1',
+            },{
+                id:'2_2',
+                pid:'1_2',
+                name:'2_2',
+            }]
+        },{
+            id:'1_3',
+            pid:'1',
+            name:'1_3',
+        }]
+    }
+
+    function jsonToArr(jsonObj){
+        //var list = [jsonObj.id];
+
+        var list = [{
+            id:jsonObj.id,
+            pid:jsonObj.pid,
+            }];
+        if(jsonObj.children){
+            for(var i=0;i<jsonObj.children.length;i++){
+                list = $.merge(list,jsonToArr(jsonObj.children[i]));
+            }
+        }
+
+        return list;
+    }
+
+    console.log(jsonToArr(json));
+    console.table(jsonToArr(json))
+</script>
+</body>
+</html>

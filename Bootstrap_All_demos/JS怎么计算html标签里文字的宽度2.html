@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JS怎么计算html标签里文字的宽度</title>
+    <style>
+        #ruler {
+            white-space: nowrap;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<span id="ruler">test</span>
+<span >tasdfasdfasdfest</span>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    //https://www.cnblogs.com/flxy-1028/p/7813836.html   //https://www.jb51.net/article/45096.htm
+    String.prototype.visualLength = function(size,family)
+    {
+        var ruler = $("#ruler").css({
+            "font-size":size || "inherit",
+            "font-family":family || "inherit"
+        });
+        console.log(this)
+        ruler.text(this);
+        return ruler.width();
+    }
+    var text = "tasdfasdfasdfest";
+    var len = text.visualLength();
+    console.log(len) //125px
+
+
+    function getTextLength(text,size,family){
+       /* return $("span").css({
+            "font-size":size || "inherit",
+            "font-family":family || "inherit",
+            "white-space": "nowrap",
+            "display":"none",
+        }).text(text).width();*/
+
+        //或者
+        var $span=$("span").css({
+            "font-size":size || "inherit",
+            "font-family":family || "inherit",
+            "white-space": "nowrap",
+            "display":"none",
+        });
+        return $span.text(text).width();
+    }
+</script>
+</body>
+</html>
