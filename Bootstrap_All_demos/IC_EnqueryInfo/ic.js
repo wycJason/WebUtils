@@ -6004,8 +6004,8 @@ function ICInjectJS(path, tbc) {
             $('input[name="Curr"]').val($.trim(QuoCurr));
             $('input[name="Delivery"]').val($.trim(Delivery));
             $('input[name="Supplier"]').val($.trim(CardName));
-			$('input[name="Quality"]').val("");
-			$('textarea[name="Remark"]').val("");
+            $('input[name="Quality"]').val("");
+            $('textarea[name="Remark"]').val("");
         } else { //华强电子网
             var $row = $this.closest("tr");
             var uid = $row.find(".company").attr("uid");
@@ -6080,8 +6080,8 @@ function ICInjectJS(path, tbc) {
             $('input[name="Curr"]').val($.trim(QuoCurr));
             $('input[name="Delivery"]').val($.trim(Delivery));
             $('input[name="Supplier"]').val($.trim(CardName));
-			$('input[name="Quality"]').val("");
-			$('textarea[name="Remark"]').val("");
+            $('input[name="Quality"]').val("");
+            $('textarea[name="Remark"]').val("");
         }
         $("#ERP_ICEnquery").modal("show");
         return false
