@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,7 @@
     <title>Bootstrap Table(本地数据)</title>
     <style>
         /*删除bootstrap-table表格边框线*/
-       /* .table > tbody > tr > td, .table > thead > tr > th{
+        /* .table > tbody > tr > td, .table > thead > tr > th{
             border-top: none !important;
         }
         .fixed-table-container tbody td,.fixed-table-container thead th {
@@ -19,16 +20,20 @@
         .bootstrap-table .table > thead > tr > th,.bootstrap-table .table{
             border-bottom: none!important;
         }*/
-        .thead-light{
+        
+        .thead-light {
             background: #999999;
         }
-        .cls{
-           color: red;
+        
+        .cls {
+            color: red;
         }
-        select{
+        
+        select {
             border: none;
         }
-        select:focus{
+        
+        select:focus {
             outline: none;
         }
     </style>
@@ -39,387 +44,495 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
-<div class="container">
-    <a href="http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/" target="_blank">bootstrap-table中文文档</a><br>
-    <a href="http://www.cnblogs.com/MirageFox/p/5981867.html" target="_blank">bootstrap-table实例1</a><br>
-    <a href="http://www.jq22.com/yanshi10489" target="_blank">bootstrap-table实例2</a><br>
-    <a href="https://blog.csdn.net/tpc1990519/article/details/79037174" target="_blank">bootstrap-table footerFormatter合并单元格</a><br>
-    <a href="http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/" target="_blank">Bootstrap Table列宽拖动的方法</a><br>
-<!--第三种方法，通过 JavaScript 的方式-->
-<div id="toolbar">
-    <button id="get" class="btn btn-default">获取商品名称</button>
-    <button id="insert" class="btn btn-info">插入商品</button>
-</div>
-<table id="goods"></table>
-</div>
-<img class="center-block" src="img/bootstrap-table删除事件.png" alt=""/>
-<img class="center-block" src="img/bstable.png" alt=""/>
-<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<!--渲染表格-->
-<script src="bootstrap-table/bootstrap-table.js"></script>
-<script src="bootstrapAll/js/bootstrap-table-export.js"></script>
-<script src="bootstrapAll/js/tableExport.js"></script>
-<script src="bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
-<!--bootstrap-table-resizable.js这个插件还依赖于colResizable.js-->
-<script src="bootstrap-table/colresizable/colResizable-1.6.min.js"></script>
-<script src="bootstrap-table/extensions/resizable/bootstrap-table-resizable.min.js"></script>
-<script>
-    //bootstrap-table表格版本为 version: 1.11.1
-    //事件对象   http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
-    operateEvents = {
-        'click .edit': function (e, value, row, index) {
-            debugger;
-            console.log("event:",e);//event: jQuery.Event {originalEvent: MouseEvent, type: "click", timeStamp: 1383705.2600000002, jQuery1113010179471385779704: true, isDefaultPrevented: function…}
-            console.log("val:",value);//value:undefined
-            console.log("row:",row);  //row: Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
-            console.log("index:",index);//index: 0
-            alert("编辑\n"+"行索引："+index);
-        },
-        'click .remove': function (e, value, row, index) {
-            //console.log("event:",e);
-            //console.log("val:",value);//value:undefined
-            //console.log("row:",row);  //row: Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
-            //console.log("index:",index);
-            //alert("删除");
-            $('#goods').bootstrapTable('remove', {field: 'Code', values: [row.Code]});//Code类型是字符串   或者 {field: 'TuanGouName', values: [row.TuanGouName]}    从表格中删除数据，包括两个参数： field: 需要删除的行的 field 名称。values: 需要删除的行的值，类型为数组。
-            //$('#goods').bootstrapTable('removeByUniqueId', 1)
-        }
-    };
-    function createBtn(val, row, index) {
-        return '<a class="edit" href="javascript:void(0)" title="编辑"><i class="glyphicon glyphicon-edit"></i></a> ' + '&nbsp;&nbsp;' + '<a class="remove" href="javascript:void(0)" title="删除"><i class="glyphicon glyphicon-remove"></i></a> ';
-    }
+    <div class="container">
+        <a href="http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/" target="_blank">bootstrap-table中文文档</a><br>
+        <a href="http://www.cnblogs.com/MirageFox/p/5981867.html" target="_blank">bootstrap-table实例1</a><br>
+        <a href="http://www.jq22.com/yanshi10489" target="_blank">bootstrap-table实例2</a><br>
+        <a href="https://blog.csdn.net/tpc1990519/article/details/79037174" target="_blank">bootstrap-table footerFormatter合并单元格</a><br>
+        <a href="http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/" target="_blank">Bootstrap Table列宽拖动的方法</a><br>
+        <!--第三种方法，通过 JavaScript 的方式-->
+        <div id="toolbar">
+            <button id="get" class="btn btn-default">获取商品名称</button>
+            <button id="insert" class="btn btn-info">插入商品</button>
+        </div>
+        <table id="goods"></table>
+    </div>
+    <img class="center-block" src="img/bootstrap-table删除事件.png" alt="" />
+    <img class="center-block" src="img/bstable.png" alt="" />
 
-
-    //对列进行格式化设置  初始化的时候就加载  接收js函数(必须有返回值)
-    //data-formatter属性可以格式化该列单元格，
-    // data-formatter接收js函数(必须有返回值)该函数可以获取当前行的下标(注意：获取下标参数必须有row，否则index值为undefined)，函数还可以改变单元格元素显示方式
-    function setCode(val,row,index){
-        //console.log("val:",val);
-        //console.log("row:",row);
-        //console.log("index:",index);
-        return "<a href='javascript:void(0)'>" + val + "</a>";
-    }
-    function setName(val,row,index){
-        //console.log("val:",val);
-        //console.log("row:",row);
-        //console.log("index:",index);
-        return "<span style='color:red;font-weight:bold;'>" + val + "</span>";
-    }
-
-
-    //列样式
-    function cellStyleFormatter(value,row,index,field){
-        //bootstrap-table插件不会自动将表格中的字符截取用省略号代替，原样输出
-       return{
-           css:{
-               'color':'#F68929',
-               'font-weight':'bold',
-                  /* 'white-space': 'nowrap',//禁止文字自动换行*/
-                'word-break':'break-all',// 英文折行
-                'word-wrap':'break-word',//中文折行
-           }
-       }
-    }
-
-    //公共操作（其它字段）：列样式不支持数字折行
-    function cellStyleWordFormatter(value, row, index, field) {
-        return {
-            css: {
-                'white-space': 'nowrap',//禁止文字自动换行*/
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--渲染表格-->
+    <script src="bootstrap-table/bootstrap-table.js"></script>
+    <script src="bootstrapAll/js/bootstrap-table-export.js"></script>
+    <script src="bootstrapAll/js/tableExport.js"></script>
+    <script src="bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <!--bootstrap-table-resizable.js这个插件还依赖于colResizable.js-->
+    <script src="bootstrap-table/colresizable/colResizable-1.6.min.js"></script>
+    <script src="bootstrap-table/extensions/resizable/bootstrap-table-resizable.min.js"></script>
+    <script>
+        //bootstrap-table表格版本为 version: 1.11.1
+        //事件对象   http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
+        operateEvents = {
+            'click .edit': function(e, value, row, index) {
+                debugger;
+                console.log("event:", e); //event: jQuery.Event {originalEvent: MouseEvent, type: "click", timeStamp: 1383705.2600000002, jQuery1113010179471385779704: true, isDefaultPrevented: function…}
+                console.log("val:", value); //value:undefined
+                console.log("row:", row); //row: Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
+                console.log("index:", index); //index: 0
+                alert("编辑\n" + "行索引：" + index);
+            },
+            'click .remove': function(e, value, row, index) {
+                //console.log("event:",e);
+                //console.log("val:",value);//value:undefined
+                //console.log("row:",row);  //row: Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
+                //console.log("index:",index);
+                //alert("删除");
+                $('#goods').bootstrapTable('remove', {
+                    field: 'Code',
+                    values: [row.Code]
+                }); //Code类型是字符串   或者 {field: 'TuanGouName', values: [row.TuanGouName]}    从表格中删除数据，包括两个参数： field: 需要删除的行的 field 名称。values: 需要删除的行的值，类型为数组。
+                //$('#goods').bootstrapTable('removeByUniqueId', 1)
             }
-        }
-    }
-    //公共操作（备注字段）：列样式支持数字中文折行
-    function cellStyleNumFormatter(value, row, index, field) {
-        return {
-            css: {
-                'word-break': 'break-all',// 英文折行
-                'word-wrap': 'break-word',//中文折行
-            }
-        }
-    }
-
-    function stateFormatter(value, row, index) {
-        if (index === 0) {
-            return {
-                disabled: true,
-                checked: true
-            }
-        }
-        if (index === 1) {
-            return {
-                disabled: true
-            };
-        }
-        //console.log("value:",value);//value: undefined
-       // return value;
-    }
-
-    //给table绑定click-row.bs.table函数(行点击事件)，
-    // callback(回调)函数列表：
-    // e(Event：事件对象)，
-    // row(Rows：table行对象，是一个对象)，
-    // ele(Element：被选中行的对象)。给选中行添加颜色样式，移除上一个被选行样式。
-    $(function(){
-        $("#goods").on("click-row.bs.table",function(e,row,tr,field){ //当用户点击某一行的时候触发，参数包括：row：点击行的数据，tr：表格的tr 元素，field：点击列的 field 名称。
-            $(".danger").removeClass("danger");
-            $(tr).addClass("danger");
-            //console.log("e:",e);
-            //console.log("row:",row);//row: Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
-            //console.log("ele:",ele,$(ele));//ele: [tr.selected.danger, prevObject: jQuery.fn.init(1), context: td]0: tr.selected.dangercontext: tdlength: 1prevObject: jQuery.fn.init(1)__proto__: Object(0) [tr.selected.danger, selector: "", context: td]
-        });
-        //点击查询按钮click事件：既然getContent()已获取被选中行对象，需要获取哪个单元格，就调哪个单元格的field值。
-        $("#get").click(function(){
-            if($("#goods").find("tr.danger").data("index")==undefined){
-                alert("请先选中一行！")
-            }else{
-                alert("序号：" +getContent().Code+"；\n商品名称：" + getContent().TuanGouName+ "；\n开始时间：" +getContent().StartDate+"；\n结束时间：" + getContent().EndTime);
-            }
-
-        })
-    });
-    /* getContent()函数分析：
-     var index 获取被选中行下标，find搜索被选中行(即带样式的行)，data被选中行在数据集中的下标。
-     return 返回table中被选中行对象。*/
-    function getContent(){/*获取选中行对象*/
-        //在HTML5规范中div中读取预存的data-[key] = [value]
-        // <div data-test="this is test" ></div>
-        // $("div").data("test"); //this is test!;
-        var index = $("#goods").find("tr.danger").data("index");//<tr data-index="0" class="selected danger"></tr>
-        //console.log($("#goods").bootstrapTable('getData')[index]);//Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
-        return $("#goods").bootstrapTable('getData')[index];
-        //$table.bootstrapTable('getData'); 获取全部表格数据：数据是格式：[{行对象1},{行对象2},{行对象3},……]
-    }
-
-
-    //插入数据  使用方法的语法：$('#table').bootstrapTable('method', parameter);。  parameter是一个对象{ }
-    $("#insert").click(function(){
-        var newData={
-            index: 0,
-            row:{"Code":"100","TuanGouName":"新数据","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"}
         };
-        $("#goods").bootstrapTable('insertRow',newData);
-        //$("#goods").bootstrapTable('prepend',{"Code":"100","TuanGouName":"新数据","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"});
-    })
 
-    function footerFormatterFun(data){
-        console.log("页脚",data);//所有数据行的数组。
-        return '<b>总计：998.5元</b>';
-    }
-
-    //分页
-    $("#goods").on("page-change.bs.table",function(e,number,size){
-        console.log(number,size)
-    });
-
-    //合并页脚
-    function merge_footer() {
-        var footer_tbody = $('.fixed-table-footer table tbody');
-        var footer_tr = footer_tbody.find('>tr');
-        var footer_td = footer_tr.find('>td');
-        var footer_td_1 = footer_td.eq(0);
-        for(var i=1;i<footer_td.length;i++) {
-            footer_td.eq(i).remove();
+        function createBtn(val, row, index) {
+            return '<a class="edit" href="javascript:void(0)" title="编辑"><i class="glyphicon glyphicon-edit"></i></a> ' + '&nbsp;&nbsp;' + '<a class="remove" href="javascript:void(0)" title="删除"><i class="glyphicon glyphicon-remove"></i></a> ';
         }
-        footer_td_1.attr('colspan', footer_td.length);
-    }
 
-    /*数据json*/
-    var json =  [
-        {"Code":"0","TuanGouName":"测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"0","TuanGouName":"Test English word wrap,Test English word wrap,Test English word wrap,Test English word wrap,Test English word wrap,Test English word wrap,Test English word wrap,","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"1","TuanGouName":"好多鱼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"2","TuanGouName":"旺旺雪饼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"3","TuanGouName":"旺旺仙贝","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"4","TuanGouName":"雪花清爽","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"5","TuanGouName":"勇闯天涯","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"6","TuanGouName":"九洲奇味饼干","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"7","TuanGouName":"好多鱼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"8","TuanGouName":"旺旺雪饼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"9","TuanGouName":"旺旺仙贝","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"10","TuanGouName":"雪花清爽","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"11","TuanGouName":"勇闯天涯","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"12","TuanGouName":"九洲奇味饼干","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"13","TuanGouName":"好多鱼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"14","TuanGouName":"旺旺雪饼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"15","TuanGouName":"旺旺仙贝","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"16","TuanGouName":"雪花清爽","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"17","TuanGouName":"勇闯天涯","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"18","TuanGouName":"九洲奇味饼干","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"19","TuanGouName":"好多鱼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"20","TuanGouName":"旺旺雪饼","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"21","TuanGouName":"旺旺仙贝","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"22","TuanGouName":"雪花清爽","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"23","TuanGouName":"勇闯天涯","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"},
-        {"Code":"24","TuanGouName":"九洲奇味饼干","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"}
-    ];
-    /*初始化table数据*/
-    $(function(){
-        $("#goods").bootstrapTable({
-            uniqueId: "Code",//每一行的唯一标识，一般为主键列  此处填写列字段的field值
-            idField: "Code",//指定主键列   此处填写列字段的field值
 
-            toolbar:"#toolbar",
-            toolbarAlign:"left",
+        //对列进行格式化设置  初始化的时候就加载  接收js函数(必须有返回值)
+        //data-formatter属性可以格式化该列单元格，
+        // data-formatter接收js函数(必须有返回值)该函数可以获取当前行的下标(注意：获取下标参数必须有row，否则index值为undefined)，函数还可以改变单元格元素显示方式
+        function setCode(val, row, index) {
+            //console.log("val:",val);
+            //console.log("row:",row);
+            //console.log("index:",index);
+            return "<a href='javascript:void(0)'>" + val + "</a>";
+        }
 
-            //resizable:true,//是否可拖动调整列大小  问题：当设置数据高度时，此插件无法工作。
+        function setName(val, row, index) {
+            //console.log("val:",val);
+            //console.log("row:",row);
+            //console.log("index:",index);
+            return "<span style='color:red;font-weight:bold;'>" + val + "</span>";
+        }
 
-            pagination:true,//设置为true以显示表底部的分页工具栏。
 
-            //onlyInfoPagination:true,
-            height:500,
-            pageList:[1,3,5,10,20,50,100,'ALL'],
-            paginationLoop:false,//设置为 true 启用分页条无限循环的功能。
-            showFooter:true,//是否显示页脚
-            striped:true,
-            paginationPreText:"上一页",
-            paginationNextText:"下一页",
-            undefinedText:"",
-            pageNumber: 1, //初始化加载第一页，默认第一页
-            pageSize: 20,//一页显示20条数据
-            //totalField: "TotalRow",//总行数    参考 https://blog.csdn.net/sinat_35861664/article/details/65677374
-            //dataField: "Result",//返回的数据
+        //列样式
+        function cellStyleFormatter(value, row, index, field) {
+            //bootstrap-table插件不会自动将表格中的字符截取用省略号代替，原样输出
+            return {
+                css: {
+                    'color': '#F68929',
+                    'font-weight': 'bold',
+                    /* 'white-space': 'nowrap',//禁止文字自动换行*/
+                    'word-break': 'break-all', // 英文折行
+                    'word-wrap': 'break-word', //中文折行
+                }
+            }
+        }
 
-            clickToSelect: true,                //是否启用点击选中行
-            //cardView:true, //将true设置为显示卡片视图表，例如移动视图。
-            onCheck: function (row) {
-                //单行最前面的checkbox被选中
-               // console.log(row);
-            },
-            //checkboxHeader:true,//设置 false 将在列头隐藏全选复选框。 默认true
-            singleSelect:true,   //设置 true 是否单选。
+        //公共操作（其它字段）：列样式不支持数字折行
+        function cellStyleWordFormatter(value, row, index, field) {
+            return {
+                css: {
+                    'white-space': 'nowrap', //禁止文字自动换行*/
+                }
+            }
+        }
+        //公共操作（备注字段）：列样式支持数字中文折行
+        function cellStyleNumFormatter(value, row, index, field) {
+            return {
+                css: {
+                    'word-break': 'break-all', // 英文折行
+                    'word-wrap': 'break-word', //中文折行
+                }
+            }
+        }
 
-            search:true,//是否启用搜索框
-           //searchOnEnterKey:true,//搜索方法将被执行，直到按下Enter键
-           // trimOnSearch:true,//将true设置为“修剪”搜索字段中的空格。
-            showRefresh:true,//是否显示 刷新按钮
-            showToggle: true,//是否显示 切换视图（table/card）按钮
-            showColumns: true,//是否显示 内容列下拉框
-            //showFullscreen:true,
+        function stateFormatter(value, row, index) {
+            if (index === 0) {
+                return {
+                    disabled: true,
+                    checked: true
+                }
+            }
+            if (index === 1) {
+                return {
+                    disabled: true
+                };
+            }
+            //console.log("value:",value);//value: undefined
+            // return value;
+        }
 
-            showExport : true, //是否显示导出按钮
-            exportOptions:{//导出选项设置
-                fileName: '我的表格'//重命下载的表格名称
-            },
-            exportDataType : "basic", //basic'导出当前页, 'all'导出全部, 'selected'导出选中项
-            exportTypes: ['excel'],
+        //给table绑定click-row.bs.table函数(行点击事件)，
+        // callback(回调)函数列表：
+        // e(Event：事件对象)，
+        // row(Rows：table行对象，是一个对象)，
+        // ele(Element：被选中行的对象)。给选中行添加颜色样式，移除上一个被选行样式。
+        $(function() {
+            $("#goods").on("click-row.bs.table", function(e, row, tr, field) { //当用户点击某一行的时候触发，参数包括：row：点击行的数据，tr：表格的tr 元素，field：点击列的 field 名称。
+                $(".danger").removeClass("danger");
+                $(tr).addClass("danger");
+                //console.log("e:",e);
+                //console.log("row:",row);//row: Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
+                //console.log("ele:",ele,$(ele));//ele: [tr.selected.danger, prevObject: jQuery.fn.init(1), context: td]0: tr.selected.dangercontext: tdlength: 1prevObject: jQuery.fn.init(1)__proto__: Object(0) [tr.selected.danger, selector: "", context: td]
+            });
+            //点击查询按钮click事件：既然getContent()已获取被选中行对象，需要获取哪个单元格，就调哪个单元格的field值。
+            $("#get").click(function() {
+                if ($("#goods").find("tr.danger").data("index") == undefined) {
+                    alert("请先选中一行！")
+                } else {
+                    alert("序号：" + getContent().Code + "；\n商品名称：" + getContent().TuanGouName + "；\n开始时间：" + getContent().StartDate + "；\n结束时间：" + getContent().EndTime);
+                }
 
-            rememberOrder:true,//设置true以记住每一列的顺序。
+            })
+        });
+        /* getContent()函数分析：
+         var index 获取被选中行下标，find搜索被选中行(即带样式的行)，data被选中行在数据集中的下标。
+         return 返回table中被选中行对象。*/
+        function getContent() { /*获取选中行对象*/
+            //在HTML5规范中div中读取预存的data-[key] = [value]
+            // <div data-test="this is test" ></div>
+            // $("div").data("test"); //this is test!;
+            var index = $("#goods").find("tr.danger").data("index"); //<tr data-index="0" class="selected danger"></tr>
+            //console.log($("#goods").bootstrapTable('getData')[index]);//Object {Code: "1", TuanGouName: "好多鱼", StartDate: "2016/10/9 10:15:00", EndTime: "2016/12/25 11:30:00", state: true}
+            return $("#goods").bootstrapTable('getData')[index];
+            //$table.bootstrapTable('getData'); 获取全部表格数据：数据是格式：[{行对象1},{行对象2},{行对象3},……]
+        }
 
-            data:json,
-            columns: [
-                {
-                    title:'<select>\
+
+        //插入数据  使用方法的语法：$('#table').bootstrapTable('method', parameter);。  parameter是一个对象{ }
+        $("#insert").click(function() {
+            var newData = {
+                index: 0,
+                row: {
+                    "Code": "100",
+                    "TuanGouName": "新数据",
+                    "StartDate": "2016/10/9 10:15:00",
+                    "EndTime": "2016/12/25 11:30:00"
+                }
+            };
+            $("#goods").bootstrapTable('insertRow', newData);
+            //$("#goods").bootstrapTable('prepend',{"Code":"100","TuanGouName":"新数据","StartDate":"2016/10/9 10:15:00","EndTime":"2016/12/25 11:30:00"});
+        })
+
+        function footerFormatterFun(data) {
+            console.log("页脚", data); //所有数据行的数组。
+            return '<b>总计：998.5元</b>';
+        }
+
+        //分页
+        $("#goods").on("page-change.bs.table", function(e, number, size) {
+            console.log(number, size)
+        });
+
+        //合并页脚
+        function merge_footer() {
+            var footer_tbody = $('.fixed-table-footer table tbody');
+            var footer_tr = footer_tbody.find('>tr');
+            var footer_td = footer_tr.find('>td');
+            var footer_td_1 = footer_td.eq(0);
+            for (var i = 1; i < footer_td.length; i++) {
+                footer_td.eq(i).remove();
+            }
+            footer_td_1.attr('colspan', footer_td.length);
+        }
+
+        /*数据json*/
+        var json = [{
+            "Code": "0",
+            "TuanGouName": "测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "0",
+            "TuanGouName": "Test English word wrap,Test English word wrap,Test English word wrap,Test English word wrap,Test English word wrap,Test English word wrap,Test English word wrap,",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "1",
+            "TuanGouName": "好多鱼",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "2",
+            "TuanGouName": "旺旺雪饼",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "3",
+            "TuanGouName": "旺旺仙贝",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "4",
+            "TuanGouName": "雪花清爽",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "5",
+            "TuanGouName": "勇闯天涯",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "6",
+            "TuanGouName": "九洲奇味饼干",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "7",
+            "TuanGouName": "好多鱼",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "8",
+            "TuanGouName": "旺旺雪饼",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "9",
+            "TuanGouName": "旺旺仙贝",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "10",
+            "TuanGouName": "雪花清爽",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "11",
+            "TuanGouName": "勇闯天涯",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "12",
+            "TuanGouName": "九洲奇味饼干",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "13",
+            "TuanGouName": "好多鱼",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "14",
+            "TuanGouName": "旺旺雪饼",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "15",
+            "TuanGouName": "旺旺仙贝",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "16",
+            "TuanGouName": "雪花清爽",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "17",
+            "TuanGouName": "勇闯天涯",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "18",
+            "TuanGouName": "九洲奇味饼干",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "19",
+            "TuanGouName": "好多鱼",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "20",
+            "TuanGouName": "旺旺雪饼",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "21",
+            "TuanGouName": "旺旺仙贝",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "22",
+            "TuanGouName": "雪花清爽",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "23",
+            "TuanGouName": "勇闯天涯",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }, {
+            "Code": "24",
+            "TuanGouName": "九洲奇味饼干",
+            "StartDate": "2016/10/9 10:15:00",
+            "EndTime": "2016/12/25 11:30:00"
+        }];
+        /*初始化table数据*/
+        $(function() {
+            $("#goods").bootstrapTable({
+                uniqueId: "Code", //每一行的唯一标识，一般为主键列  此处填写列字段的field值
+                idField: "Code", //指定主键列   此处填写列字段的field值
+
+                toolbar: "#toolbar",
+                toolbarAlign: "left",
+
+                //resizable:true,//是否可拖动调整列大小  问题：当设置数据高度时，此插件无法工作。
+
+                pagination: true, //设置为true以显示表底部的分页工具栏。
+
+                //onlyInfoPagination:true,
+                height: 500,
+                pageList: [1, 3, 5, 10, 20, 50, 100, 'ALL'],
+                paginationLoop: false, //设置为 true 启用分页条无限循环的功能。
+                showFooter: true, //是否显示页脚
+                striped: true,
+                paginationPreText: "上一页",
+                paginationNextText: "下一页",
+                undefinedText: "",
+                pageNumber: 1, //初始化加载第一页，默认第一页
+                pageSize: 20, //一页显示20条数据
+                //totalField: "TotalRow",//总行数    参考 https://blog.csdn.net/sinat_35861664/article/details/65677374
+                //dataField: "Result",//返回的数据
+
+                clickToSelect: true, //是否启用点击选中行
+                //cardView:true, //将true设置为显示卡片视图表，例如移动视图。
+                onCheck: function(row) {
+                    //单行最前面的checkbox被选中
+                    // console.log(row);
+                },
+                //checkboxHeader:true,//设置 false 将在列头隐藏全选复选框。 默认true
+                singleSelect: true, //设置 true 是否单选。
+
+                search: true, //是否启用搜索框
+                //searchOnEnterKey:true,//搜索方法将被执行，直到按下Enter键
+                // trimOnSearch:true,//将true设置为“修剪”搜索字段中的空格。
+                showRefresh: true, //是否显示 刷新按钮
+                showToggle: true, //是否显示 切换视图（table/card）按钮
+                showColumns: true, //是否显示 内容列下拉框
+                //showFullscreen:true,
+
+                showExport: true, //是否显示导出按钮
+                exportOptions: { //导出选项设置
+                    fileName: '我的表格' //重命下载的表格名称
+                },
+                exportDataType: "basic", //basic'导出当前页, 'all'导出全部, 'selected'导出选中项
+                exportTypes: ['excel'],
+
+                rememberOrder: true, //设置true以记住每一列的顺序。
+
+                data: json,
+                columns: [{
+                    title: '<select>\
                             <option>请选择</option>\
                             <option>自定义标题A</option>\
                             <option>自定义标题B</option>\
                     </select>',
-                    align:"center",
-                    footerFormatter:footerFormatterFun,//表格参数 showFooter:true,才会有效果，如果为 false则无效果
-                    falign:'right',
-                    switchable:false,//禁止禁用列项的可切换。
-                },
-                {
-                    title:"单选",
-                    titleTooltip:"单选",
+                    align: "center",
+                    footerFormatter: footerFormatterFun, //表格参数 showFooter:true,才会有效果，如果为 false则无效果
+                    falign: 'right',
+                    switchable: false, //禁止禁用列项的可切换。
+                }, {
+                    title: "单选",
+                    titleTooltip: "单选",
                     checkbox: true,
-                   // showSelectTitle:true,
+                    // showSelectTitle:true,
                     formatter: stateFormatter,
-                },
-                {
+                }, {
                     field: 'Code',
                     title: '序号',
-                    sortable:true,
+                    sortable: true,
                     //halign:"center",
-                    class:"cls",
-                    visible:true,
+                    class: "cls",
+                    visible: true,
                     formatter: setCode,
-                },
-                {
+                }, {
                     field: 'TuanGouName',
                     title: '商品名称',
-                   // sortable:true,
+                    // sortable:true,
                     formatter: setName,
-                    halign:"center",
-                    cellStyle:cellStyleNumFormatter,
-					visible:true,
+                    halign: "center",
+                    cellStyle: cellStyleNumFormatter,
+                    visible: true,
                     //align:"left"
-                },
-                {
+                }, {
                     field: 'StartDate',
                     title: '开始时间',
-                    cellStyle:cellStyleFormatter
-                },
-                {
+                    cellStyle: cellStyleFormatter
+                }, {
                     field: 'EndTime',
                     title: '结束时间',
-                },
-                {
+                }, {
                     title: '操作',
                     formatter: createBtn,
                     events: operateEvents,
-                }
-            ],
-           /* onPageChange:function(page,size){
-                console.log(page,size)
-            },*/
-            //url:"bootstrap-table/data-json"
-            onPostBody:function(data){//在表格 body 渲染完成后触发。
-                //console.log(data)
-                //合并页脚
-                //merge_footer();
-            },
+                }],
+                /* onPageChange:function(page,size){
+                     console.log(page,size)
+                 },*/
+                //url:"bootstrap-table/data-json"
+                onPostBody: function(data) { //在表格 body 渲染完成后触发。
+                    //console.log(data)
+                    //合并页脚
+                    //merge_footer();
+                },
 
-             rowStyle: function (row, index) {//行样式
-                if (index%2== 0) {
-                    return{
-                        css:{
-                            'background-color':'orange',
+                rowStyle: function(row, index) { //行样式
+                    if (index % 2 == 0) {
+                        return {
+                            css: {
+                                'background-color': 'orange',
+                            }
+                        }
+                    } else {
+                        return {
+                            css: {
+                                'background-color': 'yellow',
+                            }
                         }
                     }
-                } else {
-                    return{
-                        css:{
-                            'background-color':'yellow',
+                },
+                rowAttributes: function(row, index) { //自定义行属性 参数为：row: 行数据   index: 行下标,返回值可以为class或者css 支持所有自定义属性
+                    if (index % 2 == 0) {
+                        return {
+                            'data-even': 'even',
+                        }
+                    } else {
+                        return {
+                            'data-odd': 'odd',
                         }
                     }
-                }
-            },
-            rowAttributes:function(row,index) {//自定义行属性 参数为：row: 行数据   index: 行下标,返回值可以为class或者css 支持所有自定义属性
-                if (index%2== 0) {
-                    return{
-                        'data-even':'even',
-                    }
-                } else {
-                    return{
-                        'data-odd':'odd',
-                    }
-                }
-            },
+                },
 
-            detailView:false,//设置为 true 可以显示详细页面模式。
-            detailFormatter:function(index, row, element) {//格式化详细视图
-               // console.log(index,row);
-               return '<h3>格式化详细页面模式的视图</h3>';
-            },
-            onExpandRow:function(index, row, $detail){//当点击详细图标展开详细页面的时候触发。
+                detailView: false, //设置为 true 可以显示详细页面模式。
+                detailFormatter: function(index, row, element) { //格式化详细视图
+                    // console.log(index,row);
+                    return '<h3>格式化详细页面模式的视图</h3>';
+                },
+                onExpandRow: function(index, row, $detail) { //当点击详细图标展开详细页面的时候触发。
 
-            },
-            onCollapseRow:function(index, row){//当点击详细图片收起详细页面的时候触发。
+                },
+                onCollapseRow: function(index, row) { //当点击详细图片收起详细页面的时候触发。
 
-            },
+                },
+            });
+            //$("#goods").bootstrapTable("getRowByUniqueId","1")  //根据 uniqueId 获取行数据，此表的uniqueId为Code字段
+            // 即根据Code的值来获取对应的行数据。这个方法的意思是获取Code字段值为1的行所在的行数据，这个就是唯一的了。
+
+            //$('#goods').bootstrapTable('resetSearch',"中文")  //重置搜索文本
+            //$('#goods').bootstrapTable('showLoading')
+            //$('#goods').bootstrapTable('hideLoading')
+            //$('#goods').bootstrapTable('resetView',{height:800})
+            //$('#goods').bootstrapTable('getAllSelections');
         });
-        //$("#goods").bootstrapTable("getRowByUniqueId","1")  //根据 uniqueId 获取行数据，此表的uniqueId为Code字段
-        // 即根据Code的值来获取对应的行数据。这个方法的意思是获取Code字段值为1的行所在的行数据，这个就是唯一的了。
-
-        //$('#goods').bootstrapTable('resetSearch',"中文")  //重置搜索文本
-        //$('#goods').bootstrapTable('showLoading')
-        //$('#goods').bootstrapTable('hideLoading')
-        //$('#goods').bootstrapTable('resetView',{height:800})
-        //$('#goods').bootstrapTable('getAllSelections');
-    });
-</script>
+    </script>
 </body>
+
 </html>
