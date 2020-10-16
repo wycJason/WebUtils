@@ -1,0 +1,44 @@
+<!Doctype>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>change事件</title>
+    <style>
+        #container {
+            min-height: 120px;
+            border: 1px solid #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <button type="button" id="btn">add "abc" for div</button>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var targetNode = $('#container')[0]; //content监听的元素id
+        //options：监听的属性
+        var options = {
+            attributes: true,
+            attributeOldValue: true
+        };
+        //回调事件
+        function callback(mutationsList) {
+            console.log(mutationsList);
+            console.log($(mutationsList[0].target).hasClass("abc"));
+
+        }
+        var mutationObserver = new MutationObserver(callback);
+        mutationObserver.observe(targetNode, options);
+
+        // 添加事件
+        $("#btn").click(function() {
+            $("#container").toggleClass("abc").html("abc");
+        });
+    </script>
+</body>
+
+</html>

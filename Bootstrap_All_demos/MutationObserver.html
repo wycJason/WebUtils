@@ -9,7 +9,7 @@
 <body contenteditable="true">
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script>
-    //https://www.cnblogs.com/jscode/p/3600060.html
+    //https://www.cnblogs.com/jscode/p/3600060.html     或者 https://blog.csdn.net/D_bel/article/details/97159844?utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~first_rank_v2~rank_v25-5-97159844.nonecase&utm_term=jquery%20%E7%9B%91%E5%90%ACdom%E8%8A%82%E7%82%B9%E5%8F%98%E5%8C%96&spm=1000.2123.3001.4430
     /* record:对象
      type:观察的变动类型（attribute、characterData或者childList）。
      target:发生变动的DOM对象。
@@ -52,7 +52,7 @@
 
         attributeOldValue:true,
         characterDataOldValue:true,
-        //attributesFilter:['class', 'id']
+        //attributesFilter:['class', 'id',"attribute"]
     };
 
     mo.observe(document.body, option);
@@ -65,6 +65,7 @@
         $(document.body).append('<h4>插入段落</h4>')
         $(document.body).append('<h5>插入段落</h5>')
         $(document.body).append('<h6>插入段落</h6>')
+        $(document.body).attr("id","5201314")
     },3000)
 </script>
 </body>
