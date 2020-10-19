@@ -1,4 +1,8 @@
 function ICInjectJS() {
+    if (!!document.getElementById("ICSaveEnquery")) {
+        return false;
+    }
+
     //style自定义样式
     var myStyleFile = `
     .info-width{
