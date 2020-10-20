@@ -38,7 +38,7 @@ function ICInjectJS() {
     if (hostname == "www.ic.net.cn") { //ic交易网
         $("#sift_bar").after('<div class="ic-equire"><button id="ICSaveEnquery" style="padding: 5px;" type="button">批量保存询价</button></div>');
         $("#searchForm .addFriendBtn,#searchForm .batchInquiry").remove();
-        $("#left_ads").remove();
+        $("#result_topBanners,#left_ads,#searchForm .bottom_ads").remove();
         $("#searchForm .right_results").css({ "width": "1190px" }).removeClass("right_results");
 
         //表格头部设置
@@ -92,6 +92,7 @@ function ICInjectJS() {
         });
     } else { //华强电子网    
         $("#J-top-filter").after('<div style="text-align:right"><button id="ICSaveEnquery" style="padding: 5px;" type="button">批量保存询价</button></div>');
+        $("#ad_bot, .advertising-box.js-ad-tips").remove();
 
         //表格头部设置
         var $tr = $('#resultList table.list-table tr:first-child');
