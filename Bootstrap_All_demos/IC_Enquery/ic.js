@@ -59,7 +59,6 @@ function ICInjectJS() {
     //自定义DOM :判断网站类型：是【IC交易网】还是【华强电子网】
     var hostname = window.location.hostname;
     if (hostname == "www.ic.net.cn") { //ic交易网
-        //$("#sift_bar").after('<div class="ic-equire"><button id="ICSaveEnquery" style="padding: 5px;" type="button">批量保存询价</button></div>');
         $("#searchForm .right_resultTitle").prepend('<button id="ICSaveEnquery" class="ic-btn" type="button">批量保存询价</button>');
         $("#searchForm .addFriendBtn,#searchForm .batchInquiry").remove();
         $("#result_topBanners,#left_ads,#searchForm .bottom_ads").remove();
@@ -115,7 +114,6 @@ function ICInjectJS() {
             $('input[name="ic_check"]').prop("checked", this.checked);
         });
     } else { //华强电子网    
-        //$("#J-top-filter").after('<div style="text-align:right"><button id="ICSaveEnquery" style="padding: 5px;" type="button">批量保存询价</button></div>');
         $("#ic_filter_btn").after('<button id="ICSaveEnquery" class="hqew-btn" type="button">批量保存询价</button>');
         $("#ad_bot, .advertising-box.js-ad-tips").remove();
 
