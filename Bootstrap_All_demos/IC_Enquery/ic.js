@@ -8,6 +8,24 @@ function ICInjectJS() {
     .info-width{
         width:90%;
     }
+    .ic-enquiry{
+        width:90%;
+    }
+    .ic-equire{
+        text-align: right;
+        width: 1190px;
+        margin: 10px auto 0;
+    }
+    .result_price{
+        height: 40px;
+        line-height: 40px;
+        padding-top: 0px;
+        float: left;
+        overflow: hidden;
+        text-align: left;
+        width: 85px;
+        padding-left: 10px;
+    }
     `;
     var style = document.createElement('style');
     style.innerHTML = myStyleFile;
@@ -26,11 +44,53 @@ function ICInjectJS() {
     //自定义DOM :判断网站类型：是【IC交易网】还是【华强电子网】
     var hostname = window.location.hostname;
     if (hostname == "www.ic.net.cn") { //ic交易网
+        $("#sift_bar").after('<div class="ic-equire"><button id="ICSaveEnquery" style="padding: 5px;" type="button">批量保存询价</button></div>');
+        $("#searchForm .addFriendBtn,#searchForm .batchInquiry").remove();
+        $("#left_ads").remove();
+        $("#searchForm .right_results").css({ "width": "1190px" }).removeClass("right_results");
 
+        //表格头部设置
+        $("#resultList_title .result_check").html('<input style="margin-top: 13px;" type="checkbox" title="全选"  name="ic_check_all">');
+        $("#resultList_title #tableIndex").remove();
+        $("#icgoo_info,#resultList li.result_son.icgooResult_son").remove();
+        $("#resultList_title .result_id").after('<div class="result_price">进价</div><div class="result_price">报价</div>');
+
+        //表格正文设置
+        $("#resultList li:not('#resultList_title')").each(function(i, li) {
+            $(li).find(".result_check").html('<input  style="margin-top: 13px;" type="checkbox" name="ic_check">');
+
+            //进价与报价(自定义添加)
+            $(li).find(".result_id").after('<div class="result_price"><input class="ic-enquiry" title="进价" type="number" name="price"></div><div class="result_price"><input class="ic-enquiry" title="报价" type="number" name="offer"></div>');
+
+            //厂商
+            var factory = $(li).find(".result_factory").attr("title") || "";
+            $(li).find(".result_factory").html('<input class="ic-enquiry"  title="' + factory + '" type="text" name="factory" value="' + factory + '">');
+
+            //批号
+            var batchnumber = $(li).find(".result_batchNumber").attr("title") || "";
+            $(li).find(".result_batchNumber").html('<input class="ic-enquiry"  title="' + batchnumber + '" type="text" name="batchnumber" value="' + batchnumber + '">');
+
+            //数量
+            var totalnumber = $(li).find(".result_totalNumber").attr("title") || "";
+            $(li).find(".result_totalNumber").html('<input class="ic-enquiry"  title="' + totalnumber + '" type="number" name="totalnumber" value="' + totalnumber + '">');
+
+            //封装
+            var pakaging = $(li).find(".result_pakaging").attr("title") || "";
+            $(li).find(".result_pakaging").html('<input class="ic-enquiry"  title="' + pakaging + '" type="text" name="pakaging" value="' + pakaging + '">');
+
+            //说明/库位
+            var explain = $(li).find(".result_explain").attr("title") || "";
+            var kwplace = $(li).find(".result_kwplace").attr("title") || "";
+            var declare = !!kwplace ? explain + "/" + kwplace : explain;
+            $(li).find(".result_prompt").html('<input class="ic-enquiry"  title="' + declare + '" type="text" name="declare" value="' + declare + '">');
+        })
+
+        //监听全选
+        $('input[name="ic_check_all"]').change(function() {
+            $('input[name="ic_check"]').prop("checked", this.checked);
+        });
     } else { //华强电子网    
-        $("#top_banner").css({
-            "text-align": "right"
-        }).html('<button id="ICSaveEnquery" style="padding: 5px;" type="button">批量保存询价</button>');
+        $("#J-top-filter").after('<div style="text-align:right"><button id="ICSaveEnquery" style="padding: 5px;" type="button">批量保存询价</button></div>');
 
         //表格头部设置
         var $tr = $('#resultList table.list-table tr:first-child');
@@ -184,45 +244,132 @@ function ICInjectJS() {
     //保存问价
     $("#ICSaveEnquery").click(function() {
         var formData = [];
-        $('input[name="ic_check"]:checked').each(function(i, chk) {
-            var cid = $(chk).attr("data-cid"); //companyDataNew[cid]
-            var $tr = $(chk).closest("tr");
-            var price = $tr.find('input[name="price"]').val(); //进价
-            var offer = $tr.find('input[name="offer"]').val(); //报价
-            var stocknum = $tr.find('input[name="stocknum"]').val(); //数量
-            var brand = $tr.find('input[name="brand"]').val(); //品牌
-            var batchnumber = $tr.find('input[name="batchnumber"]').val(); //批号
-            var package = $tr.find('input[name="package"]').val(); //封装
-            var param = $tr.find('input[name="param"]').val(); //产品参数
-            var depot = $tr.find('input[name="depot"]').val(); //仓库
-            var explain = $tr.find('input[name="explain"]').val(); //交易说明
 
-            formData.push({
-                price,
-                offer,
-                stocknum,
-                brand,
-                batchnumber,
-                package,
-                param,
-                depot,
-                explain,
+        if (hostname == "www.ic.net.cn") { //ic交易网
+            $('input[name="ic_check"]:checked').each(function(i, chk) {
+                var $li = $(chk).closest("li");
+                var companname = $li.find(".result_supply .detailLayer .layer_companyName").text(); //公司名称
+                var model = $li.find(".result_id").attr("title") || ""; //型号
+                var price = $li.find('input[name="price"]').val(); //进价
+                var offer = $li.find('input[name="offer"]').val(); //报价
+                var factory = $li.find('input[name="factory"]').val(); //厂商
+                var batchnumber = $li.find('input[name="batchnumber"]').val(); //批号
+                var totalnumber = $li.find('input[name="totalnumber"]').val(); //数量
+                var pakaging = $li.find('input[name="pakaging"]').val(); //封装
+                var declare = $li.find('input[name="declare"]').val(); //交易说明
+
+
+                $ele = $li.find(".result_supply .detailLayer .layer_mainContent");
+                var mphone = $ele.find(".layer_otherContentphone").text(); //手机
+                var fax = $ele.find(".layer_otherTitle_fax").next().text(); //传真
+                var contacts = "";
+                $ele.find(".layer_contacts").each(function(i, d) {
+                    var cont = $(d).children(".layer_contactName").text();
+                    var tel = $(d).children(".layer_telNumber").text();
+                    var contactInfo = cont + ":" + tel + "; "
+                    contacts += contactInfo;
+                })
+                contacts += "传真:" + fax + ";";
+                var address = $ele.find(".company_address2").text(); //地址
+
+                //组装联系人列表
+                var contacterList = contacts.split(";");
+                contacterList.pop();
+                contacterList.pop();
+                var Contacts = [];
+                $.each(contacterList, function(i, v) {
+                    var contacterInfo = v.split(":");
+                    Contacts.push({ CntctName: contacterInfo[0].replace("+", ""), Tel1: contacterInfo[1] })
+                })
+
+                formData.push({
+                    Tel1: mphone,
+                    Address: address,
+                    Supplier: companname,
+                    Modle: model,
+                    Cost: price,
+                    Price: offer,
+                    Brand: factory,
+                    Year: batchnumber,
+                    Qty: totalnumber,
+                    Package: pakaging,
+                    Curr: "RMB", //报价货币
+                    Delivery: "", //交期
+                    Quality: "",
+                    Remark: declare,
+                    Contacts: Contacts
+                })
             })
-        })
+        } else { //华强电子网
+            $('input[name="ic_check"]:checked').each(function(i, chk) {
+                var cid = $(chk).attr("data-cid");
+                var company = {};
+                var Contacts = [];
+                var cc = companyDataNew[cid]; //获取当前供应商信息，companyDataNew为华强电子网的全局变量	
 
-        console.table(formData)
-            /* try {
-                var formData = parseStrObjByRegExpKV(decodeURIComponent($(".form-data").serialize().replace(/\+/g, ''), true));
-                var formDataStr = JSON.stringify(formData);
-                var code = window.external.ExQuote(formDataStr);
-                if (code == 0) {
-                    console.log("保存成功！");
-                } else {
-                    console.log("保存失败！");
-                }
-            } catch (err) {
-                alert("保存异常:" + String(err));
-            } */
+                company.name = cc.name; //供应商名称
+                company.mphone = cc.mphone; //联系电话
+                company.phone = cc.phone; //供应商联系电话
+                company.address = cc.address; //地址
+
+                //组装联系人列表
+                var cts = cc.phone.split(",");
+                $.each(cts, function(i, v) {
+                    var m = v.split(" ");
+                    Contacts.push({ CntctName: m[1] || cc.name, Tel1: m[0] || cc.mphone })
+                })
+
+
+                var $tr = $(chk).closest("tr");
+                var model = $tr.find('.td-model .max-name').text(); //型号
+                var price = $tr.find('input[name="price"]').val(); //进价
+                var offer = $tr.find('input[name="offer"]').val(); //报价
+                var stocknum = $tr.find('input[name="stocknum"]').val(); //数量
+                var brand = $tr.find('input[name="brand"]').val(); //品牌
+                var batchnumber = $tr.find('input[name="batchnumber"]').val(); //批号
+                var package = $tr.find('input[name="package"]').val(); //封装
+                var param = $tr.find('input[name="param"]').val(); //产品参数
+                var depot = $tr.find('input[name="depot"]').val(); //仓库
+                var explain = $tr.find('input[name="explain"]').val(); //交易说明
+
+                formData.push({
+                    Tel1: company.mphone,
+                    Address: company.address,
+                    Supplier: company.name,
+                    Modle: model,
+                    Cost: price,
+                    Price: offer,
+                    Brand: brand,
+                    Year: batchnumber,
+                    Qty: stocknum,
+                    Package: package,
+                    Curr: "RMB", //报价货币
+                    Delivery: "", //交期
+                    Quality: "",
+                    Remark: param + ";" + depot + ";" + explain,
+                    Contacts: Contacts
+                })
+            })
+        }
+
+        if (formData.length > 0) {
+            console.table(formData)
+        } else {
+            alert("请选择询价条目!")
+        }
+
+        /* try {
+            var formData = parseStrObjByRegExpKV(decodeURIComponent($(".form-data").serialize().replace(/\+/g, ''), true));
+            var formDataStr = JSON.stringify(formData);
+            var code = window.external.ExQuote(formDataStr);
+            if (code == 0) {
+                console.log("保存成功！");
+            } else {
+                console.log("保存失败！");
+            }
+        } catch (err) {
+            alert("保存异常:" + String(err));
+        } */
     })
 
 

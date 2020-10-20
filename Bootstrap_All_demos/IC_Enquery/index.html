@@ -5,17 +5,32 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="3;url=百度地图-点击获取经纬度.html">
     <title>IC询价测试页</title>
 </head>
 
 <body>
     <input type="checkbox" title="全选" name="ic_check_all">
     <input type="hidden" name="">
-    <input type="number" name="">
+    <input type="date" name="">
     <span title=""></span>
     <form class="form-data"></form>
+    <input id="test" type="text" value="888&lt;888&gt;@126.com" />
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script>
+        function html_encode(str) {
+            var s = "";
+            if (str.length == 0) return "";
+            s = str.replace(/</ig, "&lt;").replace(/>/ig, "&gt;")
+            return s;
+        }
+
+        function html_decode(str) {
+            var s = "";
+            if (str.length == 0) return "";
+            s = str.replace(/&lt;/ig, "<").replace(/&gt;/ig, ">");
+            return s;
+        }
     </script>
 </body>
 
