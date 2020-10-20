@@ -23,22 +23,14 @@ function ICInjectJS() {
         float: left;
         overflow: hidden;
         text-align: left;
-        width: 85px;
+        width: 60px;
+        padding-top: 2px;
         padding-left: 10px;
     }
     `;
     var style = document.createElement('style');
     style.innerHTML = myStyleFile;
     document.getElementsByTagName('HEAD').item(0).appendChild(style);
-
-    //表单数据格式化
-    function parseStrObjByRegExpKV(strDes) { //字符串转化为对象（正则表达式方式）parseStrObjByRegExpKV("name=jack&age=20&love=lily");
-        var obj = {};
-        strDes.replace(/(\w+)(?:=([^&]*))?/g, function(str, key, value) {
-            obj[key] = value;
-        });
-        return obj;
-    }
 
 
     //自定义DOM :判断网站类型：是【IC交易网】还是【华强电子网】
@@ -53,7 +45,10 @@ function ICInjectJS() {
         $("#resultList_title .result_check").html('<input style="margin-top: 13px;" type="checkbox" title="全选"  name="ic_check_all">');
         $("#resultList_title #tableIndex").remove();
         $("#icgoo_info,#resultList li.result_son.icgooResult_son").remove();
+        $("#resultList_title .result_date,#resultList .result_date").css({ "width": "134px" });
+        $("#resultList_title .result_id,#resultList .result_id").css({ "width": "115px" });
         $("#resultList_title .result_id").after('<div class="result_price">进价</div><div class="result_price">报价</div>');
+
 
         //表格正文设置
         $("#resultList li:not('#resultList_title')").each(function(i, li) {
@@ -83,6 +78,12 @@ function ICInjectJS() {
             var kwplace = $(li).find(".result_kwplace").attr("title") || "";
             var declare = !!kwplace ? explain + "/" + kwplace : explain;
             $(li).find(".result_prompt").html('<input class="ic-enquiry"  title="' + declare + '" type="text" name="declare" value="' + declare + '">');
+
+            //日期
+            var attrDate = $(li).find(".result_date").attr("title") || "";
+            var hiddenDate = $(li).find(".result_date input[type='hidden']").val() || "";
+            var date = !!hiddenDate ? hiddenDate.split(" ")[0] : attrDate.split(" ")[0];
+            $(li).find(".result_date").html('<input class="ic-enquiry"  title="' + date + '" type="date" name="date" value="' + date + '">');
         })
 
         //监听全选
@@ -158,9 +159,6 @@ function ICInjectJS() {
         });
 
 
-
-
-
         //监听DOM折叠行数据变化
         var $targetNodeList = $('#resultList table.list-table tr td.td-merge span'); //content监听的元素id
         //options：监听的属性
@@ -173,6 +171,7 @@ function ICInjectJS() {
             //console.log(mutationsList);
             //console.log($(mutationsList[0].target).hasClass("expand"));
             if ($(mutationsList[0].target).hasClass("expand")) {
+                var cid = $(mutationsList[0].target).closest("tr").find('input[name="ic_check"]').attr("data-cid");
                 var $tr_boxbg = $(mutationsList[0].target).closest("tr").nextAll('tr[class^="boxbg"]');
 
                 $tr_boxbg.each(function(i, tr_boxbg) {
@@ -185,7 +184,7 @@ function ICInjectJS() {
                     }
 
                     //复选框
-                    $tr.find('td input[name="icchk"]').parent().html('<input type="checkbox" name="ic_check" >');
+                    $tr.find('td input[name="icchk"]').parent().html('<input type="checkbox" data-cid="' + cid + '" name="ic_check" >');
 
 
 
@@ -257,6 +256,7 @@ function ICInjectJS() {
                 var totalnumber = $li.find('input[name="totalnumber"]').val(); //数量
                 var pakaging = $li.find('input[name="pakaging"]').val(); //封装
                 var declare = $li.find('input[name="declare"]').val(); //交易说明
+                var date = $li.find('input[name="date"]').val(); //日期
 
 
                 $ele = $li.find(".result_supply .detailLayer .layer_mainContent");
@@ -294,7 +294,7 @@ function ICInjectJS() {
                     Qty: totalnumber,
                     Package: pakaging,
                     Curr: "RMB", //报价货币
-                    Delivery: "", //交期
+                    Delivery: date, //交期
                     Quality: "",
                     Remark: declare,
                     Contacts: Contacts
