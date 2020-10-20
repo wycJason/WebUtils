@@ -27,6 +27,29 @@ function ICInjectJS() {
         padding-top: 2px;
         padding-left: 10px;
     }
+    .hqew-btn {
+        height: 25px;
+        border: 0;
+        margin: 5px 0 0 5px;
+        border-radius: 3px;
+        display: block;
+        background-color: #1057a7;
+        color: #ffffff;
+        float: left;
+        padding: 0 10px;
+    }
+    .ic-btn {
+        height: 24px;
+        width: 100px;
+        float: left;
+        border-width: 0px;
+        line-height: 24px;
+        overflow: hidden;
+        cursor: pointer;
+        margin-top: 7px;
+        background-color: #3C6EC7;
+        color: #ffffff;
+    }
     `;
     var style = document.createElement('style');
     style.innerHTML = myStyleFile;
@@ -36,7 +59,8 @@ function ICInjectJS() {
     //自定义DOM :判断网站类型：是【IC交易网】还是【华强电子网】
     var hostname = window.location.hostname;
     if (hostname == "www.ic.net.cn") { //ic交易网
-        $("#sift_bar").after('<div class="ic-equire"><button id="ICSaveEnquery" style="padding: 5px;" type="button">批量保存询价</button></div>');
+        //$("#sift_bar").after('<div class="ic-equire"><button id="ICSaveEnquery" style="padding: 5px;" type="button">批量保存询价</button></div>');
+        $("#searchForm .right_resultTitle").prepend('<button id="ICSaveEnquery" class="ic-btn" type="button">批量保存询价</button>');
         $("#searchForm .addFriendBtn,#searchForm .batchInquiry").remove();
         $("#result_topBanners,#left_ads,#searchForm .bottom_ads").remove();
         $("#searchForm .right_results").css({ "width": "1190px" }).removeClass("right_results");
@@ -91,7 +115,8 @@ function ICInjectJS() {
             $('input[name="ic_check"]').prop("checked", this.checked);
         });
     } else { //华强电子网    
-        $("#J-top-filter").after('<div style="text-align:right"><button id="ICSaveEnquery" style="padding: 5px;" type="button">批量保存询价</button></div>');
+        //$("#J-top-filter").after('<div style="text-align:right"><button id="ICSaveEnquery" style="padding: 5px;" type="button">批量保存询价</button></div>');
+        $("#ic_filter_btn").after('<button id="ICSaveEnquery" class="hqew-btn" type="button">批量保存询价</button>');
         $("#ad_bot, .advertising-box.js-ad-tips").remove();
 
         //表格头部设置
