@@ -1,56 +1,10 @@
-function ICInjectJS() {
+function ICInjectJS(path, tbc) {
     if ($(".ICSaveEnquery").length > 0) {
         return false;
     }
 
-    //style自定义样式
-    var myStyleFile = `
-    .info-width{
-        width:90%;
-    }
-    .ic-enquiry{
-        width:90%;
-    }
-    .ic-equire{
-        text-align: right;
-        width: 1190px;
-        margin: 10px auto 0;
-    }
-    .result_price{
-        height: 40px;
-        line-height: 40px;
-        padding-top: 0px;
-        float: left;
-        overflow: hidden;
-        text-align: left;
-        width: 60px;
-        padding-top: 2px;
-        padding-left: 10px;
-    }
-    .hqew-btn {
-        height: 25px;
-        border: 0;
-        margin: 5px 0 0 5px;
-        border-radius: 3px;
-        display: block;
-        background-color: #1057a7;
-        color: #ffffff;
-        float: left;
-        padding: 0 10px;
-    }
-    .ic-btn {
-        height: 24px;
-        width: 100px;
-        float: left;
-        border-width: 0px;
-        line-height: 24px;
-        overflow: hidden;
-        cursor: pointer;
-        margin-top: 7px;
-        background-color: #3C6EC7;
-        color: #ffffff;
-    }
-    `;
+    //style自定义样式 (通过http://www.bejson.com/otherformat/css/ 解压编辑，然后再压缩发布即可)
+    var myStyleFile = '.info-width{width:90%;}.ic-enquiry{width:90%;}.ic-equire{text-align:right;width:1190px;margin:10px auto 0;}.result_price{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;text-align:left;width:60px;padding-top:2px;padding-left:10px;}.hqew-btn{height:25px;border:0;margin:5px 0 0 5px;border-radius:3px;display:block;background-color:#1057a7;color:#ffffff;float:left;padding:0 10px;}.ic-btn{height:24px;line-height:24px;float:left;border-width:0px;overflow:hidden;cursor:pointer;margin-top:7px;background-color:#3C6EC7;color:#ffffff;padding:0 8px;margin-right:8px;}';
     var style = document.createElement('style');
     style.innerHTML = myStyleFile;
     document.getElementsByTagName('HEAD').item(0).appendChild(style);
@@ -59,7 +13,7 @@ function ICInjectJS() {
     //自定义DOM :判断网站类型：是【IC交易网】还是【华强电子网】
     var hostname = window.location.hostname;
     if (hostname == "www.ic.net.cn") { //ic交易网
-        $("#searchForm .right_resultTitle").prepend('<button class="ic-btn ICSaveEnquery" type="button">批量保存询价</button>');
+        $("#searchForm .right_resultTitle").prepend((!!tbc ? '<button class="ic-btn ICSaveEnquery" type="button" data-tbc="1">批量保存待确认报价</button>' : '') + '<button class="ic-btn ICSaveEnquery" type="button" data-tbc="0">批量保存直接询价</button>');
         $("#searchForm .addFriendBtn,#searchForm .batchInquiry").remove();
         $("#result_topBanners,#left_ads,#searchForm .bottom_ads").remove();
         $("#searchForm .right_results").css({ "width": "1190px" }).removeClass("right_results");
@@ -114,7 +68,7 @@ function ICInjectJS() {
             $('input[name="ic_check"]').prop("checked", this.checked);
         });
     } else { //华强电子网    
-        $("#ic_filter_btn").after('<button class="hqew-btn ICSaveEnquery" type="button">批量保存询价</button>');
+        $("#ic_filter_btn").after((!!tbc ? '<button class="hqew-btn ICSaveEnquery" type="button" data-tbc="1">批量保存待确认报价</button>' : '') + '<button class="hqew-btn ICSaveEnquery" type="button" data-tbc="0">批量保存直接报价</button>');
         $("#ad_bot, .advertising-box.js-ad-tips").remove();
 
         //表格头部设置
@@ -125,7 +79,7 @@ function ICInjectJS() {
         $tr.find("th.td-model").after('<th width="5.2%">进价</th><th width="5.2%">报价</th>');
 
         //表格正文
-        $('#resultList table.list-table tr#fshop').remove();
+        $('#resultList table.list-table tr#fshop,#resultList table.list-table tr#yuncang').remove();
         $('#resultList table.list-table tr:not("#fshop,:first-child")').each(function(i, tr) {
             var uid = $(tr).find(".company").attr("uid");
             var i = $(tr).find(".company").attr("i");
@@ -266,6 +220,7 @@ function ICInjectJS() {
 
     //保存问价
     $(".ICSaveEnquery").click(function() {
+        var isTbc = parseInt($(this).attr("data-tbc"));
         var formData = [];
 
         if (hostname == "www.ic.net.cn") { //ic交易网
@@ -321,7 +276,8 @@ function ICInjectJS() {
                     Delivery: date, //交期
                     Quality: "",
                     Remark: declare,
-                    Contacts: Contacts
+                    Contacts: Contacts,
+                    IsTobeConfirmed: isTbc, //待确认报价 或直接报价
                 })
             })
         } else { //华强电子网
@@ -371,29 +327,28 @@ function ICInjectJS() {
                     Delivery: "", //交期
                     Quality: "",
                     Remark: param + ";" + depot + ";" + explain,
-                    Contacts: Contacts
+                    Contacts: Contacts,
+                    IsTobeConfirmed: isTbc, //待确认报价 或直接报价
                 })
             })
         }
 
         if (formData.length > 0) {
-            console.table(formData)
+            //console.table(formData)
+            try {
+                var formDataStr = JSON.stringify(formData);
+                var code = window.external.ExQuote(formDataStr);
+                if (code == 0) {
+                    console.log("保存成功！");
+                } else {
+                    console.log("保存失败！");
+                }
+            } catch (err) {
+                alert("保存异常:" + String(err));
+            }
         } else {
             alert("请选择询价条目!")
         }
-
-        /* try {
-            var formData = parseStrObjByRegExpKV(decodeURIComponent($(".form-data").serialize().replace(/\+/g, ''), true));
-            var formDataStr = JSON.stringify(formData);
-            var code = window.external.ExQuote(formDataStr);
-            if (code == 0) {
-                console.log("保存成功！");
-            } else {
-                console.log("保存失败！");
-            }
-        } catch (err) {
-            alert("保存异常:" + String(err));
-        } */
     })
 
 
