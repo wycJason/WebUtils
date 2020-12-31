@@ -1,4 +1,4 @@
-//TODO 1.接收HTML页面传递的消息
+//TODO 1.鎺ユ敹HTML椤甸潰浼犻�掔殑娑堟伅
 /*addEventListener('message',function(event){
     var data = event.data;
     var msg = data.msg;

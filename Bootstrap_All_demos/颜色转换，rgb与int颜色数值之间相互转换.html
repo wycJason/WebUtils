@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>颜色转换，rgb与int颜色数值之间相互转换</title>
+</head>
+<body>
+<p id="demo"></p>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    //https://blog.csdn.net/qq_40302859/article/details/81906654
+    // int转rgb
+    function converArgbToRgb(argb){
+        var rgb = [];
+        rgb[0] = (argb & 0xff0000) >> 16;
+        rgb[1] = (argb & 0xff00) >> 8;
+        rgb[2] = (argb & 0xff);
+        return "rgb("+rgb[0]+","+rgb[1]+","+rgb[2]+")";
+    }
+    // rgb转int
+    function converRgbToArgb(r,g,b){
+        var color = ((0xFF << 24)|(r << 16)|(g << 8)|b);
+        return color;
+    }
+
+
+
+
+    function myFunction(p1, p2) {
+        var color = -8355712;
+        var r = 0xFF & color;
+        var g = 0xFF00 & color;
+        g >>= 8;
+        var b = 0xFF0000 & color;
+        b >>= 16;
+
+        return r+'   ' + g+'   '+ b  //128 128 128
+    }
+    document.getElementById("demo").innerHTML = myFunction();
+</script>
+</body>
+</html>

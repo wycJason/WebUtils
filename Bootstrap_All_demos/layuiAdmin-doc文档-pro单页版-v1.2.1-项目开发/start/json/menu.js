@@ -3,86 +3,36 @@
   ,"msg": ""
   ,"data": [{
 		"name": "systemSet"
-	  ,"title": "系统设置"	
+	  ,"title": "系统设置"
 	  ,"icon": "layui-icon-set"
 	  ,"jump": "/"
 		},{
 		"name": "redisServerGroup"
-	  ,"title": "redis服务器组"	
+	  ,"title": "redis服务器组"
 	  ,"icon": "layui-icon-template-1"
 	  ,"jump": "redisServerGroup/index"
 		},{
 		"name": "databaseGroup"
-	  ,"title": "数据库服务器组"	
+	  ,"title": "数据库服务器组"
 	  ,"icon": "layui-icon-app"
 	  ,"jump": "databaseGroup/index"
 		},{
 		"name": "companyManage"
-	  ,"title": "公司管理"	
+	  ,"title": "公司管理"
 	  ,"icon": "layui-icon-username"
 	  ,"jump": "companyManage/list"
 		},{
 		"name": "onlineUser"
-	  ,"title": "在线用户"	
+	  ,"title": "在线用户"
 	  ,"icon": "layui-icon-user"
 	  ,"jump": "onlineUser/list"
-		},	
+		},
 		{
-			"name": "jason"
-		  ,"title": "项目开发"	
+          "name": "jason"
+		  ,"title": "项目开发"
 		  ,"icon": "layui-icon-fonts-code"
 		  ,"jump": "jason/index/uid=123/type=1"
 		},
-		
-		
-		
-		
-		
-		
-		
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
 	{
     "title": "主页"
 	,"name": "console"

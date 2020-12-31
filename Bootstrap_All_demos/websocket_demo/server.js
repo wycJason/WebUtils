@@ -1,5 +1,6 @@
 /**
  * Created by jason on 2018/10/8.
+ * Node解释器，C:\Program Files (x86)\nodejs\node.exe
  */
 var app=require('http').createServer(handler);
 var ws=require('nodejs-websocket');//切换到顶级目录安装模块 npm install websocket  然后再引用
