@@ -4,39 +4,33 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Template</title>
+    <title>Flex布局</title>
     <style>
-        .flexA{display:flex;width:800px;margin:0;padding:0;list-style:none;}
-        .flexA :nth-child(1){flex:1 1 300px;border: 1px solid #dddcdd}
-        .flexA :nth-child(2){flex:2 2 200px;border: 1px solid #dddcdd}
-        .flexA :nth-child(3){flex:3 3 400px;border: 1px solid #dddcdd}
+        .flexA{display:flex;width:900px;margin:0;padding:0;list-style:none;}
+        .flexA :nth-child(1){flex:1 1 100px;border: 1px solid #dddcdd}
+        .flexA :nth-child(2){flex:2 2 100px;border: 1px solid #dddcdd}
+        .flexA :nth-child(3){flex:3 3 100px;border: 1px solid #dddcdd}
 
-        .flexB{display:flex;width:1500px;margin:0;padding:0;list-style:none;}
-        .flexB :nth-child(1){flex:1 1 300px;border: 1px solid #dddcdd}
-        .flexB :nth-child(2){flex:2 2 200px;border: 1px solid #dddcdd}
+        .flexB{display:flex;width:300px;margin:0;padding:0;list-style:none;}
+        .flexB :nth-child(1){flex:1 1 200px;border: 1px solid #dddcdd}
+        .flexB :nth-child(2){flex:2 2 300px;border: 1px solid #dddcdd}
         .flexB :nth-child(3){flex:3 3 400px;border: 1px solid #dddcdd}
 
-        .flexC{display:flex;width:600px;margin:0;padding:0;list-style:none;}
-        .flexC :nth-child(1){flex:1 1 0;border: 1px solid #dddcdd}
-        .flexC :nth-child(2){flex:2 2 0;border: 1px solid #dddcdd}
-        .flexC :nth-child(3){flex:3 3 0;border: 1px solid #dddcdd}
+        .flexC{display:flex;width:1200px;margin:0;padding:0;list-style:none;}
+        .flexC :nth-child(1){flex:auto;border: 1px solid #dddcdd}
+        .flexC :nth-child(2){flex:auto;border: 1px solid #dddcdd}
+        .flexC :nth-child(3){flex:auto;border: 1px solid #dddcdd}
 
-        .flexD {
-            display: flex;
-            flex-direction:row;
-            list-style: none;
-        }
-        .flexD li{
-            width: 100px;
-            border: 1px solid #dddcdd
-        }
+        .flexD{display:flex;width:300px;margin:0;padding:0;list-style:none;}
+        .flexD li{width: 100px}
+        .flexD :nth-child(1){flex:none;border: 1px solid #dddcdd}
+        .flexD :nth-child(2){flex:none;border: 1px solid #dddcdd}
+        .flexD :nth-child(3){flex:none;border: 1px solid #dddcdd}
 
-        .test {
-            display: flex;
-        }
-        .item2 {
-            order: -1;
-        }
+        .flexE{display:flex;width:600px;margin:0;padding:0;list-style:none;}
+        .flexE :nth-child(1){order:2 ;flex:1 1 100px;border: 1px solid #dddcdd}
+        .flexE :nth-child(2){order:1 ;flex:1 1 100px;border: 1px solid #dddcdd}
+        .flexE :nth-child(3){order:0;flex:1 1 100px;border: 1px solid #dddcdd}
 
     </style>
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -47,24 +41,28 @@
 </head>
 <body>
 <h1><a href="http://css.cuishifeng.cn/flex.html" target="_blank">flex布局</a></h1>
+<h3>flexA</h3>
 <ul class="flexA">
     <li>a</li>
     <li>b</li>
     <li>c</li>
 </ul>
 <br><br><br>
+<h3>flexB</h3>
 <ul class="flexB">
     <li>a</li>
     <li>b</li>
     <li>c</li>
 </ul>
 <br><br><br>
+<h3>flexC</h3>
 <ul class="flexC">
     <li>a</li>
     <li>b</li>
     <li>c</li>
 </ul>
 <br><br><br>
+<h3>flexD</h3>
 <ul class="flexD">
     <li>a</li>
     <li>b</li>
@@ -72,10 +70,12 @@
 </ul>
 
 <br><br><br>
-<div class="test">
-    <p class="item1">flex item1</p>
-    <p class="item2">flex item2</p>
-</div>
+<h3>flexE</h3>
+<ul class="flexE">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+</ul>
 <script src="js/jquery-1.11.3.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>

@@ -47,7 +47,7 @@
 
 <body>
     <div class="container">
-        <a href="http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/" target="_blank">bootstrap-table中文文档</a><br>
+        <a href="https://bootstrap-table.com/docs/api/table-options/" target="_blank">bootstrap-table中文文档</a><br>
         <a href="http://www.cnblogs.com/MirageFox/p/5981867.html" target="_blank">bootstrap-table实例1</a><br>
         <a href="http://www.jq22.com/yanshi10489" target="_blank">bootstrap-table实例2</a><br>
         <a href="https://blog.csdn.net/tpc1990519/article/details/79037174" target="_blank">bootstrap-table footerFormatter合并单元格</a><br>
@@ -251,7 +251,7 @@
 
         /*数据json*/
         var json = [{
-            "Code": "0",
+            "Code": "00",
             "TuanGouName": "测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,测试中文自动换行,",
             "StartDate": "2016/10/9 10:15:00",
             "EndTime": "2016/12/25 11:30:00"
@@ -262,17 +262,17 @@
             "EndTime": "2016/12/25 11:30:00"
         }, {
             "Code": "1",
-            "TuanGouName": "好多鱼",
+            "TuanGouName": "北京方便面",
             "StartDate": "2016/10/9 10:15:00",
             "EndTime": "2016/12/25 11:30:00"
         }, {
             "Code": "2",
-            "TuanGouName": "旺旺雪饼",
+            "TuanGouName": "海南香蕉",
             "StartDate": "2016/10/9 10:15:00",
             "EndTime": "2016/12/25 11:30:00"
         }, {
             "Code": "3",
-            "TuanGouName": "旺旺仙贝",
+            "TuanGouName": "新疆葡萄",
             "StartDate": "2016/10/9 10:15:00",
             "EndTime": "2016/12/25 11:30:00"
         }, {
@@ -532,11 +532,12 @@
             //$("#goods").bootstrapTable("getRowByUniqueId","1")  //根据 uniqueId 获取行数据，此表的uniqueId为Code字段
             // 即根据Code的值来获取对应的行数据。这个方法的意思是获取Code字段值为1的行所在的行数据，这个就是唯一的了。
 
-            //$('#goods').bootstrapTable('resetSearch',"中文")  //重置搜索文本
+            //$('#goods').bootstrapTable('resetSearch',"中文")  //本地重置搜索文本
             //$('#goods').bootstrapTable('showLoading')
             //$('#goods').bootstrapTable('hideLoading')
             //$('#goods').bootstrapTable('resetView',{height:800})
             //$('#goods').bootstrapTable('getAllSelections');
+            //$('#goods').bootstrapTable('refreshOptions', {data: []})
         });
     </script>
 </body>

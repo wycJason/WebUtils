@@ -8,28 +8,29 @@
 <button>发起异步请求</button>
 <script src="js/jquery-1.11.3.js"></script>
 <script>
+    //https://www.runoob.com/jquery/ajax-ajax.html
     $('button').click(function(){
         $.ajax({
             url: 'data/9999.php',
             type: 'GET',
             data: {'uname':'tom', 'age':20},
             dataType: 'json',
-            beforeSend: function(){
+            beforeSend: function(){//beforeSend(xhr)
                 console.log('before send...');
                 console.log(arguments);
                 console.log('\n');
             },
-            success: function(){
+            success: function(){ //success(result,status,xhr)
                 console.log('success...');
                 console.log(arguments);
                 console.log('\n');
             },
-            error: function(){
+            error: function(){//error(xhr,status,error)
                 console.log('error...');
                 console.log(arguments);
                 console.log('\n');
             },
-            complete: function(){
+            complete: function(){//complete(xhr,status)
                 console.log('complete...');
                 console.log(arguments);
                 console.log('\n');
@@ -48,7 +49,7 @@
                 if (result.Code == 0) {
                     successback(result);
                 } else {
-                        errorback(result.Msg);
+                    errorback(result.Msg);
                 }
             },
             error: function (request) {

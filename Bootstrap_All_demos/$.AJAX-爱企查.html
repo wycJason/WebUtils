@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button>爱企查-发起异步请求</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    var queryType=[{
+        "name": "全部",
+        "type": "0",
+        "placeholder": "请输入想查询的内容",
+        "logName": "all"
+    }, {
+        "name": "企业名/注册号",
+        "type": "1",
+        "placeholder": "输入企业名、注册号",
+        "logName": "enterprise_name"
+    }, {
+        "name": "法人代表",
+        "type": "2",
+        "placeholder": "输入法人代表",
+        "logName": "legal_represent"
+    }, {
+        "name": "地址",
+        "type": "3",
+        "placeholder": "输入地址",
+        "logName": "address"
+    }, {
+        "name": "经营范围",
+        "type": "4",
+        "placeholder": "输入经营范围",
+        "logName": "scope_business"
+    }, {
+        "name": "股东",
+        "type": "5",
+        "placeholder": "输入股东",
+        "logName": "shareholders"
+    }, {
+        "name": "高管",
+        "type": "6",
+        "placeholder": "输入高管",
+        "logName": "main_members"
+    }, {
+        "name": "商标",
+        "type": "7",
+        "placeholder": "输入商标名称",
+        "logName": "mark"
+    }];
+    $('button').click(function(){
+        $.ajax({
+            url: 'https://aiqicha.baidu.com/s/l?q=思普达&t=&p=1&s=10&o=0&f=%7B%7D',
+            type: 'POST',
+            data: queryType,
+            dataType: 'json',
+            beforeSend: function(){
+                console.log('before send...');
+                console.log(arguments);
+                console.log('\n');
+            },
+            success: function(){
+                console.log('success...');
+                console.log(arguments);
+                console.log('\n');
+            },
+            error: function(){
+                console.log('error...');
+                console.log(arguments);
+                console.log('\n');
+            },
+            complete: function(){
+                console.log('complete...');
+                console.log(arguments);
+                console.log('\n');
+            }
+        });
+    });
+
+    function ajaxAiQiCha(url,successback, errorback) {
+        // url='https://aiqicha.baidu.com/s/l?q=思普达&t=&p=1&s=10&o=0&f=%7B%7D',
+        var data=[{
+            "name": "全部",
+            "type": "0",
+            "placeholder": "请输入想查询的内容",
+            "logName": "all"
+        }, {
+            "name": "企业名/注册号",
+            "type": "1",
+            "placeholder": "输入企业名、注册号",
+            "logName": "enterprise_name"
+        }, {
+            "name": "法人代表",
+            "type": "2",
+            "placeholder": "输入法人代表",
+            "logName": "legal_represent"
+        }, {
+            "name": "地址",
+            "type": "3",
+            "placeholder": "输入地址",
+            "logName": "address"
+        }, {
+            "name": "经营范围",
+            "type": "4",
+            "placeholder": "输入经营范围",
+            "logName": "scope_business"
+        }, {
+            "name": "股东",
+            "type": "5",
+            "placeholder": "输入股东",
+            "logName": "shareholders"
+        }, {
+            "name": "高管",
+            "type": "6",
+            "placeholder": "输入高管",
+            "logName": "main_members"
+        }, {
+            "name": "商标",
+            "type": "7",
+            "placeholder": "输入商标名称",
+            "logName": "mark"
+        }];
+
+        $.ajax({
+            url: url,
+            data: data,
+            type: "POST",
+            dataType: 'json',
+            success: function (result) {
+                successback(result);
+            },
+            error: function () {
+                errorback(arguments);
+            }
+        });
+    }
+
+
+
+</script>
+</body>
+</html>

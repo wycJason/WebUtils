@@ -27,7 +27,7 @@
     <option  data-content="<span class='label label-primary'>何美丽</span>" data-tokens="frosting9" value="9">何美丽</option>
 </select>
 
-<select id="myCustom" class="selectpicker"  data-live-search="true" data-live-search-placeholder="自动搜索" title="单选，和搜索">
+<select id="myCustom" class="selectpicker"  data-live-search="true" data-live-search-placeholder="自动搜索" data-size="5">
     <option value="1">王小芳</option>
     <option value="2">张大林</option>
     <option value="3">何美丽</option>
@@ -54,7 +54,7 @@
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.3/js/i18n/defaults-zh_CN.js"></script>
 <script>
-    //设值:一种方法
+    //设值:只用一种方法
     $('#myCustom').selectpicker('val', '3');//单选
 
    //$('#selA').selectpicker('val', '1');
@@ -64,7 +64,7 @@
     //$('#selA').selectpicker('destroy');
     //$('#selA').selectpicker('refresh'); //如果是动态加载选项，最后要刷新一下
 
-    //取值:两种取法
+    //取值:有两种取法
     $('#myCustom').selectpicker('val');
     $('#myCustom').val();
 
