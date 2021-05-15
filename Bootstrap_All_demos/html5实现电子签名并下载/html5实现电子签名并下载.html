@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>电子签名截屏</title>
+    <!--<link rel="stylesheet" href="css/style.css">-->
+    <style>
+        .canvasDiv {
+            width: 800px;
+            height: 500px;
+            border: 1px solid gray;
+        }
+
+        #editing_area {
+            width: 800px;
+            height: 500px;
+            border: 1px solid darkred;
+        }
+        #canvasEdit {
+            width: 800px;
+            height: 500px;
+            border: 1px solid gold;
+        }
+    </style>
+</head>
+
+<body>
+<div class="canvasDiv">
+    <div id="editing_area">
+        <canvas id="canvasEdit"></canvas>
+    </div>
+</div>
+<div class="btnDiv">
+    <a id="sign_clear" class="clearBtn">清除</a>
+    <a id="sign_clear1" class="down none" download="download">下载</a>
+    <a id="sign_clear2" class="clearBtn">截屏</a>
+</div>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="./js/esign.js"></script>
+<script type="text/javascript" src="./js/html2canvas.min.js"></script>
+<script type="text/javascript">
+    //参考：https://blog.csdn.net/suwu150/article/details/79107973?utm_medium=distribute.pc_relevant_download.none-task-blog-2~default~BlogCommendFromBaidu~default-2.nonecase&depth_1-utm_source=distribute.pc_relevant_download.none-task-blog-2~default~BlogCommendFromBaidu~default-2.nonecas
+
+    function convertCanvasToImage(canvas) {
+        return canvas.toDataURL("image/png");
+    };
+
+    function takeScreenshot() {
+        html2canvas(document.body, {
+            width: document.body.clientWidth / 2 + 1,
+        }).then(function(canvas) {
+            alert('截取成功');
+            var imgUrl = convertCanvasToImage(canvas); //截取图片路径,该路径为服务器参数
+            console.log(imgUrl);
+            document.querySelector(".down").setAttribute('href', imgUrl);
+            $('#sign_clear1').removeClass('none');
+        });
+    };
+    $(function() {
+        //初始化
+        $(document).esign("canvasEdit", "sign_show", "sign_clear", "sign_ok");
+        $(document).on('click', '#sign_clear2', takeScreenshot);
+    });
+</script>
+</body>
+
+</html>

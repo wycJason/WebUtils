@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+    <style>
+        #container{
+            min-height:120px;
+            border:1px solid #aaa;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<button type="button" id="btn">add "abc" for div</button>
+
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    var targetNode = $('#container')[0]; //content监听的元素id
+    //options：监听的属性
+    var options = {
+        attributes: true,
+        attributeOldValue: true
+    };
+    //回调事件
+    function callback(mutationsList) {
+        console.log(mutationsList);
+        console.log($(mutationsList[0].target).hasClass("abc"));
+    }
+    var mutationObserver = new MutationObserver(callback);
+    mutationObserver.observe(targetNode, options);
+    // 添加事件
+    $("#btn").click(function () {
+        $("#container").toggleClass("abc").html("abc");
+    });
+
+</script>
+</body>
+</html>

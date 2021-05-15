@@ -62,7 +62,7 @@
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script>
-    //参考文档：https://blog.csdn.net/hsany330/article/details/70156477     https://blog.csdn.net/u014607184/article/details/52372551
+    //参考文档：https://blog.csdn.net/hsany330/article/details/70156477     https://blog.csdn.net/u014607184/article/details/52372551   https://developer.mozilla.org/zh-CN/docs/Web/API/FormData
     function formSubmit(){
         //https://www.w3school.com.cn/jsref/met_form_submit.asp
         document.getElementById("myForm").submit()
@@ -70,11 +70,21 @@
 
     function formData(){
         debugger;
+        //https://developer.mozilla.org/zh-CN/docs/Web/API/FormData
+        //File:https://developer.mozilla.org/zh-CN/docs/Web/API/File
         var form=document.getElementById("myForm");
         var fd =new FormData(form);
         console.log(fd.get("h"));
         for(var pair of fd.entries()) {
             console.log(pair[0]+ ':'+ pair[1]);
+        }
+
+        for(var key of fd.keys()) {
+            console.log(key);
+        }
+
+        for(var value of fd.values()) {
+            console.log(value);
         }
     }
 

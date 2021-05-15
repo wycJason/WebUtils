@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>测试indexedDB</title>
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        /*
+         https://www.cnblogs.com/javahyj/p/5305752.html
+         https://segmentfault.com/a/1190000017185195
+        */
+
+        //调整浏览器兼容性
+        if(!window.indexedDB){
+            window.indexedDB = window.mozIndexedDB || webkitIndexedDB;
+        }
+        //打开或创建数据库这里可以再设置一个属性，版本号，默认为1
+        var request = indexedDB.open('testDB1');
+        var db;
+        //初始化数据库
+        request.onupgradeneeded=function(event){
+            db = event.target.result;
+            //创建数据库，第一个值是名字，相当于sql中的表名，第二个属性是设置主键
+            var store = db.createObjectStore("MyDB1",{keyPath:"title"});
+            console.log("创建数据库成功");
+        };
+        //如果已存在，直接使用
+        request.onsuccess=function(e){
+            db = e.target.result;
+        }
+        $(function(){
+            //添加数据
+            $("#add").click(function(){
+                //定义要添加的数据
+                //title是主键，不可重复（title要和创建数据库是设置的一样），这里相当于给数据库添加字段
+                var obj = {"title":$("#test").val(),
+                    "name":"21",
+                    "ema":"qqqq"};
+                //readwrite是读写模式
+                db.transaction(["MyDB1"],"readwrite").objectStore("MyDB1").add(obj).onsuccess = function(e){
+                    console.log("添加成功");
+                };
+            });
+
+            //删除数据
+            $("#del").click(function(){
+                //.delete("qwertyuiop")函数中设置要删除的key值（主键），如果不存在，不会报错
+                db.transaction(["MyDB1"], "readwrite").objectStore("MyDB1").delete("1").onsuccess=function(e){
+                    console.log("删除成功");
+                }
+            });
+
+            //查询数据，查询所有
+            $("#sel").click(function(){
+                //                    db.transaction("MyDB1").objectStore("MyDB1").openCursor().onsuccess = function(event) {
+                //                        var getString = "";
+                //                         var cursor = event.target.result;
+                //                        if (cursor) {
+                //                            getString += "Name for SSN " + cursor.key + " is " + cursor.value.name;
+                //                            console.log("Name for SSN " + cursor.key + " is " + cursor.value.name);
+                //                            console.log(cursor.key);
+                //                            cursor.continue();
+                //                            console.log(cursor);
+                //                        }
+                //                    }
+
+
+                db.transaction("MyDB1").objectStore("MyDB1").openCursor().onsuccess=function(e){
+                    var cursor = e.target.result;
+                    if(cursor){
+                        console.log("KEY: "+cursor.key);
+                        console.log("value: "+cursor.value.name+","+cursor.value.ema);
+                        //不写cursor.continue();就只查询最后一条
+                        cursor.continue();
+                    }
+                }
+
+            });
+
+            //修改数据
+            //修改数据以title为条件，如果title指定的值存在，则是修改，如果不存在，则是添加一条数据
+            $("#upda").click(function(){
+                var obj = {"title":"456","name":"test1funck又"};
+                console.log(obj);
+                db.transaction(["MyDB1"],"readwrite").objectStore("MyDB1").put(obj).onsuccess=function(e){
+                    console.log("修改成功");
+                }
+            });
+
+            //按key查询
+            $("#indexse").click(function(){
+                //.get(key)，student  是value
+                var request=db.transaction(["MyDB1"],'readwrite').objectStore(["MyDB1"]).get("funck");
+                request.onsuccess=function(e){
+                    var student=e.target.result;
+                    console.log(student.name);
+                };
+            });
+
+            //删除数据库.deleteDatabase("数据库名");
+            $("#deleteDB").click(function(){
+                window.indexedDB.deleteDatabase("testDB1");
+            });
+
+        });
+    </script>
+</head>
+<body>
+dsadjsakhdksa
+<div>
+    <input type="button" id="add" value="add" />
+    <input type="button" id="sel" value="select" />
+    <input type="button" id="del" value="delete" />
+    <input type="button" id="upda" value="update" />
+    <input type="button" id="indexse" value="action" />
+    <input type="button" id="deleteDB" value="deleteDB" />
+    <input type="text" id="test" />
+</div>
+</body>
+</html>

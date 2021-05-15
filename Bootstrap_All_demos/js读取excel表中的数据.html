@@ -6,7 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JS读取Excel内容</title>
     <style>
-
+        .custom-file {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            height: calc(1.5em + .75rem + 2px);
+            margin-bottom: 0;
+        }
+        .custom-file-input {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: calc(1.5em + .75rem + 2px);
+            margin: 0;
+            overflow: hidden;
+            opacity: 0;
+            cursor: pointer !important;
+        }
+        .custom-file-label {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1;
+            height: calc(1.5em + .75rem + 2px);
+            padding: .375rem .75rem;
+            overflow: hidden;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+        }
+        .custom-file-label::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            display: block;
+            height: calc(1.5em + .75rem);
+            padding: .375rem .75rem;
+            line-height: 1.5;
+            color: #495057;
+            content: "请选择";
+            background-color: #e9ecef;
+            border-left: inherit;
+            border-radius: 0 .25rem .25rem 0;
+        }
     </style>
     <link href="css/bootstrap.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -14,18 +62,45 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body style="padding: 15px">
+<h3><a href="http://demo.haoji.me/2017/02/08-js-xlsx/">JavaScript读取和导出excel示例（基于js-xlsx）</a></h3>
+
+<!--第一种：原始版-->
 <input type="file" class="excel-file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+
+<br/><br/><br/>
+
+<!--第二种：UI优化版-->
+<div class="custom-file">
+    <input type="file" class="custom-file-input excel-file" id="customFile" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+    <label class="custom-file-label" for="customFile">请参照模板导入数据</label>
+</div>
 <script src="js/jquery-1.11.3.js"></script>
 <script src="js/bootstrap.js"></script>
 <!--<script src="https://cdn.bootcss.com/xlsx/0.12.7/xlsx.core.min.js"></script>-->
+<!--<script src="https://cdn.bootcdn.net/ajax/libs/xlsx/0.16.9/xlsx.core.min.js"></script>-->
 <script src="js/xlsx.core.min.js"></script>
 <script>
 //http://www.bootcdn.cn/xlsx/
 //https://blog.csdn.net/zxf1242652895/article/details/73930088
+//js-xlsx 介绍使用说明：https://www.cnblogs.com/ajaemp/p/12880847.html
+//如何使用JavaScript实现纯前端读取和导出excel文件 http://blog.haoji.me/js-excel.html
 $(".excel-file").change(function(e) {
+    if(!this.files[0]){
+        return false;
+    }
+
+    console.log(this.files[0]);
+
+    var fileName=this.files[0].name;
+    if (!/(.xls|.xlsx)$/.test(fileName)) {
+         alert("选择Excel格式的文件导入")
+        return false;
+    }
+    $(".custom-file-label").text(fileName);
+
     var getPigmentCodeData = new Array();
-    var persons = []; // 存储获取到的数据
+    var excelData = []; // 存储获取到的数据
     var files = e.target.files;
     var fileReader = new FileReader();
     fileReader.onload = function(ev) {
@@ -35,12 +110,12 @@ $(".excel-file").change(function(e) {
                         type: 'binary'
                     }),
             // 以二进制流方式读取得到整份excel表格对象
-             persons = []; // 存储获取到的数据
+                    excelData = []; // 存储获取到的数据
         } catch(e) {
             console.log('文件类型不正确');
             return;
         }
-
+        debugger
         // 表格的表格范围，可用于判断表头是否数量是否正确
         var fromTo = '';
         // 遍历每张表读取
@@ -48,19 +123,20 @@ $(".excel-file").change(function(e) {
             if (workbook.Sheets.hasOwnProperty(sheet)) {
                 fromTo = workbook.Sheets[sheet]['!ref'];
                 //console.log(fromTo + "fromTo"); //表有几行数据
-                persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                excelData = excelData.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
                 break; // 如果读取所有表，就去掉break，如果只取第一张表就加上break
             }
         }
-        if (persons.length == 0) {
-            alert("文件为空");
+        if (excelData.length == 0) {
+            alert("导入的文件内容为空");
         }
-        //console.log(persons);//输出内容至控制台
-        console.table(persons);
-        alert("文件导入成功")
+        //console.log(excelData);//输出内容至控制台
+        console.table(excelData);
     };
     // 以二进制方式打开文件
     fileReader.readAsBinaryString(files[0]);
+
+    this.value="";//解决input file两次选择相同文件不触发change事件的问题
 });
 </script>
 </body>

@@ -20,7 +20,6 @@
         var size = 5;
         var bottomH=50;//距离底部多少像素开始加载
         $(window).scroll(function() {
-
             totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop()+bottomH);
             if ($(document).height() <= totalheight) {
                 if (stop == true) {
@@ -53,6 +52,74 @@
         });
     }
     loadMore()
+
+
+
+
+    /*
+     //启用滚动条
+     function enableScroll() {
+     $(document).unbind("scroll.unable");
+     }
+
+     //禁用滚动条
+     function disableScroll() {
+     var top = $(document).scrollTop();
+     $(document).on('scroll.unable', function (e) {
+     $(document).scrollTop(top);
+     })
+     }
+
+     //获取滚动条当前的位置
+     function getScrollTop() {
+     var scrollTop = 0;
+     if (document.documentElement && document.documentElement.scrollTop) {
+     scrollTop = document.documentElement.scrollTop;
+     }
+     else if (document.body) {
+     scrollTop = document.body.scrollTop;
+     }
+     return scrollTop;
+     }
+
+     //获取当前可视范围的高度
+     function getClientHeight() {
+     var clientHeight = 0;
+     if (document.body.clientHeight && document.documentElement.clientHeight) {
+     clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight);
+     }
+     else {
+     clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight);
+     }
+     return clientHeight;
+     }
+
+     //获取文档完整的高度
+     function getScrollHeight() {
+     return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+     }
+
+     //滚动加载更多OA列表
+     function scrollLoadMoreOAList(callback) {
+     ERPOA.loading = false;//在滚动过程中是否继续加载
+     var scrollFun = function () {
+     if (ERPOA.loading) return;//加载过程中阻止继续滚动加载
+     var clientH = getClientHeight();
+     var scrollT = getScrollTop();
+     var wholeH = getScrollHeight();
+     if (clientH + scrollT >= wholeH) {
+     //滚动最底部时加载数据
+     ERPOA.loading = true;
+     if (typeof callback == "function") {
+     callback()
+     }
+     }
+     };
+
+     $(window).bind("scroll", scrollFun)
+     }
+
+     */
 </script>
 </body>
 </html>

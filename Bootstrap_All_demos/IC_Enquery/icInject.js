@@ -237,6 +237,17 @@ function ICInjectJS(path, tbc) {
                 var declare = $li.find('input[name="declare"]').val(); //交易说明
                 var date = $li.find('input[name="date"]').val(); //日期
 
+                var rank_icons=$li.find(".result_id span[title]").attr("title")||"";//型号，现货排名
+                var result_icons="";//供货商，logo (500条)
+                var $a_icons= $li.find(".result_supply .result_icons a[title]");
+                if($a_icons.length>0){
+                    $a_icons.each(function(i,a){
+                        result_icons+=($(a).attr("title")+" ");
+                    })
+                }
+
+                var supplierIcon=!!result_icons?"【"+result_icons+"】":"";
+                var modleIcon=!!rank_icons?"【"+rank_icons+"】":"";
 
                 $ele = $li.find(".result_supply .detailLayer .layer_mainContent");
                 var mphone = $ele.find(".layer_otherContentphone").text(); //手机
@@ -264,8 +275,8 @@ function ICInjectJS(path, tbc) {
                 formData.push({
                     Tel1: mphone,
                     Address: address,
-                    Supplier: companname,
-                    Modle: model,
+                    Supplier: companname+supplierIcon,
+                    Modle: model+modleIcon,
                     Cost: price,
                     Price: offer,
                     Brand: factory,
@@ -278,6 +289,9 @@ function ICInjectJS(path, tbc) {
                     Remark: declare,
                     Contacts: Contacts,
                     IsTobeConfirmed: isTbc, //待确认报价 或直接报价
+
+                    //ResultLogo:result_icons,
+                    //RankLogo:rank_icons,
                 })
             })
         } else { //华强电子网
@@ -312,11 +326,17 @@ function ICInjectJS(path, tbc) {
                 var depot = $tr.find('input[name="depot"]').val(); //仓库
                 var explain = $tr.find('input[name="explain"]').val(); //交易说明
 
+                var result_icons=$tr.find('td.j-company-td .company-row2 a[title]').attr("title")||"";//供货商，logo (500条)
+                var rank_icons=$tr.find('td.td-model .list-pro  a[rel="nofollow"]').attr("title")||""//型号，现货
+
+                var supplierIcon=!!result_icons?"【"+result_icons+"】":"";
+                var modleIcon=!!rank_icons?"【"+rank_icons+"】":"";
+
                 formData.push({
                     Tel1: company.mphone,
                     Address: company.address,
-                    Supplier: company.name,
-                    Modle: model,
+                    Supplier: company.name+supplierIcon,
+                    Modle: model+modleIcon,
                     Cost: price,
                     Price: offer,
                     Brand: brand,
@@ -329,12 +349,15 @@ function ICInjectJS(path, tbc) {
                     Remark: param + ";" + depot + ";" + explain,
                     Contacts: Contacts,
                     IsTobeConfirmed: isTbc, //待确认报价 或直接报价
+
+                    //ResultLogo:result_icons,
+                    //RankLogo:rank_icons,
                 })
             })
         }
 
         if (formData.length > 0) {
-            //console.table(formData)
+            //console.table(formData);//正式发布时删除此行或注销，此代码仅做调试
             try {
                 var formDataStr = JSON.stringify(formData);
                 var code = window.external.ExQuote(formDataStr);
