@@ -19,7 +19,17 @@
     KindEditor.ready(function(K) {
         var options = {
             cssPath : '/Bootstrap_All_demos/kindeditor/themes/qq/qq.css',
-            filterMode : true
+            filterMode : false,
+            afterChange:function(){
+                if(!!editor)
+                {
+                    console.group("editor");
+                    console.log("text:"+editor.text());
+                    console.log("html:"+editor.html());
+                    console.groupEnd("editor");
+
+                }
+            },
         };
         editor = K.create('#editor_id', options);
 
@@ -31,7 +41,17 @@
             items: ['emoticons'],
             htmlTags: {//指定要保留的HTML标记和属性
                 img: ['src', 'width', 'height', 'border', 'alt', 'title', 'align', '.width', '.height', '.border', 'class', "data-face", "data-usersign", "data-username", "data-deptname", "data-deptcode", "data-isdept", "data-rolename", "data-roleid", "data-isrole"],
-            }
+            },
+            afterChange:function(){
+                if(!!editor_demo)
+                {
+                    console.group("editor_demo");
+                    console.log("text:"+editor_demo.text());
+                    console.log("html:"+editor_demo.html());
+                    console.groupEnd("editor_demo");
+
+                }
+            },
         };
         editor_demo = K.create('#editor_demo', optionsDemo);
     });
@@ -43,7 +63,17 @@
             items: ['emoticons'],
             htmlTags: {//指定要保留的HTML标记和属性
                 img: ['src', 'width', 'height', 'border', 'alt', 'title', 'align', '.width', '.height', '.border', 'class', "data-face", "data-usersign", "data-username", "data-deptname", "data-deptcode", "data-isdept", "data-rolename", "data-roleid", "data-isrole"],
-            }
+            },
+            afterChange:function(){
+                if(!!editor_example)
+                {
+                    console.group("editor_example");
+                    console.log("text:"+editor_example.text());
+                    console.log("html:"+editor_example.html());
+                    console.groupEnd("editor_example");
+
+                }
+            },
         };
         editor_example = K.create('#editor_example', options);
     });

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<a target="_blank" href="https://blog.csdn.net/z69183787/article/details/44174519?utm_medium=distribute.pc_relevant.none-task-blog-2~default~OPENSEARCH~default-6.control">jquery textarea指定位置插入内容</a><br>
+<button class="cont">点击我</button><br />
+<textarea class="tarea" cols="50" rows="15">
+创作、游戏开发、运营管理等领域的精英人才，并拥有国内多家教育科研机构的战略合作资源。聚网科技以“为儿童提供真正健康有益的互联网产品”为己任，在产品研发过程中，注重将能力教育融入全新的游戏玩法，不断探索更加受儿童欢迎、更加有益于儿童的多元化娱乐模式，在行业里形成了“锐意进取、不断创新”的良好形象，也使得公司产品一直在行业内保持
+</textarea>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    $(".cont").click(function(){
+        $(".tarea").insert({"text":"456"});
+    });
+
+    // JavaScript Document
+    (function($){
+        $.fn.extend({
+            "insert":function(value){
+                //默认参数
+                value=$.extend({
+                    "text":"123"
+                },value);
+
+                var dthis = $(this)[0]; //将jQuery对象转换为DOM元素
+
+                //IE下
+                if(document.selection){
+
+                    $(dthis).focus();		//输入元素textara获取焦点
+                    var fus = document.selection.createRange();//获取光标位置
+                    fus.text = value.text;	//在光标位置插入值
+                    $(dthis).focus();	///输入元素textara获取焦点
+
+
+                }
+                //火狐下标准
+                else if(dthis.selectionStart || dthis.selectionStart == '0'){
+
+                    var start = dthis.selectionStart;
+                    var end = dthis.selectionEnd;
+                    var top = dthis.scrollTop;
+
+                    //以下这句，应该是在焦点之前，和焦点之后的位置，中间插入我们传入的值
+                    dthis.value = dthis.value.substring(0, start) + value.text + dthis.value.substring(end, dthis.value.length);
+                }
+
+                //在输入元素textara没有定位光标的情况
+                else{
+                    this.value += value.text;
+                    this.focus();
+                };
+
+                return $(this);
+            }
+        })
+    })(jQuery)
+</script>
+</body>
+</html>

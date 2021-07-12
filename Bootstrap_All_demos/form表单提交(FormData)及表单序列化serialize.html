@@ -18,6 +18,17 @@
 <h3><a href="http://blog.csdn.net/u014607184/article/details/52372551" target="_blank">HTML5 FormData 方法介绍以及实现文件上传</a></h3>
 <h4><a href="http://blog.csdn.net/hsany330/article/details/70156477" target="_blank">FormData详解</a></h4>
 
+<br/>
+<label>
+    <input type="radio" value="男" name="U_Sex">
+    <span>男</span>
+</label>
+<label>
+    <input type="radio" value="女" name="U_Sex">
+    <span>女</span>
+</label>
+<br/>
+
 <form id="myForm" action="url" method="get" enctype="application/x-www-form-urlencoded">
     <input type="text" name="a" value="1" />
     <input type="text" name="b" value="2"/>
@@ -62,6 +73,8 @@
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script>
+    //$("input[name='U_Sex']:checked").val();
+
     //参考文档：https://blog.csdn.net/hsany330/article/details/70156477     https://blog.csdn.net/u014607184/article/details/52372551   https://developer.mozilla.org/zh-CN/docs/Web/API/FormData
     function formSubmit(){
         //https://www.w3school.com.cn/jsref/met_form_submit.asp

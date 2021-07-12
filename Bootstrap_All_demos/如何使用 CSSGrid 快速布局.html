@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+    <style>
+        html,body{
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            height: 100%;
+            grid-gap: 5px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 1fr 8fr 1fr;
+        }
+        .header {
+            grid-area: h;
+        }
+        .menu {
+            grid-area: m;
+        }
+        .content {
+            grid-area: c;
+        }
+        .footer {
+            grid-area: f;
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                grid-template-rows: 1fr 1fr 7fr 1fr;
+                grid-template-areas:
+                "h h h h h h h h h h h h"
+                "m m m m m m m m m m m m"
+                "c c c c c c c c c c c c"
+                "f f f f f f f f f f f f";
+            }
+        }
+        @media screen and (min-width: 768px)and (max-width: 992px) {
+            .container {
+                grid-template-areas:
+                "h h h h h h h h h h h h"
+                "m m m m m m c c c c c c"
+                "f f f f f f f f f f f f";
+            }
+        }
+        @media screen and (min-width: 992px)and (max-width: 1200px) {
+            .container {
+                grid-template-areas:
+                "h h h h h h h h h h h h"
+                "c c c c c c c c c c m m"
+                "f f f f f f f f f f f f";
+            }
+        }
+        @media screen and (min-width: 1200px) {
+            .container {
+                grid-template-areas:
+                "h h h h h h h h h h h h"
+                "m m c c c c c c c c c c"
+                "f f f f f f f f f f f f";
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header" style="background-color: #ACF4B6;">HEADER</div>
+    <div class="menu" style="background-color: #FFE975;">MENU</div>
+    <div class="content" style="background-color: #5DFFFA;">CONTENT</div>
+    <div class="footer" style="background-color: #E6B4FD;">FOOTER</div>
+</div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+//https://www.html.cn/archives/8512
+</script>
+</body>
+</html>
