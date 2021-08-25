@@ -11,7 +11,7 @@
   <meta name="format-detection" content="telephone=no">
 
   <style>
-  body{padding: 20px;}
+   body{padding: 20px;}
   .demo-input{padding-left: 10px; height: 38px; min-width: 262px; line-height: 38px; border: 1px solid #e6e6e6;  background-color: #fff;  border-radius: 2px;}
   .demo-footer{padding: 50px 0; color: #999; font-size: 14px;}
   .demo-footer a{padding: 0 5px; color: #01AAED;}
@@ -21,6 +21,8 @@
 <input type="text" value="" class="demo-input" placeholder="请选择日期" id="test1">
 <br/><br/><br/>
 <input type="text" value="2018年4月 至 2018年4月" class="demo-input" placeholder="年月范围" id="test2">
+<br/><br/><br/>
+<input type="text" class="demo-input" id="test3">
 <div class="demo-footer">
   <a href="http://www.layui.com/laydate/" target="_blank">layDate<cite id="version"></cite></a>
   <a href="http://www.layui.com/doc/modules/laydate.html" target="_blank">文档</a>
@@ -53,6 +55,17 @@ laydate.render({
     console.log(value); //得到日期生成的值，如：2017-08-18
     console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
     console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+  }
+});
+
+laydate.render({
+  elem: '#test3'
+  ,theme: "#41A0FF"
+  ,range: "至" //或 range: '~' 来自定义分割字符
+  ,done: function(value, date, endDate){
+    console.log(value); //得到日期生成的值，如：2021-08-12 至 2021-09-18
+    console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+    console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
   }
 });
 </script>

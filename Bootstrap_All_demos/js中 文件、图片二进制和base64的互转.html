@@ -44,16 +44,24 @@ function dataURLtoBlob(dataurl) {
 
 
 var image = new Image();
-image.src = "Images/girls.jpg";
+//image.src = "Images/girls.jpg";
+image.src = "http://171.221.219.30:36002/DocManage/downloadfile/90b77f24dd944f46a906b0f6c078c6c4_2021_3_15_48873f68eca8417594b50bf272557cb1.jpg";
+image.crossOrigin = '*' // 支持跨域图片
 image.onload = function() {
     //这样就获取到了文件的Base64字符串
     var base64 = getBase64Image(image);
+    console.log(base64);
+
     //Base64字符串转二进制
     var file = dataURLtoBlob(base64);
-
-    console.log(base64);
     console.log(file);
 
+
+    var imgInstance = new Image();
+    imgInstance.src=base64;
+    imgInstance.width=88;
+    imgInstance.height=75;
+    $('body').html(imgInstance)
 }
 </script>
 </body>

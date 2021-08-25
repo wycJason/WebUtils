@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Template</title>
+    <title>键盘事件</title>
     <style>
 
     </style>
@@ -22,6 +22,15 @@
     //http://www.w3school.com.cn/jsref/dom_obj_event.asp
     document.onkeyup=function(event){
         var e = event || window.event || arguments.callee.caller.arguments[0];
+        console.log(e.keyCode);
+        debugger;
+        if(e && e.keyCode==46){ // 按Delete
+            //要做的事情   
+            if(!$(e.target).is("input")){
+                alert("按 Delete");
+            }
+
+        }
         if(e && e.keyCode==27){ // 按 Esc
             //要做的事情   
             alert("按 esc");
@@ -36,9 +45,6 @@
         }
         if (e.keyCode == 86 && e.ctrlKey) {
             alert("你按下了ctrl+V");
-        }
-        if (e.keyCode == 50&& e.shiftKey) {
-            alert("你按下了2+shift");
         }
     };
 </script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>纯前端JS zip打包文件并下载</title>
+</head>
+<body>
+<script src="./js/jszip/jszip.min.js"></script>
+<script src="./js/FileSaver/FileSaver.min.js"></script>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+        //本机位置：F:\jszip
+      //https://www.zhangxinxu.com/wordpress/2019/08/js-zip-download/
+      //https://github.com/Stuk/jszip
+    //https://stuk.github.io/jszip/
+
+        //本机位置：F:\FileSaver.js
+      var imgData = "R0lGODdhBQAFAIACAAAAAP/eACwAAAAABQAFAAACCIwPkWerClIBADs=";
+
+      // 初始化一个zip打包对象
+      var zip = new JSZip();
+      // 创建一个被用来打包的名为Hello.txt的文件
+      zip.file("Hello.txt", "Hello World\n");
+      // 创建一个名为images的新的文件目录
+      var img = zip.folder("images");
+      // 这个images文件目录中创建一个base64数据为imgData的图像，图像名是smile.gif
+      img.file("jason.jpg", imgData, {base64: true});
+      // 把打包内容异步转成blob二进制格式
+      zip.generateAsync({type:"blob"}).then(function(content) {
+          // content就是blob数据，这里以example.zip名称下载
+          // 使用了FileSaver.js
+          saveAs(content, "example.zip");
+      });
+
+      /*
+       最终下载的zip文件包含内容如下：
+       Hello.txt
+       images/
+       smile.gif
+       */
+</script>
+</body>
+</html>

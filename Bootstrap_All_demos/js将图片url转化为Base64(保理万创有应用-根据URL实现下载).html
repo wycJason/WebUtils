@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>js将图片url转化为Base64</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+//https://blog.csdn.net/qq_43106280/article/details/117386948
+var url="http://171.221.219.30:36002/DocManage/downloadfile/90b77f24dd944f46a906b0f6c078c6c4_2021_3_15_48873f68eca8417594b50bf272557cb1.jpg";
+var pdf="http://bl.scwckg.com:8059/openapi/company/zqsign/v1/contractpdfdown/72286538/41342/-96110/93/400/1629862743/00bdb0d3de2c8412767e36b9e000d2ad/WCHR-ABS-20210002-债权人套打合同.pdf"
+setImg(url,function(base64Img){
+    //创建一个新的image
+    var imgInstance = new Image();
+    imgInstance.src=base64Img;
+    imgInstance.width=88;
+    imgInstance.height=75;
+    $('body').html(imgInstance)
+})
+
+function setImg(url,callback){
+    var img = new Image();
+    img.crossOrigin = '*' // 支持跨域图片
+    img.src =url;
+    img.onload = function () {
+        var base64Img = getBase64Image(img);
+        //console.log(base64Img);
+        if(typeof callback =="function"){
+            callback(base64Img)
+        }
+    }
+}
+
+//将url转化为Base64
+function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, img.width, img.height);
+    var ext = img.src.substring(img.src.lastIndexOf(".")+1).toLowerCase();
+    var dataURL = canvas.toDataURL("image/"+ext);
+    return dataURL;
+}
+
+//js 根据url 下载图片
+function downloadImage(imgsrc, name) {//下载图片地址和图片名
+    let image = new Image();
+    // 解决跨域 Canvas 污染问题
+    image.setAttribute("crossOrigin", "anonymous");
+    image.onload = function() {
+        let canvas = document.createElement("canvas");
+        canvas.width = image.width;
+        canvas.height = image.height;
+        let context = canvas.getContext("2d");
+        context.drawImage(image, 0, 0, image.width, image.height);
+        let url = canvas.toDataURL("image/png"); //得到图片的base64编码数据
+        let a = document.createElement("a"); // 生成一个a元素
+        let event = new MouseEvent("click"); // 创建一个单击事件
+        a.download = name || "photo"; // 设置图片名称
+        a.href = url; // 将生成的URL设置为a.href属性
+        a.dispatchEvent(event); // 触发a的单击事件
+    };
+    image.src = imgsrc;
+}
+//downloadImage(url,"测试图片")
+
+
+//https://blog.csdn.net/xxtz0522/article/details/83928123
+function downLoadFile(url) {//弹出下载窗口
+    var fileFrame = document.createElement("iframe");
+    fileFrame.src = url;//文件路径
+    fileFrame.style.display = "none"; // 防止影响页面
+    document.body.appendChild(fileFrame);// 这一行必须，iframe挂在到dom树上才会发请求  iframe不会相互影响，可以连续下载哦!
+}
+//downLoadFile(pdf)
+</script>
+</body>
+</html>

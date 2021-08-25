@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>将URL图片链接转换成base64</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+//https://www.cnblogs.com/gangkoudemao/p/12452497.html
+getBase64Image('http://171.221.219.30:36002/DocManage/downloadfile/90b77f24dd944f46a906b0f6c078c6c4_2021_3_15_48873f68eca8417594b50bf272557cb1.jpg')
+//第一个参数是图片的URL地址，第二个是转换成base64地址后要赋值给的img标签
+function getBase64Image (url) {
+    var image = new Image()
+    image.src = url + '?v=' + Math.random() // 处理缓存
+    image.crossOrigin = '*' // 支持跨域图片
+    image.onload = function () {
+        var base64 =drawBase64Image(image)
+
+        var imgInstance = new Image();
+        imgInstance.src=base64;
+        imgInstance.width=88;
+        imgInstance.height=75;
+        $('body').html(image)
+    }
+}
+
+function drawBase64Image (img) {
+    var canvas = document.createElement('canvas')
+    canvas.width = img.width
+    canvas.height = img.height
+    var ctx = canvas.getContext('2d')
+    ctx.drawImage(img, 0, 0, img.width, img.height)
+    var dataURL = canvas.toDataURL('image/png')
+    return dataURL
+}
+</script>
+</body>
+</html>
