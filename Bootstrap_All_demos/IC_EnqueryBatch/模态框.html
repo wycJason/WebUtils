@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_2770097_gah7icfsw8.css" rel="stylesheet">
+    <title>模态框调试页面</title>
+    <style>
+        /*覆盖bootstrap.css样式*/
+        .modal-header{
+            background: #1476F6;
+            color: white;
+        }
+        .close,.close:hover {
+            color: white;
+            text-shadow: 0 1px 0 #fff;
+            filter: alpha(opacity=20);
+            opacity: 1;
+        }
+        /*颜色拾取器隐藏*/
+        .color-preview{
+            display: none !important;
+        }
+
+        /*正文布局*/
+        .flex-container{
+            display: flex;
+        }
+        .supplier-info{
+            width: 423px
+        }
+        .separator{
+            width: 2px;
+            margin: 0 10px;
+            background: #E5E5E5;
+        }
+        .supplier-quote{
+            width: 623px
+        }
+
+        /*公司信息*/
+        .flex-container-supplier{
+            display: flex;
+            margin: 8px 0;
+        }
+        .supplier-detail{
+
+        }
+        .supplier-name{
+            font-weight: bold;
+            margin: 0 0 6px;
+            font-size: 18px;
+        }
+        .supplier-address{
+
+        }
+        .supplier-contact{
+            margin: 20px 0;
+        }
+        .supplier-contact-item{
+            width: 50%;
+
+        }
+        .supplier-contact-item>span{
+            display: inline-block;
+        }
+        .supplier-contact-item>span:nth-child(1){
+
+        }
+        .supplier-contact-item>span:nth-child(2){
+
+        }
+        .supplier-contact-item>img{
+            vertical-align: text-bottom;
+            width: 18px;
+        }
+        .supplier-remark{
+
+        }
+        .supplier-company{
+            font-size: 16px;
+            margin-top: 0;
+        }
+        .supplier-remark-content{
+            width: 100%;
+            height: 226px;
+            display: block;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /*报价信息*/
+        .flex-container-quote{
+            display: flex;
+            margin:8px 0;
+        }
+        .quote-model{
+            font-size: 16px;
+        }
+        .quote-model-data{
+            color: #FF5A00;
+            font-weight: bold;
+        }
+        .quote-model-title{
+
+        }
+        .supplier-quote-info{
+
+        }
+        .supplier-field-item{
+            width: 50%;
+        }
+        .field-title{
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+        }
+        .field-input{
+
+        }
+        .field-input-single{
+            width: 507px !important;
+        }
+        .quote-btn,.quote-btn:hover{
+            background-color: #1476F6;
+            color: white;
+        }
+
+        /*标签模态框*/
+        .label-company{
+            font-weight: bold;
+            margin: 0 0 6px;
+            font-size: 18px;
+        }
+        .common-collect-black{
+            margin-left: 18px;
+            margin-top: 3px;
+            padding: 0 5px;
+            border: 1px solid #8D8D8D;
+            font-size: 12px;
+            height: 20px;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        .common-collect-black>.iconfont{
+            font-size: 12px;
+        }
+        .label-collect{
+            background-color: #FFAA00;
+            color: white;
+        }
+        .label-black{
+            background-color: #B7B7B7;
+            color: white;
+        }
+        .ta-label{
+            margin-top: 5px;
+        }
+        .label-info-tips{
+            color: #C1C1C1;
+            margin-top: 5px;
+        }
+        ul.label-brand{
+            padding:0;
+            list-style: none;
+            margin-top: 10px;
+        }
+        ul.label-brand:after{
+            display: block;
+            content: "";
+            clear: both;
+        }
+        ul.label-brand>li{
+            float: left;
+            border-radius: 15px;
+            color: white;
+            padding: 3px 15px;
+            margin: 0 0 5px 10px;
+        }
+        .label-color-a{
+            background-color: #1476F6;
+        }
+        .label-color-b{
+            background-color: #F67614;
+        }
+        .label-color-c{
+            background-color: #818181;
+        }
+        .label-content{
+            display: inline-block;
+        }
+        .label-close{
+            display: inline-block;
+            width: 8px;
+            margin-left: 8px;
+            cursor: pointer !important;
+
+        }
+        ul.label-brand.label-new-brand{
+            min-height: 80px;
+            background-color: #F6F6F6;
+            padding: 10px;
+        }
+        .label-set{
+            border: 1px solid #E4E4E4;
+            padding: 15px;
+        }
+        .label-often{
+
+        }
+        ul.label-brand.label-often-content{
+            margin: 10px 0;
+        }
+        ul.label-brand.label-often-content>li>.label-content{
+            cursor: pointer !important;
+        }
+        .label-btn,.label-btn:hover{
+            border: 1px solid #1476F6;
+            background: white;
+            color:#1476F6 ;
+        }
+        .label-txt{
+            position: relative;
+            width: 100%;
+        }
+        .brand-text{
+            padding-right: 50px;
+        }
+        .color-picker{
+            position: absolute;
+            top: 2px;
+            right: 8px;
+        }
+        .paste-btn{
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 200px;margin:0 auto">
+    <button id="btn1" class="btn  btn-block btn-info">报价模态框</button>
+    <button id="btn2" class="btn  btn-block btn-info">标签模态框</button>
+</div>
+
+<!--报价模太框-->
+<div id="modal-quote" class="modal fade" data-backdrop="static" data-keyboard="false" style="z-index:3000">
+    <div class="modal-dialog" style=" width: 1100px;">
+        <div class="modal-content">
+            <div class="modal-header" title="按住鼠标左键可拖动模态框" style="cursor:move">
+                <span class="close" data-dismiss="modal">&times;</span>
+                <span style="font-size:14px;font-weight:bold;">记录供应商报价</span>
+            </div>
+            <div class="modal-body">
+                <section class="flex-container">
+                    <div class="supplier-info">
+                        <div class="supplier-detail">
+                            <h3 class="supplier-name">深圳市海尚电子有限公司</h3>
+                            <p class="supplier-address">深圳市南山区沙河街道西丽社区30号A10</p>
+                        </div>
+
+                        <div class="supplier-contact">
+                            <div class="flex-container-supplier">
+                                <div class="supplier-contact-item">
+                                    <span>手机:</span>
+                                    <span>15019225796</span>
+                                    <img src="http://in.sap360.com.cn:6055/spd/tel.png">
+                                </div>
+                                <div  class="supplier-contact-item">
+                                    <span>QQ:</span>
+                                    <span>435581357</span>
+                                    <img src="http://in.sap360.com.cn:6055/spd/qq.png">
+                                </div>
+                            </div>
+                            <div class="flex-container-supplier">
+                                <div class="supplier-contact-item">
+                                    <span>手机:</span>
+                                    <span>15019225796</span>
+                                    <img src="http://in.sap360.com.cn:6055/spd/tel.png">
+                                </div>
+                                <div  class="supplier-contact-item">
+                                    <span>QQ:</span>
+                                    <span>435581357</span>
+                                    <img src="http://in.sap360.com.cn:6055/spd/qq.png">
+                                </div>
+                            </div>
+                            <div class="flex-container-supplier">
+                                <div class="supplier-contact-item">
+                                    <span>手机:</span>
+                                    <span>15019225796</span>
+                                    <img src="http://in.sap360.com.cn:6055/spd/tel.png">
+                                </div>
+                                <div  class="supplier-contact-item">
+                                    <span>QQ:</span>
+                                    <span>435581357</span>
+                                    <img src="http://in.sap360.com.cn:6055/spd/qq.png">
+                                </div>
+                            </div>
+                            <div class="flex-container-supplier">
+                                <div class="supplier-contact-item">
+                                    <span>手机:</span>
+                                    <span>15019225796</span>
+                                    <img src="http://in.sap360.com.cn:6055/spd/tel.png">
+                                </div>
+                                <div  class="supplier-contact-item">
+                                    <span>QQ:</span>
+                                    <span>435581357</span>
+                                    <img src="http://in.sap360.com.cn:6055/spd/qq.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="supplier-remark">
+                            <h3 class="supplier-company">公司备注:</h3>
+                            <textarea class="supplier-remark-content" placeholder="暂无备注"></textarea>
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="supplier-quote">
+                         <div class="quote-model">
+                             <span class="quote-model-data">MKJHILK45FA</span>
+                             <span class="quote-model-title">供应商报价</span>
+                         </div>
+                        <form id="formData" class="supplier-quote-info">
+                            <div class="flex-container-quote">
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">型号:</span>
+                                    <input name="Modle"class="field-input form-control"/>
+                                </div>
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">批号:</span>
+                                    <input name="Year"class="field-input form-control"/>
+                                </div>
+                            </div>
+                            <div class="flex-container-quote">
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">厂牌:</span>
+                                    <input name="Brand"class="field-input form-control"/>
+                                </div>
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">封装:</span>
+                                    <input name="Package"class="field-input form-control"/>
+                                </div>
+                            </div>
+                            <div class="flex-container-quote">
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">数量:</span>
+                                    <input name="Qty" class="field-input form-control"/>
+                                </div>
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">进价:</span>
+                                    <input name="Cost"class="field-input form-control"/>
+                                </div>
+                            </div>
+                            <div class="flex-container-quote">
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">报价:</span>
+                                    <input name="Price"class="field-input form-control"  style="width: 102px;"/>
+                                    <select name="Curr" class="form-control" style="width: 90px;">
+                                        <option value="RMB">人民币</option>
+                                    </select>
+                                </div>
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">进价含税价:</span>
+                                    <input name="AftVatCost"class="field-input form-control"/>
+                                </div>
+                            </div>
+                            <div class="flex-container-quote">
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">税点:</span>
+                                    <input name="VatRate"class="field-input form-control"/>
+                                </div>
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">货期:</span>
+                                    <input name="Delivery"class="field-input form-control"/>
+                                </div>
+                            </div>
+                            <div class="flex-container-quote">
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">MPQ:</span>
+                                    <input name=""class="field-input form-control"/>
+                                </div>
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">品质:</span>
+                                    <input name="Quality"class="field-input form-control"/>
+                                </div>
+                            </div>
+                            <div class="flex-container-quote">
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">年份:</span>
+                                    <input name=""class="field-input form-control"/>
+                                </div>
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">库存:</span>
+                                    <input name=""class="field-input form-control"/>
+                                </div>
+                            </div>
+                            <div class="flex-container-quote">
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">包装:</span>
+                                    <input name=""class="field-input form-control"/>
+                                </div>
+                                <div class="supplier-field-item form-inline">
+                                    <span class="field-title">来源:</span>
+                                    <input name="Source"class="field-input form-control"/>
+                                </div>
+                            </div>
+                            <div class="flex-container-quote">
+                                <div class="form-inline">
+                                    <span class="field-title">联系人:</span>
+                                    <input name="Contacts"class="field-input form-control field-input-single"/>
+                                </div>
+                            </div>
+                            <div class="flex-container-quote">
+                                <div class="form-inline">
+                                    <span class="field-title">备注:</span>
+                                    <input name="Remark"class="field-input form-control field-input-single"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <a id="save-wait-quote" href="javascript:void(0)" class="btn btn-default quote-btn">保存待确认报价</a>
+                <a id="save-direct-quote" href="javascript:void(0)" class="btn btn-default quote-btn">保存并直接报价</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--标签模太框-->
+<div id="modal-label" class="modal fade" data-backdrop="static" data-keyboard="false" style="z-index:3000">
+    <div class="modal-dialog" style=" width: 1100px;">
+        <div class="modal-content">
+            <div class="modal-header" title="按住鼠标左键可拖动模态框" style="cursor:move">
+                <span class="close" data-dismiss="modal">&times;</span>
+                <span style="font-size:14px;font-weight:bold;">公司标签</span>
+            </div>
+            <div class="modal-body">
+                <section class="flex-container">
+                    <div id="label-company" class="label-company">深圳市海尚电子有限公司</div>
+                    <div id="label-collect" class="common-collect-black">
+                        <span class="icon iconfont icon-shoucang"></span>
+                        <span>收藏</span>
+                    </div>
+                    <div id="label-black" class="common-collect-black">
+                        <span class="icon iconfont icon-lahei"></span>
+                        <span>拉黑</span>
+                    </div>
+                </section>
+
+                <div class="ta-label">Ta的标签</div>
+                <div id="label-info-tips" class="label-info-tips">该公司还没有标签哦！</div>
+                <ul id="label-brand" class="label-brand">
+                    <li class="label-color-a" data-id="1">
+                        <span class="label-content">货源充足</span>
+                    </li>
+                    <li class="label-color-b" data-id="2">
+                        <span class="label-content">价格很便宜</span>
+                    </li>
+                    <li class="label-color-c" data-id="3">
+                        <span class="label-content">原装，但经常放飞机</span>
+                    </li>
+                </ul>
+                <ul id="label-new-brand" class="label-brand label-new-brand">
+                    <li class="label-color-a" data-id="0">
+                        <span class="label-content">货源充足</span>
+                        <span class="label-close">x</span>
+                    </li>
+                    <li class="label-color-b" data-id="0">
+                        <span class="label-content">价格很便宜</span>
+                        <span class="label-close">x</span>
+                    </li>
+                    <li class="label-color-c" data-id="0">
+                        <span class="label-content">原装，但经常放飞机</span>
+                        <span class="label-close">x</span>
+                    </li>
+                </ul>
+
+                <div class="label-set">
+                    <div class="label-often">常用标签</div>
+                    <ul id="label-often-content" class="label-brand label-often-content">
+                        <li class="label-color-a" data-id="0">
+                            <span class="label-content">货源充足</span>
+                        </li>
+                        <li class="label-color-b" data-id="0">
+                            <span class="label-content">价格很便宜</span>
+                        </li>
+                        <li class="label-color-c" data-id="0">
+                            <span class="label-content">原装，但经常放飞机</span>
+                        </li>
+                    </ul>
+                    <div class="flex-container">
+                        <div class="label-txt">
+                            <input id="brand-text" class="form-control brand-text" placeholder="点击创建新标签"/>
+                            <div id="label-color-picker" class="color-picker" data-color="#1476F6"></div>
+                        </div>
+                        <button id="paste-btn" class="btn btn-default quote-btn paste-btn">贴一个</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0)" class="btn btn-default label-btn" data-dismiss="modal">取消</a>
+                <a id="save-company" href="javascript:void(0)" class="btn btn-default quote-btn">保存</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="./xncolorpicker.min.js"></script>
+<script>
+    //将字符串解析为对象
+    function parseStrObjByRegExpKV(strDes) {//字符串转化为对象（正则表达式方式）parseStrObjByRegExpKV("name=jack&age=20&love=lily");
+        var obj = {};
+        strDes.replace(/(\w+)(?:=([^&]*))?/g, function (str, key, value) {
+            obj[key] = value;
+        });
+        return obj;
+    }
+
+    //标签模态框的交互操作
+    $("#modal-label").on("click",".label-close",function(){
+        $(this).parent().remove();
+
+    })
+    $("#label-often-content").on("click",".label-content",function(){
+        var $li=$(this).parent().clone().append('<span class="label-close">x</span>');
+        $("#label-new-brand").append($li);
+    })
+    $("#label-collect").click(function(){
+        $(this).toggleClass("label-collect");
+    })
+    $("#label-black").click(function(){
+        $(this).toggleClass("label-black");
+    })
+    $("#paste-btn").click(function(){
+        var txt= $.trim($("#brand-text").val());
+        if(!txt){
+            alert("标签文本不能为空")
+            return false
+        }
+        var backgroundColor= $("#label-color-picker").attr("data-color");
+        var cls="label-color-a";
+        switch (backgroundColor){
+            case "#1476F6":
+                    cls="label-color-a";
+                break;
+            case "#f67614":
+                cls="label-color-b";
+                break;
+            case "#818181":
+                cls="label-color-c";
+                break;
+            default:
+                break;
+        }
+        $("#label-new-brand").append('<li class="'+cls+'" data-id="0">\
+                <span class="label-content">'+txt+'</span>\
+                <span class="label-close">x</span>\
+                </li>')
+         })
+    //打开报价模态框
+    $("#btn1").click(function(){
+        $("#modal-quote").modal("show");
+    })
+
+    //打开标签模态框
+    $("#btn2").click(function(){
+        //判断该公司是否有标签
+        if($("#label-brand>li").length>0){
+            $("#label-info-tips").hide();
+        }else{
+            $("#label-info-tips").show();
+        }
+        $("#modal-label").modal("show");
+    })
+
+    //保存待确认报价
+    $("#save-wait-quote").click(function(){
+        var data = parseStrObjByRegExpKV(decodeURIComponent($("#formData").serialize().replace(/\+/g, ''), true));
+        console.log(data);
+    })
+    // 保存并直接报价
+    $("#save-direct-quote").click(function(){
+        var data = parseStrObjByRegExpKV(decodeURIComponent($("#formData").serialize().replace(/\+/g, ''), true));
+        console.log(data);
+    })
+
+    //保存公司信息
+    $("#save-company").click(function(){
+        var CardName=$("#label-company").text();
+        var IsCollect=$("#label-collect").hasClass("label-collect")?1:0;
+        var IsBlack=$("#label-black").hasClass("label-black")?1:0;
+        var Remark="";
+        var Labels=[];
+
+        $("#label-brand li,#label-new-brand li").each(function(i,li){
+            var id=$(this).attr("data-id");
+            var name=$(this).find(".label-content").text();
+            var backgroundColor="#1476F6";
+            var cls=$(this).attr("class");
+            switch (cls){
+                case "label-color-a":
+                    backgroundColor="#1476F6";
+                    break;
+                case "label-color-b":
+                    backgroundColor="#f67614";
+                    break;
+                case "label-color-c":
+                    backgroundColor="#818181";
+                    break;
+                default:
+                    break;
+            }
+            Labels.push({
+                "ID":id,//标签编号
+                "Name":name,//标签名
+                "BackgroundColor":backgroundColor,//标签背景色，16进制编码
+            })
+        })
+       // console.table(Labels)
+        var data={
+            CardName:CardName,
+            IsCollect:IsCollect,
+            IsBlack:IsBlack,
+            Remark:Remark,
+            Labels:Labels,
+        };
+        try {
+            var dataStr = JSON.stringify(data);
+            var jsonData = window.external.SaveSupplierInfo(dataStr);
+            if (!!jsonData) {
+                console.log("保存成功！");
+            } else {
+                console.log("保存失败！");
+            }
+        } catch (err) {
+            alert("保存异常:" + String(err));
+        }
+        console.log(data);
+    })
+
+    //设置模态框可拖动
+    $("#modal-quote,#modal-label").on("show.bs.modal", function() {
+        $(this).find(".modal-content").draggable()
+    });
+    $("#modal-quote,#modal-label").on("hidden.bs.modal", function() {
+        $(this).find(".modal-content").removeAttr("style")
+    });
+
+    //颜色拾取器
+    var labelColorPicker = new XNColorPicker({
+        //开发文档https://www.jq22.com/jquery-info23671
+        color: "#1476F6",//初始颜色
+        selector: "#label-color-picker",//选择器容器
+        showprecolor: true,//显示预制颜色
+        prevcolors: ["#1476F6","#F67614","#818181"],//预制颜色，不设置则默认
+        showhistorycolor: false,//显示历史
+        historycolornum: 0,//历史条数
+        format: 'hex',//rgba hex hsla,初始颜色类型
+        showPalette:false,//显示色盘
+        show:false, //初始化显示
+        lang:'cn',// 中英文 cn en
+        colorTypeOption:'single',//颜色选择器可选类型，纯色，线性渐变，径向渐变  single,linear-gradient,radial-gradient
+        canMove:false,//选择器位置是否可以拖拽
+        alwaysShow:false,
+        autoConfirm:false,//改变颜色时自动确认
+        onError: function (e) {
+            //console.log("error",String(e))
+        },
+        onCancel:function(color){
+            // console.log("cancel",color)
+        },
+        onChange:function(color){
+            //  console.log("change",color)
+        },
+        onConfirm:function(color){
+            //console.log("confirm",color)
+            $("#label-color-picker").attr("data-color",color.color.hex)
+        }
+    })
+
+
+</script>
+</body>
+</html>
