@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,783 +8,881 @@
     <!--<link href="../css/bootstrap.css" rel="stylesheet">-->
     <link href="//at.alicdn.com/t/font_2770097_gah7icfsw8.css" rel="stylesheet">
     <title>模态框调试页面</title>
-   <style>
-       .btn {
-           text-decoration: none;
-           display: inline-block;
-           padding: 6px 12px;
-           margin-bottom: 0;
-           font-size: 14px;
-           font-weight: normal;
-           line-height: 1.42857143;
-           text-align: center;
-           white-space: nowrap;
-           vertical-align: middle;
-           -ms-touch-action: manipulation;
-           touch-action: manipulation;
-           cursor: pointer;
-           -webkit-user-select: none;
-           -moz-user-select: none;
-           -ms-user-select: none;
-           user-select: none;
-           background-image: none;
-           border: 1px solid transparent;
-           border-radius: 4px;
-       }
-       .btn:focus,
-       .btn:active:focus,
-       .btn.active:focus,
-       .btn.focus,
-       .btn:active.focus,
-       .btn.active.focus {
-           outline: thin dotted;
-           outline: 5px auto -webkit-focus-ring-color;
-           outline-offset: -2px;
-       }
-       .btn:hover,
-       .btn:focus,
-       .btn.focus {
-           color: #333;
-           text-decoration: none;
-       }
-       .btn:active,
-       .btn.active {
-           background-image: none;
-           outline: 0;
-           -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-           box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-       }
-       .btn.disabled,
-       .btn[disabled],
-       fieldset[disabled] .btn {
-           cursor: not-allowed;
-           filter: alpha(opacity=65);
-           -webkit-box-shadow: none;
-           box-shadow: none;
-           opacity: .65;
-       }
-       a.btn.disabled,
-       fieldset[disabled] a.btn {
-           pointer-events: none;
-       }
-       .btn-default {
-           color: #333;
-           background-color: #fff;
-           border-color: #ccc;
-       }
-       .btn-default:focus,
-       .btn-default.focus {
-           color: #333;
-           background-color: #e6e6e6;
-           border-color: #8c8c8c;
-       }
-       .btn-default:hover {
-           color: #333;
-           background-color: #e6e6e6;
-           border-color: #adadad;
-       }
-       .btn-default:active,
-       .btn-default.active,
-       .open > .dropdown-toggle.btn-default {
-           color: #333;
-           background-color: #e6e6e6;
-           border-color: #adadad;
-       }
-       .btn-default:active:hover,
-       .btn-default.active:hover,
-       .open > .dropdown-toggle.btn-default:hover,
-       .btn-default:active:focus,
-       .btn-default.active:focus,
-       .open > .dropdown-toggle.btn-default:focus,
-       .btn-default:active.focus,
-       .btn-default.active.focus,
-       .open > .dropdown-toggle.btn-default.focus {
-           color: #333;
-           background-color: #d4d4d4;
-           border-color: #8c8c8c;
-       }
-       .btn-default:active,
-       .btn-default.active,
-       .open > .dropdown-toggle.btn-default {
-           background-image: none;
-       }
-       .btn-default.disabled,
-       .btn-default[disabled],
-       fieldset[disabled] .btn-default,
-       .btn-default.disabled:hover,
-       .btn-default[disabled]:hover,
-       fieldset[disabled] .btn-default:hover,
-       .btn-default.disabled:focus,
-       .btn-default[disabled]:focus,
-       fieldset[disabled] .btn-default:focus,
-       .btn-default.disabled.focus,
-       .btn-default[disabled].focus,
-       fieldset[disabled] .btn-default.focus,
-       .btn-default.disabled:active,
-       .btn-default[disabled]:active,
-       fieldset[disabled] .btn-default:active,
-       .btn-default.disabled.active,
-       .btn-default[disabled].active,
-       fieldset[disabled] .btn-default.active {
-           background-color: #fff;
-           border-color: #ccc;
-       }
-       .btn-default .badge {
-           color: #fff;
-           background-color: #333;
-       }
-       .btn-primary {
-           color: #fff;
-           background-color: #337ab7;
-           border-color: #2e6da4;
-       }
-       .btn-primary:focus,
-       .btn-primary.focus {
-           color: #fff;
-           background-color: #286090;
-           border-color: #122b40;
-       }
-       .btn-primary:hover {
-           color: #fff;
-           background-color: #286090;
-           border-color: #204d74;
-       }
-       .btn-primary:active,
-       .btn-primary.active,
-       .open > .dropdown-toggle.btn-primary {
-           color: #fff;
-           background-color: #286090;
-           border-color: #204d74;
-       }
-       .btn-primary:active:hover,
-       .btn-primary.active:hover,
-       .open > .dropdown-toggle.btn-primary:hover,
-       .btn-primary:active:focus,
-       .btn-primary.active:focus,
-       .open > .dropdown-toggle.btn-primary:focus,
-       .btn-primary:active.focus,
-       .btn-primary.active.focus,
-       .open > .dropdown-toggle.btn-primary.focus {
-           color: #fff;
-           background-color: #204d74;
-           border-color: #122b40;
-       }
-       .btn-primary:active,
-       .btn-primary.active,
-       .open > .dropdown-toggle.btn-primary {
-           background-image: none;
-       }
-       .btn-primary.disabled,
-       .btn-primary[disabled],
-       fieldset[disabled] .btn-primary,
-       .btn-primary.disabled:hover,
-       .btn-primary[disabled]:hover,
-       fieldset[disabled] .btn-primary:hover,
-       .btn-primary.disabled:focus,
-       .btn-primary[disabled]:focus,
-       fieldset[disabled] .btn-primary:focus,
-       .btn-primary.disabled.focus,
-       .btn-primary[disabled].focus,
-       fieldset[disabled] .btn-primary.focus,
-       .btn-primary.disabled:active,
-       .btn-primary[disabled]:active,
-       fieldset[disabled] .btn-primary:active,
-       .btn-primary.disabled.active,
-       .btn-primary[disabled].active,
-       fieldset[disabled] .btn-primary.active {
-           background-color: #337ab7;
-           border-color: #2e6da4;
-       }
-       .btn-primary .badge {
-           color: #337ab7;
-           background-color: #fff;
-       }
-       .btn-success {
-           color: #fff;
-           background-color: #5cb85c;
-           border-color: #4cae4c;
-       }
-       .btn-success:focus,
-       .btn-success.focus {
-           color: #fff;
-           background-color: #449d44;
-           border-color: #255625;
-       }
-       .btn-success:hover {
-           color: #fff;
-           background-color: #449d44;
-           border-color: #398439;
-       }
-       .btn-success:active,
-       .btn-success.active,
-       .open > .dropdown-toggle.btn-success {
-           color: #fff;
-           background-color: #449d44;
-           border-color: #398439;
-       }
-       .btn-success:active:hover,
-       .btn-success.active:hover,
-       .open > .dropdown-toggle.btn-success:hover,
-       .btn-success:active:focus,
-       .btn-success.active:focus,
-       .open > .dropdown-toggle.btn-success:focus,
-       .btn-success:active.focus,
-       .btn-success.active.focus,
-       .open > .dropdown-toggle.btn-success.focus {
-           color: #fff;
-           background-color: #398439;
-           border-color: #255625;
-       }
-       .btn-success:active,
-       .btn-success.active,
-       .open > .dropdown-toggle.btn-success {
-           background-image: none;
-       }
-       .btn-success.disabled,
-       .btn-success[disabled],
-       fieldset[disabled] .btn-success,
-       .btn-success.disabled:hover,
-       .btn-success[disabled]:hover,
-       fieldset[disabled] .btn-success:hover,
-       .btn-success.disabled:focus,
-       .btn-success[disabled]:focus,
-       fieldset[disabled] .btn-success:focus,
-       .btn-success.disabled.focus,
-       .btn-success[disabled].focus,
-       fieldset[disabled] .btn-success.focus,
-       .btn-success.disabled:active,
-       .btn-success[disabled]:active,
-       fieldset[disabled] .btn-success:active,
-       .btn-success.disabled.active,
-       .btn-success[disabled].active,
-       fieldset[disabled] .btn-success.active {
-           background-color: #5cb85c;
-           border-color: #4cae4c;
-       }
-       .btn-success .badge {
-           color: #5cb85c;
-           background-color: #fff;
-       }
-       .btn-info {
-           color: #fff;
-           background-color: #5bc0de;
-           border-color: #46b8da;
-       }
-       .btn-info:focus,
-       .btn-info.focus {
-           color: #fff;
-           background-color: #31b0d5;
-           border-color: #1b6d85;
-       }
-       .btn-info:hover {
-           color: #fff;
-           background-color: #31b0d5;
-           border-color: #269abc;
-       }
-       .btn-info:active,
-       .btn-info.active,
-       .open > .dropdown-toggle.btn-info {
-           color: #fff;
-           background-color: #31b0d5;
-           border-color: #269abc;
-       }
-       .btn-info:active:hover,
-       .btn-info.active:hover,
-       .open > .dropdown-toggle.btn-info:hover,
-       .btn-info:active:focus,
-       .btn-info.active:focus,
-       .open > .dropdown-toggle.btn-info:focus,
-       .btn-info:active.focus,
-       .btn-info.active.focus,
-       .open > .dropdown-toggle.btn-info.focus {
-           color: #fff;
-           background-color: #269abc;
-           border-color: #1b6d85;
-       }
-       .btn-info:active,
-       .btn-info.active,
-       .open > .dropdown-toggle.btn-info {
-           background-image: none;
-       }
-       .btn-info.disabled,
-       .btn-info[disabled],
-       fieldset[disabled] .btn-info,
-       .btn-info.disabled:hover,
-       .btn-info[disabled]:hover,
-       fieldset[disabled] .btn-info:hover,
-       .btn-info.disabled:focus,
-       .btn-info[disabled]:focus,
-       fieldset[disabled] .btn-info:focus,
-       .btn-info.disabled.focus,
-       .btn-info[disabled].focus,
-       fieldset[disabled] .btn-info.focus,
-       .btn-info.disabled:active,
-       .btn-info[disabled]:active,
-       fieldset[disabled] .btn-info:active,
-       .btn-info.disabled.active,
-       .btn-info[disabled].active,
-       fieldset[disabled] .btn-info.active {
-           background-color: #5bc0de;
-           border-color: #46b8da;
-       }
-       .btn-info .badge {
-           color: #5bc0de;
-           background-color: #fff;
-       }
-       .btn-warning {
-           color: #fff;
-           background-color: #f0ad4e;
-           border-color: #eea236;
-       }
-       .btn-warning:focus,
-       .btn-warning.focus {
-           color: #fff;
-           background-color: #ec971f;
-           border-color: #985f0d;
-       }
-       .btn-warning:hover {
-           color: #fff;
-           background-color: #ec971f;
-           border-color: #d58512;
-       }
-       .btn-warning:active,
-       .btn-warning.active,
-       .open > .dropdown-toggle.btn-warning {
-           color: #fff;
-           background-color: #ec971f;
-           border-color: #d58512;
-       }
-       .btn-warning:active:hover,
-       .btn-warning.active:hover,
-       .open > .dropdown-toggle.btn-warning:hover,
-       .btn-warning:active:focus,
-       .btn-warning.active:focus,
-       .open > .dropdown-toggle.btn-warning:focus,
-       .btn-warning:active.focus,
-       .btn-warning.active.focus,
-       .open > .dropdown-toggle.btn-warning.focus {
-           color: #fff;
-           background-color: #d58512;
-           border-color: #985f0d;
-       }
-       .btn-warning:active,
-       .btn-warning.active,
-       .open > .dropdown-toggle.btn-warning {
-           background-image: none;
-       }
-       .btn-warning.disabled,
-       .btn-warning[disabled],
-       fieldset[disabled] .btn-warning,
-       .btn-warning.disabled:hover,
-       .btn-warning[disabled]:hover,
-       fieldset[disabled] .btn-warning:hover,
-       .btn-warning.disabled:focus,
-       .btn-warning[disabled]:focus,
-       fieldset[disabled] .btn-warning:focus,
-       .btn-warning.disabled.focus,
-       .btn-warning[disabled].focus,
-       fieldset[disabled] .btn-warning.focus,
-       .btn-warning.disabled:active,
-       .btn-warning[disabled]:active,
-       fieldset[disabled] .btn-warning:active,
-       .btn-warning.disabled.active,
-       .btn-warning[disabled].active,
-       fieldset[disabled] .btn-warning.active {
-           background-color: #f0ad4e;
-           border-color: #eea236;
-       }
-       .btn-warning .badge {
-           color: #f0ad4e;
-           background-color: #fff;
-       }
-       .btn-danger {
-           color: #fff;
-           background-color: #d9534f;
-           border-color: #d43f3a;
-       }
-       .btn-danger:focus,
-       .btn-danger.focus {
-           color: #fff;
-           background-color: #c9302c;
-           border-color: #761c19;
-       }
-       .btn-danger:hover {
-           color: #fff;
-           background-color: #c9302c;
-           border-color: #ac2925;
-       }
-       .btn-danger:active,
-       .btn-danger.active,
-       .open > .dropdown-toggle.btn-danger {
-           color: #fff;
-           background-color: #c9302c;
-           border-color: #ac2925;
-       }
-       .btn-danger:active:hover,
-       .btn-danger.active:hover,
-       .open > .dropdown-toggle.btn-danger:hover,
-       .btn-danger:active:focus,
-       .btn-danger.active:focus,
-       .open > .dropdown-toggle.btn-danger:focus,
-       .btn-danger:active.focus,
-       .btn-danger.active.focus,
-       .open > .dropdown-toggle.btn-danger.focus {
-           color: #fff;
-           background-color: #ac2925;
-           border-color: #761c19;
-       }
-       .btn-danger:active,
-       .btn-danger.active,
-       .open > .dropdown-toggle.btn-danger {
-           background-image: none;
-       }
-       .btn-danger.disabled,
-       .btn-danger[disabled],
-       fieldset[disabled] .btn-danger,
-       .btn-danger.disabled:hover,
-       .btn-danger[disabled]:hover,
-       fieldset[disabled] .btn-danger:hover,
-       .btn-danger.disabled:focus,
-       .btn-danger[disabled]:focus,
-       fieldset[disabled] .btn-danger:focus,
-       .btn-danger.disabled.focus,
-       .btn-danger[disabled].focus,
-       fieldset[disabled] .btn-danger.focus,
-       .btn-danger.disabled:active,
-       .btn-danger[disabled]:active,
-       fieldset[disabled] .btn-danger:active,
-       .btn-danger.disabled.active,
-       .btn-danger[disabled].active,
-       fieldset[disabled] .btn-danger.active {
-           background-color: #d9534f;
-           border-color: #d43f3a;
-       }
-       .btn-danger .badge {
-           color: #d9534f;
-           background-color: #fff;
-       }
-       .btn-link {
-           font-weight: normal;
-           color: #337ab7;
-           border-radius: 0;
-       }
-       .btn-link,
-       .btn-link:active,
-       .btn-link.active,
-       .btn-link[disabled],
-       fieldset[disabled] .btn-link {
-           background-color: transparent;
-           -webkit-box-shadow: none;
-           box-shadow: none;
-       }
-       .btn-link,
-       .btn-link:hover,
-       .btn-link:focus,
-       .btn-link:active {
-           border-color: transparent;
-       }
-       .btn-link:hover,
-       .btn-link:focus {
-           color: #23527c;
-           text-decoration: underline;
-           background-color: transparent;
-       }
-       .btn-link[disabled]:hover,
-       fieldset[disabled] .btn-link:hover,
-       .btn-link[disabled]:focus,
-       fieldset[disabled] .btn-link:focus {
-           color: #777;
-           text-decoration: none;
-       }
-       .btn-lg,
-       .btn-group-lg > .btn {
-           padding: 10px 16px;
-           font-size: 18px;
-           line-height: 1.3333333;
-           border-radius: 6px;
-       }
-       .btn-sm,
-       .btn-group-sm > .btn {
-           padding: 5px 10px;
-           font-size: 12px;
-           line-height: 1.5;
-           border-radius: 3px;
-       }
-       .btn-xs,
-       .btn-group-xs > .btn {
-           padding: 1px 5px;
-           font-size: 12px;
-           line-height: 1.5;
-           border-radius: 3px;
-       }
-       .btn-block {
-           display: block;
-           width: 100%;
-       }
-       .btn-block + .btn-block {
-           margin-top: 5px;
-       }
-       input[type="submit"].btn-block,
-       input[type="reset"].btn-block,
-       input[type="button"].btn-block {
-           width: 100%;
-       }
-       textarea {
-           overflow: auto;
-           box-sizing: border-box;
-       }
-       .form-inline .form-control {
-           display: inline-block;
-           width: auto;
-           vertical-align: middle;
-       }
-       .form-control {
-           display: block;
-           box-sizing: border-box;
-           width: 100%;
-           padding: 6px 12px;
-           font-size: 14px;
-           line-height: 1.42857143;
-           color: #555;
-           background-color: #fff;
-           background-image: none;
-           border: 1px solid #ccc;
-           border-radius: 4px;
-           -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-           -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-           -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-       }
-
-       .close {
-           float: right;
-           font-size: 21px;
-           font-weight: bold;
-           line-height: 1;
-           color: #000;
-           text-shadow: 0 1px 0 #fff;
-           filter: alpha(opacity=20);
-           opacity: .2;
-       }
-       .close:hover,
-       .close:focus {
-           color: #000;
-           text-decoration: none;
-           cursor: pointer;
-           filter: alpha(opacity=50);
-           opacity: .5;
-       }
-       button.close {
-           -webkit-appearance: none;
-           padding: 0;
-           cursor: pointer;
-           background: transparent;
-           border: 0;
-       }
-       .modal-open {
-           overflow: hidden;
-       }
-       .modal {
-           font-size: 14px;
-           position: fixed;
-           top: 0;
-           right: 0;
-           bottom: 0;
-           left: 0;
-           z-index: 1050;
-           display: none;
-           overflow: hidden;
-           -webkit-overflow-scrolling: touch;
-           outline: 0;
-       }
-       .modal.fade .modal-dialog {
-           -webkit-transition: -webkit-transform .3s ease-out;
-           -o-transition:      -o-transform .3s ease-out;
-           transition:         transform .3s ease-out;
-           -webkit-transform: translate(0, -25%);
-           -ms-transform: translate(0, -25%);
-           -o-transform: translate(0, -25%);
-           transform: translate(0, -25%);
-       }
-       .modal.in .modal-dialog {
-           -webkit-transform: translate(0, 0);
-           -ms-transform: translate(0, 0);
-           -o-transform: translate(0, 0);
-           transform: translate(0, 0);
-       }
-       .modal-open .modal {
-           overflow-x: hidden;
-           overflow-y: auto;
-       }
-       .modal-dialog {
-           position: relative;
-           width: auto;
-           margin: 10px;
-       }
-       .modal-content {
-           position: relative;
-           background-color: #fff;
-           -webkit-background-clip: padding-box;
-           background-clip: padding-box;
-           border: 1px solid #999;
-           border: 1px solid rgba(0, 0, 0, .2);
-           border-radius: 6px;
-           outline: 0;
-           -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-           box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-       }
-       .modal-backdrop {
-           position: fixed;
-           top: 0;
-           right: 0;
-           bottom: 0;
-           left: 0;
-           z-index: 1040;
-           background-color: #000;
-       }
-       .modal-backdrop.fade {
-           filter: alpha(opacity=0);
-           opacity: 0;
-       }
-       .modal-backdrop.in {
-           filter: alpha(opacity=50);
-           opacity: .5;
-       }
-       .modal-header {
-           min-height: 16.42857143px;
-           padding: 15px;
-           border-bottom: 1px solid #e5e5e5;
-       }
-       .modal-header .close {
-           margin-top: -2px;
-       }
-       .modal-title {
-           margin: 0;
-           line-height: 1.42857143;
-       }
-       .modal-body {
-           position: relative;
-           padding: 15px;
-       }
-       .modal-footer {
-           padding: 15px;
-           text-align: right;
-           border-top: 1px solid #e5e5e5;
-       }
-       .modal-footer .btn + .btn {
-           margin-bottom: 0;
-           margin-left: 5px;
-       }
-       .modal-footer .btn-group .btn + .btn {
-           margin-left: -1px;
-       }
-       .modal-footer .btn-block + .btn-block {
-           margin-left: 0;
-       }
-       .modal-scrollbar-measure {
-           position: absolute;
-           top: -9999px;
-           width: 50px;
-           height: 50px;
-           overflow: scroll;
-       }
-       @media (min-width: 768px) {
-           .modal-dialog {
-               width: 600px;
-               margin: 30px auto;
-           }
-           .modal-content {
-               -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-               box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-           }
-           .modal-sm {
-               width: 300px;
-           }
-       }
-       @media (min-width: 992px) {
-           .modal-lg {
-               width: 900px;
-           }
-       }
-   </style>
+    <style>
+        .btn {
+            text-decoration: none;
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        
+        .btn:focus,
+        .btn:active:focus,
+        .btn.active:focus,
+        .btn.focus,
+        .btn:active.focus,
+        .btn.active.focus {
+            outline: thin dotted;
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;
+        }
+        
+        .btn:hover,
+        .btn:focus,
+        .btn.focus {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .btn:active,
+        .btn.active {
+            background-image: none;
+            outline: 0;
+            -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+        }
+        
+        .btn.disabled,
+        .btn[disabled],
+        fieldset[disabled] .btn {
+            cursor: not-allowed;
+            filter: alpha(opacity=65);
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            opacity: .65;
+        }
+        
+        a.btn.disabled,
+        fieldset[disabled] a.btn {
+            pointer-events: none;
+        }
+        
+        .btn-default {
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+        }
+        
+        .btn-default:focus,
+        .btn-default.focus {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #8c8c8c;
+        }
+        
+        .btn-default:hover {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+        }
+        
+        .btn-default:active,
+        .btn-default.active,
+        .open>.dropdown-toggle.btn-default {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+        }
+        
+        .btn-default:active:hover,
+        .btn-default.active:hover,
+        .open>.dropdown-toggle.btn-default:hover,
+        .btn-default:active:focus,
+        .btn-default.active:focus,
+        .open>.dropdown-toggle.btn-default:focus,
+        .btn-default:active.focus,
+        .btn-default.active.focus,
+        .open>.dropdown-toggle.btn-default.focus {
+            color: #333;
+            background-color: #d4d4d4;
+            border-color: #8c8c8c;
+        }
+        
+        .btn-default:active,
+        .btn-default.active,
+        .open>.dropdown-toggle.btn-default {
+            background-image: none;
+        }
+        
+        .btn-default.disabled,
+        .btn-default[disabled],
+        fieldset[disabled] .btn-default,
+        .btn-default.disabled:hover,
+        .btn-default[disabled]:hover,
+        fieldset[disabled] .btn-default:hover,
+        .btn-default.disabled:focus,
+        .btn-default[disabled]:focus,
+        fieldset[disabled] .btn-default:focus,
+        .btn-default.disabled.focus,
+        .btn-default[disabled].focus,
+        fieldset[disabled] .btn-default.focus,
+        .btn-default.disabled:active,
+        .btn-default[disabled]:active,
+        fieldset[disabled] .btn-default:active,
+        .btn-default.disabled.active,
+        .btn-default[disabled].active,
+        fieldset[disabled] .btn-default.active {
+            background-color: #fff;
+            border-color: #ccc;
+        }
+        
+        .btn-default .badge {
+            color: #fff;
+            background-color: #333;
+        }
+        
+        .btn-primary {
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+        }
+        
+        .btn-primary:focus,
+        .btn-primary.focus {
+            color: #fff;
+            background-color: #286090;
+            border-color: #122b40;
+        }
+        
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #286090;
+            border-color: #204d74;
+        }
+        
+        .btn-primary:active,
+        .btn-primary.active,
+        .open>.dropdown-toggle.btn-primary {
+            color: #fff;
+            background-color: #286090;
+            border-color: #204d74;
+        }
+        
+        .btn-primary:active:hover,
+        .btn-primary.active:hover,
+        .open>.dropdown-toggle.btn-primary:hover,
+        .btn-primary:active:focus,
+        .btn-primary.active:focus,
+        .open>.dropdown-toggle.btn-primary:focus,
+        .btn-primary:active.focus,
+        .btn-primary.active.focus,
+        .open>.dropdown-toggle.btn-primary.focus {
+            color: #fff;
+            background-color: #204d74;
+            border-color: #122b40;
+        }
+        
+        .btn-primary:active,
+        .btn-primary.active,
+        .open>.dropdown-toggle.btn-primary {
+            background-image: none;
+        }
+        
+        .btn-primary.disabled,
+        .btn-primary[disabled],
+        fieldset[disabled] .btn-primary,
+        .btn-primary.disabled:hover,
+        .btn-primary[disabled]:hover,
+        fieldset[disabled] .btn-primary:hover,
+        .btn-primary.disabled:focus,
+        .btn-primary[disabled]:focus,
+        fieldset[disabled] .btn-primary:focus,
+        .btn-primary.disabled.focus,
+        .btn-primary[disabled].focus,
+        fieldset[disabled] .btn-primary.focus,
+        .btn-primary.disabled:active,
+        .btn-primary[disabled]:active,
+        fieldset[disabled] .btn-primary:active,
+        .btn-primary.disabled.active,
+        .btn-primary[disabled].active,
+        fieldset[disabled] .btn-primary.active {
+            background-color: #337ab7;
+            border-color: #2e6da4;
+        }
+        
+        .btn-primary .badge {
+            color: #337ab7;
+            background-color: #fff;
+        }
+        
+        .btn-success {
+            color: #fff;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+        }
+        
+        .btn-success:focus,
+        .btn-success.focus {
+            color: #fff;
+            background-color: #449d44;
+            border-color: #255625;
+        }
+        
+        .btn-success:hover {
+            color: #fff;
+            background-color: #449d44;
+            border-color: #398439;
+        }
+        
+        .btn-success:active,
+        .btn-success.active,
+        .open>.dropdown-toggle.btn-success {
+            color: #fff;
+            background-color: #449d44;
+            border-color: #398439;
+        }
+        
+        .btn-success:active:hover,
+        .btn-success.active:hover,
+        .open>.dropdown-toggle.btn-success:hover,
+        .btn-success:active:focus,
+        .btn-success.active:focus,
+        .open>.dropdown-toggle.btn-success:focus,
+        .btn-success:active.focus,
+        .btn-success.active.focus,
+        .open>.dropdown-toggle.btn-success.focus {
+            color: #fff;
+            background-color: #398439;
+            border-color: #255625;
+        }
+        
+        .btn-success:active,
+        .btn-success.active,
+        .open>.dropdown-toggle.btn-success {
+            background-image: none;
+        }
+        
+        .btn-success.disabled,
+        .btn-success[disabled],
+        fieldset[disabled] .btn-success,
+        .btn-success.disabled:hover,
+        .btn-success[disabled]:hover,
+        fieldset[disabled] .btn-success:hover,
+        .btn-success.disabled:focus,
+        .btn-success[disabled]:focus,
+        fieldset[disabled] .btn-success:focus,
+        .btn-success.disabled.focus,
+        .btn-success[disabled].focus,
+        fieldset[disabled] .btn-success.focus,
+        .btn-success.disabled:active,
+        .btn-success[disabled]:active,
+        fieldset[disabled] .btn-success:active,
+        .btn-success.disabled.active,
+        .btn-success[disabled].active,
+        fieldset[disabled] .btn-success.active {
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+        }
+        
+        .btn-success .badge {
+            color: #5cb85c;
+            background-color: #fff;
+        }
+        
+        .btn-info {
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
+        }
+        
+        .btn-info:focus,
+        .btn-info.focus {
+            color: #fff;
+            background-color: #31b0d5;
+            border-color: #1b6d85;
+        }
+        
+        .btn-info:hover {
+            color: #fff;
+            background-color: #31b0d5;
+            border-color: #269abc;
+        }
+        
+        .btn-info:active,
+        .btn-info.active,
+        .open>.dropdown-toggle.btn-info {
+            color: #fff;
+            background-color: #31b0d5;
+            border-color: #269abc;
+        }
+        
+        .btn-info:active:hover,
+        .btn-info.active:hover,
+        .open>.dropdown-toggle.btn-info:hover,
+        .btn-info:active:focus,
+        .btn-info.active:focus,
+        .open>.dropdown-toggle.btn-info:focus,
+        .btn-info:active.focus,
+        .btn-info.active.focus,
+        .open>.dropdown-toggle.btn-info.focus {
+            color: #fff;
+            background-color: #269abc;
+            border-color: #1b6d85;
+        }
+        
+        .btn-info:active,
+        .btn-info.active,
+        .open>.dropdown-toggle.btn-info {
+            background-image: none;
+        }
+        
+        .btn-info.disabled,
+        .btn-info[disabled],
+        fieldset[disabled] .btn-info,
+        .btn-info.disabled:hover,
+        .btn-info[disabled]:hover,
+        fieldset[disabled] .btn-info:hover,
+        .btn-info.disabled:focus,
+        .btn-info[disabled]:focus,
+        fieldset[disabled] .btn-info:focus,
+        .btn-info.disabled.focus,
+        .btn-info[disabled].focus,
+        fieldset[disabled] .btn-info.focus,
+        .btn-info.disabled:active,
+        .btn-info[disabled]:active,
+        fieldset[disabled] .btn-info:active,
+        .btn-info.disabled.active,
+        .btn-info[disabled].active,
+        fieldset[disabled] .btn-info.active {
+            background-color: #5bc0de;
+            border-color: #46b8da;
+        }
+        
+        .btn-info .badge {
+            color: #5bc0de;
+            background-color: #fff;
+        }
+        
+        .btn-warning {
+            color: #fff;
+            background-color: #f0ad4e;
+            border-color: #eea236;
+        }
+        
+        .btn-warning:focus,
+        .btn-warning.focus {
+            color: #fff;
+            background-color: #ec971f;
+            border-color: #985f0d;
+        }
+        
+        .btn-warning:hover {
+            color: #fff;
+            background-color: #ec971f;
+            border-color: #d58512;
+        }
+        
+        .btn-warning:active,
+        .btn-warning.active,
+        .open>.dropdown-toggle.btn-warning {
+            color: #fff;
+            background-color: #ec971f;
+            border-color: #d58512;
+        }
+        
+        .btn-warning:active:hover,
+        .btn-warning.active:hover,
+        .open>.dropdown-toggle.btn-warning:hover,
+        .btn-warning:active:focus,
+        .btn-warning.active:focus,
+        .open>.dropdown-toggle.btn-warning:focus,
+        .btn-warning:active.focus,
+        .btn-warning.active.focus,
+        .open>.dropdown-toggle.btn-warning.focus {
+            color: #fff;
+            background-color: #d58512;
+            border-color: #985f0d;
+        }
+        
+        .btn-warning:active,
+        .btn-warning.active,
+        .open>.dropdown-toggle.btn-warning {
+            background-image: none;
+        }
+        
+        .btn-warning.disabled,
+        .btn-warning[disabled],
+        fieldset[disabled] .btn-warning,
+        .btn-warning.disabled:hover,
+        .btn-warning[disabled]:hover,
+        fieldset[disabled] .btn-warning:hover,
+        .btn-warning.disabled:focus,
+        .btn-warning[disabled]:focus,
+        fieldset[disabled] .btn-warning:focus,
+        .btn-warning.disabled.focus,
+        .btn-warning[disabled].focus,
+        fieldset[disabled] .btn-warning.focus,
+        .btn-warning.disabled:active,
+        .btn-warning[disabled]:active,
+        fieldset[disabled] .btn-warning:active,
+        .btn-warning.disabled.active,
+        .btn-warning[disabled].active,
+        fieldset[disabled] .btn-warning.active {
+            background-color: #f0ad4e;
+            border-color: #eea236;
+        }
+        
+        .btn-warning .badge {
+            color: #f0ad4e;
+            background-color: #fff;
+        }
+        
+        .btn-danger {
+            color: #fff;
+            background-color: #d9534f;
+            border-color: #d43f3a;
+        }
+        
+        .btn-danger:focus,
+        .btn-danger.focus {
+            color: #fff;
+            background-color: #c9302c;
+            border-color: #761c19;
+        }
+        
+        .btn-danger:hover {
+            color: #fff;
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+        
+        .btn-danger:active,
+        .btn-danger.active,
+        .open>.dropdown-toggle.btn-danger {
+            color: #fff;
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+        
+        .btn-danger:active:hover,
+        .btn-danger.active:hover,
+        .open>.dropdown-toggle.btn-danger:hover,
+        .btn-danger:active:focus,
+        .btn-danger.active:focus,
+        .open>.dropdown-toggle.btn-danger:focus,
+        .btn-danger:active.focus,
+        .btn-danger.active.focus,
+        .open>.dropdown-toggle.btn-danger.focus {
+            color: #fff;
+            background-color: #ac2925;
+            border-color: #761c19;
+        }
+        
+        .btn-danger:active,
+        .btn-danger.active,
+        .open>.dropdown-toggle.btn-danger {
+            background-image: none;
+        }
+        
+        .btn-danger.disabled,
+        .btn-danger[disabled],
+        fieldset[disabled] .btn-danger,
+        .btn-danger.disabled:hover,
+        .btn-danger[disabled]:hover,
+        fieldset[disabled] .btn-danger:hover,
+        .btn-danger.disabled:focus,
+        .btn-danger[disabled]:focus,
+        fieldset[disabled] .btn-danger:focus,
+        .btn-danger.disabled.focus,
+        .btn-danger[disabled].focus,
+        fieldset[disabled] .btn-danger.focus,
+        .btn-danger.disabled:active,
+        .btn-danger[disabled]:active,
+        fieldset[disabled] .btn-danger:active,
+        .btn-danger.disabled.active,
+        .btn-danger[disabled].active,
+        fieldset[disabled] .btn-danger.active {
+            background-color: #d9534f;
+            border-color: #d43f3a;
+        }
+        
+        .btn-danger .badge {
+            color: #d9534f;
+            background-color: #fff;
+        }
+        
+        .btn-link {
+            font-weight: normal;
+            color: #337ab7;
+            border-radius: 0;
+        }
+        
+        .btn-link,
+        .btn-link:active,
+        .btn-link.active,
+        .btn-link[disabled],
+        fieldset[disabled] .btn-link {
+            background-color: transparent;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        
+        .btn-link,
+        .btn-link:hover,
+        .btn-link:focus,
+        .btn-link:active {
+            border-color: transparent;
+        }
+        
+        .btn-link:hover,
+        .btn-link:focus {
+            color: #23527c;
+            text-decoration: underline;
+            background-color: transparent;
+        }
+        
+        .btn-link[disabled]:hover,
+        fieldset[disabled] .btn-link:hover,
+        .btn-link[disabled]:focus,
+        fieldset[disabled] .btn-link:focus {
+            color: #777;
+            text-decoration: none;
+        }
+        
+        .btn-lg,
+        .btn-group-lg>.btn {
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.3333333;
+            border-radius: 6px;
+        }
+        
+        .btn-sm,
+        .btn-group-sm>.btn {
+            padding: 5px 10px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+        }
+        
+        .btn-xs,
+        .btn-group-xs>.btn {
+            padding: 1px 5px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .btn-block+.btn-block {
+            margin-top: 5px;
+        }
+        
+        input[type="submit"].btn-block,
+        input[type="reset"].btn-block,
+        input[type="button"].btn-block {
+            width: 100%;
+        }
+        
+        textarea {
+            overflow: auto;
+            box-sizing: border-box;
+        }
+        
+        .form-inline .form-control {
+            display: inline-block;
+            width: auto;
+            vertical-align: middle;
+        }
+        
+        .form-control {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+        
+        .close {
+            float: right;
+            font-size: 21px;
+            font-weight: bold;
+            line-height: 1;
+            color: #000;
+            text-shadow: 0 1px 0 #fff;
+            filter: alpha(opacity=20);
+            opacity: .2;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            filter: alpha(opacity=50);
+            opacity: .5;
+        }
+        
+        button.close {
+            -webkit-appearance: none;
+            padding: 0;
+            cursor: pointer;
+            background: transparent;
+            border: 0;
+        }
+        
+        .modal-open {
+            overflow: hidden;
+        }
+        
+        .modal {
+            font-size: 14px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1050;
+            display: none;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+            outline: 0;
+        }
+        
+        .modal.fade .modal-dialog {
+            -webkit-transition: -webkit-transform .3s ease-out;
+            -o-transition: -o-transform .3s ease-out;
+            transition: transform .3s ease-out;
+            -webkit-transform: translate(0, -25%);
+            -ms-transform: translate(0, -25%);
+            -o-transform: translate(0, -25%);
+            transform: translate(0, -25%);
+        }
+        
+        .modal.in .modal-dialog {
+            -webkit-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+            -o-transform: translate(0, 0);
+            transform: translate(0, 0);
+        }
+        
+        .modal-open .modal {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        .modal-dialog {
+            position: relative;
+            width: auto;
+            margin: 10px;
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            border: 1px solid #999;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: 6px;
+            outline: 0;
+            -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+            box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+        }
+        
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1040;
+            background-color: #000;
+        }
+        
+        .modal-backdrop.fade {
+            filter: alpha(opacity=0);
+            opacity: 0;
+        }
+        
+        .modal-backdrop.in {
+            filter: alpha(opacity=50);
+            opacity: .5;
+        }
+        
+        .modal-header {
+            min-height: 16.42857143px;
+            padding: 15px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .modal-header .close {
+            margin-top: -2px;
+        }
+        
+        .modal-title {
+            margin: 0;
+            line-height: 1.42857143;
+        }
+        
+        .modal-body {
+            position: relative;
+            padding: 15px;
+        }
+        
+        .modal-footer {
+            padding: 15px;
+            text-align: right;
+            border-top: 1px solid #e5e5e5;
+        }
+        
+        .modal-footer .btn+.btn {
+            margin-bottom: 0;
+            margin-left: 5px;
+        }
+        
+        .modal-footer .btn-group .btn+.btn {
+            margin-left: -1px;
+        }
+        
+        .modal-footer .btn-block+.btn-block {
+            margin-left: 0;
+        }
+        
+        .modal-scrollbar-measure {
+            position: absolute;
+            top: -9999px;
+            width: 50px;
+            height: 50px;
+            overflow: scroll;
+        }
+        
+        @media (min-width: 768px) {
+            .modal-dialog {
+                width: 600px;
+                margin: 30px auto;
+            }
+            .modal-content {
+                -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            }
+            .modal-sm {
+                width: 300px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .modal-lg {
+                width: 900px;
+            }
+        }
+    </style>
     <style>
         /*覆盖bootstrap.css样式*/
-        .modal-header{
+        
+        .modal-header {
             background: #1476F6;
             color: white;
         }
-        .close,.close:hover {
+        
+        .close,
+        .close:hover {
             color: white;
             text-shadow: 0 1px 0 #fff;
             filter: alpha(opacity=20);
             opacity: 1;
         }
         /*颜色拾取器隐藏*/
-        .color-preview{
+        
+        .color-preview {
             display: none !important;
         }
-
         /*正文布局*/
-        .flex-container{
+        
+        .flex-container {
             display: flex;
         }
-        .supplier-info{
+        
+        .supplier-info {
             width: 423px
         }
-        .separator{
+        
+        .separator {
             width: 2px;
             margin: 0 10px;
             background: #E5E5E5;
         }
-        .supplier-quote{
+        
+        .supplier-quote {
             width: 623px
         }
-
         /*公司信息*/
-        .flex-container-supplier{
+        
+        .flex-container-supplier {
             display: flex;
             margin: 8px 0;
         }
-        .supplier-detail{
-
-        }
-        .supplier-name{
+        
+        .supplier-detail {}
+        
+        .supplier-name {
             font-weight: bold;
             margin: 0 0 6px;
             font-size: 18px;
         }
-        .supplier-address{
-
-        }
-        .supplier-contact{
+        
+        .supplier-address {}
+        
+        .supplier-contact {
             margin: 20px 0;
         }
-        .supplier-contact-item{
+        
+        .supplier-contact-item {
             width: 50%;
-
         }
-        .supplier-contact-item>span{
+        
+        .supplier-contact-item>span {
             display: inline-block;
         }
-        .supplier-contact-item>span:nth-child(1){
-
-        }
-        .supplier-contact-item>span:nth-child(2){
-
-        }
-        .supplier-contact-item>img{
+        
+        .supplier-contact-item>span:nth-child(1) {}
+        
+        .supplier-contact-item>span:nth-child(2) {}
+        
+        .supplier-contact-item>img {
             vertical-align: text-bottom;
             width: 18px;
         }
-        .supplier-remark{
-
-        }
-        .supplier-company{
+        
+        .supplier-remark {}
+        
+        .supplier-company {
             font-size: 16px;
             margin-top: 0;
         }
-        .supplier-remark-content{
+        
+        .supplier-remark-content {
             width: 100%;
             height: 226px;
             display: block;
@@ -796,51 +895,56 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-
         /*报价信息*/
-        .flex-container-quote{
+        
+        .flex-container-quote {
             display: flex;
-            margin:8px 0;
+            margin: 8px 0;
         }
-        .quote-model{
+        
+        .quote-model {
             font-size: 16px;
         }
-        .quote-model-data{
+        
+        .quote-model-data {
             color: #FF5A00;
             font-weight: bold;
         }
-        .quote-model-title{
-
-        }
-        .supplier-quote-info{
-
-        }
-        .supplier-field-item{
+        
+        .quote-model-title {}
+        
+        .supplier-quote-info {}
+        
+        .supplier-field-item {
             width: 50%;
         }
-        .field-title{
+        
+        .field-title {
             display: inline-block;
             width: 80px;
             text-align: right;
         }
-        .field-input{
-
-        }
-        .field-input-single{
+        
+        .field-input {}
+        
+        .field-input-single {
             width: 507px !important;
         }
-        .quote-btn,.quote-btn:hover{
+        
+        .quote-btn,
+        .quote-btn:hover {
             background-color: #1476F6;
             color: white;
         }
-
         /*标签模态框*/
-        .label-company{
+        
+        .label-company {
             font-weight: bold;
             margin: 0 0 6px;
             font-size: 18px;
         }
-        .common-collect-black{
+        
+        .common-collect-black {
             margin-left: 18px;
             margin-top: 3px;
             padding: 0 5px;
@@ -850,546 +954,569 @@
             line-height: 20px;
             cursor: pointer;
         }
-        .common-collect-black>.iconfont{
+        
+        .common-collect-black>.iconfont {
             font-size: 12px;
         }
-        .label-collect{
+        
+        .label-collect {
             background-color: #FFAA00;
             color: white;
         }
-        .label-black{
+        
+        .label-black {
             background-color: #B7B7B7;
             color: white;
         }
-        .ta-label{
+        
+        .ta-label {
             margin-top: 5px;
         }
-        .label-info-tips{
+        
+        .label-info-tips {
             color: #C1C1C1;
             margin-top: 5px;
         }
-        ul.label-brand{
-            padding:0;
+        
+        ul.label-brand {
+            padding: 0;
             list-style: none;
             margin-top: 10px;
         }
-        ul.label-brand:after{
+        
+        ul.label-brand:after {
             display: block;
             content: "";
             clear: both;
         }
-        ul.label-brand>li{
+        
+        ul.label-brand>li {
             float: left;
             border-radius: 15px;
             color: white;
             padding: 3px 15px;
             margin: 0 0 5px 10px;
         }
-        .label-color-a{
+        
+        .label-color-a {
             background-color: #1476F6;
         }
-        .label-color-b{
+        
+        .label-color-b {
             background-color: #F67614;
         }
-        .label-color-c{
+        
+        .label-color-c {
             background-color: #818181;
         }
-        .label-content{
+        
+        .label-content {
             display: inline-block;
         }
-        .label-close{
+        
+        .label-close {
             display: inline-block;
             width: 8px;
             margin-left: 8px;
             cursor: pointer !important;
-
         }
-        ul.label-brand.label-new-brand{
+        
+        ul.label-brand.label-new-brand {
             min-height: 80px;
             background-color: #F6F6F6;
             padding: 10px;
         }
-        .label-set{
+        
+        .label-set {
             border: 1px solid #E4E4E4;
             padding: 15px;
         }
-        .label-often{
-
-        }
-        ul.label-brand.label-often-content{
+        
+        .label-often {}
+        
+        ul.label-brand.label-often-content {
             margin: 10px 0;
         }
-        ul.label-brand.label-often-content>li>.label-content{
+        
+        ul.label-brand.label-often-content>li>.label-content {
             cursor: pointer !important;
         }
-        .label-btn,.label-btn:hover{
+        
+        .label-btn,
+        .label-btn:hover {
             border: 1px solid #1476F6;
             background: white;
-            color:#1476F6 ;
+            color: #1476F6;
         }
-        .label-txt{
+        
+        .label-txt {
             position: relative;
             width: 100%;
         }
-        .brand-text{
+        
+        .brand-text {
             padding-right: 50px;
         }
-        .color-picker{
+        
+        .color-picker {
             position: absolute;
             top: 2px;
             right: 8px;
         }
-        .paste-btn{
+        
+        .paste-btn {
             margin-left: 8px;
         }
     </style>
 </head>
+
 <body>
-<div style="width: 200px;margin:0 auto">
-    <button id="btn1" class="btn  btn-block btn-info">报价模态框</button>
-    <button id="btn2" class="btn  btn-block btn-info">标签模态框</button>
-</div>
+    <div style="width: 200px;margin:0 auto">
+        <button id="btn1" class="btn  btn-block btn-info">报价模态框</button>
+        <button id="btn2" class="btn  btn-block btn-info">标签模态框</button>
+    </div>
 
-<!--报价模太框-->
-<div id="modal-quote" class="modal fade" data-backdrop="static" data-keyboard="false" style="z-index:3000">
-    <div class="modal-dialog" style=" width: 1100px;">
-        <div class="modal-content">
-            <div class="modal-header" title="按住鼠标左键可拖动模态框" style="cursor:move">
-                <span class="close" data-dismiss="modal">&times;</span>
-                <span style="font-size:14px;font-weight:bold;">记录供应商报价</span>
-            </div>
-            <div class="modal-body">
-                <section class="flex-container">
-                    <div class="supplier-info">
-                        <div class="supplier-detail">
-                            <h3 class="supplier-name">深圳市海尚电子有限公司</h3>
-                            <p class="supplier-address">深圳市南山区沙河街道西丽社区30号A10</p>
-                        </div>
+    <!--报价模太框-->
+    <div id="modal-quote" class="modal fade" data-backdrop="static" data-keyboard="false" style="z-index:3000">
+        <div class="modal-dialog" style=" width: 1100px;">
+            <div class="modal-content">
+                <div class="modal-header" title="按住鼠标左键可拖动模态框" style="cursor:move">
+                    <span class="close" data-dismiss="modal">&times;</span>
+                    <span style="font-size:14px;font-weight:bold;">记录供应商报价</span>
+                </div>
+                <div class="modal-body">
+                    <section class="flex-container">
+                        <div class="supplier-info">
+                            <div class="supplier-detail">
+                                <h3 class="supplier-name">深圳市海尚电子有限公司</h3>
+                                <p class="supplier-address">深圳市南山区沙河街道西丽社区30号A10</p>
+                            </div>
 
-                        <div class="supplier-contact">
-                            <div class="flex-container-supplier">
-                                <div class="supplier-contact-item">
-                                    <span>手机:</span>
-                                    <span>15019225796</span>
-                                    <img src="http://in.sap360.com.cn:6055/spd/tel.png">
+                            <div class="supplier-contact">
+                                <div class="flex-container-supplier">
+                                    <div class="supplier-contact-item">
+                                        <span>手机:</span>
+                                        <span>15019225796</span>
+                                        <img src="http://in.sap360.com.cn:6055/spd/tel.png">
+                                    </div>
+                                    <div class="supplier-contact-item">
+                                        <span>QQ:</span>
+                                        <span>435581357</span>
+                                        <img src="http://in.sap360.com.cn:6055/spd/qq.png">
+                                    </div>
                                 </div>
-                                <div  class="supplier-contact-item">
-                                    <span>QQ:</span>
-                                    <span>435581357</span>
-                                    <img src="http://in.sap360.com.cn:6055/spd/qq.png">
+                                <div class="flex-container-supplier">
+                                    <div class="supplier-contact-item">
+                                        <span>手机:</span>
+                                        <span>15019225796</span>
+                                        <img src="http://in.sap360.com.cn:6055/spd/tel.png">
+                                    </div>
+                                    <div class="supplier-contact-item">
+                                        <span>QQ:</span>
+                                        <span>435581357</span>
+                                        <img src="http://in.sap360.com.cn:6055/spd/qq.png">
+                                    </div>
+                                </div>
+                                <div class="flex-container-supplier">
+                                    <div class="supplier-contact-item">
+                                        <span>手机:</span>
+                                        <span>15019225796</span>
+                                        <img src="http://in.sap360.com.cn:6055/spd/tel.png">
+                                    </div>
+                                    <div class="supplier-contact-item">
+                                        <span>QQ:</span>
+                                        <span>435581357</span>
+                                        <img src="http://in.sap360.com.cn:6055/spd/qq.png">
+                                    </div>
+                                </div>
+                                <div class="flex-container-supplier">
+                                    <div class="supplier-contact-item">
+                                        <span>手机:</span>
+                                        <span>15019225796</span>
+                                        <img src="http://in.sap360.com.cn:6055/spd/tel.png">
+                                    </div>
+                                    <div class="supplier-contact-item">
+                                        <span>QQ:</span>
+                                        <span>435581357</span>
+                                        <img src="http://in.sap360.com.cn:6055/spd/qq.png">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="flex-container-supplier">
-                                <div class="supplier-contact-item">
-                                    <span>手机:</span>
-                                    <span>15019225796</span>
-                                    <img src="http://in.sap360.com.cn:6055/spd/tel.png">
-                                </div>
-                                <div  class="supplier-contact-item">
-                                    <span>QQ:</span>
-                                    <span>435581357</span>
-                                    <img src="http://in.sap360.com.cn:6055/spd/qq.png">
-                                </div>
-                            </div>
-                            <div class="flex-container-supplier">
-                                <div class="supplier-contact-item">
-                                    <span>手机:</span>
-                                    <span>15019225796</span>
-                                    <img src="http://in.sap360.com.cn:6055/spd/tel.png">
-                                </div>
-                                <div  class="supplier-contact-item">
-                                    <span>QQ:</span>
-                                    <span>435581357</span>
-                                    <img src="http://in.sap360.com.cn:6055/spd/qq.png">
-                                </div>
-                            </div>
-                            <div class="flex-container-supplier">
-                                <div class="supplier-contact-item">
-                                    <span>手机:</span>
-                                    <span>15019225796</span>
-                                    <img src="http://in.sap360.com.cn:6055/spd/tel.png">
-                                </div>
-                                <div  class="supplier-contact-item">
-                                    <span>QQ:</span>
-                                    <span>435581357</span>
-                                    <img src="http://in.sap360.com.cn:6055/spd/qq.png">
-                                </div>
+                            <div class="supplier-remark">
+                                <h3 class="supplier-company">公司备注:</h3>
+                                <textarea class="supplier-remark-content" placeholder="暂无备注"></textarea>
                             </div>
                         </div>
-                        <div class="supplier-remark">
-                            <h3 class="supplier-company">公司备注:</h3>
-                            <textarea class="supplier-remark-content" placeholder="暂无备注"></textarea>
-                        </div>
-                    </div>
-                    <div class="separator"></div>
-                    <div class="supplier-quote">
-                         <div class="quote-model">
-                             <span class="quote-model-data">MKJHILK45FA</span>
-                             <span class="quote-model-title">供应商报价</span>
-                         </div>
-                        <form id="formData" class="supplier-quote-info">
-                            <div class="flex-container-quote">
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">型号:</span>
-                                    <input name="Modle" class="field-input form-control"/>
-                                </div>
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">批号:</span>
-                                    <input name="BatchNo" class="field-input form-control"/>
-                                </div>
+                        <div class="separator"></div>
+                        <div class="supplier-quote">
+                            <div class="quote-model">
+                                <span class="quote-model-data">MKJHILK45FA</span>
+                                <span class="quote-model-title">供应商报价</span>
                             </div>
-                            <div class="flex-container-quote">
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">厂牌:</span>
-                                    <input name="Brand" class="field-input form-control"/>
+                            <form id="formData" class="supplier-quote-info">
+                                <div class="flex-container-quote">
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">型号:</span>
+                                        <input name="Modle" class="field-input form-control" />
+                                    </div>
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">批号:</span>
+                                        <input name="BatchNo" class="field-input form-control" />
+                                    </div>
                                 </div>
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">封装:</span>
-                                    <input name="Package" class="field-input form-control"/>
+                                <div class="flex-container-quote">
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">厂牌:</span>
+                                        <input name="Brand" class="field-input form-control" />
+                                    </div>
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">封装:</span>
+                                        <input name="Package" class="field-input form-control" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex-container-quote">
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">数量:</span>
-                                    <input name="Qty" class="field-input form-control"/>
+                                <div class="flex-container-quote">
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">数量:</span>
+                                        <input name="Qty" class="field-input form-control" />
+                                    </div>
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">进价:</span>
+                                        <input name="Cost" class="field-input form-control" />
+                                    </div>
                                 </div>
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">进价:</span>
-                                    <input name="Cost"class="field-input form-control"/>
-                                </div>
-                            </div>
-                            <div class="flex-container-quote">
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">报价:</span>
-                                    <input name="Price" class="field-input form-control"  style="width: 102px;"/>
-                                    <select name="Curr" class="form-control" style="width: 90px;">
+                                <div class="flex-container-quote">
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">报价:</span>
+                                        <input name="Price" class="field-input form-control" style="width: 102px;" />
+                                        <select name="Curr" class="form-control" style="width: 90px;">
                                         <option value="RMB">人民币</option>
                                     </select>
+                                    </div>
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">进价含税价:</span>
+                                        <input name="AftVatCost" class="field-input form-control" />
+                                    </div>
                                 </div>
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">进价含税价:</span>
-                                    <input name="AftVatCost" class="field-input form-control"/>
+                                <div class="flex-container-quote">
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">税点:</span>
+                                        <input name="VatRate" class="field-input form-control" />
+                                    </div>
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">货期:</span>
+                                        <input name="Delivery" class="field-input form-control" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex-container-quote">
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">税点:</span>
-                                    <input name="VatRate" class="field-input form-control"/>
+                                <div class="flex-container-quote">
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">MPQ:</span>
+                                        <input name="MPQ" class="field-input form-control" />
+                                    </div>
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">品质:</span>
+                                        <input name="Quality" class="field-input form-control" />
+                                    </div>
                                 </div>
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">货期:</span>
-                                    <input name="Delivery" class="field-input form-control"/>
+                                <div class="flex-container-quote">
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">年份:</span>
+                                        <input name="Year" class="field-input form-control" />
+                                    </div>
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">库存:</span>
+                                        <input name="Stock" class="field-input form-control" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex-container-quote">
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">MPQ:</span>
-                                    <input name="MPQ" class="field-input form-control"/>
+                                <div class="flex-container-quote">
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">包装:</span>
+                                        <input name="Packing" class="field-input form-control" />
+                                    </div>
+                                    <div class="supplier-field-item form-inline">
+                                        <span class="field-title">来源:</span>
+                                        <input name="Source" class="field-input form-control" />
+                                    </div>
                                 </div>
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">品质:</span>
-                                    <input name="Quality" class="field-input form-control"/>
+                                <div class="flex-container-quote">
+                                    <div class="form-inline">
+                                        <span class="field-title">联系人:</span>
+                                        <input name="Contacts" class="field-input form-control field-input-single" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex-container-quote">
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">年份:</span>
-                                    <input name="Year"  class="field-input form-control"/>
+                                <div class="flex-container-quote">
+                                    <div class="form-inline">
+                                        <span class="field-title">备注:</span>
+                                        <input name="Remark" class="field-input form-control field-input-single" />
+                                    </div>
                                 </div>
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">库存:</span>
-                                    <input name="Stock" class="field-input form-control"/>
-                                </div>
-                            </div>
-                            <div class="flex-container-quote">
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">包装:</span>
-                                    <input name="Packing" class="field-input form-control"/>
-                                </div>
-                                <div class="supplier-field-item form-inline">
-                                    <span class="field-title">来源:</span>
-                                    <input name="Source" class="field-input form-control"/>
-                                </div>
-                            </div>
-                            <div class="flex-container-quote">
-                                <div class="form-inline">
-                                    <span class="field-title">联系人:</span>
-                                    <input name="Contacts" class="field-input form-control field-input-single"/>
-                                </div>
-                            </div>
-                            <div class="flex-container-quote">
-                                <div class="form-inline">
-                                    <span class="field-title">备注:</span>
-                                    <input name="Remark"class="field-input form-control field-input-single"/>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </section>
-            </div>
-            <div class="modal-footer">
-                <a id="save-wait-quote" href="javascript:void(0)" class="btn btn-default quote-btn">保存待确认报价</a>
-                <a id="save-direct-quote" href="javascript:void(0)" class="btn btn-default quote-btn">保存并直接报价</a>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <a id="save-wait-quote" href="javascript:void(0)" class="btn btn-default quote-btn">保存待确认报价</a>
+                    <a id="save-direct-quote" href="javascript:void(0)" class="btn btn-default quote-btn">保存并直接报价</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<!--标签模太框-->
-<div id="modal-label" class="modal fade" data-backdrop="static" data-keyboard="false" style="z-index:3000">
-    <div class="modal-dialog" style=" width: 1100px;">
-        <div class="modal-content">
-            <div class="modal-header" title="按住鼠标左键可拖动模态框" style="cursor:move">
-                <span class="close" data-dismiss="modal">&times;</span>
-                <span style="font-size:14px;font-weight:bold;">公司标签</span>
-            </div>
-            <div class="modal-body">
-                <section class="flex-container">
-                    <div id="label-company" class="label-company">深圳市海尚电子有限公司</div>
-                    <div id="label-collect" class="common-collect-black">
-                        <span class="icon iconfont icon-shoucang"></span>
-                        <span>收藏</span>
-                    </div>
-                    <div id="label-black" class="common-collect-black">
-                        <span class="icon iconfont icon-lahei"></span>
-                        <span>拉黑</span>
-                    </div>
-                </section>
+    <!--标签模太框-->
+    <div id="modal-label" class="modal fade" data-backdrop="static" data-keyboard="false" style="z-index:3000">
+        <div class="modal-dialog" style=" width: 1100px;">
+            <div class="modal-content">
+                <div class="modal-header" title="按住鼠标左键可拖动模态框" style="cursor:move">
+                    <span class="close" data-dismiss="modal">&times;</span>
+                    <span style="font-size:14px;font-weight:bold;">公司标签</span>
+                </div>
+                <div class="modal-body">
+                    <section class="flex-container">
+                        <div id="label-company" class="label-company">深圳市海尚电子有限公司</div>
+                        <div id="label-collect" class="common-collect-black">
+                            <span class="icon iconfont icon-shoucang"></span>
+                            <span>收藏</span>
+                        </div>
+                        <div id="label-black" class="common-collect-black">
+                            <span class="icon iconfont icon-lahei"></span>
+                            <span>拉黑</span>
+                        </div>
+                    </section>
 
-                <div class="ta-label">Ta的标签</div>
-                <div id="label-info-tips" class="label-info-tips">该公司还没有标签哦！</div>
-                <ul id="label-brand" class="label-brand">
-                    <li class="label-color-a" data-id="1">
-                        <span class="label-content">货源充足</span>
-                    </li>
-                    <li class="label-color-b" data-id="2">
-                        <span class="label-content">价格很便宜</span>
-                    </li>
-                    <li class="label-color-c" data-id="3">
-                        <span class="label-content">原装，但经常放飞机</span>
-                    </li>
-                </ul>
-                <ul id="label-new-brand" class="label-brand label-new-brand">
-                    <li class="label-color-a" data-id="0">
-                        <span class="label-content">货源充足</span>
-                        <span class="label-close">x</span>
-                    </li>
-                    <li class="label-color-b" data-id="0">
-                        <span class="label-content">价格很便宜</span>
-                        <span class="label-close">x</span>
-                    </li>
-                    <li class="label-color-c" data-id="0">
-                        <span class="label-content">原装，但经常放飞机</span>
-                        <span class="label-close">x</span>
-                    </li>
-                </ul>
-
-                <div class="label-set">
-                    <div class="label-often">常用标签</div>
-                    <ul id="label-often-content" class="label-brand label-often-content">
-                        <li class="label-color-a" data-id="0">
+                    <div class="ta-label">Ta的标签</div>
+                    <div id="label-info-tips" class="label-info-tips">该公司还没有标签哦！</div>
+                    <ul id="label-brand" class="label-brand">
+                        <li class="label-color-a" data-id="1">
                             <span class="label-content">货源充足</span>
                         </li>
-                        <li class="label-color-b" data-id="0">
+                        <li class="label-color-b" data-id="2">
                             <span class="label-content">价格很便宜</span>
                         </li>
-                        <li class="label-color-c" data-id="0">
+                        <li class="label-color-c" data-id="3">
                             <span class="label-content">原装，但经常放飞机</span>
                         </li>
                     </ul>
-                    <div class="flex-container">
-                        <div class="label-txt">
-                            <input id="brand-text" title="最多可输入10个字符" maxlength="10" class="form-control brand-text" placeholder="点击创建新标签"/>
-                            <div id="label-color-picker" class="color-picker" data-color="#1476F6"></div>
+                    <ul id="label-new-brand" class="label-brand label-new-brand">
+                        <li class="label-color-a" data-id="0">
+                            <span class="label-content">货源充足</span>
+                            <span class="label-close">x</span>
+                        </li>
+                        <li class="label-color-b" data-id="0">
+                            <span class="label-content">价格很便宜</span>
+                            <span class="label-close">x</span>
+                        </li>
+                        <li class="label-color-c" data-id="0">
+                            <span class="label-content">原装，但经常放飞机</span>
+                            <span class="label-close">x</span>
+                        </li>
+                    </ul>
+
+                    <div class="label-set">
+                        <div class="label-often">常用标签</div>
+                        <ul id="label-often-content" class="label-brand label-often-content">
+                            <li class="label-color-a" data-id="0">
+                                <span class="label-content">货源充足</span>
+                            </li>
+                            <li class="label-color-b" data-id="0">
+                                <span class="label-content">价格很便宜</span>
+                            </li>
+                            <li class="label-color-c" data-id="0">
+                                <span class="label-content">原装，但经常放飞机</span>
+                            </li>
+                        </ul>
+                        <div class="flex-container">
+                            <div class="label-txt">
+                                <input id="brand-text" title="最多可输入10个字符" maxlength="10" class="form-control brand-text" placeholder="点击创建新标签" />
+                                <div id="label-color-picker" class="color-picker" data-color="#1476F6"></div>
+                            </div>
+                            <button id="paste-btn" class="btn btn-default quote-btn paste-btn">贴一个</button>
                         </div>
-                        <button id="paste-btn" class="btn btn-default quote-btn paste-btn">贴一个</button>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <a href="javascript:void(0)" class="btn btn-default label-btn" data-dismiss="modal">取消</a>
-                <a id="save-company" href="javascript:void(0)" class="btn btn-default quote-btn">保存</a>
+                <div class="modal-footer">
+                    <a href="javascript:void(0)" class="btn btn-default label-btn" data-dismiss="modal">取消</a>
+                    <a id="save-company" href="javascript:void(0)" class="btn btn-default quote-btn">保存</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<!--<script src="../js/bootstrap.js"></script>-->
-<script src="./xncolorpicker.min.js"></script>
-<script>
-    //将字符串解析为对象
-    function parseStrObjByRegExpKV(strDes) {//字符串转化为对象（正则表达式方式）parseStrObjByRegExpKV("name=jack&age=20&love=lily");
-        var obj = {};
-        strDes.replace(/(\w+)(?:=([^&]*))?/g, function (str, key, value) {
-            obj[key] = value;
-        });
-        return obj;
-    }
-
-    //标签模态框的交互操作
-    $("#modal-label").on("click",".label-close",function(){
-        $(this).parent().remove();
-
-    })
-    $("#label-often-content").on("click",".label-content",function(){
-        var $li=$(this).parent().clone().append('<span class="label-close">x</span>');
-        $("#label-new-brand").append($li);
-    })
-    $("#label-collect").click(function(){
-        $(this).toggleClass("label-collect");
-    })
-    $("#label-black").click(function(){
-        $(this).toggleClass("label-black");
-    })
-    $("#paste-btn").click(function(){
-        var txt= $.trim($("#brand-text").val());
-        if(!txt){
-            alert("标签文本不能为空")
-            return false
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--<script src="../js/bootstrap.js"></script>-->
+    <script src="./xncolorpicker.min.js"></script>
+    <script>
+        //将字符串解析为对象
+        function parseStrObjByRegExpKV(strDes) { //字符串转化为对象（正则表达式方式）parseStrObjByRegExpKV("name=jack&age=20&love=lily");
+            var obj = {};
+            strDes.replace(/(\w+)(?:=([^&]*))?/g, function(str, key, value) {
+                obj[key] = value;
+            });
+            return obj;
         }
-        var backgroundColor= $("#label-color-picker").attr("data-color");
-        var cls="label-color-a";
-        switch (backgroundColor){
-            case "#1476F6":
-                    cls="label-color-a";
-                break;
-            case "#f67614":
-                cls="label-color-b";
-                break;
-            case "#818181":
-                cls="label-color-c";
-                break;
-            default:
-                break;
-        }
-        $("#label-new-brand").append('<li class="'+cls+'" data-id="0">\
-                <span class="label-content">'+txt+'</span>\
+
+        //标签模态框的交互操作
+        $("#modal-label").on("click", ".label-close", function() {
+            $(this).parent().remove();
+
+        })
+        $("#label-often-content").on("click", ".label-content", function() {
+            var $li = $(this).parent().clone().append('<span class="label-close">x</span>');
+            $("#label-new-brand").append($li);
+        })
+        $("#label-collect").click(function() {
+            $(this).toggleClass("label-collect");
+        })
+        $("#label-black").click(function() {
+            $(this).toggleClass("label-black");
+        })
+        $("#paste-btn").click(function() {
+                var txt = $.trim($("#brand-text").val());
+                if (!txt) {
+                    alert("标签文本不能为空")
+                    return false
+                }
+                var backgroundColor = $("#label-color-picker").attr("data-color");
+                var cls = "label-color-a";
+                switch (backgroundColor.toLowerCase()) {
+                    case "#1476f6":
+                        cls = "label-color-a";
+                        break;
+                    case "#f67614":
+                        cls = "label-color-b";
+                        break;
+                    case "#818181":
+                        cls = "label-color-c";
+                        break;
+                    default:
+                        break;
+                }
+                $("#label-new-brand").append('<li class="' + cls + '" data-id="0">\
+                <span class="label-content">' + txt + '</span>\
                 <span class="label-close">x</span>\
                 </li>')
-         })
-    //打开报价模态框
-    $("#btn1").click(function(){
-        $("#modal-quote").modal("show");
-    })
-
-    //打开标签模态框
-    $("#btn2").click(function(){
-        //判断该公司是否有标签
-        if($("#label-brand>li").length>0){
-            $("#label-info-tips").hide();
-        }else{
-            $("#label-info-tips").show();
-        }
-        $("#modal-label").modal("show");
-    })
-
-    //保存待确认报价
-    $("#save-wait-quote").click(function(){
-        var data = parseStrObjByRegExpKV(decodeURIComponent($("#formData").serialize().replace(/\+/g, ''), true));
-        console.log(data);
-    })
-    // 保存并直接报价
-    $("#save-direct-quote").click(function(){
-        var data = parseStrObjByRegExpKV(decodeURIComponent($("#formData").serialize().replace(/\+/g, ''), true));
-        console.log(data);
-    })
-
-    //保存公司信息
-    $("#save-company").click(function(){
-        var CardName=$("#label-company").text();
-        var IsCollect=$("#label-collect").hasClass("label-collect")?1:0;
-        var IsBlack=$("#label-black").hasClass("label-black")?1:0;
-        var Remark="";
-        var Labels=[];
-
-        $("#label-brand li,#label-new-brand li").each(function(i,li){
-            var id=$(this).attr("data-id");
-            var name=$(this).find(".label-content").text();
-            var backgroundColor="#1476F6";
-            var cls=$(this).attr("class");
-            switch (cls){
-                case "label-color-a":
-                    backgroundColor="#1476F6";
-                    break;
-                case "label-color-b":
-                    backgroundColor="#f67614";
-                    break;
-                case "label-color-c":
-                    backgroundColor="#818181";
-                    break;
-                default:
-                    break;
-            }
-            Labels.push({
-                "ID":id,//标签编号
-                "Name":name,//标签名
-                "BackgroundColor":backgroundColor,//标签背景色，16进制编码
             })
+            //打开报价模态框
+        $("#btn1").click(function() {
+            $("#modal-quote").modal("show");
         })
-       // console.table(Labels)
-        var data={
-            CardName:CardName,
-            IsCollect:IsCollect,
-            IsBlack:IsBlack,
-            Remark:Remark,
-            Labels:Labels,
-        };
-        try {
-            var dataStr = JSON.stringify(data);
-            var jsonData = window.external.SaveSupplierInfo(dataStr);
-            if (!!jsonData) {
-                console.log("保存成功！");
+
+        //打开标签模态框
+        $("#btn2").click(function() {
+            //判断该公司是否有标签
+            if ($("#label-brand>li").length > 0) {
+                $("#label-info-tips").hide();
             } else {
-                console.log("保存失败！");
+                $("#label-info-tips").show();
             }
-        } catch (err) {
-            alert("保存异常:" + String(err));
-        }
-        console.log(data);
-    })
+            $("#modal-label").modal("show");
+        })
 
-    //设置模态框可拖动
-    $("#modal-quote,#modal-label").on("show.bs.modal", function() {
-        $(this).find(".modal-content").draggable()
-    });
-    $("#modal-quote,#modal-label").on("hidden.bs.modal", function() {
-        $(this).find(".modal-content").removeAttr("style")
-    });
+        //保存待确认报价
+        $("#save-wait-quote").click(function() {
+                var data = parseStrObjByRegExpKV(decodeURIComponent($("#formData").serialize().replace(/\+/g, ''), true));
+                console.log(data);
+            })
+            // 保存并直接报价
+        $("#save-direct-quote").click(function() {
+            var data = parseStrObjByRegExpKV(decodeURIComponent($("#formData").serialize().replace(/\+/g, ''), true));
+            console.log(data);
+        })
 
-    //颜色拾取器
-    var labelColorPicker = new XNColorPicker({
-        //开发文档https://www.jq22.com/jquery-info23671
-        color: "#1476F6",//初始颜色
-        selector: "#label-color-picker",//选择器容器
-        showprecolor: true,//显示预制颜色
-        prevcolors: ["#1476F6","#F67614","#818181"],//预制颜色，不设置则默认
-        showhistorycolor: false,//显示历史
-        historycolornum: 0,//历史条数
-        format: 'hex',//rgba hex hsla,初始颜色类型
-        showPalette:false,//显示色盘
-        show:false, //初始化显示
-        lang:'cn',// 中英文 cn en
-        colorTypeOption:'single',//颜色选择器可选类型，纯色，线性渐变，径向渐变  single,linear-gradient,radial-gradient
-        canMove:false,//选择器位置是否可以拖拽
-        alwaysShow:false,
-        autoConfirm:false,//改变颜色时自动确认
-        onError: function (e) {
-            //console.log("error",String(e))
-        },
-        onCancel:function(color){
-            // console.log("cancel",color)
-        },
-        onChange:function(color){
-            //  console.log("change",color)
-        },
-        onConfirm:function(color){
-            //console.log("confirm",color)
-            $("#label-color-picker").attr("data-color",color.color.hex)
-        }
-    })
-</script>
+        //保存公司信息
+        $("#save-company").click(function() {
+            var CardName = $("#label-company").text();
+            var IsCollect = $("#label-collect").hasClass("label-collect") ? 1 : 0;
+            var IsBlack = $("#label-black").hasClass("label-black") ? 1 : 0;
+            var Remark = "";
+            var Labels = [];
+
+            $("#label-brand li,#label-new-brand li").each(function(i, li) {
+                    var id = $(this).attr("data-id");
+                    var name = $(this).find(".label-content").text();
+                    var backgroundColor = "#1476F6";
+                    var cls = $(this).attr("class");
+                    switch (cls) {
+                        case "label-color-a":
+                            backgroundColor = "#1476f6";
+                            break;
+                        case "label-color-b":
+                            backgroundColor = "#f67614";
+                            break;
+                        case "label-color-c":
+                            backgroundColor = "#818181";
+                            break;
+                        default:
+                            break;
+                    }
+                    Labels.push({
+                        "ID": id, //标签编号
+                        "Name": name, //标签名
+                        "BackgroundColor": backgroundColor, //标签背景色，16进制编码
+                    })
+                })
+                // console.table(Labels)
+            var data = {
+                CardName: CardName,
+                IsCollect: IsCollect,
+                IsBlack: IsBlack,
+                Remark: Remark,
+                Labels: Labels,
+            };
+            try {
+                var dataStr = JSON.stringify(data);
+                var jsonData = window.external.SaveSupplierInfo(dataStr);
+                if (!!jsonData) {
+                    console.log("保存成功！");
+                } else {
+                    console.log("保存失败！");
+                }
+            } catch (err) {
+                alert("保存异常:" + String(err));
+            }
+            console.log(data);
+        })
+
+        //设置模态框可拖动
+        $("#modal-quote,#modal-label").on("show.bs.modal", function() {
+            $(this).find(".modal-content").draggable()
+        });
+        $("#modal-quote,#modal-label").on("hidden.bs.modal", function() {
+            $(this).find(".modal-content").removeAttr("style")
+        });
+
+        //颜色拾取器
+        var labelColorPicker = new XNColorPicker({
+            //开发文档https://www.jq22.com/jquery-info23671
+            color: "#1476F6", //初始颜色
+            selector: "#label-color-picker", //选择器容器
+            showprecolor: true, //显示预制颜色
+            prevcolors: ["#1476F6", "#F67614", "#818181"], //预制颜色，不设置则默认
+            showhistorycolor: false, //显示历史
+            historycolornum: 0, //历史条数
+            format: 'hex', //rgba hex hsla,初始颜色类型
+            showPalette: false, //显示色盘
+            show: false, //初始化显示
+            lang: 'cn', // 中英文 cn en
+            colorTypeOption: 'single', //颜色选择器可选类型，纯色，线性渐变，径向渐变  single,linear-gradient,radial-gradient
+            canMove: false, //选择器位置是否可以拖拽
+            alwaysShow: false,
+            autoConfirm: false, //改变颜色时自动确认
+            onError: function(e) {
+                //console.log("error",String(e))
+            },
+            onCancel: function(color) {
+                // console.log("cancel",color)
+            },
+            onChange: function(color) {
+                //  console.log("change",color)
+            },
+            onConfirm: function(color) {
+                //console.log("confirm",color)
+                $("#label-color-picker").attr("data-color", color.color.hex)
+            }
+        })
+    </script>
 </body>
+
 </html>
