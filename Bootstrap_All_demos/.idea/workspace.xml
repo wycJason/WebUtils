@@ -24,10 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="模态框.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="模态框.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IC_EnqueryBatch/模态框.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.6087964">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="872" column="35" selection-start-line="872" selection-start-column="35" selection-end-line="872" selection-end-column="35" />
               <folding />
             </state>
@@ -37,8 +37,18 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jquery颜色拾取器/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.03125">
-              <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+            <state vertical-scroll-proportion="-12.21875">
+              <caret line="47" column="31" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="xncolorpicker.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jquery颜色拾取器/src/xncolorpicker.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="43" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -77,6 +87,49 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="test.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/layui-v2.6.8/test.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.53229666">
+              <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+              <folding>
+                <marker date="1630553762603" expanded="true" signature="1986:1999" placeholder="..." />
+                <marker date="1630553762603" expanded="true" signature="2671:2689" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layui.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/layui-v2.6.8/layui/layui.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="3190" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="23136" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <marker date="1622380689519" expanded="true" signature="163330:163338" placeholder="..." />
+                <marker date="1622380689519" expanded="true" signature="240154:240272" placeholder="..." />
+                <marker date="1622380689519" expanded="true" signature="240545:240568" placeholder="..." />
+                <marker date="1622380689519" expanded="true" signature="241615:241634" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layui.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/layui-v2.6.8/layui/css/layui.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="1759" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="79875" />
+              <folding>
+                <element signature="e#68805#68944#2" expanded="true" />
+                <element signature="e#70418#70557#2" expanded="true" />
+                <element signature="e#71083#71222#2" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -87,8 +140,8 @@
         <option value="Vue" />
         <option value="JavaScript File" />
         <option value="Html5" />
-        <option value="H5" />
         <option value="BootStrap" />
+        <option value="H5" />
       </list>
     </option>
   </component>
@@ -98,8 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/jquery_md5/jquery_md5.htm" />
-        <option value="$PROJECT_DIR$/jquery_md5/js-md5.html" />
         <option value="$PROJECT_DIR$/jquery_md5/md5.html" />
         <option value="$PROJECT_DIR$/xml/index.html" />
         <option value="$PROJECT_DIR$/flex.html" />
@@ -149,6 +200,8 @@
         <option value="$PROJECT_DIR$/IC_EnqueryBatch/icInject.js" />
         <option value="$PROJECT_DIR$/IC_EnqueryBatch/模态框.html" />
         <option value="$PROJECT_DIR$/jquery颜色拾取器/index.html" />
+        <option value="$PROJECT_DIR$/layui颜色选择器.html" />
+        <option value="$PROJECT_DIR$/layui-v2.6.8/test.html" />
       </list>
     </option>
   </component>
@@ -210,8 +263,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -277,6 +330,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bootstrap_All_demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bootstrap_All_demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layui-v2.6.8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bootstrap_All_demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bootstrap_All_demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layui-v2.6.8" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -596,41 +681,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/kindeditor/qq.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kindeditor/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="31" column="14" selection-start-line="22" selection-start-column="12" selection-end-line="31" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery textarea指定位置插入内容.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/闭包.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap-select.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="117" selection-start-line="29" selection-start-column="104" selection-end-line="29" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/a.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -862,13 +912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jquery颜色拾取器/src/xncolorpicker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.14549653">
-          <caret line="34" column="43" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/form表单提交(FormData)及表单序列化serialize.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-20.8125">
@@ -916,22 +959,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.077008925">
           <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jquery颜色拾取器/dist/xncolorpicker.min.js">
+    <entry file="file://$PROJECT_DIR$/IC_EnqueryInfo/ic.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery颜色拾取器/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.03125">
-          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+          <caret line="5861" column="108" selection-start-line="5860" selection-start-column="14" selection-end-line="5861" selection-end-column="108" />
           <folding />
         </state>
       </provider>
@@ -947,19 +981,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IC_EnqueryInfo/ic.js">
+    <entry file="file://$PROJECT_DIR$/IC_EnqueryBatch/模态框.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="5861" column="108" selection-start-line="5860" selection-start-column="14" selection-end-line="5861" selection-end-column="108" />
+          <caret line="872" column="35" selection-start-line="872" selection-start-column="35" selection-end-line="872" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IC_EnqueryBatch/模态框.html">
+    <entry file="file://$PROJECT_DIR$/jquery颜色拾取器/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.6087964">
-          <caret line="872" column="35" selection-start-line="872" selection-start-column="35" selection-end-line="872" selection-end-column="35" />
+        <state vertical-scroll-proportion="-12.21875">
+          <caret line="47" column="31" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery颜色拾取器/src/xncolorpicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="43" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jquery颜色拾取器/dist/xncolorpicker.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layui-v2.6.8/免责声明.url">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layui-v2.6.8/layui/css/layui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="1759" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="79875" />
+          <folding>
+            <element signature="e#68805#68944#2" expanded="true" />
+            <element signature="e#70418#70557#2" expanded="true" />
+            <element signature="e#71083#71222#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layui-v2.6.8/layui/layui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="3190" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="23136" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1622380689519" expanded="true" signature="163330:163338" placeholder="..." />
+            <marker date="1622380689519" expanded="true" signature="240154:240272" placeholder="..." />
+            <marker date="1622380689519" expanded="true" signature="240545:240568" placeholder="..." />
+            <marker date="1622380689519" expanded="true" signature="241615:241634" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layui-v2.6.8/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53229666">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+          <folding>
+            <marker date="1630553762603" expanded="true" signature="1986:1999" placeholder="..." />
+            <marker date="1630553762603" expanded="true" signature="2671:2689" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
