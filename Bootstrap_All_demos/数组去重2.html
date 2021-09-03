@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数组去重</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    //https://www.cnblogs.com/mxyr/p/9238287.html
+    var songs = [
+        {name:"羽根",artist:"air",ID:0},
+        {name:"晴天",artist:"周杰伦",ID:1},
+        {artist:"周杰伦",name:"晴天",ID:2}
+    ];
+
+    var arr = [
+        {name:"羽根",artist:"air",ID:0},
+        {name:"晴天",artist:"周杰伦",ID:1},
+    ]
+
+    for (let i = 0; i < arr.length; i++) {
+        songs.push(arr[i])
+    }
+
+   // console.log(songs);
+
+
+    function unique(arr){
+        let result = {};
+        let finalResult=[];
+        for(let i=0;i<arr.length;i++){
+            result[arr[i].ID]=arr[i];//因为songs[i].name不能重复,达到去重效果,且这里必须知晓"name"或是其他键名
+        }
+        //console.log(result);{"羽根":{name:"羽根",artist:"air"},"晴天":{name:"晴天",artist:"周杰伦"}} //现在result内部都是不重复的对象了，只需要将其键值取出来转为数组即可
+        for(item in result){
+            finalResult.push(result[item]);
+        }
+       //console.log(finalResult);[{name:"羽根",artist:"air"},{name:"晴天",artist:"周杰伦"}]
+        return finalResult;
+    }
+
+    console.log(unique(songs));
+</script>
+</body>
+</html>
