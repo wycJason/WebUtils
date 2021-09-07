@@ -57,14 +57,15 @@ function ICInjectJS(supplierData) {
     document.getElementsByTagName('HEAD').item(0).appendChild(layuiStyle);
 
 
-     //style自定义样式 (通过http://www.bejson.com/otherformat/css/ 解压编辑，然后再压缩发布即可)
-    var myStyleFile = '.layui-colorpicker{padding:0 !important;}.layui-colorpicker-trigger-i,#layui-colorpicker1 .layui-colorpicker-main-input .layui-inline,#layui-colorpicker1 .layui-colorpicker-main-input .layui-btn-container  .layui-btn-primary{display:none !important;}.layui-colorpicker-main-wrapper{height:auto!important;display:none!important;}.hqew-label-btn{height:34px;}.j-company-td{position:relative;padding-left:25px !important;line-height:normal !important;height:120px;}.result-collect-hq{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#F67614;color:white;padding:5px 0;height:50px;}.result-black-hq{position:absolute;left:0;top:69px;width:18px;text-align:center;vertical-align:middle;background-color:#818181;color:white;padding:5px 0;height:50px;}.info-width{width:90%;}.ic-enquiry{width:90%;}.ic-equire{text-align:right;width:1190px;margin:10px auto 0}.result_id{padding-bottom:2px;}.result_price{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;width:60px;padding-top:2px;padding-left:10px;text-align:center}.result_common{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;width:60px;padding-top:2px;padding-left:10px;text-align:center;}.result_textarea{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;width:124px;padding-top:2px;padding-left:10px;text-align:center}.result_textarea_remark{float:left;overflow:hidden;width:124px;padding-top:2px;padding-left:10px;}.hqew-btn{height:25px;border:0;margin:5px 0 0 5px;border-radius:3px;display:block;background-color:#1057a7;color:#ffffff;float:left;padding:0 10px}.ic-btn{height:24px;line-height:24px;float:left;border-width:0px;overflow:hidden;cursor:pointer;margin-top:7px;background-color:#3C6EC7;color:#ffffff;padding:0 8px;margin-right:8px}.product_quote{padding:3px 8px;color:#EB222B;border:1px solid #EB222B;cursor:pointer;border-radius:3px;}.result_check,.result_id,.result_factory,.result_batchNumber,.result_totalNumber,.result_pakaging,.result_prompt,.result_date,.result_askPrice,.result_son{height:auto  !important;}ul.label-company-title{padding:0;list-style:none;float:left;}ul.label-company-title:after{display:block;content:"";clear:both;}ul.label-company-title>li{float:left;border-radius:15px;color:white;padding:3px 8px;margin:3px;cursor:pointer;}.result_supply{height:auto  !important;line-height:normal  !important;position:relative !important;padding-left:20px;min-height:106px;}.result-collect{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#F67614;color:white;padding:5px 0;height:42px;}.result-black{position:absolute;left:0;top:59px;width:18px;text-align:center;vertical-align:middle;background-color:#818181;color:white;padding:5px 0;height:42px;}.modal-header{background:#1476F6;color:white;}.close,.close:hover{color:white;text-shadow:0 1px 0 #fff;filter:alpha(opacity=20);opacity:1;}.color-preview{display:none !important;}.flex-container{display:flex;}.supplier-info{width:423px}.separator{width:2px;margin:0 10px;background:#E5E5E5;}.supplier-quote{width:623px}.flex-container-supplier{display:flex;margin:8px 0;}.supplier-detail{}.supplier-name{font-weight:bold;margin:0 0 6px;font-size:18px;}.supplier-address{}.supplier-contact{margin:20px 0;}.supplier-contact-item{width:100%;}.supplier-contact-item>span{display:inline-block;}.supplier-contact-item>span:nth-child(1){}.supplier-contact-item>span:nth-child(2){}.supplier-contact-item>img{vertical-align:text-bottom;width:18px;}.supplier-remark{}.supplier-company{font-size:16px;margin-top:0;margin-bottom:10px;}.supplier-remark-content{width:100%;height:238px;display:block;padding:6px 12px;font-size:14px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;}.flex-container-quote{display:flex;margin:8px 0;}.quote-model{font-size:16px;}.quote-model-data{color:#FF5A00;font-weight:bold;}.quote-model-title{}.supplier-quote-info{}.supplier-field-item{width:50%;}.field-title{display:inline-block;width:80px;text-align:right;}.field-input{}.field-input-single{width:493px !important;}.quote-btn,.quote-btn:hover{background-color:#1476F6;color:white;}.label-company{font-weight:bold;margin:0 0 6px;font-size:18px;}.common-collect-black{margin-left:18px;margin-top:3px;padding:0 5px;border:1px solid #8D8D8D;font-size:12px;height:20px;line-height:20px;cursor:pointer;}.common-collect-black>.iconfont{font-size:12px;}.label-collect{background-color:#FFAA00;color:white;}.label-black{background-color:#B7B7B7;color:white;}.ta-label{margin-top:5px;}.label-info-tips{color:#C1C1C1;margin-top:5px;}ul.label-brand{padding:0;list-style:none;margin-top:10px;}ul.label-brand:after{display:block;content:"";clear:both;}ul.label-brand>li{float:left;border-radius:15px;color:white;padding:3px 15px;margin:0 0 5px 10px;}.label-color-a{background-color:#1476F6;}.label-color-b{background-color:#F67614;}.label-color-c{background-color:#818181;}.label-content{display:inline-block;}.label-close{display:inline-block;width:8px;margin-left:8px;cursor:pointer !important;}ul.label-brand.label-new-brand{min-height:80px;background-color:#F6F6F6;padding:10px;}.label-set{border:1px solid #E4E4E4;padding:15px;margin-top:15px;}.label-often{}ul.label-brand.label-often-content{margin:10px 0;}ul.label-brand.label-often-content>li>.label-content{cursor:pointer !important;}.label-btn,.label-btn:hover{border:1px solid #1476F6;background:white;color:#1476F6 !important}.label-txt{position:relative;width:100%;}.brand-text{padding-right:50px;}.color-picker{position:absolute;top:2px;right:8px;}.paste-btn{margin-left:8px;}#floatNav,.topnav,.HeaderBox,.navigation,#sift_bar,#resultList .result_askPrice,#resultList .result_prompt,#resultList .result_date,#resultList .result_supply .result_icons,.fixedRB,.footer{display:none !important;}#searchForm .main{width:1384px !important;}';
+     //style 我的自定义样式 (通过http://www.bejson.com/otherformat/css/ 解压编辑，然后再压缩发布即可)
+    var myStyleFile = '.result_company_remark_single{width:928px !important}.layui-colorpicker{padding:0 !important;}.layui-colorpicker-trigger-i,#layui-colorpicker1 .layui-colorpicker-main-input .layui-inline,#layui-colorpicker1 .layui-colorpicker-main-input .layui-btn-container  .layui-btn-primary,#resultList table.list-table td.j-company-td>.company-row2,#rightToTop,#floatNav,.topnav,.HeaderBox,.navigation,#sift_bar,#resultList .result_askPrice,#resultList .result_supply .result_icons,.fixedRB,.footer{display:none !important;}.layui-colorpicker-main-wrapper{height:auto!important;display:none!important;}.hqew-label-btn{height:34px;}.j-company-td{position:relative;padding-left:25px !important;line-height:normal !important;height:60px;}.result-collect-hq{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#F67614;color:white;padding:5px 0;height:50px;}.result-black-hq{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#818181;color:white;padding:5px 0;height:50px;}.info-width{width:90%;}.ic-enquiry{width:90%;}.ic-equire{text-align:right;width:1190px;margin:10px auto 0}.result_id{padding-bottom:2px;}.result_price{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;width:60px;padding-top:2px;padding-left:10px;text-align:center}.result_common{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;width:60px;padding-top:2px;padding-left:10px;text-align:center;}.result_textarea{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;width:280px;padding-top:2px;padding-left:10px;text-align:center}.result_textarea_remark{float:left;overflow:hidden;width:280px;padding-top:2px;padding-left:10px;}.hqew-btn{height:25px;border:0;margin:5px 0 0 5px;border-radius:3px;display:block;background-color:#1057a7;color:#ffffff;float:left;padding:0 10px}.ic-btn{height:24px;line-height:24px;float:left;border-width:0px;overflow:hidden;cursor:pointer;margin-top:7px;background-color:#3C6EC7;color:#ffffff;padding:0 8px;margin-right:8px}.product_quote{padding:3px 8px;color:#EB222B;border:1px solid #EB222B;cursor:pointer;border-radius:3px;}.result_check,.result_id,.result_factory,.result_batchNumber,.result_totalNumber,.result_pakaging,.result_prompt,.result_date,.result_askPrice,.result_son{height:auto  !important;}ul.label-company-title{padding:0;list-style:none;float:left;clear:both;}ul.label-company-title:after{display:block;content:"";clear:both;}ul.label-company-title>li{float:left;border-radius:15px;color:white;padding:3px 8px;margin:3px;cursor:pointer;}.result_supply{height:auto  !important;line-height:normal  !important;position:relative !important;padding-left:20px;min-height:63px;}.result-collect{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#F67614;color:white;padding:5px 0;height:48px;}.result-black{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#818181;color:white;padding:5px 0;height:48px;}.modal-header{background:#1476F6;color:white;}.close,.close:hover{color:white;text-shadow:0 1px 0 #fff;filter:alpha(opacity=20);opacity:1;}.color-preview{display:none !important;}.flex-container{display:flex;}.supplier-info{width:423px}.separator{width:2px;margin:0 10px;background:#E5E5E5;}.supplier-quote{width:623px}.flex-container-supplier{display:flex;margin:8px 0;}.supplier-detail{}.supplier-name{font-weight:bold;margin:0 0 6px;font-size:18px;}.supplier-address{}.supplier-contact{margin:20px 0;}.supplier-contact-item{width:100%;}.supplier-contact-item>span{display:inline-block;}.supplier-contact-item>span:nth-child(1){}.supplier-contact-item>span:nth-child(2){}.supplier-contact-item>img{vertical-align:text-bottom;width:18px;}.supplier-remark{}.supplier-company{font-size:16px;margin-top:0;margin-bottom:10px;}.supplier-remark-content{width:100%;height:238px;display:block;padding:6px 12px;font-size:14px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;}.flex-container-quote{display:flex;margin:8px 0;}.quote-model{font-size:16px;}.quote-model-data{color:#FF5A00;font-weight:bold;}.quote-model-title{}.supplier-quote-info{}.supplier-field-item{width:50%;}.field-title{display:inline-block;width:80px;text-align:right;}.field-input{}.field-input-single{width:493px !important;}.quote-btn,.quote-btn:hover{background-color:#1476F6;color:white;}.label-company{font-weight:bold;margin:0 0 6px;font-size:18px;}.common-collect-black{margin-left:18px;margin-top:3px;padding:0 5px;border:1px solid #8D8D8D;font-size:12px;height:20px;line-height:20px;cursor:pointer;}.common-collect-black>.iconfont{font-size:12px;}.label-collect{background-color:#FFAA00;color:white;}.label-black{background-color:#B7B7B7;color:white;}.ta-label{margin-top:5px;}.label-info-tips{color:#C1C1C1;margin-top:5px;}ul.label-brand{padding:0;list-style:none;margin-top:10px;}ul.label-brand:after{display:block;content:"";clear:both;}ul.label-brand>li{float:left;border-radius:15px;color:white;padding:3px 15px;margin:0 0 5px 10px;}.label-color-a{background-color:#1476F6;}.label-color-b{background-color:#F67614;}.label-color-c{background-color:#818181;}.label-content{display:inline-block;}.label-close{display:inline-block;width:8px;margin-left:8px;cursor:pointer !important;}ul.label-brand.label-new-brand{min-height:80px;background-color:#F6F6F6;padding:10px;}.label-set{border:1px solid #E4E4E4;padding:15px;margin-top:15px;}.label-often{}ul.label-brand.label-often-content{margin:10px 0;}ul.label-brand.label-often-content>li>.label-content{cursor:pointer !important;}.label-btn,.label-btn:hover{border:1px solid #1476F6;background:white;color:#1476F6 !important}.label-txt{position:relative;width:100%;}.brand-text{padding-right:50px;}.color-picker{position:absolute;top:2px;right:8px;}.paste-btn{margin-left:8px;}#searchForm .main{width:1845px !important;}.search-wrapper .container{max-width:none !important;min-width:auto !important;}';
     var style = document.createElement('style');
     style.innerHTML = myStyleFile;
     document.getElementsByTagName('HEAD').item(0).appendChild(style);
 
-    
-    var tbc=JSON.parse(supplierData).IsCopyRowQuote;//是待确认报价
+    //初始化注入
+    var tbc=JSON.parse(supplierData).ShowConfirmedQuote;//显示待确认报价，0-不显示、1-显示
+    var isBatch=JSON.parse(supplierData).EnabledBatchQuote;//启用批量报价，0-不启用、1-启用
 
     //将字符串解析为对象
     function parseStrObjByRegExpKV(strDes) {//字符串转化为对象（正则表达式方式）parseStrObjByRegExpKV("name=jack&age=20&love=lily");
@@ -107,27 +108,13 @@ function ICInjectJS(supplierData) {
     //保存注入数据至本地存储
     localSave("injectSupplierData",supplierData);
 
-    //16进制颜色映射至class类
-    var color16MapClass={
-        "#1476f6":"label-color-a",
-        "#f67614":"label-color-b",
-        "#818181":"label-color-c",
-    }
-    
-     //class类映射至16进制颜色
-    var classMapColor16={
-        "label-color-a":"#1476f6",
-        "label-color-b":"#f67614",
-        "label-color-c":"#818181",    
-    }
-
     var contactsMap={
         qq:"QQ",
         tel:"电话"
     };
 
     
-    //根据供应商名称批量获取供应商名单信息并格式化网站搜索结果列表
+    //根据供应商名称批量获取供应商名单信息并格式化渲染网站搜索结果列表
     function batchRenderWebSiteList(){
         var hostname = window.location.hostname;
         if (hostname == "www.ic.net.cn") { //ic交易网
@@ -136,7 +123,7 @@ function ICInjectJS(supplierData) {
                 companyNames.push($.trim($(this).text()))
             })
           
-             $(".result-collect,.result-black,.label-company-title").remove();
+             $(".result-collect,.result-black,.label-company-title").remove();//删除【已收藏、已拉黑、添加更多公司标签】
              var $result_supplys= $("#resultList li:not('#resultList_title') .result_supply");
              $result_supplys.append('<br /><ul class="label-company-title"><li title="点击添加公司标签" class="label-color-a"><span class="label-content">添加公司标签 >></span></li></ul>')
             
@@ -144,24 +131,24 @@ function ICInjectJS(supplierData) {
                var dataJson = window.external.GetSuppliersInfo(JSON.stringify(companyNames));
 //                 var dataJson =JSON.stringify([
 //                     {
-//                         "CardName":"深圳市唯有度科技有限公司",//公司名称
+//                         "CardName":"康博电子亚洲有限公司",//公司名称
 //                         "IsCollect":1,//是否已收藏，0-未收藏、1-已收藏
-//                         "IsBlack":0,//是否拉黑，0-未拉黑、1-已拉黑
+//                         "IsBlack":1,//是否拉黑，0-未拉黑、1-已拉黑
 //                         "Remark":"一些描述信息",//公司描述
 //                         "Labels":[
-//                            {
+//                             {
 //                                 "ID":1,//标签编号
-//                                 "Name":"A标签",//标签名
+//                                 "Name":"A标签-自己公司",//标签名
 //                                 "BackgroundColor":"#1476F6",//标签背景色，16进制编码
 //                             },
 //                             {
 //                                 "ID":2,//标签编号
-//                                 "Name":"B标签",//标签名
+//                                 "Name":"B标签-自己公司",//标签名
 //                                 "BackgroundColor":"#f67614",//标签背景色，16进制编码
 //                             },
 //                             {
 //                                 "ID":3,//标签编号
-//                                 "Name":"C标签",//标签名
+//                                 "Name":"C标签-自己公司",//标签名
 //                                 "BackgroundColor":"#818181",//标签背景色，16进制编码
 //                             }
 //                         ]
@@ -172,35 +159,67 @@ function ICInjectJS(supplierData) {
                     console.log("获取公司列表信息成功！");
                     localSave("getSupplierData",dataJson); 
                     dataJson=JSON.parse(dataJson);
-                    $.each(dataJson,function(i,v){    
-                        var $li=$("#resultList .result_supply a.result_goCompany[data-name='"+v.CardName+"']").closest("li");                    
-                        var $result_supply=$li.find(".result_supply");
-                        var collect=v.IsCollect==1?"已收藏":"未收藏";
-                        var black=v.IsBlack==1?"已拉黑":"未拉黑";
-                        $li.find('.result_textarea_remark div.ic-enquiry').text(v.Remark);//公司备注
-                        if(v.IsCollect==1||v.IsBlack==1){
-                            $result_supply.prepend('<div class="result-collect">'+collect+'</div><div class="result-black">'+black+'</div>');
-                        }                       
-                        $result_supply.find("a.result_goCompany").attr("data-remark",v.Remark);  //公司备注
-                        var capture=[];
-                        if(v.Labels.length<=3){
-                                capture=v.Labels;
-                         }else{
-                            capture=v.Labels.slice(0,3); 
-                         }
+                    if(dataJson.length>0){
+                            $.each(dataJson,function(i,v){    
+                                var $li=$("#resultList .result_supply a.result_goCompany[data-name='"+v.CardName+"']").closest("li");                    
+                                var $result_supply=$li.find(".result_supply");
+                                var collect=v.IsCollect==1?"已收藏":"未收藏";
+                                var black=v.IsBlack==1?"已拉黑":"未拉黑";
+                                $li.find('.result_textarea_remark div.ic-enquiry').text(v.Remark);//公司备注
 
-                        var li=[];
-                        $.each(capture,function(i,m){
-                            li.push('<li title="点击查看更多公司标签" data-id="'+m.ID+'"  class="'+color16MapClass[m.BackgroundColor.toLowerCase()]+'"><span class="label-content">'+m.Name+'</span></li>')
-                        })
-                        $result_supply.find("ul.label-company-title").remove();
-                        $result_supply.append('<ul class="label-company-title">'+li.join("")+'</ul>')
-                    })
+                                if(v.IsCollect==1&&v.IsBlack==1){
+                                    $result_supply.prepend('<div class="result-black">'+black+'</div>');
+                                }     
+                                if(v.IsCollect==1&&v.IsBlack==0){
+                                    $result_supply.prepend('<div class="result-collect">'+collect+'</div>');
+                                }
+                                if(v.IsCollect==0&&v.IsBlack==1){
+                                    $result_supply.prepend('<div class="result-black">'+black+'</div>');
+                                }
+                                                  
+                                $result_supply.find("a.result_goCompany").attr("data-remark",v.Remark);  //公司备注
+                                if(v.Labels.length!=0){
+                                    var capture=[];
+                                    if(v.Labels.length<=3){
+                                            capture=v.Labels;
+                                     }else{
+                                        capture=v.Labels.slice(0,3); 
+                                     }
+
+                                    var li=[];
+                                    $.each(capture,function(i,m){
+                                        li.push('<li title="点击查看更多公司标签" data-id="'+m.ID+'"  style="background-color:'+m.BackgroundColor+'"><span class="label-content">'+m.Name+'</span></li>')
+                                    })
+                                    $result_supply.find("ul.label-company-title").remove();
+                                    $result_supply.append('<ul class="label-company-title">'+li.join("")+'</ul>')
+                                }
+                            })
+                    }else{
+                        //打印日志
+                       try{
+                          window.external.WriteLog("供应商列表信为为空：");
+                          window.external.WriteLog(JSON.stringify(dataJson));
+                       }catch(err){
+                           console.log("供应商列表信为为空："+String(err));
+                       }
+                    }                    
                 } else {
-                    console.log("获取公司列表信息失败！"); 
+                  //打印日志
+                   try{
+                      window.external.WriteLog("获取公司列表信息失败：");
+                      window.external.WriteLog(JSON.stringify(dataJson));
+                   }catch(err){
+                       console.log("获取公司列表信息失败："+String(err));
+                   }
                 }
-            } catch (err) {
-                console.log("获取公司列表信息异常:" + String(err));
+            } catch (err) {             
+                //打印日志
+               try{
+                  window.external.WriteLog("获取公司列表信息失败：");
+                  window.external.WriteLog(JSON.stringify(dataJson));
+               }catch(err){
+                    console.log("获取公司列表信息异常:" + String(err));
+               }
             }
         }else{//华强电子网
              var companyNames=[];
@@ -215,55 +234,99 @@ function ICInjectJS(supplierData) {
 
             try {
                 var dataJson = window.external.GetSuppliersInfo(JSON.stringify(companyNames));
-//                 var dataJson =JSON.stringify([
+//                    var dataJson =JSON.stringify([
 //                     {
-//                         "CardName":"深圳市金广兴电子有限公司",//公司名称
+//                         "CardName":"深圳市福田区良义微电子商行",//公司名称
 //                         "IsCollect":1,//是否已收藏，0-未收藏、1-已收藏
-//                         "IsBlack":0,//是否拉黑，0-未拉黑、1-已拉黑
+//                         "IsBlack":1,//是否拉黑，0-未拉黑、1-已拉黑
 //                         "Remark":"一些描述信息",//公司描述
 //                         "Labels":[
 //                             {
 //                                 "ID":1,//标签编号
-//                                 "Name":"Jason开发的标签",//标签名
+//                                 "Name":"A标签1234567",//标签名
 //                                 "BackgroundColor":"#1476F6",//标签背景色，16进制编码
+//                             },
+//                             {
+//                                 "ID":2,//标签编号
+//                                 "Name":"B标签1234567",//标签名
+//                                 "BackgroundColor":"#f67614",//标签背景色，16进制编码
+//                             },
+//                             {
+//                                 "ID":3,//标签编号
+//                                 "Name":"C标签1234567",//标签名
+//                                 "BackgroundColor":"#818181",//标签背景色，16进制编码
 //                             }
 //                         ]
 //                     }
 //                 ]);    
 
+
                 if (!!dataJson) {
                     console.log("获取公司列表信息成功！");
                     localSave("getSupplierData",dataJson); 
                     dataJson=JSON.parse(dataJson);
-                    $.each(dataJson,function(i,v){    
-                        var $tr=$("#resultList table.list-table tr td.j-company-td a.company[cname='"+v.CardName+"']").closest("tr");                    
-                        var $company=$tr.find("td.j-company-td");
-                        var collect=v.IsCollect==1?"已收藏":"未收藏";
-                        var black=v.IsBlack==1?"已拉黑":"未拉黑";
-                        $tr.find('.td-company-remark div.ic-enquiry').text(v.Remark);//公司备注
-                        if(v.IsCollect==1||v.IsBlack==1){
-                            $company.prepend('<div class="result-collect-hq">'+collect+'</div><div class="result-black-hq">'+black+'</div>');
-                        }                       
-                        $company.find("a.company").attr("data-remark",v.Remark);  //公司备注
-                        var capture=[];
-                        if(v.Labels.length<=3){
-                                capture=v.Labels;
-                         }else{
-                            capture=v.Labels.slice(0,3); 
-                         }
+                    if(dataJson.length>0){
+                        $.each(dataJson,function(i,v){    
+                            var $tr=$("#resultList table.list-table tr td.j-company-td a.company[cname='"+v.CardName+"']").closest("tr");                    
+                            var $company=$tr.find("td.j-company-td");
+                            var collect=v.IsCollect==1?"已收藏":"未收藏";
+                            var black=v.IsBlack==1?"已拉黑":"未拉黑";
+                            $tr.find('.td-company-remark div.ic-enquiry').text(v.Remark);//公司备注
 
-                        var li=[];
-                        $.each(capture,function(i,m){
-                            li.push('<li title="点击查看更多公司标签" data-id="'+m.ID+'"  class="'+color16MapClass[m.BackgroundColor.toLowerCase()]+'"><span class="label-content">'+m.Name+'</span></li>')
+                            if(v.IsCollect==1&&v.IsBlack==1){
+                                $company.prepend('<div class="result-black-hq">'+black+'</div>');
+                            }  
+                            if(v.IsCollect==1&&v.IsBlack==0){
+                                $company.prepend('<div class="result-collect-hq">'+collect+'</div>');
+                            }  
+                            if(v.IsCollect==0&&v.IsBlack==1){
+                                $company.prepend('<div class="result-black-hq">'+black+'</div>');
+                            }    
+                                               
+                            $company.find("a.company").attr("data-remark",v.Remark);  //公司备注
+
+                            if(v.Labels.length!=0){
+                                var capture=[];
+                                if(v.Labels.length<=3){
+                                    capture=v.Labels;
+                                 }else{
+                                    capture=v.Labels.slice(0,3); 
+                                 }
+
+                                var li=[];
+                                $.each(capture,function(i,m){
+                                    li.push('<li title="点击查看更多公司标签" data-id="'+m.ID+'"  style="background-color:'+m.BackgroundColor+'"><span class="label-content">'+m.Name+'</span></li>')
+                                })
+                                $company.find("ul.label-company-title").remove();
+                                $company.append('<ul class="label-company-title">'+li.join("")+'</ul>');
+                            }                           
                         })
-                        $company.find("ul.label-company-title").remove();
-                        $company.append('<ul class="label-company-title">'+li.join("")+'</ul>')
-                    })
+                  }else{
+                        //打印日志
+                       try{
+                          window.external.WriteLog("供应商列表信为为空：");
+                          window.external.WriteLog(JSON.stringify(dataJson));
+                       }catch(err){
+                           console.log("供应商列表信为为空："+String(err));
+                       }
+                    }     
                 } else {
-                    console.log("获取公司列表信息失败！"); 
+                    //打印日志
+                   try{
+                      window.external.WriteLog("获取公司列表信息失败：");
+                      window.external.WriteLog(JSON.stringify(dataJson));
+                   }catch(err){
+                       console.log("获取公司列表信息失败："+String(err));
+                   }
                 }
             } catch (err) {
-                console.log("获取公司列表信息异常:" + String(err));
+                //打印日志
+               try{
+                  window.external.WriteLog("获取公司列表信息失败：");
+                  window.external.WriteLog(JSON.stringify(dataJson));
+               }catch(err){
+                    console.log("获取公司列表信息异常:" + String(err));
+               }
             }
         }
     }
@@ -441,7 +504,8 @@ function ICInjectJS(supplierData) {
                         </section>\
                     </div>\
                     <div class="modal-footer">\
-                      ' + (!!tbc ? '<a href="javascript:void(0)" class="btn btn-default quote-btn save-quote-btn" data-tbc="1">保存待确认报价</a>' : '<a href="javascript:void(0)" class="btn btn-default quote-btn save-quote-btn" data-tbc="0">保存并直接报价</a>') + '\
+                      ' + (!!tbc ? '<a href="javascript:void(0)" class="btn btn-default quote-btn save-quote-btn" data-tbc="1">保存待确认报价</a>' :'') + '\
+                       <a href="javascript:void(0)" class="btn btn-default quote-btn save-quote-btn" data-tbc="0">保存直接询价</a>\
                     </div>\
                 </div>\
             </div>\
@@ -529,128 +593,263 @@ function ICInjectJS(supplierData) {
 
          //打开问价模态框
         $(document.body).on("click", ".product_quote", function() {
+            //清空表单
+             $('#formData input.form-control').each(function(i,d){
+                 $(this).val("");
+             })
+
             var hostname = window.location.hostname;
-            if (hostname == "www.ic.net.cn") { //ic交易网
-                var $li=$(this).closest("li");
-                $("#supplier-name,#supplier-address,#supplier-contact").empty();
-                 var remark= $li.find(".result_supply a.result_goCompany").attr("data-remark");
-                 $('#modal-quote textarea[name="Remark"]').val(remark);
-                 $supplier= $li.find(".result_supply");
-                 var name=$supplier.find(".layer_companyName").text();
-                 var address=$supplier.find(".company_address2").text();
-                 var model=$("#search_Name").text();
-                 var tels=[];
-                 $supplier.find("li.layer_contacts>.layer_telNumber").each(function(i,tel){
-                     tels.push({tel:$(this).text()})
-                 })
+            if(!!isBatch){//批量询报价下的问价          
+                if (hostname == "www.ic.net.cn") { //ic交易网
+                    var $li=$(this).closest("li");
+                    $("#supplier-name,#supplier-address,#supplier-contact").empty();
+                     var remark= $li.find(".result_supply a.result_goCompany").attr("data-remark");
+                     $('#modal-quote textarea[name="Remark"]').val(remark);
+                     $supplier= $li.find(".result_supply");
+                     var name=$supplier.find(".layer_companyName").text();
+                     var address=$supplier.find(".company_address2").text();
+                     var model=$("#search_Name").text();
+                     var tels=[];
+                     $supplier.find("li.layer_contacts>.layer_telNumber").each(function(i,tel){
+                         tels.push({tel:$(this).text()})
+                     })
 
-                 var qqs=[];
-                 var $askPrice= $li.find(".result_askPrice");
-                 $askPrice.find("a.qqicon").each(function(i,qq){
-                     qqs.push({qq:$(this).attr("title")})
-                 })
-                 $("#supplier-name").text(name);
-                 $("#supplier-address").text(address);
-                 $("#quote-model-data").text(model);
+                     var qqs=[];
+                     var $askPrice= $li.find(".result_askPrice");
+                     $askPrice.find("a.qqicon").each(function(i,qq){
+                         qqs.push({qq:$(this).attr("title")})
+                     })
+                     $("#supplier-name").text(name);
+                     $("#supplier-address").text(address);
+                     $("#quote-model-data").text(model);
 
-                 var contacts=tels.concat(qqs);
-                 console.log(contacts);
-                 var htmlStr=[];
-                 $.each(contacts,function(i,v){
-                       for(var k in v){
-                            htmlStr.push('<div class="flex-container-supplier">\
-                                            <div class="supplier-contact-item">\
-                                                <span>'+contactsMap[k]+':</span>\
-                                                <span>'+v[k]+'</span>\
-                                                <span class="icon iconfont '+(k=="tel"?"icon-swticonzuoji":"icon-qq1")+'"></span>\
-                                            </div>\
-                                        </div>')
-                       }                 
-                 })
-                 $("#supplier-contact").html(htmlStr.join(""))
-
-
-                  //联系人
-                    $ele = $li.find(".result_supply .detailLayer .layer_mainContent");
-                    var mphone = $ele.find(".layer_otherContentphone").text(); //手机
-                    var fax = $ele.find(".layer_otherTitle_fax").next().text(); //传真
-                    var contacts = "";
-                    $ele.find(".layer_contacts").each(function(i, d) {
-                        var cont = $(d).children(".layer_contactName").text();
-                        var tel = $(d).children(".layer_telNumber").text();
-                        var contactInfo = cont + ":" + tel + "; "
-                        contacts += contactInfo;
-                    })
-                    contacts += "传真:" + fax + ";";
-                  $('#formData [name="Contacts"]').val(contacts);
+                     var contacts=tels.concat(qqs);
+                     console.log(contacts);
+                     var htmlStr=[];
+                     $.each(contacts,function(i,v){
+                           for(var k in v){
+                                htmlStr.push('<div class="flex-container-supplier">\
+                                                <div class="supplier-contact-item">\
+                                                    <span>'+contactsMap[k]+':</span>\
+                                                    <span>'+v[k]+'</span>\
+                                                    <span class="icon iconfont '+(k=="tel"?"icon-swticonzuoji":"icon-qq1")+'"></span>\
+                                                </div>\
+                                            </div>')
+                           }                 
+                     })
+                     $("#supplier-contact").html(htmlStr.join(""))
 
 
-                 //型号
-                 $('#formData [name="Modle"]').val(model);
-                 //厂商
-                  $('#formData [name="Brand"]').val($li.find(".result_factory [name='factory']").val());
-                 //批号
-                 $('#formData [name="BatchNo"]').val($li.find(".result_batchNumber [name='batchnumber']").val());      
-                 //数量
-                 $('#formData [name="Qty"]').val($li.find(".result_totalNumber [name='totalnumber']").val());
-                 //封装
-                $('#formData [name="Package"]').val($li.find(".result_pakaging [name='pakaging']").val());    
-            }else{//华强电子网
-                var $tr=$(this).closest("tr");
-                var cid=$tr.find('input[name="ic_check"]').attr("data-cid");
-                var cc = companyDataNew[cid]; //获取当前供应商信息，companyDataNew为华强电子网的全局变量    
-                $(".save-quote-btn").attr("data-cid",cid);   
-                $("#supplier-name,#supplier-address,#supplier-contact").empty();
-                 var remark= $tr.find("td.j-company-td a.company").attr("data-remark");
-                 $('#modal-quote textarea[name="Remark"]').val(remark);      
-                 var model=$(".max-100").text();
-                 var tels=[];
-                 tels.push({tel:cc.mphone});
-                  $.each(cc.phone.split(","),function(i,v){
-                      tels.push({tel:v.trim()})
-                 })
-                
-                 var qqs=[];
-                 $.each(cc.mqq,function(i,v){
-                      qqs.push({qq:v.qn})
-                 })
+                      //联系人
+                        $ele = $li.find(".result_supply .detailLayer .layer_mainContent");
+                        var mphone = $ele.find(".layer_otherContentphone").text(); //手机
+                        var fax = $ele.find(".layer_otherTitle_fax").next().text(); //传真
+                        var contacts = "";
+                        $ele.find(".layer_contacts").each(function(i, d) {
+                            var cont = $(d).children(".layer_contactName").text();
+                            var tel = $(d).children(".layer_telNumber").text();
+                            var contactInfo = cont + ":" + tel + "; "
+                            contacts += contactInfo;
+                        })
+                        contacts += "传真:" + fax + ";";
+                      $('#formData [name="Contacts"]').val(contacts);
 
-                 $("#supplier-name").text(cc.name);
-                 $("#supplier-address").text(cc.address);
-                 $("#quote-model-data").text(model);
 
-                 var contacts=tels.concat(qqs);
-                 console.log(contacts);
-                 var htmlStr=[];
-                 $.each(contacts,function(i,v){
-                       for(var k in v){
-                            htmlStr.push('<div class="flex-container-supplier">\
-                                            <div class="supplier-contact-item">\
-                                                <span>'+contactsMap[k]+':</span>\
-                                                <span>'+v[k]+'</span>\
-                                                <span class="icon iconfont '+(k=="tel"?"icon-swticonzuoji":"icon-qq1")+'"></span>\
-                                            </div>\
-                                        </div>')
-                       }                 
-                 })
-                 $("#supplier-contact").html(htmlStr.join(""))
+                     //型号
+                     $('#formData [name="Modle"]').val(model);
+                     //厂商
+                      $('#formData [name="Brand"]').val($li.find(".result_factory [name='factory']").val());
+                     //批号
+                     $('#formData [name="BatchNo"]').val($li.find(".result_batchNumber [name='batchnumber']").val());      
+                     //数量
+                     $('#formData [name="Qty"]').val($li.find(".result_totalNumber [name='totalnumber']").val());
+                     //封装
+                    $('#formData [name="Package"]').val($li.find(".result_pakaging [name='pakaging']").val());  
+                    //货期
+                    $('#formData [name="Delivery"]').val($li.find(".result_date [name='date']").val());    
+                    //备注
+                    $('#formData [name="Remark"]').val($li.find(".result_prompt [name='declare']").val());      
+                }else{//华强电子网
+                    var $tr=$(this).closest("tr");
+                    var cid=$tr.find('input[name="ic_check"]').attr("data-cid");
+                    var cc = companyDataNew[cid]; //获取当前供应商信息，companyDataNew为华强电子网的全局变量    
+                    $(".save-quote-btn").attr("data-cid",cid);   
+                    $("#supplier-name,#supplier-address,#supplier-contact").empty();
+                     var remark= $tr.find("td.j-company-td a.company").attr("data-remark");
+                     $('#modal-quote textarea[name="Remark"]').val(remark);      
+                     var model=$(".max-100").text();
+                     var tels=[];
+                     tels.push({tel:cc.mphone});
+                      $.each(cc.phone.split(","),function(i,v){
+                          tels.push({tel:v.trim()})
+                     })
 
-                 //联系人
-                  $('#formData [name="Contacts"]').val(cc.phone);
-                 //型号
-                 $('#formData [name="Modle"]').val(model);
-                 //厂商
-                  $('#formData [name="Brand"]').val($tr.find("[name='brand']").val());
-                 //批号
-                 $('#formData [name="BatchNo"]').val($tr.find("[name='batchnumber']").val());      
-                 //数量
-                 $('#formData [name="Qty"]').val($tr.find("[name='stocknum']").val());
-                 //封装
-                $('#formData [name="Package"]').val($tr.find("[name='package']").val()); 
-                //备注
-                $('#formData [name="Remark"]').val($tr.find("[name='explain']").val());   
+                     var qqs=[];
+                     $.each(cc.mqq,function(i,v){
+                          qqs.push({qq:v.qn})
+                     })
 
-            }                       
+                     $("#supplier-name").text(cc.name);
+                     $("#supplier-address").text(cc.address);
+                     $("#quote-model-data").text(model);
+
+                     var contacts=tels.concat(qqs);
+                     console.log(contacts);
+                     var htmlStr=[];
+                     $.each(contacts,function(i,v){
+                           for(var k in v){
+                                htmlStr.push('<div class="flex-container-supplier">\
+                                                <div class="supplier-contact-item">\
+                                                    <span>'+contactsMap[k]+':</span>\
+                                                    <span>'+v[k]+'</span>\
+                                                    <span class="icon iconfont '+(k=="tel"?"icon-swticonzuoji":"icon-qq1")+'"></span>\
+                                                </div>\
+                                            </div>')
+                           }                 
+                     })
+                     $("#supplier-contact").html(htmlStr.join(""))
+
+                     //联系人
+                      $('#formData [name="Contacts"]').val(cc.phone);
+                     //型号
+                     $('#formData [name="Modle"]').val(model);
+                     //厂商
+                      $('#formData [name="Brand"]').val($tr.find("[name='brand']").val());
+                     //批号
+                     $('#formData [name="BatchNo"]').val($tr.find("[name='batchnumber']").val());      
+                     //数量
+                     $('#formData [name="Qty"]').val($tr.find("[name='stocknum']").val());
+                     //封装
+                    $('#formData [name="Package"]').val($tr.find("[name='package']").val()); 
+                    //备注
+                    $('#formData [name="Remark"]').val($tr.find("[name='explain']").val());   
+                } 
+            }else{//非批量询报价下的问价     
+                if (hostname == "www.ic.net.cn") { //ic交易网
+                    var $li=$(this).closest("li");
+                    $("#supplier-name,#supplier-address,#supplier-contact").empty();
+                     var remark= $li.find(".result_supply a.result_goCompany").attr("data-remark");
+                     $('#modal-quote textarea[name="Remark"]').val(remark);
+                     $supplier= $li.find(".result_supply");
+                     var name=$supplier.find(".layer_companyName").text();
+                     var address=$supplier.find(".company_address2").text();
+                     var model=$("#search_Name").text();
+                     var tels=[];
+                     $supplier.find("li.layer_contacts>.layer_telNumber").each(function(i,tel){
+                         tels.push({tel:$(this).text()})
+                     })
+
+                     var qqs=[];
+                     var $askPrice= $li.find(".result_askPrice");
+                     $askPrice.find("a.qqicon").each(function(i,qq){
+                         qqs.push({qq:$(this).attr("title")})
+                     })
+                     $("#supplier-name").text(name);
+                     $("#supplier-address").text(address);
+                     $("#quote-model-data").text(model);
+
+                     var contacts=tels.concat(qqs);
+                     console.log(contacts);
+                     var htmlStr=[];
+                     $.each(contacts,function(i,v){
+                           for(var k in v){
+                                htmlStr.push('<div class="flex-container-supplier">\
+                                                <div class="supplier-contact-item">\
+                                                    <span>'+contactsMap[k]+':</span>\
+                                                    <span>'+v[k]+'</span>\
+                                                    <span class="icon iconfont '+(k=="tel"?"icon-swticonzuoji":"icon-qq1")+'"></span>\
+                                                </div>\
+                                            </div>')
+                           }                 
+                     })
+                     $("#supplier-contact").html(htmlStr.join(""))
+
+
+                      //联系人
+                        $ele = $li.find(".result_supply .detailLayer .layer_mainContent");
+                        var mphone = $ele.find(".layer_otherContentphone").text(); //手机
+                        var fax = $ele.find(".layer_otherTitle_fax").next().text(); //传真
+                        var contacts = "";
+                        $ele.find(".layer_contacts").each(function(i, d) {
+                            var cont = $(d).children(".layer_contactName").text();
+                            var tel = $(d).children(".layer_telNumber").text();
+                            var contactInfo = cont + ":" + tel + "; "
+                            contacts += contactInfo;
+                        })
+                        contacts += "传真:" + fax + ";";
+                      $('#formData [name="Contacts"]').val(contacts);
+
+
+                     //型号
+                     $('#formData [name="Modle"]').val(model);
+                     //厂商
+                      $('#formData [name="Brand"]').val($.trim($li.find(".result_factory").text()));
+                     //批号
+                     $('#formData [name="BatchNo"]').val($.trim($li.find(".result_batchNumber").text()));      
+                     //数量
+                     $('#formData [name="Qty"]').val($.trim($li.find(".result_totalNumber").text()));
+                     //封装
+                    $('#formData [name="Package"]').val($.trim($li.find(".result_pakaging").text()));  
+                    //货期
+                    $('#formData [name="Delivery"]').val($.trim($li.find(".result_date").text()));    
+                    //备注
+                    $('#formData [name="Remark"]').val($.trim($li.find(".result_prompt").text()));      
+                }else{//华强电子网
+                    var $tr=$(this).closest("tr");
+                    var cid=$tr.find('input[name="ic_check"]').attr("data-cid");
+                    var cc = companyDataNew[cid]; //获取当前供应商信息，companyDataNew为华强电子网的全局变量    
+                    $(".save-quote-btn").attr("data-cid",cid);   
+                    $("#supplier-name,#supplier-address,#supplier-contact").empty();
+                     var remark= $tr.find("td.j-company-td a.company").attr("data-remark");
+                     $('#modal-quote textarea[name="Remark"]').val(remark);      
+                     var model=$(".max-100").text();
+                     var tels=[];
+                     tels.push({tel:cc.mphone});
+                      $.each(cc.phone.split(","),function(i,v){
+                          tels.push({tel:v.trim()})
+                     })
+
+                     var qqs=[];
+                     $.each(cc.mqq,function(i,v){
+                          qqs.push({qq:v.qn})
+                     })
+
+                     $("#supplier-name").text(cc.name);
+                     $("#supplier-address").text(cc.address);
+                     $("#quote-model-data").text(model);
+
+                     var contacts=tels.concat(qqs);
+                     console.log(contacts);
+                     var htmlStr=[];
+                     $.each(contacts,function(i,v){
+                           for(var k in v){
+                                htmlStr.push('<div class="flex-container-supplier">\
+                                                <div class="supplier-contact-item">\
+                                                    <span>'+contactsMap[k]+':</span>\
+                                                    <span>'+v[k]+'</span>\
+                                                    <span class="icon iconfont '+(k=="tel"?"icon-swticonzuoji":"icon-qq1")+'"></span>\
+                                                </div>\
+                                            </div>')
+                           }                 
+                     })
+                     $("#supplier-contact").html(htmlStr.join(""));
+
+                     //联系人
+                      $('#formData [name="Contacts"]').val(cc.phone);
+                     //型号
+                     $('#formData [name="Modle"]').val(model);
+                     //厂商
+                      $('#formData [name="Brand"]').val($tr.find("td.td-brand .list-pro").attr("title"));
+                     //批号
+                     $('#formData [name="BatchNo"]').val($tr.find("td:nth-child(9) .over").attr("title"));      
+                     //数量
+                     $('#formData [name="Qty"]').val($tr.find("td.td-stockNum .over").attr("title"));
+                     //封装
+                    $('#formData [name="Package"]').val($tr.find("td:nth-child(10) .over").attr("title")); 
+                    //备注
+                    $('#formData [name="Remark"]').val($tr.find("td:nth-child(14) .list-pro").attr("title")); 
+                }               
+            }                      
              $("#modal-quote").modal("show");
         })
 
@@ -716,7 +915,7 @@ function ICInjectJS(supplierData) {
                            $("#label-info-tips").hide();
                            var htmlStr=[];
                            $.each(data.Labels,function(i,v){
-                               htmlStr.push('<li class="'+color16MapClass[v.BackgroundColor.toLowerCase()]+'" data-id="'+v.ID+'">\
+                               htmlStr.push('<li style="background-color:'+v.BackgroundColor+'" data-id="'+v.ID+'">\
                                                 <span class="label-content">'+v.Name+'</span>\
                                              </li>')
                            })
@@ -733,7 +932,7 @@ function ICInjectJS(supplierData) {
                if(!!supplierData.Labels&&supplierData.Labels.length>0){
                     var htmlStr=[];
                     $.each(supplierData.Labels,function(i,v){
-                       htmlStr.push('<li class="'+color16MapClass[v.BackgroundColor.toLowerCase()]+'" data-id="'+v.ID+'">\
+                       htmlStr.push('<li style="background-color:'+v.BackgroundColor+'" data-id="'+v.ID+'">\
                                         <span class="label-content">'+v.Name+'</span>\
                                      </li>')
                     })
@@ -794,7 +993,7 @@ function ICInjectJS(supplierData) {
                            $("#label-info-tips").hide();
                            var htmlStr=[];
                            $.each(data.Labels,function(i,v){
-                               htmlStr.push('<li class="'+color16MapClass[v.BackgroundColor.toLowerCase()]+'" data-id="'+v.ID+'">\
+                               htmlStr.push('<li style="background-color:'+v.BackgroundColor+'" data-id="'+v.ID+'">\
                                                 <span class="label-content">'+v.Name+'</span>\
                                              </li>')
                            })
@@ -811,7 +1010,7 @@ function ICInjectJS(supplierData) {
                if(!!supplierData.Labels&&supplierData.Labels.length>0){
                    var htmlStr=[];
                    $.each(supplierData.Labels,function(i,v){
-                       htmlStr.push('<li class="'+color16MapClass[v.BackgroundColor.toLowerCase()]+'" data-id="'+v.ID+'">\
+                       htmlStr.push('<li style="background-color:'+v.BackgroundColor+'" data-id="'+v.ID+'">\
                                         <span class="label-content">'+v.Name+'</span>\
                                      </li>')
                    })
@@ -938,7 +1137,7 @@ function ICInjectJS(supplierData) {
         }
 
         var backgroundColor= $("#label-color-picker").attr("data-color");      
-        $("#label-new-brand").append('<li class="'+color16MapClass[backgroundColor.toLowerCase()]+'" data-id="0">\
+        $("#label-new-brand").append('<li style="background-color:'+backgroundColor+'" data-id="0">\
                 <span class="label-content">'+txt+'</span>\
                 <span class="label-close">x</span>\
                 </li>');
@@ -986,7 +1185,7 @@ function ICInjectJS(supplierData) {
          }
     })
 
-    //模态框-保存供应商信息(标签模态框)
+    //模态框-保存公司标签
     $("#save-company").click(function(){
         var CardName=$("#label-company").text();
         var IsCollect=$("#label-collect").hasClass("label-collect")?1:0;
@@ -997,11 +1196,11 @@ function ICInjectJS(supplierData) {
         $("#label-brand li,#label-new-brand li").each(function(i,li){
             var id=$(this).attr("data-id");
             var name=$(this).find(".label-content").text();
-            var cls=$(this).attr("class");
+            var backgroundColor=$(this).css("background-color");
             Labels.push({
                 "ID":id,//标签编号
                 "Name":name,//标签名
-                "BackgroundColor":classMapColor16[cls],//标签背景色，16进制编码
+                "BackgroundColor":backgroundColor,//标签背景色，16进制编码
             })
         })
 
@@ -1012,6 +1211,8 @@ function ICInjectJS(supplierData) {
             Remark:Remark,
             Labels:Labels,
         };
+
+        console.log("保存公司标签",data)
         try {
             var jsonData = window.external.SaveSupplierInfo(JSON.stringify(data));
 //             var jsonData =JSON.stringify({
@@ -1036,39 +1237,15 @@ function ICInjectJS(supplierData) {
 
             if (!!jsonData) {
                 jsonData=JSON.parse(jsonData);
-                console.log("保存成功！");
-
-                //打印日志
-                try{
-                    window.external.WriteLog("保存供应商信息：");
-                    window.external.WriteLog(JSON.stringify(jsonData));
-                }catch(err){
-                    console.log(String(err));
-                }
 
                //保存成功后会返回这个公司信息的json格式化数据，出错则返回空字符串""；成功后需要根据公司中的标签在总标签列表（常用标签）中反查是否存在（根据标签ID），如果不存在则需要将此标签写入到中标签列表（常用标签）中
-               var supplierData=localGet("injectSupplierData"); 
-                //打印日志
-                try{
-                    window.external.WriteLog("获取本地ICInjectJS数据：");
-                    window.external.WriteLog(JSON.stringify(supplierData.Labels));
-                }catch(err){
-                    console.log(String(err));
-                }
-               
+               var supplierData=localGet("injectSupplierData");             
                var initLabels=JSON.parse(JSON.stringify(supplierData.Labels)); 
                var newLabels=JSON.parse(JSON.stringify(jsonData.Labels)); 
                 for (let i = 0; i < newLabels.length; i++) {
                     initLabels.push(newLabels[i])
                 }             
                supplierData.Labels=uniqueArr(initLabels);
-                //打印日志
-                try{
-                    window.external.WriteLog("更新本地ICInjectJS数据：");
-                    window.external.WriteLog(JSON.stringify(supplierData));
-                }catch(err){
-                    console.log(String(err));
-                }
                localSave("injectSupplierData",JSON.stringify(supplierData));
                batchRenderWebSiteList();
                $("#modal-label").modal("hide");
@@ -1076,7 +1253,7 @@ function ICInjectJS(supplierData) {
                 console.log("保存失败！");
             }
         } catch (err) {
-            alert("保存异常:" + String(err));
+             console.log("保存异常:" + String(err));
         }
     })
 
@@ -1109,223 +1286,344 @@ function ICInjectJS(supplierData) {
 
     //自定义DOM :判断网站类型：是【IC交易网】还是【华强电子网】
     var hostname = window.location.hostname;
-    if (hostname == "www.ic.net.cn") { //ic交易网       
-        $("#searchForm .right_resultTitle").prepend((!!tbc ? '<button class="ic-btn ICSaveEnquery" type="button" data-tbc="1">批量保存待确认报价</button>' : '<button class="ic-btn ICSaveEnquery" type="button" data-tbc="0">批量保存直接询价</button>'));
-        $("#searchForm .addFriendBtn,#searchForm .batchInquiry").remove();
-        $("#result_topBanners,#left_ads,#searchForm .bottom_ads").remove();
-        $("#searchForm .right_results").removeClass("right_results");
-        $("#resultList .result_id .product_number").siblings().remove();
-        $("#searchForm .main>div").removeAttr("style");
-        $("#resultList .result_id .product_number").after('<br/><span class="product_quote">问价</span>');      
+    if(!!isBatch){//批量询价
+        if (hostname == "www.ic.net.cn") { //ic交易网  
+            $("#searchForm .right_resultTitle").prepend((!!tbc ? '<button class="ic-btn ICSaveEnquery" type="button" data-tbc="1">批量保存待确认报价</button>' : '') + '<button class="ic-btn ICSaveEnquery" type="button" data-tbc="0">批量保存直接询价</button>');     
+            $("#searchForm .addFriendBtn,#searchForm .batchInquiry").remove();
+            $("#result_topBanners,#left_ads,#searchForm .bottom_ads").remove();
+            $("#searchForm .right_results").removeClass("right_results");
+            $("#resultList .result_id .product_number").siblings().remove();
+            $("#searchForm .main>div").removeAttr("style");
+            $("#resultList .result_id .product_number").after('<br/><span class="product_quote">问价</span>');      
 
-        //表格头部设置
-        $("#resultList_title .result_check").html('<input style="margin-top: 13px;" type="checkbox" title="全选"  name="ic_check_all">');
-        $("#resultList_title #tableIndex").remove();
-        $("#icgoo_info,#resultList li.result_son.icgooResult_son").remove();
-        $("#resultList_title .result_date,#resultList .result_date").css({ "width": "134px" });
-        $("#resultList_title .result_id,#resultList .result_id").css({ "width": "115px" });
-        $("#resultList_title .result_id").after('<div class="result_price">进价</div><div class="result_price">报价</div><div class="result_price">进价含税价</div><div class="result_common">税点</div><div class="result_common">货期</div><div class="result_common">MPQ</div><div class="result_common">品质</div><div class="result_common">备注</div><div class="result_textarea">公司备注</div>');
-
-
-        //表格正文设置
-        $("#resultList li:not('#resultList_title')").each(function(i, li) {
-            $(li).find(".result_check").html('<input  style="margin-top: 13px;" type="checkbox" name="ic_check">');
-
-            //自定义添加列
-            $(li).find(".result_id").after('<div class="result_price"><input class="ic-enquiry" title="进价" type="number" name="price"></div><div class="result_price"><input class="ic-enquiry" title="报价" type="number" name="offer"></div><div class="result_price"><input class="ic-enquiry" title="进价含税价" type="number" name="AftVatCost"></div><div class="result_common"><input class="ic-enquiry" title="税点" type="text" name="VatRate"></div><div class="result_common"><input class="ic-enquiry" title="货期" type="text" name="Delivery"></div><div class="result_common"><input class="ic-enquiry" title="MPQ" type="text" name="MPQ"></div><div class="result_common"><input class="ic-enquiry" title="品质" type="text" name="Quality"></div><div class="result_common"><input class="ic-enquiry" title="备注" type="text" name="Remark"></div><div class="result_textarea_remark"><div class="ic-enquiry" title="公司备注"></div></div>');
-
-            //供贷商
-            var supply=$.trim($(li).find(".result_supply .result_goCompany").text());
-            $(li).find(".result_supply .result_goCompany").attr("data-name",supply);
-            
-
-            //厂商
-            var factory = $(li).find(".result_factory").attr("title") || "";
-            $(li).find(".result_factory").html('<input class="ic-enquiry"  title="厂商" type="text" name="factory" value="' + factory + '">');
-
-            //批号
-            var batchnumber = $(li).find(".result_batchNumber").attr("title") || "";
-            $(li).find(".result_batchNumber").html('<input class="ic-enquiry"  title="批号" type="text" name="batchnumber" value="' + batchnumber + '">');
-
-            //数量
-            var totalnumber = $(li).find(".result_totalNumber").attr("title") || "";
-            $(li).find(".result_totalNumber").html('<input class="ic-enquiry"  title="数量" type="number" name="totalnumber" value="' + totalnumber + '">');
-
-            //封装
-            var pakaging = $(li).find(".result_pakaging").attr("title") || "";
-            $(li).find(".result_pakaging").html('<input class="ic-enquiry"  title="封装" type="text" name="pakaging" value="' + pakaging + '">');
-
-            //说明/库位
-            var explain = $(li).find(".result_explain").attr("title") || "";
-            var kwplace = $(li).find(".result_kwplace").attr("title") || "";
-            var declare = !!kwplace ? explain + "/" + kwplace : explain;
-            $(li).find(".result_prompt").html('<input class="ic-enquiry"  title="说明/库位" type="text" name="declare" value="' + declare + '">');
-
-            //日期
-            var attrDate = $(li).find(".result_date").attr("title") || "";
-            var hiddenDate = $(li).find(".result_date input[type='hidden']").val() || "";
-            var date = !!hiddenDate ? hiddenDate.split(" ")[0] : attrDate.split(" ")[0];
-            $(li).find(".result_date").html('<input class="ic-enquiry"  title="日期" type="date" name="date" value="' + date + '">');
-        })
-
-        //监听全选
-        $('input[name="ic_check_all"]').change(function() {
-            $('input[name="ic_check"]').prop("checked", this.checked);
-        });
-    } else { //华强电子网          
-        $("#ad_bot, .advertising-box.js-ad-tips,.site-nav,.header,#J-top-filter,.top-recommend,.cur-relative,.right-fixed").remove();
-        $("#top_banner").html((!!tbc ? '<button class="hqew-btn ICSaveEnquery" type="button" data-tbc="1">批量保存待确认报价</button>' : '<button class="hqew-btn ICSaveEnquery" type="button" data-tbc="0">批量保存直接报价</button>')); 
-        $(".bread-link").hide();
-        $("#paste-btn").toggleClass("hqew-label-btn");
-
-        //表格头部设置
-        var $tr = $('#resultList table.list-table tr:first-child');
-        $tr.find("th:first-child").html('<input type="checkbox" title="全选"  name="ic_check_all">');
-        $tr.find("th:nth-child(6) a.j-i-sort").remove();
-        $tr.find("th:last-child").remove();
-        $tr.find("th.td-model").after('<th width="5.2%">进价</th><th width="5.2%">报价</th><th width="5.2%">进价含税价</th><th width="5.2%">税点</th><th width="5.2%">货期</th><th width="5.2%">MPQ</th><th width="5.2%">品质</th><th width="5.2%">公司备注</th>');
-        $tr.find("th:nth-child(19)").hide();//产品参数
-        $tr.find("th:nth-child(20)").hide();//仓库
-        $tr.find("th:nth-child(21)").text("备注");//交易说明
-
-        //表格正文
-        $('#resultList table.list-table tr#fshop,#resultList table.list-table tr#yuncang').remove();
-        $('#resultList table.list-table tr td.td-model').append('<span class="product_quote">问价</span>');
-        $('#resultList table.list-table tr:not("#fshop,:first-child")').each(function(i, tr) {
-            var uid = $(tr).find(".company").attr("uid");
-            var i = $(tr).find(".company").attr("i");
-            var cid = uid + '_' + i;
-
-            //复选框
-            $(tr).find('td input[name="icchk"]').parent().html('<input type="checkbox" data-cid="' + cid + '" name="ic_check" >');
-
-            //公司名称
-            /*  var cname = $(tr).find('td.j-company-td a.company').attr("cname") || "";
-             $(tr).find('td.j-company-td').html('<span title="' + cname + '">' + cname + '</span>'); */
-
-            //型号
-            /*  var model = $(tr).find('td.td-model a:first-child').attr("title") || "";
-             $(tr).find('td.td-model').html('<span title="' + model + '">' + model + '</span>'); */
-
-            //进价与报价(自定义添加)
-            $(tr).find('td.td-model').after('<td><input title="进价" type="number" class="info-width" name="price"></td><td><input title="报价" type="number" class="info-width" name="offer"></td><td><input title="进价含税价" type="number" class="info-width" name="AftVatCost"></td><td><input title="税点" type="text" class="info-width" name="VatRate"></td><td><input title="货期" type="text" class="info-width" name="Delivery"></td><td><input title="MPQ" type="text" class="info-width" name="MPQ"></td><td><input title="品质" type="text" class="info-width" name="Quality"></td><td class="td-company-remark"><div class="ic-enquiry" title="公司备注"></div></td>')
-
-            //数量
-            var stocknum = $(tr).find('td.td-stockNum>p.over').attr("title") || "";
-            $(tr).find('td.td-stockNum').html('<input  title="' + stocknum + '" type="number" class="info-width" name="stocknum" value="' + stocknum + '">');
-
-            //品牌
-            var brand = $(tr).find('td.td-brand>.list-pro').attr("title") || "";
-            $(tr).find('td.td-brand').html('<input  title="' + brand + '" type="text" class="info-width" name="brand" value="' + brand + '">');
-
-            //批号
-            var batchnumber = $(tr).find("td:nth-child(16)").find("p.over").attr("title") || "";
-            $(tr).find("td:nth-child(16)").html('<input  title="' + batchnumber + '" type="text" class="info-width" name="batchnumber" value="' + batchnumber + '">');
-
-            //封装
-            var package = $(tr).find("td:nth-child(17)").find("p.over").attr("title") || "";
-            $(tr).find("td:nth-child(17)").html('<input  title="' + package + '" type="text" class="info-width" name="package" value="' + package + '">');
-
-            //产品参数
-            var param = $(tr).find('td.td-param>.list-pro').attr("title") || "";
-            $(tr).find('td.td-param').hide().html('<input  title="' + param + '" type="text" class="info-width" name="param" value="' + param + '">');
-
-            //仓库
-            var depot = $(tr).find("td:nth-child(20)").find("p.over").text() || "";
-            $(tr).find("td:nth-child(20)").hide().html('<input  title="' + depot + '" type="text" class="info-width" name="depot" value="' + depot + '">');
-
-            //交易说明
-            var explain = $(tr).find("td:nth-child(21)").find(".list-pro").attr("title") || "";
-            $(tr).find("td:nth-child(21)").html('<input type="text" title="' + explain + '" class="info-width" name="explain" value="' + explain + '">');
-
-            //购买
-            $(tr).find('td.pr-10').remove();
-        })
-
-        //监听全选
-        $('input[name="ic_check_all"]').change(function() {
-            $('input[name="ic_check"]').prop("checked", this.checked);
-        });
+            //表格头部设置
+            $("#resultList_title .result_check").html('<input style="margin-top: 13px;" type="checkbox" title="全选"  name="ic_check_all">');
+            $("#resultList_title #tableIndex").remove();
+            $("#icgoo_info,#resultList li.result_son.icgooResult_son").remove();
+            $("#resultList_title .result_date,#resultList .result_date").css({ "width": "134px" });
+            $("#resultList_title .result_id,#resultList .result_id").css({ "width": "115px" });
+            $("#resultList_title .result_id").after('<div class="result_price">进价</div><div class="result_price">报价</div><div class="result_price">进价含税价</div><div class="result_common">税点</div><div class="result_common">货期</div><div class="result_common">MPQ</div><div class="result_common">品质</div><div class="result_common">备注</div><div class="result_textarea">公司备注</div>');
 
 
-        //监听DOM折叠行数据变化
-        var $targetNodeList = $('#resultList table.list-table tr td.td-merge span'); //content监听的元素id
-        //options：监听的属性
-        var options = {
-            attributes: true,
-            attributeOldValue: true
-        };
-        //回调事件: 当有下级折叠行展开时处理的逻辑
-        function callback(mutationsList) {
-            //console.log(mutationsList);
-            //console.log($(mutationsList[0].target).hasClass("expand"));
-            if ($(mutationsList[0].target).hasClass("expand")) {
-                var cid = $(mutationsList[0].target).closest("tr").find('input[name="ic_check"]').attr("data-cid");
-                var $tr_boxbg = $(mutationsList[0].target).closest("tr").nextAll('tr[class^="boxbg"]');
+            //表格正文设置
+            $("#resultList li:not('#resultList_title')").each(function(i, li) {
+                $(li).find(".result_check").html('<input  style="margin-top: 13px;" type="checkbox" name="ic_check">');
 
-                $tr_boxbg.each(function(i, tr_boxbg) {
-                    $(tr_boxbg).children("td").attr("colspan", "21")
-                    var $tr = $(tr_boxbg).find('table.list-table tr.boxbg');
+                //自定义添加列
+                $(li).find(".result_id").after('<div class="result_price"><input class="ic-enquiry" title="进价" type="number" name="price"></div><div class="result_price"><input class="ic-enquiry" title="报价" type="number" name="offer"></div><div class="result_price"><input class="ic-enquiry" title="进价含税价" type="number" name="AftVatCost"></div><div class="result_common"><input class="ic-enquiry" title="税点" type="text" name="VatRate"></div><div class="result_common"><input class="ic-enquiry" title="货期" type="text" name="Delivery"></div><div class="result_common"><input class="ic-enquiry" title="MPQ" type="text" name="MPQ"></div><div class="result_common"><input class="ic-enquiry" title="品质" type="text" name="Quality"></div><div class="result_common"><input class="ic-enquiry" title="备注" type="text" name="Remark"></div><div class="result_textarea_remark"><div class="ic-enquiry" title="公司备注"></div></div>');
 
-                    //判断是否是第一次折叠，如果是第一次就走渲染修改DOM表格，否则不再次渲染
-                    if ($tr.children("td").length == 21) {
-                        return false
-                    }
-
-                    //复选框
-                    $tr.find('td input[name="icchk"]').parent().html('<input type="checkbox" data-cid="' + cid + '" name="ic_check" >');
-
-                    //公司名称
-                    /*  var cname = $tr.find('td.j-company-td a.company').attr("cname") || "";
-                     $tr.find('td.j-company-td').html('<span title="' + cname + '">' + cname + '</span>'); */
-
-                    //型号
-                    /*  var model = $tr.find('td.td-model a:first-child').attr("title") || "";
-                     $tr.find('td.td-model').html('<span title="' + model + '">' + model + '</span>'); */
+                //供贷商
+                var supply=$.trim($(li).find(".result_supply .result_goCompany").text());
+                $(li).find(".result_supply .result_goCompany").attr("data-name",supply);
 
 
-                    //进价与报价(自定义添加)
-                    $tr.find('td.td-model').after('<td width="5.2%"><input title="进价" type="number" class="info-width" name="price"></td><td width="5.2%"><input title="报价" type="number" class="info-width" name="offer"></td><td width="5.2%"><input title="进价含税价" type="number" class="info-width" name="AftVatCost"></td><td width="5.2%"><input title="税点" type="text" class="info-width" name="VatRate"></td><td width="5.2%"><input title="货期" type="text" class="info-width" name="Delivery"></td><td width="5.2%"><input title="MPQ" type="text" class="info-width" name="MPQ"></td><td width="5.2%"><input title="品质" type="text" class="info-width" name="Quality"></td><td class="td-company-remark" width="5.2%"><div class="ic-enquiry" title="公司备注"></div></td>')
+                //厂商
+                var factory = $(li).find(".result_factory").attr("title") || "";
+                $(li).find(".result_factory").html('<input class="ic-enquiry"  title="厂商" type="text" name="factory" value="' + factory + '">');
 
-                    //数量
-                    var stocknum = $tr.find('td:nth-child(14)>p.over').attr("title") || "";
-                    $tr.find('td:nth-child(14)').html('<input  title="' + stocknum + '" type="number" class="info-width" name="stocknum" value="' + stocknum + '">');
+                //批号
+                var batchnumber = $(li).find(".result_batchNumber").attr("title") || "";
+                $(li).find(".result_batchNumber").html('<input class="ic-enquiry"  title="批号" type="text" name="batchnumber" value="' + batchnumber + '">');
 
-                    //品牌
-                    var brand = $tr.find('td.td-brand>.list-pro').attr("title") || "";
-                    $tr.find('td.td-brand').html('<input  title="' + brand + '" type="text" class="info-width" name="brand" value="' + brand + '">');
+                //数量
+                var totalnumber = $(li).find(".result_totalNumber").attr("title") || "";
+                $(li).find(".result_totalNumber").html('<input class="ic-enquiry"  title="数量" type="number" name="totalnumber" value="' + totalnumber + '">');
 
-                    //批号
-                    var batchnumber = $tr.find("td:nth-child(16)").find(".list-pro").attr("title") || "";
-                    $tr.find("td:nth-child(16)").html('<input  title="' + batchnumber + '" type="text" class="info-width" name="batchnumber" value="' + batchnumber + '">');
+                //封装
+                var pakaging = $(li).find(".result_pakaging").attr("title") || "";
+                $(li).find(".result_pakaging").html('<input class="ic-enquiry"  title="封装" type="text" name="pakaging" value="' + pakaging + '">');
 
-                    //封装
-                    var package = $tr.find("td:nth-child(17)").find(".list-pro").attr("title") || "";
-                    $tr.find("td:nth-child(17)").html('<input  title="' + package + '" type="text" class="info-width" name="package" value="' + package + '">');
+                //说明/库位
+                var explain = $(li).find(".result_explain").attr("title") || "";
+                var kwplace = $(li).find(".result_kwplace").attr("title") || "";
+                var declare = !!kwplace ? explain + "/" + kwplace : explain;
+                $(li).find(".result_prompt").html('<input class="ic-enquiry"  title="说明/库位" type="text" name="declare" value="' + declare + '">');
 
-                    //产品参数
-                    var param = $tr.find('td.td-param>.list-pro').attr("title") || "";
-                    $tr.find('td.td-param').hide().html('<input  title="' + param + '" type="text" class="info-width" name="param" value="' + param + '">');
+                //日期
+                var attrDate = $(li).find(".result_date").attr("title") || "";
+                var hiddenDate = $(li).find(".result_date input[type='hidden']").val() || "";
+                var date = !!hiddenDate ? hiddenDate.split(" ")[0] : attrDate.split(" ")[0];
+                $(li).find(".result_date").html('<input class="ic-enquiry"  title="日期" type="date" name="date" value="' + date + '">');
+            })
 
-                    //仓库
-                    var depot = $tr.find("td:nth-child(20)").find("p.over").text() || "";
-                    $tr.find("td:nth-child(20)").hide().html('<input  title="' + depot + '" type="text" class="info-width" name="depot" value="' + depot + '">');
+            //监听全选
+            $('input[name="ic_check_all"]').change(function() {
+                $('input[name="ic_check"]').prop("checked", this.checked);
+            });
+        } else { //华强电子网          
+            $("#ad_bot, .advertising-box.js-ad-tips,.site-nav,.header,#J-top-filter,.top-recommend,.cur-relative,.right-fixed").remove();
+            $("#top_banner").html((!!tbc ? '<button class="hqew-btn ICSaveEnquery" type="button" data-tbc="1">批量保存待确认报价</button>' : '') + '<button class="hqew-btn ICSaveEnquery" type="button" data-tbc="0">批量保存直接询价</button>');
+            $(".bread-link").hide();
+            $("#paste-btn").toggleClass("hqew-label-btn");
 
-                    //交易说明
-                    var explain = $tr.find("td:nth-child(21)").find(".list-pro").attr("title") || "";
-                    $tr.find("td:nth-child(21)").html('<input type="text" title="' + explain + '" class="info-width" name="explain" value="' + explain + '">');
+            //表格头部设置
+            var $tr = $('#resultList table.list-table tr:first-child');
+            $tr.find("th:first-child").html('<input type="checkbox" title="全选"  name="ic_check_all">');
+            $tr.find("th:nth-child(6) a.j-i-sort").remove();
+            $tr.find("th:last-child").remove();
+            $tr.find("th.td-model").after('<th width="5.2%">进价</th><th width="5.2%">报价</th><th width="5.2%">进价含税价</th><th width="5.2%">税点</th><th width="5.2%">货期</th><th width="5.2%">MPQ</th><th width="5.2%">品质</th><th width="5.2%">公司备注</th>');
+            $tr.find("th:nth-child(19)").hide();//产品参数
+            $tr.find("th:nth-child(20)").hide();//仓库
+            $tr.find("th:nth-child(21)").text("备注");//交易说明
 
-                    //购买
-                    $tr.find('td.pr-10').remove();
+            //表格正文
+            $('#resultList table.list-table tr#fshop,#resultList table.list-table tr#yuncang').remove();
+            $('#resultList table.list-table tr td.td-model').append('<span class="product_quote">问价</span>');
+            $('#resultList table.list-table tr:not("#fshop,:first-child")').each(function(i, tr) {
+                var uid = $(tr).find(".company").attr("uid");
+                var i = $(tr).find(".company").attr("i");
+                var cid = uid + '_' + i;
 
-                })
+                //复选框
+                $(tr).find('td input[name="icchk"]').parent().html('<input type="checkbox" data-cid="' + cid + '" name="ic_check" >');
+
+                //公司名称
+                /*  var cname = $(tr).find('td.j-company-td a.company').attr("cname") || "";
+                 $(tr).find('td.j-company-td').html('<span title="' + cname + '">' + cname + '</span>'); */
+
+                //型号
+                /*  var model = $(tr).find('td.td-model a:first-child').attr("title") || "";
+                 $(tr).find('td.td-model').html('<span title="' + model + '">' + model + '</span>'); */
+
+                //进价与报价(自定义添加)
+                $(tr).find('td.td-model').after('<td><input title="进价" type="number" class="info-width" name="price"></td><td><input title="报价" type="number" class="info-width" name="offer"></td><td><input title="进价含税价" type="number" class="info-width" name="AftVatCost"></td><td><input title="税点" type="text" class="info-width" name="VatRate"></td><td><input title="货期" type="text" class="info-width" name="Delivery"></td><td><input title="MPQ" type="text" class="info-width" name="MPQ"></td><td><input title="品质" type="text" class="info-width" name="Quality"></td><td class="td-company-remark"><div class="ic-enquiry" title="公司备注"></div></td>')
+
+                //数量
+                var stocknum = $(tr).find('td.td-stockNum>p.over').attr("title") || "";
+                $(tr).find('td.td-stockNum').html('<input  title="' + stocknum + '" type="number" class="info-width" name="stocknum" value="' + stocknum + '">');
+
+                //品牌
+                var brand = $(tr).find('td.td-brand>.list-pro').attr("title") || "";
+                $(tr).find('td.td-brand').html('<input  title="' + brand + '" type="text" class="info-width" name="brand" value="' + brand + '">');
+
+                //批号
+                var batchnumber = $(tr).find("td:nth-child(16)").find("p.over").attr("title") || "";
+                $(tr).find("td:nth-child(16)").html('<input  title="' + batchnumber + '" type="text" class="info-width" name="batchnumber" value="' + batchnumber + '">');
+
+                //封装
+                var package = $(tr).find("td:nth-child(17)").find("p.over").attr("title") || "";
+                $(tr).find("td:nth-child(17)").html('<input  title="' + package + '" type="text" class="info-width" name="package" value="' + package + '">');
+
+                //产品参数
+                var param = $(tr).find('td.td-param>.list-pro').attr("title") || "";
+                $(tr).find('td.td-param').hide().html('<input  title="' + param + '" type="text" class="info-width" name="param" value="' + param + '">');
+
+                //仓库
+                var depot = $(tr).find("td:nth-child(20)").find("p.over").text() || "";
+                $(tr).find("td:nth-child(20)").hide().html('<input  title="' + depot + '" type="text" class="info-width" name="depot" value="' + depot + '">');
+
+                //交易说明
+                var explain = $(tr).find("td:nth-child(21)").find(".list-pro").attr("title") || "";
+                $(tr).find("td:nth-child(21)").html('<input type="text" title="' + explain + '" class="info-width" name="explain" value="' + explain + '">');
+
+                //购买
+                $(tr).find('td.pr-10').remove();
+            })
+
+            //监听全选
+            $('input[name="ic_check_all"]').change(function() {
+                $('input[name="ic_check"]').prop("checked", this.checked);
+            });
+
+
+            //监听DOM折叠行数据变化
+            var $targetNodeList = $('#resultList table.list-table tr td.td-merge span'); //content监听的元素id
+            //options：监听的属性
+            var options = {
+                attributes: true,
+                attributeOldValue: true
+            };
+            //回调事件: 当有下级折叠行展开时处理的逻辑
+            function callback(mutationsList) {
+                //console.log(mutationsList);
+                //console.log($(mutationsList[0].target).hasClass("expand"));
+                if ($(mutationsList[0].target).hasClass("expand")) {
+                    var cid = $(mutationsList[0].target).closest("tr").find('input[name="ic_check"]').attr("data-cid");
+                    var $tr_boxbg = $(mutationsList[0].target).closest("tr").nextAll('tr[class^="boxbg"]');
+
+                    $tr_boxbg.each(function(i, tr_boxbg) {
+                        $(tr_boxbg).children("td").attr("colspan", "21")
+                        var $tr = $(tr_boxbg).find('table.list-table tr.boxbg');
+
+                        //判断是否是第一次折叠，如果是第一次就走渲染修改DOM表格，否则不再次渲染
+                        if ($tr.children("td").length == 21) {
+                            return false
+                        }
+
+                        //复选框
+                        $tr.find('td input[name="icchk"]').parent().html('<input type="checkbox" data-cid="' + cid + '" name="ic_check" >');
+
+                        //公司名称
+                        /*  var cname = $tr.find('td.j-company-td a.company').attr("cname") || "";
+                         $tr.find('td.j-company-td').html('<span title="' + cname + '">' + cname + '</span>'); */
+
+                        //型号
+                        /*  var model = $tr.find('td.td-model a:first-child').attr("title") || "";
+                         $tr.find('td.td-model').html('<span title="' + model + '">' + model + '</span>'); */
+
+
+                        //进价与报价(自定义添加)
+                        $tr.find('td.td-model').after('<td width="5.2%"><input title="进价" type="number" class="info-width" name="price"></td><td width="5.2%"><input title="报价" type="number" class="info-width" name="offer"></td><td width="5.2%"><input title="进价含税价" type="number" class="info-width" name="AftVatCost"></td><td width="5.2%"><input title="税点" type="text" class="info-width" name="VatRate"></td><td width="5.2%"><input title="货期" type="text" class="info-width" name="Delivery"></td><td width="5.2%"><input title="MPQ" type="text" class="info-width" name="MPQ"></td><td width="5.2%"><input title="品质" type="text" class="info-width" name="Quality"></td><td class="td-company-remark" width="5.2%"><div class="ic-enquiry" title="公司备注"></div></td>')
+
+                        //数量
+                        var stocknum = $tr.find('td:nth-child(14)>p.over').attr("title") || "";
+                        $tr.find('td:nth-child(14)').html('<input  title="' + stocknum + '" type="number" class="info-width" name="stocknum" value="' + stocknum + '">');
+
+                        //品牌
+                        var brand = $tr.find('td.td-brand>.list-pro').attr("title") || "";
+                        $tr.find('td.td-brand').html('<input  title="' + brand + '" type="text" class="info-width" name="brand" value="' + brand + '">');
+
+                        //批号
+                        var batchnumber = $tr.find("td:nth-child(16)").find(".list-pro").attr("title") || "";
+                        $tr.find("td:nth-child(16)").html('<input  title="' + batchnumber + '" type="text" class="info-width" name="batchnumber" value="' + batchnumber + '">');
+
+                        //封装
+                        var package = $tr.find("td:nth-child(17)").find(".list-pro").attr("title") || "";
+                        $tr.find("td:nth-child(17)").html('<input  title="' + package + '" type="text" class="info-width" name="package" value="' + package + '">');
+
+                        //产品参数
+                        var param = $tr.find('td.td-param>.list-pro').attr("title") || "";
+                        $tr.find('td.td-param').hide().html('<input  title="' + param + '" type="text" class="info-width" name="param" value="' + param + '">');
+
+                        //仓库
+                        var depot = $tr.find("td:nth-child(20)").find("p.over").text() || "";
+                        $tr.find("td:nth-child(20)").hide().html('<input  title="' + depot + '" type="text" class="info-width" name="depot" value="' + depot + '">');
+
+                        //交易说明
+                        var explain = $tr.find("td:nth-child(21)").find(".list-pro").attr("title") || "";
+                        $tr.find("td:nth-child(21)").html('<input type="text" title="' + explain + '" class="info-width" name="explain" value="' + explain + '">');
+
+                        //购买
+                        $tr.find('td.pr-10').remove();
+
+                    })
+                }
             }
+            var mutationObserver = new MutationObserver(callback);
+            $targetNodeList.each(function(i, targetNode) {
+                mutationObserver.observe(targetNode, options);
+            })
         }
-        var mutationObserver = new MutationObserver(callback);
-        $targetNodeList.each(function(i, targetNode) {
-            mutationObserver.observe(targetNode, options);
-        })
+    }else{//非批量询价
+        if (hostname == "www.ic.net.cn") { //ic交易网  
+           // $("#searchForm .right_resultTitle").prepend((!!tbc ? '<button class="ic-btn ICSaveEnquery" type="button" data-tbc="1">批量保存待确认报价</button>' : '') + '<button class="ic-btn ICSaveEnquery" type="button" data-tbc="0">批量保存直接询价</button>');     
+            $("#searchForm .addFriendBtn,#searchForm .batchInquiry").remove();
+            $("#result_topBanners,#left_ads,#searchForm .bottom_ads").remove();
+            $("#searchForm .right_results").removeClass("right_results");
+            $("#resultList .result_id .product_number").siblings().remove();
+            $("#searchForm .main>div").removeAttr("style");
+            $("#resultList .result_id .product_number").after('<br/><span class="product_quote">问价</span>');      
+
+            //表格头部设置
+            $("#resultList .result_check").remove();
+            $("#resultList_title #tableIndex").remove();
+            $("#icgoo_info,#resultList li.result_son.icgooResult_son").remove();
+            //自定义添加列
+            $("#resultList_title .result_date").after('<div class="result_textarea result_company_remark_single">公司备注</div>');
+
+            //表格正文设置
+            $("#resultList li:not('#resultList_title')").each(function(i, li) {
+                 //自定义添加列
+                 $(li).find(".result_date").after('<div class="result_textarea_remark result_company_remark_single"><div class="ic-enquiry" title="公司备注"></div></div>');
+
+                 //供贷商
+                var supply=$.trim($(li).find(".result_supply .result_goCompany").text());
+                $(li).find(".result_supply .result_goCompany").attr("data-name",supply);
+            })
+        } else { //华强电子网          
+            $("#ad_bot, .advertising-box.js-ad-tips,.site-nav,.header,#J-top-filter,.top-recommend,.cur-relative,.right-fixed").remove();
+            $(".bread-link,#top_banner").hide();
+            $("#paste-btn").toggleClass("hqew-label-btn");
+
+            //表格头部设置
+            var $tr = $('#resultList table.list-table tr:first-child');
+            $tr.find("th:first-child").hide();
+            $tr.find("th:nth-child(6) a.j-i-sort").remove();
+            $tr.find("th:last-child").remove();
+            //自定义添加列
+            $tr.find("th.td-model").after('<th width="5.2%">公司备注</th>');
+            $tr.find("th:nth-child(19)").hide();//产品参数
+            $tr.find("th:nth-child(20)").hide();//仓库
+
+
+            //表格正文
+            $('#resultList table.list-table tr#fshop,#resultList table.list-table tr#yuncang').remove();
+            $('#resultList table.list-table tr td.td-model').append('<span class="product_quote">问价</span>');
+            $('#resultList table.list-table tr:not("#fshop,:first-child")').each(function(i, tr) {
+                var uid = $(tr).find(".company").attr("uid");
+                var i = $(tr).find(".company").attr("i");
+                var cid = uid + '_' + i;
+
+                $(tr).find('td.td-merge').html("");//隐藏子表行的“+”,如有需要可以放开操作
+
+                //复选框
+                $(tr).find('td input[name="icchk"]').parent().html('<input type="checkbox" data-cid="' + cid + '" name="ic_check" >');
+                $(tr).find('td:first-child').hide();
+
+                //自定义添加列
+                $(tr).find('td.td-model').after('<td class="td-company-remark"><div class="ic-enquiry" title="公司备注"></div></td>')
+
+                //购买
+                $(tr).find('td.pr-10').remove();
+            })
+
+
+            //监听DOM折叠行数据变化
+            var $targetNodeList = $('#resultList table.list-table tr td.td-merge span'); //content监听的元素id
+            //options：监听的属性
+            var options = {
+                attributes: true,
+                attributeOldValue: true
+            };
+            //回调事件: 当有下级折叠行展开时处理的逻辑
+            function callback(mutationsList) {
+                //console.log(mutationsList);
+                //console.log($(mutationsList[0].target).hasClass("expand"));
+                if ($(mutationsList[0].target).hasClass("expand")) {
+                    var cid = $(mutationsList[0].target).closest("tr").find('input[name="ic_check"]').attr("data-cid");
+                    var $tr_boxbg = $(mutationsList[0].target).closest("tr").nextAll('tr[class^="boxbg"]');
+
+                    $tr_boxbg.each(function(i, tr_boxbg) {
+                        $(tr_boxbg).children("td").attr("colspan", "13");
+                        var $tr = $(tr_boxbg).find('table.list-table tr.boxbg');
+
+                        //判断是否是第一次折叠，如果是第一次就走渲染修改DOM表格，否则不再次渲染
+//                         if ($tr.children("td").length == 14) {
+//                             return false
+//                         }
+                          
+                          
+                        //复选框
+                        $tr.find('td input[name="icchk"]').parent().html('<input type="checkbox" data-cid="' + cid + '" name="ic_check" >');
+                        $tr.find('td:first-child').hide();
+
+                         $tr.find('.product_quote').remove();
+                         $tr.find('td.td-model').append('<span class="product_quote">问价</span>');   
+
+                         //自定义添加列
+                        $tr.find('td.td-company-remark').remove();
+                        $tr.find('td.td-model').after('<td class="td-company-remark"><div class="ic-enquiry" title="公司备注"></div></td>');
+
+                        //购买
+                        $tr.find('td.pr-10').remove();
+                        
+                        //重置子表行的列宽
+                        $tr.find('td:nth-child(2)').attr("width","384.84");
+                        $tr.find('td:nth-child(3)').attr("width","79.453");
+                        $tr.find('td.td-model').attr("width","340.95");
+
+                    })
+                }
+            }
+            var mutationObserver = new MutationObserver(callback);
+            $targetNodeList.each(function(i, targetNode) {
+                mutationObserver.observe(targetNode, options);
+            })
+        }
     }
+
+
+
 
 
     //保存问价
@@ -1514,21 +1812,22 @@ function ICInjectJS(supplierData) {
  //正式发布时删除此行，此代码仅做调试
 ICInjectJS(JSON.stringify({
     "StartupPath":"",//程序启动目录
-    "IsCopyRowQuote":1,//是否复制行报价，0-不是、1-是
+    "ShowConfirmedQuote":1,//显示待确认报价，0-不显示、1-显示
+    "EnabledBatchQuote":0,//启用批量报价，0-不启用、1-启用
     "Labels":[
         {
             "ID":1,//标签编号
-            "Name":"A标签",//标签名
+            "Name":"A标签-常用标签",//标签名
             "BackgroundColor":"#1476F6",//标签背景色，16进制编码
         },
         {
             "ID":2,//标签编号
-            "Name":"B标签",//标签名
+            "Name":"B标签-常用标签",//标签名
             "BackgroundColor":"#f67614",//标签背景色，16进制编码
         },
         {
             "ID":3,//标签编号
-            "Name":"C标签",//标签名
+            "Name":"C标签-常用标签",//标签名
             "BackgroundColor":"#818181",//标签背景色，16进制编码
         }
     ]
