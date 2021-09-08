@@ -28,8 +28,11 @@
         <entry file="file://$PROJECT_DIR$/IC_EnqueryBatch/icInject.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="1534" column="3" selection-start-line="1534" selection-start-column="3" selection-end-line="1534" selection-end-column="3" />
-              <folding />
+              <caret line="1833" column="3" selection-start-line="1833" selection-start-column="3" selection-end-line="1833" selection-end-column="3" />
+              <folding>
+                <marker date="1631009231605" expanded="true" signature="661978:757297" placeholder="{...}" />
+                <marker date="1631009231605" expanded="true" signature="854121:854203" placeholder="{&quot;StartupPath&quot;: &quot;&quot;...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -976,8 +979,11 @@
     <entry file="file://$PROJECT_DIR$/IC_EnqueryBatch/icInject.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="1534" column="3" selection-start-line="1534" selection-start-column="3" selection-end-line="1534" selection-end-column="3" />
-          <folding />
+          <caret line="1833" column="3" selection-start-line="1833" selection-start-column="3" selection-end-line="1833" selection-end-column="3" />
+          <folding>
+            <marker date="1631009231605" expanded="true" signature="661978:757297" placeholder="{...}" />
+            <marker date="1631009231605" expanded="true" signature="854121:854203" placeholder="{&quot;StartupPath&quot;: &quot;&quot;...}" />
+          </folding>
         </state>
       </provider>
     </entry>
