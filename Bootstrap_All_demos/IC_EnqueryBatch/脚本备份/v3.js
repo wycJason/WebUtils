@@ -108,7 +108,7 @@ function ICInjectJS(supplierData) {
     }
     
     //保存注入数据至本地存储
-    localSave("injectInitSupplierData",supplierData);
+    localSave("injectSupplierData",supplierData);
 
     var contactsMap={
         qq:"QQ",
@@ -118,8 +118,6 @@ function ICInjectJS(supplierData) {
     
     //批量：根据供应商名称批量获取供应商名单信息并格式化渲染网站搜索结果列表
     function batchRenderWebSiteList(){
-        localSave("getSupplierData",JSON.stringify([]));//初始供应列表，默认为空数据
-        
         var hostname = window.location.hostname;
         if (hostname == "www.ic.net.cn") { //ic交易网
             var companyNames=[];
@@ -130,7 +128,7 @@ function ICInjectJS(supplierData) {
              $(".result-collect,.result-black,.label-company-title").remove();//删除【已收藏、已拉黑、添加更多公司标签】
              var $result_supplys= $("#resultList li:not('#resultList_title') .result_supply");
              $result_supplys.append('<br /><ul class="label-company-title"><li title="点击添加公司标签" class="label-color-a"><span class="label-content">添加公司标签 >></span></li></ul>')
-             
+            
             try {
                var dataJson = window.external.GetSuppliersInfo(JSON.stringify(companyNames));
 //                 var dataJson =JSON.stringify([
@@ -337,23 +335,6 @@ function ICInjectJS(supplierData) {
 
     //单个：根据供应商名称单个获取供应商名单信息并格式化渲染网站搜索结果列表
     function singleRenderWebSiteList(companyInfo){
-        //更新当前供应商列表
-        var isExist=false;//true存在 false 不存在
-        var suppliers =localGet("getSupplierData");
-        if(!!suppliers&&suppliers.length>0){
-                $.each(suppliers,function(i,v){
-                    if(v.CardName==companyInfo.CardName){
-                        suppliers.splice(i,1,companyInfo);
-                        isExist=true;
-                        return false
-                    }
-                })
-         }
-         if(!isExist){
-             suppliers.push(companyInfo);
-         }
-        localSave("getSupplierData",JSON.stringify(suppliers)); 
-
         var hostname = window.location.hostname;
         if (hostname == "www.ic.net.cn") { //ic交易网
              var $li=$("#resultList .result_supply a.result_goCompany[data-name='"+companyInfo.CardName+"']").closest("li");                    
@@ -1021,24 +1002,18 @@ function ICInjectJS(supplierData) {
                    $("#label-info-tips").show();
                    console.log("获取供应商名单信息异常!" );
                 }
-
-
-              //渲染常用标签
-              try{
-                  var CommonLabels=window.external.GetLabelList();
-                  if(!!CommonLabels&&!!JSON.parse(CommonLabels).length>0){
-                      CommonLabels=JSON.parse(CommonLabels);
-                       var htmlStr=[];
-                        $.each(CommonLabels,function(i,v){
-                           htmlStr.push('<li style="background-color:'+v.BackgroundColor+'" data-id="'+v.ID+'">\
-                                            <span class="label-content">'+v.Name+'</span>\
-                                         </li>')
-                        })
-                        $("#label-often-content").html(htmlStr.join(""));
-                  }
-               }catch(err){
-                   console.log(String(err));
-               }   
+                 //渲染常用标签
+               var supplierData=localGet("injectSupplierData");                     
+               if(!!supplierData.Labels&&supplierData.Labels.length>0){
+                    var htmlStr=[];
+                    $.each(supplierData.Labels,function(i,v){
+                       htmlStr.push('<li style="background-color:'+v.BackgroundColor+'" data-id="'+v.ID+'">\
+                                        <span class="label-content">'+v.Name+'</span>\
+                                     </li>')
+                    })
+                    $("#label-often-content").html(htmlStr.join(""));
+               }
+              
             }else{//华强电子网
                //渲染公司标签
                 var companyName=$(this).closest("td.j-company-td").find("a.company").attr("cname");
@@ -1061,13 +1036,13 @@ function ICInjectJS(supplierData) {
                 //打印日志
                try{
                   window.external.WriteLog("供应商列表：");
-                  window.external.WriteLog("供应商列表："+JSON.stringify(suppliers));
+                  window.external.WriteLog(JSON.stringify(suppliers));
                }catch(err){
-                   console.log(String("供应商列表："+String(err)));
+                   console.log(String(err));
                }
 
 
-                 if(!!suppliers&&suppliers.length>0){
+                if(suppliers.length>0){
                     $.each(suppliers,function(i,v){
                         if(v.CardName==companyName){
                             data=v;
@@ -1105,23 +1080,17 @@ function ICInjectJS(supplierData) {
                    $("#label-info-tips").show();
                    console.log("获取供应商名单信息异常!" );
                 }
-
-               //渲染常用标签
-              try{
-                  var CommonLabels=window.external.GetLabelList();
-                  if(!!CommonLabels&&!!JSON.parse(CommonLabels).length>0){
-                      CommonLabels=JSON.parse(CommonLabels);
-                       var htmlStr=[];
-                        $.each(CommonLabels,function(i,v){
-                           htmlStr.push('<li style="background-color:'+v.BackgroundColor+'" data-id="'+v.ID+'">\
-                                            <span class="label-content">'+v.Name+'</span>\
-                                         </li>')
-                        })
-                        $("#label-often-content").html(htmlStr.join(""));
-                  }
-               }catch(err){
-                   console.log(String(err));
-               }                     
+                 //渲染常用标签
+               var supplierData=localGet("injectSupplierData");
+               if(!!supplierData.Labels&&supplierData.Labels.length>0){
+                   var htmlStr=[];
+                   $.each(supplierData.Labels,function(i,v){
+                       htmlStr.push('<li style="background-color:'+v.BackgroundColor+'" data-id="'+v.ID+'">\
+                                        <span class="label-content">'+v.Name+'</span>\
+                                     </li>')
+                   })
+                    $("#label-often-content").html(htmlStr.join(""));
+               }                    
             }                           
             $("#modal-label").modal("show");
       })
@@ -1187,7 +1156,6 @@ function ICInjectJS(supplierData) {
 
     //贴一个新增自定义标签
     $("#paste-btn").click(function(){
-        var isRpeat=false;
         var txt= $.trim($("#brand-text").val());
         if(!txt){
             alert("标签文本不能为空")
@@ -1195,12 +1163,10 @@ function ICInjectJS(supplierData) {
         }
         
         //常用标签判断
-        var commonLabels=[];
-        $("#label-often-content  .label-content").each(function(i,span){
-            companyLabels.push($(this).text())
-        })
-         $.each(commonLabels,function(i,v){
-            if(v==txt){
+        var supplierData=localGet("injectSupplierData");
+        var isRpeat=false;
+        $.each(supplierData.Labels,function(i,v){
+            if(v.Name==txt){
                 isRpeat=true;
                 return false;
             }
@@ -1325,10 +1291,10 @@ function ICInjectJS(supplierData) {
         try {
             var jsonData = window.external.SaveSupplierInfo(JSON.stringify(data));
 //             var jsonData =JSON.stringify({
-//                         "CardName":"深圳市福田区广泰源电子经营部",//公司名称
+//                         "CardName":"深圳市安富捷电子有限公司",//公司名称
 //                         "IsCollect":1,//是否已收藏，0-未收藏、1-已收藏
 //                         "IsBlack":0,//是否拉黑，0-未拉黑、1-已拉黑
-//                         "Remark":"一些描述信息",//公司描述
+//                         "Remark":"深圳市安富捷电子有限公司的一些描述信息",//公司描述
 //                         "Labels":[
 //                             {
 //                                 "ID":1,//标签编号
@@ -1344,8 +1310,20 @@ function ICInjectJS(supplierData) {
 //              }); 
 
 
-            if (!!jsonData) {        
-               singleRenderWebSiteList(JSON.parse(jsonData));
+            if (!!jsonData) {
+                jsonData=JSON.parse(jsonData);
+
+               //保存成功后会返回这个公司信息的json格式化数据，出错则返回空字符串""；成功后需要根据公司中的标签在总标签列表（常用标签）中反查是否存在（根据标签ID），如果不存在则需要将此标签写入到中标签列表（常用标签）中
+               var supplierData=localGet("injectSupplierData");             
+               var initLabels=JSON.parse(JSON.stringify(supplierData.Labels)); 
+               var newLabels=JSON.parse(JSON.stringify(jsonData.Labels)); 
+                for (let i = 0; i < newLabels.length; i++) {
+                    initLabels.push(newLabels[i])
+                }             
+               supplierData.Labels=uniqueArr(initLabels);
+               localSave("injectSupplierData",JSON.stringify(supplierData));
+              
+               singleRenderWebSiteList(jsonData);
                $("#modal-label").modal("hide");
             } else {
                 console.log("保存失败！");
