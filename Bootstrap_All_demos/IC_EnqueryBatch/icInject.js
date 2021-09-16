@@ -69,6 +69,15 @@ function ICInjectJS(supplierData) {
     var tbc=JSON.parse(supplierData).ShowConfirmedQuote;//显示待确认报价，0-不显示、1-显示
     var isBatch=JSON.parse(supplierData).EnabledBatchQuote;//启用批量报价，0-不启用、1-启用
 
+    // 禁用enter键
+    document.onkeydown = function(e) {
+        var ev = (typeof event!= 'undefined') ? window.event : e;
+        if(ev.keyCode == 13) {
+            window.alert("Enter键已禁用刷新");
+            return false;
+        }
+    }
+
     //将字符串解析为对象
     function parseStrObjByRegExpKV(strDes) {//字符串转化为对象（正则表达式方式）parseStrObjByRegExpKV("name=jack&age=20&love=lily");
         var obj = {};
@@ -1257,7 +1266,8 @@ function ICInjectJS(supplierData) {
     $(".save-quote-btn").click(function(){
         var isTbc = parseInt($(this).attr("data-tbc"));
         var data = parseStrObjByRegExpKV(decodeURIComponent($("#formData").serialize().replace(/\+/g, ''), true));
-        data.IsTobeConfirmed=isTbc;       
+        data.IsTobeConfirmed=isTbc;    
+        data.Supplier=$("#supplier-name").text();  
         var Contacts = [];
         var hostname = window.location.hostname;
         if (hostname == "www.ic.net.cn") { //ic交易网
