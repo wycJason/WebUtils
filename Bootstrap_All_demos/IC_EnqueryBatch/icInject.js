@@ -87,6 +87,15 @@ function ICInjectJS(supplierData) {
         return obj;
     }
 
+    //RGB转16进制
+    function rgb2hex(rgb) {
+        rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+        function hex(x) {
+            return ("0" + parseInt(x).toString(16)).slice(-2);
+        }
+        return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+    }
+
     //本地存储更新Labels,数组去重，主键ID
      function uniqueArr(arr){
         let result = {};
@@ -1345,6 +1354,13 @@ function ICInjectJS(supplierData) {
             var id=$(this).attr("data-id");
             var name=$(this).find(".label-content").text();
             var backgroundColor=$(this).css("background-color");
+
+             if(!!backgroundColor){
+                 backgroundColor=rgb2hex(backgroundColor);
+             }else{
+                  backgroundColor="#1476F6";
+             }   
+
             Labels.push({
                 "ID":id,//标签编号
                 "Name":name,//标签名
@@ -1441,16 +1457,16 @@ function ICInjectJS(supplierData) {
      layui.use(function(){
         var colorpicker = layui.colorpicker;
         colorpicker.render({
-        elem: '#label-color-picker'
-        ,color: '#1476F6'
-        ,predefine: true // 开启预定义颜色
-        ,colors: ["#1476F6", "#F67614", "#818181"] //自定义预定义颜色项
-        ,change: function(color){ //颜色改变的回调
-         //   layer.tips('选择了：'+ color);
-        }
-        ,done: function(color){
-           $("#label-color-picker").attr("data-color", color)
-        }
+            elem: '#label-color-picker'
+            ,color: '#1476F6'
+            ,predefine: true // 开启预定义颜色
+            ,colors: ["#1476F6", "#F67614", "#818181"] //自定义预定义颜色项
+            ,change: function(color){ //颜色改变的回调
+             //   layer.tips('选择了：'+ color);
+            }
+            ,done: function(color){
+               $("#label-color-picker").attr("data-color", color)
+            }
       });
    })
 
