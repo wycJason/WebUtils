@@ -872,7 +872,7 @@ function ICInjectJS(supplierData) {
                      var remark= $li.find(".result_supply a.result_goCompany").attr("data-remark");
                      $('#modal-quote textarea[name="Remark"]').val(remark);
                      $supplier= $li.find(".result_supply");
-                     var name=$supplier.find(".layer_companyName").text();
+                     var name=$supplier.find(".detailLayer>.layer_left>.layer_companyName").text();
                      var address=$supplier.find(".company_address2").text();
                      var model=$("#search_Name").text();
                      var tels=[];
@@ -1316,7 +1316,8 @@ function ICInjectJS(supplierData) {
             $.each(contacterList, function(i, v) {
                 var contacterInfo = v.split(":");
                 Contacts.push({ CntctName: contacterInfo[0].replace("+", ""), Tel1: contacterInfo[1] })
-            })   
+            });   
+            data.Source="IC交易网";
         }else{//华强电子网            
              //组装联系人列表 
             var cid=$(this).attr("data-cid");
@@ -1325,7 +1326,8 @@ function ICInjectJS(supplierData) {
             $.each(cts, function(i, v) {
                 var m = v.split(" ");
                 Contacts.push({ CntctName: m[1] || cc.name, Tel1: m[0] || cc.mphone })
-            })
+            });
+            data.Source="华强电子网";
         }
          data.Contacts=Contacts;
          console.log("公司报价",data);
