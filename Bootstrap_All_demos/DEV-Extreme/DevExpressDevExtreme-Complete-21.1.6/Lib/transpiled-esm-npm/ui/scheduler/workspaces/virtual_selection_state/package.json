@@ -1,0 +1,5 @@
+{
+  "sideEffects": false,
+  "main": "../../../../cjs/ui/scheduler/workspaces/virtual_selection_state.js",
+  "module": "../../../../esm/ui/scheduler/workspaces/virtual_selection_state.js"
+}

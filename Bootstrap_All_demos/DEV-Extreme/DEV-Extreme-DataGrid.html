@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DevExtreme Demo</title>
+    <link rel="stylesheet" href="./DevExpressDevExtreme-Complete-21.1.6/Lib/css/dx.light.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+
+    <body class="dx-viewport">
+        <a href="https://js.devexpress.com/">DevExtreme官方文档</a><br><br>
+        <button id="btn">获取表格数据</button>
+        <div id="dataGrid"></div>
+    </body>
+    <script src="./DevExpressDevExtreme-Complete-21.1.6/Lib/js/jquery.min.js"></script>
+    <script src="./DevExpressDevExtreme-Complete-21.1.6/Lib/js/dx.all.js"></script>
+    <script src="./DevExpressDevExtreme-Complete-21.1.6/Lib/js/localization/dx.messages.zh.js"></script>
+    <script src="./index.js"></script>
+    <script>
+        DevExpress.localization.locale(navigator.language); //国际化
+        $(function() {
+            var $dataGrid = $("#dataGrid");
+            $dataGrid.dxDataGrid({
+                dataSource: employees,
+                // keyExpr: "EmployeeID",
+                dateSerializationFormat: "yyyy-MM-dd",
+                showBorders: true,
+                rowAlternationEnabled: true,
+                hoverStateEnabled: true,
+                disabled: false,
+                paging: {
+                    pageSize: 20
+                },
+                pager: {
+                    visible: true,
+                    showPageSizeSelector: false,
+                    allowedPageSizes: [10, 25, 50, 100],
+                    showInfo: true,
+                    showNavigationButtons: true,
+                    displayMode: "adaptive", //'adaptive' | 'compact' | 'full'
+                    //  infoText: "显示第 {0}页，总共{1}页，共 {2} 条记录",
+                },
+                columns: [{
+                    dataField: "FullName",
+                    caption: "全称",
+                    // dataType: "string",
+                    allowEditing: false,
+                    customizeText: function({
+                        groupInterval,
+                        target,
+                        value,
+                        valueText
+                    }) {
+                        //  console.log(groupInterval, target, value, valueText)
+                        return value;
+                    },
+                    headerCellTemplate: function($container, params) {
+                        console.log(arguments)
+                        $container.append('<span clsss="header-column">' + params.column.caption + '</span>');
+                    },
+                }, {
+                    dataField: "PostalCode",
+                    caption: "邮政编码",
+                    dataType: "number",
+                    alignment: "left",
+                    validationRules: [{
+                        type: "required"
+                    }, {
+                        type: "pattern",
+                        message: '请输入5位正确的邮政编码',
+                        pattern: /^\d{5}$/ig
+                    }]
+                }, {
+                    dataField: "Position",
+                    caption: "职位",
+                    // dataType: "string",
+                }, {
+                    dataField: "BirthDate",
+                    caption: "出生日期",
+                    dataType: "date",
+                }, {
+                    dataField: "HireDate",
+                    dataType: "date",
+                    caption: "入职日期"
+                }, {
+                    dataField: "Country",
+                    caption: "国家",
+                    // dataType: "string",
+                }, {
+                    dataField: "City",
+                    caption: "城市",
+                    //  dataType: "string",
+                }, {
+                    dataField: "StateID",
+                    caption: "地区",
+                    dataType: "number",
+                    lookup: {
+                        dataSource: states,
+                        displayExpr: "Name",
+                        valueExpr: "ID"
+                    }
+                }],
+                allowColumnReordering: false,
+                allowColumnResizing: true,
+                columnAutoWidth: true,
+                editing: {
+                    allowUpdating: true,
+                    allowAdding: true,
+                    allowDeleting: true,
+                    confirmDelete: true,
+                    useIcons: false,
+                    mode: 'cell', // 'batch'| 'row' | 'cell' | 'form' | 'popup'
+                    startEditAction: "click", //'click' | 'dblClick'
+                    // texts: {
+                    //     addRow: "添加行",
+                    //     cancelAllChanges: "放弃更改",
+                    //     cancelRowChanges: "取消",
+                    //     confirmDeleteMessage: "您确定要删除此行吗?",
+                    //     confirmDeleteTitle: "",
+                    //     deleteRow: "删除",
+                    //     editRow: "编辑",
+                    //     saveAllChanges: "保存更改",
+                    //     saveRowChanges: "保存",
+                    //     undeleteRow: "恢复",
+                    //     validationCancelChanges: "取消更改"
+                    // },
+                },
+                sorting: {
+                    mode: "none" //"single" or "multiple" | "none"
+                }
+            });
+
+
+            $("#btn").click(function() {
+                var dataSource = $("#dataGrid").dxDataGrid("option", "dataSource");
+                console.log("数据源：", dataSource)
+            })
+        });
+    </script>
+</body>
+
+</html>

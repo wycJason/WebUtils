@@ -1,0 +1,1 @@
+export var POPOVER_BOUNDARY_OFFSET = 10;

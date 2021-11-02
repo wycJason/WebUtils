@@ -1,0 +1,103 @@
+﻿<div class="search-panel" >
+    <div class="title">Search for golf courses</div>
+    <div class="search-form" dx-form="{
+         showRequiredMark: false,
+         screenByWidth: getScreen,
+         bindingOptions: {
+             labelLocation: 'responsivenessOptions.searchLabelLocation',
+             formData: 'searchPanel.searchData',
+             'items[1].items[0].editorOptions.min': 'searchPanel.minStartDate',
+             'items[1].items[0].editorOptions.max': 'searchPanel.maxStartDate',
+             'items[1].items[1].editorOptions.min': 'searchPanel.minEndDate',
+             'items[1].items[1].editorOptions.max': 'searchPanel.maxEndDate',
+             'items[1].items[0].editorOptions.pickerType': 'pickerType',
+             'items[1].items[1].editorOptions.pickerType': 'pickerType'
+         },
+         items: [{
+                 dataField: 'location',
+                 editorType: 'dxSelectBox',
+                 editorOptions: {
+                     height: 36,
+                     dataSource: searchPanel.selectBoxData,
+                     placeholder: '',
+                     displayExpr: 'Name',
+                     valueExpr: 'Id'
+                 }, validationRules: [{
+                     type: 'required',
+                     message: 'Location is required'
+                 }]
+             }, {
+                 itemType: 'group',
+                 colCount: 2,
+                 items: [{
+                         dataField: 'startDate',
+                         cssClass: 'groupItems',
+                         label: {
+                             text: 'From'
+                         },
+                         editorType: 'dxDateBox',
+                         editorOptions: {
+                             adaptivityEnabled: true,
+                             width: '100%',
+                             height: 36
+                         }, validationRules: [{
+                             type: 'required',
+                             message: 'From is required'
+                         }]
+                     }, {
+                         dataField: 'endDate',
+                         cssClass: 'groupItems',
+                         label: {
+                             text: 'To'
+                         },
+                         editorType: 'dxDateBox',
+                         editorOptions: {
+                             adaptivityEnabled: true,
+                             width: '100%',
+                             height: 36
+                         }, validationRules: [{
+                             type: 'required',
+                             message: 'To is required'
+                         }]
+                 }]
+             }, {
+                 itemType: 'group',
+                 colCount: 2,
+                 items: [{
+                         dataField: 'players',
+                         cssClass: 'groupItems',
+                         editorType: 'dxSelectBox',
+                         editorOptions: {
+                             height: 36,
+                             dataSource: searchPanel.numberOfPlayers,
+                             placeholder: '',
+                         }, validationRules: [{
+                             type: 'required',
+                             message: 'Players is required'
+                         }]
+                     }, {
+                         dataField: 'holes',
+                         editorType: 'dxSelectBox',
+                         cssClass: 'groupItems',
+                         editorOptions: {
+                             height: 36,
+                             dataSource: searchPanel.numberOfHoles,
+                             placeholder: '',
+                         }, validationRules: [{
+                             type: 'required',
+                             message: 'Holes is required'
+                         }]
+                 }]
+             }, {
+             template: 'buttonTemplate'
+         }]
+    }">
+        <div data-options="dxTemplate:{ name:'buttonTemplate' }">
+            <div class="search green-button white-text" dx-button="{
+                height: 51,
+                onClick: $parent.goToSearch,
+                text: 'Search Course'
+            }"></div>
+        </div>
+    </div>
+</div>

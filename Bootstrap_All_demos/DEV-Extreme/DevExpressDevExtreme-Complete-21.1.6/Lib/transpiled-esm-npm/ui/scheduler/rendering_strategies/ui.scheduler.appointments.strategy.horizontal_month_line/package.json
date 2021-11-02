@@ -1,0 +1,5 @@
+{
+  "sideEffects": false,
+  "main": "../../../../cjs/ui/scheduler/rendering_strategies/ui.scheduler.appointments.strategy.horizontal_month_line.js",
+  "module": "../../../../esm/ui/scheduler/rendering_strategies/ui.scheduler.appointments.strategy.horizontal_month_line.js"
+}

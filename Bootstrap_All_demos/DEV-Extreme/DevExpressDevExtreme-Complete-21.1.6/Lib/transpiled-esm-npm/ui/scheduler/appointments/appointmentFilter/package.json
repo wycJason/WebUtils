@@ -1,0 +1,5 @@
+{
+  "sideEffects": false,
+  "main": "../../../../cjs/ui/scheduler/appointments/appointmentFilter.js",
+  "module": "../../../../esm/ui/scheduler/appointments/appointmentFilter.js"
+}

@@ -1,0 +1,130 @@
+﻿<div class="search-page page">
+    <div class="responsive-search" dx-responsive-box="{
+        rows: [
+            { baseSize: 109, screen: 'lg sm md' },
+            { baseSize: 756, screen: 'lg sm md' },
+            { ratio: 1 }
+        ],
+        cols: [
+            { baseSize: 475, ratio: 0 },
+            { baseSize: 550, ratio: 0 }
+        ],
+        screenByWidth: getScreen,
+        singleColumnScreen: 'xs'
+    }">
+        <div class="info-search" ng-controller="SearchPanelCtrl" data-options="dxItem: {
+            location: [{
+                row: 0,
+                col: 0,
+                screen: 'lg md sm'
+            }, {
+                row: 0,
+                col: 0,
+                screen: 'xs'
+        }]}">
+            <div class="info">
+                <div class="address name">{{search.clubs[0].City.Name}}, {{search.clubs[0].City.StateProvince}}, {{search.clubs[0].City.Country}}</div>
+                <div class="details">{{search.date}}</div>
+                <div class="details">{{search.params.players}} players, {{search.params.holes}} holes</div>
+            </div>
+        </div>
+        <div class="info-search" ng-controller="SearchPanelCtrl" data-options="dxItem: {
+            location: [{
+                row: 0,
+                col: 1,
+                screen: 'lg md sm'
+            }, {
+                row: 1,
+                col: 0,
+                screen: 'xs'
+        }]}">
+            <div class="right-side white-text green-button" dx-button="{
+                width: 183,
+                height: 41,
+                onClick: showChangeSearch,
+                text: 'Change Search'
+            }"></div>
+            <div class="change-search" dx-popup="{
+                fullScreen: false,
+                showTitle: false,
+                shading: false,
+                dragEnabled:false,
+                deferRendering: false,
+                closeOnOutsideClick: true,
+                width: '100%',
+                height: '100%',
+                contentTemplate: 'searchTemplate',
+                bindingOptions: {
+                    visible:'searchPanel.changeSearchVisible',
+                    'position.offset' : 'responsivenessOptions.offset',
+                    'position.of': 'responsivenessOptions.of'
+                }
+            }">
+                <div ng-class="{'dx-responsivebox-screen-xs': !responsivenessOptions.largeScreen}" data-options="dxTemplate:{ name: 'searchTemplate' }">
+                    <div class="search-container" ng-include="'partials/searchPanel.html'"></div>
+                </div>
+            </div>
+        </div>
+        <div class="result-search content" ng-style="{'visibility' : search.clubs ? 'visible' : 'hidden'}" ng-controller="BookCtrl" data-options="dxItem: {
+            location: [{
+                row: 1,
+                col: 0,
+                colspan: 2,
+                screen: 'lg md sm'
+            }, {
+                row: 2,
+                col: 0,
+                screen: 'xs'
+                 }]}">
+            <div class="clubs" ng-class="{'big-padding':search.clubs.length == 2}">
+                <div class="club" ng-repeat="club in search.clubs">
+                    <div class="image" ng-style="{'background-image':'url({{club.Image}})'}"  ng-click="goToInfo(club.Id)"></div>
+                    <div class="info">
+                        <div class="name" ng-click="goToInfo(club.Id)">{{club.Name}}</div>
+                        <div class="description">{{club.HoleCount}} holes, {{club.Price}} per player</div>
+                        <div class="address">{{club.City.Name}}, {{club.City.StateProvince}}</div>
+                        <div class="button white-text" dx-button="{
+                            height: 41,
+                            onClick: 'popupBook()',
+                            text: 'Book {{club.Name}}'
+                        }"></div>
+                    </div>
+                </div>
+                <div ng-include="'partials/book.html'"></div>
+            </div>
+            <div class="scheduler" dx-scheduler="{
+                 height: 500,
+                 groups: ['clubId'],
+                 editing: false,
+                 startDayHour: 6,
+                 showAllDayPanel: false,
+                 onAppointmentDblClick: editAppointment,
+                 endDayHour: 24,
+                 appointmentTooltipTemplate: 'appointmentTooltipTemplate',
+                 bindingOptions: {
+                     views: 'responsivenessOptions.views',
+                     currentView: 'responsivenessOptions.currentView',
+                     currentDate: 'search.currentDate',
+                     dataSource: 'reservationData',
+                     resources: 'resourcesData'
+                 }
+            }" dx-item-alias="appointment">
+                <div class="tooltip-template" data-options="dxTemplate: {name: 'appointmentTooltipTemplate'}">
+                    <div class="caption">Course Booked</div>
+                    <span>{{appointment.startDate | date : 'h:mm a'}} -</span>
+                    <span>{{appointment.endDate | date : 'h:mm a'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div dx-load-panel="{
+        message: 'Loading...',
+        shading: true,
+        showPane: false,
+        shadingColor: '#f6f9f5',
+        position:{ my: 'top', at: 'top', of: '.search-page' },
+        bindingOptions: {
+            visible: 'search.loadingData'
+        }
+    }"></div>
+</div>

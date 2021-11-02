@@ -1,0 +1,377 @@
+.responsivebox-layout.dx-responsivebox-screen-xs .content {
+  width: 100%;
+}
+.dx-responsivebox-screen-xs .logo-container {
+  width: 73%;
+  background: #1d1d1d;
+}
+.dx-responsivebox-screen-xs .logo-container .logo {
+  margin-left: 20px;
+}
+.dx-responsivebox-screen-xs .text-header {
+  width: 27%;
+  background: #1d1d1d;
+}
+.dx-responsivebox-screen-xs .log-in {
+  width: 47px;
+  height: 47px;
+  background: url(../content/header/login_mobile.png);
+}
+.dx-responsivebox-screen-xs .user-authorized {
+  width: 47px;
+  height: 47px;
+  background: url(../content/header/user_authorized_mobile.png) no-repeat;
+}
+.dx-responsivebox-screen-xs .login-item {
+  width: 100%;
+}
+.dx-responsivebox-screen-xs .login-item .dx-texteditor {
+  margin-top: 3px;
+}
+.dx-responsivebox-screen-xs .dx-layout-manager .groupItems {
+  width: 100%;
+  margin-left: 0;
+}
+.dx-responsivebox-screen-xs .padding-password {
+  margin-top: 0;
+}
+.dx-responsivebox-screen-xs .authorization {
+  margin: 30px 20px 0 0;
+}
+.dx-responsivebox-screen-xs .powered-by {
+  width: 0;
+  visibility: hidden;
+  margin-left: 0;
+}
+.dx-responsivebox-screen-xs .search-container {
+  display: block;
+  width: 100%;
+  height: 385px;
+  margin-top: 0;
+}
+.dx-responsivebox-screen-xs .search-container .title {
+  margin-left: 0;
+  padding-top: 18px;
+}
+.dx-responsivebox-screen-xs .search-container .search {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.dx-responsivebox-screen-xs .search-container .search-panel > .title {
+  visibility: visible;
+  font-size: 20px;
+  height: auto;
+  font-weight: 300;
+  margin-left: 0;
+  padding: 20px 0 0 0;
+}
+.dx-responsivebox-screen-xs .title {
+  text-align: center;
+}
+.dx-responsivebox-screen-xs .dx-field-item-label-content {
+  text-align: left;
+}
+.dx-responsivebox-screen-xs .dx-field-item-label-location-top,
+.dx-responsivebox-screen-xs .name-club {
+  text-align: center;
+}
+.dx-responsivebox-screen-xs .search-panel .search-form {
+  text-align: center;
+  margin-top: 22px;
+  width: 88%;
+}
+.dx-responsivebox-screen-xs .search-panel .search-form .dx-layout-manager .dx-field-item:not(.dx-first-row) {
+  padding-top: 7px;
+}
+.dx-responsivebox-screen-xs .search-panel .search-form .dx-field-item-label-location-top {
+  margin-bottom: 2px;
+}
+.dx-responsivebox-screen-xs #login-form {
+  margin-top: 0;
+}
+.dx-responsivebox-screen-xs #login-form .dx-box-item {
+  padding-left: 0;
+}
+.dx-responsivebox-screen-xs .buttons-on-popup.authorized {
+  padding-top: 50px;
+}
+.dx-responsivebox-screen-xs .buttons-on-popup {
+  width: 100%;
+  padding-top: 25px;
+  padding-right: 0;
+}
+.dx-responsivebox-screen-xs .buttons-on-popup .button-popup {
+  width: 100%;
+  height: 40px;
+  margin: 0;
+}
+.dx-responsivebox-screen-xs .buttons-on-popup .button-popup:first-child {
+  margin-bottom: 10px;
+}
+.dx-responsivebox-screen-xs .banner {
+  background: url(../content/home/club1-home-banner.jpg) no-repeat center top;
+  background-size: cover;
+  height: auto;
+}
+.dx-responsivebox-screen-xs .banner .banner-container {
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px 0;
+  width: 88%;
+}
+.dx-responsivebox-screen-xs .banner .banner-container .description {
+  display: block;
+}
+.dx-responsivebox-screen-xs .banner .banner-container .description .text {
+  width: auto;
+  margin-left: 0;
+}
+.dx-responsivebox-screen-xs .banner .banner-container .offer {
+  margin-left: 0;
+}
+.dx-responsivebox-screen-xs .banner .banner-container .offer-name {
+  width: auto;
+  padding-bottom: 15px;
+  margin-left: 0;
+}
+.dx-responsivebox-screen-xs .banner .banner-container .raiting {
+  margin: 0 auto;
+  text-align: center;
+}
+.dx-responsivebox-screen-xs .banner .banner-container .more-info {
+  left: 0;
+  top: 30px;
+  margin-bottom: 50px;
+  width: 85%;
+  height: 50px;
+}
+.dx-responsivebox-screen-xs .banner .banner-container .more-info.dx-button .dx-button-text {
+  font-size: 18px;
+}
+.dx-responsivebox-screen-xs .banner .banner-container .top-side {
+  height: auto;
+}
+.dx-responsivebox-screen-xs .banner .banner-container .bottom-side {
+  height: auto;
+}
+.dx-responsivebox-screen-xs .info-clubs {
+  margin-top: 0;
+  padding-top: 18px;
+  height: 485px;
+  text-align: center;
+}
+.dx-responsivebox-screen-xs .info-clubs .best-title {
+  margin: 0 auto;
+  width: 280px;
+  height: 48px;
+  background: url(../content/home/title_mobile.png) no-repeat right;
+  font-size: 36px;
+}
+.dx-responsivebox-screen-xs .info-clubs .best-clubs {
+  margin-top: 10px;
+}
+.dx-responsivebox-screen-xs .dx-button-has-text .dx-button-content {
+  padding: 7px 0 8px;
+}
+.dx-responsivebox-screen-xs .club {
+  display: block;
+}
+.dx-responsivebox-screen-xs .club .image {
+  width: 87.5%;
+}
+.dx-responsivebox-screen-xs .club:nth-child(3) {
+  height: 0;
+  visibility: hidden;
+  display: block;
+  padding: 0;
+}
+.dx-responsivebox-screen-xs .club:nth-child(4) {
+  height: 0;
+  visibility: hidden;
+  display: block;
+  padding: 0;
+}
+.dx-responsivebox-screen-xs .club:nth-child(5) {
+  height: 0;
+  visibility: hidden;
+  display: block;
+  padding: 0;
+}
+.dx-responsivebox-screen-xs .club .info {
+  display: inline-block;
+  padding-bottom: 30px;
+}
+.dx-responsivebox-screen-xs .info .button {
+  width: 240px;
+}
+.dx-responsivebox-screen-xs .home-page .left-side {
+  margin: 0 auto;
+  text-align: center;
+  width: 85%;
+  float: none;
+  padding-right: 0;
+}
+.dx-responsivebox-screen-xs .home-page .right-side {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 37px;
+  float: none;
+  padding-bottom: 15px;
+  width: 65%;
+}
+.dx-responsivebox-screen-xs .home-page .widgets .right-side {
+  float: none;
+  padding-top: 0;
+  padding-left: 0;
+  width: 100px;
+}
+.dx-responsivebox-screen-xs .home-page .widgets .left-side {
+  float: none;
+  padding-top: 0;
+  width: 100px;
+}
+.dx-responsivebox-screen-xs .footer {
+  text-align: center;
+}
+.dx-responsivebox-screen-xs .footer .logo {
+  float: none;
+  margin-left: 0;
+}
+.dx-responsivebox-screen-xs .copyright {
+  float: none;
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.dx-responsivebox-screen-xs .info-search {
+  text-align: center;
+  height: auto;
+}
+.dx-responsivebox-screen-xs .info-search .right-side {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 7px;
+  margin-bottom: 20px;
+}
+.dx-responsivebox-screen-xs .info-search .info {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
+}
+.dx-responsivebox-screen-xs .info-search .info .name {
+  font-size: 25px;
+}
+.dx-responsivebox-screen-xs .info-page .description {
+  margin: 20px 0 30px 0;
+  text-align: center;
+}
+.dx-responsivebox-screen-xs .info-page .full-description {
+  padding: 0;
+  text-align: center;
+}
+.dx-responsivebox-screen-xs .result-search .img {
+  height: 210px;
+  width: 100%;
+}
+.dx-responsivebox-screen-xs .result-search .club {
+  margin-right: 0;
+  display: block;
+}
+.dx-responsivebox-screen-xs .result-search .club .name {
+  margin-top: 0;
+  font-weight: 500;
+  font-size: 17px;
+}
+.dx-responsivebox-screen-xs .result-search .club .address {
+  margin-bottom: 12px;
+}
+.dx-responsivebox-screen-xs .result-search .clubs {
+  padding: 22px 0 0 0;
+}
+.dx-responsivebox-screen-xs .result-search .scheduler {
+  padding: 0 20px 30px 20px;
+}
+.dx-responsivebox-screen-xs .dx-layout-manager .dx-field-item:not(.dx-first-col) {
+  margin-left: 0;
+}
+.dx-responsivebox-screen-xs .booking-date {
+  width: 100%;
+}
+.dx-responsivebox-screen-xs .booking-details {
+  width: 100%;
+}
+.template-book.dx-responsivebox-screen-xs .dx-item.dx-box-item:nth-child(2) {
+  padding-bottom: 0;
+}
+.template-book.dx-responsivebox-screen-xs .dx-dropdowneditor-button-visible .dx-texteditor-input {
+  padding-right: 0;
+}
+.template-book.dx-responsivebox-screen-xs .buttons-on-popup {
+  padding-top: 15px;
+}
+.template-book.dx-responsivebox-screen-xs .buttons-on-popup.authorized {
+  padding-top: 37px;
+}
+.template-book.dx-responsivebox-screen-xs .name-club {
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+.template-book.dx-responsivebox-screen-xs .title {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+.dx-responsivebox-screen-lg.responsive-home > div > .dx-box-item:first-child,
+.dx-responsivebox-screen-md.responsive-home > div > .dx-box-item:first-child,
+.dx-responsivebox-screen-sm.responsive-home > div > .dx-box-item:first-child {
+  text-align: center;
+  margin: 0 auto;
+}
+.dx-responsivebox-screen-lg.responsive-home > div > .dx-box-item:nth-child(3),
+.dx-responsivebox-screen-md.responsive-home > div > .dx-box-item:nth-child(3),
+.dx-responsivebox-screen-sm.responsive-home > div > .dx-box-item:nth-child(3) {
+  text-align: center;
+  margin: 0 auto;
+}
+.dx-responsivebox-screen-lg .page {
+  width: 1024px;
+  margin: 0 auto;
+}
+.dx-responsivebox-screen-md .page {
+  width: 1024px;
+  margin: 0 auto;
+}
+.dx-responsivebox-screen-sm .page {
+  width: 1024px;
+  margin: 0 auto;
+}
+.login-popup .dx-popup-content .dx-template-wrapper.dx-responsivebox-screen-xs {
+  height: 238px;
+}
+.login-popup .dx-popup-content .dx-template-wrapper.dx-responsivebox-screen-xs.log-out-container {
+  height: 171px;
+}
+.book-popup .template-book.dx-responsivebox-screen-xs {
+  height: 387px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+@media screen and (max-width: 767px) {
+  .change-search {
+    height: 100%;
+  }
+  .change-search .dx-popup-content {
+    padding: 0;
+  }
+  .change-search .dx-overlay-content {
+    max-width: 100%;
+    max-height: 385px;
+    min-height: 385px;
+    min-width: 100%;
+  }
+  .popup .dx-toolbar-label > div {
+    font-size: 16px;
+  }
+  .popup .dx-popup-title.dx-toolbar .dx-toolbar-item {
+    padding-right: 0;
+  }
+}

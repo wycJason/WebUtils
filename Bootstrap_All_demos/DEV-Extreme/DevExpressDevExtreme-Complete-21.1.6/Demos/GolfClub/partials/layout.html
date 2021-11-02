@@ -1,0 +1,137 @@
+﻿<div class="site-content dx-viewport" ng-class="{'background-header': lt.page === '/home'}" ng-style="{'min-width' : responsivenessOptions.largeScreen ? '1024px' : '100%'}">
+    <div class="responsivebox-layout" dx-responsive-box="{
+        height: 'auto',
+        rows: [
+            { ratio: 1 },
+            { ratio: 1 },
+            { ratio: 1 }
+        ],
+        onOptionChanged: setResponsivenessOptions,
+        screenByWidth: getScreen
+    }">
+        <div data-options="dxItem: {
+             location: [{
+                 row: 0,
+                 col: 0,
+                 colspan: 1,
+                 screen: 'lg md sm xs'
+             }]
+        }">
+            <header class="content">
+                <div class="logo-container">
+                    <div class="logo" ng-click="homePage()"></div>
+                </div>
+                <div class="text-header">
+                    <div class="powered-by">
+                        POWERED BY <br>
+                        DEVEXTREME WIDGETS AND ANGULARJS FRAMEWORK
+                    </div>
+                    <div tabindex="0" ng-class="{'log-in': !lt.userName, 'user-authorized': lt.userName }" class= "authorization" ng-keypress="keyPressOnLogin($event)" ng-click="showLogin()"></div>
+                </div>
+                <div class="popup login-popup" dx-popup="{
+                    fullScreen: false,
+                    dragEnabled: false,
+                    showCloseButton: true,
+                    closeOnOutsideClick: true,
+                    maxWidth: 415,
+                    bindingOptions: {
+                        visible:'lt.loginVisible',
+                        height: 'responsivenessOptions.loginHeight',
+                        title: 'lt.loginTitle',
+                        contentTemplate: 'lt.loginTemplate'
+                    }
+                }">
+                    <div ng-class="{'dx-responsivebox-screen-xs': !responsivenessOptions.largeScreen}" ng-if="lt.loginVisible" data-options="dxTemplate:{ name: 'loginTemplate' }">
+                        <div id="login-form" dx-form="{
+                            formData: lt,
+                            labelLocation: 'top',
+                            showRequiredMark: false,
+                            onEditorEnterKey: showWelcome,
+                            screenByWidth: getScreen,
+                            bindingOptions: {
+                                'formData.loginValue': 'lt.loginValue',
+                                'formData.passwordValue': 'lt.passwordValue'
+                            },
+                            items: [{
+                                    dataField: 'loginValue',
+                                    label: {
+                                        text: 'Login'
+                                    },
+                                    cssClass: 'login-item',
+                                    editorOptions: {
+                                        height: 35
+                                    }, validationRules: [{
+                                        type: 'required',
+                                        message: 'Login is required'
+                                    }]
+                                }, {
+                                    dataField: 'passwordValue',
+                                    cssClass: 'padding-password login-item',
+                                    label: {
+                                        text: 'Password'
+                                    },
+                                    editorOptions: {
+                                        height: 35,
+                                        mode: 'password'
+                                    }, validationRules: [{
+                                        type: 'required',
+                                        message: 'Password is required'
+                                    }]
+                            }]
+                        }">
+                        </div>
+                        <div class="buttons-on-popup">
+                            <div class="button-popup white-text green-button" dx-button="{
+                                text: 'Login',
+                                onClick: showWelcome
+                             }"></div>
+                            <div class="button-popup cancel" dx-button="{
+                                text: 'Cancel',
+                                onClick: showLogin
+                            }"></div>
+                        </div>
+                    </div>
+                    <div class="log-out-container" ng-if="lt.loginVisible" ng-class="{'dx-responsivebox-screen-xs': !responsivenessOptions.largeScreen}" data-options="dxTemplate:{ name: 'logoutTemplate' }">
+                        <div class="name" title="{{lt.userName}}">{{lt.userName}}</div>
+                        <div class="buttons-on-popup authorized">
+                            <div class="button-popup white-text" dx-button="{
+                                text: 'Logout',
+                                type: 'danger',
+                                onClick: logOut
+                            }"></div>
+                            <div class="button-popup cancel" dx-button="{
+                                text: 'Cancel',
+                                onClick: showLogin
+                            }"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div data-options="dxItem: {
+             location: [{
+                 row: 1,
+                 col: 0,
+                 colspan: 1,
+                 screen: 'lg md sm xs'
+             }]
+        }">
+            <div class="views" ng-view></div>
+        </div>
+        <div data-options="dxItem: {
+             location: [{
+                 row: 1,
+                 col: 0,
+                 colspan: 1,
+                 screen: 'lg md sm xs'
+             }]
+        }">
+            <footer class="content">
+                <div class="footer">
+                    <a class="logo" target="_blank" href="http://js.devexpress.com/"></a>
+                    <div class="copyright">Copyright&nbsp;&copy;&nbsp;{{currentDate | date:'yyyy'}} Developer Express Inc.</div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>

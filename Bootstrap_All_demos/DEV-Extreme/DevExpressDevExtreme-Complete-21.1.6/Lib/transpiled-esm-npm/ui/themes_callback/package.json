@@ -1,0 +1,5 @@
+{
+  "sideEffects": false,
+  "main": "../../cjs/ui/themes_callback.js",
+  "module": "../../esm/ui/themes_callback.js"
+}

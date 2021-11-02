@@ -1,0 +1,92 @@
+﻿<div class="book-popup popup" dx-popup="{
+    closeOnOutsideClick: false,
+    contentTemplate: 'bookTemplate',
+    fullScreen: false,
+    shading: true,
+    width: '100%',
+    maxWidth: 480,
+    dragEnabled: false,
+    position: { of: window, offset: '0 0' },
+    bindingOptions: {
+        showTitle: 'responsivenessOptions.showTitle',
+        height: 'responsivenessOptions.bookingHeight',
+        visible:'book.bookVisible'
+    }
+}">
+    <div class="template-book" ng-class="{'dx-responsivebox-screen-xs': !responsivenessOptions.largeScreen}" data-options="dxTemplate:{ name: 'bookTemplate' }">
+        <div class="title">Book a Tee Time in</div>
+        <div class="name-club">{{appointmentData.clubName}}</div>
+        <div id="book-form" dx-form="{
+            formData: appointmentData,
+            labelLocation: 'left',
+            showRequiredMark: false,
+            screenByWidth: getScreen,
+            bindingOptions: {
+                'formData.startDate': 'appointmentData.startDate',
+                'formData.endDate': 'appointmentData.endDate',
+                'formData.players': 'appointmentData.players',
+                'formData.notes': 'appointmentData.notes',
+                'items[0].editorOptions.min': 'minDate',
+                'items[0].editorOptions.max': 'maxDate',
+                'items[0].editorOptions.pickerType': 'pickerType',
+                'items[1].editorOptions.pickerType': 'pickerType'
+            },
+            items: [{
+                    dataField: 'startDate',
+                    editorType: 'dxDateBox',
+                    cssClass: 'booking-date',
+                    editorOptions: {
+                        type: 'datetime',
+                        adaptivityEnabled: true,
+                        height: 36,
+                        width: '100%'
+                    }, validationRules: [{
+                        type: 'custom',
+                        reevaluate: true,
+                        validationCallback: timeValidation
+                    }]
+                }, {
+                    dataField: 'endDate',
+                    editorType: 'dxDateBox',
+                    cssClass: 'booking-date',
+                    editorOptions: {
+                        type: 'datetime',
+                        height: 36,
+                        width: '100%',
+                        readOnly: true
+                    }
+                }, {
+                    dataField: 'players',
+                    editorType: 'dxNumberBox',
+                    cssClass: 'booking-details',
+                    editorOptions: {
+                        height: 36,
+                        min: 2,
+                        max: 4
+                    }
+                }, {
+                    dataField: 'notes',
+                    editorType: 'dxTextArea',
+                    cssClass: 'booking-details',
+                    editorOptions: {
+                        height: 55
+                    }
+                }, {
+                    template: 'buttonsTemplate'
+             }]
+        }">
+            <div data-options="dxTemplate:{ name:'buttonsTemplate' }">
+                <div class="buttons-on-popup">
+                    <div class="button-popup white-text green-button" dx-button="{
+                        onClick: $parent.booking,
+                        text: 'Book'
+                    }"></div>
+                    <div class="button-popup cancel" dx-button="{
+                        onClick: $parent.showBook,
+                        text: 'Cancel'
+                    }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

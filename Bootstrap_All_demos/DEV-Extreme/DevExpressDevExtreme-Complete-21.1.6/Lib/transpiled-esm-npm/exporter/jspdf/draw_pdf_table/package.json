@@ -1,0 +1,5 @@
+{
+  "sideEffects": false,
+  "main": "../../../cjs/exporter/jspdf/draw_pdf_table.js",
+  "module": "../../../esm/exporter/jspdf/draw_pdf_table.js"
+}

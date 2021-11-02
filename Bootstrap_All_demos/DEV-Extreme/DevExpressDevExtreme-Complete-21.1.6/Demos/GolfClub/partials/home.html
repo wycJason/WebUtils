@@ -1,0 +1,144 @@
+﻿<div class="home-page">
+    <div class="responsive-home" dx-responsive-box="{
+        rows: [
+            { baseSize: 414, screen: 'lg sm md' },
+            { baseSize: 384, screen: 'lg sm md' },
+            { baseSize: 175, screen: 'lg sm md' },
+            { ratio: 1 },
+            { ratio: 1 }
+        ],
+        cols: [
+            { baseSize: 475, ratio: 0 },
+            { baseSize: 550, ratio: 0 }
+        ],
+        screenByWidth: getScreen,
+        singleColumnScreen: 'xs'
+    }">
+        <div data-options="dxItem: {
+            location: [{
+                row: 0,
+                col: 0,
+                screen: 'lg md sm'
+            }, {
+                row: 0,
+                col: 0,
+                colspan: 2,
+                screen: 'xs'
+                 }]}">
+            <div class="search-container">
+                <div ng-include="'partials/searchPanel.html'" ng-controller="SearchPanelCtrl"></div>
+            </div>
+        </div>
+        <div class="banner" data-options="dxItem: {
+            location: [{
+                row: 0,
+                col: 1,
+                screen: 'lg md sm'
+            }, {
+                row: 1,
+                col: 0,
+                colspan: 2,
+                screen: 'xs'
+                 }]}">
+            <div class="banner-container text-space">
+                <div class="top-side">
+                    <div class="offer">Offer of the day</div>
+                    <div class="offer-name">{{home.offer.Name}} Tee Times</div>
+                </div>
+                <div class="bottom-side">
+                    <div ng-if="home.offer" class="description">
+                        <div class="text">
+                            {{home.offer.Price}} per player<br />
+                            {{home.offer.HoleCount}} holes
+                        </div>
+                        <div class="raiting">
+                            <div class="value" ng-style="{ 'width' : 20 * home.offer.Rating + '%'}"></div>
+                        </div>
+                    </div>
+                    <div class="more-info white-text green-button" ng-if="home.offer" dx-button="{
+                        onClick: moreInfo,
+                        text: 'More info'
+                    }"></div>
+                </div>
+            </div>
+        </div>
+        <div id="info" data-options="dxItem: {
+            location: [{
+                row: 1,
+                col: 0,
+                colspan: 4,
+                screen: 'lg md sm'
+            }, {
+                row: 2,
+                col: 0,
+                screen: 'xs'
+            }]}">
+            <div class="info-clubs">
+                <div class="content">
+                    <div class="best-title">Best Golf Clubs</div>
+                    <div class="best-clubs">
+                        <div class="club" tabindex="0" ng-repeat="club in home.clubs" ng-keypress="keyPressOnClub($event, club)" ng-click="goToInfo(club)">
+                            <div class="image" ng-style="{'background-image':'url({{club.Image}})'}"></div>
+                            <div class="name">{{club.Name}}</div>
+                            <div class="description">{{club.HoleCount}} holes, {{club.Price}} per player</div>
+                            <div class="address">{{club.City.Name}}, {{club.City.StateProvince}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-devextreme" data-options="dxItem: {
+            location: [{
+                row: 2,
+                col: 0,
+                screen: 'lg md sm'
+            }, {
+                row: 3,
+                col: 0,
+                screen: 'xs'
+            }]}">
+            <div class="left-side text-space">
+                <div class="title">Getting Started Today</div>
+                <p>
+                    DevExtreme Subscription includes Optimized HTML5 JavaScript SPA
+                    Framework and 30+ High Performance HTML5 JavaScript Widgets.
+                </p>
+                <a target="_blank" href="https://js.devexpress.com/Download/">Download your free 30-day trial</a>
+            </div>
+        </div>
+        <div class="info-devextreme" data-options="dxItem: {
+            location: [{
+                row: 2,
+                col: 1,
+                screen: 'lg md sm'
+            }, {
+                row: 4,
+                col: 0,
+                screen: 'xs'
+            }]}">
+            <div class="right-side text-space">
+                <p>The following DevExtreme Widgets were used on this page:</p>
+                <div class="widgets">
+                    <div class="left-side text-space">
+                        <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/Scheduler/Overview/">dxScheduler</a>
+                        <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/Popup/Overview/">dxPopup</a>
+                    </div>
+                    <div class="right-side text-space">
+                        <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/Form/Overview/">dxForm</a>
+                        <a target="_blank" href="https://js.devexpress.com/Demos/WidgetsGallery/Demo/Responsive_Box/Overview/">dxResponsiveBox</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div dx-load-panel="{
+        message: 'Loading...',
+        shading: true,
+        showPane: false,
+        shadingColor: '#fff',
+        position:{ of: '#info' },
+        bindingOptions: {
+            visible: 'home.loadingData'
+        }
+    }"></div>
+</div>

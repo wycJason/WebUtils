@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Table(行内编辑)</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-table/bootstrap-table.css" rel="stylesheet">
+</head>
+<body>
+<div style="margin: 20px;">
+    <div class="table-box" style="margin: 20px;">
+        <div id="toolbar">
+            <button id="button" class="btn btn-default">insertRow</button>
+            <button id="getTableData" class="btn btn-default">getTableData</button>
+        </div>
+        <table id="table"></table>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="bootstrap-table/bootstrap-table.js"></script>
+<script src="bootstrapAll/js/bootstrap-table-export.js"></script>
+<script src="bootstrapAll/js/tableExport.js"></script>
+<script src="bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<script>
+    //参考文献 https://www.yisu.com/zixun/121869.html
+    let $table = $('#table');
+    let $button = $('#button');
+    let $getTableData = $('#getTableData');
+
+    $button.click(function() {
+        $table.bootstrapTable('insertRow', {
+            index: 0,
+            row: {
+                id: '',
+                name: '',
+                price: ''
+            }
+        });
+    });
+
+    $table.bootstrapTable({
+        data: [
+            { "id": 1, "name": "Item 1", "price": "￥1" },
+            { "id": 2, "name": "Item 2", "price": "￥2" },
+            { "id": 3, "name": "Item 3", "price": "￥3" }
+        ],
+        toolbar: '#toolbar',
+        clickEdit: true,
+        showToggle: true,
+        pagination: true,       //显示分页条
+        showColumns: true,
+        showPaginationSwitch: true,     //显示切换分页按钮
+        showRefresh: true,      //显示刷新按钮
+        //clickToSelect: true,  //点击row选中radio或CheckBox
+        columns: [{
+            checkbox: true
+        }, {
+            field: 'id',
+            title: 'Item ID'
+        }, {
+            field: 'name',
+            title: 'Item Name'
+        }, {
+            field: 'price',
+            title: 'Item Price'
+        }],
+        /**
+         * @param {点击列的 field 名称} field
+         * @param {点击列的 value 值} value
+         * @param {点击列的整行数据} row
+         * @param {td 元素} $element
+         */
+        onClickCell: function(field, value, row, $element) {
+            console.log("field：",field)
+            console.log("value：",value)
+            console.log("row：",row)
+            console.log("$element：",$element)
+            $element.attr('contenteditable', true);
+            $element.blur(function() {
+                let index = $element.parent().data('index');
+                let tdValue = $element.html();
+
+                saveData(index, field, tdValue);
+            })
+        }
+    });
+
+    $getTableData.click(function() {
+        alert(JSON.stringify($table.bootstrapTable('getData')));
+    });
+
+    function saveData(index, field, value) {
+        $table.bootstrapTable('updateCell', {
+            index: index,       //行索引
+            field: field,       //列名
+            value: value        //cell值
+        })
+    }
+</script>
+</body>
+</html>

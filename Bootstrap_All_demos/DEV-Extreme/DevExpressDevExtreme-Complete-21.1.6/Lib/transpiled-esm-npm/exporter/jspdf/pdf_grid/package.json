@@ -1,0 +1,5 @@
+{
+  "sideEffects": false,
+  "main": "../../../cjs/exporter/jspdf/pdf_grid.js",
+  "module": "../../../esm/exporter/jspdf/pdf_grid.js"
+}
