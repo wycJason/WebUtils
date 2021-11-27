@@ -12110,7 +12110,7 @@ function ICInjectJS(supplierData) {
 
 
     //style 我的自定义样式 (通过http://www.bejson.com/otherformat/css/ 解压编辑，然后再压缩发布即可)
-    var myStyleFile = '.result_company_remark_single{width:928px !important}.layui-colorpicker{padding:0 !important;}.layui-colorpicker-trigger-i,#layui-colorpicker1 .layui-colorpicker-main-input .layui-inline,#layui-colorpicker1 .layui-colorpicker-main-input .layui-btn-container  .layui-btn-primary,#resultList table.list-table td.j-company-td>.company-row2,#rightToTop,#floatNav,.topnav,.HeaderBox,.navigation,#sift_bar,#resultList .result_askPrice,#resultList .result_supply .result_icons,.fixedRB,.footer{display:none !important;}.layui-colorpicker-main-wrapper{height:auto!important;display:none!important;}.hqew-label-btn{height:34px;}.j-company-td{position:relative;padding-left:25px !important;line-height:normal !important;height:60px;}.result-collect-hq{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#F67614;color:white;padding:5px 0;height:50px;}.result-black-hq{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#818181;color:white;padding:5px 0;height:50px;}.info-width{width:90%;}.ic-enquiry{width:90%;}.ic-equire{text-align:right;width:1190px;margin:10px auto 0}.result_id{padding-bottom:2px;}.result_price{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;width:60px;padding-top:2px;padding-left:10px;text-align:center}.result_common{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;width:60px;padding-top:2px;padding-left:10px;text-align:center;}.result_textarea{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;width:280px;padding-top:2px;padding-left:10px;text-align:center}.result_textarea_remark{float:left;overflow:hidden;width:280px;padding-top:2px;padding-left:10px;}.hqew-btn{height:25px;border:0;margin:5px 0 0 5px;border-radius:3px;display:block;background-color:#1057a7;color:#ffffff;float:left;padding:0 10px}.ic-btn{height:24px;line-height:24px;float:left;border-width:0px;overflow:hidden;cursor:pointer;margin-top:7px;background-color:#3C6EC7;color:#ffffff;padding:0 8px;margin-right:8px}.product_quote{padding:3px 8px;color:#EB222B;border:1px solid #EB222B;cursor:pointer;border-radius:3px;}.result_check,.result_id,.result_factory,.result_batchNumber,.result_totalNumber,.result_pakaging,.result_prompt,.result_date,.result_askPrice,.result_son{height:auto  !important;}ul.label-company-title{padding:0;list-style:none;float:left;clear:both;max-height:54px;overflow:hidden;}ul.label-company-title:after{display:block;content:"";clear:both;}ul.label-company-title>li{border-radius:15px;color:white;padding:3px 8px;margin:3px;cursor:pointer;display:inline-block;float:none;}.result_supply{height:auto  !important;line-height:normal  !important;position:relative !important;padding-left:20px !important;min-height:63px;}.result-collect{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#F67614;color:white;padding:5px 0;height:48px;}.result-black{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#818181;color:white;padding:5px 0;height:48px;}.modal-open .modal{overflow-x:auto !important;overflow-y:auto !important;}.modal-header{background:#1476F6;color:white;}.close,.close:hover{color:white;text-shadow:0 1px 0 #fff;filter:alpha(opacity=20);opacity:1;}.color-preview{display:none !important;}.flex-container{display:flex;}.supplier-info{width:423px}.separator{width:2px;margin:0 10px;background:#E5E5E5;}.supplier-quote{width:623px}.flex-container-supplier{display:flex;margin:8px 0;}.supplier-detail{}.supplier-name{font-weight:bold;margin:0 0 6px;font-size:18px;}.supplier-address{}.supplier-contact{margin:20px 0;}.supplier-contact-item{width:100%;}.supplier-contact-item>span{display:inline-block;}.supplier-contact-item>span:nth-child(1){}.supplier-contact-item>span:nth-child(2){}.supplier-contact-item>img{vertical-align:text-bottom;width:18px;}.supplier-remark{}.supplier-company{font-size:16px;margin-top:0;margin-bottom:10px;}.supplier-remark-content{width:100%;height:238px;display:block;padding:6px 12px;font-size:14px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;}.flex-container-quote{display:flex;margin:8px 0;}.quote-model{font-size:16px;}.quote-model-data{color:#FF5A00;font-weight:bold;}.quote-model-title{}.supplier-quote-info{}.supplier-field-item{width:50%;}.field-title{display:inline-block;width:80px;text-align:right;}.field-input{}.field-input-single{width:493px !important;}.quote-btn,.quote-btn:hover{background-color:#1476F6;color:white;}.label-company{font-weight:bold;margin:0 0 6px;font-size:18px;}.common-collect-black{margin-left:18px;margin-top:3px;padding:0 5px;border:1px solid #8D8D8D;font-size:12px;height:20px;line-height:20px;cursor:pointer;}.common-collect-black>.iconfont{font-size:12px;}.label-collect{background-color:#FFAA00;color:white;}.label-black{background-color:#B7B7B7;color:white;}.ta-label{margin-top:5px;}.label-info-tips{color:#C1C1C1;margin-top:5px;}ul.label-brand{padding:0;list-style:none;margin-top:10px;}ul.label-brand:after{display:block;content:"";clear:both;}ul.label-brand>li{border-radius:15px;color:white;padding:3px 15px;margin:0 0 5px 10px;display:inline-block;}.label-color-a{background-color:#1476F6;}.label-color-b{background-color:#F67614;}.label-color-c{background-color:#818181;}.label-content{display:inline-block;}.label-close{display:inline-block;width:8px;margin-left:8px;cursor:pointer !important;}ul.label-brand.label-new-brand{min-height:80px;background-color:#F6F6F6;padding:10px;}.label-set{border:1px solid #E4E4E4;padding:15px;margin-top:15px;}.label-often{}ul.label-brand.label-often-content{margin:10px 0;}ul.label-brand.label-often-content>li>.label-content{cursor:pointer !important;}.label-btn,.label-btn:hover{border:1px solid #1476F6;background:white;color:#1476F6 !important}.label-txt{position:relative;width:100%;}.brand-text{padding-right:50px;}.color-picker{position:absolute;top:2px;right:8px;}.paste-btn{margin-left:8px;}#searchForm .main{width:1845px !important;}.search-wrapper .container{max-width:none !important;min-width:auto !important;}';
+    var myStyleFile = '.result_company_remark_single{width:928px !important}.layui-colorpicker{padding:0 !important;}.layui-colorpicker-trigger-i,#layui-colorpicker1 .layui-colorpicker-main-input .layui-inline,#layui-colorpicker1 .layui-colorpicker-main-input .layui-btn-container  .layui-btn-primary,#resultList table.list-table td.j-company-td>.company-row2,#rightToTop,#floatNav,.topnav,.HeaderBox,.navigation,#sift_bar,#resultList .result_askPrice,#resultList .result_supply .result_icons,.fixedRB,.footer{display:none !important;}.layui-colorpicker-main-wrapper{height:auto!important;display:none!important;}.hqew-label-btn{height:34px;}.j-company-td{position:relative;padding-left:25px !important;line-height:normal !important;height:60px;}.result-collect-hq{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#F67614;color:white;padding:5px 0;height:50px;}.result-black-hq{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#818181;color:white;padding:5px 0;height:50px;}.info-width{width:90%;}.ic-enquiry{width:90%;}.ic-equire{text-align:right;width:1190px;margin:10px auto 0}.result_id{padding-bottom:2px;}.result_price{height:40px;line-height:40px;float:left;overflow:hidden;width:60px;padding-top:2px;padding-left:10px;text-align:center}.result_common{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;width:60px;padding-top:2px;padding-left:10px;text-align:center;}.result_textarea{height:40px;line-height:40px;padding-top:0px;float:left;overflow:hidden;width:210px;padding-top:2px;padding-left:10px;text-align:center}.result_textarea_remark{float:left;overflow:hidden;width:210px;padding-top:2px;padding-left:10px;}.hqew-btn{height:25px;border:0;margin:5px 0 0 5px;border-radius:3px;display:block;background-color:#1057a7;color:#ffffff;float:left;padding:0 10px}.ic-btn{height:24px;line-height:24px;float:left;border-width:0px;overflow:hidden;cursor:pointer;margin-top:7px;background-color:#3C6EC7;color:#ffffff;padding:0 8px;margin-right:8px}.product_quote{padding:3px 8px;color:#EB222B;border:1px solid #EB222B;cursor:pointer;border-radius:3px;}.result_check,.result_id,.result_factory,.result_batchNumber,.result_totalNumber,.result_pakaging,.result_prompt,.result_date,.result_askPrice,.result_son{height:auto  !important;}ul.label-company-title{padding:0;list-style:none;float:left;clear:both;max-height:54px;overflow:hidden;}ul.label-company-title:after{display:block;content:"";clear:both;}ul.label-company-title>li{border-radius:15px;color:white;padding:3px 8px;margin:3px;cursor:pointer;display:inline-block;float:none;}.result_supply{height:auto  !important;line-height:normal  !important;position:relative !important;padding-left:20px !important;min-height:63px;}.result-collect{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#F67614;color:white;padding:5px 0;height:48px;}.result-black{position:absolute;left:0;width:18px;text-align:center;vertical-align:middle;background-color:#818181;color:white;padding:5px 0;height:48px;}.modal-open .modal{overflow-x:auto !important;overflow-y:auto !important;}.modal-header{background:#1476F6;color:white;}.close,.close:hover{color:white;text-shadow:0 1px 0 #fff;filter:alpha(opacity=20);opacity:1;}.color-preview{display:none !important;}.flex-container{display:flex;}.supplier-info{width:423px}.separator{width:2px;margin:0 10px;background:#E5E5E5;}.supplier-quote{width:623px}.flex-container-supplier{display:flex;margin:8px 0;}.supplier-detail{}.supplier-name{font-weight:bold;margin:0 0 6px;font-size:18px;}.supplier-address{}.supplier-contact{margin:20px 0;}.supplier-contact-item{width:100%;}.supplier-contact-item>span{display:inline-block;}.supplier-contact-item>span:nth-child(1){}.supplier-contact-item>span:nth-child(2){}.supplier-contact-item>img{vertical-align:text-bottom;width:18px;}.supplier-remark{}.supplier-company{font-size:16px;margin-top:0;margin-bottom:10px;}.supplier-remark-content{width:100%;height:238px;display:block;padding:6px 12px;font-size:14px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;}.flex-container-quote{display:flex;margin:8px 0;}.quote-model{font-size:16px;}.quote-model-data{color:#FF5A00;font-weight:bold;}.quote-model-title{}.supplier-quote-info{}.supplier-field-item{width:50%;}.field-title{display:inline-block;width:80px;text-align:right;}.field-input{}.field-input-single{width:493px !important;}.quote-btn,.quote-btn:hover{background-color:#1476F6;color:white;}.label-company{font-weight:bold;margin:0 0 6px;font-size:18px;}.common-collect-black{margin-left:18px;margin-top:3px;padding:0 5px;border:1px solid #8D8D8D;font-size:12px;height:20px;line-height:20px;cursor:pointer;}.common-collect-black>.iconfont{font-size:12px;}.label-collect{background-color:#FFAA00;color:white;}.label-black{background-color:#B7B7B7;color:white;}.ta-label{margin-top:5px;}.label-info-tips{color:#C1C1C1;margin-top:5px;}ul.label-brand{padding:0;list-style:none;margin-top:10px;}ul.label-brand:after{display:block;content:"";clear:both;}ul.label-brand>li{border-radius:15px;color:white;padding:3px 15px;margin:0 0 5px 10px;display:inline-block;}.label-color-a{background-color:#1476F6;}.label-color-b{background-color:#F67614;}.label-color-c{background-color:#818181;}.label-content{display:inline-block;}.label-close{display:inline-block;width:8px;margin-left:8px;cursor:pointer !important;}ul.label-brand.label-new-brand{min-height:80px;background-color:#F6F6F6;padding:10px;}.label-set{border:1px solid #E4E4E4;padding:15px;margin-top:15px;}.label-often{}ul.label-brand.label-often-content{margin:10px 0;}ul.label-brand.label-often-content>li>.label-content{cursor:pointer !important;}.label-btn,.label-btn:hover{border:1px solid #1476F6;background:white;color:#1476F6 !important}.label-txt{position:relative;width:100%;}.brand-text{padding-right:50px;}.color-picker{position:absolute;top:2px;right:8px;}.paste-btn{margin-left:8px;}#searchForm .main{width:1845px !important;}.search-wrapper .container{max-width:none !important;min-width:auto !important;}.quote-required{color:red !important;}.stock-goods{height:34px  !important;line-height:34px  !important;}.result_stock{height:40px;line-height:40px;float:left;overflow:hidden;width:60px;padding-top:2px;padding-left:10px;text-align:center;}';
     var style = document.createElement('style');
     style.innerHTML = myStyleFile;
     document.getElementsByTagName('HEAD').item(0).appendChild(style);
@@ -12118,6 +12118,13 @@ function ICInjectJS(supplierData) {
     //初始化注入
     var tbc = JSON.parse(supplierData).ShowConfirmedQuote; //显示待确认报价，0-不显示、1-显示
     var isBatch = JSON.parse(supplierData).EnabledBatchQuote; //启用批量报价，0-不启用、1-启用
+	var isRequired=JSON.parse(supplierData).NotNullFields;//必填字段，根据此处的必填字段在界面标红并显示必填
+	var requiredData={};
+	if(!!isRequired&&isRequired.length>0){
+		isRequired.forEach(function(field){
+			requiredData[field]=true;
+		})
+	}
 
     // 禁用enter键
     document.onkeydown = function(e) {
@@ -12601,92 +12608,110 @@ function ICInjectJS(supplierData) {
                                 <form id="formData" class="supplier-quote-info">\
                                     <div class="flex-container-quote">\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">型号:</span>\
+                                            <span class="field-title">' + (!!requiredData['Modle'] ? '<b class="quote-required">*</b>' : '') + '型号:</span>\
                                             <input name="Modle" class="field-input form-control" />\
                                         </div>\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">批号:</span>\
+                                            <span class="field-title">' + (!!requiredData['BatchNo'] ? '<b class="quote-required">*</b>' : '') + '批号:</span>\
                                             <input name="BatchNo" class="field-input form-control" />\
                                         </div>\
                                     </div>\
                                     <div class="flex-container-quote">\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">厂牌:</span>\
+                                            <span class="field-title">' + (!!requiredData['Brand'] ? '<b class="quote-required">*</b>' : '') + '厂牌:</span>\
                                             <input name="Brand" class="field-input form-control" />\
                                         </div>\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">封装:</span>\
+                                            <span class="field-title">' + (!!requiredData['Package'] ? '<b class="quote-required">*</b>' : '') + '封装:</span>\
                                             <input name="Package" class="field-input form-control" />\
                                         </div>\
                                     </div>\
                                     <div class="flex-container-quote">\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">数量:</span>\
+                                            <span class="field-title">' + (!!requiredData['Qty'] ? '<b class="quote-required">*</b>' : '') + '数量:</span>\
                                             <input name="Qty" class="field-input form-control" />\
                                         </div>\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">进价:</span>\
+                                            <span class="field-title">' + (!!requiredData['Cost'] ? '<b class="quote-required">*</b>' : '') + '进价:</span>\
                                             <input name="Cost"class="field-input form-control"/>\
                                         </div>\
                                     </div>\
                                     <div class="flex-container-quote">\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">报价:</span>\
+                                            <span class="field-title">' + (!!requiredData['Price'] ? '<b class="quote-required">*</b>' : '') + '报价:</span>\
                                             <input name="Price" class="field-input form-control"  style="width: 87px;"/>\
                                             <select name="Curr" class="form-control" style="width: 90px;">\
-                                                <option value="RMB">人民币</option>\
+                                                <option value="RMB" selected>人民币</option>\
+                                                <option value="USD">美元</option>\
                                             </select>\
                                         </div>\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">进价含税价:</span>\
+                                            <span class="field-title">' + (!!requiredData['AftVatCost'] ? '<b class="quote-required">*</b>' : '') + '进价含税价:</span>\
                                             <input name="AftVatCost" class="field-input form-control"/>\
                                         </div>\
                                     </div>\
                                     <div class="flex-container-quote">\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">税点:</span>\
-                                            <input name="VatRate" class="field-input form-control"/>\
+                                            <span class="field-title">' + (!!requiredData['VatRate'] ? '<b class="quote-required">*</b>' : '') + '税点:</span>\
+                                            <select name="VatRate" class="form-control" style="width: 181px;">\
+                                                <option value="13%" selected>13%</option>\
+                                                <option value="3%">3%</option>\
+                                                <option value="1%">1%</option>\
+                                                <option value="0%">0%</option>\
+                                            </select>\
                                         </div>\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">货期:</span>\
+                                            <span class="field-title">' + (!!requiredData['Delivery'] ? '<b class="quote-required">*</b>' : '') + '货期:</span>\
                                             <input name="Delivery" class="field-input form-control"/>\
                                         </div>\
                                     </div>\
                                     <div class="flex-container-quote">\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">MPQ:</span>\
+                                            <span class="field-title">' + (!!requiredData['MPQ'] ? '<b class="quote-required">*</b>' : '') + 'MPQ:</span>\
                                             <input name="MPQ" class="field-input form-control"/>\
                                         </div>\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">品质:</span>\
-                                            <input name="Quality" class="field-input form-control"/>\
+                                            <span class="field-title">' + (!!requiredData['Quality'] ? '<b class="quote-required">*</b>' : '') + '品质:</span>\
+                                            <select name="Quality" class="form-control" style="width: 181px;">\
+                                                <option value="" selected></option>\
+                                                <option value="原装">原装</option>\
+                                                <option value="散新">散新</option>\
+                                                <option value="翻新">翻新</option>\
+                                                <option value="拆机">拆机</option>\
+                                                <option value="国产">国产</option>\
+                                                <option value="原装重编带">原装重编带</option>\
+                                            </select>\
                                         </div>\
                                     </div>\
                                     <div class="flex-container-quote">\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">年份:</span>\
+                                            <span class="field-title">' + (!!requiredData['Year'] ? '<b class="quote-required">*</b>' : '') + '年份:</span>\
                                             <input name="Year"  class="field-input form-control"/>\
                                         </div>\
                                         <div class="supplier-field-item form-inline">\
-                                            <span class="field-title">库存:</span>\
+                                            <span class="field-title">' + (!!requiredData['Stock'] ? '<b class="quote-required">*</b>' : '') + '库存:</span>\
                                             <input name="Stock" class="field-input form-control"/>\
                                         </div>\
                                     </div>\
                                     <div class="flex-container-quote">\
-                                        <div class="form-inline">\
-                                            <span class="field-title">包装:</span>\
-                                            <input name="Packing" class="field-input form-control field-input-single"/>\
+                                        <div class="supplier-field-item form-inline">\
+                                            <span class="field-title">' + (!!requiredData['Packing'] ? '<b class="quote-required">*</b>' : '') + '包装:</span>\
+                                            <input name="Packing" class="field-input form-control"/>\
+                                        </div>\
+                                        <div class="supplier-field-item form-inline stock-goods" title="勾选后,必填项可为空">\
+                                            <span class="field-title">' + (!!requiredData['NoStock'] ? '<b class="quote-required">*</b>' : '') + '无货:</span>\
+                                            <input type="checkbox" name="NoStock"/>\
                                         </div>\
                                     </div>\
                                     <div class="flex-container-quote">\
                                         <div class="form-inline">\
-                                            <span class="field-title">联系人:</span>\
+                                            <span class="field-title">' + (!!requiredData['Contacts'] ? '<b class="quote-required">*</b>' : '') + '联系人:</span>\
                                             <input name="Contacts" class="field-input form-control field-input-single" readonly />\
                                         </div>\
                                     </div>\
                                     <div class="flex-container-quote">\
                                         <div class="form-inline">\
-                                            <span class="field-title">备注:</span>\
+                                            <span class="field-title">' + (!!requiredData['Remark'] ? '<b class="quote-required">*</b>' : '') + '备注:</span>\
                                             <input name="Remark"class="field-input form-control field-input-single"/>\
                                         </div>\
                                     </div>\
@@ -12979,12 +13004,14 @@ function ICInjectJS(supplierData) {
                 $('#formData [name="BatchNo"]').val($.trim($li.find(".result_batchNumber").text()));
                 //数量
                 $('#formData [name="Qty"]').val($.trim($li.find(".result_totalNumber").text()));
+                //库存
+                $('#formData [name="Stock"]').val($.trim($li.find(".result_totalNumber").text()));
                 //封装
                 $('#formData [name="Package"]').val($.trim($li.find(".result_pakaging").text()));
                 //货期
-                $('#formData [name="Delivery"]').val($.trim($li.find(".result_date").text()));
+                //$('#formData [name="Delivery"]').val($.trim($li.find(".result_date").text()));
                 //备注
-                $('#formData [name="Remark"]').val($.trim($li.find(".result_prompt").text()));
+                //$('#formData [name="Remark"]').val($.trim($li.find(".result_prompt").text()));
             } else { //华强电子网
                 var $tr = $(this).closest("tr");
                 var cid = $tr.find('input[name="ic_check"]').attr("data-cid");
@@ -13035,10 +13062,12 @@ function ICInjectJS(supplierData) {
                 $('#formData [name="BatchNo"]').val($tr.find("td:nth-child(9) .over").attr("title"));
                 //数量
                 $('#formData [name="Qty"]').val($tr.find("td.td-stockNum .over").attr("title"));
+                //库存
+                $('#formData [name="Stock"]').val($tr.find("td.td-stockNum .over").attr("title"));
                 //封装
                 $('#formData [name="Package"]').val($tr.find("td:nth-child(10) .over").attr("title"));
                 //备注
-                $('#formData [name="Remark"]').val($tr.find("td:nth-child(14) .list-pro").attr("title"));
+                //$('#formData [name="Remark"]').val($tr.find("td:nth-child(14) .list-pro").attr("title"));
             }
         }
         $("#modal-quote").modal("show");
@@ -13356,6 +13385,7 @@ function ICInjectJS(supplierData) {
         var data = parseStrObjByRegExpKV(decodeURIComponent($("#formData").serialize().replace(/\+/g, ''), true));
         data.IsTobeConfirmed = isTbc;
         data.Supplier = $("#supplier-name").text();
+        data.NoStock=$('#formData [name="NoStock"]').prop("checked")?1:0;
         var Contacts = [];
         var hostname = window.location.hostname;
         if (hostname == "www.ic.net.cn") { //ic交易网
@@ -13381,16 +13411,60 @@ function ICInjectJS(supplierData) {
         }
         data.Contacts = Contacts;
         console.log("公司报价", data);
-        try {
-            var code = window.external.ExQuote(JSON.stringify([data]));
-            if (code == 0) {
-                console.log("保存成功！");
-                $("#modal-quote").modal("hide");
+        
+        //判断是否无货,无货不走非空验证
+        if(data.NoStock==0){
+        	var isNull=false;
+        	var field="";
+        	var fieldTitle="";
+        	if(!!isRequired&&isRequired.length>0){
+        		$.each(isRequired,function(i,v){
+        			if(data[v]==""){
+        				isNull=true;
+        				field=v;
+        				return false;
+        			}
+        		})
+        	}
+        	if(isNull){
+        		fieldTitle=$('#modal-quote [name="'+field+'"]').parent().find(".field-title").text();
+        		var txt=fieldTitle.slice(1,fieldTitle.length-1);
+        		try{
+        			window.external.ShowErrorMsg("["+txt+"]字段不能为空!");
+        		}catch(err){
+        			alert("["+txt+"]字段不能为空!");
+        			console.log("验证异常:" + String(err));
+        		}
+        		$('#modal-quote [name="'+field+'"]').focus();
+        		return false;
+        	}
+        }
+        
+        //验证报价数据
+        try{
+        	var result = JSON.parse(window.external.CheckQuoteData(JSON.stringify([data])));
+            if (result.IsPass == 1) {
+            	//报价
+                try {
+		            var code = window.external.ExQuote(JSON.stringify([data]));
+		            if (code == 0) {
+		                console.log("保存成功！");
+		                $("#modal-quote").modal("hide");
+		            } else {
+		                console.log("保存失败！");
+		            }
+		        } catch (err) {
+		            console.log("保存异常:" + String(err));
+		        }
             } else {
-                console.log("保存失败！");
+            	if(!!result.FieldName){
+            		 $('#modal-quote [name="'+result.FieldName+'"]').focus();
+            	}
+                console.log("验证报价未通过,未通过字段:"+result.FieldName);
             }
-        } catch (err) {
-            console.log("保存异常:" + String(err));
+        	
+        }catch(err){
+        	console.log("保存异常:" + String(err));
         }
     })
 
@@ -13428,7 +13502,7 @@ function ICInjectJS(supplierData) {
             Labels: Labels,
         };
 
-        console.log("公司标签", data)
+        //console.log("公司标签", data)
         try {
             var jsonData = window.external.SaveSupplierInfo(JSON.stringify(data));
             // var jsonData = JSON.stringify({
@@ -13544,7 +13618,7 @@ function ICInjectJS(supplierData) {
             $("#resultList_title .result_date,#resultList .result_date").css({ "width": "134px" });
             $("#resultList_title .result_id,#resultList .result_id").css({ "width": "115px" });
             $("#resultList_title .result_id").after('<div class="result_price">进价</div><div class="result_price">报价</div><div class="result_price">进价含税价</div><div class="result_common">税点</div><div class="result_common">货期</div><div class="result_common">MPQ</div><div class="result_common">品质</div><div class="result_common">备注</div><div class="result_textarea">公司备注</div>');
-
+			$("#resultList_title .result_askPrice").after('<div class="result_stock">无货</div>');
 
             //表格正文设置
             $("#resultList li:not('#resultList_title')").each(function(i, li) {
@@ -13585,6 +13659,9 @@ function ICInjectJS(supplierData) {
                 var hiddenDate = $(li).find(".result_date input[type='hidden']").val() || "";
                 var date = !!hiddenDate ? hiddenDate.split(" ")[0] : attrDate.split(" ")[0];
                 $(li).find(".result_date").html('<input class="ic-enquiry"  title="日期" type="date" name="date" value="' + date + '">');
+                
+                //无货
+                $(li).find(".result_askPrice").after('<div class="result_stock"><input title="无货" class="ic-enquiry" type="checkbox" name="NoStock"></div>');
             })
 
             //监听全选
@@ -13606,6 +13683,7 @@ function ICInjectJS(supplierData) {
             $tr.find("th:nth-child(19)").hide(); //产品参数
             $tr.find("th:nth-child(20)").hide(); //仓库
             $tr.find("th:nth-child(21)").text("备注"); //交易说明
+            $tr.find("th:nth-child(21)").after('<th width="5.2%">无货</th>');//无货
 
             //表格正文
             $('#resultList table.list-table tr#fshop,#resultList table.list-table tr#yuncang').remove();
@@ -13656,6 +13734,9 @@ function ICInjectJS(supplierData) {
                 //交易说明
                 var explain = $(tr).find("td:nth-child(21)").find(".list-pro").attr("title") || "";
                 $(tr).find("td:nth-child(21)").html('<input type="text" title="' + explain + '" class="info-width" name="explain" value="' + explain + '">');
+                
+                //无货
+                $(tr).find("td:nth-child(21)").after('<td><input title="无货" type="checkbox" class="info-width" name="NoStock"></td>');
 
                 //购买
                 $(tr).find('td.pr-10').remove();
@@ -13683,11 +13764,11 @@ function ICInjectJS(supplierData) {
                     var $tr_boxbg = $(mutationsList[0].target).closest("tr").nextAll('tr[class^="boxbg"]');
 
                     $tr_boxbg.each(function(i, tr_boxbg) {
-                        $(tr_boxbg).children("td").attr("colspan", "21")
+                        $(tr_boxbg).children("td").attr("colspan", "22")
                         var $tr = $(tr_boxbg).find('table.list-table tr.boxbg');
 
                         //判断是否是第一次折叠，如果是第一次就走渲染修改DOM表格，否则不再次渲染
-                        if ($tr.children("td").length == 21) {
+                        if ($tr.children("td").length == 22) {
                             return false
                         }
 
@@ -13733,6 +13814,9 @@ function ICInjectJS(supplierData) {
                         //交易说明
                         var explain = $tr.find("td:nth-child(21)").find(".list-pro").attr("title") || "";
                         $tr.find("td:nth-child(21)").html('<input type="text" title="' + explain + '" class="info-width" name="explain" value="' + explain + '">');
+                        
+                        //无货
+                		$tr.find("td:nth-child(21)").after('<td width="5.2%"><input title="无货" type="checkbox" class="info-width" name="NoStock"></td>');
 
                         //购买
                         $tr.find('td.pr-10').remove();
@@ -13893,6 +13977,7 @@ function ICInjectJS(supplierData) {
                 var pakaging = $li.find('input[name="pakaging"]').val(); //封装
                 var declare = $li.find('input[name="declare"]').val(); //交易说明
                 var date = $li.find('input[name="date"]').val(); //日期
+                var noStock = $li.find('input[name="NoStock"]').prop("checked")?1:0; //无货
 
                 var rank_icons = $li.find(".result_id span[title]").attr("title") || ""; //型号，现货排名
                 var result_icons = ""; //供货商，logo (500条)
@@ -13943,6 +14028,7 @@ function ICInjectJS(supplierData) {
                     BatchNo: batchnumber,
                     Qty: totalnumber,
                     Stock: "",
+                    NoStock:noStock,
                     MPQ: mpq,
                     Package: pakaging,
                     Curr: "RMB",
@@ -13992,6 +14078,7 @@ function ICInjectJS(supplierData) {
                 var param = $tr.find('input[name="param"]').val(); //产品参数
                 var depot = $tr.find('input[name="depot"]').val(); //仓库
                 var explain = $tr.find('input[name="explain"]').val(); //交易说明（备注）
+                var noStock = $tr.find('input[name="NoStock"]').prop("checked")?1:0; //无货
 
                 var result_icons = $tr.find('td.j-company-td .company-row2 a[title]').attr("title") || ""; //供货商，logo (500条)
                 var rank_icons = $tr.find('td.td-model .list-pro  a[rel="nofollow"]').attr("title") || "" //型号，现货
@@ -14016,6 +14103,7 @@ function ICInjectJS(supplierData) {
                     Curr: "RMB", //报价货币
                     Source: "华强电子网",
                     Stock: "",
+                    NoStock:noStock,
                     Delivery: "", //交期
                     Quality: quality,
                     Remark: param + ";" + depot + ";" + explain,
@@ -14028,17 +14116,30 @@ function ICInjectJS(supplierData) {
         if (formData.length > 0) {
             console.log(formData);
             //console.table(formData);//正式发布时删除此行或注销，此代码仅做调试
-            try {
-                var formDataStr = JSON.stringify(formData);
-                var code = window.external.ExQuote(formDataStr);
-                if (code == 0) {
-                    console.log("保存成功！");
-                } else {
-                    console.log("保存失败！");
-                }
-            } catch (err) {
-                alert("保存异常:" + String(err));
-            }
+                     
+            //验证报价数据
+	        try{
+	        	var result = JSON.parse(window.external.CheckQuoteData(JSON.stringify(formData)));
+	            if (result.IsPass == 1) {
+	            	//报价
+	                try {
+		                var formDataStr = JSON.stringify(formData);
+		                var code = window.external.ExQuote(formDataStr);
+		                if (code == 0) {
+		                    console.log("保存成功！");
+		                } else {
+		                    console.log("保存失败！");
+		                }
+		            } catch (err) {
+		                alert("保存异常:" + String(err));
+		            }
+	            } else {
+	                console.log("验证报价未通过,未通过字段FieldName:"+result.FieldName+",QuoteCode:"+result.QuoteCode);
+	            }
+	        	
+	        }catch(err){
+	        	console.log("保存异常:" + String(err));
+	        }
         } else {
             alert("请选择询价条目!")
         }
@@ -14070,5 +14171,6 @@ ICInjectJS(JSON.stringify({
             "Name": "C标签-常用标签", //标签名
             "BackgroundColor": "#818181", //标签背景色，16进制编码
         }
-    ]
+    ],
+    "NotNullFields":["Modle","Brand"]//必填字段，根据此处的必填字段在界面标红并显示必填
 }))

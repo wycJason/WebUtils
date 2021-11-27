@@ -200,7 +200,7 @@ console.log(factorial(4))//4*3*2*1=24
 
     //将参数param的cbOk方法赋值给对象UploadFile的cbOk方法
     var UploadFile = {
-        cbOk: {},
+        cbOk: null,
         show: function (param) {//param:{cbOk:function(){}}
             this.cbOk = param.cbOk;
             this.cbOk();
@@ -208,7 +208,7 @@ console.log(factorial(4))//4*3*2*1=24
     };
     UploadFile.show({
         cbOk:function(){
-            console.log("对象转函数")
+            console.log("null对象转函数")
         }
     })
 

@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jquery实现鼠标拖动改变div高度</title>
     <style>
-        #main{background-color:red}
-        #footer {height:73px; background-color:blue}
+        #main{border: 1px solid #333;}
+        #footer {height:73px; border: 1px solid #333;}
         #expander{  height:6px; background-color:green;}
         #expander:hover{ cursor:n-resize;}
     </style>
@@ -32,10 +32,18 @@
         $("#expander").mousedown(function(e){
                     src_posi_Y = e.pageY;//event.pageY 属性是鼠标指针的位置，相对于文档的上边缘。
                     is_mouse_down = true;
+                     // 禁止用户选择网页中文字
+				      document.onselectstart = () => false;
+				      // 禁止用户拖动元素
+				      document.ondragstart = () => false;
         });
         $(document).on("click mouseup",function(e){
             if(is_mouse_down){
                 is_mouse_down = false;
+                 // 允许用户选择网页中文字
+			      document.onselectstart = null;
+			      // 允许用户拖动元素
+			      document.ondragstart = null;
             }
         }).mousemove(function(e){
                     dest_posi_Y = e.pageY;

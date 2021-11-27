@@ -16,6 +16,13 @@
         <a href="https://js.devexpress.com/">DevExtreme官方文档</a><br><br>
         <button id="btn">获取表格数据</button>
         <div id="dataGrid"></div>
+
+
+
+        <br>
+        <div id="treeBox"></div>
+        <br>
+        <div id="gridBox"></div>
     </body>
     <script src="./DevExpressDevExtreme-Complete-21.1.6/Lib/js/jquery.min.js"></script>
     <script src="./DevExpressDevExtreme-Complete-21.1.6/Lib/js/dx.all.js"></script>
@@ -23,13 +30,36 @@
     <script src="./index.js"></script>
     <script>
         DevExpress.localization.locale(navigator.language); //国际化
+
+        const syncTreeViewSelection = function(treeViewInstance, value) {
+            if (!value) {
+                treeViewInstance.unselectAll();
+            } else {
+                treeViewInstance.selectItem(value);
+            }
+        };
+
+        const makeAsyncDataSource = function(jsonFile) {
+            return new DevExpress.data.CustomStore({
+                loadMode: 'raw',
+                key: 'ID',
+                load() {
+                    return jsonFile;
+                },
+            });
+        };
+
         $(function() {
             var $dataGrid = $("#dataGrid");
             $dataGrid.dxDataGrid({
                 dataSource: employees,
                 // keyExpr: "EmployeeID",
                 dateSerializationFormat: "yyyy-MM-dd",
+
+                showRowLines: true,
                 showBorders: true,
+                showColumnLines: true,
+
                 rowAlternationEnabled: true,
                 hoverStateEnabled: true,
                 disabled: false,
@@ -48,7 +78,7 @@
                 columns: [{
                     dataField: "FullName",
                     caption: "全称",
-                    // dataType: "string",
+                    dataType: "string",
                     allowEditing: false,
                     customizeText: function({
                         groupInterval,
@@ -61,49 +91,49 @@
                     },
                     headerCellTemplate: function($container, params) {
                         console.log(arguments)
-                        $container.append('<span clsss="header-column">' + params.column.caption + '</span>');
+                        $container.append('<span clsss="header-column">' + params.column
+                            .caption + '</span>');
                     },
                 }, {
                     dataField: "PostalCode",
                     caption: "邮政编码",
                     dataType: "number",
                     alignment: "left",
-                    validationRules: [{
-                        type: "required"
-                    }, {
-                        type: "pattern",
-                        message: '请输入5位正确的邮政编码',
-                        pattern: /^\d{5}$/ig
-                    }]
+                    // validationRules: [{
+                    //     type: "required"
+                    // }, {
+                    //     type: "pattern",
+                    //     message: '请输入5位正确的邮政编码',
+                    //     pattern: /^\d{5}$/ig
+                    // }]
                 }, {
                     dataField: "Position",
                     caption: "职位",
-                    // dataType: "string",
+                    dataType: "string",
                 }, {
                     dataField: "BirthDate",
                     caption: "出生日期",
                     dataType: "date",
                 }, {
                     dataField: "HireDate",
+                    caption: "入职日期",
                     dataType: "date",
-                    caption: "入职日期"
                 }, {
                     dataField: "Country",
                     caption: "国家",
-                    // dataType: "string",
                 }, {
                     dataField: "City",
-                    caption: "城市",
-                    //  dataType: "string",
+                    caption: "城市(下拉网格)",
+                    editCellTemplate: dropDownBoxEditorTemplate,
                 }, {
                     dataField: "StateID",
-                    caption: "地区",
+                    caption: "地区（下拉选项）",
                     dataType: "number",
                     lookup: {
                         dataSource: states,
                         displayExpr: "Name",
                         valueExpr: "ID"
-                    }
+                    },
                 }],
                 allowColumnReordering: false,
                 allowColumnResizing: true,
@@ -114,7 +144,7 @@
                     allowDeleting: true,
                     confirmDelete: true,
                     useIcons: false,
-                    mode: 'cell', // 'batch'| 'row' | 'cell' | 'form' | 'popup'
+                    mode: 'batch', // 'batch'| 'row' | 'cell' | 'form' | 'popup'
                     startEditAction: "click", //'click' | 'dblClick'
                     // texts: {
                     //     addRow: "添加行",
@@ -140,7 +170,190 @@
                 var dataSource = $("#dataGrid").dxDataGrid("option", "dataSource");
                 console.log("数据源：", dataSource)
             })
+
+            //下拉网格编辑 Custom Editors  https://js.devexpress.com/Demos/WidgetsGallery/Demo/DataGrid/CustomEditors/jQuery/Light/
+            function dropDownBoxEditorTemplate(cellElement, cellInfo) {
+                return $('<div>').dxDropDownBox({
+                    dropDownOptions: {
+                        width: 800
+                    },
+                    dataSource: employeesSubTable,
+                    value: cellInfo.value,
+                    valueExpr: 'City',
+                    displayExpr: 'City',
+                    contentTemplate(e) {
+                        return $('<div>').dxDataGrid({
+                            keyExpr: "City",
+                            dataSource: employeesSubTable,
+                            remoteOperations: false,
+                            columns: [{
+                                dataField: "FullName",
+                                caption: "全称",
+                                dataType: "string",
+
+                            }, {
+                                dataField: "PostalCode",
+                                caption: "邮政编码",
+                                dataType: "number",
+                            }, {
+                                dataField: "Position",
+                                caption: "职位",
+                                dataType: "string",
+                            }, {
+                                dataField: "BirthDate",
+                                caption: "出生日期",
+                                dataType: "date",
+                            }, {
+                                dataField: "HireDate",
+                                caption: "入职日期",
+                                dataType: "date",
+                            }, {
+                                dataField: "Country",
+                                caption: "国家",
+                            }, {
+                                dataField: "City",
+                                caption: "城市",
+                            }, {
+                                dataField: "StateID",
+                                caption: "地区",
+                                dataType: "number",
+                            }],
+                            hoverStateEnabled: true,
+                            scrolling: {
+                                mode: 'virtual'
+                            },
+                            height: 250,
+                            selection: {
+                                mode: 'single'
+                            },
+                            selectedRowKeys: [cellInfo.value],
+                            focusedRowEnabled: true,
+                            focusedRowKey: cellInfo.value,
+                            onSelectionChanged(selectionChangedArgs) {
+                                e.component.option('value', selectionChangedArgs
+                                    .selectedRowKeys[0]);
+
+                                //cellInfo.setValue(selectionChangedArgs.selectedRowKeys[0]);
+
+
+                                var rowIndex = cellInfo.rowIndex;
+                                var row = selectionChangedArgs.selectedRowsData[0];
+                                var instance = cellInfo.component;
+
+                                instance.cellValue(rowIndex, "FullName", row.FullName);
+                                instance.cellValue(rowIndex, "PostalCode", row.PostalCode);
+                                instance.cellValue(rowIndex, "Position", row.Position);
+                                instance.cellValue(rowIndex, "BirthDate", row.BirthDate);
+                                instance.cellValue(rowIndex, "HireDate", row.HireDate);
+                                instance.cellValue(rowIndex, "Country", row.Country);
+                                instance.cellValue(rowIndex, "City", row.City);
+                                instance.cellValue(rowIndex, "StateID", row.StateID);
+
+                                if (selectionChangedArgs.selectedRowKeys.length > 0) {
+                                    e.component.close();
+                                }
+                            },
+                        });
+                    },
+                });
+            }
         });
+
+
+        $(function() {
+            let treeView;
+            let dataGrid;
+
+            $('#treeBox').dxDropDownBox({
+                value: '1_1',
+                valueExpr: 'ID',
+                displayExpr: 'name',
+                placeholder: 'Select a value...',
+                showClearButton: true,
+                dataSource: makeAsyncDataSource(treeProducts),
+                contentTemplate(e) {
+                    const value = e.component.option('value');
+                    const $treeView = $('<div>').dxTreeView({
+                        dataSource: e.component.getDataSource(),
+                        dataStructure: 'plain',
+                        keyExpr: 'ID',
+                        parentIdExpr: 'categoryId',
+                        selectionMode: 'single',
+                        displayExpr: 'name',
+                        selectByClick: true,
+                        onContentReady(args) {
+                            syncTreeViewSelection(args.component, value);
+                        },
+                        selectNodesRecursive: false,
+                        onItemSelectionChanged(args) {
+                            const selectedKeys = args.component.getSelectedNodeKeys();
+                            e.component.option('value', selectedKeys);
+                        },
+                    });
+
+                    treeView = $treeView.dxTreeView('instance');
+
+                    e.component.on('valueChanged', (args) => {
+                        syncTreeViewSelection(treeView, args.value);
+                        e.component.close();
+                    });
+
+                    return $treeView;
+                },
+            });
+
+
+
+            $('#gridBox').dxDropDownBox({
+                value: 3,
+                valueExpr: 'ID',
+                deferRendering: false,
+                placeholder: 'Select a value...',
+                displayExpr(item) {
+                    return item && `${item.CompanyName} <${item.Phone}>`;
+                },
+                showClearButton: true,
+                dataSource: makeAsyncDataSource(customers),
+                contentTemplate(e) {
+                    const value = e.component.option('value');
+                    const $dataGrid = $('<div>').dxDataGrid({
+                        dataSource: e.component.getDataSource(),
+                        columns: ['CompanyName', 'City', 'Phone', 'State'],
+                        hoverStateEnabled: true,
+                        paging: {
+                            enabled: true,
+                            pageSize: 10
+                        },
+                        filterRow: {
+                            visible: true
+                        },
+                        scrolling: {
+                            mode: 'virtual'
+                        },
+                        selection: {
+                            mode: 'single'
+                        },
+                        selectedRowKeys: [value],
+                        height: '100%',
+                        onSelectionChanged(selectedItems) {
+                            const keys = selectedItems.selectedRowKeys;
+                            const hasSelection = keys.length;
+
+                            e.component.option('value', hasSelection ? keys[0] : null);
+                        },
+                    });
+
+                    dataGrid = $dataGrid.dxDataGrid('instance');
+
+                    e.component.on('valueChanged', (args) => {
+                        dataGrid.selectRows(args.value, false);
+                        e.component.close();
+                    });
+
+                    return $dataGrid;
+                },
+            });
+        })
     </script>
 </body>
 
