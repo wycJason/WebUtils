@@ -1,140 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/全局CSS样式——图片.html" line="45" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cd73311-a19f-4bfd-a323-e8960518db5e" name="Default" comment="" />
-    <ignored path="Bootstrap_All_demos.iws" />
-    <ignored path=".idea/workspace.xml" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="Bootstrap_All_demos" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="组件——导航(标签页-胶囊式-胶囊式之栈式).html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/组件——导航(标签页-胶囊式-胶囊式之栈式).html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="css设置绝对定位居中.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css设置绝对定位居中.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="函数.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/函数.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="209" column="24" selection-start-line="209" selection-start-column="24" selection-end-line="209" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="拖动改变div高度.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/拖动改变div高度.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Vue.js5入门五：路由2(官方方式).html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vue.js5入门五：路由2(官方方式).html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="56.0625">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1566897635320" expanded="true" signature="2422:2528" placeholder="..." />
-                <marker date="1566897635320" expanded="true" signature="2828:2940" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Vue.js5入门五：路由2(官方方式-过渡).html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vue.js5入门五：路由2(官方方式-过渡).html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="40.96875">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1566874211252" expanded="true" signature="533:586" placeholder="..." />
-                <marker date="1566874211252" expanded="true" signature="992:1149" placeholder="..." />
-                <marker date="1566874211252" expanded="true" signature="1060:1136" placeholder="..." />
-                <marker date="1566874211252" expanded="true" signature="1841:2298" placeholder="..." />
-                <marker date="1566874211252" expanded="true" signature="1885:2164" placeholder="..." />
-                <marker date="1566874211252" expanded="true" signature="2212:2284" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vue.js24 路由vue-router.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vue.js24 路由vue-router.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="48.96875">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vue.js24-1路由.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vue.js24-1路由.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="25.25">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Vue.js44 vue中组件的嵌套.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Vue.js44 vue中组件的嵌套.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.6544811">
-              <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Vue.js组件间的相互通信（父向子取数据，组件间的嵌套）.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Vue.js组件间的相互通信（父向子取数据，组件间的嵌套）.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -151,6 +34,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/JS下载图片另存为.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/onload.html" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -214,8 +98,8 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
-  <component name="NamedScopeManager">
-    <order />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/Node.js/mynode/node_modules" />
@@ -226,6 +110,7 @@
     <option name="width" value="1920" />
     <option name="height" value="1040" />
   </component>
+  <component name="ProjectId" id="21fpumhaCLQzR9RXpYHeHcBgqfd" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -241,16 +126,6 @@
         </selected-state>
       </profile-state>
     </entry>
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -285,25 +160,33 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="FullScreen" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
     <property name="JavaScriptLanguageLevel" value="ES6" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="settings.editor.splitter.proportion" value="0.24363992" />
-    <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="FullScreen" value="false" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="SearchEverywhereHistoryKey" value="文字&#9;FILE&#9;file://C:/xampp/htdocs/Bootstrap_All_demos/canvas将文字生成图片.html&#10;cookie&#9;FILE&#9;file://C:/xampp/htdocs/Bootstrap_All_demos/cookie.html&#10;abc&#9;FILE&#9;file://C:/xampp/htdocs/Bootstrap_All_demos/abc.html&#10;滚动&#9;FILE&#9;file://C:/xampp/htdocs/Bootstrap_All_demos/页面滚动到指定位置.html" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.splitter.proportion" value="0.24363992" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -314,45 +197,11 @@
       <recent name="C:\xampp\htdocs\WebUtils\Bootstrap_All_demos\kindeditor" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="Node.js.server.js">
-    <configuration default="false" name="使用fs模块实现文件的拷贝.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="使用fs模块实现文件的拷贝.js" working-dir="$PROJECT_DIR$/Node.js/mynode">
-      <method />
-    </configuration>
-    <configuration default="false" name="使用http模块向客户端返回响应消息.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="使用http模块向客户端返回响应消息.js" working-dir="$PROJECT_DIR$/Node.js/mynode">
-      <method />
-    </configuration>
-    <configuration default="false" name="使用http模块接收客户端请求消息.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="使用http模块接收客户端请求消息.js" working-dir="$PROJECT_DIR$/Node.js/mynode">
-      <method />
-    </configuration>
-    <configuration default="false" name="1_static_web_server使用Node.js创建一个静态Web服务器.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="1_static_web_server使用Node.js创建一个静态Web服务器.js" working-dir="$PROJECT_DIR$/Node.js/mynode">
-      <method />
-    </configuration>
-    <configuration default="false" name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/websocket_demo">
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="JsTestDriver-test-runner" factoryName="JsTestDriver">
@@ -362,47 +211,51 @@
       <setting name="preferredDebugBrowser" value="Chrome" />
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
+    <configuration name="1_static_web_server使用Node.js创建一个静态Web服务器.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$PROJECT_DIR$/../../../../Program Files (x86)/nodejs/node" path-to-js-file="1_static_web_server使用Node.js创建一个静态Web服务器.js" working-dir="$PROJECT_DIR$/Node.js/mynode">
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
-      <option name="cucumberJsArguments" value="" />
-      <option name="executablePath" />
-      <option name="filePath" />
-      <method />
+    <configuration name="使用fs模块实现文件的拷贝.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$PROJECT_DIR$/../../../../Program Files (x86)/nodejs/node" path-to-js-file="使用fs模块实现文件的拷贝.js" working-dir="$PROJECT_DIR$/Node.js/mynode">
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+    <configuration name="使用http模块向客户端返回响应消息.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$PROJECT_DIR$/../../../../Program Files (x86)/nodejs/node" path-to-js-file="使用http模块向客户端返回响应消息.js" working-dir="$PROJECT_DIR$/Node.js/mynode">
+      <method v="2" />
+    </configuration>
+    <configuration name="使用http模块接收客户端请求消息.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$PROJECT_DIR$/../../../../Program Files (x86)/nodejs/node" path-to-js-file="使用http模块接收客户端请求消息.js" working-dir="$PROJECT_DIR$/Node.js/mynode">
+      <method v="2" />
+    </configuration>
+    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$PROJECT_DIR$/../../../../Program Files (x86)/nodejs/node" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/websocket_demo">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
-      <envs />
-      <method />
+      <method v="2" />
     </configuration>
-    <list size="10">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.演示URL模块的使用.js" />
-      <item index="1" class="java.lang.String" itemvalue="Node.js.演示QueryString模块的使用.js" />
-      <item index="2" class="java.lang.String" itemvalue="Node.js.使用Node.js向一个文件中写出内容.js" />
-      <item index="3" class="java.lang.String" itemvalue="Node.js.使用Node.js读取一个文件中的内容.js" />
-      <item index="4" class="java.lang.String" itemvalue="Node.js.模板字符串1.js" />
-      <item index="5" class="java.lang.String" itemvalue="Node.js.使用fs模块实现文件的拷贝.js" />
-      <item index="6" class="java.lang.String" itemvalue="Node.js.使用http模块向客户端返回响应消息.js" />
-      <item index="7" class="java.lang.String" itemvalue="Node.js.使用http模块接收客户端请求消息.js" />
-      <item index="8" class="java.lang.String" itemvalue="Node.js.1_static_web_server使用Node.js创建一个静态Web服务器.js" />
-      <item index="9" class="java.lang.String" itemvalue="Node.js.server.js" />
+    <list>
+      <item itemvalue="Node.js.演示URL模块的使用.js" />
+      <item itemvalue="Node.js.演示QueryString模块的使用.js" />
+      <item itemvalue="Node.js.使用Node.js向一个文件中写出内容.js" />
+      <item itemvalue="Node.js.使用Node.js读取一个文件中的内容.js" />
+      <item itemvalue="Node.js.模板字符串1.js" />
+      <item itemvalue="Node.js.使用fs模块实现文件的拷贝.js" />
+      <item itemvalue="Node.js.使用http模块向客户端返回响应消息.js" />
+      <item itemvalue="Node.js.1_static_web_server使用Node.js创建一个静态Web服务器.js" />
+      <item itemvalue="Node.js.server.js" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.server.js" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.使用fs模块实现文件的拷贝.js" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.1_static_web_server使用Node.js创建一个静态Web服务器.js" />
-        <item index="3" class="java.lang.String" itemvalue="Node.js.使用http模块向客户端返回响应消息.js" />
-        <item index="4" class="java.lang.String" itemvalue="Node.js.使用http模块接收客户端请求消息.js" />
+      <list>
+        <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Node.js.使用fs模块实现文件的拷贝.js" />
+        <item itemvalue="Node.js.1_static_web_server使用Node.js创建一个静态Web服务器.js" />
+        <item itemvalue="Node.js.使用http模块向客户端返回响应消息.js" />
       </list>
     </recent_temporary>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="StructureViewFactory">
     <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
   </component>
@@ -414,8 +267,14 @@
       <changelist id="9cd73311-a19f-4bfd-a323-e8960518db5e" name="Default" comment="" />
       <created>1496280219197</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1496280219197</updated>
       <workItem from="1512629789487" duration="216000" />
+      <workItem from="1638342231684" duration="1491000" />
+      <workItem from="1638343748641" duration="1400000" />
+      <workItem from="1638935148421" duration="621000" />
+      <workItem from="1639039805327" duration="522000" />
+      <workItem from="1639040344343" duration="388000" />
     </task>
     <servers />
   </component>
@@ -433,9 +292,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1040" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23963869" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23963869" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32805908" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -456,12 +315,12 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
+    <option name="version" value="3" />
     <option name="exactExcludedFiles">
       <list>
         <option value="$PROJECT_DIR$/jqxGrid/demos/sampledata/generatedata.js" />
-        <option value="$PROJECT_DIR$/jqxGrid/scripts/initdashboard.js" />
         <option value="$PROJECT_DIR$/jqxGrid/scripts/localization.js" />
+        <option value="$PROJECT_DIR$/jqxGrid/scripts/initdashboard.js" />
       </list>
     </option>
   </component>
@@ -504,9 +363,7 @@
           <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="37" />
     </breakpoint-manager>
-    <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/模态框页面.html">
@@ -772,10 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="169" column="9" selection-start-line="155" selection-start-column="8" selection-end-line="169" selection-end-column="9" />
-          <folding>
-            <marker date="1618387658436" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1618387658436" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -783,7 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -791,10 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="32" column="11" selection-start-line="8" selection-start-column="7" selection-end-line="32" selection-end-column="11" />
-          <folding>
-            <marker date="1553600930899" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1553600930899" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -802,9 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1553600933869" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -842,7 +687,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Vue.js5入门五：路由2(官方方式).html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="56.0625">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <marker date="1566897635320" expanded="true" signature="2422:2528" placeholder="..." />
@@ -853,7 +698,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Vue.js5入门五：路由2(官方方式-过渡).html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="40.96875">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <marker date="1566874211252" expanded="true" signature="533:586" placeholder="..." />
@@ -868,7 +713,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vue.js24 路由vue-router.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="48.96875">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -876,7 +721,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vue.js24-1路由.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="25.25">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -892,7 +737,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Vue.js44 vue中组件的嵌套.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6544811">
+        <state vertical-scroll-proportion="0.0">
           <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
           <folding />
         </state>
