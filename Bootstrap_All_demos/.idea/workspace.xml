@@ -7,7 +7,10 @@
     <bookmark url="file://$PROJECT_DIR$/全局CSS样式——图片.html" line="45" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd73311-a19f-4bfd-a323-e8960518db5e" name="Default" comment="" />
+    <list default="true" id="9cd73311-a19f-4bfd-a323-e8960518db5e" name="Default" comment="Signed-off-by: wycJason &lt;wyc924@sina.com&gt;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/水平滚动条-overflow溢出处理.html" beforeDir="false" afterPath="$PROJECT_DIR$/水平滚动条-overflow溢出处理.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +43,7 @@
       </GitPushTagMode>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/JS下载图片另存为.html" root0="FORCE_HIGHLIGHTING" />
@@ -301,7 +305,7 @@
       <workItem from="1646190089607" duration="2839000" />
       <workItem from="1646277129934" duration="3291000" />
       <workItem from="1646469981164" duration="3462000" />
-      <workItem from="1646720165054" duration="3446000" />
+      <workItem from="1646720165054" duration="4273000" />
     </task>
     <task id="LOCAL-00001" summary="jason webstorm 提交">
       <created>1646727727104</created>
@@ -374,12 +378,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/本地图片压缩" />
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="jason webstorm 提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="jason webstorm 提交" />
+    <MESSAGE value="Signed-off-by: wycJason &lt;wyc924@sina.com&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Signed-off-by: wycJason &lt;wyc924@sina.com&gt;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
