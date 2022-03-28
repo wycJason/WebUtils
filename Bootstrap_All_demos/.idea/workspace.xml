@@ -7,9 +7,14 @@
     <bookmark url="file://$PROJECT_DIR$/全局CSS样式——图片.html" line="45" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd73311-a19f-4bfd-a323-e8960518db5e" name="Default" comment="Signed-off-by: wycJason &lt;wyc924@sina.com&gt;">
+    <list default="true" id="9cd73311-a19f-4bfd-a323-e8960518db5e" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/apache-echarts.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/前端页面禁止调试debugger.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/$.extend方法.html" beforeDir="false" afterPath="$PROJECT_DIR$/$.extend方法.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/水平滚动条-overflow溢出处理.html" beforeDir="false" afterPath="$PROJECT_DIR$/水平滚动条-overflow溢出处理.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DEV-Extreme/DEV-Extreme-DataGrid.html" beforeDir="false" afterPath="$PROJECT_DIR$/DEV-Extreme/DEV-Extreme-DataGrid.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +31,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="ES6转ES5" />
-        <option value="CSS File" />
         <option value="Vue" />
         <option value="JavaScript File" />
         <option value="Html5" />
         <option value="BootStrap" />
+        <option value="CSS File" />
+        <option value="HTML File" />
         <option value="H5" />
       </list>
     </option>
@@ -140,7 +146,9 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -183,12 +191,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="FullScreen" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="JavaScriptLanguageLevel" value="ES6" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SearchEverywhereHistoryKey" value="文字&#9;FILE&#9;file://C:/xampp/htdocs/Bootstrap_All_demos/canvas将文字生成图片.html&#10;cookie&#9;FILE&#9;file://C:/xampp/htdocs/Bootstrap_All_demos/cookie.html&#10;abc&#9;FILE&#9;file://C:/xampp/htdocs/Bootstrap_All_demos/abc.html&#10;滚动&#9;FILE&#9;file://C:/xampp/htdocs/Bootstrap_All_demos/页面滚动到指定位置.html" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -305,7 +315,17 @@
       <workItem from="1646190089607" duration="2839000" />
       <workItem from="1646277129934" duration="3291000" />
       <workItem from="1646469981164" duration="3462000" />
-      <workItem from="1646720165054" duration="4273000" />
+      <workItem from="1646720165054" duration="5186000" />
+      <workItem from="1646904752484" duration="3151000" />
+      <workItem from="1646962757212" duration="10769000" />
+      <workItem from="1647058728735" duration="1715000" />
+      <workItem from="1647327177445" duration="1010000" />
+      <workItem from="1647521220992" duration="444000" />
+      <workItem from="1647915625159" duration="1721000" />
+      <workItem from="1647935874526" duration="112000" />
+      <workItem from="1647936010492" duration="36000" />
+      <workItem from="1648267330389" duration="6639000" />
+      <workItem from="1648285633127" duration="662000" />
     </task>
     <task id="LOCAL-00001" summary="jason webstorm 提交">
       <created>1646727727104</created>
@@ -373,9 +393,6 @@
     <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />

@@ -114,8 +114,8 @@
 						caption: "入职日期",
 						dataType: "date",
 						calculateDisplayValue(rowData){
-							console.log(rowData);//取当前行指定列数据，给当前列设置最小值
-							this.editorOptions.min="2022/1/3";
+							//console.log(rowData);//取当前行指定列数据，给当前列设置最小值
+							this.editorOptions.min="2022/3/1";
 							return rowData.HireDate;
 						},
 						// cellTemplate($container, options){
@@ -124,7 +124,7 @@
 						// 	$container.append(options.text);
 						// },
 						editorOptions: {
-							//DateBox对应的配置项
+							//DateBox对应的配置项，只有两项可配置
 							min: "2022/1/1",//类型: Date | Number | String
 							max: new Date(),//类型: Date | Number | String
 						},

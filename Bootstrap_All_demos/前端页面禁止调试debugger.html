@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前端页面禁止调试debugger</title>
+</head>
+<body>
+<h3>前端页面禁止调试debugger</h3>
+<script>
+    //https://www.cnblogs.com/Qooo/p/13691127.html?ivk_sa=1024320u
+    //https://www.wodecun.com/blog/8013.html
+    // (function() {var date = new Date(); debugger; return new Date() - date > 100;}())
+    //setInterval(function () { debugger }, 100);
+
+    //https://blog.csdn.net/handsomexiaominge/article/details/82081737
+    (function noDebuger(){
+        function testDebuger(){
+            var d=new Date();
+            debugger;
+            if(new Date()-d>10){
+                return true;
+            }
+            return false;
+        }
+
+        function start(){
+            while(testDebuger()){
+                testDebuger();
+            }
+        }
+        if(!testDebuger()) {
+            window.onblur = function(){
+                setTimeout(function(){
+                    start();
+                },500)
+            }
+        }
+        else{
+            start();
+        }
+
+    })();
+</script>
+
+</body>
+</html>

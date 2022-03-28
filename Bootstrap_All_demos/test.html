@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H5</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    //添加【型号标签】模态框
+    $(document.body).append('<div id="modal-model-label" class="modal fade" data-backdrop="static" data-keyboard="false" style="z-index:3000">\
+            <div class="modal-dialog" style=" width: 1100px;">\
+                <div class="modal-content">\
+                    <div class="modal-header" title="按住鼠标左键可拖动模态框" style="cursor:move">\
+                        <span class="close" data-dismiss="modal">&times;</span>\
+                        <span style="font-size:14px;font-weight:bold;">型号标签</span>\
+                    </div>\
+                    <div class="modal-body">\
+                        <section class="flex-container">\
+                            <div id="label-model-company" class="label-model-company">深圳市海尚电子有限公司</div>\
+                            <div id="label-model-name" class="label-model-name">JKJKD456FAF</div>\
+                        </section>\
+                        <div class="ta-label">Ta的标签</div>\
+                        <div id="label-model-info-tips" class="label-model-info-tips">该型号还没有标签哦！</div>\
+                        <ul id="label-model-brand" class="label-model-brand">\
+                            <li class="label-color-a" data-id="1">\
+                                <span class="label-content">货源充足</span>\
+                            </li>\
+                            <li class="label-color-b" data-id="2">\
+                                <span class="label-content">价格很便宜</span>\
+                            </li>\
+                            <li class="label-color-c" data-id="3">\
+                                <span class="label-content">原装，但经常放飞机</span>\
+                            </li>\
+                        </ul>\
+                        <ul id="label-model-new-brand" class="label-brand label-model-new-brand">\
+                            <li class="label-color-a" data-id="0">\
+                                <span class="label-content">货源充足</span>\
+                                <span class="label-close">x</span>\
+                            </li>\
+                            <li class="label-color-b" data-id="0">\
+                                <span class="label-content">价格很便宜</span>\
+                                <span class="label-close">x</span>\
+                            </li>\
+                            <li class="label-color-c" data-id="0">\
+                                <span class="label-content">原装，但经常放飞机</span>\
+                                <span class="label-close">x</span>\
+                            </li>\
+                        </ul>\
+                        <div class="label-set">\
+                            <div class="label-often">常用标签</div>\
+                            <ul id="label-model-often-content" class="label-brand label-model-often-content">\
+                                <li class="label-color-a" data-id="1">\
+                                    <span class="label-content">货源充足</span>\
+                                </li>\
+                                <li class="label-color-b" data-id="2">\
+                                    <span class="label-content">价格很便宜</span>\
+                                </li>\
+                                <li class="label-color-c" data-id="3">\
+                                    <span class="label-content">原装，但经常放飞机</span>\
+                                </li>\
+                            </ul>\
+                        </div>\
+                    </div>\
+                    <div class="modal-footer">\
+                        <a href="javascript:void(0)" class="btn btn-default label-btn" data-dismiss="modal">取消</a>\
+                        <a id="save-model" href="javascript:void(0)" class="btn btn-default quote-btn">保存</a>\
+                    </div>\
+                </div>\
+            </div>\
+        </div>');
+
+    //添加供应商标签模态框
+    $(document.body).append('<div id="modal-label" class="modal fade" data-backdrop="static" data-keyboard="false" style="z-index:3000">\
+            <div class="modal-dialog" style=" width: 1100px;">\
+                <div class="modal-content">\
+                    <div class="modal-header" title="按住鼠标左键可拖动模态框" style="cursor:move">\
+                        <span class="close" data-dismiss="modal">&times;</span>\
+                        <span style="font-size:14px;font-weight:bold;">公司标签</span>\
+                    </div>\
+                    <div class="modal-body">\
+                        <section class="flex-container">\
+                            <div id="label-company" class="label-company">深圳市海尚电子有限公司</div>\
+                            <div id="label-collect" class="common-collect-black">\
+                                <span class="icon iconfont icon-shoucang"></span>\
+                                <span>收藏</span>\
+                            </div>\
+                            <div id="label-black" class="common-collect-black">\
+                                <span class="icon iconfont icon-lahei"></span>\
+                                <span>拉黑</span>\
+                            </div>\
+                        </section>\
+                        <div class="ta-label">Ta的标签</div>\
+                        <div id="label-info-tips" class="label-info-tips">该公司还没有标签哦！</div>\
+                        <ul id="label-brand" class="label-brand">\
+                            <li class="label-color-a" data-id="1">\
+                                <span class="label-content">货源充足</span>\
+                            </li>\
+                            <li class="label-color-b" data-id="2">\
+                                <span class="label-content">价格很便宜</span>\
+                            </li>\
+                            <li class="label-color-c" data-id="3">\
+                                <span class="label-content">原装，但经常放飞机</span>\
+                            </li>\
+                        </ul>\
+                        <ul id="label-new-brand" class="label-brand label-new-brand">\
+                            <li class="label-color-a" data-id="0">\
+                                <span class="label-content">货源充足</span>\
+                                <span class="label-close">x</span>\
+                            </li>\
+                            <li class="label-color-b" data-id="0">\
+                                <span class="label-content">价格很便宜</span>\
+                                <span class="label-close">x</span>\
+                            </li>\
+                            <li class="label-color-c" data-id="0">\
+                                <span class="label-content">原装，但经常放飞机</span>\
+                                <span class="label-close">x</span>\
+                            </li>\
+                        </ul>\
+                        <div class="label-set">\
+                            <div class="label-often">常用标签</div>\
+                            <ul id="label-often-content" class="label-brand label-often-content">\
+                                <li class="label-color-a" data-id="1">\
+                                    <span class="label-content">货源充足</span>\
+                                </li>\
+                                <li class="label-color-b" data-id="2">\
+                                    <span class="label-content">价格很便宜</span>\
+                                </li>\
+                                <li class="label-color-c" data-id="3">\
+                                    <span class="label-content">原装，但经常放飞机</span>\
+                                </li>\
+                            </ul>\
+                            <div class="flex-container">\
+                                <div class="label-txt">\
+                                    <input id="brand-text" title="最多可输入10个字符" maxlength="10" class="form-control brand-text" placeholder="点击创建新标签"/>\
+                                    <div id="label-color-picker" class="color-picker" data-color="#53BEFC"></div>\
+                                </div>\
+                                <button id="paste-btn" class="btn btn-default quote-btn paste-btn">贴一个</button>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <div class="modal-footer">\
+                        <a href="javascript:void(0)" class="btn btn-default label-btn" data-dismiss="modal">取消</a>\
+                        <a id="save-company" href="javascript:void(0)" class="btn btn-default quote-btn">保存</a>\
+                    </div>\
+                </div>\
+            </div>\
+        </div>');
+
+    //模态框-保存【型号标签】
+    $("#save-model").click(function () {
+        var CardName = $("#label-model-company").text();
+        var Modle = $("#label-model-name").text();
+        var ModleLabels = [];
+
+        $("#label-model-brand li,#label-model-new-brand li").each(function (i, li) {
+            var id = $(this).attr("data-id");
+            var name = $(this).find(".label-content").text();
+            var backgroundColor = $(this).css("background-color");
+
+            if (!!backgroundColor) {
+                backgroundColor = rgb2hex(backgroundColor);
+            } else {
+                backgroundColor = "#53BEFC";
+            }
+
+            ModleLabels.push({
+                "ID": id, //标签编号
+                "Name": name, //标签名
+                "BackgroundColor": backgroundColor, //标签背景色，16进制编码
+            })
+        })
+
+        var suppliers = localGet("getSupplierData");
+        var supplier = null;
+        if (!!suppliers && suppliers.length > 0) {
+            $.each(suppliers, function (i, v) {
+                if (v.CardName == CardName) {
+                    supplier = v;
+                    return false
+                }
+            })
+        }
+
+        var formData = null;
+        if (!supplier) {
+            formData = {
+                "CardName": CardName,//公司名称
+                "IsCollect": 0,//是否已收藏，0-未收藏、1-已收藏
+                "IsBlack": 0,//是否拉黑，0-未拉黑、1-已拉黑
+                "Remark": "",//公司描述
+                "Labels":[],
+                "Modles": [
+                    {
+                        Modle: Modle,
+                        Labels: ModleLabels
+                    }
+                ]
+            };
+            suppliers.push(formData);
+        } else {
+            formData = {
+                "CardName": supplier.CardName,//公司名称
+                "IsCollect": supplier.IsCollect,//是否已收藏，0-未收藏、1-已收藏
+                "IsBlack": supplier.IsBlack,//是否拉黑，0-未拉黑、1-已拉黑
+                "Remark": supplier.Remark,//公司描述
+                "Labels": supplier.Labels,
+                "Modles": [
+                    {
+                        Modle: Modle,
+                        Labels: ModleLabels
+                    }
+                ]
+            };
+        }
+
+
+        //console.log("公司标签", data)
+        try {
+            var jsonData = window.external.SaveSupplierInfo(JSON.stringify(formData));
+
+            if (!!jsonData) {
+                var supplierData = JSON.parse(jsonData);
+                singleModelRenderWebSiteList(supplierData);
+
+                //更新当前供应商【型号标签】列表
+                if (!!suppliers && suppliers.length > 0) {
+                    $.each(suppliers, function (i, v) {
+                        if (v.CardName == supplierData.CardName) {
+                            var isExist = false; //true存在 false 不存在
+                            if (!!v.Modles && v.Modles.length > 0) {
+                                $.each(v.Modles, function (m, n) {
+                                    if (n.Modle == supplierData.Modles[0].Modle) {
+                                        n.Labels = supplierData.Modles[0].Labels;
+                                        isExist = true;
+                                        return false
+                                    }
+                                })
+                            }
+                            if (!isExist) {
+                                v.Modles.push(supplierData.Modles[0]);
+                            }
+                            return false
+                        }
+                    })
+                }
+
+                localSave("getSupplierData", JSON.stringify(suppliers));
+
+                $("#modal-model-label").modal("hide");
+            } else {
+                console.log("保存失败！");
+            }
+        } catch (err) {
+            console.log("保存异常:" + String(err));
+        }
+    })
+</script>
+</body>
+</html>

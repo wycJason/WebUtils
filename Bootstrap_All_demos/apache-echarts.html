@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>apache-echarts</title>
+		<style type="text/css">
+			.flex-container {
+				display: flex;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+		<div class="flex-container">
+			<div id="main"></div>
+			<div id="sub"></div>
+		</div>
+
+		<div style="margin-top: 50px;">
+			<button id="btn">修改随机主题</button>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<!--<script src="https://cdn.jsdelivr.net/npm/echarts@5.3.1/dist/echarts.js"></script>-->
+		<script src="js/echarts.min@5.3.1.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/zh/asset/theme/vintage.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/zh/asset/theme/infographic.js">
+		</script>
+		<script src="https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/zh/asset/theme/macarons.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/zh/asset/theme/shine.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/zh/asset/theme/roma.js"></script>
+		<script src="js/purple-passion.js"></script>
+		<script>
+			// 基于准备好的dom，初始化echarts实例
+			var myChart = echarts.init(document.getElementById('main'), null, {
+				width: 800,
+				height: 600
+			});
+
+			// 指定图表的配置项和数据
+			var option = {
+				title: {
+					text: 'ECharts 联动示例',
+				},
+				tooltip: {},
+				legend: {
+					data: ['销量', '价格', '成本']
+				},
+				xAxis: {
+					data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+				},
+				yAxis: {},
+				series: [{
+						name: '销量',
+						type: 'bar',
+						data: [5, 20, 36, 10, 10, 20]
+					},
+					{
+						name: '价格',
+						type: 'line',
+						data: [50, 40, 56, 19, 87, 65]
+					},
+					{
+						name: '成本',
+						type: 'line',
+						data: [23, 33, 45, 8, 60, 55]
+					}
+				]
+			};
+
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+
+
+			// 子表
+			var subChart = echarts.init(document.getElementById('sub'), null, {
+				width: 800,
+				height: 600
+			});
+			var subOption = {
+				title: {
+					text: '衬衫-网站访问来源',
+					subtext: '详细数据',
+					left: 'center'
+				},
+				tooltip: {
+					trigger: 'item'
+				},
+				legend: {
+					orient: 'vertical',
+					left: 'left'
+				},
+				series: [{
+					name: '访问信息',
+					type: 'pie',
+					radius: ['40%', '70%'],
+					data: [{
+							value: 1048,
+							name: '搜索引擎'
+						},
+						{
+							value: 735,
+							name: '直接访问'
+						},
+						{
+							value: 580,
+							name: '电子邮件'
+						},
+						{
+							value: 484,
+							name: '电话营销'
+						},
+						{
+							value: 300,
+							name: '视频广告'
+						}
+					],
+					emphasis: {
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				}]
+			};
+			subChart.setOption(subOption);
+
+
+
+
+			// 主题切换
+			$("#btn").click(() => {
+				var themes = ["vintage", "dark", "infographic", "macarons", "shine", "roma", "purple-passion"];
+				var index = parseInt(Math.random() * themes.length);
+				var theme = themes[index];
+
+				myChart.dispatchAction({
+					type: "legendToggleSelect"
+				});
+
+				myChart.dispose();
+				myChart = echarts.init(document.getElementById('main'), theme, {
+					width: 800,
+					height: 600
+				});
+				myChart.setOption(option);
+			})
+
+
+			//随机数
+			function randomGenerate() {
+				return parseInt(Math.random() * 1200);
+			}
+
+			// 鼠标点击事件
+			myChart.on('click', function(params) {
+				console.log("鼠标事件", params);
+
+				if (params.componentType === 'markPoint') {
+					// 点击到了 markPoint 上
+					if (params.seriesIndex === 5) {
+						// 点击到了 index 为 5 的 series 的 markPoint 上。
+					}
+				} else if (params.componentType === 'series') {
+					subChart.setOption({
+						title: {
+							text: `${params.seriesName}-网站访问来源`,
+							subtext: `${params.name}-详细数据`,
+						},
+						series: [{
+							data: [{
+									value: randomGenerate(),
+									name: '搜索引擎'
+								},
+								{
+									value: randomGenerate(),
+									name: '直接访问'
+								},
+								{
+									value: randomGenerate(),
+									name: '电子邮件'
+								},
+								{
+									value: randomGenerate(),
+									name: '电话营销'
+								},
+								{
+									value: randomGenerate(),
+									name: '视频广告'
+								}
+							],
+						}]
+					})
+
+
+
+					if (params.seriesType === 'graph') {
+						if (params.dataType === 'edge') {
+							// 点击到了 graph 的 edge（边）上。
+						} else {
+							// 点击到了 graph 的 node（节点）上。
+						}
+					}
+				}
+			});
+
+			// 图例开关的行为只会触发 legendselectchanged 事件
+			myChart.on('legendselectchanged', function(params) {
+				console.log("行为事件", params);
+				// 获取点击图例的选中状态
+				var isSelected = params.selected[params.name];
+				// 在控制台中打印
+				console.log((isSelected ? '选中了' : '取消选中了') + '图例：' + params.name);
+				// 打印所有图例的状态
+				console.log(params.selected);
+			});
+
+			//监听“空白处”的事件
+			myChart.getZr().on('click', function(event) {
+				// 没有 target 意味着鼠标/指针不在任何一个图形元素上，它是从“空白处”触发的。
+				if (!event.target) {
+					// 点击在了空白处，做些什么。
+					console.log("你点击了空白处")
+				}
+			});
+		</script>
+	</body>
+</html>
