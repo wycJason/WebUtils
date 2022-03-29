@@ -92,6 +92,10 @@
 					orient: 'vertical',
 					left: 'left'
 				},
+				label:{
+					show:true,
+					formatter: '{a}\n\n{b}:{d}%'
+				},
 				series: [{
 					name: '访问信息',
 					type: 'pie',
@@ -165,6 +169,7 @@
 						// 点击到了 index 为 5 的 series 的 markPoint 上。
 					}
 				} else if (params.componentType === 'series') {
+					// 联动效果
 					subChart.setOption({
 						title: {
 							text: `${params.seriesName}-网站访问来源`,
