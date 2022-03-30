@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>h5</title>
+		<style type="text/css">
+			html,
+			body {
+				padding: 0;
+				margin: 0;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main" style="width: 100%;height:100%;"></div>
+		<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<script src="js/echarts.min@5.3.1.js"></script>
+		<script type="text/javascript">
+			// 基于准备好的dom，初始化echarts实例
+			var myChart = echarts.init(document.getElementById('main'));
+
+			// 指定图表的配置项和数据
+			var option = {
+				legend: {},
+				tooltip: {},
+				title: [{
+					id: "t1",
+					text: '饼图',
+					subtext: '详细数据',
+					left: 'center',
+					top: "3%"
+				}, {
+					id: "t2",
+					text: '柱状图',
+					subtext: '详细数据',
+					left: 'center',
+					top: "45%"
+				}],
+				dataset: [{
+					dimensions: ['product', 'count', 'score'],
+					source: [{
+							product: 'Matcha Latte',
+							count: 823,
+							score: 95.8
+						},
+						{
+							product: 'Milk Tea',
+							count: 235,
+							score: 81.4
+						},
+						{
+							product: 'Cheese Cocoa',
+							count: 1042,
+							score: 91.2
+						},
+						{
+							product: 'Walnut Brownie',
+							count: 988,
+							score: 76.9
+						}
+					]
+				}],
+				xAxis: [{
+						type: 'category',
+						gridIndex: 0,
+						show: false,
+					},
+					{
+						type: 'category',
+						gridIndex: 1,
+						show: true,
+					}
+				],
+				yAxis: [{
+					type: 'value',
+					gridIndex: 0,
+					show: false,
+				}, {
+					type: 'value',
+					gridIndex: 1,
+					show: true,
+				}],
+				grid: [{
+					bottom: '55%'
+				}, {
+					top: '55%'
+				}],
+				series: [
+					// 这几个系列会出现在第一个直角坐标系中，每个系列对应到 dataset 的每一行。
+					{
+						id: "linkage-diagram",
+						type: 'pie',
+						xAxisIndex: 0,
+						yAxisIndex: 0,
+						radius: '50%',
+						bottom: "55%",
+						encode: {
+							itemName: "product",
+							value: "count",
+						},
+						label: {
+							formatter: '{b}：数值{@score},占比{d}%'
+						},
+						emphasis: {
+							focus: 'self'
+						},
+					},
+
+					// 这几个系列会出现在第二个直角坐标系中，每个系列对应到 dataset 的每一列。
+					{
+						type: 'bar',
+						xAxisIndex: 1,
+						yAxisIndex: 1,
+						encode: {
+							x: "product",
+							y: "count",
+							seriesName: "count"
+						}
+					},
+					{
+						type: 'bar',
+						xAxisIndex: 1,
+						yAxisIndex: 1,
+						encode: {
+							x: "product",
+							y: "score",
+							seriesName: "score",
+						}
+					}
+				]
+			};
+
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+
+
+			myChart.on('click', 'series.bar', function(params) {
+				// console.log(params.seriesName);
+				myChart.setOption({
+					series: {
+						id: "linkage-diagram",
+						encode: {
+							itemName: "product",
+							value: params.seriesName,
+							tooltip: params.seriesName,
+						},
+						label: {
+							formatter: `{b}：数值{@${params.seriesName}},占比{d}%`
+						},
+					},
+					title: {
+						id: "t1",
+						subtext: `各种饮料-${params.seriesName}-详细数据`,
+					}
+				})
+			});
+		</script>
+	</body>
+</html>
