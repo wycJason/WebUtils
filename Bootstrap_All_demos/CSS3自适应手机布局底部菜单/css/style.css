@@ -1,0 +1,188 @@
+/* ====全局样式S ==== */
+html,body{
+    margin: 0 auto;
+    padding: 0;
+    min-width: 320px;
+    max-width: 100%;
+    font: 0.875em  'Microsoft YaHei",Arial,sans-serif';
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td{
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    font-style: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+ul,ol,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+#layout{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.page-wrapper{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+#left_menu{
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    background: #F00;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+#right_content{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+#header{
+    width: 100%;
+    line-height: 3em;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    background: #262626;
+    position: relative;
+    top: 0;
+    left: 0;
+    color: #FFF;
+    overflow: hidden;
+}
+@media screen and (max-width: 400px) {
+    #header{
+        width: 100%;
+        line-height: 2.5em;
+        text-align: center;
+        font-size: 1.2em;
+        font-weight: normal;
+        background: #262626;
+        position: relative;
+        top: 0;
+        left: 0;
+        color: #FFF;
+        overflow: hidden;
+    }
+}
+@media screen and (min-width: 400px) and (max-width: 640px) {
+    #header{
+        width: 100%;
+        line-height: 2.5em;
+        text-align: center;
+        font-size: 1em;
+        font-weight: normal;
+        background: #262626;
+        position: relative;
+        top: 0;
+        left: 0;
+        color: #FFF;
+        overflow: hidden;
+    }
+}
+
+#footer{
+    width: 100%;
+    line-height: 3em;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    background: #ccc;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #FFF;
+    overflow: hidden;
+    border-top: 1px solid #bcbcbc;
+}
+@media screen and (max-width: 400px) {
+    #footer{
+        width: 100%;
+        line-height: 2.5em;
+        text-align: center;
+        font-size: 1em;
+        font-weight: normal;
+        background: #ccc;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        color: #FFF;
+        overflow: hidden;
+        z-index: 99;
+        border-top: 1px solid #bcbcbc;
+    }
+}
+@media screen and (min-width: 400px) and (max-width: 640px) {
+    #footer{
+        width: 100%;
+        line-height: 2.5em;
+        text-align: center;
+        font-size: 1em;
+        font-weight: normal;
+        background: #ccc;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        color: #FFF;
+        overflow: hidden;
+        z-index: 99;
+        border-top: 1px solid #bcbcbc;
+    }
+}
+
+#content{
+    width: 100%;
+    height: auto;
+    font-size: inherit;
+    overflow: hidden;
+    position: absolute;
+    top: 3em;
+    bottom: 3em;
+    background: #F6F1E0;
+}
+
+@media screen and (max-width: 400px) {
+    #content{
+        width: 100%;
+        height: auto;
+        font-size: inherit;
+        overflow: hidden;
+        position: absolute;
+        top: 2.5em;
+        bottom: 2.5em;
+        background: #F6F1E0;
+    }
+}
+@media screen and (min-width: 400px) and (max-width: 640px) {
+    #content{
+        width: 100%;
+        height: auto;
+        font-size: inherit;
+        overflow: hidden;
+        position: absolute;
+        top: 2.5em;
+        bottom: 2.5em;
+        background: #F6F1E0;
+    }
+}
+#content_page{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}

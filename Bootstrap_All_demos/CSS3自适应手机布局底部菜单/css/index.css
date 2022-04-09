@@ -1,0 +1,76 @@
+/* ====头部样式 ==== */
+#header .head-left{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#header .head-right{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.head-left a,.head-right a{
+    display: inline-block;
+    width: 1.3em;
+    height: inherit;
+}
+.head-left a img,.head-right a img{
+    width: 100%;
+}
+.head-left{
+     margin-left:1em ;
+ }
+.head-right{
+    margin-right:1em ;
+}
+
+/* ====主体样式 ==== */
+#content_page div{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    overflow: auto;
+	-webkit-overflow-scrolling: touch;
+    top: 0;
+    bottom: 0;
+}
+
+#page1{
+    left: 0;
+    background: #0000ff;
+}
+#page2{
+    left: 100%;
+    background:#008000;
+}
+#page3{
+    left: 200%;
+    background: yellow;
+}
+#page4{
+    left: 300%;
+    background: #800080;
+
+}
+#content_page div img{
+    width: inherit;
+    height: inherit;
+    margin: 0;
+}
+
+/* ====页脚样式 ==== */
+#footer ul li {
+    float: left;
+    width: 25%;
+    display: inline-block;
+    height: inherit;
+    color: #262626;
+}
+
+.current{
+    background: #009BE1;
+    color: #FFF !important;
+}
+
+
+

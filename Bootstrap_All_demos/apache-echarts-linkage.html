@@ -63,28 +63,34 @@
 					]
 				}],
 				xAxis: [{
+						id:"xAxis-0",
 						type: 'category',
-						gridIndex: 0,
+						gridId:"grid-0",
 						show: false,
 					},
 					{
+						id:"xAxis-1",
 						type: 'category',
-						gridIndex: 1,
+						gridId:"grid-1",
 						show: true,
 					}
 				],
 				yAxis: [{
+					id:"yAxis-0",
 					type: 'value',
-					gridIndex: 0,
+					gridId:"grid-0",
 					show: false,
 				}, {
+					id:"yAxis-1",
 					type: 'value',
-					gridIndex: 1,
+					gridId:"grid-1",
 					show: true,
 				}],
 				grid: [{
+					id:"grid-0",
 					bottom: '55%'
 				}, {
+					id:"grid-1",
 					top: '55%'
 				}],
 				series: [
@@ -92,8 +98,10 @@
 					{
 						id: "linkage-diagram",
 						type: 'pie',
-						xAxisIndex: 0,
-						yAxisIndex: 0,
+						// xAxisIndex: 0,
+						// yAxisIndex: 0,
+						xAxisId:"xAxis-0",
+						yAxisId:"yAxis-0",
 						radius: '50%',
 						bottom: "55%",
 						encode: {
@@ -111,8 +119,10 @@
 					// 这几个系列会出现在第二个直角坐标系中，每个系列对应到 dataset 的每一列。
 					{
 						type: 'bar',
-						xAxisIndex: 1,
-						yAxisIndex: 1,
+						// xAxisIndex: 1,
+						// yAxisIndex: 1,
+						xAxisId:"xAxis-1",
+						yAxisId:"yAxis-1",
 						encode: {
 							x: "product",
 							y: "count",
@@ -121,8 +131,10 @@
 					},
 					{
 						type: 'bar',
-						xAxisIndex: 1,
-						yAxisIndex: 1,
+						// xAxisIndex: 1,
+						// yAxisIndex: 1,
+						xAxisId:"xAxis-1",
+						yAxisId:"yAxis-1",
 						encode: {
 							x: "product",
 							y: "score",
