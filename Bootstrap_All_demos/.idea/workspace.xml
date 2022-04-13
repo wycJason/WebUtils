@@ -7,15 +7,7 @@
     <bookmark url="file://$PROJECT_DIR$/全局CSS样式——图片.html" line="45" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd73311-a19f-4bfd-a323-e8960518db5e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/apache-echarts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/前端页面禁止调试debugger.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/$.extend方法.html" beforeDir="false" afterPath="$PROJECT_DIR$/$.extend方法.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DEV-Extreme/DEV-Extreme-DataGrid.html" beforeDir="false" afterPath="$PROJECT_DIR$/DEV-Extreme/DEV-Extreme-DataGrid.html" afterDir="false" />
-    </list>
+    <list default="true" id="9cd73311-a19f-4bfd-a323-e8960518db5e" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -326,6 +318,7 @@
       <workItem from="1647936010492" duration="36000" />
       <workItem from="1648267330389" duration="6639000" />
       <workItem from="1648285633127" duration="662000" />
+      <workItem from="1649752903351" duration="15000" />
     </task>
     <task id="LOCAL-00001" summary="jason webstorm 提交">
       <created>1646727727104</created>
